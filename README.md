@@ -1,4 +1,5 @@
 # Daily📱
+- Project within IOS development course in Technopark by Mail.ru Group. 
 
 ## Design source:
 - [DAILY](https://www.figma.com/file/438ObOvoe2mRAs4xrjTuJE/Daily-(Project)?node-id=1%3A2)
