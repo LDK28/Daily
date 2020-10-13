@@ -8,7 +8,7 @@
 - Application for daily tasks.
 
 ## Teammates✌️:
-- [Dmitry Kostev](https://github.com/LDK28)
+- [Dmitry Kostev🧞‍♂️](https://github.com/LDK28)
 - [Arseny Tokarev](https://github.com/BAUMANEZ)
 - [Yulia Alfimova](https://github.com/JuliaAlfimova)
 - [Arseny Bikov](https://github.com/INGIBITR)
