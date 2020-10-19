@@ -9,11 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    override func viewDidLoad() {
+	@IBOutlet weak var testTextField: UITextField!
+	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 	}
-
 
 }
 
