@@ -9,7 +9,7 @@ import UIKit
 
 extension UIColor {
 	static var dailyBackgroundColor: UIColor {
-		colorForTheme(light: UIColor(hex: "0B3954")!.withAlphaComponent(0.3), dark: UIColor(hex: "82C1DF")!.withAlphaComponent(0.3))
+		colorForTheme(light: UIColor("0B3954", alpha: 0.0), dark: UIColor("82C1DF", alpha: 0.0))
 	}
 
 
