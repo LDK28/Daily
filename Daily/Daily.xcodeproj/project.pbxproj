@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213755CA253F714300821BDB /* Stolzl-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213755C4253F714300821BDB /* Stolzl-Regular.ttf */; };
+		213755CB253F714300821BDB /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213755C5253F714300821BDB /* Stolzl-Bold.ttf */; };
+		213755CC253F714300821BDB /* Stolzl-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213755C6253F714300821BDB /* Stolzl-Thin.ttf */; };
+		213755CD253F714300821BDB /* Stolzl-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213755C7253F714300821BDB /* Stolzl-Light.ttf */; };
+		213755CE253F714300821BDB /* Stolzl-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213755C8253F714300821BDB /* Stolzl-Medium.ttf */; };
+		213755CF253F714300821BDB /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213755C9253F714300821BDB /* Stolzl-Book.ttf */; };
 		2156C365253EC1AE008ADA73 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2156C367253EC1AE008ADA73 /* Localizable.strings */; };
 		2160D4BD253E1B4700C4508A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2160D4BC253E1B4700C4508A /* AppDelegate.swift */; };
 		2160D4BF253E1B4700C4508A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2160D4BE253E1B4700C4508A /* SceneDelegate.swift */; };
@@ -37,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		213755C4253F714300821BDB /* Stolzl-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Regular.ttf"; sourceTree = "<group>"; };
+		213755C5253F714300821BDB /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Bold.ttf"; sourceTree = "<group>"; };
+		213755C6253F714300821BDB /* Stolzl-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Thin.ttf"; sourceTree = "<group>"; };
+		213755C7253F714300821BDB /* Stolzl-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Light.ttf"; sourceTree = "<group>"; };
+		213755C8253F714300821BDB /* Stolzl-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Medium.ttf"; sourceTree = "<group>"; };
+		213755C9253F714300821BDB /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		2156C366253EC1AE008ADA73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2156C372253EC2EE008ADA73 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		2156C373253EC2EE008ADA73 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -83,6 +95,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		213755C1253F70E700821BDB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				213755C2253F710100821BDB /* ViewController */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		213755C2253F710100821BDB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2160D4C0253E1B4700C4508A /* ViewController.swift */,
+				2160D4C2253E1B4700C4508A /* Main.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		213755C3253F710F00821BDB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				213755D6253F717F00821BDB /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		213755D6253F717F00821BDB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				213755C5253F714300821BDB /* Stolzl-Bold.ttf */,
+				213755C9253F714300821BDB /* Stolzl-Book.ttf */,
+				213755C7253F714300821BDB /* Stolzl-Light.ttf */,
+				213755C8253F714300821BDB /* Stolzl-Medium.ttf */,
+				213755C4253F714300821BDB /* Stolzl-Regular.ttf */,
+				213755C6253F714300821BDB /* Stolzl-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2160D4B0253E1B4700C4508A = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +156,10 @@
 		2160D4BB253E1B4700C4508A /* Daily */ = {
 			isa = PBXGroup;
 			children = (
+				213755C3253F710F00821BDB /* Resources */,
+				213755C1253F70E700821BDB /* Views */,
 				2160D4BC253E1B4700C4508A /* AppDelegate.swift */,
 				2160D4BE253E1B4700C4508A /* SceneDelegate.swift */,
-				2160D4C0253E1B4700C4508A /* ViewController.swift */,
-				2160D4C2253E1B4700C4508A /* Main.storyboard */,
 				2160D4C8253E1B4900C4508A /* Assets.xcassets */,
 				2160D4CA253E1B4900C4508A /* LaunchScreen.storyboard */,
 				2160D4CD253E1B4900C4508A /* Info.plist */,
@@ -242,9 +292,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2156C365253EC1AE008ADA73 /* Localizable.strings in Resources */,
+				213755CD253F714300821BDB /* Stolzl-Light.ttf in Resources */,
 				2160D4CC253E1B4900C4508A /* LaunchScreen.storyboard in Resources */,
 				2160D4C9253E1B4900C4508A /* Assets.xcassets in Resources */,
+				213755CC253F714300821BDB /* Stolzl-Thin.ttf in Resources */,
+				213755CE253F714300821BDB /* Stolzl-Medium.ttf in Resources */,
+				213755CA253F714300821BDB /* Stolzl-Regular.ttf in Resources */,
 				2160D4C4253E1B4700C4508A /* Main.storyboard in Resources */,
+				213755CB253F714300821BDB /* Stolzl-Bold.ttf in Resources */,
+				213755CF253F714300821BDB /* Stolzl-Book.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
