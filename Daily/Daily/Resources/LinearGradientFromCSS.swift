@@ -32,7 +32,7 @@ extension Int {
 
 
 extension UIView {
-  func linearGradientBackground(angleInDegs: Int, colors: [CGColor]) {
+   func linearGradientBackground(angleInDegs: Int, colors: [CGColor]) {
 	// Create New Gradient Layer
 	  let gradientBaseLayer: CAGradientLayer = CAGradientLayer()
 	// Feed in Our Parameters

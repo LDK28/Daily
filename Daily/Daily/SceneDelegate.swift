@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 19.10.2020.
+//  Created by Арсений Токарев on 21.10.2020.
 //
 
 import UIKit
