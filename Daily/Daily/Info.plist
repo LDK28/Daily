@@ -20,6 +20,15 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Stolzl-Bold.ttf</string>
+		<string>Stolzl-Book.ttf</string>
+		<string>Stolzl-Light.ttf</string>
+		<string>Stolzl-Medium.ttf</string>
+		<string>Stolzl-Regular.ttf</string>
+		<string>Stolzl-Thin.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -52,17 +61,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Stolzl-Bold.ttf</string>
-		<string>Stolzl-Book.ttf</string>
-		<string>Stolzl-Light.ttf</string>
-		<string>Stolzl-Medium.ttf</string>
-		<string>Stolzl-Regular.ttf</string>
-		<string>Stolzl-Thin.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
