@@ -7,100 +7,65 @@
 
 import UIKit
 
-extension CGPoint {
-  func opposite() -> CGPoint {
-	// Create New Point
-	var oppositePoint = CGPoint()
-	// Get Origin Data
-	let originXValue = self.x
-	let originYValue = self.y
-	// Convert Points and Update New Point
-	oppositePoint.x = 1.0 - originXValue
-	oppositePoint.y = 1.0 - originYValue
-	return oppositePoint
-  }
-}
-
-
-extension Int {
-  func degreesToRads() -> Double {
-	return (Double(self) * .pi / 180)
-  }
-}
-
-
-
-
 extension UIView {
-   func linearGradientBackground(angleInDegs: Int, colors: [CGColor]) {
-	// Create New Gradient Layer
-	  let gradientBaseLayer: CAGradientLayer = CAGradientLayer()
-	// Feed in Our Parameters
-	  gradientBaseLayer.frame = self.frame
-	  gradientBaseLayer.colors = colors
-	  gradientBaseLayer.startPoint = startAndEndPointsFrom(angle: angleInDegs).startPoint
-	  gradientBaseLayer.endPoint = startAndEndPointsFrom(angle: angleInDegs).endPoint
-	// Add Our Gradient Layer to the Background
-	  self.layer.insertSublayer(gradientBaseLayer, at: 0)
-  }
-}
+	 func lightLG() {
+		let gradientLayer = CAGradientLayer()
+
+		gradientLayer.colors = [
+
+			UIColor("FFFFFF", alpha: 0.57).cgColor,
+
+			UIColor("B6E9FF", alpha: 0.57).cgColor
+
+		]
+		gradientLayer.locations = [0.21, 1]
+
+		gradientLayer.startPoint = CGPoint(x: 0.25, y: 0.5)
+
+		gradientLayer.endPoint = CGPoint(x: 0.75, y: 0.5)
+
+		gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1.35, c: -1.35, d: 0, tx: 1.17, ty: -0.35))
+
+		gradientLayer.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
+
+		gradientLayer.position = self.center
+		
+		self.layer.addSublayer(gradientLayer)
+		
+	}
+	
+	
+	func darkLG() {
+		let gradientLayer = CAGradientLayer()
+
+		gradientLayer.colors = [
+
+		  UIColor("030506", alpha: 0.97).cgColor,
+
+		  UIColor("0B3954", alpha: 0.89).cgColor,
+
+		  UIColor("0E79AB", alpha: 0.83).cgColor
+
+		]
+
+		gradientLayer.locations = [0.15, 0.64, 0.98]
+
+		gradientLayer.startPoint = CGPoint(x: 0.25, y: 0.5)
+
+		gradientLayer.endPoint = CGPoint(x: 0.75, y: 0.5)
+
+		gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
+
+		gradientLayer.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
+
+		gradientLayer.position = self.center
+
+		self.layer.addSublayer(gradientLayer)
 
 
 
-func startAndEndPointsFrom(angle: Int) -> (startPoint:CGPoint, endPoint:CGPoint) {
-// Set default points for angle of 0°
-  var startPointX:CGFloat = 0.5
-  var startPointY:CGFloat = 1.0
 
-// Define point objects
-  var startPoint:CGPoint
-  var endPoint:CGPoint
-
-// Define points
-  switch true {
-// Define known points
-  case angle == 0:
-	startPointX = 0.5
-	startPointY = 1.0
-  case angle == 45:
-	startPointX = 0.0
-	startPointY = 1.0
-  case angle == 90:
-	startPointX = 0.0
-	startPointY = 0.5
-  case angle == 135:
-	startPointX = 0.0
-	startPointY = 0.0
-  case angle == 180:
-	startPointX = 0.5
-	startPointY = 0.0
-  case angle == 225:
-	startPointX = 1.0
-	startPointY = 0.0
-  case angle == 270:
-	startPointX = 1.0
-	startPointY = 0.5
-  case angle == 315:
-	startPointX = 1.0
-	startPointY = 1.0
-// Define calculated points
-  case angle > 315 || angle < 45:
-	startPointX = 0.5 - CGFloat(tan(angle.degreesToRads()) * 0.5)
-	startPointY = 1.0
-  case angle > 45 && angle < 135:
-	startPointX = 0.0
-	startPointY = 0.5 + CGFloat(tan(90.degreesToRads() - angle.degreesToRads()) * 0.5)
-  case angle > 135 && angle < 225:
-	startPointX = 0.5 - CGFloat(tan(180.degreesToRads() - angle.degreesToRads()) * 0.5)
-startPointY = 0.0
-  case angle > 225 && angle < 359:
-	startPointX = 1.0
-	startPointY = 0.5 - CGFloat(tan(270.degreesToRads() - angle.degreesToRads()) * 0.5)
-  default: break
-  }
-// Build return CGPoints
-  startPoint = CGPoint(x: startPointX, y: startPointY)
-  endPoint = startPoint.opposite()
-// Return CGPoints
-  return (startPoint, endPoint)
+	   
+   }
+		
 }
