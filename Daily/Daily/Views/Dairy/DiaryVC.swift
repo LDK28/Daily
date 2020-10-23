@@ -11,6 +11,7 @@ class DiaryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		view.backgroundColor = UIColor("E5E5E5")
 		view.lightLG()
     }

@@ -66,8 +66,8 @@ class TabBarVC: UITabBarController {
 	func createProfileNavigationController() -> UINavigationController {
 		let userInfoVC = UserInfoVC()
 		userInfoVC.title = nil
-		// it is a system tabbaritem , tag zero because it is the first one
 		userInfoVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
+		
 		let profileNavigationController = UINavigationController(rootViewController: userInfoVC)
 		profileNavigationController.setNavigationBarHidden(true, animated: false)
 		
