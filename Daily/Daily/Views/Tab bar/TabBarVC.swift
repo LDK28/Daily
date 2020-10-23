@@ -54,11 +54,11 @@ class TabBarVC: UITabBarController {
 	}
 	
 	func createProfileNavigationController() -> UINavigationController {
-		let profileVC = ProfileVC()
-		profileVC.title = "Profile"
+		let userInfoVC = UserInfoVC()
+		userInfoVC.title = "Profile"
 		// it is a system tabbaritem , tag zero because it is the first one
-		profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
-		return UINavigationController(rootViewController: profileVC)
+		userInfoVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
+		return UINavigationController(rootViewController: userInfoVC)
 	}
 	
 
