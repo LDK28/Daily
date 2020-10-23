@@ -13,18 +13,27 @@ class PlusButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setBackgroundImage(UIImage(systemName: "plus"), for: .normal)
-        self.titleLabel?.textColor = .white
-        self.backgroundColor = .dailyTabBarColor
-        self.layer.cornerRadius = frame.height/2
-        self.layer.borderWidth = 4
-        self.layer.borderColor = UIColor.white.cgColor
-        
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
     }
+	
+	func designButton() {
+		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
+		let image = UIImage(systemName: "plus", withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+	
+		self.setImage(image, for: .normal)
+		
+		self.currentBackgroundImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
+		
+		self.titleLabel?.textColor = .white
+		self.backgroundColor = .dailyTabBarColor
+		
+		self.layer.cornerRadius = frame.height / 2
+		self.layer.borderWidth = frame.height / 15
+		self.layer.borderColor = UIColor.white.cgColor
+	}
     
 }

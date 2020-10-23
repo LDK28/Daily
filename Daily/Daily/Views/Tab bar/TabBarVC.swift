@@ -8,14 +8,32 @@
 import UIKit
 
 class TabBarVC: UITabBarController {
-
+	let plusButton = PlusButton(frame: .zero)
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
 		self.createTabBar()
+		setupMiddleButton()
     }
-    
+	
+	
+	func setupMiddleButton() {
 
+		plusButton.frame = CGRect(x: 0, y: 0, width: tabBar.frame.size.height * 1.2, height: tabBar.frame.size.height * 1.2)
+		var plusButtonFrame = plusButton.frame
+		plusButtonFrame.origin.y = self.view.bounds.height - plusButtonFrame.height - self.view.safeAreaInsets.bottom
+		plusButtonFrame.origin.x = self.view.bounds.width/2 - plusButtonFrame.size.width/2
+		plusButton.frame = plusButtonFrame
+		plusButton.designButton()
+		self.view.addSubview(plusButton)
+		self.view.layoutIfNeeded()
+	}
+
+	override func viewDidLayoutSubviews() {
+	   super.viewDidLayoutSubviews()
+		plusButton.frame.origin.y = self.view.bounds.height - plusButton.frame.height * 1.45 - self.view.safeAreaInsets.bottom
+   }
+	
 	func createTabBar() {
 		// here we assign a tint to all our tabbars, this will be visible on the items (icons)
 		let styling = self.tabBar
