@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IdeasView: UIViewController {
+class IdeasVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()

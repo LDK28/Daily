@@ -30,7 +30,7 @@ class TabBarVC: UITabBarController {
 	
 	func createDiaryNavigationController() -> UINavigationController {
 		// we create the view controller and insert into the nav controller and return
-		let diaryVC = DiaryView()
+		let diaryVC = DiaryVC()
 		diaryVC.title = "Diary"
 		// it is a system tabbaritem , tag zero because it is the first one
 		diaryVC.tabBarItem = UITabBarItem(title: "Diary", image: UIImage(systemName: "note.text.badge.plus"), tag: 0)
@@ -38,7 +38,7 @@ class TabBarVC: UITabBarController {
 	}
 
 	func createIdeasNavigationController() -> UINavigationController {
-		let ideasVC = IdeasView()
+		let ideasVC = IdeasVC()
 		ideasVC.title = "Ideas"
 		// it is a system tabbaritem , tag zero because it is the first one
 		ideasVC.tabBarItem = UITabBarItem(title: "Ideas", image: UIImage(systemName: "note"), tag: 1)

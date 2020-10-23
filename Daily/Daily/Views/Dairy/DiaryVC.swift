@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiaryView: UIViewController {
+class DiaryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
