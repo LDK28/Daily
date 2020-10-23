@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
-		215615EA254344B6005AB2DF /* ButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615E9254344B6005AB2DF /* ButtonVC.swift */; };
+		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC99F2542D8810069D30E /* IdeasVC.swift */; };
 		215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9AA2542DEDA0069D30E /* TabBarVC.swift */; };
 		215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9B12542E2620069D30E /* CalendarVC.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
-		215615E9254344B6005AB2DF /* ButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonVC.swift; sourceTree = "<group>"; };
+		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		215BC99F2542D8810069D30E /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
 		215BC9AA2542DEDA0069D30E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		215BC9B12542E2620069D30E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = Daily/Views/Calendar/CalendarVC.swift; sourceTree = SOURCE_ROOT; };
@@ -123,7 +123,7 @@
 		215615E82543449E005AB2DF /* Plus Button */ = {
 			isa = PBXGroup;
 			children = (
-				215615E9254344B6005AB2DF /* ButtonVC.swift */,
+				215615F925434547005AB2DF /* PlusButton.swift */,
 			);
 			path = "Plus Button";
 			sourceTree = "<group>";
@@ -383,12 +383,12 @@
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
-				215615EA254344B6005AB2DF /* ButtonVC.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
+				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
