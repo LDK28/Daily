@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215615AA2542F090005AB2DF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615A92542F090005AB2DF /* ProfileVC.swift */; };
 		215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC99F2542D8810069D30E /* IdeasVC.swift */; };
 		215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9AA2542DEDA0069D30E /* TabBarVC.swift */; };
 		215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9B12542E2620069D30E /* CalendarVC.swift */; };
-		215BC9B72542E2720069D30E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9B62542E2720069D30E /* ProfileVC.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
 		21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02525403975006A4206 /* SceneDelegate.swift */; };
 		21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02C25403975006A4206 /* Daily.xcdatamodeld */; };
@@ -48,10 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		215615A92542F090005AB2DF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		215BC99F2542D8810069D30E /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
 		215BC9AA2542DEDA0069D30E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
-		215BC9B12542E2620069D30E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = Daily/Views/CalendarVC.swift; sourceTree = SOURCE_ROOT; };
-		215BC9B62542E2720069D30E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		215BC9B12542E2620069D30E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = Daily/Views/Calendar/CalendarVC.swift; sourceTree = SOURCE_ROOT; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E1D02325403975006A4206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E1D02525403975006A4206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,20 +102,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		215615A72542F072005AB2DF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				215615A92542F090005AB2DF /* ProfileVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		215615A82542F079005AB2DF /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				215BC9B12542E2620069D30E /* CalendarVC.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
 				215BC99F2542D8810069D30E /* IdeasVC.swift */,
 			);
 			path = Ideas;
-			sourceTree = "<group>";
-		};
-		215BC9AF2542E2360069D30E /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				215BC9B62542E2720069D30E /* ProfileVC.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		215BC9BE2542E3180069D30E /* Tab bar */ = {
@@ -206,21 +214,13 @@
 		21E1D08E2540AB13006A4206 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				215615A82542F079005AB2DF /* Calendar */,
+				215615A72542F072005AB2DF /* Profile */,
 				215BC9BE2542E3180069D30E /* Tab bar */,
-				215BC9AF2542E2360069D30E /* Profile */,
 				215BC99E2542D86D0069D30E /* Ideas */,
 				21E1D0992540AB98006A4206 /* Dairy */,
-				21E1D0922540AB49006A4206 /* Calendar */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		21E1D0922540AB49006A4206 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				215BC9B12542E2620069D30E /* CalendarVC.swift */,
-			);
-			path = Calendar;
 			sourceTree = "<group>";
 		};
 		21E1D0992540AB98006A4206 /* Dairy */ = {
@@ -375,7 +375,7 @@
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
-				215BC9B72542E2720069D30E /* ProfileVC.swift in Sources */,
+				215615AA2542F090005AB2DF /* ProfileVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
