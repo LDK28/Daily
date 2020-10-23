@@ -34,7 +34,11 @@ class TabBarVC: UITabBarController {
 		diaryVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		diaryVC.tabBarItem = UITabBarItem(title: "Diary", image: UIImage(systemName: "note.text.badge.plus"), tag: 0)
-		return UINavigationController(rootViewController: diaryVC)
+		let diaryNavigationController =  UINavigationController(rootViewController: diaryVC)
+		diaryNavigationController.setNavigationBarHidden(true, animated: false)
+		
+		return diaryNavigationController
+		
 	}
 
 	func createIdeasNavigationController() -> UINavigationController {
@@ -42,7 +46,11 @@ class TabBarVC: UITabBarController {
 		ideasVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		ideasVC.tabBarItem = UITabBarItem(title: "Ideas", image: UIImage(systemName: "note"), tag: 1)
-		return UINavigationController(rootViewController: ideasVC)
+		let ideaNavigationController = UINavigationController(rootViewController: ideasVC)
+		
+		ideaNavigationController.setNavigationBarHidden(true, animated: false)
+		
+		return ideaNavigationController
 	}
 
 	func createCalendarNavigationController() -> UINavigationController {
@@ -50,7 +58,9 @@ class TabBarVC: UITabBarController {
 		calendarVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		calendarVC.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar.circle.fill"), tag: 2)
-		return UINavigationController(rootViewController: calendarVC)
+		let calendarNavigationController = UINavigationController(rootViewController: calendarVC)
+		calendarNavigationController.setNavigationBarHidden(true, animated: false)
+		return calendarNavigationController
 	}
 	
 	func createProfileNavigationController() -> UINavigationController {
@@ -58,7 +68,10 @@ class TabBarVC: UITabBarController {
 		userInfoVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		userInfoVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
-		return UINavigationController(rootViewController: userInfoVC)
+		let profileNavigationController = UINavigationController(rootViewController: userInfoVC)
+		profileNavigationController.setNavigationBarHidden(true, animated: false)
+		
+		return profileNavigationController
 	}
 	
 
