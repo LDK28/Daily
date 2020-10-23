@@ -31,7 +31,7 @@ class TabBarVC: UITabBarController {
 	func createDiaryNavigationController() -> UINavigationController {
 		// we create the view controller and insert into the nav controller and return
 		let diaryVC = DiaryVC()
-		diaryVC.title = "Diary"
+		diaryVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		diaryVC.tabBarItem = UITabBarItem(title: "Diary", image: UIImage(systemName: "note.text.badge.plus"), tag: 0)
 		return UINavigationController(rootViewController: diaryVC)
@@ -39,7 +39,7 @@ class TabBarVC: UITabBarController {
 
 	func createIdeasNavigationController() -> UINavigationController {
 		let ideasVC = IdeasVC()
-		ideasVC.title = "Ideas"
+		ideasVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		ideasVC.tabBarItem = UITabBarItem(title: "Ideas", image: UIImage(systemName: "note"), tag: 1)
 		return UINavigationController(rootViewController: ideasVC)
@@ -47,7 +47,7 @@ class TabBarVC: UITabBarController {
 
 	func createCalendarNavigationController() -> UINavigationController {
 		let calendarVC = CalendarVC()
-		calendarVC.title = "Calendar"
+		calendarVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		calendarVC.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar.circle.fill"), tag: 2)
 		return UINavigationController(rootViewController: calendarVC)
@@ -55,7 +55,7 @@ class TabBarVC: UITabBarController {
 	
 	func createProfileNavigationController() -> UINavigationController {
 		let userInfoVC = UserInfoVC()
-		userInfoVC.title = "Profile"
+		userInfoVC.title = nil
 		// it is a system tabbaritem , tag zero because it is the first one
 		userInfoVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
 		return UINavigationController(rootViewController: userInfoVC)
