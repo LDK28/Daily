@@ -100,6 +100,7 @@ extension UIColor {
 	}
 	
 	static var dailyPlusButtonBlackoutColor = UIColor("000000", alpha: 0.6)
+	
 	static var dailyMoreButtonBlackoutColor = UIColor("000000", alpha: 0.3)
 	
 	

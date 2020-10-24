@@ -21,6 +21,22 @@ class TabBarVC: UITabBarController {
 		return view
 	}()
 	
+	
+	let addButtonsStackView: UIStackView = {
+		
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .vertical
+		stackView.distribution = .fillEqually
+		stackView.spacing = 10
+		
+		stackView.addArrangedSubview(AddButton(title: "New project", symbolName: "doc.on.doc"))
+		stackView.addArrangedSubview(AddButton(title: "New note", symbolName: "highlighter"))
+		stackView.addArrangedSubview(AddButton(title: "New task", symbolName: "paperclip"))
+		
+		return stackView
+	}()
+	
 	override func loadView() {
 		super.loadView()
 		
@@ -32,10 +48,13 @@ class TabBarVC: UITabBarController {
 		
 		view.addSubview(plusButtonBlackout)
 		view.addSubview(plusButton)
+		view.addSubview(addButtonsStackView)
+		
 		
 		createTabBar()
 		setupBlackoutForPlusButton()
 		setupPlusButton()
+		setupAddButtonsVerticalStackView()
 	}
 	
     override func viewDidLoad() {
@@ -46,6 +65,7 @@ class TabBarVC: UITabBarController {
 	@objc func plusButtonPressed() {
 		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
 		plusButton.changeImage()
+		addButtonsStackView.isHidden.toggle()
 		
 		if plusButtonBlackout.isHidden {
 			plusButtonBlackout.isHidden.toggle()
@@ -59,6 +79,15 @@ class TabBarVC: UITabBarController {
 				self.plusButtonBlackout.isHidden.toggle()
 			}
 		}
+	}
+	
+	func setupAddButtonsVerticalStackView() {
+		addButtonsStackView.isHidden = true
+		addButtonsStackView.bottomAnchor.constraint(equalTo: plusButton.safeAreaLayoutGuide.topAnchor, constant: -20).isActive = true
+		addButtonsStackView.widthAnchor.constraint(equalToConstant: tabBar.frame.width / 2.2).isActive = true
+		addButtonsStackView.heightAnchor.constraint(equalToConstant: CGFloat(addButtonsStackView.arrangedSubviews.count) * 50).isActive = true
+		addButtonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		
 	}
 	
 	func setupBlackoutForPlusButton() {
