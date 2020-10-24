@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC99F2542D8810069D30E /* IdeasVC.swift */; };
 		215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9AA2542DEDA0069D30E /* TabBarVC.swift */; };
@@ -29,6 +28,10 @@
 		21E1D06B2540399B006A4206 /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0622540399B006A4206 /* Stolzl-Book.ttf */; };
 		21E1D06C2540399B006A4206 /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */; };
 		21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D09A2540ABD0006A4206 /* DiaryVC.swift */; };
+		F90FC19F25449E49004F8554 /* UserInfoResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FC19E25449E49004F8554 /* UserInfoResources.swift */; };
+		F90FC1B32544A52D004F8554 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FC1B22544A52D004F8554 /* UserInfoVC.swift */; };
+		F90FC1B92544A5CD004F8554 /* UITableView Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FC1B82544A5CD004F8554 /* UITableView Constraints.swift */; };
+		F90FC1BE2544A89F004F8554 /* UserInfoCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90FC1BD2544A89F004F8554 /* UserInfoCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		215BC99F2542D8810069D30E /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
 		215BC9AA2542DEDA0069D30E /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -77,6 +79,10 @@
 		21E1D0622540399B006A4206 /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Bold.ttf"; sourceTree = "<group>"; };
 		21E1D09A2540ABD0006A4206 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
+		F90FC19E25449E49004F8554 /* UserInfoResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoResources.swift; sourceTree = "<group>"; };
+		F90FC1B22544A52D004F8554 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoVC.swift; path = "New Group/UserInfoVC.swift"; sourceTree = "<group>"; };
+		F90FC1B82544A5CD004F8554 /* UITableView Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView Constraints.swift"; sourceTree = "<group>"; };
+		F90FC1BD2544A89F004F8554 /* UserInfoCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +121,9 @@
 		215615D92542F512005AB2DF /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				215615DA2542F521005AB2DF /* UserInfoVC.swift */,
+				F90FC1B72544A549004F8554 /* New Group */,
+				F90FC1B22544A52D004F8554 /* UserInfoVC.swift */,
+				F90FC1BD2544A89F004F8554 /* UserInfoCellTableViewCell.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -240,6 +248,16 @@
 				21E1D09A2540ABD0006A4206 /* DiaryVC.swift */,
 			);
 			path = Dairy;
+			sourceTree = "<group>";
+		};
+		F90FC1B72544A549004F8554 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				F90FC19E25449E49004F8554 /* UserInfoResources.swift */,
+				F90FC1B82544A5CD004F8554 /* UITableView Constraints.swift */,
+			);
+			name = "New Group";
+			path = "../../Resources/New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,16 +396,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
+				F90FC1B32544A52D004F8554 /* UserInfoVC.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
+				F90FC1BE2544A89F004F8554 /* UserInfoCellTableViewCell.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
+				F90FC1B92544A5CD004F8554 /* UITableView Constraints.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
+				F90FC19F25449E49004F8554 /* UserInfoResources.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
-				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
