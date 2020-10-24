@@ -43,7 +43,6 @@ class PlusButton: UIButton {
 		}
 
 		self.setImage(newImage, for: .normal)
-		
 	}
 	
 	final private func decorateButton() {

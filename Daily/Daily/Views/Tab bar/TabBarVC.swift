@@ -8,6 +8,7 @@
 import UIKit
 
 class TabBarVC: UITabBarController {
+	let animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut)
 	let plusButton = PlusButton(frame: .zero)
 	let plusButtonBlackout: UIView = {
 		let view = UIView()
@@ -33,13 +34,28 @@ class TabBarVC: UITabBarController {
     }
 	
 	@objc func plusButtonPressed() {
-		plusButtonBlackout.isHidden.toggle()
-		plusButton.changeImage()
+		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
+		self.plusButton.changeImage()
+		
+		if self.plusButtonBlackout.isHidden {
+			self.plusButtonBlackout.isHidden.toggle()
+			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+				self.plusButtonBlackout.alpha = 1
+			}
+		} else {
+			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+				self.plusButtonBlackout.alpha = 0
+			}) { _ in
+				self.plusButtonBlackout.isHidden.toggle()
+			}
+		}
+		
 		
 	}
 	
 	func setupBlackout() {
 		plusButtonBlackout.isHidden = true
+		plusButtonBlackout.alpha = 0
 		view.addSubview(plusButtonBlackout)
 		plusButtonBlackout.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
 		plusButtonBlackout.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
