@@ -7,13 +7,11 @@
 
 import UIKit
 
-class CalendarVC: UIViewController {
+class CalendarVC: MainVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		view.backgroundColor = UIColor("E5E5E5")
-		view.lightLG()
+		
     }
     
 

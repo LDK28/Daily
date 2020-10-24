@@ -61,11 +61,15 @@ extension UIView {
 		gradientLayer.position = self.center
 
 		self.layer.addSublayer(gradientLayer)
-
-
-
-
-	   
    }
+	
+	
+	func addBackgroundGradient() {
+		if #available(iOS 13, *) {
+			UIScreen.main.traitCollection.userInterfaceStyle == .dark ? darkLG() : lightLG()
+		} else {
+			lightLG()
+		}
+	}
 		
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiaryVC: UIViewController {
+class DiaryVC: MainVC {
 
 	weak var plusButton: PlusButton!
 	
@@ -18,9 +18,6 @@ class DiaryVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		view.backgroundColor = UIColor("E5E5E5")
-		view.lightLG()
         
     }
 

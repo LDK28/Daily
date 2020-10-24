@@ -30,6 +30,7 @@
 		21E1D06B2540399B006A4206 /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0622540399B006A4206 /* Stolzl-Book.ttf */; };
 		21E1D06C2540399B006A4206 /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */; };
 		21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D09A2540ABD0006A4206 /* DiaryVC.swift */; };
+		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		21E1D0622540399B006A4206 /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Bold.ttf"; sourceTree = "<group>"; };
 		21E1D09A2540ABD0006A4206 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
+		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 		21E1D08E2540AB13006A4206 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21F0F8F62544CF8200B5D6FB /* MainVC.swift */,
 				215615D92542F512005AB2DF /* UserInfo */,
 				215615A82542F079005AB2DF /* Calendar */,
 				215BC9BE2542E3180069D30E /* Tab bar */,
@@ -393,6 +396,7 @@
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
+				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
