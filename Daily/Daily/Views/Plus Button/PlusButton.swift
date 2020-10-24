@@ -12,13 +12,6 @@ class PlusButton: UIButton {
 	private var imageName = "plus"
 	private var buttonIsPressed = false
 	
-	final override var frame: CGRect {
-		didSet {
-			decorateButton()
-		}
-	}
-	
-	
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -29,7 +22,7 @@ class PlusButton: UIButton {
         
     }
 	
-	func changeImage() {
+	final func changeImage() {
 		self.buttonIsPressed.toggle()
 		let pointSize = buttonIsPressed ? frame.height / 1.8 : frame.height / 1.5 //  we use different size multipliers for different images
 		
