@@ -99,7 +99,8 @@ extension UIColor {
 		colorForTheme(light: UIColor("FFCC00"), dark: UIColor("FFD60A"))
 	}
 	
-
+	static var dailyPlusButtonBlackoutColor = UIColor("000000", alpha: 0.6)
+	static var dailyMoreButtonBlackoutColor = UIColor("000000", alpha: 0.3)
 	
 	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
