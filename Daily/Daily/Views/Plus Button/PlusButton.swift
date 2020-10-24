@@ -45,7 +45,7 @@ class PlusButton: UIButton {
 		self.setImage(newImage, for: .normal)
 	}
 	
-	final private func decorateButton() {
+	final func decorateButton() {
 		//make a plus image take 66% of a button view
 		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
 		

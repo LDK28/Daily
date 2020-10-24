@@ -9,7 +9,12 @@ import UIKit
 
 class TabBarVC: UITabBarController {
 	let animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut)
-	let plusButton = PlusButton(frame: .zero)
+	let plusButton: PlusButton = {
+		let button = PlusButton()
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
+	
 	let plusButtonBlackout: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,14 +44,6 @@ class TabBarVC: UITabBarController {
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
 	
-	override func viewDidLayoutSubviews() {
-	   super.viewDidLayoutSubviews()
-		let multiplier: CGFloat = 1.45
-		plusButton.frame.origin.y = view.bounds.height - plusButton.frame.height * multiplier - view.safeAreaInsets.bottom
-		
-		plusButtonBlackout.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -tabBar.frame.height).isActive = true
-   }
-	
 	@objc func plusButtonPressed() {
 		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
 		plusButton.changeImage()
@@ -69,26 +66,20 @@ class TabBarVC: UITabBarController {
 		plusButtonBlackout.isHidden = true
 		plusButtonBlackout.alpha = 0
 		plusButtonBlackout.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-		plusButtonBlackout.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		plusButtonBlackout.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -tabBar.frame.height).isActive = true
 		plusButtonBlackout.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-		
 	}
 	
 	func setupPlusButton() {
-		//set sizes of the button accordingly to bound of a user's device
-		//"x1.2" is just a multiplayer that makes this button a little bit bigger
+		
 		let multiplier: CGFloat = 1.2
 		let size = tabBar.frame.size.height * multiplier
-		plusButton.frame = CGRect(x: 0, y: 0, width: size, height: size)
-		
-		//framing the button (for further resizing)
-		var plusButtonFrame = plusButton.frame
-		
-		plusButtonFrame.origin.y = view.bounds.height - plusButtonFrame.height - view.safeAreaInsets.bottom
-		plusButtonFrame.origin.x = view.bounds.width / 2 - plusButtonFrame.size.width / 2
-		
-		plusButton.frame = plusButtonFrame
+		plusButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+		plusButton.heightAnchor.constraint(equalTo: plusButton.widthAnchor).isActive = true
+		plusButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		view.layoutIfNeeded()
+		plusButton.decorateButton()
+		plusButton.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: plusButton.frame.height / 2.5).isActive = true
 	}
 	
 	func createTabBar() {
