@@ -59,6 +59,8 @@ class TabBarVC: UITabBarController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
 	
@@ -117,6 +119,8 @@ class TabBarVC: UITabBarController {
 		styling.tintColor = .dailyTabBarSelectedItemColor
 		styling.unselectedItemTintColor = .dailyTabBarItemColor
 		styling.barTintColor = .dailyTabBarColor
+		let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .light)]
+		UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)
 
 	
 		self.viewControllers = [createDiaryNC(), createIdeasNC(), createCalendarNC(), createProfileNC()]

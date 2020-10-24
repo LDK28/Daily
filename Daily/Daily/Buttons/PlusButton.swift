@@ -53,6 +53,10 @@ class PlusButton: UIButton {
 		self.layer.cornerRadius = frame.height / 2
 		self.layer.borderWidth = frame.height / 15
 		self.layer.borderColor = UIColor.white.cgColor
+		self.layer.shadowColor = UIColor.dailyPlusButtonShadowColor
+		self.layer.shadowOffset = CGSize(width: 0, height: 10)
+		self.layer.shadowRadius = 4
+		self.layer.shadowOpacity = 0.1
 	}
     
 }

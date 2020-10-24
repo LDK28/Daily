@@ -103,6 +103,9 @@ extension UIColor {
 	
 	static var dailyMoreButtonBlackoutColor = UIColor("000000", alpha: 0.3)
 	
+	static var dailyPlusButtonShadowColor: CGColor {
+		colorForTheme(light: UIColor.black, dark: .clear).cgColor
+	}
 	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {
