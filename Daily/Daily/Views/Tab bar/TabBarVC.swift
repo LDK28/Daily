@@ -8,7 +8,6 @@
 import UIKit
 
 class TabBarVC: UITabBarController {
-	let animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut)
 	let plusButton: PlusButton = {
 		let button = PlusButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -77,9 +76,9 @@ class TabBarVC: UITabBarController {
 		plusButton.widthAnchor.constraint(equalToConstant: size).isActive = true
 		plusButton.heightAnchor.constraint(equalTo: plusButton.widthAnchor).isActive = true
 		plusButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		plusButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor, constant: -5).isActive = true
 		view.layoutIfNeeded()
 		plusButton.decorateButton()
-		plusButton.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: plusButton.frame.height / 2.5).isActive = true
 	}
 	
 	func createTabBar() {
