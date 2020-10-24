@@ -50,11 +50,16 @@ class TabBarVC: UITabBarController {
 		view.addSubview(plusButton)
 		view.addSubview(addButtonsStackView)
 		
-		
 		createTabBar()
 		setupBlackoutForPlusButton()
 		setupPlusButton()
 		setupAddButtonsVerticalStackView()
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		plusButton.decorateButton()
+		
 	}
 	
     override func viewDidLoad() {
@@ -109,7 +114,6 @@ class TabBarVC: UITabBarController {
 		plusButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		plusButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor, constant: -5).isActive = true
 		view.layoutIfNeeded()
-		plusButton.decorateButton()
 	}
 	
 	func createTabBar() {
