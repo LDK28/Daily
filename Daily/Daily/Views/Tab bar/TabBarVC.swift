@@ -20,6 +20,13 @@ class TabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.createTabBar()
+		
+		/*
+		
+			View Hierachy: Tab Bar -> Blackout Layer -> Button -> The rest of view components
+		
+		*/
+		
 		setupBlackout()
 		setupMiddleButton()
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)

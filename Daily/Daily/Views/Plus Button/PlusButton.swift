@@ -30,8 +30,11 @@ class PlusButton: UIButton {
     }
 	
 	func changeImage() {
-		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
 		self.buttonIsPressed.toggle()
+		let pointSize = buttonIsPressed ? frame.height / 1.8 : frame.height / 1.5 //  we use different size multipliers for different images
+		
+		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: pointSize, weight: .light)
+		
 		let newImageName = buttonIsPressed ? "chevron.down" : "plus"
 		
 		guard let newImage = UIImage(systemName: newImageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
