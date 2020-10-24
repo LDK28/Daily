@@ -9,13 +9,36 @@ import UIKit
 
 class TabBarVC: UITabBarController {
 	let plusButton = PlusButton(frame: .zero)
+	let plusButtonBlackout: UIView = {
+		let view = UIView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.backgroundColor = .dailyPlusButtonBlackoutColor
+		return view
+	}()
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.createTabBar()
+		setupBlackout()
 		setupMiddleButton()
+		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
 	
+	@objc func plusButtonPressed() {
+		plusButtonBlackout.isHidden.toggle()
+		plusButton.changeImage()
+		
+	}
+	
+	func setupBlackout() {
+		plusButtonBlackout.isHidden = true
+		view.addSubview(plusButtonBlackout)
+		plusButtonBlackout.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		plusButtonBlackout.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		plusButtonBlackout.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+		plusButtonBlackout.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -tabBar.frame.height).isActive = true
+	}
 	
 	func setupMiddleButton() {
 		//set sizes of the button accordingly to bound of a user's device

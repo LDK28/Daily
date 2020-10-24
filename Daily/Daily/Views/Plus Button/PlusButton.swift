@@ -9,12 +9,15 @@ import UIKit
 
 
 class PlusButton: UIButton {
+	private var imageName = "plus"
+	private var buttonIsPressed = false
 	
 	final override var frame: CGRect {
 		didSet {
 			decorateButton()
 		}
 	}
+	
 	
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +29,20 @@ class PlusButton: UIButton {
         
     }
 	
+	func changeImage() {
+		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
+		self.buttonIsPressed.toggle()
+		let newImageName = buttonIsPressed ? "chevron.down" : "plus"
+		
+		guard let newImage = UIImage(systemName: newImageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+		else {
+			fatalError("Couldn't find the image from systemName.")
+		}
+
+		self.setImage(newImage, for: .normal)
+		
+	}
+	
 	final private func decorateButton() {
 		//make a plus image take 66% of a button view
 		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
@@ -35,7 +52,6 @@ class PlusButton: UIButton {
 		else {
 			fatalError("Couldn't find the image from systemName.")
 		}
-	
 		self.setImage(image, for: .normal)
 		self.backgroundColor = .dailyTabBarColor
 		
