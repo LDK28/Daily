@@ -17,10 +17,8 @@ class TabBarVC: UITabBarController {
 		return view
 	}()
 	
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		self.createTabBar()
+	override func loadView() {
+		super.loadView()
 		
 		/*
 		
@@ -28,17 +26,33 @@ class TabBarVC: UITabBarController {
 		
 		*/
 		
-		setupBlackout()
-		setupMiddleButton()
+		view.addSubview(plusButtonBlackout)
+		view.addSubview(plusButton)
+		
+		createTabBar()
+		setupBlackoutForPlusButton()
+		setupPlusButton()
+	}
+	
+    override func viewDidLoad() {
+        super.viewDidLoad()
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
 	
+	override func viewDidLayoutSubviews() {
+	   super.viewDidLayoutSubviews()
+		let multiplier: CGFloat = 1.45
+		plusButton.frame.origin.y = view.bounds.height - plusButton.frame.height * multiplier - view.safeAreaInsets.bottom
+		
+		plusButtonBlackout.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -tabBar.frame.height).isActive = true
+   }
+	
 	@objc func plusButtonPressed() {
 		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
-		self.plusButton.changeImage()
+		plusButton.changeImage()
 		
-		if self.plusButtonBlackout.isHidden {
-			self.plusButtonBlackout.isHidden.toggle()
+		if plusButtonBlackout.isHidden {
+			plusButtonBlackout.isHidden.toggle()
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
 				self.plusButtonBlackout.alpha = 1
 			}
@@ -49,21 +63,18 @@ class TabBarVC: UITabBarController {
 				self.plusButtonBlackout.isHidden.toggle()
 			}
 		}
-		
-		
 	}
 	
-	func setupBlackout() {
+	func setupBlackoutForPlusButton() {
 		plusButtonBlackout.isHidden = true
 		plusButtonBlackout.alpha = 0
-		view.addSubview(plusButtonBlackout)
 		plusButtonBlackout.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
 		plusButtonBlackout.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		plusButtonBlackout.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-		plusButtonBlackout.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -tabBar.frame.height).isActive = true
+		
 	}
 	
-	func setupMiddleButton() {
+	func setupPlusButton() {
 		//set sizes of the button accordingly to bound of a user's device
 		//"x1.2" is just a multiplayer that makes this button a little bit bigger
 		let multiplier: CGFloat = 1.2
@@ -73,34 +84,26 @@ class TabBarVC: UITabBarController {
 		//framing the button (for further resizing)
 		var plusButtonFrame = plusButton.frame
 		
-		plusButtonFrame.origin.y = self.view.bounds.height - plusButtonFrame.height - self.view.safeAreaInsets.bottom
-		plusButtonFrame.origin.x = self.view.bounds.width / 2 - plusButtonFrame.size.width / 2
+		plusButtonFrame.origin.y = view.bounds.height - plusButtonFrame.height - view.safeAreaInsets.bottom
+		plusButtonFrame.origin.x = view.bounds.width / 2 - plusButtonFrame.size.width / 2
 		
 		plusButton.frame = plusButtonFrame
-		
-		self.view.addSubview(plusButton)
-		self.view.layoutIfNeeded()
+		view.layoutIfNeeded()
 	}
-
-	override func viewDidLayoutSubviews() {
-	   super.viewDidLayoutSubviews()
-		let multiplier: CGFloat = 1.45
-		plusButton.frame.origin.y = self.view.bounds.height - plusButton.frame.height * multiplier - self.view.safeAreaInsets.bottom
-   }
 	
 	func createTabBar() {
 
-		let styling = self.tabBar
+		let styling = tabBar
 		styling.isTranslucent = false
 		styling.tintColor = .dailyTabBarSelectedItemColor
 		styling.unselectedItemTintColor = .dailyTabBarItemColor
 		styling.barTintColor = .dailyTabBarColor
 
 	
-		self.viewControllers = [createDiaryNavigationController(), createIdeasNavigationController(), createCalendarNavigationController(), createProfileNavigationController()]
+		self.viewControllers = [createDiaryNC(), createIdeasNC(), createCalendarNC(), createProfileNC()]
 	}
 	
-	func createDiaryNavigationController() -> UINavigationController {
+	func createDiaryNC() -> UINavigationController {
 	
 		let diaryVC = DiaryVC()
 		diaryVC.title = nil
@@ -113,7 +116,7 @@ class TabBarVC: UITabBarController {
 		
 	}
 
-	func createIdeasNavigationController() -> UINavigationController {
+	func createIdeasNC() -> UINavigationController {
 		let ideasVC = IdeasVC()
 		ideasVC.title = nil
 		
@@ -125,7 +128,7 @@ class TabBarVC: UITabBarController {
 		return ideaNavigationController
 	}
 
-	func createCalendarNavigationController() -> UINavigationController {
+	func createCalendarNC() -> UINavigationController {
 		let calendarVC = CalendarVC()
 		calendarVC.title = nil
 		
@@ -135,7 +138,7 @@ class TabBarVC: UITabBarController {
 		return calendarNavigationController
 	}
 	
-	func createProfileNavigationController() -> UINavigationController {
+	func createProfileNC() -> UINavigationController {
 		let userInfoVC = UserInfoVC()
 		userInfoVC.title = nil
 		userInfoVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
