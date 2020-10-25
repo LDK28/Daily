@@ -40,7 +40,7 @@ class Utilities {
 	static func styleGreetingLabel(_ label: UILabel) {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont(name: "Stolzl-Light", size: 32)
-		label.text = "Welcome to daily"
+		label.text = "Welcome to Daily"
 		label.textColor = .dailyTextColor
 	}
 	

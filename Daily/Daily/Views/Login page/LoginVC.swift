@@ -79,7 +79,9 @@ final class LoginVC: MainVC {
 
 		let vc = SignupVC()
 		vc.modalPresentationStyle = .fullScreen
-		present(vc, animated: true, completion: nil)
+		
+	//	present(vc, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
 		//self.view.window?.rootViewController = SignupVC()
 		//self.view.window?.makeKeyAndVisible()
 	}
