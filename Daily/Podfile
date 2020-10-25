@@ -1,0 +1,10 @@
+ platform :ios, '13.0'
+
+target 'Daily' do
+  use_frameworks!
+
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Analytics'
+
+end
