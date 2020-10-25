@@ -42,7 +42,7 @@ class TabBarVC: UITabBarController {
 		
 		/*
 		
-			View Hierachy: Tab Bar -> Blackout Layer -> Button -> The rest of view components
+			View Hierachy: Tab Bar -> Blackout Layer -> Button -> Overlay -> The rest of view components
 		
 		*/
 		
@@ -56,24 +56,16 @@ class TabBarVC: UITabBarController {
 		setupAddButtonsVerticalStackView()
 	}
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		plusButton.decorateButton()
-		
-	}
-	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
 	
 	@objc func plusButtonPressed() {
 		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
-		plusButton.changeImage()
+		plusButton.toggleImage()
 		addButtonsStackView.isHidden.toggle()
-		
+
 		if plusButtonBlackout.isHidden {
 			plusButtonBlackout.isHidden.toggle()
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
@@ -123,7 +115,7 @@ class TabBarVC: UITabBarController {
 		styling.tintColor = .dailyTabBarSelectedItemColor
 		styling.unselectedItemTintColor = .dailyTabBarItemColor
 		styling.barTintColor = .dailyTabBarColor
-		let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .light)]
+		let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
 		UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)
 
 	
@@ -134,11 +126,9 @@ class TabBarVC: UITabBarController {
 	
 		let diaryVC = DiaryVC()
 		diaryVC.title = nil
-		
 		diaryVC.tabBarItem = UITabBarItem(title: "Diary", image: UIImage(systemName: "note.text.badge.plus"), tag: 0)
 		let diaryNavigationController =  UINavigationController(rootViewController: diaryVC)
 		diaryNavigationController.setNavigationBarHidden(true, animated: false)
-		
 		return diaryNavigationController
 		
 	}
@@ -146,19 +136,15 @@ class TabBarVC: UITabBarController {
 	func createIdeasNC() -> UINavigationController {
 		let ideasVC = IdeasVC()
 		ideasVC.title = nil
-		
 		ideasVC.tabBarItem = UITabBarItem(title: "Ideas", image: UIImage(systemName: "note"), tag: 1)
 		let ideaNavigationController = UINavigationController(rootViewController: ideasVC)
-		
 		ideaNavigationController.setNavigationBarHidden(true, animated: false)
-		
 		return ideaNavigationController
 	}
 
 	func createCalendarNC() -> UINavigationController {
 		let calendarVC = CalendarVC()
 		calendarVC.title = nil
-		
 		calendarVC.tabBarItem = UITabBarItem(title: "Calendar", image: UIImage(systemName: "calendar.circle.fill"), tag: 2)
 		let calendarNavigationController = UINavigationController(rootViewController: calendarVC)
 		calendarNavigationController.setNavigationBarHidden(true, animated: false)
@@ -169,10 +155,8 @@ class TabBarVC: UITabBarController {
 		let userInfoVC = UserInfoVC()
 		userInfoVC.title = nil
 		userInfoVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3)
-		
 		let profileNavigationController = UINavigationController(rootViewController: userInfoVC)
 		profileNavigationController.setNavigationBarHidden(true, animated: false)
-		
 		return profileNavigationController
 	}
 	

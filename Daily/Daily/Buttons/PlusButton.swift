@@ -22,41 +22,41 @@ class PlusButton: UIButton {
         
     }
 	
-	final func changeImage() {
-		self.buttonIsPressed.toggle()
-		let pointSize = buttonIsPressed ? frame.height / 1.8 : frame.height / 1.5 //  we use different size multipliers for different images
-		
-		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: pointSize, weight: .light)
-		
-		let newImageName = buttonIsPressed ? "chevron.down" : "plus"
-		
-		guard let newImage = UIImage(systemName: newImageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-		else {
-			fatalError("Couldn't find the image from systemName.")
-		}
-
-		self.setImage(newImage, for: .normal)
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		decorateButton()
 	}
 	
-	final func decorateButton() {
+	final func toggleImage() {
+		buttonIsPressed.toggle()
+		// We use different size multipliers for different images
+		let pointSize = buttonIsPressed ? frame.height / 1.8 : frame.height / 1.5
+		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: pointSize, weight: .light)
+		let newImageName = buttonIsPressed ? "chevron.down" : "plus"
+		if let newImage = UIImage(systemName: newImageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal) {
+			setImage(newImage, for: .normal)
+		} else {
+			assert(false, "Couldn't find the image from systemName: \(newImageName)")
+		}
+	}
+	
+	private final func decorateButton() {
 		//make a plus image take 66% of a button view
 		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
-		
-
-		guard let image = UIImage(systemName: "plus", withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
-		else {
-			fatalError("Couldn't find the image from systemName.")
+		if let image = UIImage(systemName: imageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal) {
+			setImage(image, for: .normal)
+			backgroundColor = .dailyTabBarColor
+			layer.cornerRadius = frame.height / 2
+			layer.borderWidth = frame.height / 15
+			layer.borderColor = UIColor.white.cgColor
+			layer.shadowColor = UIColor.dailyPlusButtonShadowColor
+			layer.shadowOffset = CGSize(width: 0, height: 10)
+			layer.shadowRadius = 4
+			layer.shadowOpacity = 0.1
+		} else {
+			assert(false, "Couldn't find the image from systemName: \(imageName)")
 		}
-		self.setImage(image, for: .normal)
-		self.backgroundColor = .dailyTabBarColor
 		
-		self.layer.cornerRadius = frame.height / 2
-		self.layer.borderWidth = frame.height / 15
-		self.layer.borderColor = UIColor.white.cgColor
-		self.layer.shadowColor = UIColor.dailyPlusButtonShadowColor
-		self.layer.shadowOffset = CGSize(width: 0, height: 10)
-		self.layer.shadowRadius = 4
-		self.layer.shadowOpacity = 0.1
 	}
     
 }

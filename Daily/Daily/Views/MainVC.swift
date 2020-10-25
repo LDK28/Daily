@@ -13,8 +13,11 @@ class MainVC: UIViewController {
         super.viewDidLoad()
 		
 		view.backgroundColor = UIColor("E5E5E5")
-		view.addBackgroundGradient()
     }
+	
+	override func viewDidLayoutSubviews() {
+		view.addBackgroundGradient()
+	}
     
 
     /*

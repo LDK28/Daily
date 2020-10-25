@@ -11,21 +11,24 @@ class AddButton: UIButton {
 	
 	private let title: String
 	private let symbolName: String
-	//let action
+	
 	required init(title: String, symbolName: String) {
 		self.title = title
 		self.symbolName = symbolName
 		super.init(frame: .zero)
 		
 		//Configuring SF Symbol that is on the left side
-		guard let image = UIImage(systemName: symbolName) else {
-			fatalError("Failed to find image from systemName: \(symbolName)")
+		var image = UIImage()
+		if let validSymbolForImage = UIImage(systemName: symbolName) {
+			image = validSymbolForImage
+		} else {
+			assert(false, "Couldn't load image from systemName: \(symbolName)")
 		}
 		let imageView = UIImageView(image: image)
 		imageView.contentMode = .scaleAspectFill
 		imageView.tintColor = .dailyTabBarSelectedItemColor
 		
-		//Configuring lable(text) that is on the right side
+		//Configuring label(text) that is on the right side
 		let label = UILabel()
 		label.text = title
 		label.font = UIFont(name: "Stolzl-Light", size: 16)
@@ -52,10 +55,6 @@ class AddButton: UIButton {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
-	}
-	
-	private func configureLabel() {
-		
 	}
 	
 }

@@ -8,13 +8,6 @@
 import UIKit
 
 class DiaryVC: MainVC {
-
-	weak var plusButton: PlusButton!
-	
-	override func loadView() {
-		super.loadView()
-	}
-	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
