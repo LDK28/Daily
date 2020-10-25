@@ -8,66 +8,14 @@
 import UIKit
 import FirebaseAuth
 
-class LoginVC: MainVC {
+final class LoginVC: MainVC {
 
-	private let greetLabel: UILabel = {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Welcome to Daily"
-		label.textAlignment = .center
-		label.font = UIFont(name: "Stolzl-Light", size: 30)
-		return label
-	}()
-	
-	private let emailField: UITextField = {
-		let emailField = UITextField()
-		emailField.translatesAutoresizingMaskIntoConstraints = false
-		emailField.placeholder = "Email"
-		emailField.overrideUserInterfaceStyle = .light
-		emailField.borderStyle = .roundedRect
-		return emailField
-	}()
-	
-	private let passwordField: UITextField = {
-		let passwordField = UITextField()
-		passwordField.translatesAutoresizingMaskIntoConstraints = false
-		passwordField.placeholder = "Password"
-		passwordField.overrideUserInterfaceStyle = .light
-		passwordField.borderStyle = .roundedRect
-		passwordField.isSecureTextEntry = true
-		return passwordField
-	}()
-	
-	private let loginButton: UIButton = {
-		let loginButton = UIButton(type: .system)
-		loginButton.translatesAutoresizingMaskIntoConstraints = false
-		loginButton.setTitle("Log in", for: .normal)
-		loginButton.backgroundColor = .dailyLoginButtonColor
-		loginButton.tintColor = .dailyTextColor
-		loginButton.titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
-		loginButton.layer.cornerRadius = 5
-		return loginButton
-	}()
-	
-	private let signupButton: UIButton = {
-		let signupButton = UIButton(type: .system)
-		signupButton.translatesAutoresizingMaskIntoConstraints = false
-		signupButton.setTitle("Sign up", for: .normal)
-		signupButton.backgroundColor = .dailySignupButtonColor
-		signupButton.tintColor = .dailyTextColor
-		signupButton.titleLabel?.font = UIFont(name: "Stolzl-Book", size: 17)
-		signupButton.layer.cornerRadius = 5
-		return signupButton
-	}()
-
-	private let textFieldsAndLogButtonsStack: UIStackView = {
-		let stack = UIStackView()
-		stack.translatesAutoresizingMaskIntoConstraints = false
-		stack.axis = .vertical
-		stack.spacing = 20
-		stack.distribution = .fillEqually
-		return stack
-	}()
+	private let emailField = UITextField()
+	private let passwordField = UITextField()
+	private let loginButton = UIButton(type: .system)
+	private let signupButton = UIButton()
+	private let greetLabel = UILabel()
+	private let textFieldsAndLogButtonsStack = UIStackView()
 	
 	
 	
@@ -92,18 +40,18 @@ class LoginVC: MainVC {
 		//view.lightLG()
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
+		
+		if FirebaseAuth.Auth.auth().currentUser != nil {
+		}
     }
 	
-	@objc func didTapLoginButton() {
-		guard let email = emailField.text, !email.isEmpty else {
-			//More code to come
-			return
-		}
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
 		
-		guard let password = passwordField.text, !password.isEmpty else {
-			//More code to come
-			return
-		}
+	}
+	
+	@objc func didTapLoginButton() {
 		
 	}
 	
