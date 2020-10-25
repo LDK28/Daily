@@ -107,6 +107,10 @@ extension UIColor {
 		colorForTheme(light: UIColor.black, dark: .clear).cgColor
 	}
 	
+	static var dailyLoginButtonColor = UIColor("82C1DF")
+	
+	static var dailySignupButtonColor = UIColor("82C1DF", alpha: 0.5)
+	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {
 			return UIColor.init { traitCollection in

@@ -21,7 +21,7 @@ extension UIView {
 		gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1.35, c: -1.35, d: 0, tx: 1.17, ty: -0.35))
 		gradientLayer.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
 		gradientLayer.position = self.center
-		self.layer.addSublayer(gradientLayer)
+		self.layer.insertSublayer(gradientLayer, at: 0)
 	}
 	
 	
@@ -38,7 +38,7 @@ extension UIView {
 		gradientLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
 		gradientLayer.bounds = self.bounds.insetBy(dx: -0.5*self.bounds.size.width, dy: -0.5*self.bounds.size.height)
 		gradientLayer.position = self.center
-		self.layer.addSublayer(gradientLayer)
+		self.layer.insertSublayer(gradientLayer, at: 0)
    }
 	
 	
