@@ -9,8 +9,10 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignupVC: UIViewController {
+class SignupVC: MainVC {
 
+	let firstNameField = UITextField()
+	let lastNameField = UITextField()
 	let emailField = UITextField()
 	let passwordField = UITextField()
 	let signupButton = UIButton(type: .system)
@@ -20,6 +22,8 @@ class SignupVC: UIViewController {
 	override func loadView() {
 		super.loadView()
 		
+		stack.addArrangedSubview(firstNameField)
+		stack.addArrangedSubview(lastNameField)
 		stack.addArrangedSubview(emailField)
 		stack.addArrangedSubview(passwordField)
 		stack.addArrangedSubview(signupButton)
@@ -34,7 +38,7 @@ class SignupVC: UIViewController {
         super.viewDidLoad()
 
 		styleElements()
-
+		signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
     }
     
 	
@@ -47,9 +51,15 @@ class SignupVC: UIViewController {
 			
 		} else {
 			
+			//Created cleaned ver of the data
+			let firstName = firstNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let lastName = lastNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			
 			//Create the user
 			
-			Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>) { result, error in
+			Auth.auth().createUser(withEmail: email, password: password) { result, error in
 				//check for errors
 				if error != nil {
 					//There was an error creating the user
@@ -57,13 +67,25 @@ class SignupVC: UIViewController {
 					
 				} else {
 					
-					//User was created successfully
 					
+					
+					
+					//User was created successfully
+
+					let dataBase = Firestore.firestore()
+					dataBase.collection("users").addDocument(data: ["firstname" : firstName, "lastname" : lastName, "uid" : result!.user.uid]) { error in
+
+						if error != nil {
+							//Show error message
+							self.showError("Error saving user data")
+						}
+					}
+					//Transition to the home screen
+					self.transitionToHome()
 					
 				}
 			}
 			
-			//Transition to the home screen
 			
 		}
 		
@@ -73,11 +95,10 @@ class SignupVC: UIViewController {
 	func validateFields() -> String? {
 		//Check that all fields are filled in
 		
-		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" &&  passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""  else {
+		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" &&  passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
+		else {
 			return "Please fill in all fields"
 		}
-		
-		
 		
 		return nil
 	}
@@ -88,11 +109,15 @@ class SignupVC: UIViewController {
 	}
 	
 	func setupElements() {
-		
+		stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		stack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		stack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
 	}
 	
 	func styleElements() {
 
+		Utilities.styleTextField(firstNameField, placeholder: "First name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
+		Utilities.styleTextField(lastNameField, placeholder: "Last name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(emailField, placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
@@ -102,5 +127,13 @@ class SignupVC: UIViewController {
 		errorLabel.alpha = 0
 	}
 	
+	
+	func transitionToHome() {
+		let vc = TabBarVC()
+		vc.modalPresentationStyle = .fullScreen
+		present(vc, animated: true, completion: nil)
+		//view.window?.rootViewController = TabBarVC()
+		//view.window?.makeKeyAndVisible()
+	}
 	
 }

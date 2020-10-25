@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 
 final class LoginVC: MainVC {
@@ -41,15 +42,46 @@ final class LoginVC: MainVC {
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 		
+		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
+		
     }
 	
 	
 	@objc func didTapLoginButton() {
 		
+		//TODO: Validate fields
+		
+		//create cleaned versions of the text field
+		let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+		let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+		
+		//Sign in the user
+		Auth.auth().signIn(withEmail: email, password: password) { result, error in
+			if error != nil {
+				//Couldnt sign in
+				///TODO:
+				//self.errorLabel.text = error!.localizedDescription
+				//self.errorLabel.alpha = 1
+				
+			} else {
+				let vc = TabBarVC()
+				vc.modalPresentationStyle = .fullScreen
+				self.present(vc, animated: true, completion: nil)
+				//self.view.window?.rootViewController = TabBarVC()
+				//self.view.window?.makeKeyAndVisible()
+			}
+		}
+		
 	}
 	
 	@objc func didTapSignupButton() {
-		// more code to come
+
+		let vc = SignupVC()
+		vc.modalPresentationStyle = .fullScreen
+		present(vc, animated: true, completion: nil)
+		//self.view.window?.rootViewController = SignupVC()
+		//self.view.window?.makeKeyAndVisible()
 	}
 	
 	func congigureButtons() {
