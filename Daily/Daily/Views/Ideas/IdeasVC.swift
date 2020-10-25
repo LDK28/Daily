@@ -1,18 +1,17 @@
 //
-//  DiaryView.swift
+//  IdeasView.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 21.10.2020.
+//  Created by Арсений Токарев on 23.10.2020.
 //
 
 import UIKit
 
-class DiaryView: UIViewController {
-
+class IdeasVC: MainVC {
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		
     }
     
 
