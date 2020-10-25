@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class Utilities {
 	
@@ -36,8 +37,18 @@ class Utilities {
 		button.layer.cornerRadius = 5
 	}
 	
-	static func styleLabel() {
-		
+	static func styleGreetingLabel(_ label: UILabel) {
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = UIFont(name: "Stolzl-Light", size: 32)
+		label.text = "Welcome to daily"
+		label.textColor = .dailyTextColor
+	}
+	
+	static func styleErrorLabel(_ label: UILabel) {
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = UIFont(name: "Stolzl-book", size: 16)
+		label.text = "Wrong"
+		label.textColor = .dailyAdaptiveRed
 	}
 	
 	static func styleStackView(_ stack: UIStackView, spacing: Int, axis:  NSLayoutConstraint.Axis, distribution: UIStackView.Distribution = .fillEqually) {
