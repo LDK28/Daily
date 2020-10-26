@@ -111,6 +111,7 @@ class SignupVC: MainVC {
 		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
 		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
 		loginButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+	
 	}
 	
 	func styleElements() {
