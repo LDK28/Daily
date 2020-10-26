@@ -92,8 +92,8 @@ class SignupVC: MainVC {
 	
 	//Validate if data is correct. If everything is okay it reterns nil otherwise it reterns error message
 	func validateFields() -> String? {
-		//Check that all fields are filled in
 		
+		//Check that all fields are filled in
 		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" &&  passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && confirmPasswordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
 		else {
 			return "Please fill in all fields"
