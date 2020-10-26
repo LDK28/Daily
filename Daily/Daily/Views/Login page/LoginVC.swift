@@ -74,6 +74,7 @@ final class LoginVC: MainVC {
 			
 			//Sign in the user
 			Auth.auth().signIn(withEmail: email, password: password) { result, userLoginError in
+				
 				if userLoginError != nil {
 					//Couldnt sign in
 					///TODO:
@@ -116,6 +117,7 @@ final class LoginVC: MainVC {
 			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 8),
 			loginButton.heightAnchor.constraint(equalToConstant: 45),
+		
 			emailField.heightAnchor.constraint(equalToConstant: 40),
 			
 			

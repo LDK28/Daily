@@ -69,7 +69,11 @@ class SignupVC: MainVC {
 			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 			
 			//Create the user
-			Auth.auth().createUser(withEmail: email, password: password) { result, userCreationError in
+			Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, userCreationError in
+				/*
+				you have not retained self, so in theory it might become nil at any time during the execution of the closure. It probably won't, but "probably" is not good enough. And exclamation marks are always an invitation to crash.
+				*/
+				guard let self = self else { return }
 				//check for errors
 				if userCreationError != nil {
 					//There was an error creating the user
@@ -157,8 +161,6 @@ class SignupVC: MainVC {
 		let vc = TabBarVC()
 		vc.modalPresentationStyle = .fullScreen
 		present(vc, animated: true, completion: nil)
-		//view.window?.rootViewController = TabBarVC()
-		//view.window?.makeKeyAndVisible()
 	}
 	
 }

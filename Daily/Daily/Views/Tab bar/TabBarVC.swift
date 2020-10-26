@@ -59,7 +59,6 @@ class TabBarVC: UITabBarController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		if Auth.auth().currentUser == nil {
 			DispatchQueue.main.async {
 				let navController = UINavigationController(rootViewController: LoginVC())
