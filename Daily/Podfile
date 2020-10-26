@@ -8,6 +8,5 @@ target 'Daily' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'FSCalendar'
-  pod 'FSCalendar'
 
 end
