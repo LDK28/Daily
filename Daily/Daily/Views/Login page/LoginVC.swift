@@ -39,10 +39,12 @@ final class LoginVC: MainVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 		
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+		
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 		
     }
@@ -68,8 +70,6 @@ final class LoginVC: MainVC {
 				let vc = TabBarVC()
 				vc.modalPresentationStyle = .fullScreen
 				self.present(vc, animated: true, completion: nil)
-				//self.view.window?.rootViewController = TabBarVC()
-				//self.view.window?.makeKeyAndVisible()
 			}
 		}
 		
@@ -79,11 +79,7 @@ final class LoginVC: MainVC {
 
 		let vc = SignupVC()
 		vc.modalPresentationStyle = .fullScreen
-		
-	//	present(vc, animated: true, completion: nil)
 		self.navigationController?.pushViewController(vc, animated: true)
-		//self.view.window?.rootViewController = SignupVC()
-		//self.view.window?.makeKeyAndVisible()
 	}
 	
 	func congigureButtons() {

@@ -44,13 +44,12 @@ class SignupVC: MainVC {
 	
 	@objc func signupButtonTapped() {
 		//Validate the fields
-		let error = validateFields()
+		let validationError = validateFields()
 		
-		if error != nil {
-			showError(error!)
+		if validationError != nil {
+			showError(validationError!)
 			
 		} else {
-			
 			//Created cleaned ver of the data
 			let firstName = firstNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 			let lastName = lastNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -58,37 +57,25 @@ class SignupVC: MainVC {
 			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 			
 			//Create the user
-			
-			Auth.auth().createUser(withEmail: email, password: password) { result, error in
+			Auth.auth().createUser(withEmail: email, password: password) { result, userCreationError in
 				//check for errors
-				if error != nil {
+				if userCreationError != nil {
 					//There was an error creating the user
-					self.showError("Error creating user")
-					
+					self.showError(userCreationError!.localizedDescription)
 				} else {
-					
-					
-					
-					
 					//User was created successfully
-
 					let dataBase = Firestore.firestore()
-					dataBase.collection("users").addDocument(data: ["firstname" : firstName, "lastname" : lastName, "uid" : result!.user.uid]) { error in
-
-						if error != nil {
+					dataBase.collection("users").addDocument(data: ["firstname" : firstName, "lastname" : lastName, "uid" : result!.user.uid]) { savingUserError in
+						if savingUserError != nil {
 							//Show error message
-							self.showError("Error saving user data")
+							self.showError(savingUserError!.localizedDescription)
 						}
 					}
 					//Transition to the home screen
 					self.transitionToHome()
-					
 				}
 			}
-			
-			
 		}
-		
 	}
 	
 	//Validate if data is correct. If everything is okay it reterns nil otherwise it reterns error message
