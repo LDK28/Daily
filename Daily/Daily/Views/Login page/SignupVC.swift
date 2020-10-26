@@ -22,6 +22,7 @@ class SignupVC: MainVC {
 	let fieldsStask = UIStackView()
 	let buttonsStack = UIStackView()
 	let mainStack = UIStackView()
+	let createAccountLabel = UILabel()
 	
 	override func loadView() {
 		super.loadView()
@@ -36,6 +37,7 @@ class SignupVC: MainVC {
 		buttonsStack.addArrangedSubview(signupButton)
 		buttonsStack.addArrangedSubview(loginButton)
 		
+		mainStack.addArrangedSubview(createAccountLabel)
 		mainStack.addArrangedSubview(fieldsStask)
 		mainStack.addArrangedSubview(buttonsStack)
 	
@@ -114,13 +116,16 @@ class SignupVC: MainVC {
 	}
 	
 	func setupElements() {
-		mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		mainStack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-		mainStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
-		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-		loginButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-	
+		
+		NSLayoutConstraint.activate([
+			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 15),
+			signupButton.heightAnchor.constraint(equalToConstant: 45),
+			emailField.heightAnchor.constraint(equalToConstant: 40),
+			
+		])
 	}
 	
 	func styleElements() {
@@ -136,13 +141,14 @@ class SignupVC: MainVC {
 		Utilities.styleAccountButton(loginButton, title: "Already have an account? Log in", backgroundColor: .clear, foregroundColor: UIColor("979797"))
 		
 		//Labels
+		Utilities.styleCreateAccountLabel(createAccountLabel)
 		Utilities.styleErrorLabel(errorLabel)
 		errorLabel.alpha = 0
 		
 		//Stack views
 		Utilities.styleStackView(fieldsStask, spacing: 15, axis: .vertical)
-		Utilities.styleStackView(buttonsStack, spacing: 30, axis: .vertical, distribution: .equalSpacing)
-		Utilities.styleStackView(mainStack, spacing: 50, axis: .vertical)
+		Utilities.styleStackView(buttonsStack, spacing: 10, axis: .vertical, distribution: .equalSpacing)
+		Utilities.styleStackView(mainStack, spacing: 30, axis: .vertical, distribution: .fillProportionally)
 		
 	}
 	

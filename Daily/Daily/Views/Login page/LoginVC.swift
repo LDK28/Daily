@@ -16,27 +16,32 @@ final class LoginVC: MainVC {
 	private let passwordField = UITextField()
 	private let loginButton = UIButton(type: .system)
 	private let signupButton = UIButton(type: .system)
-	private let textFieldsAndLogButtonsStack = UIStackView()
 	private let greetingLabel = UILabel()
 	private let errorLabel = UILabel()
+	private let textFieldsStack = UIStackView()
+	private let buttonsStack = UIStackView()
+	private let mainStack = UIStackView()
 
 	override func loadView() {
 		super.loadView()
+		
+		textFieldsStack.addArrangedSubview(errorLabel)
+		textFieldsStack.addArrangedSubview(emailField)
+		textFieldsStack.addArrangedSubview(passwordField)
+		
+		buttonsStack.addArrangedSubview(loginButton)
+		buttonsStack.addArrangedSubview(signupButton)
+		//TODO: google and apple buttons log in to come...
+		
+		mainStack.addArrangedSubview(greetingLabel)
+		mainStack.addArrangedSubview(textFieldsStack)
+		mainStack.addArrangedSubview(buttonsStack)
+		
+		view.addSubview(mainStack)
+		
+		configureElements()
+		
 		styleElements()
-		
-		//textFieldsAndLogButtonsStack.addArrangedSubview(errorLabel)
-		textFieldsAndLogButtonsStack.addArrangedSubview(emailField)
-		textFieldsAndLogButtonsStack.addArrangedSubview(passwordField)
-		textFieldsAndLogButtonsStack.addArrangedSubview(loginButton)
-		textFieldsAndLogButtonsStack.addArrangedSubview(signupButton)
-		
-		view.addSubview(textFieldsAndLogButtonsStack)
-		view.addSubview(errorLabel)
-		view.addSubview(greetingLabel)
-		
-		
-		configureTextFieldsAndLogButtonsStack()
-		configureGreetingLabel()
 	}
 	
     override func viewDidLoad() {
@@ -101,31 +106,17 @@ final class LoginVC: MainVC {
 	}
 	
 	
-	func configureTextFieldsAndLogButtonsStack() {
-//		textFieldsAndLogButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-//		textFieldsAndLogButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
-//		textFieldsAndLogButtonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//		textFieldsAndLogButtonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -30).isActive = true
-//		loginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-//		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-//		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//		passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-	}
-	
-	func configureGreetingLabel() {
-//		errorLabel.bottomAnchor.constraint(equalTo: textFieldsAndLogButtonsStack.topAnchor, constant: -50).isActive = true
-//		errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//		errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//		errorLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-//		errorLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
-//
-//		greetingLabel.bottomAnchor.constraint(equalTo: errorLabel.topAnchor, constant: -50).isActive = true
-//		greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//		greetingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//		greetingLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-//		greetingLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
-//
-		
+	func configureElements() {
+		NSLayoutConstraint.activate([
+			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 8),
+			loginButton.heightAnchor.constraint(equalToConstant: 45),
+			emailField.heightAnchor.constraint(equalToConstant: 40),
+			
+			
+		])
 	}
 	
 	func styleElements() {
@@ -143,7 +134,9 @@ final class LoginVC: MainVC {
 		errorLabel.alpha = 0
 		
 		//Stack Views
-		Utilities.styleStackView(textFieldsAndLogButtonsStack, spacing: 20, axis: .vertical, distribution: .fill)
+		Utilities.styleStackView(textFieldsStack, spacing: 10, axis: .vertical)
+		Utilities.styleStackView(buttonsStack, spacing: 20, axis: .vertical)
+		Utilities.styleStackView(mainStack, spacing: 30, axis: .vertical, distribution: .fillProportionally)
 		
 	}
 }

@@ -33,6 +33,7 @@ class Utilities {
 		button.setTitle(title, for: .normal)
 		button.backgroundColor = backgroundColor
 		button.tintColor = .dailyTextColor
+		button.setTitleColor(.dailyTextColor, for: .normal)
 		button.titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
 		button.layer.cornerRadius = 5
 	}
@@ -41,13 +42,21 @@ class Utilities {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont(name: "Stolzl-Light", size: 32)
 		label.text = "Welcome to Daily"
+		label.textAlignment = .center
+		label.textColor = .dailyTextColor
+	}
+	
+	static func styleCreateAccountLabel(_ label: UILabel) {
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = UIFont(name: "Stolzl-Light", size: 32)
+		label.text = "Create account"
+		label.textAlignment = .center
 		label.textColor = .dailyTextColor
 	}
 	
 	static func styleErrorLabel(_ label: UILabel) {
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = UIFont(name: "Stolzl-book", size: 16)
-		label.text = "Wrong"
 		label.textColor = .dailyAdaptiveRed
 	}
 	
