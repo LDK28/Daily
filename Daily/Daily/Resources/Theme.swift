@@ -107,7 +107,7 @@ extension UIColor {
 		colorForTheme(light: UIColor.black, dark: .clear).cgColor
 	}
     
-    static var dailyCalendarBackgroundColor: CGColor {
+    static var dailyCalendarBackgroundColor: UIColor {
         colorForTheme(light: UIColor.white, dark: UIColor("1C1C1E")).cgColor
     }
 	
