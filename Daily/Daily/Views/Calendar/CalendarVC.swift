@@ -25,7 +25,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         super.viewDidLayoutSubviews()
         
         calendarView.frame = CGRect(x: 20, y: 44, width: view.frame.size.width - 40, height: view.frame.size.width)
-        calendarView.backgroundColor = .dailyCalendarBackground
+        calendarView.backgroundColor = .dailyCalendarBackgroundColor
         calendarView.layer.cornerRadius = 10
         view.addSubview(calendarView)
         
