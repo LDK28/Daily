@@ -7,5 +7,6 @@ target 'Daily' do
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
+  pod 'FSCalendar'
 
 end
