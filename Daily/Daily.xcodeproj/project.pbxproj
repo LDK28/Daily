@@ -165,6 +165,7 @@
 		215BC9BE2542E3180069D30E /* Tab bar */ = {
 			isa = PBXGroup;
 			children = (
+				215615E82543449E005AB2DF /* Buttons */,
 				215BC9AA2542DEDA0069D30E /* TabBarVC.swift */,
 			);
 			path = "Tab bar";
@@ -195,8 +196,6 @@
 		21E1D02225403975006A4206 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
-				21E8C8FF2545FA3400E08CD2 /* Helpers */,
-				215615E82543449E005AB2DF /* Buttons */,
 				21E1D08E2540AB13006A4206 /* Views */,
 				21E1D0592540399B006A4206 /* Resources */,
 				21E1D02325403975006A4206 /* AppDelegate.swift */,
@@ -277,6 +276,7 @@
 		21E8C8D42545CA8F00E08CD2 /* Login page */ = {
 			isa = PBXGroup;
 			children = (
+				21E8C8FF2545FA3400E08CD2 /* Helpers */,
 				21E8C8D52545CAC400E08CD2 /* LoginVC.swift */,
 				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
 			);
