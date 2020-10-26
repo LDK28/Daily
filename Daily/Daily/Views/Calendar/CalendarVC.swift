@@ -38,6 +38,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         calendar.appearance.headerTitleColor = .dailyTextColor
         calendar.appearance.todayColor = .systemRed
         calendar.appearance.selectionColor = .systemGray
+        
         view.addSubview(calendar)
     }
     
