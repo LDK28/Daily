@@ -15,21 +15,30 @@ class SignupVC: MainVC {
 	let lastNameField = UITextField()
 	let emailField = UITextField()
 	let passwordField = UITextField()
+	let confirmPasswordField = UITextField()
 	let signupButton = UIButton(type: .system)
+	let loginButton = UIButton(type: .system)
 	let errorLabel = UILabel()
-	let stack = UIStackView()
+	let fieldsStask = UIStackView()
+	let buttonsStack = UIStackView()
+	let mainStack = UIStackView()
 	
 	override func loadView() {
 		super.loadView()
 		
-		stack.addArrangedSubview(firstNameField)
-		stack.addArrangedSubview(lastNameField)
-		stack.addArrangedSubview(emailField)
-		stack.addArrangedSubview(passwordField)
-		stack.addArrangedSubview(signupButton)
-		stack.addArrangedSubview(errorLabel)
+		fieldsStask.addArrangedSubview(firstNameField)
+		fieldsStask.addArrangedSubview(lastNameField)
+		fieldsStask.addArrangedSubview(emailField)
+		fieldsStask.addArrangedSubview(passwordField)
+		fieldsStask.addArrangedSubview(confirmPasswordField)
+		
+		buttonsStack.addArrangedSubview(signupButton)
+		buttonsStack.addArrangedSubview(loginButton)
+		
+		mainStack.addArrangedSubview(fieldsStask)
+		mainStack.addArrangedSubview(buttonsStack)
 	
-		view.addSubview(stack)
+		view.addSubview(mainStack)
 		
 		setupElements()
 	}
@@ -96,9 +105,12 @@ class SignupVC: MainVC {
 	}
 	
 	func setupElements() {
-		stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		stack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-		stack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
+		mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		mainStack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		mainStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
+		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+		loginButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
 	}
 	
 	func styleElements() {
@@ -107,9 +119,16 @@ class SignupVC: MainVC {
 		Utilities.styleTextField(lastNameField, placeholder: "Last name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(emailField, placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
+		Utilities.styleTextField(confirmPasswordField, placeholder: "Confirm password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
+		
 		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
+		Utilities.styleAccountButton(loginButton, title: "Already have an account? Log in", backgroundColor: .clear, foregroundColor: UIColor("979797"))
+		
 		Utilities.styleErrorLabel(errorLabel)
-		Utilities.styleStackView(stack, spacing: 20, axis: .vertical, distribution: .fillEqually)
+		
+		Utilities.styleStackView(fieldsStask, spacing: 15, axis: .vertical)
+		Utilities.styleStackView(buttonsStack, spacing: 30, axis: .vertical, distribution: .equalSpacing)
+		Utilities.styleStackView(mainStack, spacing: 50, axis: .vertical)
 		
 		errorLabel.alpha = 0
 	}

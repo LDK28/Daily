@@ -27,7 +27,7 @@ class Utilities {
 		}
 	}
 	
-	static func styleAccountButton(_ button: UIButton, title: String, backgroundColor: UIColor) {
+	static func styleAccountButton(_ button: UIButton, title: String, backgroundColor: UIColor, foregroundColor: UIColor = .dailyTextColor) {
 		
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setTitle(title, for: .normal)
@@ -51,10 +51,10 @@ class Utilities {
 		label.textColor = .dailyAdaptiveRed
 	}
 	
-	static func styleStackView(_ stack: UIStackView, spacing: Int, axis:  NSLayoutConstraint.Axis, distribution: UIStackView.Distribution = .fillEqually) {
+	static func styleStackView(_ stack: UIStackView, spacing: CGFloat, axis:  NSLayoutConstraint.Axis, distribution: UIStackView.Distribution = .fillEqually) {
 		stack.translatesAutoresizingMaskIntoConstraints = false
 		stack.axis = axis
-		stack.spacing = 20
+		stack.spacing = spacing
 		stack.distribution = distribution
 	}
 }

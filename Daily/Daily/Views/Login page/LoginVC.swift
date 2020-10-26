@@ -34,12 +34,11 @@ final class LoginVC: MainVC {
 		
 		configureTextFieldsAndLogButtonsStack()
 		configureGreetingLabel()
-		congigureButtons()
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		self.navigationController?.setNavigationBarHidden(true, animated: true)
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 		
@@ -82,18 +81,15 @@ final class LoginVC: MainVC {
 		self.navigationController?.pushViewController(vc, animated: true)
 	}
 	
-	func congigureButtons() {
-		loginButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-		signupButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-		
-		
-	}
-	
 	func configureTextFieldsAndLogButtonsStack() {
-		textFieldsAndLogButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-		textFieldsAndLogButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+		textFieldsAndLogButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
+		textFieldsAndLogButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
 		textFieldsAndLogButtonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		textFieldsAndLogButtonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20).isActive = true
+		textFieldsAndLogButtonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -30).isActive = true
+		loginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
 	}
 	
 	func configureGreetingLabel() {
@@ -110,6 +106,6 @@ final class LoginVC: MainVC {
 		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		Utilities.styleAccountButton(loginButton, title: "Log in", backgroundColor: .dailyLoginButtonColor)
 		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
-		Utilities.styleStackView(textFieldsAndLogButtonsStack, spacing: 20, axis: .vertical)
+		Utilities.styleStackView(textFieldsAndLogButtonsStack, spacing: 20, axis: .vertical, distribution: .fill)
 	}
 }
