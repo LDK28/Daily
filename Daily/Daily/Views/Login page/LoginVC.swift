@@ -18,17 +18,20 @@ final class LoginVC: MainVC {
 	private let signupButton = UIButton(type: .system)
 	private let textFieldsAndLogButtonsStack = UIStackView()
 	private let greetingLabel = UILabel()
+	private let errorLabel = UILabel()
 
 	override func loadView() {
 		super.loadView()
 		styleElements()
 		
+		//textFieldsAndLogButtonsStack.addArrangedSubview(errorLabel)
 		textFieldsAndLogButtonsStack.addArrangedSubview(emailField)
 		textFieldsAndLogButtonsStack.addArrangedSubview(passwordField)
 		textFieldsAndLogButtonsStack.addArrangedSubview(loginButton)
 		textFieldsAndLogButtonsStack.addArrangedSubview(signupButton)
 		
 		view.addSubview(textFieldsAndLogButtonsStack)
+		view.addSubview(errorLabel)
 		view.addSubview(greetingLabel)
 		
 		
@@ -52,26 +55,29 @@ final class LoginVC: MainVC {
 	@objc func didTapLoginButton() {
 		
 		//TODO: Validate fields
+		let validationError = validateFields()
 		
-		//create cleaned versions of the text field
-		let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-		let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-		
-		//Sign in the user
-		Auth.auth().signIn(withEmail: email, password: password) { result, error in
-			if error != nil {
-				//Couldnt sign in
-				///TODO:
-				//self.errorLabel.text = error!.localizedDescription
-				//self.errorLabel.alpha = 1
-				
-			} else {
-				let vc = TabBarVC()
-				vc.modalPresentationStyle = .fullScreen
-				self.present(vc, animated: true, completion: nil)
+		if validationError != nil {
+			showError(validationError!)
+		} else {
+			//create cleaned versions of the text field
+			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			
+			//Sign in the user
+			Auth.auth().signIn(withEmail: email, password: password) { result, userLoginError in
+				if userLoginError != nil {
+					//Couldnt sign in
+					///TODO:
+					self.showError(userLoginError!.localizedDescription)
+					
+				} else {
+					let vc = TabBarVC()
+					vc.modalPresentationStyle = .fullScreen
+					self.present(vc, animated: true, completion: nil)
+				}
 			}
 		}
-		
 	}
 	
 	@objc func didTapSignupButton() {
@@ -81,31 +87,63 @@ final class LoginVC: MainVC {
 		self.navigationController?.pushViewController(vc, animated: true)
 	}
 	
+	func validateFields() -> String? {
+		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
+		else {
+			return "Please fill in all fields"
+		}
+		return nil
+	}
+	
+	func showError(_ message: String) {
+		errorLabel.text = message
+		errorLabel.alpha = 1
+	}
+	
+	
 	func configureTextFieldsAndLogButtonsStack() {
-		textFieldsAndLogButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-		textFieldsAndLogButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
-		textFieldsAndLogButtonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		textFieldsAndLogButtonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -30).isActive = true
-		loginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-		passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//		textFieldsAndLogButtonsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
+//		textFieldsAndLogButtonsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
+//		textFieldsAndLogButtonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//		textFieldsAndLogButtonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -30).isActive = true
+//		loginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+//		signupButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+//		emailField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//		passwordField.heightAnchor.constraint(equalToConstant: 40).isActive = true
 	}
 	
 	func configureGreetingLabel() {
-		greetingLabel.bottomAnchor.constraint(equalTo: textFieldsAndLogButtonsStack.topAnchor, constant: -50).isActive = true
-		greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		greetingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-		greetingLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-		greetingLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
+//		errorLabel.bottomAnchor.constraint(equalTo: textFieldsAndLogButtonsStack.topAnchor, constant: -50).isActive = true
+//		errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//		errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//		errorLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
+//		errorLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
+//
+//		greetingLabel.bottomAnchor.constraint(equalTo: errorLabel.topAnchor, constant: -50).isActive = true
+//		greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//		greetingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//		greetingLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
+//		greetingLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30).isActive = true
+//
+		
 	}
 	
 	func styleElements() {
-		Utilities.styleGreetingLabel(greetingLabel)
+		//Text Fields
 		Utilities.styleTextField(emailField, placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
+		
+		//Buttons
 		Utilities.styleAccountButton(loginButton, title: "Log in", backgroundColor: .dailyLoginButtonColor)
 		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
+		
+		//Labels
+		Utilities.styleGreetingLabel(greetingLabel)
+		Utilities.styleErrorLabel(errorLabel)
+		errorLabel.alpha = 0
+		
+		//Stack Views
 		Utilities.styleStackView(textFieldsAndLogButtonsStack, spacing: 20, axis: .vertical, distribution: .fill)
+		
 	}
 }

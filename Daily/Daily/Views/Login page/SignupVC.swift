@@ -26,6 +26,7 @@ class SignupVC: MainVC {
 	override func loadView() {
 		super.loadView()
 		
+		fieldsStask.addArrangedSubview(errorLabel)
 		fieldsStask.addArrangedSubview(firstNameField)
 		fieldsStask.addArrangedSubview(lastNameField)
 		fieldsStask.addArrangedSubview(emailField)
@@ -48,6 +49,7 @@ class SignupVC: MainVC {
 
 		styleElements()
 		signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+		loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
 	
@@ -57,9 +59,8 @@ class SignupVC: MainVC {
 		
 		if validationError != nil {
 			showError(validationError!)
-			
 		} else {
-			//Created cleaned ver of the data
+			//Created cleaned versions of the data
 			let firstName = firstNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 			let lastName = lastNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -91,9 +92,13 @@ class SignupVC: MainVC {
 	func validateFields() -> String? {
 		//Check that all fields are filled in
 		
-		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" &&  passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
+		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" &&  passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && confirmPasswordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
 		else {
 			return "Please fill in all fields"
+		}
+		
+		guard passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == confirmPasswordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+			return "Passwords do not match"
 		}
 		
 		return nil
@@ -102,6 +107,10 @@ class SignupVC: MainVC {
 	func showError(_ message: String) {
 		errorLabel.text = message
 		errorLabel.alpha = 1
+	}
+	
+	@objc func loginButtonTapped() {
+		self.navigationController?.popViewController(animated: true)
 	}
 	
 	func setupElements() {
@@ -115,23 +124,26 @@ class SignupVC: MainVC {
 	}
 	
 	func styleElements() {
-
+		//Text Fields
 		Utilities.styleTextField(firstNameField, placeholder: "First name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(lastNameField, placeholder: "Last name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(emailField, placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
 		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		Utilities.styleTextField(confirmPasswordField, placeholder: "Confirm password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		
+		//Buttons
 		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
 		Utilities.styleAccountButton(loginButton, title: "Already have an account? Log in", backgroundColor: .clear, foregroundColor: UIColor("979797"))
 		
+		//Labels
 		Utilities.styleErrorLabel(errorLabel)
+		errorLabel.alpha = 0
 		
+		//Stack views
 		Utilities.styleStackView(fieldsStask, spacing: 15, axis: .vertical)
 		Utilities.styleStackView(buttonsStack, spacing: 30, axis: .vertical, distribution: .equalSpacing)
 		Utilities.styleStackView(mainStack, spacing: 50, axis: .vertical)
 		
-		errorLabel.alpha = 0
 	}
 	
 	
