@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import GoogleSignIn
 
 
 final class LoginVC: MainVC {
@@ -15,6 +16,7 @@ final class LoginVC: MainVC {
 	private let emailField = UITextField()
 	private let passwordField = UITextField()
 	private let loginButton = UIButton(type: .system)
+	private let googleLoginButton = GIDSignInButton()
 	private let signupButton = UIButton(type: .system)
 	private let greetingLabel = UILabel()
 	private let errorLabel = UILabel()
@@ -31,6 +33,7 @@ final class LoginVC: MainVC {
 		
 		buttonsStack.addArrangedSubview(loginButton)
 		buttonsStack.addArrangedSubview(signupButton)
+		buttonsStack.addArrangedSubview(googleLoginButton)
 		//TODO: google and apple buttons log in to come...
 		
 		mainStack.addArrangedSubview(greetingLabel)
@@ -46,6 +49,9 @@ final class LoginVC: MainVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		GIDSignIn.sharedInstance()?.presentingViewController = self
+		GIDSignIn.sharedInstance().signIn()
+		
 		self.navigationController?.setNavigationBarHidden(true, animated: true)
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
@@ -113,6 +119,7 @@ final class LoginVC: MainVC {
 			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 8),
 			loginButton.heightAnchor.constraint(equalToConstant: 45),
+			googleLoginButton.heightAnchor.constraint(equalToConstant: 45),
 			emailField.heightAnchor.constraint(equalToConstant: 40),
 			
 			
