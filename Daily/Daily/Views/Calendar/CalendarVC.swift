@@ -10,45 +10,82 @@ import FSCalendar
 
 class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 
-    var calendarView = UIView()
-    var calendar = FSCalendar()
+    var headerLabel = UILabel()
+    var calendarView = FSCalendar()
+    var dayView = UIView()
+    
+    override func loadView() {
+        super.loadView()
+        
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.font = UIFont(name: "Stolzl-Bold", size: 36)
+        headerLabel.textColor = .dailyTitleTextColor
+        addShadow(to: headerLabel)
+        headerLabel.textAlignment = .center
+        headerLabel.text = "Calendar"
+        
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
+        calendarView.backgroundColor = .dailyCalendarBackgroundColor
+        calendarView.layer.cornerRadius = 10
+        addShadow(to: calendarView)
+        calendarView.appearance.titleFont = UIFont(name: "Stolzl-Book", size: 15)
+        calendarView.appearance.titleDefaultColor = .dailyTextColor
+        calendarView.appearance.weekdayFont = UIFont(name: "Stolzl-Book", size: 15)
+        calendarView.appearance.weekdayTextColor = .systemGray
+        calendarView.appearance.headerTitleFont = UIFont(name: "Stolzl-Regular", size: 18)
+        calendarView.appearance.headerTitleColor = .dailyTextColor
+        calendarView.appearance.todayColor = .systemRed
+        calendarView.appearance.selectionColor = .systemGray
+        
+        dayView.translatesAutoresizingMaskIntoConstraints = false
+        dayView.backgroundColor = .dailyCalendarBackgroundColor
+        addShadow(to: dayView)
+        dayView.layer.cornerRadius = 10
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        calendar.delegate = self
-        
+        calendarView.delegate = self
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        calendarView.frame = CGRect(x: 20, y: 44, width: view.frame.size.width - 40, height: view.frame.size.width)
-        calendarView.backgroundColor = .dailyCalendarBackgroundColor
-        calendarView.layer.cornerRadius = 10
+        view.addSubview(headerLabel)
         view.addSubview(calendarView)
+        view.addSubview(dayView)
         
-        calendar.frame = CGRect(x: 30, y: 44, width: view.frame.size.width - 60, height: view.frame.size.width)
-        calendar.appearance.titleFont = UIFont(name: "Stolzl-Book", size: 15)
-        calendar.appearance.weekdayFont = UIFont(name: "Stolzl-Book", size: 15)
-        calendar.appearance.weekdayTextColor = .systemGray
-        calendar.appearance.subtitleFont = UIFont(name: "Stolzl-Book", size: 15)
-        calendar.appearance.headerTitleFont = UIFont(name: "Stolzl-Regular", size: 18)
-        calendar.appearance.headerTitleColor = .dailyTextColor
-        calendar.appearance.todayColor = .systemRed
-        calendar.appearance.selectionColor = .systemGray
+        NSLayoutConstraint.activate([
+            
+            headerLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 16),
+            headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            headerLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            
+            calendarView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 16),
+            calendarView.centerXAnchor.constraint(equalTo: headerLabel.centerXAnchor),
+            calendarView.widthAnchor.constraint(equalTo: headerLabel.widthAnchor, multiplier: 1),
+            calendarView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 1),
+            
+            dayView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 16),
+            dayView.centerXAnchor.constraint(equalTo: calendarView.centerXAnchor),
+            dayView.widthAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 1),
+            dayView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 0.5)
+            //не всегда влезает на экран :(
+        ])
         
-        view.addSubview(calendar)
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "EEEE dd.MM.YYYY"
-//        let selectedDate = (formatter.string(from: date)).split(separator: " ")
-//        let dayOfTheWeek = String(selectedDate[0])
-//        dateLabel.text = dayOfTheWeek
-        
+        //обработка события нажатия на день
+    }
+    
+    func addShadow(to view: UIView){
+        view.layer.shadowOpacity = 0.05
+        view.layer.shadowOffset = CGSize(width: 0, height: 10)
+        view.layer.shadowRadius = 4
     }
     
 
