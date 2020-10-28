@@ -11,18 +11,18 @@ import Firebase
 
 class SignupVC: MainVC {
 
-	let firstNameField = UITextField()
-	let lastNameField = UITextField()
-	let emailField = UITextField()
-	let passwordField = UITextField()
-	let confirmPasswordField = UITextField()
-	let signupButton = UIButton(type: .system)
-	let loginButton = UIButton(type: .system)
-	let errorLabel = UILabel()
-	let fieldsStask = UIStackView()
-	let buttonsStack = UIStackView()
-	let mainStack = UIStackView()
-	let createAccountLabel = UILabel()
+	private let firstNameField = UITextField()
+	private let lastNameField = UITextField()
+	private let emailField = UITextField()
+	private let passwordField = UITextField()
+	private let confirmPasswordField = UITextField()
+	private let signupButton = UIButton(type: .system)
+	private let loginButton = UIButton(type: .system)
+	private let errorLabel = UILabel()
+	private let fieldsStask = UIStackView()
+	private let buttonsStack = UIStackView()
+	private let mainStack = UIStackView()
+	private let createAccountLabel = UILabel()
 	
 	override func loadView() {
 		super.loadView()
