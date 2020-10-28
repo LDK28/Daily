@@ -126,22 +126,28 @@ final class LoginVC: MainVC {
 	
 	func styleElements() {
 		//Text Fields
-		Utilities.styleTextField(emailField, placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
-		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
+		emailField.styleTextField(placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
+		passwordField.styleTextField(placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		
 		//Buttons
-		Utilities.styleAccountButton(loginButton, title: "Log in", backgroundColor: .dailyLoginButtonColor)
-		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
+		loginButton.styleAccountButton(title: "Log in", backgroundColor: .dailyLoginButtonColor)
+		signupButton.styleAccountButton(title: "Sign up", backgroundColor: .dailySignupButtonColor)
 		
 		//Labels
-		Utilities.styleGreetingLabel(greetingLabel)
-		Utilities.styleErrorLabel(errorLabel)
-		errorLabel.alpha = 0
+		if let greetingLabelFont = UIFont(name: "Stolzl-Light", size: 32) {
+			greetingLabel.styleLabel(font: greetingLabelFont, text: "Welcome to Daily")
+		}
+		
+		if let errorLabelFont = UIFont(name: "Stolzl-book", size: 16) {
+			errorLabel.styleLabel(font: errorLabelFont, text: "", textAlignment: .left, textColor: .dailyAdaptiveRed)
+			errorLabel.alpha = 0
+		}
+		
 		
 		//Stack Views
-		Utilities.styleStackView(textFieldsStack, spacing: 10, axis: .vertical)
-		Utilities.styleStackView(buttonsStack, spacing: 20, axis: .vertical)
-		Utilities.styleStackView(mainStack, spacing: 30, axis: .vertical, distribution: .fillProportionally)
+		textFieldsStack.styleStackView(spacing: 10, axis: .vertical)
+		buttonsStack.styleStackView(spacing: 20, axis: .vertical)
+		mainStack.styleStackView(spacing: 30, axis: .vertical, distribution: .fillProportionally)
 		
 	}
 }

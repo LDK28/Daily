@@ -44,12 +44,13 @@ class SignupVC: MainVC {
 		view.addSubview(mainStack)
 		
 		setupElements()
+		
+		styleElements()
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		styleElements()
 		signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
 		loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
@@ -134,25 +135,30 @@ class SignupVC: MainVC {
 	
 	func styleElements() {
 		//Text Fields
-		Utilities.styleTextField(firstNameField, placeholder: "First name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
-		Utilities.styleTextField(lastNameField, placeholder: "Last name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
-		Utilities.styleTextField(emailField, placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
-		Utilities.styleTextField(passwordField, placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
-		Utilities.styleTextField(confirmPasswordField, placeholder: "Confirm password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
+		firstNameField.styleTextField(placeholder: "First name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
+		lastNameField.styleTextField(placeholder: "Last name", isFirstLetterAutoCapitalized: true, isSecuredString: false)
+		emailField.styleTextField(placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
+		passwordField.styleTextField(placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
+		confirmPasswordField.styleTextField(placeholder: "Confirm password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		
 		//Buttons
-		Utilities.styleAccountButton(signupButton, title: "Sign up", backgroundColor: .dailySignupButtonColor)
-		Utilities.styleAccountButton(loginButton, title: "Already have an account? Log in", backgroundColor: .clear, foregroundColor: UIColor("979797"))
+		signupButton.styleAccountButton(title: "Sign up", backgroundColor: .dailySignupButtonColor)
+		loginButton.styleAccountButton(title: "Already have an account? Log in", backgroundColor: .clear, foregroundColor: UIColor("979797"))
 		
 		//Labels
-		Utilities.styleCreateAccountLabel(createAccountLabel)
-		Utilities.styleErrorLabel(errorLabel)
-		errorLabel.alpha = 0
+		if let createAccountLabelFont = UIFont(name: "Stolzl-Light", size: 32) {
+			createAccountLabel.styleLabel(font: createAccountLabelFont, text: "Create account")
+		}
+		
+		if let errorLabelFont = UIFont(name: "Stolzl-Light", size: 16) {
+			errorLabel.styleLabel(font: errorLabelFont, text: "", textAlignment: .left, textColor: .dailyAdaptiveRed)
+			errorLabel.alpha = 0
+		}
 		
 		//Stack views
-		Utilities.styleStackView(fieldsStask, spacing: 15, axis: .vertical)
-		Utilities.styleStackView(buttonsStack, spacing: 10, axis: .vertical, distribution: .equalSpacing)
-		Utilities.styleStackView(mainStack, spacing: 30, axis: .vertical, distribution: .fillProportionally)
+		fieldsStask.styleStackView(spacing: 15, axis: .vertical)
+		buttonsStack.styleStackView(spacing: 10, axis: .vertical, distribution: .equalSpacing)
+		mainStack.styleStackView(spacing: 30, axis: .vertical, distribution: .fillProportionally)
 		
 	}
 	
