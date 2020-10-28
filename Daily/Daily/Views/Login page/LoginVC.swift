@@ -31,7 +31,6 @@ final class LoginVC: MainVC {
 		
 		buttonsStack.addArrangedSubview(loginButton)
 		buttonsStack.addArrangedSubview(signupButton)
-		//TODO: google and apple buttons log in to come...
 		
 		mainStack.addArrangedSubview(greetingLabel)
 		mainStack.addArrangedSubview(textFieldsStack)
@@ -46,8 +45,6 @@ final class LoginVC: MainVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		//GIDSignIn.sharedInstance()?.presentingViewController = self
-		//GIDSignIn.sharedInstance().signIn()
 		
 		self.navigationController?.setNavigationBarHidden(true, animated: true)
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
@@ -62,7 +59,6 @@ final class LoginVC: MainVC {
 	
 	@objc func didTapLoginButton() {
 		
-		//TODO: Validate fields
 		let validationError = validateFields()
 		
 		if validationError != nil {
@@ -77,7 +73,6 @@ final class LoginVC: MainVC {
 				
 				if userLoginError != nil {
 					//Couldnt sign in
-					///TODO:
 					self.showError(userLoginError!.localizedDescription)
 					
 				} else {
@@ -119,8 +114,6 @@ final class LoginVC: MainVC {
 			loginButton.heightAnchor.constraint(equalToConstant: 45),
 		
 			emailField.heightAnchor.constraint(equalToConstant: 40),
-			
-			
 		])
 	}
 	
