@@ -13,6 +13,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     var headerLabel = UILabel()
     var calendarView = FSCalendar()
     var dayView = UIView()
+    var dateLabel = UILabel()
     
     override func loadView() {
         super.loadView()
@@ -20,14 +21,17 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 		view.addSubview(headerLabel)
 		view.addSubview(calendarView)
 		view.addSubview(dayView)
+        dayView.addSubview(dateLabel)
 		
 		configureHeaderLabel()
 		configureCalendarView()
 		configureDayView()
+        configureDateLabel()
 		
 		styleHeaderLabel()
 		styleCalendarView()
 		styleDayView()
+        styleDateLabel()
         
     }
     
@@ -59,9 +63,16 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 			dayView.centerXAnchor.constraint(equalTo: calendarView.centerXAnchor),
 			dayView.widthAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 1),
 			dayView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 0.5)
-			//не всегда влезает на экран :(
 		])
 	}
+    
+    func configureDateLabel() {
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor.constraint(equalTo: dayView.layoutMarginsGuide.topAnchor, constant: 10),
+            dateLabel.centerXAnchor.constraint(equalTo: dayView.centerXAnchor),
+            dateLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.9),
+        ])
+    }
 	
 	
 	func styleHeaderLabel() {
@@ -94,13 +105,28 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 		addShadow(to: dayView)
 		dayView.layer.cornerRadius = 10
 	}
+    
+    func styleDateLabel() {
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.font = UIFont(name: "Stolzl-Regular", size: 18)
+        dateLabel.textColor = .dailyTextColor
+        dateLabel.textAlignment = .right
+        dateLabel.text = "Select a date"
+    }
 	
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        //обработка события нажатия на день
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE dd.MM.YYYY"
+        let selectedDate = (formatter.string(from: date)).split(separator: " ")
+        let dayOfTheWeek = String(selectedDate[0])
+        let dayOfTheYear = String(selectedDate[1])
+        dateLabel.text = "\(dayOfTheWeek), \(dayOfTheYear)"
+        //change this for integration with DiaryVC
     }
     
     func addShadow(to view: UIView){
+        view.layer.shadowColor = UIColor.dailyShadowColor
         view.layer.shadowOpacity = 0.05
         view.layer.shadowOffset = CGSize(width: 0, height: 10)
         view.layer.shadowRadius = 4
