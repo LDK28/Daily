@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TabBarVC: UITabBarController {
 	let plusButton: PlusButton = {
@@ -58,6 +59,12 @@ class TabBarVC: UITabBarController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		if Auth.auth().currentUser == nil {
+			let navController = UINavigationController(rootViewController: LoginVC())
+			navController.modalPresentationStyle = .fullScreen
+			self.present(navController, animated: true, completion: nil)
+		}
+		
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
     }
 	

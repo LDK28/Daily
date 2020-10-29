@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,7 +30,15 @@
 		21E1D06B2540399B006A4206 /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0622540399B006A4206 /* Stolzl-Book.ttf */; };
 		21E1D06C2540399B006A4206 /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */; };
 		21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D09A2540ABD0006A4206 /* DiaryVC.swift */; };
+		21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64243254AFBB400564B78 /* UILabelExtension.swift */; };
+		21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64248254AFBC300564B78 /* UITextFieldExtension.swift */; };
+		21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */; };
+		21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64255254AFC0600564B78 /* UIStackViewExtension.swift */; };
+		21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */; };
+		21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8D52545CAC400E08CD2 /* LoginVC.swift */; };
+		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
+		242625AE3BE7F9D1CAC7E536 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896252AD35914197C9231AC8 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +88,17 @@
 		21E1D0622540399B006A4206 /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Bold.ttf"; sourceTree = "<group>"; };
 		21E1D09A2540ABD0006A4206 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
+		21E64243254AFBB400564B78 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		21E64248254AFBC300564B78 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenstion.swift; sourceTree = "<group>"; };
+		21E64255254AFC0600564B78 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		21E8C8D52545CAC400E08CD2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
+		896252AD35914197C9231AC8 /* Pods_Daily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2AC9C543747920698F5AA5A /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				242625AE3BE7F9D1CAC7E536 /* Pods_Daily.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +127,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0900D53BBB17DBCE2FF05C54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				896252AD35914197C9231AC8 /* Pods_Daily.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		215615A82542F079005AB2DF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +171,7 @@
 		215BC9BE2542E3180069D30E /* Tab bar */ = {
 			isa = PBXGroup;
 			children = (
+				215615E82543449E005AB2DF /* Buttons */,
 				215BC9AA2542DEDA0069D30E /* TabBarVC.swift */,
 			);
 			path = "Tab bar";
@@ -156,6 +184,8 @@
 				21E1D03C25403978006A4206 /* DailyTests */,
 				21E1D04725403978006A4206 /* DailyUITests */,
 				21E1D02125403975006A4206 /* Products */,
+				E631FD36667FB79A880B1B69 /* Pods */,
+				0900D53BBB17DBCE2FF05C54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,14 +202,15 @@
 		21E1D02225403975006A4206 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
-				215615E82543449E005AB2DF /* Buttons */,
 				21E1D08E2540AB13006A4206 /* Views */,
+				21E64242254AFB9300564B78 /* Extensions */,
 				21E1D0592540399B006A4206 /* Resources */,
 				21E1D02325403975006A4206 /* AppDelegate.swift */,
 				21E1D02525403975006A4206 /* SceneDelegate.swift */,
 				21E1D02F25403977006A4206 /* Assets.xcassets */,
 				21E1D03125403977006A4206 /* LaunchScreen.storyboard */,
 				21E1D03425403977006A4206 /* Info.plist */,
+				21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */,
 				21E1D02C25403975006A4206 /* Daily.xcdatamodeld */,
 			);
 			path = Daily;
@@ -231,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				21F0F8F62544CF8200B5D6FB /* MainVC.swift */,
+				21E8C8D42545CA8F00E08CD2 /* Login page */,
 				215615D92542F512005AB2DF /* UserInfo */,
 				215615A82542F079005AB2DF /* Calendar */,
 				215BC9BE2542E3180069D30E /* Tab bar */,
@@ -248,6 +280,35 @@
 			path = Dairy;
 			sourceTree = "<group>";
 		};
+		21E64242254AFB9300564B78 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				21E64243254AFBB400564B78 /* UILabelExtension.swift */,
+				21E64248254AFBC300564B78 /* UITextFieldExtension.swift */,
+				21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */,
+				21E64255254AFC0600564B78 /* UIStackViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		21E8C8D42545CA8F00E08CD2 /* Login page */ = {
+			isa = PBXGroup;
+			children = (
+				21E8C8D52545CAC400E08CD2 /* LoginVC.swift */,
+				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
+			);
+			path = "Login page";
+			sourceTree = "<group>";
+		};
+		E631FD36667FB79A880B1B69 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */,
+				E2AC9C543747920698F5AA5A /* Pods-Daily.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,9 +316,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21E1D04D25403978006A4206 /* Build configuration list for PBXNativeTarget "Daily" */;
 			buildPhases = (
+				7E52CB327BF373A3F67DF789 /* [CP] Check Pods Manifest.lock */,
 				21E1D01C25403975006A4206 /* Sources */,
 				21E1D01D25403975006A4206 /* Frameworks */,
 				21E1D01E25403975006A4206 /* Resources */,
+				22983EE082795BA2F7DE3D4A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +416,7 @@
 			files = (
 				21E1D03325403977006A4206 /* LaunchScreen.storyboard in Resources */,
 				21E1D0692540399B006A4206 /* Stolzl-Regular.ttf in Resources */,
+				21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */,
 				21E1D0682540399B006A4206 /* Stolzl-Light.ttf in Resources */,
 				21E1D06B2540399B006A4206 /* Stolzl-Book.ttf in Resources */,
 				21E1D06A2540399B006A4206 /* Stolzl-Thin.ttf in Resources */,
@@ -378,6 +442,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22983EE082795BA2F7DE3D4A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daily/Pods-Daily-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daily/Pods-Daily-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Daily/Pods-Daily-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E52CB327BF373A3F67DF789 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Daily-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		21E1D01C25403975006A4206 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -387,16 +493,22 @@
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
+				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
+				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
+				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
+				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
+				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
+				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +673,7 @@
 		};
 		21E1D04E25403978006A4206 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -581,6 +694,7 @@
 		};
 		21E1D04F25403978006A4206 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2AC9C543747920698F5AA5A /* Pods-Daily.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
