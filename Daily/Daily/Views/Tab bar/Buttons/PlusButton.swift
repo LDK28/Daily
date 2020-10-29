@@ -12,15 +12,15 @@ class PlusButton: UIButton {
 	private var imageName = "plus"
 	private var buttonIsPressed = false
 	
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+	}
+	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
 		decorateButton()
-        
-    }
+		
+	}
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -38,6 +38,7 @@ class PlusButton: UIButton {
 		} else {
 			assert(false, "Couldn't find the image from systemName: \(newImageName)")
 		}
+		
 	}
 	
 	private final func decorateButton() {
@@ -46,6 +47,7 @@ class PlusButton: UIButton {
 		if let image = UIImage(systemName: imageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal) {
 			setImage(image, for: .normal)
 			backgroundColor = .dailyTabBarColor
+			translatesAutoresizingMaskIntoConstraints = false
 			layer.cornerRadius = frame.height / 2
 			layer.borderWidth = frame.height / 15
 			layer.borderColor = UIColor.white.cgColor
@@ -58,5 +60,5 @@ class PlusButton: UIButton {
 		}
 		
 	}
-    
+	
 }
