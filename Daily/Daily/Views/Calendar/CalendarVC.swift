@@ -10,6 +10,7 @@ import FSCalendar
 
 class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 
+    var scrollView = UIScrollView()
     var headerLabel = UILabel()
     var calendarView = FSCalendar()
     var dayView = UIView()
@@ -18,11 +19,13 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     override func loadView() {
         super.loadView()
 		
-		view.addSubview(headerLabel)
-		view.addSubview(calendarView)
-		view.addSubview(dayView)
+        view.addSubview(scrollView)
+		scrollView.addSubview(headerLabel)
+		scrollView.addSubview(calendarView)
+		scrollView.addSubview(dayView)
         dayView.addSubview(dateLabel)
 		
+        configureScrollView()
 		configureHeaderLabel()
 		configureCalendarView()
 		configureDayView()
@@ -40,11 +43,24 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         calendarView.delegate = self
     }
 	
+    func configureScrollView(){
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+//            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+//            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor)
+//        ])
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 3000)
+        //doesn't scroll :(
+    }
+    
 	func configureHeaderLabel() {
 		NSLayoutConstraint.activate([
-			headerLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 16),
-			headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			headerLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+			headerLabel.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor, constant: 16),
+			headerLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+			headerLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9),
 		])
 	}
 	
@@ -52,8 +68,8 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 		NSLayoutConstraint.activate([
 			calendarView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 16),
 			calendarView.centerXAnchor.constraint(equalTo: headerLabel.centerXAnchor),
-			calendarView.widthAnchor.constraint(equalTo: headerLabel.widthAnchor, multiplier: 1),
-			calendarView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 1),
+			calendarView.widthAnchor.constraint(equalTo: headerLabel.widthAnchor),
+			calendarView.heightAnchor.constraint(equalTo: calendarView.widthAnchor),
 		])
 	}
 	
@@ -61,8 +77,8 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 		NSLayoutConstraint.activate([
 			dayView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 16),
 			dayView.centerXAnchor.constraint(equalTo: calendarView.centerXAnchor),
-			dayView.widthAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 1),
-			dayView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 0.5)
+			dayView.widthAnchor.constraint(equalTo: calendarView.widthAnchor),
+            dayView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 0.9)
 		])
 	}
     
