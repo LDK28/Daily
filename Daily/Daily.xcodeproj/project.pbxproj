@@ -30,10 +30,13 @@
 		21E1D06B2540399B006A4206 /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0622540399B006A4206 /* Stolzl-Book.ttf */; };
 		21E1D06C2540399B006A4206 /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */; };
 		21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D09A2540ABD0006A4206 /* DiaryVC.swift */; };
+		21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64243254AFBB400564B78 /* UILabelExtension.swift */; };
+		21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64248254AFBC300564B78 /* UITextFieldExtension.swift */; };
+		21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */; };
+		21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64255254AFC0600564B78 /* UIStackViewExtension.swift */; };
 		21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */; };
 		21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8D52545CAC400E08CD2 /* LoginVC.swift */; };
 		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
-		21E8C9112546053600E08CD2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C9102546053600E08CD2 /* Utilities.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
 		242625AE3BE7F9D1CAC7E536 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896252AD35914197C9231AC8 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
@@ -85,10 +88,13 @@
 		21E1D0622540399B006A4206 /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Bold.ttf"; sourceTree = "<group>"; };
 		21E1D09A2540ABD0006A4206 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
+		21E64243254AFBB400564B78 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		21E64248254AFBC300564B78 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenstion.swift; sourceTree = "<group>"; };
+		21E64255254AFC0600564B78 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21E8C8D52545CAC400E08CD2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
-		21E8C9102546053600E08CD2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
 		896252AD35914197C9231AC8 /* Pods_Daily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				21E1D08E2540AB13006A4206 /* Views */,
+				21E64242254AFB9300564B78 /* Extensions */,
 				21E1D0592540399B006A4206 /* Resources */,
 				21E1D02325403975006A4206 /* AppDelegate.swift */,
 				21E1D02525403975006A4206 /* SceneDelegate.swift */,
@@ -254,8 +261,8 @@
 		21E1D08E2540AB13006A4206 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				21E8C8D42545CA8F00E08CD2 /* Login page */,
 				21F0F8F62544CF8200B5D6FB /* MainVC.swift */,
+				21E8C8D42545CA8F00E08CD2 /* Login page */,
 				215615D92542F512005AB2DF /* UserInfo */,
 				215615A82542F079005AB2DF /* Calendar */,
 				215BC9BE2542E3180069D30E /* Tab bar */,
@@ -273,22 +280,24 @@
 			path = Dairy;
 			sourceTree = "<group>";
 		};
+		21E64242254AFB9300564B78 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				21E64243254AFBB400564B78 /* UILabelExtension.swift */,
+				21E64248254AFBC300564B78 /* UITextFieldExtension.swift */,
+				21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */,
+				21E64255254AFC0600564B78 /* UIStackViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		21E8C8D42545CA8F00E08CD2 /* Login page */ = {
 			isa = PBXGroup;
 			children = (
-				21E8C8FF2545FA3400E08CD2 /* Helpers */,
 				21E8C8D52545CAC400E08CD2 /* LoginVC.swift */,
 				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
 			);
 			path = "Login page";
-			sourceTree = "<group>";
-		};
-		21E8C8FF2545FA3400E08CD2 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				21E8C9102546053600E08CD2 /* Utilities.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E631FD36667FB79A880B1B69 /* Pods */ = {
@@ -484,18 +493,21 @@
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
+				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
+				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
-				21E8C9112546053600E08CD2 /* Utilities.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
+				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
+				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
