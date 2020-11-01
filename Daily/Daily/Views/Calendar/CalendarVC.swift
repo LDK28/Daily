@@ -10,11 +10,23 @@ import FSCalendar
 
 class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 
-    var scrollView = UIScrollView()
-    var headerLabel = UILabel()
-    var calendarView = FSCalendar()
-    var dayView = UIView()
-    var dateLabel = UILabel()
+    let scrollView = UIScrollView()
+    let headerLabel = UILabel()
+    let calendarView = FSCalendar()
+    let dayView = UIView()
+    let dateLabel = UILabel()
+    let doneTasksLabel = UILabel()
+    let missedTasksLabel = UILabel()
+    let doneTasksView = UIView()
+    let missedTasksView = UIView()
+    let detailsButton = UIButton()
+    let doneTasksImage = UIImage(systemName: "sparkles")
+    let missedTasksImage = UIImage(systemName: "zzz")
+    let detailsImage = UIImage(systemName: "chevron.right")
+    
+    //day review example
+    let doneTasks = 6
+    let missedTasks = 2
     
     override func loadView() {
         super.loadView()
@@ -24,48 +36,60 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 		scrollView.addSubview(calendarView)
 		scrollView.addSubview(dayView)
         dayView.addSubview(dateLabel)
+        dayView.addSubview(doneTasksLabel)
+        dayView.addSubview(missedTasksLabel)
+        dayView.addSubview(detailsButton)
+        dayView.addSubview(doneTasksView)
+        dayView.addSubview(missedTasksView)
+    
 		
         configureScrollView()
 		configureHeaderLabel()
 		configureCalendarView()
 		configureDayView()
         configureDateLabel()
+        configureTasksLabels()
+        configureTasksViews()
+        configureDetailsButton()
 		
 		styleHeaderLabel()
 		styleCalendarView()
 		styleDayView()
         styleDateLabel()
+        styleTasksLabels()
+        styleTasksViews()
+        styleDetailsButton()
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         calendarView.delegate = self
+        detailsButton.addTarget(self, action: #selector(didTapDetails), for: .touchUpInside)
     }
 	
     func configureScrollView(){
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-//            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor)
-//        ])
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: 3000)
-        //doesn't scroll :(
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
     }
     
 	func configureHeaderLabel() {
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			headerLabel.topAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.topAnchor, constant: 16),
+			headerLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
 			headerLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 			headerLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9),
 		])
 	}
 	
 	func configureCalendarView() {
-		NSLayoutConstraint.activate([
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
 			calendarView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 16),
 			calendarView.centerXAnchor.constraint(equalTo: headerLabel.centerXAnchor),
 			calendarView.widthAnchor.constraint(equalTo: headerLabel.widthAnchor),
@@ -74,25 +98,63 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 	}
 	
 	func configureDayView() {
-		NSLayoutConstraint.activate([
+        dayView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
 			dayView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 16),
 			dayView.centerXAnchor.constraint(equalTo: calendarView.centerXAnchor),
 			dayView.widthAnchor.constraint(equalTo: calendarView.widthAnchor),
-            dayView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 0.9)
+            dayView.heightAnchor.constraint(equalTo: calendarView.widthAnchor, multiplier: 0.5),
+            dayView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -36)
 		])
 	}
     
     func configureDateLabel() {
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: dayView.layoutMarginsGuide.topAnchor, constant: 10),
+            dateLabel.topAnchor.constraint(equalTo: dayView.topAnchor, constant: 20),
             dateLabel.centerXAnchor.constraint(equalTo: dayView.centerXAnchor),
             dateLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.9),
         ])
     }
-	
+    
+    func configureTasksLabels() {
+        doneTasksLabel.translatesAutoresizingMaskIntoConstraints = false
+        missedTasksLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            doneTasksLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 15),
+            doneTasksLabel.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 50),
+            doneTasksLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.5),
+            missedTasksLabel.topAnchor.constraint(equalTo: doneTasksLabel.bottomAnchor, constant: 8),
+            missedTasksLabel.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 50),
+            missedTasksLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.5)
+        ])
+    }
+    
+    func configureTasksViews() {
+        doneTasksView.translatesAutoresizingMaskIntoConstraints = false
+        missedTasksView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            doneTasksView.centerYAnchor.constraint(equalTo: doneTasksLabel.centerYAnchor),
+            doneTasksView.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 15),
+            doneTasksView.widthAnchor.constraint(equalToConstant: 25),
+            doneTasksView.heightAnchor.constraint(equalTo: doneTasksView.widthAnchor),
+            missedTasksView.centerYAnchor.constraint(equalTo: missedTasksLabel.centerYAnchor),
+            missedTasksView.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 15),
+            missedTasksView.widthAnchor.constraint(equalToConstant: 25),
+            missedTasksView.heightAnchor.constraint(equalTo: missedTasksView.widthAnchor)
+        ])
+    }
+    
+    func configureDetailsButton() {
+        detailsButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            detailsButton.bottomAnchor.constraint(equalTo: dayView.bottomAnchor, constant: -20),
+            detailsButton.rightAnchor.constraint(equalTo: dayView.rightAnchor, constant: -40),
+            detailsButton.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.9)
+        ])
+    }
 	
 	func styleHeaderLabel() {
-		headerLabel.translatesAutoresizingMaskIntoConstraints = false
 		headerLabel.font = UIFont(name: "Stolzl-Bold", size: 36)
 		headerLabel.textColor = .dailyTitleTextColor
 		addShadow(to: headerLabel)
@@ -101,7 +163,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 	}
 	
 	func styleCalendarView() {
-		calendarView.translatesAutoresizingMaskIntoConstraints = false
 		calendarView.backgroundColor = .dailyCalendarBackgroundColor
 		calendarView.layer.cornerRadius = 10
 		addShadow(to: calendarView)
@@ -116,21 +177,55 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 	}
 	
 	func styleDayView() {
-		dayView.translatesAutoresizingMaskIntoConstraints = false
 		dayView.backgroundColor = .dailyCalendarBackgroundColor
 		addShadow(to: dayView)
 		dayView.layer.cornerRadius = 10
 	}
     
     func styleDateLabel() {
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont(name: "Stolzl-Regular", size: 18)
         dateLabel.textColor = .dailyTextColor
         dateLabel.textAlignment = .right
         dateLabel.text = "Select a date"
     }
-	
     
+    func styleTasksLabels() {
+        doneTasksLabel.font = UIFont(name: "Stolzl-Book", size: 18)
+        doneTasksLabel.textColor = .dailyTextColor
+        doneTasksLabel.textAlignment = .left
+        doneTasksLabel.text = "Done: "
+        missedTasksLabel.font = UIFont(name: "Stolzl-Book", size: 18)
+        missedTasksLabel.textColor = .dailyTextColor
+        missedTasksLabel.textAlignment = .left
+        missedTasksLabel.text = "Missed: "
+    }
+    
+    func styleTasksViews(){
+        doneTasksView.backgroundColor = .systemGreen
+        doneTasksView.layer.cornerRadius = 5
+        missedTasksView.backgroundColor = .systemRed
+        missedTasksView.layer.cornerRadius = 5
+    }
+    
+    func styleDetailsButton() {
+        detailsButton.titleLabel?.font =  UIFont(name: "Stolzl-Book", size: 18)
+        detailsButton.setTitleColor(.dailyTextColor, for: .normal)
+        detailsButton.setTitleColor(.systemGray3, for: .highlighted)
+        detailsButton.contentHorizontalAlignment = .right
+        detailsButton.setTitle("Details", for: .normal)
+    }
+    
+    func addShadow(to view: UIView){
+        view.layer.shadowColor = UIColor.dailyShadowColor
+        view.layer.shadowOpacity = 0.05
+        view.layer.shadowOffset = CGSize(width: 0, height: 10)
+        view.layer.shadowRadius = 4
+    }
+    
+    @objc func didTapDetails(sender: UIButton!) {
+        //go to the DiaryVC
+     }
+
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE dd.MM.YYYY"
@@ -139,13 +234,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         let dayOfTheYear = String(selectedDate[1])
         dateLabel.text = "\(dayOfTheWeek), \(dayOfTheYear)"
         //change this for integration with DiaryVC
-    }
-    
-    func addShadow(to view: UIView){
-        view.layer.shadowColor = UIColor.dailyShadowColor
-        view.layer.shadowOpacity = 0.05
-        view.layer.shadowOffset = CGSize(width: 0, height: 10)
-        view.layer.shadowRadius = 4
     }
 
 }
