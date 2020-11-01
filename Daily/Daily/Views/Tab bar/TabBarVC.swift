@@ -17,9 +17,9 @@ class TabBarVC: UITabBarController {
 		return view
 	}()
 	
-	let newProjectButton = AddButton(title: "Новый проект", symbolName: "doc.on.doc")
-	let newTaskButton = AddButton(title: "Новая задача", symbolName: "paperclip")
-	let newNoteButton = AddButton(title: "Новая заметка", symbolName: "highlighter")
+	let newProjectButton = AddButton(title: "New project", symbolName: "doc.on.doc")
+	let newTaskButton = AddButton(title: "New task", symbolName: "paperclip")
+	let newNoteButton = AddButton(title: "New note", symbolName: "highlighter")
 	
 	let addButtonsStackView = UIStackView()
 	
@@ -76,6 +76,17 @@ class TabBarVC: UITabBarController {
 				self.plusButtonBlackout.isHidden.toggle()
 			}
 		}
+	}
+	@objc func didTapNewNoteButton() {
+		
+	}
+	
+	@objc func didTapNewTaskButton() {
+		
+	}
+	
+	@objc func didTapNewProjectButton() {
+		
 	}
 	
 	func setupAddButtonsVerticalStackView() {
