@@ -6,15 +6,9 @@
 //
 import UIKit
 
-class AddButton: UIButton {
+final class AddButton: UIButton {
 	
-	private let title: String
-	private let symbolName: String
-	
-	
-	required init(title: String, symbolName: String) {
-		self.title = title
-		self.symbolName = symbolName
+	init(title: String, symbolName: String) {
 		super.init(frame: .zero)
 		
 		setTitle(title, for: .normal)
