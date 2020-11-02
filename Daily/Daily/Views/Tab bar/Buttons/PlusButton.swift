@@ -10,7 +10,12 @@ import UIKit
 
 class PlusButton: UIButton {
 	private var imageName = "plus"
-	private var buttonIsPressed = false
+	
+	var isPressedToShowOverlay = false {
+		didSet {
+			toggleState()
+		}
+	}
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -27,12 +32,12 @@ class PlusButton: UIButton {
 		decorateButton()
 	}
 	
-	final func toggleImage() {
-		buttonIsPressed.toggle()
+	private final func toggleState() {
+		//isPressedToShowOverlay.toggle()
 		// We use different size multipliers for different images
-		let pointSize = buttonIsPressed ? frame.height / 1.8 : frame.height / 1.5
+		let pointSize = isPressedToShowOverlay ? frame.height / 1.5 : frame.height / 1.8
 		let lightConfiguration = UIImage.SymbolConfiguration(pointSize: pointSize, weight: .light)
-		let newImageName = buttonIsPressed ? "chevron.down" : "plus"
+		let newImageName = isPressedToShowOverlay ? "chevron.down" : "plus"
 		if let newImage = UIImage(systemName: newImageName, withConfiguration: lightConfiguration)?.withTintColor(.white, renderingMode: .alwaysOriginal) {
 			setImage(newImage, for: .normal)
 		} else {

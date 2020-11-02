@@ -56,37 +56,42 @@ class TabBarVC: UITabBarController {
 			self.present(navController, animated: true, completion: nil)
 		}
 		
+		newProjectButton.addTarget(self, action: #selector(didTapNewProjectButton), for: .touchUpInside)
+		newTaskButton.addTarget(self, action: #selector(didTapNewTaskButton), for: .touchUpInside)
+		newNoteButton.addTarget(self, action: #selector(didTapNewNoteButton), for: .touchUpInside)
 		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
 	}
 	
 	@objc func plusButtonPressed() {
-		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
-		plusButton.toggleImage()
-		addButtonsStackView.isHidden.toggle()
-
-		if plusButtonBlackout.isHidden {
-			plusButtonBlackout.isHidden.toggle()
+		plusButton.isPressedToShowOverlay.toggle()
+		
+		if plusButton.isPressedToShowOverlay {
+			addButtonsStackView.isHidden = false //show stack
+			plusButtonBlackout.isHidden = false //blackout the background
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-				self.plusButtonBlackout.alpha = 1
+				self.plusButtonBlackout.alpha = 1 //and show it with animation
 			}
 		} else {
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+				self.addButtonsStackView.isHidden = true
 				self.plusButtonBlackout.alpha = 0
 			}) { _ in
-				self.plusButtonBlackout.isHidden.toggle()
+				self.plusButtonBlackout.isHidden = true
 			}
 		}
 	}
+	
 	@objc func didTapNewNoteButton() {
+		addButtonsStackView.isHidden = true
 		
 	}
 	
 	@objc func didTapNewTaskButton() {
-		
+		addButtonsStackView.isHidden = true
 	}
 	
 	@objc func didTapNewProjectButton() {
-		
+		addButtonsStackView.isHidden = true
 	}
 	
 	func setupAddButtonsVerticalStackView() {
