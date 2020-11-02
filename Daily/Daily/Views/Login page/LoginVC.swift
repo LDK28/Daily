@@ -76,7 +76,7 @@ final class LoginVC: MainVC {
 					self.showError(userLoginError!.localizedDescription)
 					
 				} else {
-					let vc = TabBarVC()
+					let vc = DailyTabBarController()
 					vc.modalPresentationStyle = .fullScreen
 					self.present(vc, animated: true, completion: nil)
 				}

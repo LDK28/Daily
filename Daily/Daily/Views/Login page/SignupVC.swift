@@ -164,7 +164,7 @@ class SignupVC: MainVC {
 	
 	
 	func transitionToHome() {
-		let vc = TabBarVC()
+		let vc = DailyTabBarController()
 		vc.modalPresentationStyle = .fullScreen
 		present(vc, animated: true, completion: nil)
 	}

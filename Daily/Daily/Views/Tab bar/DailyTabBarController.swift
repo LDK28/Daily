@@ -7,7 +7,7 @@
 import UIKit
 import FirebaseAuth
 
-class TabBarVC: TabBarControllerWithMiddleButton {
+class DailyTabBarController: TabBarControllerWithMiddleButton {
 	let plusButton = PlusButton()
 	
 	let blackoutView: UIView = {
@@ -91,6 +91,14 @@ class TabBarVC: TabBarControllerWithMiddleButton {
 	
 	@objc func didTapNewProjectButton() {
 		addButtonsStackView.isHidden = true
+	}
+	
+	func showOverlay(overlay: UIView) {
+		
+	}
+	
+	func hideOverlay(overlay: UIView) {
+		
 	}
 	
 	func setupAddButtonsVerticalStackView() {
