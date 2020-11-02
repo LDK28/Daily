@@ -8,20 +8,20 @@ import UIKit
 import FirebaseAuth
 
 class DailyTabBarController: TabBarControllerWithMiddleButton {
-	let plusButton = PlusButton()
+	private let plusButton = PlusButton()
 	
-	let blackoutView: UIView = {
+	private let blackoutView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.backgroundColor = .dailyPlusButtonBlackoutColor
 		return view
 	}()
 	
-	let newProjectButton = AddButton(title: "New project", symbolName: "doc.on.doc")
-	let newTaskButton = AddButton(title: "New task", symbolName: "paperclip")
-	let newNoteButton = AddButton(title: "New note", symbolName: "highlighter")
-	
-	let addButtonsStackView = UIStackView()
+	private var overlayView: UIViewController? = nil
+	private let newProjectButton = AddButton(title: "New project", symbolName: "doc.on.doc")
+	private let newTaskButton = AddButton(title: "New task", symbolName: "paperclip")
+	private let newNoteButton = AddButton(title: "New note", symbolName: "highlighter")
+	private let addButtonsStackView = UIStackView()
 	
 	override func loadView() {
 		super.loadView()
@@ -58,10 +58,10 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		newProjectButton.addTarget(self, action: #selector(didTapNewProjectButton), for: .touchUpInside)
 		newTaskButton.addTarget(self, action: #selector(didTapNewTaskButton), for: .touchUpInside)
 		newNoteButton.addTarget(self, action: #selector(didTapNewNoteButton), for: .touchUpInside)
-		plusButton.addTarget(self, action: #selector(plusButtonPressed), for: .touchUpInside)
+		plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
 	}
 	
-	@objc func plusButtonPressed() {
+	@objc func didTapPlusButton() {
 		plusButton.isPressedToShowOverlay.toggle()
 		
 		if plusButton.isPressedToShowOverlay {
@@ -73,6 +73,9 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		} else {
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
 				self.addButtonsStackView.isHidden = true
+				self.overlayView?.remove()
+				self.overlayView = nil
+				
 				self.blackoutView.alpha = 0
 			}) { _ in
 				self.blackoutView.isHidden = true
@@ -82,24 +85,28 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	
 	@objc func didTapNewNoteButton() {
 		addButtonsStackView.isHidden = true
-		
+		overlayView = NewNoteOverlayVC()
+		if let overlay = overlayView {
+			add(overlay, highestElementInTabBar: plusButton)
+		}
 	}
 	
 	@objc func didTapNewTaskButton() {
 		addButtonsStackView.isHidden = true
+		overlayView = NewTaskOverlayVC()
+		if let overlay = overlayView {
+			add(overlay, highestElementInTabBar: plusButton)
+		}
 	}
 	
 	@objc func didTapNewProjectButton() {
 		addButtonsStackView.isHidden = true
+		overlayView = NewProjectOverlayVC()
+		if let overlay = overlayView {
+			add(overlay, highestElementInTabBar: plusButton)
+		}
 	}
 	
-	func showOverlay(overlay: UIView) {
-		
-	}
-	
-	func hideOverlay(overlay: UIView) {
-		
-	}
 	
 	func setupAddButtonsVerticalStackView() {
 		addButtonsStackView.isHidden = true
