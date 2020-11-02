@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */; };
+		2151CA3E25509B1C00732F68 /* NewNoteOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */; };
+		2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */; };
+		2151CA4B25509B3700732F68 /* NewProjectOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */; };
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2158545225449CAF00A60F75 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158545125449CAF00A60F75 /* AddButton.swift */; };
@@ -59,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerWithMiddleButton.swift; sourceTree = "<group>"; };
+		2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayVC.swift; sourceTree = "<group>"; };
+		2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayVC.swift; sourceTree = "<group>"; };
+		2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayVC.swift; sourceTree = "<group>"; };
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2158545125449CAF00A60F75 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
@@ -135,6 +143,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2151CA3C25509AF000732F68 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */,
+				2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */,
+				2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
 		215615A82542F079005AB2DF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +189,10 @@
 		215BC9BE2542E3180069D30E /* Tab bar */ = {
 			isa = PBXGroup;
 			children = (
+				2151CA3C25509AF000732F68 /* Overlays */,
 				215615E82543449E005AB2DF /* Buttons */,
 				215BC9AA2542DEDA0069D30E /* TabBarVC.swift */,
+				2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */,
 			);
 			path = "Tab bar";
 			sourceTree = "<group>";
@@ -495,20 +515,24 @@
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
+				2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
+				2151CA3E25509B1C00732F68 /* NewNoteOverlayVC.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
+				2151CA4B25509B3700732F68 /* NewProjectOverlayVC.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
+				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
