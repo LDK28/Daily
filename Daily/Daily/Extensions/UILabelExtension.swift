@@ -16,4 +16,14 @@ extension UILabel {
 		self.textAlignment = textAlignment
 		self.textColor = textColor
 	}
+	
+	//MARK: Overlay extensions
+	func styleOverlayLabel(text: String) {
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.font = UIFont(name: "Stolzl-Book", size: 36)
+		self.text = text
+		self.textAlignment = .left
+		self.numberOfLines = 2
+		self.textColor = .dailyTextColor
+	}
 }

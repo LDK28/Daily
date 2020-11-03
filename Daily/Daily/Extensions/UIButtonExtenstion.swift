@@ -20,4 +20,23 @@ extension UIButton {
 		self.layer.cornerRadius = 5
 	}
 	
+	enum OverlayButtons: String {
+		case save = "Добавить"
+		case cancel = "Отменить"
+	}
+	
+	func styleOverlayButton(buttonType: OverlayButtons) {
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.setTitle(buttonType.rawValue, for: .normal)
+		self.backgroundColor = buttonType == .save ? .dailyOverlayButtonTileColor : .clear
+		self.setTitleColor(.dailyOverlayButtonTextColor, for: .normal)
+		self.layer.cornerRadius = 5
+		self.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+		contentHorizontalAlignment = .center
+		contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//		self.titleLabel?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+//		self.titleLabel?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15).isActive = true
+		
+	}
+	
 }

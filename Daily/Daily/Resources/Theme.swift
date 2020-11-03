@@ -111,6 +111,14 @@ extension UIColor {
 	
 	static var dailySignupButtonColor = UIColor("82C1DF", alpha: 0.5)
 	
+	static var dailyOverlayButtonTextColor: UIColor {
+		colorForTheme(light: UIColor("292929"), dark: UIColor("F9F9F9"))
+	}
+	
+	static var dailyOverlayButtonTileColor: UIColor {
+		colorForTheme(light: UIColor("F9F9F9"), dark: UIColor("292929"))
+	}
+	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {
 			return UIColor.init { traitCollection in
