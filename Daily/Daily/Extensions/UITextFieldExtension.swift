@@ -24,4 +24,11 @@ extension UITextField {
 			self.isSecureTextEntry = true
 		}
 	}
+	
+	func styleOverlayTextField(placeholder: String) {
+		self.translatesAutoresizingMaskIntoConstraints = false
+		self.placeholder = placeholder
+		self.borderStyle = .roundedRect
+	
+	}
 }
