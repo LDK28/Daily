@@ -22,9 +22,4 @@ extension UIButton {
     func styleHighlightedButton() {
         
     }
-    override open var isHighlighted: Bool {
-        didSet {
-            backgroundColor = isHighlighted ? UIColor.black : UIColor.white
-        }
-    }
 }
