@@ -12,6 +12,7 @@ class NewProjectOverlayVC: OverlayTemplateVC {
 	override func loadView() {
 		super.loadView()
 		
+		styleElements()
 	}
 	
     override func viewDidLoad() {
@@ -21,7 +22,7 @@ class NewProjectOverlayVC: OverlayTemplateVC {
 	
 	
 	func styleElements() {
-		
+		titleLabel.styleOverlayLabel(text: "Create new project")
 	}
 
 }
