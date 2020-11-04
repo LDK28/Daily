@@ -12,7 +12,7 @@ class TabBarControllerWithMiddleButton: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		createTabBar()
+		configureTabBar()
     }
     
 	func layoutMiddleButton(button: UIButton) {
@@ -29,7 +29,7 @@ class TabBarControllerWithMiddleButton: UITabBarController {
 		
 	}
 
-	func createTabBar() {
+	func configureTabBar() {
 
 		let styling = tabBar
 		styling.isTranslucent = false

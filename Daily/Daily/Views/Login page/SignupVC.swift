@@ -43,7 +43,7 @@ class SignupVC: MainVC {
 	
 		view.addSubview(mainStack)
 		
-		setupElements()
+		configureElements()
 		
 		styleElements()
 	}
@@ -120,7 +120,7 @@ class SignupVC: MainVC {
 		self.navigationController?.popViewController(animated: true)
 	}
 	
-	func setupElements() {
+	func configureElements() {
 		
 		NSLayoutConstraint.activate([
 			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
