@@ -11,6 +11,8 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 	
 	override func loadView() {
 		super.loadView()
+		
+		styleElements()
 	}
 	
     override func viewDidLoad() {
@@ -19,6 +21,6 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 	
 	
 	func styleElements() {
-		
+		titleLabel.styleOverlayLabel(text: "Make new task")
 	}
 }
