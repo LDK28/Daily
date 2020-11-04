@@ -7,10 +7,10 @@
 
 import UIKit
 
-class NewNoteOverlayVC: UIViewController {
+class NewNoteOverlayVC: UIViewController, UITextViewDelegate {
 	private let writeNewMemoLabel = UILabel()
 	private let titleTextField = UITextField()
-	private let descriptionTextField = UITextField()
+	private let descriptionTextView = UITextView()
 	private let addButton = UIButton()
 	private let cancelButton = UIButton()
 	
@@ -19,7 +19,7 @@ class NewNoteOverlayVC: UIViewController {
 		
 		view.addSubview(writeNewMemoLabel)
 		view.addSubview(titleTextField)
-		view.addSubview(descriptionTextField)
+		view.addSubview(descriptionTextView)
 		view.addSubview(addButton)
 		view.addSubview(cancelButton)
 		
@@ -34,8 +34,11 @@ class NewNoteOverlayVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
 		view.backgroundColor = .dailyTabBarColor
+		
+		descriptionTextView.delegate = self
+		textViewDidBeginEditing(descriptionTextView)
+		textViewDidEndEditing(descriptionTextView)
     }
     
 	func configureLabel() {
@@ -57,11 +60,10 @@ class NewNoteOverlayVC: UIViewController {
 	
 	func configureDescriptionTextField() {
 		NSLayoutConstraint.activate([
-			descriptionTextField.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 15),
-			descriptionTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			descriptionTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-			//descriptionTextField.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -30)
-			descriptionTextField.heightAnchor.constraint(equalToConstant: 200)
+			descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 15),
+			descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			descriptionTextView.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -30)
 		])
 	}
 	
@@ -78,8 +80,25 @@ class NewNoteOverlayVC: UIViewController {
 	func styleElements() {
 		writeNewMemoLabel.styleOverlayLabel(text: "Write new memo")
 		titleTextField.styleOverlayTextField(placeholder: "Title")
-		descriptionTextField.styleOverlayTextField(placeholder: "Description")
+		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 		addButton.styleOverlayButton(buttonType: .save)
 		cancelButton.styleOverlayButton(buttonType: .cancel)
+	}
+}
+
+extension NewNoteOverlayVC {
+	
+	func textViewDidBeginEditing(_ textView: UITextView) {
+		if textView.textColor == .systemGray2 {
+			textView.text = nil
+			textView.textColor = .dailyTextFieldTextColor
+		}
+	}
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		if textView.text.isEmpty {
+			textView.text = "Details"
+			textView.textColor = UIColor.systemGray2
+		}
 	}
 }

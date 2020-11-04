@@ -11,6 +11,7 @@
 		2151CA3E25509B1C00732F68 /* NewNoteOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */; };
 		2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */; };
 		2151CA4B25509B3700732F68 /* NewProjectOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */; };
+		215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215387F9255289E600EE8AB2 /* UITextViewExtension.swift */; };
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2158545225449CAF00A60F75 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158545125449CAF00A60F75 /* AddButton.swift */; };
@@ -69,6 +70,7 @@
 		2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayVC.swift; sourceTree = "<group>"; };
 		2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayVC.swift; sourceTree = "<group>"; };
 		2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayVC.swift; sourceTree = "<group>"; };
+		215387F9255289E600EE8AB2 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2158545125449CAF00A60F75 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				21E64243254AFBB400564B78 /* UILabelExtension.swift */,
 				21E64248254AFBC300564B78 /* UITextFieldExtension.swift */,
+				215387F9255289E600EE8AB2 /* UITextViewExtension.swift */,
 				21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */,
 				21E64255254AFC0600564B78 /* UIStackViewExtension.swift */,
 				21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */,
@@ -539,6 +542,7 @@
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */,
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
+				215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
