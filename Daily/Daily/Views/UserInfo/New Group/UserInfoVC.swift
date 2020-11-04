@@ -21,13 +21,17 @@ class UserInfoVC: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 250))
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 200))
 
             let headerLabel = UILabel()
             
+        
+            headerView.backgroundColor = UIColor.colorForTheme(light: UIColor.dailyProjectTileColor, dark: UIColor.dailyProjectTileColor)
             headerLabel.text = "Vladimir"
+            headerLabel.font = UIFont(name:"Stolzl-Book",size:24)
             headerLabel.textColor = UIColor.dailyTitleTextColor
-            //find the font to use in header
+            headerLabel.textAlignment = NSTextAlignment.center
+        
             headerView.addSubview(headerLabel)
         
             return headerView
@@ -61,7 +65,7 @@ extension UserInfoVC: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 250
+            return 200
         }
 }
 
