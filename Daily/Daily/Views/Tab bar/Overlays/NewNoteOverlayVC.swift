@@ -7,12 +7,12 @@
 
 import UIKit
 
-class NewNoteOverlayVC: UIViewController, UITextViewDelegate {
+class NewNoteOverlayVC: UIViewController {
 	private let writeNewMemoLabel = UILabel()
 	private let titleTextField = UITextField()
 	private let descriptionTextView = UITextView()
-	private let addButton = UIButton()
-	private let cancelButton = UIButton()
+	private let addButton = UIButton(type: .system)
+	private let cancelButton = UIButton(type: .system)
 	
 	override func loadView() {
 		super.loadView()
@@ -39,7 +39,12 @@ class NewNoteOverlayVC: UIViewController, UITextViewDelegate {
 		descriptionTextView.delegate = self
 		textViewDidBeginEditing(descriptionTextView)
 		textViewDidEndEditing(descriptionTextView)
+		cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
     }
+	
+	@objc func didTapCancelButton() {
+		self.remove()
+	}
     
 	func configureLabel() {
 		NSLayoutConstraint.activate([
@@ -86,10 +91,10 @@ class NewNoteOverlayVC: UIViewController, UITextViewDelegate {
 	}
 }
 
-extension NewNoteOverlayVC {
+extension NewNoteOverlayVC: UITextViewDelegate {
 	
 	func textViewDidBeginEditing(_ textView: UITextView) {
-		if textView.textColor == .systemGray2 {
+		if textView.textColor != .dailyTextFieldTextColor {
 			textView.text = nil
 			textView.textColor = .dailyTextFieldTextColor
 		}

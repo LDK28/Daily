@@ -41,8 +41,8 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		view.addSubview(addButtonsStackView)
 		
 		layoutMiddleButton(button: plusButton)
-		setupBlackoutView()
-		setupAddButtonsVerticalStackView()
+		configureBlackoutView()
+		configureAddButtonsVerticalStackView()
 		
 		styleElements()
 	}
@@ -108,7 +108,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	}
 	
 	
-	func setupAddButtonsVerticalStackView() {
+	func configureAddButtonsVerticalStackView() {
 		addButtonsStackView.isHidden = true
 		NSLayoutConstraint.activate([
 			addButtonsStackView.bottomAnchor.constraint(equalTo: plusButton.safeAreaLayoutGuide.topAnchor, constant: -20),
@@ -118,7 +118,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		
 	}
 	
-	func setupBlackoutView() {
+	func configureBlackoutView() {
 		blackoutView.isHidden = true
 		blackoutView.alpha = 0
 		NSLayoutConstraint.activate([
