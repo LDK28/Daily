@@ -32,15 +32,18 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         super.loadView()
 		
         view.addSubview(scrollView)
+        
 		scrollView.addSubview(headerLabel)
 		scrollView.addSubview(calendarView)
 		scrollView.addSubview(dayView)
+        
         dayView.addSubview(dateLabel)
         dayView.addSubview(doneTasksLabel)
         dayView.addSubview(missedTasksLabel)
         dayView.addSubview(detailsButton)
         dayView.addSubview(doneTasksView)
         dayView.addSubview(missedTasksView)
+        
         doneTasksView.addSubview(doneTasksImageView)
         missedTasksView.addSubview(missedTasksImageView)
         detailsButton.addSubview(detailsImageView)
@@ -81,8 +84,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     }
     
 	func configureHeaderLabel() {
-        headerLabel.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([
 			headerLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
 			headerLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 			headerLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9),
@@ -90,7 +92,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 	}
 	
 	func configureCalendarView() {
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
 			calendarView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 16),
 			calendarView.centerXAnchor.constraint(equalTo: headerLabel.centerXAnchor),
@@ -100,7 +101,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 	}
 	
 	func configureDayView() {
-        dayView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
 			dayView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 16),
 			dayView.centerXAnchor.constraint(equalTo: calendarView.centerXAnchor),
@@ -111,7 +111,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 	}
     
     func configureDateLabel() {
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: dayView.topAnchor, constant: 20),
             dateLabel.centerXAnchor.constraint(equalTo: dayView.centerXAnchor),
@@ -120,8 +119,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func configureTasksLabels() {
-        doneTasksLabel.translatesAutoresizingMaskIntoConstraints = false
-        missedTasksLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             doneTasksLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 15),
             doneTasksLabel.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 50),
@@ -134,8 +131,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     
     func configureTasksViews() {
         //configure tasksViews
-        doneTasksView.translatesAutoresizingMaskIntoConstraints = false
-        missedTasksView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             doneTasksView.centerYAnchor.constraint(equalTo: doneTasksLabel.centerYAnchor),
             doneTasksView.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 15),
@@ -147,8 +142,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
             missedTasksView.heightAnchor.constraint(equalTo: missedTasksView.widthAnchor)
         ])
         //configure tasksImageViews
-        doneTasksImageView.translatesAutoresizingMaskIntoConstraints = false
-        missedTasksImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             doneTasksImageView.centerYAnchor.constraint(equalTo: doneTasksView.centerYAnchor),
             doneTasksImageView.centerXAnchor.constraint(equalTo: doneTasksView.centerXAnchor),
@@ -162,13 +155,11 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func configureDetailsButton() {
-        detailsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             detailsButton.bottomAnchor.constraint(equalTo: dayView.bottomAnchor, constant: -20),
             detailsButton.rightAnchor.constraint(equalTo: dateLabel.rightAnchor),
             detailsButton.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.4)
         ])
-        detailsImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             detailsImageView.centerYAnchor.constraint(equalTo: detailsButton.centerYAnchor),
             detailsImageView.heightAnchor.constraint(equalTo: detailsButton.heightAnchor, multiplier: 0.8),
@@ -177,69 +168,54 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     }
 	
 	func styleHeaderLabel() {
-		headerLabel.font = UIFont(name: "Stolzl-Bold", size: 36)
-		headerLabel.textColor = .dailyTitleTextColor
-		addShadow(to: headerLabel)
-		headerLabel.textAlignment = .center
-		headerLabel.text = "Calendar"
+        if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
+            headerLabel.styleLabel(font: headerLabelFont, text: "Calendar", textAlignment: .center, textColor: .dailyTitleTextColor)
+            addShadow(to: headerLabel)
+        }
 	}
 	
 	func styleCalendarView() {
-		calendarView.backgroundColor = .dailyCalendarBackgroundColor
-		calendarView.layer.cornerRadius = 10
-		addShadow(to: calendarView)
-		calendarView.appearance.titleFont = UIFont(name: "Stolzl-Book", size: 15)
-		calendarView.appearance.titleDefaultColor = .dailyTextColor
-		calendarView.appearance.weekdayFont = UIFont(name: "Stolzl-Book", size: 15)
-		calendarView.appearance.weekdayTextColor = .systemGray
-		calendarView.appearance.headerTitleFont = UIFont(name: "Stolzl-Regular", size: 18)
-		calendarView.appearance.headerTitleColor = .dailyTextColor
-		calendarView.appearance.todayColor = .systemRed
-		calendarView.appearance.selectionColor = .systemGray
+        if let calendarViewTitleFont = UIFont(name: "Stolzl-Book", size: 15),
+            let calendarViewHeaderTitleFont = UIFont(name: "Stolzl-Regular", size: 18) {
+            calendarView.styleCalendar(backgroundColor: .dailyCalendarBackgroundColor, titleFont: calendarViewTitleFont, headerTitleFont: calendarViewHeaderTitleFont)
+            addShadow(to: calendarView)
+        }
 	}
 	
 	func styleDayView() {
-		dayView.backgroundColor = .dailyCalendarBackgroundColor
+        dayView.styleView(backgroundColor: .dailyCalendarBackgroundColor, cornerRadius: 10)
 		addShadow(to: dayView)
-		dayView.layer.cornerRadius = 10
 	}
     
     func styleDateLabel() {
-        dateLabel.font = UIFont(name: "Stolzl-Regular", size: 18)
-        dateLabel.textColor = .dailyTextColor
-        dateLabel.textAlignment = .right
-        dateLabel.text = "Select a date"
+        if let dateLabelFont = UIFont(name: "Stolzl-Regular", size: 18) {
+            dateLabel.styleLabel(font: dateLabelFont, text: "Select a date", textAlignment: .right, textColor: .dailyTextColor)
+        }
         //change this for integration with DiaryVC
     }
     
     func styleTasksLabels() {
-        doneTasksLabel.font = UIFont(name: "Stolzl-Book", size: 18)
-        doneTasksLabel.textColor = .dailyTextColor
-        doneTasksLabel.textAlignment = .left
-        doneTasksLabel.text = "Done: " + String(doneTasks)
-        doneTasksImageView.tintColor = .white
-        missedTasksLabel.font = UIFont(name: "Stolzl-Book", size: 18)
-        missedTasksLabel.textColor = .dailyTextColor
-        missedTasksLabel.textAlignment = .left
-        missedTasksLabel.text = "Missed: " + String(missedTasks)
-        missedTasksImageView.tintColor = .white
+        if let tasksLabelsFont = UIFont(name: "Stolzl-Book", size: 18) {
+            doneTasksLabel.styleLabel(font: tasksLabelsFont, text: "Done: " + String(doneTasks), textAlignment: .left, textColor: .dailyTextColor)
+            missedTasksLabel.styleLabel(font: tasksLabelsFont, text: "Missed: " + String(missedTasks), textAlignment: .left, textColor: .dailyTextColor)
+            doneTasksImageView.styleImageView(color: .white)
+            missedTasksImageView.styleImageView(color: .white)
+        }
     }
     
     func styleTasksViews(){
-        doneTasksView.backgroundColor = .systemGreen
-        doneTasksView.layer.cornerRadius = 5
-        missedTasksView.backgroundColor = .systemRed
-        missedTasksView.layer.cornerRadius = 5
+        doneTasksView.styleView(backgroundColor: .systemGreen, cornerRadius: 5)
+        missedTasksView.styleView(backgroundColor: .systemRed, cornerRadius: 5)
     }
     
     func styleDetailsButton() {
-        detailsButton.titleLabel?.font =  UIFont(name: "Stolzl-Book", size: 18)
-        detailsButton.setTitleColor(.dailyTextColor, for: .normal)
-        detailsButton.contentHorizontalAlignment = .center
-        detailsButton.setTitle("Details", for: .normal)
-        detailsImageView.tintColor = .dailyTextColor
-        //if detailsButton is highlighted
+        detailsButton.styleAccountButton(title: "Details", backgroundColor: .clear)
+        detailsImageView.styleImageView(color: .dailyTextColor)
+        //when detailsButton is pressed
         detailsButton.setTitleColor(.systemGray3, for: .highlighted)
+        if detailsButton.state == .highlighted {
+            detailsButton.imageView?.tintColor = .systemGray3
+        }
         //change color of detailsImageView when the detailsButton is pressed
     }
     

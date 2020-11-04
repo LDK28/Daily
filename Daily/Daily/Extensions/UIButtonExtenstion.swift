@@ -19,5 +19,12 @@ extension UIButton {
 		self.titleLabel?.adjustsFontSizeToFitWidth = true
 		self.layer.cornerRadius = 5
 	}
-	
+    func styleHighlightedButton() {
+        
+    }
+    override open var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.black : UIColor.white
+        }
+    }
 }
