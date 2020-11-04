@@ -7,12 +7,18 @@
 
 import UIKit
 
-class NewTaskOverlayVC: UIViewController {
-
+class NewTaskOverlayVC: OverlayTemplateVC {
+	
+	override func loadView() {
+		super.loadView()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		view.backgroundColor = .dailyTabBarColor
     }
-    
+	
+	
+	func styleElements() {
+		
+	}
 }

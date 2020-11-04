@@ -7,56 +7,34 @@
 
 import UIKit
 
-class NewNoteOverlayVC: UIViewController {
-	private let writeNewMemoLabel = UILabel()
+class NewNoteOverlayVC: OverlayTemplateVC {
 	private let titleTextField = UITextField()
 	private let descriptionTextView = UITextView()
-	private let addButton = UIButton(type: .system)
-	private let cancelButton = UIButton(type: .system)
 	
 	override func loadView() {
 		super.loadView()
 		
-		view.addSubview(writeNewMemoLabel)
 		view.addSubview(titleTextField)
 		view.addSubview(descriptionTextView)
-		view.addSubview(addButton)
-		view.addSubview(cancelButton)
 		
 		styleElements()
 		
-		configureLabel()
 		configureTitleTextField()
 		configureDescriptionTextField()
-		configureButtons()
 		
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		view.backgroundColor = .dailyTabBarColor
 		
 		descriptionTextView.delegate = self
 		textViewDidBeginEditing(descriptionTextView)
 		textViewDidEndEditing(descriptionTextView)
-		cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
     }
-	
-	@objc func didTapCancelButton() {
-		self.remove()
-	}
-    
-	func configureLabel() {
-		NSLayoutConstraint.activate([
-			writeNewMemoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-			writeNewMemoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-			writeNewMemoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -view.bounds.height / 10)
-		])
-	}
 	
 	func configureTitleTextField() {
 		NSLayoutConstraint.activate([
-			titleTextField.topAnchor.constraint(equalTo: writeNewMemoLabel.bottomAnchor, constant: 30),
+			titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
 			titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
 			titleTextField.heightAnchor.constraint(equalToConstant: 40)
@@ -72,22 +50,10 @@ class NewNoteOverlayVC: UIViewController {
 		])
 	}
 	
-	func configureButtons() {
-		NSLayoutConstraint.activate([
-			addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-			addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-			
-			cancelButton.trailingAnchor.constraint(equalTo: addButton.leadingAnchor, constant: -5),
-			cancelButton.bottomAnchor.constraint(equalTo: addButton.bottomAnchor),
-		])
-	}
-	
 	func styleElements() {
-		writeNewMemoLabel.styleOverlayLabel(text: "Write new memo")
+		titleLabel.styleOverlayLabel(text: "Write new memo")
 		titleTextField.styleOverlayTextField(placeholder: "Title")
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
-		addButton.styleOverlayButton(buttonType: .save)
-		cancelButton.styleOverlayButton(buttonType: .cancel)
 	}
 }
 
