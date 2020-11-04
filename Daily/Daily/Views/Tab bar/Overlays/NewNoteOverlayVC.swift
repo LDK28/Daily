@@ -8,18 +8,16 @@
 import UIKit
 
 class NewNoteOverlayVC: OverlayTemplateVC {
-	private let titleTextField = UITextField()
+	private let noteTitleTextField = UITextField()
 	private let descriptionTextView = UITextView()
 	
 	override func loadView() {
 		super.loadView()
-		
-		view.addSubview(titleTextField)
+	
 		view.addSubview(descriptionTextView)
 		
 		styleElements()
 		
-		configureTitleTextField()
 		configureDescriptionTextField()
 		
 	}
@@ -32,18 +30,9 @@ class NewNoteOverlayVC: OverlayTemplateVC {
 		textViewDidEndEditing(descriptionTextView)
     }
 	
-	func configureTitleTextField() {
-		NSLayoutConstraint.activate([
-			titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
-			titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-			titleTextField.heightAnchor.constraint(equalToConstant: 40)
-		])
-	}
-	
 	func configureDescriptionTextField() {
 		NSLayoutConstraint.activate([
-			descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 15),
+			descriptionTextView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
 			descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
 			descriptionTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -30)
@@ -53,7 +42,6 @@ class NewNoteOverlayVC: OverlayTemplateVC {
 	override func styleElements() {
 		super.styleElements()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
-		titleTextField.styleOverlayTextField(placeholder: "Title")
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 	}
 }

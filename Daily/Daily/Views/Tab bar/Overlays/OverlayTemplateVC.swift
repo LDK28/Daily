@@ -12,6 +12,7 @@ class OverlayTemplateVC: UIViewController {
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
+	internal let headerTextField = UITextField()
 	
 	
 	override func loadView() {
@@ -20,9 +21,11 @@ class OverlayTemplateVC: UIViewController {
 		view.addSubview(titleLabel)
 		view.addSubview(saveButton)
 		view.addSubview(cancelButton)
+		view.addSubview(headerTextField)
 		
 		configureLabel()
 		configureButtons()
+		configureTitleTextField()
 		
 	}
 	
@@ -45,6 +48,15 @@ class OverlayTemplateVC: UIViewController {
 		])
 	}
 	
+	func configureTitleTextField() {
+		NSLayoutConstraint.activate([
+			headerTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
+			headerTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			headerTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			headerTextField.heightAnchor.constraint(equalToConstant: 40)
+		])
+	}
+	
 	func configureButtons() {
 		NSLayoutConstraint.activate([
 			saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
@@ -58,5 +70,6 @@ class OverlayTemplateVC: UIViewController {
 	func styleElements() {
 		saveButton.styleOverlayButton(buttonType: .save)
 		cancelButton.styleOverlayButton(buttonType: .cancel)
+		headerTextField.styleOverlayTextField(placeholder: "Title")
 	}
 }
