@@ -49,8 +49,8 @@ extension UIButton {
     }
 	
 	enum OverlayButtons: String {
-		case save = "Добавить"
-		case cancel = "Отменить"
+		case save = "Add"
+		case cancel = "Cancel"
 	}
 	
 	func styleOverlayButton(buttonType: OverlayButtons) {
