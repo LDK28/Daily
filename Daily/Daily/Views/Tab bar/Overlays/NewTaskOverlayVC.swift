@@ -20,7 +20,8 @@ class NewTaskOverlayVC: OverlayTemplateVC {
     }
 	
 	
-	func styleElements() {
+	override func styleElements() {
+		super.styleElements()
 		titleLabel.styleOverlayLabel(text: "Make new task")
 	}
 }

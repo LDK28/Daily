@@ -9,7 +9,7 @@ import UIKit
 
 class OverlayTemplateVC: UIViewController {
 
-	internal let addButton = UIButton(type: .system)
+	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
 	
@@ -18,11 +18,8 @@ class OverlayTemplateVC: UIViewController {
 		super.loadView()
 		
 		view.addSubview(titleLabel)
-		view.addSubview(addButton)
+		view.addSubview(saveButton)
 		view.addSubview(cancelButton)
-		
-		addButton.styleOverlayButton(buttonType: .save)
-		cancelButton.styleOverlayButton(buttonType: .cancel)
 		
 		configureLabel()
 		configureButtons()
@@ -50,11 +47,16 @@ class OverlayTemplateVC: UIViewController {
 	
 	func configureButtons() {
 		NSLayoutConstraint.activate([
-			addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-			addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+			saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
 			
-			cancelButton.trailingAnchor.constraint(equalTo: addButton.leadingAnchor, constant: -5),
-			cancelButton.bottomAnchor.constraint(equalTo: addButton.bottomAnchor),
+			cancelButton.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -5),
+			cancelButton.bottomAnchor.constraint(equalTo: saveButton.bottomAnchor),
 		])
+	}
+	
+	func styleElements() {
+		saveButton.styleOverlayButton(buttonType: .save)
+		cancelButton.styleOverlayButton(buttonType: .cancel)
 	}
 }

@@ -46,11 +46,12 @@ class NewNoteOverlayVC: OverlayTemplateVC {
 			descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 15),
 			descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-			descriptionTextView.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -30)
+			descriptionTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -30)
 		])
 	}
 	
-	func styleElements() {
+	override func styleElements() {
+		super.styleElements()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
 		titleTextField.styleOverlayTextField(placeholder: "Title")
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")

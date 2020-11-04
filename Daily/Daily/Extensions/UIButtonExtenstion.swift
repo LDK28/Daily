@@ -21,8 +21,8 @@ extension UIButton {
 	}
 	
 	enum OverlayButtons: String {
-		case save = "Добавить"
-		case cancel = "Отменить"
+		case save = "Add"
+		case cancel = "Cancel"
 	}
 	
 	func styleOverlayButton(buttonType: OverlayButtons) {
@@ -34,9 +34,6 @@ extension UIButton {
 		self.titleLabel?.font = UIFont.systemFont(ofSize: 20)
 		contentHorizontalAlignment = .center
 		contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-//		self.titleLabel?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
-//		self.titleLabel?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15).isActive = true
-		
 	}
 	
 }
