@@ -182,7 +182,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     
     func styleDateLabel() {
         if let dateLabelFont = UIFont(name: "Stolzl-Regular", size: 18) {
-            dateLabel.styleLabel(font: dateLabelFont, text: "Select a date", textAlignment: .right, textColor: .dailyTextColor)
+            dateLabel.styleLabel(font: dateLabelFont, text: getCurrentDate(), textAlignment: .right, textColor: .dailyTextColor)
         }
         //change this for integration with DiaryVC
     }
@@ -222,17 +222,28 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         view.layer.shadowRadius = 4
     }
     
+    func getCurrentDate() -> String {
+        let todayDate = Date()
+        let (dayOfTheWeek, date) = formatDate(fullDate: todayDate)
+        return "\(dayOfTheWeek), \(date)"
+    }
+    
+    func formatDate(fullDate: Date) -> (String, String){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE dd.MM.YYYY"
+        let selectedDate = (formatter.string(from: fullDate)).split(separator: " ")
+        let dayOfTheWeek = String(selectedDate[0])
+        let date = String(selectedDate[1])
+        return (dayOfTheWeek, date)
+    }
+    
     @objc func didTapDetails(sender: UIButton!) {
         //go to the DiaryVC
      }
 
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE dd.MM.YYYY"
-        let selectedDate = (formatter.string(from: date)).split(separator: " ")
-        let dayOfTheWeek = String(selectedDate[0])
-        let dayOfTheYear = String(selectedDate[1])
-        dateLabel.text = "\(dayOfTheWeek), \(dayOfTheYear)"
+    func calendar(_ calendar: FSCalendar, didSelect fullDate: Date, at monthPosition: FSCalendarMonthPosition) {
+        let (dayOfTheWeek, date) = formatDate(fullDate: fullDate)
+        dateLabel.text = "\(dayOfTheWeek), \(date)"
         //change this for integration with DiaryVC
     }
 
