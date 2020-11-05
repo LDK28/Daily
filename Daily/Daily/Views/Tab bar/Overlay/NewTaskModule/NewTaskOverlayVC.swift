@@ -21,6 +21,8 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		styleElements()
+		
+		configureTableView()
 	}
 	
     override func viewDidLoad() {
@@ -29,6 +31,15 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 		tableView.delegate = self
 		tableView.dataSource = self
     }
+	
+	func configureTableView() {
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
+			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+		])
+	}
 	
 	override func styleElements() {
 		super.styleElements()
