@@ -7,7 +7,12 @@
 
 import UIKit
 
-class NewTaskOverlayVC: OverlayTemplateVC {
+protocol NewTaskOverlayViewProtocol {
+	func styleElements()
+	func configureTableView()
+}
+
+class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
 	private let tableView: UITableView = {
 		let table = UITableView()
 		table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -18,7 +23,6 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 		super.loadView()
 		
 		view.addSubview(tableView)
-		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		styleElements()
 		
@@ -33,6 +37,7 @@ class NewTaskOverlayVC: OverlayTemplateVC {
     }
 	
 	func configureTableView() {
+		tableView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
 			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
@@ -44,7 +49,6 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 	override func styleElements() {
 		super.styleElements()
 		titleLabel.styleOverlayLabel(text: "Make new task")
-
 	}
 }
 
