@@ -13,20 +13,37 @@ import UIKit
 		
 */
 
+struct Icon {
+	var tileColor: UIColor
+	var symbol: UIImage?
+	
+	init(symbolName: String, tileColor: UIColor, symbolColor: UIColor = .white) {
+		self.tileColor = tileColor
+		
+		guard let symbol = UIImage(systemName: symbolName) else {
+			self.symbol = nil
+			return
+		}
+		
+		self.symbol = symbol
+		self.symbol = self.symbol!.withTintColor(symbolColor)
+	}
+}
+
 enum NewTaskViewModelItemType {
-   case dateAndTime
-   case remindAlert
-   case repeatSelector
+	case dateAndTime
+	case remindAlert
+	case repeatSelector
 }
 
 protocol NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType { get }
 	var rowCount: Int { get }
-	var symbolImage: UIImage? { get }
-	var tileColor: UIColor { get }
-	var symbolColor: UIColor { get }
+	var icon: Icon { get }
+	var text: UIView { get }
 }
 
+//Default values
 extension NewTaskViewModelItem {
 	var rowCount: Int {
 		switch type {
@@ -37,89 +54,65 @@ extension NewTaskViewModelItem {
 		}
 	}
 	
-	var symbolColor: UIColor {
-		return .white
-	}
-}
-
-// Handy absract class that helps us to prevent copy paste code
-class NewTaskViewModelTemplate {
-	var symbolImage: UIImage?
-	
-	required init(symbolName: String) {
-		guard let symbol = UIImage(systemName: symbolName) else {
-			symbolImage = nil
-			return
+	var text: UIView {
+		switch type {
+		case .dateAndTime:
+			return UIStackView()
+		default:
+			return UILabel()
 		}
-		self.symbolImage = symbol
 	}
 }
 
 //MARK: Date and time
-//TODO: proper division of two cells
 
-class NewTaskViewModelDateAndTimeItem: NewTaskViewModelTemplate, NewTaskViewModelItem {
-	var tileColor: UIColor {
-		return .dailyAdaptiveRed
-	}
-	
+class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
 		return .dateAndTime
 	}
 	
-	let dateTitle = "Date"
-	let setDate: String? = nil
-	
-	let timeTitle = "Time"
-	let setTime: String? = nil
-	
-	required init(symbolName: String) {
-		super.init(symbolName: symbolName)
+	var icon: Icon {
+		return Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed)
 	}
+	
+	var secondaryIcon: Icon {
+		return Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue)
+	}
+	
 }
 
 //MARK: Reminder (on or off)
 
-class NewTaskViewModelRemindAlertItem: NewTaskViewModelTemplate, NewTaskViewModelItem {
-	var tileColor: UIColor {
-		return .dailyAdaptiveYellow
-	}
-	
+class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
 		return .remindAlert
 	}
 	
-	let title = "Remind"
-	
-	required init(symbolName: String) {
-		super.init(symbolName: symbolName)
+	var icon: Icon {
+		return Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow)
 	}
 }
 
-//MARK: Repeat (never or set interval)
+//MARK: Repeat (never otherwise set interval)
 
-class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelTemplate, NewTaskViewModelItem {
-	var tileColor: UIColor {
-		return .dailyAdaptiveGreen
-	}
-	
+class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
 		return .repeatSelector
 	}
 	
-	let title = "Repeat"
-	
-	required init(symbolName: String) {
-		super.init(symbolName: symbolName)
+	var icon: Icon {
+		return Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen)
 	}
+	
+	
 }
 
-// The main model that will hold all our table cells
+// MARK: The main model that will hold all our table cells
+
 class ProfileViewModel: NSObject {
-   var items = [
-		NewTaskViewModelDateAndTimeItem(symbolName: "calendar.badge.clock"),
-		NewTaskViewModelRemindAlertItem(symbolName: "alarm.fill"),
-		NewTaskViewModelRepeatSelectorItem(symbolName: "repeat"),
+	var items: [NewTaskViewModelItem] = [
+		NewTaskViewModelDateAndTimeItem(),
+		NewTaskViewModelRemindAlertItem(),
+		NewTaskViewModelRepeatSelectorItem()
 	]
-	
 }
