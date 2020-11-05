@@ -78,6 +78,7 @@ class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	var secondaryIcon: Icon {
 		return Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue)
 	}
+	var secondaryText = UIStackView()
 	
 }
 
