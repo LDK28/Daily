@@ -75,9 +75,9 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor)
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
@@ -119,10 +119,10 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     func configureTasksLabels() {
         NSLayoutConstraint.activate([
             doneTasksLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 15),
-            doneTasksLabel.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 50),
+            doneTasksLabel.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 50),
             doneTasksLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.5),
             missedTasksLabel.topAnchor.constraint(equalTo: doneTasksLabel.bottomAnchor, constant: 8),
-            missedTasksLabel.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 50),
+            missedTasksLabel.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 50),
             missedTasksLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.5)
         ])
     }
@@ -131,11 +131,11 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         //configure tasksViews
         NSLayoutConstraint.activate([
             doneTasksView.centerYAnchor.constraint(equalTo: doneTasksLabel.centerYAnchor),
-            doneTasksView.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 15),
+            doneTasksView.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 15),
             doneTasksView.widthAnchor.constraint(equalToConstant: 25),
             doneTasksView.heightAnchor.constraint(equalTo: doneTasksView.widthAnchor),
             missedTasksView.centerYAnchor.constraint(equalTo: missedTasksLabel.centerYAnchor),
-            missedTasksView.leftAnchor.constraint(equalTo: dayView.leftAnchor, constant: 15),
+            missedTasksView.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 15),
             missedTasksView.widthAnchor.constraint(equalToConstant: 25),
             missedTasksView.heightAnchor.constraint(equalTo: missedTasksView.widthAnchor)
         ])
@@ -155,7 +155,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     func configureDetailsButton() {
         NSLayoutConstraint.activate([
             detailsButton.bottomAnchor.constraint(equalTo: dayView.bottomAnchor, constant: -20),
-            detailsButton.rightAnchor.constraint(equalTo: dateLabel.rightAnchor),
+            detailsButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
             detailsButton.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.4)
         ])
     }
