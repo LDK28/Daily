@@ -22,7 +22,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     let detailsButton = UIButton()
     let doneTasksImageView = UIImageView(image: UIImage(systemName: "sparkles"))
     let missedTasksImageView = UIImageView(image: UIImage(systemName: "zzz"))
-    let detailsImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
     
     //day review example. change this for integration with DiaryVC
     let doneTasks = 6
@@ -46,7 +45,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         
         doneTasksView.addSubview(doneTasksImageView)
         missedTasksView.addSubview(missedTasksImageView)
-        detailsButton.addSubview(detailsImageView)
         
         configureScrollView()
         configureHeaderLabel()
@@ -160,11 +158,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
             detailsButton.rightAnchor.constraint(equalTo: dateLabel.rightAnchor),
             detailsButton.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.4)
         ])
-        NSLayoutConstraint.activate([
-            detailsImageView.centerYAnchor.constraint(equalTo: detailsButton.centerYAnchor),
-            detailsImageView.heightAnchor.constraint(equalTo: detailsButton.heightAnchor, multiplier: 0.8),
-            detailsImageView.rightAnchor.constraint(equalTo: detailsButton.rightAnchor)
-        ])
     }
     
     func styleHeaderLabel() {
@@ -197,8 +190,8 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     func styleTasksLabels() {
         if let titleTaskLabelFont = UIFont(name: "Stolzl-Book", size: 18),
            let counterTaskLabelFont = UIFont(name: "Stolzl-Regular", size: 18) {
-            doneTasksLabel.styleLabelWithTwoFonts(firstText: "Done: ", with: titleTaskLabelFont, of: .dailyTextColor, secondText: String(doneTasks), with: counterTaskLabelFont, of: .systemGreen, textAlignment: .left)
-            missedTasksLabel.styleLabelWithTwoFonts(firstText: "Missed: ", with: titleTaskLabelFont, of: .dailyTextColor, secondText: String(missedTasks), with: counterTaskLabelFont, of: .systemRed, textAlignment: .left)
+            doneTasksLabel.styleLabelWithTwoFonts(firstText: "Done: ", with: titleTaskLabelFont, in: .dailyTextColor, secondText: String(doneTasks), with: counterTaskLabelFont, in: .systemGreen, textAlignment: .left)
+            missedTasksLabel.styleLabelWithTwoFonts(firstText: "Missed: ", with: titleTaskLabelFont, in: .dailyTextColor, secondText: String(missedTasks), with: counterTaskLabelFont, in: .systemRed, textAlignment: .left)
         }
     }
     
@@ -210,14 +203,16 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func styleDetailsButton() {
-        detailsButton.styleAccountButton(title: "Details", backgroundColor: .clear)
-        detailsImageView.styleImageView(color: .dailyTextColor)
-        //when detailsButton is pressed
-        detailsButton.setTitleColor(.systemGray3, for: .highlighted)
-        if detailsButton.state == .highlighted {
-            detailsButton.imageView?.tintColor = .systemGray3
+        if let detailsButtonTitleFont = UIFont(name: "Stolzl-Book", size: 18),
+           let detailsImage = UIImage(systemName: "chevron.right") {
+            detailsButton.setTitleWithImage(text: "Details ", with: detailsButtonTitleFont, image: detailsImage, for: .normal)
         }
-        //change color of detailsImageView when the detailsButton is pressed
+        //when detailsButton is pressed
+        if let detailsButtonTitleFont = UIFont(name: "Stolzl-Book", size: 18),
+           let detailsImage = UIImage(systemName: "chevron.right") {
+            detailsButton.setTitleWithImage(text: "Details ", with: detailsButtonTitleFont, in: .systemGray, image: detailsImage, for: .highlighted)
+        }
+        detailsButton.styleButton(textAlignment: .right)
     }
     
     func addShadow(to view: UIView){
