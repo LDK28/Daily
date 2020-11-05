@@ -195,17 +195,18 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func styleTasksLabels() {
-        if let tasksLabelsFont = UIFont(name: "Stolzl-Book", size: 18) {
-            doneTasksLabel.styleLabel(font: tasksLabelsFont, text: "Done: " + String(doneTasks), textAlignment: .left, textColor: .dailyTextColor)
-            missedTasksLabel.styleLabel(font: tasksLabelsFont, text: "Missed: " + String(missedTasks), textAlignment: .left, textColor: .dailyTextColor)
-            doneTasksImageView.styleImageView(color: .white)
-            missedTasksImageView.styleImageView(color: .white)
+        if let titleTaskLabelFont = UIFont(name: "Stolzl-Book", size: 18),
+           let counterTaskLabelFont = UIFont(name: "Stolzl-Regular", size: 18) {
+            doneTasksLabel.styleLabelWithTwoFonts(firstText: "Done: ", with: titleTaskLabelFont, of: .dailyTextColor, secondText: String(doneTasks), with: counterTaskLabelFont, of: .systemGreen, textAlignment: .left)
+            missedTasksLabel.styleLabelWithTwoFonts(firstText: "Missed: ", with: titleTaskLabelFont, of: .dailyTextColor, secondText: String(missedTasks), with: counterTaskLabelFont, of: .systemRed, textAlignment: .left)
         }
     }
     
     func styleTasksViews(){
         doneTasksView.styleView(backgroundColor: .systemGreen, cornerRadius: 5)
         missedTasksView.styleView(backgroundColor: .systemRed, cornerRadius: 5)
+        doneTasksImageView.styleImageView(color: .white)
+        missedTasksImageView.styleImageView(color: .white)
     }
     
     func styleDetailsButton() {
