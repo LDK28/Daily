@@ -103,13 +103,9 @@ extension UIColor {
 	
 	static var dailyMoreButtonBlackoutColor = UIColor("000000", alpha: 0.3)
 	
-	static var dailyShadowColor: CGColor {
+	static var dailyPlusButtonShadowColor: CGColor {
 		colorForTheme(light: UIColor.black, dark: .clear).cgColor
 	}
-    
-    static var dailyCalendarBackgroundColor: UIColor {
-        colorForTheme(light: UIColor.white, dark: UIColor("1C1C1E"))
-    }
 	
 	static var dailyLoginButtonColor = UIColor("82C1DF")
 	

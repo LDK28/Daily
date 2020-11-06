@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05112B412552AD1E0044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		05112B462552B7690044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		05112B4B2552BD1F0044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		0545A45D2555379F0001F17D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0545A45C2555379F0001F17D /* DayView.swift */; };
+		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
+		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
+		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2158545225449CAF00A60F75 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158545125449CAF00A60F75 /* AddButton.swift */; };
@@ -38,7 +45,7 @@
 		21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8D52545CAC400E08CD2 /* LoginVC.swift */; };
 		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
-		242625AE3BE7F9D1CAC7E536 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896252AD35914197C9231AC8 /* Pods_Daily.framework */; };
+		6CEC207ED487372A433E2931 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +66,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0545A45C2555379F0001F17D /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
+		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2158545125449CAF00A60F75 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
@@ -96,9 +107,9 @@
 		21E8C8D52545CAC400E08CD2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
-		896252AD35914197C9231AC8 /* Pods_Daily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2AC9C543747920698F5AA5A /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
+		9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
+		B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
+		CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				242625AE3BE7F9D1CAC7E536 /* Pods_Daily.framework in Frameworks */,
+				6CEC207ED487372A433E2931 /* Pods_Daily.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,18 +138,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0900D53BBB17DBCE2FF05C54 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				896252AD35914197C9231AC8 /* Pods_Daily.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		215615A82542F079005AB2DF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				215BC9B12542E2620069D30E /* CalendarVC.swift */,
+				0545A45C2555379F0001F17D /* DayView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -184,8 +188,8 @@
 				21E1D03C25403978006A4206 /* DailyTests */,
 				21E1D04725403978006A4206 /* DailyUITests */,
 				21E1D02125403975006A4206 /* Products */,
-				E631FD36667FB79A880B1B69 /* Pods */,
-				0900D53BBB17DBCE2FF05C54 /* Frameworks */,
+				9D51B1C8649A3D00CE3DF630 /* Pods */,
+				E30FADF84749CBD33DCC9DB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,6 +291,9 @@
 				21E64248254AFBC300564B78 /* UITextFieldExtension.swift */,
 				21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */,
 				21E64255254AFC0600564B78 /* UIStackViewExtension.swift */,
+				055017E72553179100F3F216 /* FSCalendarExtension.swift */,
+				055017EC25531A1700F3F216 /* UIViewExtension.swift */,
+				055017F925531AAF00F3F216 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,13 +307,21 @@
 			path = "Login page";
 			sourceTree = "<group>";
 		};
-		E631FD36667FB79A880B1B69 /* Pods */ = {
+		9D51B1C8649A3D00CE3DF630 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */,
-				E2AC9C543747920698F5AA5A /* Pods-Daily.release.xcconfig */,
+				9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */,
+				B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E30FADF84749CBD33DCC9DB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,11 +331,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21E1D04D25403978006A4206 /* Build configuration list for PBXNativeTarget "Daily" */;
 			buildPhases = (
-				7E52CB327BF373A3F67DF789 /* [CP] Check Pods Manifest.lock */,
+				8B4F113774C9D5FFEF03F335 /* [CP] Check Pods Manifest.lock */,
 				21E1D01C25403975006A4206 /* Sources */,
 				21E1D01D25403975006A4206 /* Frameworks */,
 				21E1D01E25403975006A4206 /* Resources */,
-				22983EE082795BA2F7DE3D4A /* [CP] Embed Pods Frameworks */,
+				622F8F4F1CE7F04537704993 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,7 +458,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22983EE082795BA2F7DE3D4A /* [CP] Embed Pods Frameworks */ = {
+		622F8F4F1CE7F04537704993 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -460,7 +475,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Daily/Pods-Daily-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7E52CB327BF373A3F67DF789 /* [CP] Check Pods Manifest.lock */ = {
+		8B4F113774C9D5FFEF03F335 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -479,7 +494,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${SRCROOT}/Podfile.lock\" \"${SRCROOT}/Pods/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,7 +506,9 @@
 			files = (
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
+				05112B462552B7690044D502 /* (null) in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
+				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
@@ -500,14 +517,19 @@
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* TabBarVC.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
+				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
+				05112B412552AD1E0044D502 /* (null) in Sources */,
+				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
+				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
+				055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,7 +695,7 @@
 		};
 		21E1D04E25403978006A4206 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D5784FD870B2E34CE066B60 /* Pods-Daily.debug.xcconfig */;
+			baseConfigurationReference = 9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -694,7 +716,7 @@
 		};
 		21E1D04F25403978006A4206 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2AC9C543747920698F5AA5A /* Pods-Daily.release.xcconfig */;
+			baseConfigurationReference = B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
