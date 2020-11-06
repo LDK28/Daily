@@ -12,5 +12,11 @@ protocol NewTaskOverlayInteractorProtocol {
 }
 
 class NewTaskOverlayInteractor: NewTaskOverlayInteractorProtocol {
+	let presenter: NewTaskOverlayPresenter
+	let model: NewTaskViewModel
 	
+	init(model: NewTaskViewModel, presenter: NewTaskOverlayPresenter) {
+		self.model = model
+		self.presenter = presenter
+	}
 }

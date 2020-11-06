@@ -111,7 +111,7 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 
 // MARK: The main model that will hold all our table cells
 
-class ProfileViewModel: NSObject {
+class NewTaskViewModel {
 	var items: [NewTaskViewModelItem] = [
 		NewTaskViewModelDateAndTimeItem(),
 		NewTaskViewModelRemindAlertItem(),

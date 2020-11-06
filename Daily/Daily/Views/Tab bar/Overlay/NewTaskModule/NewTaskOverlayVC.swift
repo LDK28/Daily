@@ -7,12 +7,15 @@
 
 import UIKit
 
-protocol NewTaskOverlayViewProtocol {
+protocol NewTaskOverlayViewProtocol: class {
 	func styleElements()
 	func configureTableView()
 }
 
 class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
+	var interactor: NewTaskOverlayInteractorProtocol?
+	let model = NewTaskViewModel()
+	
 	private let tableView: UITableView = {
 		let table = UITableView()
 		table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -54,9 +57,13 @@ class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
 
 
 extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return model.items.count
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		//more code to come
-		return 3
+		return model.items[section].rowCount
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
