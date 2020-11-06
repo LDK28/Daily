@@ -69,17 +69,7 @@ extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let item = model.items[indexPath.section]
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Custom Cell", for: indexPath) as! CustomCell
-		switch item.type {
-		case .dateAndTime:
-			let component = item as! NewTaskViewModelDateAndTimeItem
-			cell.component = component.components[indexPath.row]
-		case .remindAlert:
-			let component = item as! NewTaskViewModelRemindAlertItem
-			cell.component = component.component
-		case .repeatSelector:
-			let component = item as! NewTaskViewModelRepeatSelectorItem
-			cell.component = component.component
-		}
+		cell.component = item.components[indexPath.row]
 		return cell
 	}
 	

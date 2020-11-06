@@ -30,6 +30,16 @@ struct Icon {
 	}
 }
 
+struct DailyComponent {
+	var textView: UIView
+	var icon: Icon
+	
+	init(textView: UIView, icon: Icon) {
+		self.icon = icon
+		self.textView = textView
+	}
+}
+
 enum NewTaskViewModelItemType {
 	case dateAndTime
 	case remindAlert
@@ -39,11 +49,7 @@ enum NewTaskViewModelItemType {
 protocol NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType { get }
 	var rowCount: Int { get }
-}
-
-protocol NewTaskViewModelComponent {
-	var textView: UIView { get }
-	var icon: Icon { get }
+	var components: [DailyComponent] { get }
 }
 
 //Default values
@@ -58,16 +64,6 @@ extension NewTaskViewModelItem {
 	}
 }
 
-class DailyComponent: NewTaskViewModelComponent {
-	var textView: UIView
-	var icon: Icon
-	
-	init(textView: UIView, icon: Icon) {
-		self.icon = icon
-		self.textView = textView
-	}
-}
-
 //MARK: Date and time
 
 class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
@@ -75,7 +71,7 @@ class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 		return .dateAndTime
 	}
 	
-	var components: [DailyComponent] = [
+	var components = [
 		DailyComponent(textView: UIStackView(), icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed)),
 		DailyComponent(textView: UIStackView(), icon: Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue))
 	]
@@ -88,7 +84,9 @@ class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 		return .remindAlert
 	}
 	
-	var component = DailyComponent(textView: UILabel(), icon: Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow))
+	var components = [
+		DailyComponent(textView: UILabel(), icon: Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow))
+	]
 }
 
 //MARK: Repeat (never otherwise set interval)
@@ -98,7 +96,9 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 		return .repeatSelector
 	}
 	
-	var component = DailyComponent(textView: UILabel(), icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen))
+	var components = [
+		DailyComponent(textView: UILabel(), icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen))
+	]
 }
 
 // MARK: The main model that will hold all our table cells
