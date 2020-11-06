@@ -39,8 +39,8 @@ enum NewTaskViewModelItemType {
 protocol NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType { get }
 	var rowCount: Int { get }
-	var icon: Icon { get }
-	var text: UIView { get }
+	var iconSet: [Icon] { get }
+	var textView: [UIView] { get }
 }
 
 //Default values
@@ -54,12 +54,12 @@ extension NewTaskViewModelItem {
 		}
 	}
 	
-	var text: UIView {
+	var textView: [UIView] {
 		switch type {
 		case .dateAndTime:
-			return UIStackView()
+			return [UIStackView()]
 		default:
-			return UILabel()
+			return [UILabel()]
 		}
 	}
 }
@@ -71,15 +71,12 @@ class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 		return .dateAndTime
 	}
 	
-	var icon: Icon {
-		return Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed)
+	var iconSet: [Icon] {
+		return [
+			Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed),
+			Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue)
+		]
 	}
-	
-	var secondaryIcon: Icon {
-		return Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue)
-	}
-	var secondaryText = UIStackView()
-	
 }
 
 //MARK: Reminder (on or off)
@@ -89,8 +86,10 @@ class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 		return .remindAlert
 	}
 	
-	var icon: Icon {
-		return Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow)
+	var iconSet: [Icon] {
+		return [
+			Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow)
+		]
 	}
 }
 
@@ -101,8 +100,10 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 		return .repeatSelector
 	}
 	
-	var icon: Icon {
-		return Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen)
+	var iconSet: [Icon] {
+		return [
+			Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen)
+		]
 	}
 	
 	
