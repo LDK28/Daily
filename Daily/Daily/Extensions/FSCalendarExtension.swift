@@ -9,17 +9,17 @@ import FSCalendar
 
 extension FSCalendar {
     func styleCalendar(backgroundColor: UIColor, titleFont: UIFont, headerTitleFont: UIFont) {
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 10
-        self.appearance.titleFont = titleFont
-        self.appearance.titleDefaultColor = .dailyTextColor
-        self.appearance.weekdayFont = titleFont
-        self.appearance.weekdayTextColor = .systemGray
-        self.appearance.headerTitleFont = headerTitleFont
-        self.appearance.headerTitleColor = .dailyTextColor
-        self.appearance.todayColor = .systemRed
-        self.appearance.selectionColor = .systemGray
+        layer.cornerRadius = 10
+        appearance.titleFont = titleFont
+        appearance.titleDefaultColor = .dailyTextColor
+        appearance.weekdayFont = titleFont
+        appearance.weekdayTextColor = .systemGray
+        appearance.headerTitleFont = headerTitleFont
+        appearance.headerTitleColor = .dailyTextColor
+        appearance.todayColor = .systemRed
+        appearance.selectionColor = .systemGray
         
     }
 }

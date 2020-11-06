@@ -10,7 +10,7 @@ import UIKit
 extension UIImageView {
     
     func styleImageView(color: UIColor) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.tintColor = color
+        translatesAutoresizingMaskIntoConstraints = false
+        tintColor = color
     }
 }

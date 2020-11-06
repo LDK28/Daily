@@ -19,8 +19,8 @@ extension UILabel {
     
     func styleLabelWithMutableAttributedString(text: NSMutableAttributedString, textAlignment: NSTextAlignment = .center) {
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.attributedText = text
+        translatesAutoresizingMaskIntoConstraints = false
+        attributedText = text
         self.textAlignment = textAlignment
     }
     
@@ -37,7 +37,7 @@ extension UILabel {
         finalText.append(firstTextMutableAttributedString)
         finalText.append(secondTextMutableAttributedString)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
         self.attributedText = finalText
         self.textAlignment = textAlignment
     }

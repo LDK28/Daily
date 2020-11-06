@@ -10,8 +10,14 @@ import UIKit
 extension UIView {
     
     func  styleView(backgroundColor: UIColor, cornerRadius: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = cornerRadius
+        layer.cornerRadius = cornerRadius
+    }
+    func addShadow() {
+        layer.shadowColor = UIColor.dailyShadowColor
+        layer.shadowOpacity = 0.05
+        layer.shadowOffset = CGSize(width: 0, height: 10)
+        layer.shadowRadius = 4
     }
 }

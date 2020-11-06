@@ -163,7 +163,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     func styleHeaderLabel() {
         if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
             headerLabel.styleLabel(font: headerLabelFont, text: "Calendar", textAlignment: .center, textColor: .dailyTitleTextColor)
-            addShadow(to: headerLabel)
+            headerLabel.addShadow()
         }
     }
     
@@ -171,13 +171,13 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         if let calendarViewTitleFont = UIFont(name: "Stolzl-Book", size: 15),
             let calendarViewHeaderTitleFont = UIFont(name: "Stolzl-Regular", size: 18) {
             calendarView.styleCalendar(backgroundColor: .dailyCalendarBackgroundColor, titleFont: calendarViewTitleFont, headerTitleFont: calendarViewHeaderTitleFont)
-            addShadow(to: calendarView)
+            calendarView.addShadow()
         }
     }
     
     func styleDayView() {
         dayView.styleView(backgroundColor: .dailyCalendarBackgroundColor, cornerRadius: 10)
-        addShadow(to: dayView)
+        dayView.addShadow()
     }
     
     func styleDateLabel() {
@@ -215,13 +215,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         detailsButton.styleButton(textAlignment: .right)
     }
     
-    func addShadow(to view: UIView){
-        view.layer.shadowColor = UIColor.dailyShadowColor
-        view.layer.shadowOpacity = 0.05
-        view.layer.shadowOffset = CGSize(width: 0, height: 10)
-        view.layer.shadowRadius = 4
-    }
-    
     func getCurrentDate() -> String {
         let todayDate = Date()
         let (dayOfTheWeek, date) = formatDate(fullDate: todayDate)
@@ -237,7 +230,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         return (dayOfTheWeek, date)
     }
     
-    @objc func didTapDetails(sender: UIButton!) {
+    @objc func didTapDetails(sender: UIButton) {
         //go to the DiaryVC
      }
 

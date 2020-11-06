@@ -20,19 +20,19 @@ extension UIButton {
 		self.layer.cornerRadius = 5
 	}
     func styleButton(title: String = "", backgroundColor: UIColor = .clear, textAlignment: UIControl.ContentHorizontalAlignment = .left) {
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
-        if self.titleLabel?.text == "" {
-            self.setTitle(title, for: .normal)
-            self.tintColor = .dailyTextColor
-            self.setTitleColor(.dailyTextColor, for: .normal)
-            self.setTitleColor(.systemGray, for: .highlighted)
-            self.titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
-            self.titleLabel?.adjustsFontSizeToFitWidth = true
+        if titleLabel?.text == "" {
+            setTitle(title, for: .normal)
+            tintColor = .dailyTextColor
+            setTitleColor(.dailyTextColor, for: .normal)
+            setTitleColor(.systemGray, for: .highlighted)
+            titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
+            titleLabel?.adjustsFontSizeToFitWidth = true
         }
-        self.contentHorizontalAlignment = textAlignment
+        contentHorizontalAlignment = textAlignment
         if backgroundColor != .clear {
-            self.layer.cornerRadius = 5
+            layer.cornerRadius = 5
         }
     }
     func setTitleWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, for state: UIControl.State) {
@@ -43,6 +43,6 @@ extension UIButton {
         let buttonTitle = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
         buttonTitle.append(NSAttributedString(attachment: imageAttachment))
         
-        self.setAttributedTitle(buttonTitle, for: state)
+        setAttributedTitle(buttonTitle, for: state)
     }
 }
