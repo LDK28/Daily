@@ -18,7 +18,7 @@ class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
 	
 	private let tableView: UITableView = {
 		let table = UITableView()
-		table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		table.register(CustomCell.self, forCellReuseIdentifier: "Custom Cell")
 		return table
 	}()
 	
@@ -67,9 +67,19 @@ extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		//more code to come
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		
+		let item = model.items[indexPath.section]
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Custom Cell", for: indexPath) as! CustomCell
+		switch item.type {
+		case .dateAndTime:
+			let component = item as! NewTaskViewModelDateAndTimeItem
+			cell.component = component.components[indexPath.row]
+		case .remindAlert:
+			let component = item as! NewTaskViewModelRemindAlertItem
+			cell.component = component.component
+		case .repeatSelector:
+			let component = item as! NewTaskViewModelRepeatSelectorItem
+			cell.component = component.component
+		}
 		return cell
 	}
 	
