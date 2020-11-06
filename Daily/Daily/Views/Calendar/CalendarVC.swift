@@ -13,15 +13,8 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     let scrollView = UIScrollView()
     let headerLabel = UILabel()
     let calendarView = FSCalendar()
-    let dayView = UIView()
+    let dayView = DayView()
     let dateLabel = UILabel()
-    let doneTasksLabel = UILabel()
-    let missedTasksLabel = UILabel()
-    let doneTasksView = UIView()
-    let missedTasksView = UIView()
-    let detailsButton = UIButton()
-    let doneTasksImageView = UIImageView(image: UIImage(systemName: "sparkles"))
-    let missedTasksImageView = UIImageView(image: UIImage(systemName: "zzz"))
     
     //day review example. change this for integration with DiaryVC
     let doneTasks = 6
@@ -36,39 +29,20 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         scrollView.addSubview(calendarView)
         scrollView.addSubview(dayView)
         
-        dayView.addSubview(dateLabel)
-        dayView.addSubview(doneTasksLabel)
-        dayView.addSubview(missedTasksLabel)
-        dayView.addSubview(detailsButton)
-        dayView.addSubview(doneTasksView)
-        dayView.addSubview(missedTasksView)
-        
-        doneTasksView.addSubview(doneTasksImageView)
-        missedTasksView.addSubview(missedTasksImageView)
-        
         configureScrollView()
         configureHeaderLabel()
         configureCalendarView()
         configureDayView()
-        configureDateLabel()
-        configureTasksLabels()
-        configureTasksViews()
-        configureDetailsButton()
         
         styleHeaderLabel()
         styleCalendarView()
-        styleDayView()
-        styleDateLabel()
-        styleTasksLabels()
-        styleTasksViews()
-        styleDetailsButton()
         
+        dayView.loadView(fullDate: getCurrentDate(), doneTasks: 8, missedTasks: missedTasks)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         calendarView.delegate = self
-        detailsButton.addTarget(self, action: #selector(didTapDetails), for: .touchUpInside)
     }
     
     func configureScrollView(){
@@ -107,59 +81,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
             dayView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -36)
         ])
     }
-    
-    func configureDateLabel() {
-        NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: dayView.topAnchor, constant: 20),
-            dateLabel.centerXAnchor.constraint(equalTo: dayView.centerXAnchor),
-            dateLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.9),
-        ])
-    }
-    
-    func configureTasksLabels() {
-        NSLayoutConstraint.activate([
-            doneTasksLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 15),
-            doneTasksLabel.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 50),
-            doneTasksLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.5),
-            missedTasksLabel.topAnchor.constraint(equalTo: doneTasksLabel.bottomAnchor, constant: 8),
-            missedTasksLabel.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 50),
-            missedTasksLabel.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.5)
-        ])
-    }
-    
-    func configureTasksViews() {
-        //configure tasksViews
-        NSLayoutConstraint.activate([
-            doneTasksView.centerYAnchor.constraint(equalTo: doneTasksLabel.centerYAnchor),
-            doneTasksView.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 15),
-            doneTasksView.widthAnchor.constraint(equalToConstant: 25),
-            doneTasksView.heightAnchor.constraint(equalTo: doneTasksView.widthAnchor),
-            missedTasksView.centerYAnchor.constraint(equalTo: missedTasksLabel.centerYAnchor),
-            missedTasksView.leadingAnchor.constraint(equalTo: dayView.leadingAnchor, constant: 15),
-            missedTasksView.widthAnchor.constraint(equalToConstant: 25),
-            missedTasksView.heightAnchor.constraint(equalTo: missedTasksView.widthAnchor)
-        ])
-        //configure tasksImageViews
-        NSLayoutConstraint.activate([
-            doneTasksImageView.centerYAnchor.constraint(equalTo: doneTasksView.centerYAnchor),
-            doneTasksImageView.centerXAnchor.constraint(equalTo: doneTasksView.centerXAnchor),
-            doneTasksImageView.widthAnchor.constraint(equalTo: doneTasksView.widthAnchor, multiplier: 0.7),
-            doneTasksImageView.heightAnchor.constraint(equalTo: doneTasksView.heightAnchor, multiplier: 0.7),
-            missedTasksImageView.centerYAnchor.constraint(equalTo: missedTasksView.centerYAnchor),
-            missedTasksImageView.centerXAnchor.constraint(equalTo: missedTasksView.centerXAnchor),
-            missedTasksImageView.widthAnchor.constraint(equalTo: missedTasksView.widthAnchor, multiplier: 0.7),
-            missedTasksImageView.heightAnchor.constraint(equalTo: missedTasksView.heightAnchor, multiplier: 0.7)
-        ])
-    }
-    
-    func configureDetailsButton() {
-        NSLayoutConstraint.activate([
-            detailsButton.bottomAnchor.constraint(equalTo: dayView.bottomAnchor, constant: -20),
-            detailsButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
-            detailsButton.widthAnchor.constraint(equalTo: dayView.widthAnchor, multiplier: 0.4)
-        ])
-    }
-    
+
     func styleHeaderLabel() {
         if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
             headerLabel.styleLabel(font: headerLabelFont, text: "Calendar", textAlignment: .center, textColor: .dailyTitleTextColor)
@@ -173,46 +95,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
             calendarView.styleCalendar(backgroundColor: .dailyCalendarBackgroundColor, titleFont: calendarViewTitleFont, headerTitleFont: calendarViewHeaderTitleFont)
             calendarView.addShadow()
         }
-    }
-    
-    func styleDayView() {
-        dayView.styleView(backgroundColor: .dailyCalendarBackgroundColor, cornerRadius: 10)
-        dayView.addShadow()
-    }
-    
-    func styleDateLabel() {
-        if let dateLabelFont = UIFont(name: "Stolzl-Regular", size: 18) {
-            dateLabel.styleLabel(font: dateLabelFont, text: getCurrentDate(), textAlignment: .right, textColor: .dailyTextColor)
-        }
-        //change this for integration with DiaryVC
-    }
-    
-    func styleTasksLabels() {
-        if let titleTaskLabelFont = UIFont(name: "Stolzl-Book", size: 18),
-           let counterTaskLabelFont = UIFont(name: "Stolzl-Regular", size: 18) {
-            doneTasksLabel.styleLabelWithTwoFonts(firstText: "Done: ", with: titleTaskLabelFont, in: .dailyTextColor, secondText: String(doneTasks), with: counterTaskLabelFont, in: .systemGreen, textAlignment: .left)
-            missedTasksLabel.styleLabelWithTwoFonts(firstText: "Missed: ", with: titleTaskLabelFont, in: .dailyTextColor, secondText: String(missedTasks), with: counterTaskLabelFont, in: .systemRed, textAlignment: .left)
-        }
-    }
-    
-    func styleTasksViews(){
-        doneTasksView.styleView(backgroundColor: .systemGreen, cornerRadius: 5)
-        missedTasksView.styleView(backgroundColor: .systemRed, cornerRadius: 5)
-        doneTasksImageView.styleImageView(color: .white)
-        missedTasksImageView.styleImageView(color: .white)
-    }
-    
-    func styleDetailsButton() {
-        if let detailsButtonTitleFont = UIFont(name: "Stolzl-Book", size: 18),
-           let detailsImage = UIImage(systemName: "chevron.right") {
-            detailsButton.setTitleWithImage(text: "Details ", with: detailsButtonTitleFont, image: detailsImage, for: .normal)
-        }
-        //when detailsButton is pressed
-        if let detailsButtonTitleFont = UIFont(name: "Stolzl-Book", size: 18),
-           let detailsImage = UIImage(systemName: "chevron.right") {
-            detailsButton.setTitleWithImage(text: "Details ", with: detailsButtonTitleFont, in: .systemGray, image: detailsImage, for: .highlighted)
-        }
-        detailsButton.styleButton(textAlignment: .right)
     }
     
     func getCurrentDate() -> String {
@@ -229,10 +111,6 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         let date = String(selectedDate[1])
         return (dayOfTheWeek, date)
     }
-    
-    @objc func didTapDetails(sender: UIButton) {
-        //go to the DiaryVC
-     }
 
     func calendar(_ calendar: FSCalendar, didSelect fullDate: Date, at monthPosition: FSCalendarMonthPosition) {
         let (dayOfTheWeek, date) = formatDate(fullDate: fullDate)
