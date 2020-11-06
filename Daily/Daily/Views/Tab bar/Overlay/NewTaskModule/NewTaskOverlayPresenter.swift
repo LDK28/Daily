@@ -12,5 +12,11 @@ protocol NewTaskOverlayPresenterProtocol {
 }
 
 class NewTaskOverlayPresenter: NewTaskOverlayPresenterProtocol {
-	
+	weak var view: NewTaskOverlayViewProtocol?
+	let model: NewTaskViewModel
+
+	init(model: NewTaskViewModel, view: NewTaskOverlayViewProtocol) {
+		self.model = model
+		self.view = view
+	}
 }

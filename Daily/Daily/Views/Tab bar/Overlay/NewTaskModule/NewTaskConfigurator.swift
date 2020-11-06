@@ -9,6 +9,14 @@ import UIKit
 
 class NewNoteOverlayModule {
 	static func build() -> UIViewController {
-		return UIViewController()
+		let model = NewTaskViewModel()
+		let viewController = NewTaskOverlayVC()
+		let presenter = NewTaskOverlayPresenter(model: model, view: viewController)
+		let interactor = NewTaskOverlayInteractor(model: model, presenter: presenter)
+		
+		viewController.interactor = interactor
+		
+		return viewController
+		
 	}
 }
