@@ -28,7 +28,8 @@ struct Icon {
 			return
 		}
 		
-		self.symbol = symbol
+		//let config = UIImage.SymbolConfiguration(pointSize: 14, weight: .regular, scale: .me)
+		self.symbol = symbol.withAlignmentRectInsets(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))//.withConfiguration(config)
 	}
 }
 
