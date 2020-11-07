@@ -35,6 +35,14 @@ class NewTaskOverlayVC: OverlayTemplateVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		/*
+			This is an initial state of the VIP cycle. Once our view appears and gets loaded we start this cycle for the first time: VIEW calls INTERACTOR -> it does something or nothing with our DATASOURCE -> then DATASOURCE is sent to PRESENTER that prepares our raw data for our VIEW to show -> VIEW recieves rendered DATASOURCE and shows contents accordingly
+		
+			However, in our case DailyDataSource is not affected by any of the VIP cycle members, because the content that table view shows in this module is static and has no requests to a server or something else. Therefore, our DATASOURCE merely gets transfered from one VIP member to another, but it is inevitable
+		
+			In addition, we will have methods that will be called from table view (e.g. didSelectRowAt to expand time and date calendar). At this point, VIP cycle will become really handy
+		*/
+		
 		interactor?.fetchCells()
     }
 	
@@ -63,10 +71,12 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
+		//items represent an array of section
 		return cellItemsToDisplay?.items.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		//each section in the array of items has definite amount of cells
 		return cellItemsToDisplay?.items[section].rowCount ?? 0
 	}
 	
