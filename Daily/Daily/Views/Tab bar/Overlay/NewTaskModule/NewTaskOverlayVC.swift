@@ -17,7 +17,8 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 	
 	private let tableView: UITableView = {
 		let table = UITableView()
-		
+		table.register(DailyCell.self, forCellReuseIdentifier: DailyCell.cellIdentifier)
+		table.layer.cornerRadius = 10
 		return table
 	}()
 	
@@ -62,14 +63,18 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		cellItemsToDisplay?.items.count ?? 0
+		return cellItemsToDisplay?.items.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		cellItemsToDisplay?.items[section].rowCount ?? 0
+		return cellItemsToDisplay?.items[section].rowCount ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: DailyCell.cellIdentifier, for: indexPath) as? DailyCell {
+			cell.component = cellItemsToDisplay?.items[indexPath.section].components[indexPath.row]
+			return cell
+		}
 		return UITableViewCell()
 	}
 	
@@ -80,8 +85,7 @@ extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 
 extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
 	func display(data: DailyDataSource) {
-		cellItemsToDisplay?.items.removeAll()
-		cellItemsToDisplay?.items.append(contentsOf: data.items)
+		cellItemsToDisplay = data
 		tableView.reloadData()
 	}
 	

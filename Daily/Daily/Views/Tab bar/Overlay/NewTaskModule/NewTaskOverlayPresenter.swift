@@ -25,6 +25,7 @@ class NewTaskOverlayPresenter {
 // MARK: - Presenter Protocol
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 	func presentData() {
+		//let a = dataSource
 		view?.display(data: dataSource)
 	}
 }

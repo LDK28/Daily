@@ -33,8 +33,27 @@ class DailyCell: UITableViewCell {
 
 	static let cellIdentifier = "Daily Cell"
 	
-	var textView = UIView()
-	var icon = UIImageView()
+	var textView = UIStackView()
+	var icon = UIImageView(image: UIImage(systemName: "plus"))
+	
+	var component: DailyCellComponent? {
+		didSet {
+			guard let component = component else { return }
+			
+			icon.backgroundColor = component.icon.tileColor
+			icon.tintColor = component.icon.symbolColor
+			icon.image = component.icon.symbol
+			
+			textView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+			for title in component.titles {
+				let label = UILabel()
+				label.text = title
+				label.font = .systemFont(ofSize: 14)
+				textView.addArrangedSubview(label)
+			}
+			
+		}
+	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,11 +65,14 @@ class DailyCell: UITableViewCell {
 		contentView.addSubview(icon)
 		
 		icon.layer.cornerRadius = 5
-		
+		icon.contentMode = .center
+		textView.styleStackView(spacing: 2, axis: .vertical)
 		
 		NSLayoutConstraint.activate([
 			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			icon.widthAnchor.constraint(equalToConstant: 21),
+			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
 			textView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 10),
 			textView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
