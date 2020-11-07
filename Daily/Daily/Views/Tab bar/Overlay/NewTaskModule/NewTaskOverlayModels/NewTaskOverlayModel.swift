@@ -13,37 +13,6 @@ import UIKit
 		
 */
 
-struct Icon {
-	let tileColor: UIColor
-	let symbol: UIImage?
-	let symbolColor: UIColor
-	
-	
-	init(symbolName: String, tileColor: UIColor, symbolColor: UIColor = .white) {
-		self.tileColor = tileColor
-		self.symbolColor = symbolColor
-		
-		guard let symbol = UIImage(systemName: symbolName) else {
-			self.symbol = nil
-			return
-		}
-		
-		//let config = UIImage.SymbolConfiguration(pointSize: 14, weight: .regular, scale: .me)
-		self.symbol = symbol.withAlignmentRectInsets(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))//.withConfiguration(config)
-	}
-}
-
-struct DailyCellComponent {
-	var titles = [String]()
-	var icon: Icon
-	
-	init(titles: [String], icon: Icon) {
-		self.icon = icon
-		for title in titles {
-			self.titles.append(title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized)
-		}
-	}
-}
 
 enum NewTaskViewModelItemType {
 	case dateAndTime
@@ -127,7 +96,7 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	]
 }
 
-// MARK: - The main model that will hold all our table cells
+// MARK: - The main model that will hold all our table sections with cells
 
 class DailyDataSource {
 	var items: [NewTaskViewModelItem]
