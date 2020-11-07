@@ -72,7 +72,7 @@ class TabBarVC: UITabBarController {
 		//HOW TO ANIMATE AN IMAGE CHANGE IN THIS BUTTON?
 		plusButton.toggleImage()
 		addButtonsStackView.isHidden.toggle()
-
+    
 		if plusButtonBlackout.isHidden {
 			plusButtonBlackout.isHidden.toggle()
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
@@ -124,6 +124,7 @@ class TabBarVC: UITabBarController {
 		styling.barTintColor = .dailyTabBarColor
 		let systemFontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
 		UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)
+
 
 	
 		self.viewControllers = [createDiaryNC(), createIdeasNC(), createCalendarNC(), createProfileNC()]
