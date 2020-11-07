@@ -14,11 +14,14 @@ import UIKit
 */
 
 struct Icon {
-	var tileColor: UIColor
-	var symbol: UIImage?
+	let tileColor: UIColor
+	let symbol: UIImage?
+	let symbolColor: UIColor
+	
 	
 	init(symbolName: String, tileColor: UIColor, symbolColor: UIColor = .white) {
 		self.tileColor = tileColor
+		self.symbolColor = symbolColor
 		
 		guard let symbol = UIImage(systemName: symbolName) else {
 			self.symbol = nil
@@ -26,7 +29,6 @@ struct Icon {
 		}
 		
 		self.symbol = symbol
-		self.symbol = self.symbol!.withTintColor(symbolColor)
 	}
 }
 
@@ -133,4 +135,3 @@ class DailyDataSource {
 		self.items = items
 	}
 }
-

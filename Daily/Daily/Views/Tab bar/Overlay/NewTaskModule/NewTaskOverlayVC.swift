@@ -8,16 +8,16 @@
 import UIKit
 
 protocol  NewTaskOverlayDisplayLogic: class {
-	func displayData()
+	func display(data: DailyDataSource)
 }
 
 class NewTaskOverlayVC: OverlayTemplateVC {
 	var interactor: NewTaskOverlayBusinessLogic?
-	let cellItemsToDisplay = [String]()
+	var cellItemsToDisplay: DailyDataSource?
 	
 	private let tableView: UITableView = {
 		let table = UITableView()
-		table.register(CustomCell.self, forCellReuseIdentifier: "Custom Cell")
+		
 		return table
 	}()
 	
@@ -62,11 +62,11 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
+		cellItemsToDisplay?.items.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 5
+		cellItemsToDisplay?.items[section].rowCount ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,8 +79,10 @@ extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: - View Protocol
 
 extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
-	func displayData() {
-		
+	func display(data: DailyDataSource) {
+		cellItemsToDisplay?.items.removeAll()
+		cellItemsToDisplay?.items.append(contentsOf: data.items)
+		tableView.reloadData()
 	}
 	
 }
