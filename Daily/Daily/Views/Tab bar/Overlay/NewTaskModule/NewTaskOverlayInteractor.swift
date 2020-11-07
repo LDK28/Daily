@@ -12,13 +12,8 @@ protocol NewTaskOverlayBusinessLogic {
 }
 
 class NewTaskOverlayInteractor {
-	let presenter: NewTaskOverlayPresenter?
-	let model: NewTaskViewModel
-	
-	init(model: NewTaskViewModel, presenter: NewTaskOverlayPresenter) {
-		self.model = model
-		self.presenter = presenter
-	}
+	var presenter: NewTaskOverlayPresentationLogic? 
+
 }
 
 // MARK: - Interactor Protocol

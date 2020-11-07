@@ -13,7 +13,7 @@ class CustomCell: UITableViewCell {
 	var icon = UIView()
 	
 	
-	var component: DailyComponent? {
+	var component: DailyCellComponent? {
 		didSet {
 			guard let component = component else { return }
 			
@@ -21,7 +21,7 @@ class CustomCell: UITableViewCell {
 			self.icon.subviews.forEach { $0.removeFromSuperview() }
 			self.icon.addSubview(UIImageView(image: component.icon.symbol))
 			
-			self.textView = component.textView
+			//self.textView = component.textView
 		}
 	}
 	
