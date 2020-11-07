@@ -64,7 +64,7 @@ extension NewTaskViewModelItem {
 	}
 }
 
-//MARK: Date and time
+//MARK: - Date and time
 
 class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
@@ -77,7 +77,7 @@ class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	]
 }
 
-//MARK: Reminder (on or off)
+//MARK: - Reminder (on or off)
 
 class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
@@ -89,7 +89,7 @@ class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 	]
 }
 
-//MARK: Repeat (never otherwise set interval)
+//MARK: - Repeat (never otherwise set interval)
 
 class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
@@ -101,7 +101,7 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	]
 }
 
-// MARK: The main model that will hold all our table cells
+// MARK: - The main model that will hold all our table cells
 
 class NewTaskViewModel {
 	var items: [NewTaskViewModelItem] = [

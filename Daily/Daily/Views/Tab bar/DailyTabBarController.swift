@@ -17,7 +17,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		return view
 	}()
 	
-	private var overlayView: UIViewController? = nil
+	private var overlayViewContoller: UIViewController? = nil
 	private let newProjectButton = AddButton(title: "New project", symbolName: "doc.on.doc")
 	private let newTaskButton = AddButton(title: "New task", symbolName: "paperclip")
 	private let newNoteButton = AddButton(title: "New note", symbolName: "highlighter")
@@ -73,8 +73,8 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		} else {
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
 				self.addButtonsStackView.isHidden = true
-				self.overlayView?.remove()
-				self.overlayView = nil
+				self.overlayViewContoller?.remove()
+				self.overlayViewContoller = nil
 				
 				self.blackoutView.alpha = 0
 			}) { _ in
@@ -85,24 +85,24 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	
 	@objc func didTapNewNoteButton() {
 		addButtonsStackView.isHidden = true
-		overlayView = NewNoteOverlayVC()
-		if let overlay = overlayView {
+		overlayViewContoller = NewNoteOverlayVC()
+		if let overlay = overlayViewContoller {
 			add(overlay, highestElementInTabBar: plusButton)
 		}
 	}
 	
 	@objc func didTapNewTaskButton() {
 		addButtonsStackView.isHidden = true
-		overlayView = NewTaskOverlayVC()
-		if let overlay = overlayView {
+		overlayViewContoller = NewTaskOverlayModule.build()
+		if let overlay = overlayViewContoller {
 			add(overlay, highestElementInTabBar: plusButton)
 		}
 	}
 	
 	@objc func didTapNewProjectButton() {
 		addButtonsStackView.isHidden = true
-		overlayView = NewProjectOverlayVC()
-		if let overlay = overlayView {
+		overlayViewContoller = NewProjectOverlayVC()
+		if let overlay = overlayViewContoller {
 			add(overlay, highestElementInTabBar: plusButton)
 		}
 	}

@@ -7,14 +7,12 @@
 
 import UIKit
 
-protocol NewTaskOverlayViewProtocol: class {
-	func styleElements()
-	func configureTableView()
+protocol NewTaskOverlayDisplayLogic: class {
+	func displayData()
 }
 
-class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
-	var interactor: NewTaskOverlayInteractorProtocol?
-	let model = NewTaskViewModel()
+class NewTaskOverlayVC: OverlayTemplateVC {
+	var interactor: NewTaskOverlayBusinessLogic?
 	
 	private let tableView: UITableView = {
 		let table = UITableView()
@@ -37,6 +35,7 @@ class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
 		
 		tableView.delegate = self
 		tableView.dataSource = self
+		interactor?.fetchCells()
     }
 	
 	func configureTableView() {
@@ -56,22 +55,35 @@ class NewTaskOverlayVC: OverlayTemplateVC, NewTaskOverlayViewProtocol {
 }
 
 
+// MARK: - Table View Delegate and DataSource
+
 extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return model.items.count
+		//return model.items.count
+		5
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return model.items[section].rowCount
+		//return model.items[section].rowCount
+		return 5
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let item = model.items[indexPath.section]
+		//let item = model.items[indexPath.section]
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Custom Cell", for: indexPath) as! CustomCell
-		cell.component = item.components[indexPath.row]
+		//cell.component = item.components[indexPath.row]
 		return cell
 	}
 	
+	
+}
+
+// MARK: - View Protocol
+
+extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
+	func displayData() {
+		
+	}
 	
 }
