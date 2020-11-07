@@ -9,10 +9,15 @@ import UIKit
 
 class NewTaskOverlayModule {
 	static func build() -> UIViewController {
-		let model = NewTaskViewModel()
+		let model = NewTaskModel()
+		
 		let viewController = NewTaskOverlayVC()
-		let presenter = NewTaskOverlayPresenter(model: model, view: viewController)
-		let interactor = NewTaskOverlayInteractor(model: model, presenter: presenter)
+		
+		let presenter = NewTaskOverlayPresenter()
+		presenter.view = viewController
+		
+		let interactor = NewTaskOverlayInteractor()
+		interactor.presenter = presenter
 		
 		viewController.interactor = interactor
 		

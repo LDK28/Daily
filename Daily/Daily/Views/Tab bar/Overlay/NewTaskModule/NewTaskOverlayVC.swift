@@ -7,12 +7,13 @@
 
 import UIKit
 
-protocol NewTaskOverlayDisplayLogic: class {
+protocol  NewTaskOverlayDisplayLogic: class {
 	func displayData()
 }
 
 class NewTaskOverlayVC: OverlayTemplateVC {
 	var interactor: NewTaskOverlayBusinessLogic?
+	let cellItemsToDisplay = [String]()
 	
 	private let tableView: UITableView = {
 		let table = UITableView()
@@ -33,13 +34,14 @@ class NewTaskOverlayVC: OverlayTemplateVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		tableView.delegate = self
-		tableView.dataSource = self
 		interactor?.fetchCells()
     }
 	
 	func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
 		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.tableFooterView = UIView(frame: .zero)
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
 			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
@@ -60,20 +62,15 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		//return model.items.count
-		5
+		return 1
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		//return model.items[section].rowCount
 		return 5
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		//let item = model.items[indexPath.section]
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Custom Cell", for: indexPath) as! CustomCell
-		//cell.component = item.components[indexPath.row]
-		return cell
+		return UITableViewCell()
 	}
 	
 	

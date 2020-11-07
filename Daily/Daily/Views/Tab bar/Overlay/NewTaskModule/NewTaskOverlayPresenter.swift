@@ -13,12 +13,6 @@ protocol NewTaskOverlayPresentationLogic {
 
 class NewTaskOverlayPresenter {
 	weak var view: NewTaskOverlayDisplayLogic?
-	let model: NewTaskViewModel
-
-	init(model: NewTaskViewModel, view: NewTaskOverlayDisplayLogic) {
-		self.model = model
-		self.view = view
-	}
 }
 
 
