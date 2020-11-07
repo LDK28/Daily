@@ -7,16 +7,24 @@
 
 import UIKit
 
-protocol NewTaskOverlayPresenterProtocol {
-	//more to come
+protocol NewTaskOverlayPresentationLogic {
+	func presentData()
 }
 
-class NewTaskOverlayPresenter: NewTaskOverlayPresenterProtocol {
-	weak var view: NewTaskOverlayViewProtocol?
+class NewTaskOverlayPresenter {
+	weak var view: NewTaskOverlayDisplayLogic?
 	let model: NewTaskViewModel
 
-	init(model: NewTaskViewModel, view: NewTaskOverlayViewProtocol) {
+	init(model: NewTaskViewModel, view: NewTaskOverlayDisplayLogic) {
 		self.model = model
 		self.view = view
+	}
+}
+
+
+// MARK: - Presenter Protocol
+extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
+	func presentData() {
+		
 	}
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewNoteOverlayModule {
+class NewTaskOverlayModule {
 	static func build() -> UIViewController {
 		let model = NewTaskViewModel()
 		let viewController = NewTaskOverlayVC()

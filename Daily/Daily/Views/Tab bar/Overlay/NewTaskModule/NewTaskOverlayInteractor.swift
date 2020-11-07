@@ -7,16 +7,24 @@
 
 import UIKit
 
-protocol NewTaskOverlayInteractorProtocol {
-	
+protocol NewTaskOverlayBusinessLogic {
+	func fetchCells()
 }
 
-class NewTaskOverlayInteractor: NewTaskOverlayInteractorProtocol {
-	let presenter: NewTaskOverlayPresenter
+class NewTaskOverlayInteractor {
+	let presenter: NewTaskOverlayPresenter?
 	let model: NewTaskViewModel
 	
 	init(model: NewTaskViewModel, presenter: NewTaskOverlayPresenter) {
 		self.model = model
 		self.presenter = presenter
+	}
+}
+
+// MARK: - Interactor Protocol
+
+extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
+	func fetchCells() {
+		presenter?.presentData()
 	}
 }
