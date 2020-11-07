@@ -12,8 +12,13 @@ protocol NewTaskOverlayBusinessLogic {
 }
 
 class NewTaskOverlayInteractor {
-	var presenter: NewTaskOverlayPresentationLogic? 
-
+	let presenter: NewTaskOverlayPresentationLogic?
+	let dataSource: DailyDataSource
+	
+	init(dataSource: DailyDataSource, presenter: NewTaskOverlayPresentationLogic) {
+		self.dataSource = dataSource
+		self.presenter = presenter
+	}
 }
 
 // MARK: - Interactor Protocol

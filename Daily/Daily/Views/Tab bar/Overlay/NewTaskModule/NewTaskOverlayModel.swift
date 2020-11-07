@@ -120,17 +120,17 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	}
 	
 	var components = [
-		DailyCellComponent(titles: [""], icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen))
+		DailyCellComponent(titles: ["Repeat"], icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen))
 	]
 }
 
 // MARK: - The main model that will hold all our table cells
 
-class NewTaskModel {
-	var items: [NewTaskViewModelItem] = [
-		NewTaskViewModelDateAndTimeItem(),
-		NewTaskViewModelRemindAlertItem(),
-		NewTaskViewModelRepeatSelectorItem()
-	]
+class DailyDataSource {
+	var items: [NewTaskViewModelItem]
+	
+	init(items: [NewTaskViewModelItem]) {
+		self.items = items
+	}
 }
 

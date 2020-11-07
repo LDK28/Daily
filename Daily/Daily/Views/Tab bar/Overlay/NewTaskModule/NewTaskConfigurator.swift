@@ -9,16 +9,16 @@ import UIKit
 
 class NewTaskOverlayModule {
 	static func build() -> UIViewController {
-		let model = NewTaskModel()
+		let dataSource = DailyDataSource(items: [
+			NewTaskViewModelDateAndTimeItem(),
+			NewTaskViewModelRemindAlertItem(),
+			NewTaskViewModelRepeatSelectorItem()
+		])
 		
 		let viewController = NewTaskOverlayVC()
-		
-		let presenter = NewTaskOverlayPresenter()
-		presenter.view = viewController
-		
-		let interactor = NewTaskOverlayInteractor()
-		interactor.presenter = presenter
-		
+		let presenter = NewTaskOverlayPresenter(dataSource: dataSource, view: viewController)
+		let interactor = NewTaskOverlayInteractor(dataSource: dataSource, presenter: presenter)
+	
 		viewController.interactor = interactor
 		
 		return viewController
