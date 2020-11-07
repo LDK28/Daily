@@ -69,11 +69,11 @@ class DailyCell: UITableViewCell {
 		textView.styleStackView(spacing: 2, axis: .vertical)
 		
 		NSLayoutConstraint.activate([
-			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
 			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 			icon.widthAnchor.constraint(equalToConstant: 21),
 			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
-			textView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 10),
+			textView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
 			textView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
 	}

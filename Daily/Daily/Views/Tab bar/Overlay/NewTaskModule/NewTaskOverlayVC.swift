@@ -50,7 +50,7 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.translatesAutoresizingMaskIntoConstraints = false
-		tableView.tableFooterView = UIView(frame: .zero)
+		
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
 			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
@@ -88,6 +88,15 @@ extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
 		return UITableViewCell()
 	}
 	
+	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		let header = UIView(frame: .zero)
+		header.backgroundColor = .dailyTabBarColor
+		return header
+	}
+	
+	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return 15
+	}
 	
 }
 
