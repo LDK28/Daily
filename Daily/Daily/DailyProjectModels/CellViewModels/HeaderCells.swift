@@ -7,8 +7,8 @@
 
 import UIKit
 
-class HeaderCell: UITableViewCell {
-	static let cellIdentifier = "Header Cell"
+class TitleTextFieldCell: UITableViewCell {
+	static let cellIdentifier = "TitleTextFieldCell"
 	
 	let headerTextField = UITextField()
 	

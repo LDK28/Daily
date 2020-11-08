@@ -104,8 +104,8 @@ class DailyDateAndTimeCell: UITableViewCell {
 		
 		titleLabel.font = .systemFont(ofSize: 16)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
-		dateAndTimeLabel.font = .systemFont(ofSize: 12, weight: .light)
-		dateAndTimeLabel.textColor = .systemBlue
+		dateAndTimeLabel.font = .systemFont(ofSize: 12, weight: .regular)
+		dateAndTimeLabel.textColor = .dailyAdaptiveBlue
 		
 		textView.styleStackView(spacing: 0, axis: .vertical)
 		textView.addArrangedSubview(titleLabel)
