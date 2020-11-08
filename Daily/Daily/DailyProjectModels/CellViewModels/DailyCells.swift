@@ -125,7 +125,7 @@ final class DailyNewProjectDateCell: DailyDateAndTimeCell {
 			super.component = component
 			
 			titleLabel.text = component.title
-			dateAndTimeLabel.text = "N / A"
+			dateAndTimeLabel.text = "Any day"
 			
 		}
 	}
@@ -145,7 +145,7 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 			icon.image = component.icon.symbol
 			
 			titleLabel.text = component.title
-			dateAndTimeLabel.text = "All day"
+			dateAndTimeLabel.text = "Any time"
 			
 		}
 	}
