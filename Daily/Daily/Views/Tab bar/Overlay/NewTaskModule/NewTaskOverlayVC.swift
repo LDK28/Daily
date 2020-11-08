@@ -40,7 +40,7 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 	
 	override func styleElements() {
 		super.styleElements()
-		titleLabel.styleOverlayLabel(text: "Make new task")
+		titleLabel.styleOverlayLabel(text: "Add new task")
 	}
 }
 
@@ -85,13 +85,13 @@ extension NewTaskOverlayVC {
 			default:
 				return UITableViewCell() //if we accidentally put a wrong item in dateAndTime model
 			}
-				
 		default:
 			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyOrdinaryCell.cellIdentifier, for: indexPath) as? DailyOrdinaryCell {
 				cell.component = item.components[indexPath.row]
 				if item.type == .repeatSelector {
 					cell.accessoryType = .disclosureIndicator
 				}
+				cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.size.width, bottom: 0, right: 0)
 				return cell
 			}
 		}

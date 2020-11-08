@@ -7,35 +7,72 @@
 
 import UIKit
 
+protocol NewNoteOverlayDisplayLogic: class {
+	func display()
+}
+
 class NewNoteOverlayVC: OverlayTemplateVC {
 	private let noteTitleTextField = UITextField()
+	var interactor: NewNoteOverlayBusinessLogic?
+	let descriptionTextView = UITextView()
 	
 	override func loadView() {
 		super.loadView()
 		
+		view.addSubview(descriptionTextView)
+		
 		styleElements()
+		
+		configureDescriptionTextView()
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		interactor?.fetchCells()
     }
+	
+	func configureDescriptionTextView() {
+		descriptionTextView.delegate = self
+		textViewDidBeginEditing(descriptionTextView)
+		textViewDidEndEditing(descriptionTextView)
+		
+		NSLayoutConstraint.activate([
+			descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			descriptionTextView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
+			descriptionTextView.topAnchor.constraint(equalTo: tableView.tableHeaderView?.bottomAnchor ?? titleLabel.topAnchor, constant: 20)
+		])
+	}
 	
 	override func styleElements() {
 		super.styleElements()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
+		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
+		tableView.separatorStyle = .none
 	}
 	
 }
 
-
-extension NewNoteOverlayVC {
-	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+extension NewNoteOverlayVC: NewNoteOverlayDisplayLogic {
+	func display() {
+		
 	}
+}
+
+extension NewNoteOverlayVC: UITextViewDelegate {
 	
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return tableView.dequeueReusableCell(withIdentifier: DescriptionCell.cellIdentifier) ?? UITableViewCell()
+	func textViewDidBeginEditing(_ textView: UITextView) {
+		if textView.textColor != .dailyTextFieldTextColor {
+			textView.text = nil
+			textView.textColor = .dailyTextFieldTextColor
+		}
+	}
+
+	func textViewDidEndEditing(_ textView: UITextView) {
+		if textView.text.isEmpty {
+			textView.text = "Details"
+			textView.textColor = UIColor.systemGray2
+		}
 	}
 }
