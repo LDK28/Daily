@@ -40,7 +40,7 @@ struct DailyCellComponent {
 		self.cellType = cellType
 		
 		switch cellType {
-		case .time, .teamProject, .remind:
+		case .time, .teamProject, .remind, .newProjectDate:
 			isToggable = true
 			isSelectable = false
 		default:

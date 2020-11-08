@@ -88,7 +88,7 @@ extension UIColor {
 	static var dailyAdaptiveGreen = UIColor.systemGreen
 	
 	static var dailyAdaptiveRed: UIColor {
-		colorForTheme(light: UIColor("FF4A2F"), dark: UIColor("FF7E6A"))
+		colorForTheme(light: UIColor("FF375F"), dark: UIColor("FF376A"))
 	}
 	
 	static var dailyAdaptiveBlue: UIColor {

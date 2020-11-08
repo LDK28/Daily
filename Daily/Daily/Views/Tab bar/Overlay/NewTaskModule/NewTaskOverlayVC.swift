@@ -8,12 +8,12 @@
 import UIKit
 
 protocol  NewTaskOverlayDisplayLogic: class {
-	func display(data: DailyDataSource)
+	func display(data: NewTaskOverlayDataSource)
 }
 
 class NewTaskOverlayVC: OverlayTemplateVC {
 	var interactor: NewTaskOverlayBusinessLogic?
-	var cellItemsToDisplay: DailyDataSource?
+	var cellItemsToDisplay: NewTaskOverlayDataSource?
 	
 	override func loadView() {
 		super.loadView()
@@ -70,8 +70,8 @@ extension NewTaskOverlayVC {
 			
 			//Internal switch (aka date or time precisely)
 			switch component.cellType {
-			case .date:
-				if let dateCell = tableView.dequeueReusableCell(withIdentifier: DailyDateCell.cellIdentifier) as? DailyDateCell {
+			case .newTaskDate:
+				if let dateCell = tableView.dequeueReusableCell(withIdentifier: DailyNewTaskDateCell.cellIdentifier) as? DailyNewTaskDateCell {
 					dateCell.component = component
 					dateCell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 					return dateCell
@@ -103,9 +103,8 @@ extension NewTaskOverlayVC {
 // MARK: - View Protocol
 
 extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
-	func display(data: DailyDataSource) {
+	func display(data: NewTaskOverlayDataSource) {
 		cellItemsToDisplay = data
 		tableView.reloadData()
 	}
-	
 }

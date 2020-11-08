@@ -97,8 +97,8 @@ class DailyDateAndTimeCell: DailyCell {
 	
 }
 
-final class DailyDateCell: DailyDateAndTimeCell {
-	static let cellIdentifier = "DailyTimeCell"
+final class DailyNewTaskDateCell: DailyDateAndTimeCell {
+	static let cellIdentifier = "DailyNewTaskDateCell"
 	
 	override var component: DailyCellComponent? {
 		didSet {
@@ -116,9 +116,24 @@ final class DailyDateCell: DailyDateAndTimeCell {
 	}
 }
 
+final class DailyNewProjectDateCell: DailyDateAndTimeCell {
+	static let cellIdentifier = "DailyNewProjectDateCell"
+	
+	override var component: DailyCellComponent? {
+		didSet {
+			guard let component = component else { return }
+			super.component = component
+			
+			titleLabel.text = component.title
+			dateAndTimeLabel.text = "N / A"
+			
+		}
+	}
+}
+
 
 final class DailyTimeCell: DailyDateAndTimeCell {
-	static let cellIdentifier = "DailyDateCell"
+	static let cellIdentifier = "DailyTimeCell"
 	
 	override var component: DailyCellComponent? {
 		didSet {

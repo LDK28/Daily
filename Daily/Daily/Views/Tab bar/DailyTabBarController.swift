@@ -101,7 +101,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	
 	@objc func didTapNewProjectButton() {
 		addButtonsStackView.isHidden = true
-		overlayViewContoller = NewProjectOverlayVC()
+		overlayViewContoller = NewProjectModule.build()
 		if let overlay = overlayViewContoller {
 			add(overlay, highestElementInTabBar: plusButton)
 		}

@@ -55,9 +55,11 @@ class OverlayTemplateVC: UIViewController {
 		//cells registraion
 		tableView.register(DailyOrdinaryCell.self, forCellReuseIdentifier: DailyOrdinaryCell.cellIdentifier)
 		tableView.register(DailyTimeCell.self, forCellReuseIdentifier: DailyTimeCell.cellIdentifier)
-		tableView.register(DailyDateCell.self, forCellReuseIdentifier: DailyDateCell.cellIdentifier)
+		tableView.register(DailyNewTaskDateCell.self, forCellReuseIdentifier: DailyNewTaskDateCell.cellIdentifier)
+		tableView.register(DailyNewProjectDateCell.self, forCellReuseIdentifier: DailyNewProjectDateCell.cellIdentifier)
 		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
 		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
+		
 		
 		//adding header and default footer(empty view)
 		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)?.contentView

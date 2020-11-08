@@ -41,13 +41,12 @@ extension NewTaskViewModelItem {
 
 class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	
-	
 	var type: NewTaskViewModelItemType {
 		return .dateAndTime
 	}
 
 	var components = [
-		DailyCellComponent(title: "Date", icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed), cellType: .date),
+		DailyCellComponent(title: "Date", icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed), cellType: .newTaskDate),
 		DailyCellComponent(title: "Time", icon: Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue), cellType: .time)
 	]
 }
@@ -78,7 +77,7 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 
 // MARK: - The main model that will hold all our table sections with cells
 
-class DailyDataSource {
+class NewTaskOverlayDataSource {
 	var items: [NewTaskViewModelItem]
 	
 	init(items: [NewTaskViewModelItem]) {

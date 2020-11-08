@@ -13,9 +13,9 @@ protocol NewTaskOverlayPresentationLogic {
 
 class NewTaskOverlayPresenter {
 	weak var view: NewTaskOverlayDisplayLogic?
-	let dataSource: DailyDataSource
+	let dataSource: NewTaskOverlayDataSource
 	
-	init(dataSource: DailyDataSource, view: NewTaskOverlayDisplayLogic) {
+	init(dataSource: NewTaskOverlayDataSource, view: NewTaskOverlayDisplayLogic) {
 		self.dataSource = dataSource
 		self.view = view
 	}
