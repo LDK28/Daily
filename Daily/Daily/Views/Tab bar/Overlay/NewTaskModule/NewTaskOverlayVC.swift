@@ -98,10 +98,6 @@ extension NewTaskOverlayVC {
 		
 		return UITableViewCell() //of none of the cases have been implemented
 	}
-
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 50
-	}
 }
 
 // MARK: - View Protocol
