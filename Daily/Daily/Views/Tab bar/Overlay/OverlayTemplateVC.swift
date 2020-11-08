@@ -54,7 +54,7 @@ class OverlayTemplateVC: UIViewController {
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
-		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)
+		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)?.contentView
 		tableView.tableFooterView = UIView()
 		
 		NSLayoutConstraint.activate([
@@ -92,11 +92,15 @@ class OverlayTemplateVC: UIViewController {
 extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+		return 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		return UITableViewCell()
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

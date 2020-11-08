@@ -14,7 +14,6 @@ class NewNoteOverlayVC: OverlayTemplateVC {
 		super.loadView()
 		
 		styleElements()
-		
 	}
 	
     override func viewDidLoad() {
@@ -27,22 +26,16 @@ class NewNoteOverlayVC: OverlayTemplateVC {
 		titleLabel.styleOverlayLabel(text: "Write new memo")
 	}
 	
-	//DescriptionCell
 }
 
-// MARK: - Table View Delegate and DataSource
 
 extension NewNoteOverlayVC {
-
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 1
+	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCell.cellIdentifier) as? DescriptionCell {
-			return cell
-		}
-		return UITableViewCell()
-	}
-
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 300
+		return tableView.dequeueReusableCell(withIdentifier: DescriptionCell.cellIdentifier) ?? UITableViewCell()
 	}
 }
