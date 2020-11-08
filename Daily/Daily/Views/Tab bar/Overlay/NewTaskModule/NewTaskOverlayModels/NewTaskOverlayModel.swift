@@ -20,6 +20,7 @@ enum NewTaskViewModelItemType {
 	case repeatSelector
 }
 
+
 protocol NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType { get }
 	var rowCount: Int { get }
@@ -65,10 +66,10 @@ class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
 		return .dateAndTime
 	}
-	
+
 	var components = [
-		DailyCellComponent(titles: ["Date","xx.xx.xx"], icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed)),
-		DailyCellComponent(titles: ["Time","xx.xx.xx"], icon: Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue))
+		DailyCellComponent(title: "Date", icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed), cellType: .date),
+		DailyCellComponent(title: "Time", icon: Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue), cellType: .time)
 	]
 }
 
@@ -80,7 +81,7 @@ class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 	}
 	
 	var components = [
-		DailyCellComponent(titles: ["Remind"], icon: Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow))
+		DailyCellComponent(title: "Remind", icon: Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow), cellType: .remind)
 	]
 }
 
@@ -92,7 +93,7 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	}
 	
 	var components = [
-		DailyCellComponent(titles: ["Repeat"], icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen))
+		DailyCellComponent(title: "Repeat", icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen), cellType: .repeatSchedule)
 	]
 }
 
