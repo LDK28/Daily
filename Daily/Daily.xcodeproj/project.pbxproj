@@ -33,9 +33,9 @@
 		215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9B12542E2620069D30E /* CalendarVC.swift */; };
 		217C96E92555E6C400CBCEC6 /* DailyCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyCells.swift */; };
 		218DD5CA25580ADB00C9EEBB /* CellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DD5C925580ADB00C9EEBB /* CellTypes.swift */; };
-		218DD5D2255811D800C9EEBB /* FooterCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DD5D1255811D800C9EEBB /* FooterCells.swift */; };
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
+		21BB2B812558195F00192B4A /* FooterCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BB2B802558195F00192B4A /* FooterCells.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderCells.swift */; };
 		21C1CA7F2552AA6400ACE18B /* OverlayTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1CA7E2552AA6400ACE18B /* OverlayTemplateVC.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
@@ -107,9 +107,9 @@
 		215BC9B12542E2620069D30E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = Daily/Views/Calendar/CalendarVC.swift; sourceTree = SOURCE_ROOT; };
 		217C96E82555E6C400CBCEC6 /* DailyCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCells.swift; sourceTree = "<group>"; };
 		218DD5C925580ADB00C9EEBB /* CellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTypes.swift; sourceTree = "<group>"; };
-		218DD5D1255811D800C9EEBB /* FooterCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCells.swift; sourceTree = "<group>"; };
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		21BB2B802558195F00192B4A /* FooterCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCells.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCells.swift; sourceTree = "<group>"; };
 		21C1CA7E2552AA6400ACE18B /* OverlayTemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayTemplateVC.swift; sourceTree = "<group>"; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,7 +289,7 @@
 			children = (
 				217C96E82555E6C400CBCEC6 /* DailyCells.swift */,
 				21BF82C92557E61E001614EE /* HeaderCells.swift */,
-				218DD5D1255811D800C9EEBB /* FooterCells.swift */,
+				21BB2B802558195F00192B4A /* FooterCells.swift */,
 			);
 			path = CellViewModels;
 			sourceTree = "<group>";
@@ -627,7 +627,6 @@
 				05112B462552B7690044D502 /* BuildFile in Sources */,
 				212F890925574C000097F894 /* CellWithIconAndText.swift in Sources */,
 				212F890925574C000097F894 /* CellComponent.swift in Sources */,
-				218DD5D2255811D800C9EEBB /* FooterCells.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				2152B88825546FDB005238B6 /* NewTaskOverlayPresenter.swift in Sources */,
@@ -638,6 +637,7 @@
 				2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */,
+				21BB2B812558195F00192B4A /* FooterCells.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyCells.swift in Sources */,
