@@ -91,24 +91,20 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	}
 	
 	@objc func didTapNewNoteButton() {
-		addButtonsStackView.isHidden = true
-		overlayViewContoller = NewNoteOverlayVC()
-		if let overlay = overlayViewContoller {
-			add(overlay, highestElementInTabBar: plusButton)
-		}
+		showOverlay(overlay: NewNoteOverlayModule.build())
 	}
 	
 	@objc func didTapNewTaskButton() {
-		addButtonsStackView.isHidden = true
-		overlayViewContoller = NewTaskOverlayModule.build()
-		if let overlay = overlayViewContoller {
-			add(overlay, highestElementInTabBar: plusButton)
-		}
+		showOverlay(overlay: NewTaskOverlayModule.build())
 	}
 	
 	@objc func didTapNewProjectButton() {
+		showOverlay(overlay: NewProjectOverlayModule.build())
+	}
+	
+	func showOverlay(overlay: UIViewController) {
 		addButtonsStackView.isHidden = true
-		overlayViewContoller = NewProjectModule.build()
+		overlayViewContoller = overlay
 		if let overlay = overlayViewContoller {
 			add(overlay, highestElementInTabBar: plusButton)
 		}

@@ -64,11 +64,11 @@ class OverlayTemplateVC: UIViewController {
 		
 		//adding header and default footer(empty view)
 		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)?.contentView
-		tableView.tableFooterView = UIView()
+		tableView.tableFooterView = UIView(frame: .zero)
 		
 		//layuout
 		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+			tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
 			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
 			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)

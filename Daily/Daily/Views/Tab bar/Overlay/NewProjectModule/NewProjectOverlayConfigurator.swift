@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewProjectModule {
+class NewProjectOverlayModule {
 	static func build() -> UIViewController {
 		let dataSource = NewProjectOverlayDataSource(items: [
 			NewProjectViewModelTeamProjectItem(),
