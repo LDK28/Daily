@@ -62,16 +62,12 @@ extension NewTaskOverlayVC {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let item = cellItemsToDisplay?.items[indexPath.section] else {
 			return  UITableViewCell()
-			
 		}
-		if let cell = tableView.dequeueReusableCell(withIdentifier: DailyCell.cellIdentifier, for: indexPath) as? DailyCell {
-			cell.component = item.components[indexPath.row]
-			if item.type == .repeatSelector {
-				cell.accessoryType = .disclosureIndicator
-			}
-			cell.layer.cornerRadius = 10
-			
-			if item.rowCount > 1 {
+		
+		switch item.type {
+		case .dateAndTime:
+			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyDateAndTimeCell.cellIdentifier, for: indexPath) as? DailyDateAndTimeCell {
+				cell.component = item.components[indexPath.row]
 				switch indexPath.row {
 				case 0:
 					cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -80,9 +76,18 @@ extension NewTaskOverlayVC {
 				default:
 					cell.layer.cornerRadius = 10
 				}
+				return cell
 			}
-			return cell
+		default:
+			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyOrdinaryCell.cellIdentifier, for: indexPath) as? DailyOrdinaryCell {
+				cell.component = item.components[indexPath.row]
+				if item.type == .repeatSelector {
+					cell.accessoryType = .disclosureIndicator
+				}
+				return cell
+			}
 		}
+		
 		return UITableViewCell()
 	}
 
