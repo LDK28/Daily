@@ -21,10 +21,8 @@ enum NewTaskViewModelItemType {
 }
 
 
-protocol NewTaskViewModelItem {
+protocol NewTaskViewModelItem: DailyViewModelItem {
 	var type: NewTaskViewModelItemType { get }
-	var rowCount: Int { get }
-	var components: [DailyCellComponent] { get }
 }
 
 //Default values
@@ -42,6 +40,7 @@ extension NewTaskViewModelItem {
 //MARK: - Date and time
 
 class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
+	
 	
 	var type: NewTaskViewModelItemType {
 		return .dateAndTime

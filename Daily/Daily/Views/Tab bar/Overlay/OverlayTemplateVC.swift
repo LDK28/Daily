@@ -119,8 +119,12 @@ extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 		header.backgroundColor = .dailyTabBarColor
 		return header
 	}
-	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 20
 	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 50
+	}
+	
 }
