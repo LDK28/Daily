@@ -49,7 +49,7 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 
 extension NewTaskOverlayVC {
 	
-	override func numberOfSections(in tableView: UITableView) -> Int {
+	func numberOfSections(in tableView: UITableView) -> Int {
 		//items represent an array of section
 		return cellItemsToDisplay?.items.count ?? 0
 	}
