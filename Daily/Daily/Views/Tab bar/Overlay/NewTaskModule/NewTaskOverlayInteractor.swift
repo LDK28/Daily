@@ -13,9 +13,9 @@ protocol NewTaskOverlayBusinessLogic {
 
 class NewTaskOverlayInteractor {
 	let presenter: NewTaskOverlayPresentationLogic?
-	let dataSource: DailyDataSource
+	let dataSource: NewTaskOverlayDataSource
 	
-	init(dataSource: DailyDataSource, presenter: NewTaskOverlayPresentationLogic) {
+	init(dataSource: NewTaskOverlayDataSource, presenter: NewTaskOverlayPresentationLogic) {
 		self.dataSource = dataSource
 		self.presenter = presenter
 	}

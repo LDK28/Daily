@@ -19,7 +19,6 @@
 		2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */; };
 		2151CA3E25509B1C00732F68 /* NewNoteOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */; };
 		2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */; };
-		2151CA4B25509B3700732F68 /* NewProjectOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */; };
 		2152B87525546DE4005238B6 /* NewTaskOverlayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152B87425546DE4005238B6 /* NewTaskOverlayConfigurator.swift */; };
 		2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */; };
 		2152B88825546FDB005238B6 /* NewTaskOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152B88725546FDB005238B6 /* NewTaskOverlayPresenter.swift */; };
@@ -29,6 +28,11 @@
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156461925583762007264D4 /* UITableViewCellExtension.swift */; };
 		2156464725584D64007264D4 /* ProjectModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156464625584D64007264D4 /* ProjectModels.swift */; };
+		2156468C25584FDE007264D4 /* NewProjectOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156468B25584FDE007264D4 /* NewProjectOverlayVC.swift */; };
+		2156469125585003007264D4 /* NewProjectOverlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156469025585003007264D4 /* NewProjectOverlayInteractor.swift */; };
+		215646962558501D007264D4 /* NewProjectOverlayPresener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215646952558501D007264D4 /* NewProjectOverlayPresener.swift */; };
+		2156469E25585029007264D4 /* NewProjectOverlayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156469D25585029007264D4 /* NewProjectOverlayConfigurator.swift */; };
+		215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215646A525585033007264D4 /* NewProjectOverlayModel.swift */; };
 		2158545225449CAF00A60F75 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158545125449CAF00A60F75 /* AddButton.swift */; };
 		215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC99F2542D8810069D30E /* IdeasVC.swift */; };
 		215BC9AB2542DEDA0069D30E /* DailyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9AA2542DEDA0069D30E /* DailyTabBarController.swift */; };
@@ -95,7 +99,6 @@
 		2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerWithMiddleButton.swift; sourceTree = "<group>"; };
 		2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayVC.swift; sourceTree = "<group>"; };
 		2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayVC.swift; sourceTree = "<group>"; };
-		2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayVC.swift; sourceTree = "<group>"; };
 		2152B87425546DE4005238B6 /* NewTaskOverlayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayConfigurator.swift; sourceTree = "<group>"; };
 		2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayModel.swift; sourceTree = "<group>"; };
 		2152B88725546FDB005238B6 /* NewTaskOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayPresenter.swift; sourceTree = "<group>"; };
@@ -105,6 +108,11 @@
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2156461925583762007264D4 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		2156464625584D64007264D4 /* ProjectModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModels.swift; sourceTree = "<group>"; };
+		2156468B25584FDE007264D4 /* NewProjectOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayVC.swift; sourceTree = "<group>"; };
+		2156469025585003007264D4 /* NewProjectOverlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayInteractor.swift; sourceTree = "<group>"; };
+		215646952558501D007264D4 /* NewProjectOverlayPresener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayPresener.swift; sourceTree = "<group>"; };
+		2156469D25585029007264D4 /* NewProjectOverlayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayConfigurator.swift; sourceTree = "<group>"; };
+		215646A525585033007264D4 /* NewProjectOverlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayModel.swift; sourceTree = "<group>"; };
 		2158545125449CAF00A60F75 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		215BC99F2542D8810069D30E /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
 		215BC9AA2542DEDA0069D30E /* DailyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarController.swift; sourceTree = "<group>"; };
@@ -189,8 +197,8 @@
 		21239DF825546D7D0080C942 /* NewTaskModule */ = {
 			isa = PBXGroup;
 			children = (
-				2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */,
 				2152B87425546DE4005238B6 /* NewTaskOverlayConfigurator.swift */,
+				2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */,
 				2152B88C25547023005238B6 /* NewTaskOverlayInteractor.swift */,
 				2152B88725546FDB005238B6 /* NewTaskOverlayPresenter.swift */,
 				2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */,
@@ -223,7 +231,11 @@
 		2152B87225546DB3005238B6 /* NewProjectModule */ = {
 			isa = PBXGroup;
 			children = (
-				2151CA4A25509B3700732F68 /* NewProjectOverlayVC.swift */,
+				2156469D25585029007264D4 /* NewProjectOverlayConfigurator.swift */,
+				215646A525585033007264D4 /* NewProjectOverlayModel.swift */,
+				2156469025585003007264D4 /* NewProjectOverlayInteractor.swift */,
+				215646952558501D007264D4 /* NewProjectOverlayPresener.swift */,
+				2156468B25584FDE007264D4 /* NewProjectOverlayVC.swift */,
 			);
 			path = NewProjectModule;
 			sourceTree = "<group>";
@@ -627,12 +639,14 @@
 				212F890925574C000097F894 /* CellComponent.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
+				215646962558501D007264D4 /* NewProjectOverlayPresener.swift in Sources */,
 				2152B88825546FDB005238B6 /* NewTaskOverlayPresenter.swift in Sources */,
 				21BF82CA2557E61E001614EE /* HeaderCells.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */,
+				2156469E25585029007264D4 /* NewProjectOverlayConfigurator.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */,
 				2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */,
@@ -649,7 +663,6 @@
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				2152B88D25547023005238B6 /* NewTaskOverlayInteractor.swift in Sources */,
-				2151CA4B25509B3700732F68 /* NewProjectOverlayVC.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				05112B412552AD1E0044D502 /* BuildFile in Sources */,
 				05112B4B2552BD1F0044D502 /* BuildFile in Sources */,
@@ -657,6 +670,7 @@
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
+				2156468C25584FDE007264D4 /* NewProjectOverlayVC.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */,
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
@@ -665,6 +679,8 @@
 				2152B87525546DE4005238B6 /* NewTaskOverlayConfigurator.swift in Sources */,
 				21C1CA7F2552AA6400ACE18B /* OverlayTemplateVC.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
+				2156469125585003007264D4 /* NewProjectOverlayInteractor.swift in Sources */,
+				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
 				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
