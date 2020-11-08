@@ -12,20 +12,22 @@ class OverlayTemplateVC: UIViewController {
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
-	internal let headerTextField = UITextField()
+	internal let tableView = UITableView()
 	
 	
 	override func loadView() {
 		super.loadView()
-		
+
 		view.addSubview(titleLabel)
 		view.addSubview(saveButton)
 		view.addSubview(cancelButton)
-		view.addSubview(headerTextField)
+		view.addSubview(tableView)
+		
+		styleElements()
 		
 		configureLabel()
 		configureButtons()
-		configureTitleTextField()
+		configureTableView()
 		
 	}
 	
@@ -39,21 +41,34 @@ class OverlayTemplateVC: UIViewController {
 	@objc func didTapCancelButton() {
 		self.remove()
 	}
+	
+	func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.backgroundColor = .clear
+		//tableView.separatorStyle = .none
+		tableView.register(DailyCell.self, forCellReuseIdentifier: DailyCell.cellIdentifier)
+		tableView.register(HeaderCell.self, forCellReuseIdentifier: HeaderCell.cellIdentifier)
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.alwaysBounceVertical = false
+		tableView.showsVerticalScrollIndicator = false
+		tableView.showsHorizontalScrollIndicator = false
+		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: HeaderCell.cellIdentifier)
+		tableView.tableFooterView = UIView()
+		
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+		])
+	}
 
 	func configureLabel() {
 		NSLayoutConstraint.activate([
 			titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
 			titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-			titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -view.bounds.height / 10)
-		])
-	}
-	
-	func configureTitleTextField() {
-		NSLayoutConstraint.activate([
-			headerTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
-			headerTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			headerTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-			headerTextField.heightAnchor.constraint(equalToConstant: 40)
+			titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -view.bounds.width / 4)
 		])
 	}
 	
@@ -70,6 +85,40 @@ class OverlayTemplateVC: UIViewController {
 	func styleElements() {
 		saveButton.styleOverlayButton(buttonType: .save)
 		cancelButton.styleOverlayButton(buttonType: .cancel)
-		headerTextField.styleOverlayTextField(placeholder: "Title")
 	}
+}
+
+extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 0
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 0
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		return UITableViewCell()
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let header = UIView()
+		header.backgroundColor = .dailyTabBarColor
+		return header
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 20
+	}
+	
+//	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//		let footer = UIView()
+//		footer.backgroundColor = .dailyTabBarColor
+//		return footer
+//	}
+//
+//	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//		return 10
+//	}
 }

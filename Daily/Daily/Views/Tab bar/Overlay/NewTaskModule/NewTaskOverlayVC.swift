@@ -15,17 +15,8 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 	var interactor: NewTaskOverlayBusinessLogic?
 	var cellItemsToDisplay: DailyDataSource?
 	
-	private let tableView: UITableView = {
-		let table = UITableView()
-		table.register(DailyCell.self, forCellReuseIdentifier: DailyCell.cellIdentifier)
-		table.layer.cornerRadius = 10
-		return table
-	}()
-	
 	override func loadView() {
 		super.loadView()
-		
-		view.addSubview(tableView)
 		
 		styleElements()
 		
@@ -46,18 +37,6 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 		interactor?.fetchCells()
     }
 	
-	func configureTableView() {
-		tableView.delegate = self
-		tableView.dataSource = self
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		
-		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
-			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
-			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-		])
-	}
 	
 	override func styleElements() {
 		super.styleElements()
@@ -68,36 +47,48 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 
 // MARK: - Table View Delegate and DataSource
 
-extension NewTaskOverlayVC: UITableViewDelegate, UITableViewDataSource {
+extension NewTaskOverlayVC {
 	
-	func numberOfSections(in tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		//items represent an array of section
 		return cellItemsToDisplay?.items.count ?? 0
 	}
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		//each section in the array of items has definite amount of cells
 		return cellItemsToDisplay?.items[section].rowCount ?? 0
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let item = cellItemsToDisplay?.items[indexPath.section] else {
+			return  UITableViewCell()
+			
+		}
 		if let cell = tableView.dequeueReusableCell(withIdentifier: DailyCell.cellIdentifier, for: indexPath) as? DailyCell {
-			cell.component = cellItemsToDisplay?.items[indexPath.section].components[indexPath.row]
+			cell.component = item.components[indexPath.row]
+			if item.type == .repeatSelector {
+				cell.accessoryType = .disclosureIndicator
+			}
+			cell.layer.cornerRadius = 10
+			
+			if item.rowCount > 1 {
+				switch indexPath.row {
+				case 0:
+					cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+				case item.components.count - 1:
+					cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+				default:
+					cell.layer.cornerRadius = 10
+				}
+			}
 			return cell
 		}
 		return UITableViewCell()
 	}
-	
-	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		let header = UIView(frame: .zero)
-		header.backgroundColor = .dailyTabBarColor
-		return header
+
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 50
 	}
-	
-	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-		return 15
-	}
-	
 }
 
 // MARK: - View Protocol

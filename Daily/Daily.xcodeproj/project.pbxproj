@@ -33,6 +33,7 @@
 		217C96E92555E6C400CBCEC6 /* DailyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyCell.swift */; };
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
+		21BF82CA2557E61E001614EE /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderCell.swift */; };
 		21C1CA7F2552AA6400ACE18B /* OverlayTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1CA7E2552AA6400ACE18B /* OverlayTemplateVC.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
 		21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02525403975006A4206 /* SceneDelegate.swift */; };
@@ -103,6 +104,7 @@
 		217C96E82555E6C400CBCEC6 /* DailyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCell.swift; sourceTree = "<group>"; };
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		21BF82C92557E61E001614EE /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		21C1CA7E2552AA6400ACE18B /* OverlayTemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayTemplateVC.swift; sourceTree = "<group>"; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E1D02325403975006A4206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +184,6 @@
 				2152B88C25547023005238B6 /* NewTaskOverlayInteractor.swift */,
 				2152B88725546FDB005238B6 /* NewTaskOverlayPresenter.swift */,
 				2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */,
-				217C96E82555E6C400CBCEC6 /* DailyCell.swift */,
 			);
 			path = NewTaskModule;
 			sourceTree = "<group>";
@@ -206,6 +207,7 @@
 		2151CA3C25509AF000732F68 /* Overlay */ = {
 			isa = PBXGroup;
 			children = (
+				21BF82C82557E604001614EE /* Cells */,
 				2152B87325546DC0005238B6 /* NewNoteModule */,
 				2152B87225546DB3005238B6 /* NewProjectModule */,
 				21239DF825546D7D0080C942 /* NewTaskModule */,
@@ -273,6 +275,15 @@
 				215615E82543449E005AB2DF /* Buttons */,
 			);
 			path = "Tab bar";
+			sourceTree = "<group>";
+		};
+		21BF82C82557E604001614EE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				217C96E82555E6C400CBCEC6 /* DailyCell.swift */,
+				21BF82C92557E61E001614EE /* HeaderCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		21E1D01725403975006A4206 = {
@@ -610,6 +621,7 @@
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				2152B88825546FDB005238B6 /* NewTaskOverlayPresenter.swift in Sources */,
+				21BF82CA2557E61E001614EE /* HeaderCell.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,

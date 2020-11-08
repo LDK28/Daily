@@ -32,7 +32,7 @@ class NewNoteOverlayVC: OverlayTemplateVC {
 	
 	func configureDescriptionTextField() {
 		NSLayoutConstraint.activate([
-			descriptionTextView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
+			//descriptionTextView.topAnchor.constraint(equalTo: headerTextField.bottomAnchor, constant: 15),
 			descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
 			descriptionTextView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -30)

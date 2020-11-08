@@ -63,6 +63,7 @@ class DailyCell: UITableViewCell {
 		
 		contentView.addSubview(textView)
 		contentView.addSubview(icon)
+		backgroundColor = .dailyOverlayButtonTileColor
 		
 		icon.layer.cornerRadius = 5
 		icon.contentMode = .center
