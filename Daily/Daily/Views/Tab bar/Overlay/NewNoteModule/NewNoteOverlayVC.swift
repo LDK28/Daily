@@ -9,48 +9,40 @@ import UIKit
 
 class NewNoteOverlayVC: OverlayTemplateVC {
 	private let noteTitleTextField = UITextField()
-	//private let descriptionTextView = UITextView()
 	
 	override func loadView() {
 		super.loadView()
-	
-		//view.addSubview(descriptionTextView)
 		
 		styleElements()
 		
-		tableView.tableFooterView = tableView.dequeueReusableCell(withIdentifier: DescriptionCell.cellIdentifier)
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-//		descriptionTextView.delegate = self
-//		textViewDidBeginEditing(descriptionTextView)
-//		textViewDidEndEditing(descriptionTextView)
     }
 	
 	override func styleElements() {
 		super.styleElements()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
-		//descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 	}
 	
-	
+	//DescriptionCell
 }
 
-//extension NewNoteOverlayVC: UITextViewDelegate {
-//
-//	func textViewDidBeginEditing(_ textView: UITextView) {
-//		if textView.textColor != .dailyTextFieldTextColor {
-//			textView.text = nil
-//			textView.textColor = .dailyTextFieldTextColor
-//		}
-//	}
-//
-//	func textViewDidEndEditing(_ textView: UITextView) {
-//		if textView.text.isEmpty {
-//			textView.text = "Details"
-//			textView.textColor = UIColor.systemGray2
-//		}
-//	}
-//}
+// MARK: - Table View Delegate and DataSource
+
+extension NewNoteOverlayVC {
+
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCell.cellIdentifier) as? DescriptionCell {
+			return cell
+		}
+		return UITableViewCell()
+	}
+
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 300
+	}
+}
