@@ -59,6 +59,8 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		newTaskButton.addTarget(self, action: #selector(didTapNewTaskButton), for: .touchUpInside)
 		newNoteButton.addTarget(self, action: #selector(didTapNewNoteButton), for: .touchUpInside)
 		plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(didTapPlusButton), name: Notification.Name("Close Overlay"), object: nil)
 	}
 	
 	@objc func didTapPlusButton() {
@@ -67,18 +69,23 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		if plusButton.isPressedToShowOverlay {
 			addButtonsStackView.isHidden = false //show stack
 			blackoutView.isHidden = false //blackout the background
+			
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
 				self.blackoutView.alpha = 1 //and show it with animation
+				self.addButtonsStackView.frame.origin.y -= 20
+				self.addButtonsStackView.alpha = 1
 			}
 		} else {
 			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-				self.addButtonsStackView.isHidden = true
 				self.overlayViewContoller?.remove()
 				self.overlayViewContoller = nil
-				
+				self.addButtonsStackView.frame.origin.y += 15
+				self.addButtonsStackView.alpha = 0
 				self.blackoutView.alpha = 0
 			}) { _ in
+				self.addButtonsStackView.frame.origin.y += 5
 				self.blackoutView.isHidden = true
+				self.addButtonsStackView.isHidden = true
 			}
 		}
 	}
@@ -111,7 +118,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	func configureAddButtonsVerticalStackView() {
 		addButtonsStackView.isHidden = true
 		NSLayoutConstraint.activate([
-			addButtonsStackView.bottomAnchor.constraint(equalTo: plusButton.safeAreaLayoutGuide.topAnchor, constant: -20),
+			addButtonsStackView.bottomAnchor.constraint(equalTo: plusButton.safeAreaLayoutGuide.topAnchor),
 			addButtonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 			
 		])
