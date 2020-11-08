@@ -31,10 +31,21 @@ struct DailyCellComponent {
 	var title: String
 	var icon: Icon
 	var cellType: DailyCellTypes
+	var isToggable: Bool
+	var isSelectable: Bool
 	
 	init(title: String, icon: Icon, cellType: DailyCellTypes) {
 		self.icon = icon
 		self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
 		self.cellType = cellType
+		
+		switch cellType {
+		case .time, .teamProject, .remind:
+			isToggable = true
+			isSelectable = false
+		default:
+			isToggable = false
+			isSelectable = true
+		}
 	}
 }

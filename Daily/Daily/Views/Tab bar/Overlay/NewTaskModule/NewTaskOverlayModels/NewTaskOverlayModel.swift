@@ -25,8 +25,6 @@ protocol NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType { get }
 	var rowCount: Int { get }
 	var components: [DailyCellComponent] { get }
-	var isToggable: Bool { get }
-	var isSelectable: Bool { get }
 }
 
 //Default values
@@ -37,24 +35,6 @@ extension NewTaskViewModelItem {
 			return 2
 		default:
 			return 1
-		}
-	}
-	
-	var isToggable: Bool {
-		switch type {
-		case .repeatSelector:
-			return false
-		default:
-			return true
-		}
-	}
-	
-	var isSelectable: Bool {
-		switch type {
-		case .repeatSelector:
-			return true
-		default:
-			return false
 		}
 	}
 }
