@@ -14,6 +14,13 @@ class DailyOrdinaryCell: UITableViewCell {
 	
 	private let titleLabel = UILabel()
 	private let icon = UIImageView()
+	let switcher: UISwitch = {
+		let switcher = UISwitch()
+		switcher.onTintColor = .dailyAdaptiveBlue
+		switcher.isHidden = true
+		switcher.translatesAutoresizingMaskIntoConstraints = false
+		return switcher
+	}()
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -25,6 +32,8 @@ class DailyOrdinaryCell: UITableViewCell {
 			
 			titleLabel.text = component.title
 			titleLabel.font = .systemFont(ofSize: 16)
+			switcher.isHidden = component.isToggable ? false : true
+		
 		}
 	}
 	
@@ -36,6 +45,7 @@ class DailyOrdinaryCell: UITableViewCell {
 		layer.cornerRadius = 10
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(icon)
+		contentView.addSubview(switcher)
 		backgroundColor = .dailyOverlayButtonTileColor
 		
 		let selectedView = UIView()
@@ -54,8 +64,12 @@ class DailyOrdinaryCell: UITableViewCell {
 			icon.widthAnchor.constraint(equalToConstant: 21),
 			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
 			titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
-			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
+		
+		
 	}
 	
 	required init?(coder: NSCoder) {
@@ -64,6 +78,8 @@ class DailyOrdinaryCell: UITableViewCell {
 	
 }
 
+
+
 class DailyDateAndTimeCell: UITableViewCell {
 	static let cellIdentifier = "DailyDateAndTimeCell"
 	
@@ -71,6 +87,13 @@ class DailyDateAndTimeCell: UITableViewCell {
 	private let titleLabel = UILabel()
 	private let dateAndTimeLabel = UILabel()
 	private let icon = UIImageView()
+	let switcher: UISwitch = {
+		let switcher = UISwitch()
+		switcher.onTintColor = .dailyAdaptiveBlue
+		switcher.isHidden = true
+		switcher.translatesAutoresizingMaskIntoConstraints = false
+		return switcher
+	}()
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -81,6 +104,8 @@ class DailyDateAndTimeCell: UITableViewCell {
 			icon.image = component.icon.symbol
 			
 			titleLabel.text = component.title
+			
+			switcher.isHidden = component.isToggable ? false : true
 			
 			let date = Date()
 			let formatter = DateFormatter()
@@ -103,6 +128,7 @@ class DailyDateAndTimeCell: UITableViewCell {
 		layer.cornerRadius = 10
 		contentView.addSubview(textView)
 		contentView.addSubview(icon)
+		contentView.addSubview(switcher)
 		backgroundColor = .dailyOverlayButtonTileColor
 		
 		let selectedView = UIView()
@@ -128,7 +154,9 @@ class DailyDateAndTimeCell: UITableViewCell {
 			icon.widthAnchor.constraint(equalToConstant: 21),
 			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
 			textView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
-			textView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+			textView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
 	}
 	
