@@ -12,19 +12,25 @@ extension UITabBarController {
 		addChild(child)
 		child.view.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(child.view)
-		
+		child.view.alpha = 0
+		child.view.layer.cornerRadius = 15
 	
 		NSLayoutConstraint.activate([
 			child.view.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -10 * 2),
-			child.view.bottomAnchor.constraint(equalTo: element != nil ? element!.topAnchor : tabBar.topAnchor, constant: -20),
-			//child.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-			child.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+			child.view.bottomAnchor.constraint(equalTo: element != nil ? element!.topAnchor : tabBar.topAnchor, constant: -30),
+			child.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
 			child.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			
 		])
-		
-		child.view.layer.cornerRadius = 15
 		child.didMove(toParent: self)
+		child.view.frame.origin.y += 30
+		
+		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+			child.view.alpha = 1
+			child.view.frame.origin.y -= 15
+		}) { _ in
+		}
+		
 	}
 
 }

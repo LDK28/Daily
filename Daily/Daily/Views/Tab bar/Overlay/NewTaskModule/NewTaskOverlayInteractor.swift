@@ -9,6 +9,7 @@ import UIKit
 
 protocol NewTaskOverlayBusinessLogic {
 	func fetchCells()
+	func didTapDateCell()
 }
 
 class NewTaskOverlayInteractor {
@@ -24,6 +25,10 @@ class NewTaskOverlayInteractor {
 // MARK: - Interactor Protocol
 
 extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
+	func didTapDateCell() {
+		
+	}
+	
 	func fetchCells() {
 		presenter?.presentData()
 	}

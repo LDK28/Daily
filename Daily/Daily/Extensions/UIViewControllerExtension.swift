@@ -9,8 +9,15 @@ import UIKit
 
 extension UIViewController {
 	func remove() {
-		willMove(toParent: nil)
-		view.removeFromSuperview()
-		removeFromParent()
+
+		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+			self.view.frame.origin.y -= 15
+			self.view.alpha = 0
+			
+		}) { _ in
+			self.willMove(toParent: nil)
+			self.view.removeFromSuperview()
+			self.removeFromParent()
+		}
 	}
 }

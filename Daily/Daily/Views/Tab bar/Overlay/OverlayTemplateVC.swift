@@ -40,6 +40,7 @@ class OverlayTemplateVC: UIViewController {
 	
 	@objc func didTapCancelButton() {
 		self.remove()
+		NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
 	}
 	
 	func configureTableView() {
