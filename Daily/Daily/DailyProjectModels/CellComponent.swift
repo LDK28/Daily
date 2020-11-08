@@ -28,13 +28,13 @@ struct Icon {
 }
 
 struct DailyCellComponent {
-	var titles = [String]()
+	var title: String
 	var icon: Icon
+	var cellType: DailyCellTypes
 	
-	init(titles: [String], icon: Icon) {
+	init(title: String, icon: Icon, cellType: DailyCellTypes) {
 		self.icon = icon
-		for title in titles {
-			self.titles.append(title.trimmingCharacters(in: .whitespacesAndNewlines))
-		}
+		self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
+		self.cellType = cellType
 	}
 }

@@ -7,44 +7,22 @@
 
 import UIKit
 
-class DailyCellViewModel {
-	let textView = UIStackView()
-	let icon: UIImageView
-	
-	init(component: DailyCellComponent, for type: NewTaskViewModelItemType) {
-		textView.styleStackView(spacing: 5, axis: .vertical)
-		icon = UIImageView(image: component.icon.symbol)
-		icon.tintColor = component.icon.symbolColor
-		icon.backgroundColor = component.icon.tileColor
-		icon.layer.cornerRadius = 5
-		
-		for title in component.titles {
-			let labelForTitle = UILabel()
-			labelForTitle.textAlignment = .left
-			labelForTitle.text = title
-			labelForTitle.font = .systemFont(ofSize: 12, weight: .regular)
-			labelForTitle.translatesAutoresizingMaskIntoConstraints = false
-			textView.addArrangedSubview(labelForTitle)
-		}
-	}
-}
-
 class DailyOrdinaryCell: UITableViewCell {
 
 	static let cellIdentifier = "DailyOrdinaryCell"
 	
-	var titleLabel = UILabel()
-	var icon = UIImageView()
+	private let titleLabel = UILabel()
+	private let icon = UIImageView()
 	
 	var component: DailyCellComponent? {
 		didSet {
-			guard let component = component else { return }
+			guard let component = component  else { return }
 			
 			icon.backgroundColor = component.icon.tileColor
 			icon.tintColor = component.icon.symbolColor
 			icon.image = component.icon.symbol
 			
-			titleLabel.text = component.titles[component.titles.startIndex]
+			titleLabel.text = component.title
 			titleLabel.font = .systemFont(ofSize: 16)
 		}
 	}
@@ -80,14 +58,13 @@ class DailyOrdinaryCell: UITableViewCell {
 	
 }
 
-
 class DailyDateAndTimeCell: UITableViewCell {
 	static let cellIdentifier = "DailyDateAndTimeCell"
 	
-	var textView = UIStackView()
-	var titleLabel = UILabel()
-	var dateAndTimeLabel = UILabel()
-	var icon = UIImageView()
+	private let textView = UIStackView()
+	private let titleLabel = UILabel()
+	private let dateAndTimeLabel = UILabel()
+	private let icon = UIImageView()
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -97,10 +74,17 @@ class DailyDateAndTimeCell: UITableViewCell {
 			icon.tintColor = component.icon.symbolColor
 			icon.image = component.icon.symbol
 			
-			if component.titles.count > 1 {
-				titleLabel.text = component.titles[0]
-				dateAndTimeLabel.text = component.titles[1]
+			titleLabel.text = component.title
+			
+			let date = Date()
+			let formatter = DateFormatter()
+			if component.cellType == .date {
+				formatter.dateFormat = "E, MMM d, yyyy"
+			} else {
+				formatter.timeStyle = .short
 			}
+			let result = formatter.string(from: date)
+			dateAndTimeLabel.text = result
 
 		}
 	}
@@ -120,7 +104,7 @@ class DailyDateAndTimeCell: UITableViewCell {
 		
 		titleLabel.font = .systemFont(ofSize: 16)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
-		dateAndTimeLabel.font = .systemFont(ofSize: 14)
+		dateAndTimeLabel.font = .systemFont(ofSize: 12, weight: .light)
 		dateAndTimeLabel.textColor = .systemBlue
 		
 		textView.styleStackView(spacing: 0, axis: .vertical)
