@@ -34,7 +34,7 @@ struct DailyCellComponent {
 	init(titles: [String], icon: Icon) {
 		self.icon = icon
 		for title in titles {
-			self.titles.append(title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized)
+			self.titles.append(title.trimmingCharacters(in: .whitespacesAndNewlines))
 		}
 	}
 }

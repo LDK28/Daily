@@ -29,12 +29,12 @@ class DailyCellViewModel {
 	}
 }
 
-class DailyCell: UITableViewCell {
+class DailyOrdinaryCell: UITableViewCell {
 
-	static let cellIdentifier = "Daily Cell"
+	static let cellIdentifier = "DailyOrdinaryCell"
 	
-	var textView = UIStackView()
-	var icon = UIImageView(image: UIImage(systemName: "plus"))
+	var titleLabel = UILabel()
+	var icon = UIImageView()
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -44,14 +44,64 @@ class DailyCell: UITableViewCell {
 			icon.tintColor = component.icon.symbolColor
 			icon.image = component.icon.symbol
 			
-			textView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-			for title in component.titles {
-				let label = UILabel()
-				label.text = title
-				label.font = .systemFont(ofSize: 14)
-				textView.addArrangedSubview(label)
-			}
+			titleLabel.text = component.titles[component.titles.startIndex]
+			titleLabel.font = .systemFont(ofSize: 16)
+		}
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
+		titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		icon.translatesAutoresizingMaskIntoConstraints = false
+		layer.cornerRadius = 10
+		contentView.addSubview(titleLabel)
+		contentView.addSubview(icon)
+		backgroundColor = .dailyOverlayButtonTileColor
+		
+		icon.layer.cornerRadius = 5
+		icon.contentMode = .center
+		
+		titleLabel.textColor = .dailyOverlayButtonTextColor
+		
+		NSLayoutConstraint.activate([
+			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			icon.widthAnchor.constraint(equalToConstant: 21),
+			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
+			titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
+			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+		])
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+}
+
+
+class DailyDateAndTimeCell: UITableViewCell {
+	static let cellIdentifier = "DailyDateAndTimeCell"
+	
+	var textView = UIStackView()
+	var titleLabel = UILabel()
+	var dateAndTimeLabel = UILabel()
+	var icon = UIImageView()
+	
+	var component: DailyCellComponent? {
+		didSet {
+			guard let component = component else { return }
 			
+			icon.backgroundColor = component.icon.tileColor
+			icon.tintColor = component.icon.symbolColor
+			icon.image = component.icon.symbol
+			
+			if component.titles.count > 1 {
+				titleLabel.text = component.titles[0]
+				dateAndTimeLabel.text = component.titles[1]
+			}
+
 		}
 	}
 	
@@ -60,14 +110,22 @@ class DailyCell: UITableViewCell {
 		
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		icon.translatesAutoresizingMaskIntoConstraints = false
-		
+		layer.cornerRadius = 10
 		contentView.addSubview(textView)
 		contentView.addSubview(icon)
 		backgroundColor = .dailyOverlayButtonTileColor
 		
 		icon.layer.cornerRadius = 5
 		icon.contentMode = .center
-		textView.styleStackView(spacing: 2, axis: .vertical)
+		
+		titleLabel.font = .systemFont(ofSize: 16)
+		titleLabel.textColor = .dailyOverlayButtonTextColor
+		dateAndTimeLabel.font = .systemFont(ofSize: 14)
+		dateAndTimeLabel.textColor = .systemBlue
+		
+		textView.styleStackView(spacing: 0, axis: .vertical)
+		textView.addArrangedSubview(titleLabel)
+		textView.addArrangedSubview(dateAndTimeLabel)
 		
 		NSLayoutConstraint.activate([
 			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
@@ -82,5 +140,4 @@ class DailyCell: UITableViewCell {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
 }

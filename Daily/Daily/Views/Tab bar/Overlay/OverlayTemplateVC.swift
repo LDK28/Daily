@@ -46,8 +46,8 @@ class OverlayTemplateVC: UIViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.backgroundColor = .clear
-		//tableView.separatorStyle = .none
-		tableView.register(DailyCell.self, forCellReuseIdentifier: DailyCell.cellIdentifier)
+		tableView.register(DailyOrdinaryCell.self, forCellReuseIdentifier: DailyOrdinaryCell.cellIdentifier)
+		tableView.register(DailyDateAndTimeCell.self, forCellReuseIdentifier: DailyDateAndTimeCell.cellIdentifier)
 		tableView.register(HeaderCell.self, forCellReuseIdentifier: HeaderCell.cellIdentifier)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.alwaysBounceVertical = false
@@ -111,14 +111,4 @@ extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 20
 	}
-	
-//	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//		let footer = UIView()
-//		footer.backgroundColor = .dailyTabBarColor
-//		return footer
-//	}
-//
-//	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//		return 10
-//	}
 }
