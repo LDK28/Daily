@@ -15,7 +15,7 @@ class TitleTextFieldCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		headerTextField.styleOverlayTextField(placeholder: "Title")
-		contentView.backgroundColor = .clear
+		backgroundColor = .clear
 		
 		contentView.addSubview(headerTextField)
 		NSLayoutConstraint.activate([

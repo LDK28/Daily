@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class DailyOrdinaryCell: UITableViewCell {
 
 	static let cellIdentifier = "DailyOrdinaryCell"
@@ -36,6 +37,11 @@ class DailyOrdinaryCell: UITableViewCell {
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(icon)
 		backgroundColor = .dailyOverlayButtonTileColor
+		
+		let selectedView = UIView()
+		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
+		selectedView.layer.cornerRadius = 10
+		selectedBackgroundView = selectedView
 		
 		icon.layer.cornerRadius = 5
 		icon.contentMode = .center
@@ -98,6 +104,11 @@ class DailyDateAndTimeCell: UITableViewCell {
 		contentView.addSubview(textView)
 		contentView.addSubview(icon)
 		backgroundColor = .dailyOverlayButtonTileColor
+		
+		let selectedView = UIView()
+		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
+		selectedView.layer.cornerRadius = 10
+		selectedBackgroundView = selectedView
 		
 		icon.layer.cornerRadius = 5
 		icon.contentMode = .center

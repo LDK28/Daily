@@ -17,7 +17,7 @@ class DescriptionCell: UITableViewCell {
 		
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 		contentView.backgroundColor = .clear
-		
+		backgroundColor = .clear
 		descriptionTextView.delegate = self
 		textViewDidBeginEditing(descriptionTextView)
 		textViewDidEndEditing(descriptionTextView)

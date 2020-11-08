@@ -63,7 +63,7 @@ extension NewTaskOverlayVC {
 		guard let item = cellItemsToDisplay?.items[indexPath.section] else {
 			return  UITableViewCell()
 		}
-		
+
 		switch item.type {
 		case .dateAndTime:
 			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyDateAndTimeCell.cellIdentifier, for: indexPath) as? DailyDateAndTimeCell {
