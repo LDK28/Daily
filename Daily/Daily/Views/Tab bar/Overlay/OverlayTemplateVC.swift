@@ -43,20 +43,27 @@ class OverlayTemplateVC: UIViewController {
 	}
 	
 	func configureTableView() {
+		//configuration
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.backgroundColor = .clear
-		tableView.register(DailyOrdinaryCell.self, forCellReuseIdentifier: DailyOrdinaryCell.cellIdentifier)
-		tableView.register(DailyDateAndTimeCell.self, forCellReuseIdentifier: DailyDateAndTimeCell.cellIdentifier)
-		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
-		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
+		
+		//cells registraion
+		tableView.register(DailyOrdinaryCell.self, forCellReuseIdentifier: DailyOrdinaryCell.cellIdentifier)
+		tableView.register(DailyTimeCell.self, forCellReuseIdentifier: DailyTimeCell.cellIdentifier)
+		tableView.register(DailyDateCell.self, forCellReuseIdentifier: DailyDateCell.cellIdentifier)
+		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
+		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
+		
+		//adding header and default footer(empty view)
 		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)?.contentView
 		tableView.tableFooterView = UIView()
 		
+		//layuout
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
 			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
@@ -89,7 +96,11 @@ class OverlayTemplateVC: UIViewController {
 	}
 }
 
+
+//MARK: - OverlayTemplateVC TableView Delegate and DataSource
+
 extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
+	//MARK: Default implementation of dlegate and dataSource functions
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 0

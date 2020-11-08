@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - Ordinary cell with single line
+// MARK: - Ordinary cell with single line text
 class DailyOrdinaryCell: UITableViewCell {
 
 	static let cellIdentifier = "DailyOrdinaryCell"
@@ -45,38 +45,12 @@ class DailyOrdinaryCell: UITableViewCell {
 
 // MARK: - Date and Time cell
 class DailyDateAndTimeCell: UITableViewCell {
-	static let cellIdentifier = "DailyDateAndTimeCell"
 	
-	private let textView = UIStackView()
-	private let titleLabel = UILabel()
-	private let dateAndTimeLabel = UILabel()
-	private let icon = UIImageView()
+	internal let textView = UIStackView()
+	internal let titleLabel = UILabel()
+	internal let dateAndTimeLabel = UILabel()
+	internal let icon = UIImageView()
 	let switcher = UISwitch()
-	
-	var component: DailyCellComponent? {
-		didSet {
-			guard let component = component else { return }
-			
-			icon.backgroundColor = component.icon.tileColor
-			icon.tintColor = component.icon.symbolColor
-			icon.image = component.icon.symbol
-			
-			titleLabel.text = component.title
-			
-			switcher.isHidden = component.isToggable ? false : true
-			
-			let date = Date()
-			let formatter = DateFormatter()
-			if component.cellType == .date {
-				formatter.dateFormat = "E, MMM d, yyyy"
-			} else {
-				formatter.timeStyle = .short
-			}
-			let result = formatter.string(from: date)
-			dateAndTimeLabel.text = result
-
-		}
-	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -96,5 +70,48 @@ class DailyDateAndTimeCell: UITableViewCell {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+final class DailyDateCell: DailyDateAndTimeCell {
+	static let cellIdentifier = "DailyTimeCell"
+	
+	var component: DailyCellComponent? {
+		didSet {
+			guard let component = component else { return }
+			
+			icon.backgroundColor = component.icon.tileColor
+			icon.tintColor = component.icon.symbolColor
+			icon.image = component.icon.symbol
+			
+			titleLabel.text = component.title
+			let date = Date()
+			let formatter = DateFormatter()
+			formatter.dateFormat = "E, MMM d, yyyy"
+			let result = formatter.string(from: date)
+			dateAndTimeLabel.text = result
+			
+			switcher.isHidden = component.isToggable ? false : true
+		}
+	}
+}
+
+
+final class DailyTimeCell: DailyDateAndTimeCell {
+	static let cellIdentifier = "DailyDateCell"
+	
+	var component: DailyCellComponent? {
+		didSet {
+			guard let component = component else { return }
+			
+			icon.backgroundColor = component.icon.tileColor
+			icon.tintColor = component.icon.symbolColor
+			icon.image = component.icon.symbol
+			
+			titleLabel.text = component.title
+			dateAndTimeLabel.text = "All day"
+			
+			switcher.isHidden = component.isToggable ? false : true
+		}
 	}
 }

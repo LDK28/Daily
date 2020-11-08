@@ -63,21 +63,29 @@ extension NewTaskOverlayVC {
 		guard let item = cellItemsToDisplay?.items[indexPath.section] else {
 			return  UITableViewCell()
 		}
-
+		//External switch (aka section types)
 		switch item.type {
 		case .dateAndTime:
-			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyDateAndTimeCell.cellIdentifier, for: indexPath) as? DailyDateAndTimeCell {
-				cell.component = item.components[indexPath.row]
-				switch indexPath.row {
-				case 0:
-					cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-				case item.components.count - 1:
-					cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-				default:
-					cell.layer.cornerRadius = 10
-				}
-				return cell
+			let component = item.components[indexPath.row]
+			
+			//Internal switch (aka date or time precisely)
+			switch component.cellType {
+			case .date:
+				if let dateCell = tableView.dequeueReusableCell(withIdentifier: DailyDateCell.cellIdentifier) as? DailyDateCell {
+					dateCell.component = component
+					dateCell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+					return dateCell
 			}
+			case .time:
+				if let timeCell = tableView.dequeueReusableCell(withIdentifier: DailyTimeCell.cellIdentifier) as? DailyTimeCell {
+					timeCell.component = component
+					timeCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+					return timeCell
+				}
+			default:
+				return UITableViewCell() //if we accidentally put a wrong item in dateAndTime model
+			}
+				
 		default:
 			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyOrdinaryCell.cellIdentifier, for: indexPath) as? DailyOrdinaryCell {
 				cell.component = item.components[indexPath.row]
@@ -88,7 +96,7 @@ extension NewTaskOverlayVC {
 			}
 		}
 		
-		return UITableViewCell()
+		return UITableViewCell() //of none of the cases have been implemented
 	}
 
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
