@@ -7,20 +7,14 @@
 
 import UIKit
 
-
+// MARK: - Ordinary cell with single line
 class DailyOrdinaryCell: UITableViewCell {
 
 	static let cellIdentifier = "DailyOrdinaryCell"
 	
 	private let titleLabel = UILabel()
 	private let icon = UIImageView()
-	let switcher: UISwitch = {
-		let switcher = UISwitch()
-		switcher.onTintColor = .dailyAdaptiveBlue
-		switcher.isHidden = true
-		switcher.translatesAutoresizingMaskIntoConstraints = false
-		return switcher
-	}()
+	let switcher = UISwitch()
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -39,37 +33,8 @@ class DailyOrdinaryCell: UITableViewCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		
-		titleLabel.translatesAutoresizingMaskIntoConstraints = false
-		icon.translatesAutoresizingMaskIntoConstraints = false
-		layer.cornerRadius = 10
-		contentView.addSubview(titleLabel)
-		contentView.addSubview(icon)
-		contentView.addSubview(switcher)
-		backgroundColor = .dailyOverlayButtonTileColor
-		
-		let selectedView = UIView()
-		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
-		selectedView.layer.cornerRadius = 10
-		selectedBackgroundView = selectedView
-		
-		icon.layer.cornerRadius = 5
-		icon.contentMode = .center
-		
+		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
-		
-		NSLayoutConstraint.activate([
-			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			icon.widthAnchor.constraint(equalToConstant: 21),
-			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
-			titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
-			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		])
-		
-		
 	}
 	
 	required init?(coder: NSCoder) {
@@ -78,8 +43,7 @@ class DailyOrdinaryCell: UITableViewCell {
 	
 }
 
-
-
+// MARK: - Date and Time cell
 class DailyDateAndTimeCell: UITableViewCell {
 	static let cellIdentifier = "DailyDateAndTimeCell"
 	
@@ -87,13 +51,7 @@ class DailyDateAndTimeCell: UITableViewCell {
 	private let titleLabel = UILabel()
 	private let dateAndTimeLabel = UILabel()
 	private let icon = UIImageView()
-	let switcher: UISwitch = {
-		let switcher = UISwitch()
-		switcher.onTintColor = .dailyAdaptiveBlue
-		switcher.isHidden = true
-		switcher.translatesAutoresizingMaskIntoConstraints = false
-		return switcher
-	}()
+	let switcher = UISwitch()
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -123,21 +81,7 @@ class DailyDateAndTimeCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
-		textView.translatesAutoresizingMaskIntoConstraints = false
-		icon.translatesAutoresizingMaskIntoConstraints = false
-		layer.cornerRadius = 10
-		contentView.addSubview(textView)
-		contentView.addSubview(icon)
-		contentView.addSubview(switcher)
-		backgroundColor = .dailyOverlayButtonTileColor
-		
-		let selectedView = UIView()
-		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
-		selectedView.layer.cornerRadius = 10
-		selectedBackgroundView = selectedView
-		
-		icon.layer.cornerRadius = 5
-		icon.contentMode = .center
+		configureDailyCell(titleView: textView, icon: icon, switcher: switcher)
 		
 		titleLabel.font = .systemFont(ofSize: 16)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
@@ -148,16 +92,6 @@ class DailyDateAndTimeCell: UITableViewCell {
 		textView.addArrangedSubview(titleLabel)
 		textView.addArrangedSubview(dateAndTimeLabel)
 		
-		NSLayoutConstraint.activate([
-			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			icon.widthAnchor.constraint(equalToConstant: 21),
-			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
-			textView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
-			textView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		])
 	}
 	
 	required init?(coder: NSCoder) {
