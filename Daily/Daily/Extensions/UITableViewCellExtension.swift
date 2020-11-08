@@ -18,6 +18,7 @@ extension UITableViewCell {
 		contentView.addSubview(icon)
 		backgroundColor = .dailyOverlayButtonTileColor
 		
+		
 		let selectedView = UIView()
 		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
 		selectedView.layer.cornerRadius = 10
