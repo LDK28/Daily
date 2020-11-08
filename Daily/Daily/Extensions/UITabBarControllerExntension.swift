@@ -18,7 +18,7 @@ extension UITabBarController {
 			child.view.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -10 * 2),
 			child.view.bottomAnchor.constraint(equalTo: element != nil ? element!.topAnchor : tabBar.topAnchor, constant: -20),
 			//child.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-			child.view.topAnchor.constraint(equalTo: view.topAnchor, constant: view.center.y / 4),
+			child.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
 			child.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			
 		])
