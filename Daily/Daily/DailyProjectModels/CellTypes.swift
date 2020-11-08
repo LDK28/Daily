@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum DailyCellTypes: String {
-	case remind = "Remind"
-	case repeatSchedule = "Repeat"
-	case date = "Date"
-	case time = "Time"
-	case teamProject = "Team project"
+enum DailyCellTypes {
+	case remind
+	case repeatSchedule
+	case newTaskDate
+	case newProjectDate
+	case time
+	case teamProject
 }
