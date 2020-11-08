@@ -46,7 +46,7 @@ class NewProjectViewModelTeamProjectItem: NewProjectViewModelItem {
 	}
 
 	var components = [
-		DailyCellComponent(title: "Team project", icon: Icon(symbolName: "person.3.fill", tileColor: .dailyAdaptiveGreen), cellType: .teamProject),
+		DailyCellComponent(title: "Team project", icon: Icon(symbolName: "person.2.fill", tileColor: .dailyAdaptiveGreen), cellType: .teamProject),
 	]
 }
 
