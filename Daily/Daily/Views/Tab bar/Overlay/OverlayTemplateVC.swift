@@ -48,12 +48,13 @@ class OverlayTemplateVC: UIViewController {
 		tableView.backgroundColor = .clear
 		tableView.register(DailyOrdinaryCell.self, forCellReuseIdentifier: DailyOrdinaryCell.cellIdentifier)
 		tableView.register(DailyDateAndTimeCell.self, forCellReuseIdentifier: DailyDateAndTimeCell.cellIdentifier)
-		tableView.register(HeaderCell.self, forCellReuseIdentifier: HeaderCell.cellIdentifier)
+		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
+		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
-		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: HeaderCell.cellIdentifier)
+		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)
 		tableView.tableFooterView = UIView()
 		
 		NSLayoutConstraint.activate([

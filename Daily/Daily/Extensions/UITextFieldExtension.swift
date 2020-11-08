@@ -26,7 +26,7 @@ extension UITextField {
 	func styleOverlayTextField(placeholder: String) {
 		self.standartStyling()
 		self.placeholder = placeholder
-		self.font = .preferredFont(forTextStyle: .headline)
+		self.font = .systemFont(ofSize: 20, weight: .semibold)
 	
 	}
 	
