@@ -10,14 +10,18 @@ import UIKit
 //Only for inheritance
 class DailyCell: UITableViewCell {
 	internal let icon = UIImageView()
+	internal var textView: UIView! = UIView()
 	let switcher = UISwitch()
+	
+	private var hasUpdatedConstraints = false
 	
 	var component: DailyCellComponent? {
 		didSet {
-			guard let component = component  else { return }
+			guard let component = component else { return }
 			icon.backgroundColor = component.icon.tileColor
 			icon.tintColor = component.icon.symbolColor
 			icon.image = component.icon.symbol
+			
 
 			if component.isToggable {
 				switcher.isHidden = false
@@ -28,14 +32,13 @@ class DailyCell: UITableViewCell {
 		}
 	}
 	
-	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-		super.init(style: style, reuseIdentifier: reuseIdentifier)
+	override func updateConstraints() {
+		super.updateConstraints()
+		if !hasUpdatedConstraints {
+			configureDailyCell(titleView: textView, icon: icon, switcher: switcher)
+			hasUpdatedConstraints = true
+		}
 	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
 }
 
 
@@ -58,8 +61,9 @@ final class DailyOrdinaryCell: DailyCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
+		textView = titleLabel
 		titleLabel.textColor = .dailyOverlayButtonTextColor
+		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	required init?(coder: NSCoder) {
@@ -73,22 +77,20 @@ class DailyDateAndTimeCell: DailyCell {
 	
 	internal let titleLabel = UILabel()
 	internal let dateAndTimeLabel = UILabel()
-	internal let textView = UIStackView()
+	internal let textStack = UIStackView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		
-		configureDailyCell(titleView: textView, icon: icon, switcher: switcher)
+		textView = textStack
 		
 		titleLabel.font = .systemFont(ofSize: 16)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
 		dateAndTimeLabel.font = .systemFont(ofSize: 12, weight: .regular)
 		dateAndTimeLabel.textColor = .dailyAdaptiveBlue
 		
-		textView.styleStackView(spacing: 0, axis: .vertical)
-		textView.addArrangedSubview(titleLabel)
-		textView.addArrangedSubview(dateAndTimeLabel)
-		
+		textStack.styleStackView(spacing: 0, axis: .vertical)
+		textStack.addArrangedSubview(titleLabel)
+		textStack.addArrangedSubview(dateAndTimeLabel)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -139,10 +141,6 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 		didSet {
 			guard let component = component else { return }
 			super.component = component
-			
-			icon.backgroundColor = component.icon.tileColor
-			icon.tintColor = component.icon.symbolColor
-			icon.image = component.icon.symbol
 			
 			titleLabel.text = component.title
 			dateAndTimeLabel.text = "Any time"

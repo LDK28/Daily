@@ -64,28 +64,27 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	}
 	
 	@objc func didTapPlusButton() {
-		plusButton.isPressedToShowOverlay.toggle()
 		
-		if plusButton.isPressedToShowOverlay {
-			addButtonsStackView.isHidden = false //show stack
-			blackoutView.isHidden = false //blackout the background
-			
-			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-				self.blackoutView.alpha = 1 //and show it with animation
-				self.addButtonsStackView.frame.origin.y -= 20
-				self.addButtonsStackView.alpha = 1
+		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
+			plusButton.isPressedToShowOverlay.toggle()
+			if plusButton.isPressedToShowOverlay {
+				addButtonsStackView.isHidden = false //show stack
+				blackoutView.isHidden = false //blackout the background
+				blackoutView.alpha = 1 //and show it with animation
+				addButtonsStackView.frame.origin.y -= 20
+				addButtonsStackView.alpha = 1
+			} else {
+				overlayViewContoller?.remove()
+				overlayViewContoller = nil
+				addButtonsStackView.frame.origin.y += 15
+				addButtonsStackView.alpha = 0
+				blackoutView.alpha = 0
 			}
-		} else {
-			UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-				self.overlayViewContoller?.remove()
-				self.overlayViewContoller = nil
-				self.addButtonsStackView.frame.origin.y += 15
-				self.addButtonsStackView.alpha = 0
-				self.blackoutView.alpha = 0
-			}) { _ in
-				self.addButtonsStackView.frame.origin.y += 5
-				self.blackoutView.isHidden = true
-				self.addButtonsStackView.isHidden = true
+		}) { [self] _ in
+			if !plusButton.isPressedToShowOverlay {
+				addButtonsStackView.frame.origin.y += 5
+				blackoutView.isHidden = true
+				addButtonsStackView.isHidden = true
 			}
 		}
 	}

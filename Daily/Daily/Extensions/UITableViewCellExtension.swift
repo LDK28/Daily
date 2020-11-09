@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITableViewCell {
-	func configureDailyCell(titleView: UIView, icon: UIImageView, switcher: UISwitch? = nil) {
+	func configureDailyCell(titleView: UIView, icon: UIImageView, switcher: UISwitch) {
 		titleView.translatesAutoresizingMaskIntoConstraints = false
 		icon.translatesAutoresizingMaskIntoConstraints = false
 		icon.layer.cornerRadius = 5
@@ -24,6 +24,10 @@ extension UITableViewCell {
 		selectedView.layer.cornerRadius = 10
 		selectedBackgroundView = selectedView
 		
+		switcher.translatesAutoresizingMaskIntoConstraints = false
+		switcher.isHidden = true
+		switcher.onTintColor = .dailyAdaptiveBlue
+		contentView.addSubview(switcher)
 		
 		NSLayoutConstraint.activate([
 			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
@@ -32,15 +36,6 @@ extension UITableViewCell {
 			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
 			titleView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
 			titleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-		])
-		
-		guard let switcher = switcher else { return }
-		
-		switcher.translatesAutoresizingMaskIntoConstraints = false
-		switcher.isHidden = true
-		switcher.onTintColor = .dailyAdaptiveBlue
-		contentView.addSubview(switcher)
-		NSLayoutConstraint.activate([
 			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
 			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
