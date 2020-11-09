@@ -11,7 +11,7 @@
 - [Dmitry Kostev🧞‍♂️](https://github.com/LDK28)
 - [Arseny Tokarev🧞‍♂️](https://github.com/BAUMANEZ)
 - [Yulia Alfimova🧞‍♀️](https://github.com/JuliaAlfimova)
-- [Arseny Bikov🧞‍♂️](https://github.com/INGIBITR)
+- [Arseny Bykov 🐷 ](https://github.com/INGIBITR)
 - [Ludmila Buzdanova🧞‍♀️](https://github.com/nebelglanz)
 
 ## Team mentor👨‍👧‍👦:
