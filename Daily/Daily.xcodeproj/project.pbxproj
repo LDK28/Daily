@@ -651,6 +651,8 @@
 				212F890925574C000097F894 /* CellComponent.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
+				212F890925574C000097F894 /* CellComponent.swift in Sources */,
+				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				215646962558501D007264D4 /* NewProjectOverlayPresener.swift in Sources */,
 				2152B88825546FDB005238B6 /* NewTaskOverlayPresenter.swift in Sources */,
 				21BF82CA2557E61E001614EE /* HeaderCells.swift in Sources */,
