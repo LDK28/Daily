@@ -69,8 +69,8 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	@objc func didTapPlusButton() {
 		
 		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
-			plusButton.isPressedToShowOverlay.toggle()
-			if plusButton.isPressedToShowOverlay {
+			plusButton.isSelected.toggle()
+			if plusButton.isSelected {
 				addButtonsStackView.isHidden = false //show stack
 				blackoutView.isHidden = false //blackout the background
 				blackoutView.alpha = 1 //and show it with animation
@@ -84,7 +84,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 				blackoutView.alpha = 0
 			}
 		}) { [self] _ in
-			if !plusButton.isPressedToShowOverlay {
+			if !plusButton.isSelected {
 				addButtonsStackView.frame.origin.y += 5
 				blackoutView.isHidden = true
 				addButtonsStackView.isHidden = true
