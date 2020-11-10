@@ -8,36 +8,42 @@
 import UIKit
 
 extension UITableViewCell {
-	func configureDailyCell(titleView: UIView, icon: UIImageView, switcher: UISwitch) {
-		titleView.translatesAutoresizingMaskIntoConstraints = false
-		icon.translatesAutoresizingMaskIntoConstraints = false
-		icon.layer.cornerRadius = 5
-		icon.contentMode = .center
-		layer.cornerRadius = 10
-		contentView.addSubview(titleView)
-		contentView.addSubview(icon)
+	func configureDailyCell(titleView: UIView?, icon: UIImageView?, switcher: UISwitch?) {
 		backgroundColor = .dailyOverlayButtonTileColor
-		
-		
+		layer.cornerRadius = 10
 		let selectedView = UIView()
 		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
 		selectedView.layer.cornerRadius = 10
 		selectedBackgroundView = selectedView
 		
-		switcher.translatesAutoresizingMaskIntoConstraints = false
-		switcher.isHidden = true
-		switcher.onTintColor = .dailyAdaptiveBlue
-		contentView.addSubview(switcher)
+		if let icon = icon {
+			icon.translatesAutoresizingMaskIntoConstraints = false
+			icon.layer.cornerRadius = 5
+			icon.contentMode = .center
+			contentView.addSubview(icon)
+			
+			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+			icon.widthAnchor.constraint(equalToConstant: 21).isActive = true
+			icon.heightAnchor.constraint(equalTo: icon.widthAnchor).isActive = true
+		}
 		
-		NSLayoutConstraint.activate([
-			icon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-			icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			icon.widthAnchor.constraint(equalToConstant: 21),
-			icon.heightAnchor.constraint(equalTo: icon.widthAnchor),
-			titleView.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
-			titleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		])
+		if let titleView = titleView {
+			titleView.translatesAutoresizingMaskIntoConstraints = false
+			contentView.addSubview(titleView)
+			
+			titleView.leadingAnchor.constraint(equalTo: icon?.trailingAnchor ?? contentView.leadingAnchor, constant: 15).isActive = true
+			titleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+		}
+		
+		if let switcher = switcher {
+			switcher.translatesAutoresizingMaskIntoConstraints = false
+			switcher.isHidden = true
+			switcher.onTintColor = .dailyAdaptiveBlue
+			contentView.addSubview(switcher)
+			
+			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+		}
 	}
 }

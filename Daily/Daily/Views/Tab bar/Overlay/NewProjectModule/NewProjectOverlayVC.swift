@@ -71,14 +71,19 @@ extension NewProjectOverlayVC {
 					timeCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 					return timeCell
 				}
+			case .timePicker:
+				if let timePickerCell = tableView.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
+					timePickerCell.component = component
+					timePickerCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+					return timePickerCell
+				}
 			default:
-				return UITableViewCell() //if we accidentally put a wrong item in dateAndTime model
+				return UITableViewCell()
 			}
 				
-		default:
-			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyOrdinaryCell.cellIdentifier, for: indexPath) as? DailyOrdinaryCell {
+		case .teamProject:
+			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyTeamProjectCell.cellIdentifier, for: indexPath) as? DailyTeamProjectCell {
 				cell.component = item.components[indexPath.row]
-				
 				return cell
 			}
 		}

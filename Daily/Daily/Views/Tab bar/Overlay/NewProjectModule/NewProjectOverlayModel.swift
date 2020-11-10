@@ -19,12 +19,7 @@ protocol NewProjectViewModelItem: DailyViewModelItem {
 //Default values
 extension NewProjectViewModelItem {
 	var rowCount: Int {
-		switch type {
-		case .dateAndTime:
-			return 2
-		default:
-			return 1
-		}
+		return 1
 	}
 }
 
@@ -32,10 +27,25 @@ class NewProjectViewModelDateAndTimeItem: NewProjectViewModelItem {
 	var type: NewProjectViewModelItemType {
 		return .dateAndTime
 	}
+	
+	var rowCount: Int {
+		return components.count
+	}
 
 	var components = [
-		DailyCellComponent(title: "Date", icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed), cellType: .newProjectDate),
-		DailyCellComponent(title: "Time", icon: Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue), cellType: .time)
+		DailyCellComponent(title: "Date",
+						   icon: Icon(symbolName: "calendar.badge.clock",
+						   tileColor: .dailyAdaptiveRed),
+						   cellType: .newProjectDate,
+						   isToggable: true,
+						   isSelectable: false),
+		
+		DailyCellComponent(title: "Time",
+						   icon: Icon(symbolName: "clock.fill",
+						   tileColor: .dailyAdaptiveBlue),
+						   cellType: .time,
+						   isToggable: true,
+						   isSelectable: false)
 	]
 }
 
@@ -46,7 +56,12 @@ class NewProjectViewModelTeamProjectItem: NewProjectViewModelItem {
 	}
 
 	var components = [
-		DailyCellComponent(title: "Team project", icon: Icon(symbolName: "person.2.fill", tileColor: .dailyAdaptiveGreen), cellType: .teamProject),
+		DailyCellComponent(title: "Team project",
+						   icon: Icon(symbolName: "person.2.fill",
+						   tileColor: .dailyAdaptiveGreen),
+						   cellType: .teamProject,
+						   isToggable: true,
+						   isSelectable: false),
 	]
 }
 

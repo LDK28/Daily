@@ -14,11 +14,10 @@ class DailyCell: UITableViewCell {
 	
 	var component: DailyCellComponent? {
 		didSet {
-			guard let component = component else { return }
-			icon.backgroundColor = component.icon.tileColor
-			icon.tintColor = component.icon.symbolColor
-			icon.image = component.icon.symbol
-			
+			guard let component = component, let componentIcon = component.icon else { return }
+			icon.backgroundColor = componentIcon.tileColor
+			icon.tintColor = componentIcon.symbolColor
+			icon.image = componentIcon.symbol
 
 			if component.isToggable {
 				switcher.isHidden = false
@@ -30,12 +29,34 @@ class DailyCell: UITableViewCell {
 	}
 }
 
+// MARK: - Cell with DateAndTimePicker without text, icon and other elements other than DateAndTimePicker
+class DailyTimePickerCell: DailyCell {
+	static let cellIdentifier = "DailyTimePickerCell"
+	let timePicker = UIDatePicker()
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		timePicker.datePickerMode = .time
+		timePicker.translatesAutoresizingMaskIntoConstraints = false
+		contentView.addSubview(timePicker)
+		
+		configureDailyCell(titleView: timePicker, icon: icon, switcher: switcher)
+		
+		NSLayoutConstraint.activate([
+			timePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+			timePicker.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+		])
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+}
+
 
 // MARK: - Ordinary cell with single line text
-final class DailyOrdinaryCell: DailyCell {
-
-	static let cellIdentifier = "DailyOrdinaryCell"
-	
+class DailyOrdinaryCell: DailyCell {
 	private let titleLabel = UILabel()
 	
 	override var component: DailyCellComponent? {
@@ -60,6 +81,34 @@ final class DailyOrdinaryCell: DailyCell {
 	}
 	
 }
+
+final class DailyRemindCell: DailyOrdinaryCell {
+	static let cellIdentifier = "DailyRemindCell"
+	
+	func remindStateToggled() {
+		//more to come
+	}
+}
+
+final class DailyRepeatCell: DailyOrdinaryCell {
+	static let cellIdentifier = "DailyRepeatCell"
+	
+	func repeatEvery(/* day/week/etc */) {
+		//more to come
+	}
+}
+
+final class DailyTeamProjectCell: DailyOrdinaryCell {
+	static let cellIdentifier = "DailyTeamProjectCell"
+	
+	func toggleTeamProjectState() {
+		//more to come
+	}
+}
+
+
+
+
 
 // MARK: - Date and Time cells
 class DailyDateAndTimeCell: DailyCell {

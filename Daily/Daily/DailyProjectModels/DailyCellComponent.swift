@@ -28,24 +28,25 @@ struct Icon {
 }
 
 struct DailyCellComponent {
-	var title: String
-	var icon: Icon
+	var title: String?
+	var icon: Icon?
 	var cellType: DailyCellTypes
 	var isToggable: Bool
 	var isSelectable: Bool
 	
-	init(title: String, icon: Icon, cellType: DailyCellTypes) {
-		self.icon = icon
-		self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
-		self.cellType = cellType
-		
-		switch cellType {
-		case .time, .teamProject, .remind, .newProjectDate:
-			isToggable = true
-			isSelectable = false
-		default:
-			isToggable = false
-			isSelectable = true
+	init(title: String?, icon: Icon?, cellType: DailyCellTypes, isToggable: Bool, isSelectable: Bool) {
+		if let title = title {
+			self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
+		} else {
+			print(123123)
 		}
+		
+		if let icon = icon {
+			self.icon = icon
+		}
+		
+		self.cellType = cellType
+		self.isToggable = isToggable
+		self.isSelectable = isSelectable
 	}
 }

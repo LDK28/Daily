@@ -54,8 +54,11 @@ class OverlayTemplateVC: UIViewController {
 		tableView.showsHorizontalScrollIndicator = false
 		
 		//cells registraion
-		tableView.register(DailyOrdinaryCell.self, forCellReuseIdentifier: DailyOrdinaryCell.cellIdentifier)
+		tableView.register(DailyRemindCell.self, forCellReuseIdentifier: DailyRemindCell.cellIdentifier)
+		tableView.register(DailyRepeatCell.self, forCellReuseIdentifier: DailyRepeatCell.cellIdentifier)
+		tableView.register(DailyTeamProjectCell.self, forCellReuseIdentifier: DailyTeamProjectCell.cellIdentifier)
 		tableView.register(DailyTimeCell.self, forCellReuseIdentifier: DailyTimeCell.cellIdentifier)
+		tableView.register(DailyTimePickerCell.self, forCellReuseIdentifier: DailyTimePickerCell.cellIdentifier)
 		tableView.register(DailyNewTaskDateCell.self, forCellReuseIdentifier: DailyNewTaskDateCell.cellIdentifier)
 		tableView.register(DailyNewProjectDateCell.self, forCellReuseIdentifier: DailyNewProjectDateCell.cellIdentifier)
 		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)

@@ -82,20 +82,29 @@ extension NewTaskOverlayVC {
 					timeCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 					return timeCell
 				}
+			case .timePicker:
+				if let timePickerCell = tableView.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
+					timePickerCell.component = nil
+					timePickerCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+					return timePickerCell
+				}
 			default:
 				return UITableViewCell() //if we accidentally put a wrong item in dateAndTime model
 			}
-		default:
-			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyOrdinaryCell.cellIdentifier, for: indexPath) as? DailyOrdinaryCell {
+		case .remindAlert:
+			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyRemindCell.cellIdentifier, for: indexPath) as? DailyRemindCell {
 				cell.component = item.components[indexPath.row]
-				if item.type == .repeatSelector {
-					cell.accessoryType = .disclosureIndicator
-				}
+				cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.size.width, bottom: 0, right: 0)
+				return cell
+			}
+		case .repeatSelector:
+			if let cell = tableView.dequeueReusableCell(withIdentifier: DailyRepeatCell.cellIdentifier, for: indexPath) as? DailyRepeatCell {
+				cell.component = item.components[indexPath.row]
+				cell.accessoryType = .disclosureIndicator
 				cell.separatorInset = UIEdgeInsets(top: 0, left: cell.bounds.size.width, bottom: 0, right: 0)
 				return cell
 			}
 		}
-		
 		return UITableViewCell() //of none of the cases have been implemented
 	}
 }

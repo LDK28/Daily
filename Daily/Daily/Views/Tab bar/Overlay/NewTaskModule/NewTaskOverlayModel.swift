@@ -28,12 +28,7 @@ protocol NewTaskViewModelItem: DailyViewModelItem {
 //Default values
 extension NewTaskViewModelItem {
 	var rowCount: Int {
-		switch type {
-		case .dateAndTime:
-			return 2
-		default:
-			return 1
-		}
+		return 1
 	}
 }
 
@@ -44,10 +39,31 @@ class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
 	var type: NewTaskViewModelItemType {
 		return .dateAndTime
 	}
+	
+	var rowCount: Int {
+		return components.count
+	}
 
 	var components = [
-		DailyCellComponent(title: "Date", icon: Icon(symbolName: "calendar.badge.clock", tileColor: .dailyAdaptiveRed), cellType: .newTaskDate),
-		DailyCellComponent(title: "Time", icon: Icon(symbolName: "clock.fill", tileColor: .dailyAdaptiveBlue), cellType: .time)
+		DailyCellComponent(title: "Date",
+						   icon: Icon(symbolName: "calendar.badge.clock",
+						   tileColor: .dailyAdaptiveRed),
+						   cellType: .newTaskDate,
+						   isToggable: false,
+						   isSelectable: false),
+		
+		DailyCellComponent(title: "Time",
+						   icon: Icon(symbolName: "clock.fill",
+						   tileColor: .dailyAdaptiveBlue),
+						   cellType: .time,
+						   isToggable: true,
+						   isSelectable: false),
+		
+		DailyCellComponent(title: nil,
+						   icon: nil,
+						   cellType: .timePicker,
+						   isToggable: false,
+						   isSelectable: false)
 	]
 }
 
@@ -59,7 +75,12 @@ class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
 	}
 	
 	var components = [
-		DailyCellComponent(title: "Remind", icon: Icon(symbolName: "alarm.fill", tileColor: .dailyAdaptiveYellow), cellType: .remind)
+		DailyCellComponent(title: "Remind",
+						   icon: Icon(symbolName: "alarm.fill",
+						   tileColor: .dailyAdaptiveYellow),
+						   cellType: .remind,
+						   isToggable: true,
+						   isSelectable: false)
 	]
 }
 
@@ -71,7 +92,12 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 	}
 	
 	var components = [
-		DailyCellComponent(title: "Repeat", icon: Icon(symbolName: "repeat", tileColor: .dailyAdaptiveGreen), cellType: .repeatSchedule)
+		DailyCellComponent(title: "Repeat",
+						   icon: Icon(symbolName: "repeat",
+						   tileColor: .dailyAdaptiveGreen),
+						   cellType: .repeatSchedule,
+						   isToggable: false,
+						   isSelectable: true)
 	]
 }
 
@@ -79,6 +105,9 @@ class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
 
 class NewTaskOverlayDataSource {
 	var items: [NewTaskViewModelItem]
+	var isAssignedToTime = false
+	var shouldRemind = false
+	var isRepetitive = false
 	
 	init(items: [NewTaskViewModelItem]) {
 		self.items = items
