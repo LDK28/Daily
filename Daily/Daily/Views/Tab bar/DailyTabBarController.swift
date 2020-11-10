@@ -61,6 +61,7 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		
 		if Auth.auth().currentUser == nil {
 			let navController = UINavigationController(rootViewController: LoginVC())
 			navController.modalPresentationStyle = .fullScreen

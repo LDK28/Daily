@@ -45,16 +45,18 @@ final class LoginVC: MainVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		self.navigationController?.setNavigationBarHidden(true, animated: true)
+
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-		
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-		
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 		
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: true)
+	}
 	
 	
 	@objc func didTapLoginButton() {
@@ -85,10 +87,9 @@ final class LoginVC: MainVC {
 	}
 	
 	@objc func didTapSignupButton() {
-
-		let vc = SignupVC()
-		vc.modalPresentationStyle = .fullScreen
-		self.navigationController?.pushViewController(vc, animated: true)
+		navigationController?.pushViewController(SignupVC(), animated: true)
+		emailField.text = ""
+		passwordField.text = ""
 	}
 	
 	func validateFields() -> String? {

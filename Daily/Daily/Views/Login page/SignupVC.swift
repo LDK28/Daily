@@ -54,6 +54,16 @@ class SignupVC: MainVC {
 		signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
 		loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		firstNameField.text = ""
+		lastNameField.text = ""
+		emailField.text = ""
+		passwordField.text = ""
+		confirmPasswordField.text = ""
+	}
     
 	
 	@objc func signupButtonTapped() {
@@ -117,7 +127,7 @@ class SignupVC: MainVC {
 	}
 	
 	@objc func loginButtonTapped() {
-		self.navigationController?.popViewController(animated: true)
+		navigationController?.popViewController(animated: true)
 	}
 	
 	func configureElements() {
