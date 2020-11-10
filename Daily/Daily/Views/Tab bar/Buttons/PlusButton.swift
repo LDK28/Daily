@@ -37,7 +37,7 @@ class PlusButton: UIButton {
 		setImage(plusImage, for: .normal)
 		
 		let chevronConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.8, weight: .light)
-		let chevronImage = UIImage(systemName: "chevron.down", withConfiguration: chevronConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+		let chevronImage = UIImage(systemName: "chevron.right", withConfiguration: chevronConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
 		setImage(chevronImage, for: [.selected])
 	}
 	

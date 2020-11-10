@@ -70,15 +70,15 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	@objc func didTapPlusButton() {
 		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
 			plusButton.isSelected.toggle()
-			plusButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi)
 			if plusButton.isSelected {
+				plusButton.transform = CGAffineTransform(rotationAngle: .pi / 2)
 				addButtonsStackView.isHidden = false //show stack
 				blackoutView.isHidden = false //blackout the background
 				blackoutView.alpha = 1 //and show it with animation
 				addButtonsStackView.frame.origin.y -= 20
 				addButtonsStackView.alpha = 1
 			} else {
-				plusButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi + .pi)
+				plusButton.transform = CGAffineTransform(rotationAngle: 0)
 				overlayViewContoller?.remove()
 				overlayViewContoller = nil
 				addButtonsStackView.frame.origin.y += 15
