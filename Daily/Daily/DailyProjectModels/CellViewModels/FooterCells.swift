@@ -24,8 +24,8 @@ class DescriptionCell: UITableViewCell {
 		
 		contentView.addSubview(descriptionTextView)
 		NSLayoutConstraint.activate([
-			descriptionTextView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-			descriptionTextView.heightAnchor.constraint(equalToConstant: contentView.frame.height)
+			descriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+			descriptionTextView.topAnchor.constraint(equalTo: contentView.topAnchor)
 		])
 		
 	}

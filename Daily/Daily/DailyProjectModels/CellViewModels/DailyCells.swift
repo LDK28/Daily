@@ -207,7 +207,9 @@ final class DailyDatePickerCell: DailyTimeAndDatePickerCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .date
+		picker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -5).isActive = true
 	}
+	
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

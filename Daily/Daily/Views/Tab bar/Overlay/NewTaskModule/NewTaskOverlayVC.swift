@@ -74,6 +74,7 @@ extension NewTaskOverlayVC {
 				if let dateCell = tableView.dequeueReusableCell(withIdentifier: DailyNewTaskDateCell.cellIdentifier) as? DailyNewTaskDateCell {
 					dateCell.component = component
 					dateCell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+					dateCell.selectedBackgroundView?.layer.maskedCorners = dateCell.layer.maskedCorners
 					return dateCell
 			}
 			case .time:
