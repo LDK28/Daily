@@ -98,19 +98,6 @@ extension NewProjectOverlayVC {
 	}
 }
 
-extension NewProjectOverlayVC {
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		if let item = cellItemsToDisplay?.items[indexPath.section] {
-			let component = item.components[indexPath.row].cellType
-			if component == .datePicker {
-				return 400
-			}
-		}
-		return 55
-	}
-}
-
 extension  NewProjectOverlayVC: NewProjectOverlayDisplayLogic {
 	func display(data: NewProjectOverlayDataSource) {
 		cellItemsToDisplay = data

@@ -172,10 +172,11 @@ class DailyTimeAndDatePickerCell: DailyCell {
 		contentView.addSubview(picker)
 		configureDailyCell(titleView: picker, icon: icon, switcher: switcher)
 		
+		
 		NSLayoutConstraint.activate([
 			picker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 5),
-			picker.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			picker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+			picker.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+			picker.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5)
 		])
 	}
 	
@@ -191,6 +192,7 @@ final class DailyTimePickerCell: DailyTimeAndDatePickerCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .time
+		picker.heightAnchor.constraint(equalToConstant: 50).isActive = true
 	}
 	
 	required init?(coder: NSCoder) {

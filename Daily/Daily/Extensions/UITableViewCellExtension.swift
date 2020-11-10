@@ -34,6 +34,7 @@ extension UITableViewCell {
 			
 			titleView.leadingAnchor.constraint(equalTo: icon?.trailingAnchor ?? contentView.leadingAnchor, constant: 15).isActive = true
 			titleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+	
 		}
 		
 		if let switcher = switcher {
@@ -44,6 +45,8 @@ extension UITableViewCell {
 			
 			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
 			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+			switcher.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+			switcher.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
 		}
 	}
 }

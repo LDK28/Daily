@@ -40,7 +40,7 @@ class OverlayTemplateVC: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		tableView.estimatedRowHeight = 400
+		tableView.estimatedRowHeight = 55
 		tableView.rowHeight = UITableView.automaticDimension
 	}
 	
@@ -135,10 +135,6 @@ extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 20
-	}
-	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 55
 	}
 	
 }
