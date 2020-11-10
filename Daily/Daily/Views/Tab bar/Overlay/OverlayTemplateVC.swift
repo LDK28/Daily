@@ -38,6 +38,12 @@ class OverlayTemplateVC: UIViewController {
 		cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.estimatedRowHeight = 400
+		tableView.rowHeight = UITableView.automaticDimension
+	}
+	
 	@objc func didTapCancelButton() {
 		self.remove()
 		NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
@@ -59,6 +65,7 @@ class OverlayTemplateVC: UIViewController {
 		tableView.register(DailyTeamProjectCell.self, forCellReuseIdentifier: DailyTeamProjectCell.cellIdentifier)
 		tableView.register(DailyTimeCell.self, forCellReuseIdentifier: DailyTimeCell.cellIdentifier)
 		tableView.register(DailyTimePickerCell.self, forCellReuseIdentifier: DailyTimePickerCell.cellIdentifier)
+		tableView.register(DailyDatePickerCell.self, forCellReuseIdentifier: DailyDatePickerCell.cellIdentifier)
 		tableView.register(DailyNewTaskDateCell.self, forCellReuseIdentifier: DailyNewTaskDateCell.cellIdentifier)
 		tableView.register(DailyNewProjectDateCell.self, forCellReuseIdentifier: DailyNewProjectDateCell.cellIdentifier)
 		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
@@ -125,12 +132,13 @@ extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 		header.backgroundColor = .dailyTabBarColor
 		return header
 	}
+	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 20
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 50
+		return 55
 	}
 	
 }

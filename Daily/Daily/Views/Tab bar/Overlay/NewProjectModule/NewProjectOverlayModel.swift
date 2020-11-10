@@ -40,11 +40,23 @@ class NewProjectViewModelDateAndTimeItem: NewProjectViewModelItem {
 						   isToggable: true,
 						   isSelectable: false),
 		
+		DailyCellComponent(title: nil,
+						   icon: nil,
+						   cellType: .datePicker,
+						   isToggable: false,
+						   isSelectable: false),
+		
 		DailyCellComponent(title: "Time",
 						   icon: Icon(symbolName: "clock.fill",
 						   tileColor: .dailyAdaptiveBlue),
 						   cellType: .time,
 						   isToggable: true,
+						   isSelectable: false),
+		
+		DailyCellComponent(title: nil,
+						   icon: nil,
+						   cellType: .timePicker,
+						   isToggable: false,
 						   isSelectable: false)
 	]
 }

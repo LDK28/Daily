@@ -65,10 +65,16 @@ extension NewProjectOverlayVC {
 					dateCell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 					return dateCell
 			}
+			case .datePicker:
+				if let timePickerCell = tableView.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
+					timePickerCell.component = nil
+					timePickerCell.layer.maskedCorners = []
+					return timePickerCell
+				}
 			case .time:
 				if let timeCell = tableView.dequeueReusableCell(withIdentifier: DailyTimeCell.cellIdentifier) as? DailyTimeCell {
 					timeCell.component = component
-					timeCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+					timeCell.layer.maskedCorners = item.components.count > 2 ? [] : [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 					return timeCell
 				}
 			case .timePicker:
@@ -89,6 +95,19 @@ extension NewProjectOverlayVC {
 		}
 		
 		return UITableViewCell() //of none of the cases have been implemented
+	}
+}
+
+extension NewProjectOverlayVC {
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		if let item = cellItemsToDisplay?.items[indexPath.section] {
+			let component = item.components[indexPath.row].cellType
+			if component == .datePicker {
+				return 400
+			}
+		}
+		return 55
 	}
 }
 

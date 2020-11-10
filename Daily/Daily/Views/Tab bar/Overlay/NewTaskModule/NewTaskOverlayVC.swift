@@ -79,7 +79,7 @@ extension NewTaskOverlayVC {
 			case .time:
 				if let timeCell = tableView.dequeueReusableCell(withIdentifier: DailyTimeCell.cellIdentifier) as? DailyTimeCell {
 					timeCell.component = component
-					timeCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+					timeCell.layer.maskedCorners = item.components.count > 2 ? [] : [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 					return timeCell
 				}
 			case .timePicker:

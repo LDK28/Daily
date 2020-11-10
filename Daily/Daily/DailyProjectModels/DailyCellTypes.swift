@@ -14,5 +14,6 @@ enum DailyCellTypes {
 	case newProjectDate
 	case time
 	case timePicker
+	case datePicker
 	case teamProject
 }

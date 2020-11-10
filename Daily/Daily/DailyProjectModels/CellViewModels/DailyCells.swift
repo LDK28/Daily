@@ -29,32 +29,6 @@ class DailyCell: UITableViewCell {
 	}
 }
 
-// MARK: - Cell with DateAndTimePicker without text, icon and other elements other than DateAndTimePicker
-class DailyTimePickerCell: DailyCell {
-	static let cellIdentifier = "DailyTimePickerCell"
-	let timePicker = UIDatePicker()
-	
-	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		timePicker.datePickerMode = .time
-		timePicker.translatesAutoresizingMaskIntoConstraints = false
-		contentView.addSubview(timePicker)
-		
-		configureDailyCell(titleView: timePicker, icon: icon, switcher: switcher)
-		
-		NSLayoutConstraint.activate([
-			timePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			timePicker.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		])
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
-}
-
-
 // MARK: - Ordinary cell with single line text
 class DailyOrdinaryCell: DailyCell {
 	private let titleLabel = UILabel()
@@ -105,10 +79,6 @@ final class DailyTeamProjectCell: DailyOrdinaryCell {
 		//more to come
 	}
 }
-
-
-
-
 
 // MARK: - Date and Time cells
 class DailyDateAndTimeCell: DailyCell {
@@ -185,4 +155,60 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 			
 		}
 	}
+}
+
+
+// MARK: - Cell with DateAndTimePicker without text, icon and other elements other than DateAndTimePicker
+
+class DailyTimeAndDatePickerCell: DailyCell {
+	let picker = UIDatePicker()
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		if #available(iOS 14, *) {
+			picker.preferredDatePickerStyle = .inline
+		}
+		picker.translatesAutoresizingMaskIntoConstraints = false
+		contentView.addSubview(picker)
+		configureDailyCell(titleView: picker, icon: icon, switcher: switcher)
+		
+		NSLayoutConstraint.activate([
+			picker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 5),
+			picker.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			picker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+		])
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+}
+
+final class DailyTimePickerCell: DailyTimeAndDatePickerCell {
+	static let cellIdentifier = "DailyTimePickerCell"
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		picker.datePickerMode = .time
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+}
+
+final class DailyDatePickerCell: DailyTimeAndDatePickerCell {
+	static let cellIdentifier = "DailyDatePickerCell"
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		picker.datePickerMode = .date
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 }
