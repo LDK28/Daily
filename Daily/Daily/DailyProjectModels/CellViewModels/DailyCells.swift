@@ -10,10 +10,7 @@ import UIKit
 //Only for inheritance
 class DailyCell: UITableViewCell {
 	internal let icon = UIImageView()
-	internal var textView: UIView! = UIView()
 	let switcher = UISwitch()
-	
-	private var hasUpdatedConstraints = false
 	
 	var component: DailyCellComponent? {
 		didSet {
@@ -29,14 +26,6 @@ class DailyCell: UITableViewCell {
 			} else {
 				switcher.isHidden = true
 			}
-		}
-	}
-	
-	override func updateConstraints() {
-		super.updateConstraints()
-		if !hasUpdatedConstraints {
-			configureDailyCell(titleView: textView, icon: icon, switcher: switcher)
-			hasUpdatedConstraints = true
 		}
 	}
 }
@@ -61,7 +50,7 @@ final class DailyOrdinaryCell: DailyCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		textView = titleLabel
+		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 	}
@@ -81,7 +70,7 @@ class DailyDateAndTimeCell: DailyCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		textView = textStack
+		configureDailyCell(titleView: textStack, icon: icon, switcher: switcher)
 		
 		titleLabel.font = .systemFont(ofSize: 16)
 		titleLabel.textColor = .dailyOverlayButtonTextColor

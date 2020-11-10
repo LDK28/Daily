@@ -49,11 +49,6 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		if Auth.auth().currentUser == nil {
-			let navController = UINavigationController(rootViewController: LoginVC())
-			navController.modalPresentationStyle = .fullScreen
-			self.present(navController, animated: true, completion: nil)
-		}
 		
 		newProjectButton.addTarget(self, action: #selector(didTapNewProjectButton), for: .touchUpInside)
 		newTaskButton.addTarget(self, action: #selector(didTapNewTaskButton), for: .touchUpInside)
@@ -63,6 +58,14 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 		NotificationCenter.default.addObserver(self, selector: #selector(didTapPlusButton), name: Notification.Name("Close Overlay"), object: nil)
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		if Auth.auth().currentUser == nil {
+			let navController = UINavigationController(rootViewController: LoginVC())
+			navController.modalPresentationStyle = .fullScreen
+			self.present(navController, animated: true, completion: nil)
+		}
+	}
 	@objc func didTapPlusButton() {
 		
 		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
