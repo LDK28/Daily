@@ -12,9 +12,9 @@ class DailyCell: UITableViewCell {
 	internal let icon = UIImageView()
 	let switcher = UISwitch()
 	
-	var component: DailyCellComponent? {
+	var viewModel: DailyCellViewModel? {
 		didSet {
-			guard let component = component, let componentIcon = component.icon else { return }
+			guard let component = viewModel, let componentIcon = component.icon else { return }
 			icon.backgroundColor = componentIcon.tileColor
 			icon.tintColor = componentIcon.symbolColor
 			icon.image = componentIcon.symbol
@@ -33,10 +33,10 @@ class DailyCell: UITableViewCell {
 class DailyOrdinaryCell: DailyCell {
 	private let titleLabel = UILabel()
 	
-	override var component: DailyCellComponent? {
+	override var viewModel: DailyCellViewModel? {
 		didSet {
-			guard let component = component else { return }
-			super.component = component
+			guard let component = viewModel else { return }
+			super.viewModel = component
 			titleLabel.text = component.title
 			titleLabel.font = .systemFont(ofSize: 16)
 			
@@ -110,10 +110,10 @@ class DailyDateAndTimeCell: DailyCell {
 final class DailyNewTaskDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyNewTaskDateCell"
 	
-	override var component: DailyCellComponent? {
+	override var viewModel: DailyCellViewModel? {
 		didSet {
-			guard let component = component else { return }
-			super.component = component
+			guard let component = viewModel else { return }
+			super.viewModel = component
 			
 			titleLabel.text = component.title
 			let date = Date()
@@ -129,10 +129,10 @@ final class DailyNewTaskDateCell: DailyDateAndTimeCell {
 final class DailyNewProjectDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyNewProjectDateCell"
 	
-	override var component: DailyCellComponent? {
+	override var viewModel: DailyCellViewModel? {
 		didSet {
-			guard let component = component else { return }
-			super.component = component
+			guard let component = viewModel else { return }
+			super.viewModel = component
 			
 			titleLabel.text = component.title
 			dateAndTimeLabel.text = "Any day"
@@ -145,10 +145,10 @@ final class DailyNewProjectDateCell: DailyDateAndTimeCell {
 final class DailyTimeCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyTimeCell"
 	
-	override var component: DailyCellComponent? {
+	override var viewModel: DailyCellViewModel? {
 		didSet {
-			guard let component = component else { return }
-			super.component = component
+			guard let component = viewModel else { return }
+			super.viewModel = component
 			
 			titleLabel.text = component.title
 			dateAndTimeLabel.text = "Any time"

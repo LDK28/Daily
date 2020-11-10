@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewProjectOverlayBusinessLogic {
-	func fetchCells()
+	func fetchCells(in tableView: UITableView)
 }
 
 class NewProjectOverlayInteractor {
@@ -22,7 +22,7 @@ class NewProjectOverlayInteractor {
 }
 
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
-	func fetchCells() {
-		presenter?.presentData()
+	func fetchCells(in tableView: UITableView) {
+		presenter?.present(data: dataSource, in: tableView)
 	}
 }

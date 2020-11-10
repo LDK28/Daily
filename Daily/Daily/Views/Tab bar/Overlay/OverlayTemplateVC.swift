@@ -14,6 +14,8 @@ class OverlayTemplateVC: UIViewController {
 	internal let titleLabel = UILabel()
 	internal let tableView = UITableView()
 	
+	var cellsToDisplay: [[UITableViewCell]]?
+	
 	
 	override func loadView() {
 		super.loadView()
@@ -114,13 +116,18 @@ class OverlayTemplateVC: UIViewController {
 
 extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 	//MARK: Default implementation of dlegate and dataSource functions
+	func numberOfSections(in tableView: UITableView) -> Int {
+		//items represent an array of section
+		return cellsToDisplay?.count ?? 0
+	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 0
+		//each section in the array of items has definite amount of cells
+		return cellsToDisplay?[section].count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		return cellsToDisplay?[indexPath.section][indexPath.row] ?? UITableViewCell()
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

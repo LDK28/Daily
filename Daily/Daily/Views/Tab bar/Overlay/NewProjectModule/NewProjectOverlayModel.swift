@@ -7,80 +7,85 @@
 
 import UIKit
 
-enum NewProjectViewModelItemType {
+enum NewProjectOverlaySectionTypes {
 	case dateAndTime
 	case teamProject
 }
 
-protocol NewProjectViewModelItem: DailyViewModelItem {
-	var type: NewProjectViewModelItemType { get }
+protocol NewProjectOverlaySectionViewModel: DailySectionViewModel {
+	var type: NewProjectOverlaySectionTypes { get }
 }
 
 //Default values
-extension NewProjectViewModelItem {
+extension NewProjectOverlaySectionViewModel {
 	var rowCount: Int {
 		return 1
 	}
 }
 
-class NewProjectViewModelDateAndTimeItem: NewProjectViewModelItem {
-	var type: NewProjectViewModelItemType {
+class NewProjectOverlayDateAndTimeSectionViewModel: NewProjectOverlaySectionViewModel {
+	
+	var type: NewProjectOverlaySectionTypes {
 		return .dateAndTime
 	}
 	
 	var rowCount: Int {
-		return components.count
+		return cellViewModels.count
 	}
 
-	var components = [
-		DailyCellComponent(title: "Date",
-						   icon: Icon(symbolName: "calendar.badge.clock",
-						   tileColor: .dailyAdaptiveRed),
-						   cellType: .newProjectDate,
-						   isToggable: true,
-						   isSelectable: false),
-		
-		DailyCellComponent(title: nil,
-						   icon: nil,
-						   cellType: .datePicker,
-						   isToggable: false,
-						   isSelectable: false),
-		
-		DailyCellComponent(title: "Time",
-						   icon: Icon(symbolName: "clock.fill",
-						   tileColor: .dailyAdaptiveBlue),
-						   cellType: .time,
-						   isToggable: true,
-						   isSelectable: false),
-		
-		DailyCellComponent(title: nil,
-						   icon: nil,
-						   cellType: .timePicker,
-						   isToggable: false,
-						   isSelectable: false)
-	]
+	var cellViewModels: [DailyCellViewModel] {
+		return [
+				DailyCellViewModel(title: "Date",
+								   icon: Icon(symbolName: "calendar.badge.clock",
+											  tileColor: .dailyAdaptiveRed),
+								   cellType: .newProjectDate,
+								   isToggable: true,
+								   isSelectable: false),
+				
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .datePicker,
+								   isToggable: false,
+								   isSelectable: false),
+				
+				DailyCellViewModel(title: "Time",
+								   icon: Icon(symbolName: "clock.fill",
+											  tileColor: .dailyAdaptiveBlue),
+								   cellType: .time,
+								   isToggable: true,
+								   isSelectable: false),
+				
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .timePicker,
+								   isToggable: false,
+								   isSelectable: false)
+		]
+	}
 }
 
 
-class NewProjectViewModelTeamProjectItem: NewProjectViewModelItem {
-	var type: NewProjectViewModelItemType {
+class NewProjectOverlayTeamProjectSectionViewModel: NewProjectOverlaySectionViewModel {
+	var type: NewProjectOverlaySectionTypes {
 		return .teamProject
 	}
 
-	var components = [
-		DailyCellComponent(title: "Team project",
-						   icon: Icon(symbolName: "person.2.fill",
-						   tileColor: .dailyAdaptiveGreen),
-						   cellType: .teamProject,
-						   isToggable: true,
-						   isSelectable: false),
-	]
+	var cellViewModels: [DailyCellViewModel] {
+		return [
+				DailyCellViewModel(title: "Team project",
+							   icon: Icon(symbolName: "person.2.fill",
+							   tileColor: .dailyAdaptiveGreen),
+							   cellType: .teamProject,
+							   isToggable: true,
+							   isSelectable: false),
+		]
+	}
 }
 
 class NewProjectOverlayDataSource {
-	var items: [NewProjectViewModelItem]
+	var sectionViewModels: [NewProjectOverlaySectionViewModel]
 	
-	init(items: [NewProjectViewModelItem]) {
-		self.items = items
+	init(sectionViewModels: [NewProjectOverlaySectionViewModel]) {
+		self.sectionViewModels = sectionViewModels
 	}
 }

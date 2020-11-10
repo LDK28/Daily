@@ -14,19 +14,19 @@ import UIKit
 */
 
 
-enum NewTaskViewModelItemType {
+enum NewTaskOverlaySectionType {
 	case dateAndTime
 	case remindAlert
 	case repeatSelector
 }
 
 
-protocol NewTaskViewModelItem: DailyViewModelItem {
-	var type: NewTaskViewModelItemType { get }
+protocol NewTaskOverlaySectionViewModel: DailySectionViewModel {
+	var type: NewTaskOverlaySectionType { get }
 }
 
 //Default values
-extension NewTaskViewModelItem {
+extension NewTaskOverlaySectionViewModel {
 	var rowCount: Int {
 		return 1
 	}
@@ -34,82 +34,88 @@ extension NewTaskViewModelItem {
 
 //MARK: - Date and time
 
-class NewTaskViewModelDateAndTimeItem: NewTaskViewModelItem {
+class NewTaskOverlayDateAndTimeSectionViewModel: NewTaskOverlaySectionViewModel {
 	
-	var type: NewTaskViewModelItemType {
+	var type: NewTaskOverlaySectionType {
 		return .dateAndTime
 	}
 	
 	var rowCount: Int {
-		return components.count
+		return cellViewModels.count
 	}
 
-	var components = [
-		DailyCellComponent(title: "Date",
-						   icon: Icon(symbolName: "calendar.badge.clock",
-						   tileColor: .dailyAdaptiveRed),
-						   cellType: .newTaskDate,
-						   isToggable: false,
-						   isSelectable: false),
-		
-		DailyCellComponent(title: "Time",
-						   icon: Icon(symbolName: "clock.fill",
-						   tileColor: .dailyAdaptiveBlue),
-						   cellType: .time,
-						   isToggable: true,
-						   isSelectable: false),
-		
-		DailyCellComponent(title: nil,
-						   icon: nil,
-						   cellType: .timePicker,
-						   isToggable: false,
-						   isSelectable: false)
-	]
+	var cellViewModels: [DailyCellViewModel] {
+		return [
+				DailyCellViewModel(title: "Date",
+								   icon: Icon(symbolName: "calendar.badge.clock",
+								   tileColor: .dailyAdaptiveRed),
+								   cellType: .newTaskDate,
+								   isToggable: false,
+								   isSelectable: false),
+				
+				DailyCellViewModel(title: "Time",
+								   icon: Icon(symbolName: "clock.fill",
+								   tileColor: .dailyAdaptiveBlue),
+								   cellType: .time,
+								   isToggable: true,
+								   isSelectable: false),
+				
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .timePicker,
+								   isToggable: false,
+								   isSelectable: false)
+		]
+	}
 }
 
 //MARK: - Reminder (on or off)
 
-class NewTaskViewModelRemindAlertItem: NewTaskViewModelItem {
-	var type: NewTaskViewModelItemType {
+class NewTaskOverlayRemindViewModel: NewTaskOverlaySectionViewModel {
+	var type: NewTaskOverlaySectionType {
 		return .remindAlert
 	}
 	
-	var components = [
-		DailyCellComponent(title: "Remind",
-						   icon: Icon(symbolName: "alarm.fill",
-						   tileColor: .dailyAdaptiveYellow),
-						   cellType: .remind,
-						   isToggable: true,
-						   isSelectable: false)
-	]
+	var cellViewModels: [DailyCellViewModel] {
+		return [
+				DailyCellViewModel(title: "Remind",
+							   icon: Icon(symbolName: "alarm.fill",
+							   tileColor: .dailyAdaptiveYellow),
+							   cellType: .remind,
+							   isToggable: true,
+							   isSelectable: false)
+		]
+	}
 }
 
 //MARK: - Repeat (never otherwise set interval)
 
-class NewTaskViewModelRepeatSelectorItem: NewTaskViewModelItem {
-	var type: NewTaskViewModelItemType {
+class NewTaskOverlayRepeatViewModel: NewTaskOverlaySectionViewModel {
+	var type: NewTaskOverlaySectionType {
 		return .repeatSelector
 	}
 	
-	var components = [
-		DailyCellComponent(title: "Repeat",
-						   icon: Icon(symbolName: "repeat",
-						   tileColor: .dailyAdaptiveGreen),
-						   cellType: .repeatSchedule,
-						   isToggable: false,
-						   isSelectable: true)
-	]
+	var cellViewModels: [DailyCellViewModel] {
+		return [
+				DailyCellViewModel(title: "Repeat",
+								   icon: Icon(symbolName: "repeat",
+								   tileColor: .dailyAdaptiveGreen),
+								   cellType: .repeatSchedule,
+								   isToggable: false,
+								   isSelectable: true)
+		]
+	}
 }
 
 // MARK: - The main model that will hold all our table sections with cells
 
 class NewTaskOverlayDataSource {
-	var items: [NewTaskViewModelItem]
+	var sectionViewModels: [NewTaskOverlaySectionViewModel]
 	var isAssignedToTime = false
 	var shouldRemind = false
 	var isRepetitive = false
 	
-	init(items: [NewTaskViewModelItem]) {
-		self.items = items
+	init(sectionsViewModel: [NewTaskOverlaySectionViewModel]) {
+		self.sectionViewModels = sectionsViewModel
 	}
 }

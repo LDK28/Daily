@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewTaskOverlayBusinessLogic {
-	func fetchCells()
+	func fetchCells(in tableView: UITableView)
 	func didTapDateCell()
 }
 
@@ -29,7 +29,7 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
 		
 	}
 	
-	func fetchCells() {
-		presenter?.presentData()
+	func fetchCells(in tableView: UITableView) {
+		presenter?.present(data: dataSource, in: tableView)
 	}
 }

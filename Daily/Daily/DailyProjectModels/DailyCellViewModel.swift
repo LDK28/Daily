@@ -27,7 +27,7 @@ struct Icon {
 	}
 }
 
-struct DailyCellComponent {
+struct DailyCellViewModel {
 	var title: String?
 	var icon: Icon?
 	var cellType: DailyCellTypes

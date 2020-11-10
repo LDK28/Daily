@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol DailyViewModelItem {
+protocol DailySectionViewModel {
 	var rowCount: Int { get }
-	var components: [DailyCellComponent] { get }
+	var cellViewModels: [DailyCellViewModel] { get }
 }
 
