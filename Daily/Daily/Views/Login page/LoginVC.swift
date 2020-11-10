@@ -67,15 +67,15 @@ final class LoginVC: MainVC {
 			showError(validationError!)
 		} else {
 			//create cleaned versions of the text field
-			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 			
 			//Sign in the user
 			Auth.auth().signIn(withEmail: email, password: password) { result, userLoginError in
 				
 				if userLoginError != nil {
 					//Couldnt sign in
-					self.showError(userLoginError!.localizedDescription)
+					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
 					let vc = DailyTabBarController()

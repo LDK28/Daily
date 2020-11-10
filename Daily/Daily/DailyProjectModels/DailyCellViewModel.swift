@@ -37,8 +37,6 @@ struct DailyCellViewModel {
 	init(title: String?, icon: Icon?, cellType: DailyCellTypes, isToggable: Bool, isSelectable: Bool) {
 		if let title = title {
 			self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
-		} else {
-			print(123123)
 		}
 		
 		if let icon = icon {

@@ -13,11 +13,9 @@ protocol NewNoteOverlayPresentationLogic {
 
 class NewNoteOverlayPresenter {
 	weak var view: NewNoteOverlayDisplayLogic?
-	let dataSource: NewNoteOverlayDataSource
 	
-	init(dataSource: NewNoteOverlayDataSource, view: NewNoteOverlayDisplayLogic) {
+	init(view: NewNoteOverlayDisplayLogic) {
 		self.view = view
-		self.dataSource = dataSource
 	}
 }
 

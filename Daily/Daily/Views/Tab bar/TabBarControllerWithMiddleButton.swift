@@ -11,7 +11,6 @@ class TabBarControllerWithMiddleButton: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
 		configureTabBar()
     }
     

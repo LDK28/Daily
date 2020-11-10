@@ -74,10 +74,10 @@ class SignupVC: MainVC {
 			showError(validationError!)
 		} else {
 			//Created cleaned versions of the data
-			let firstName = firstNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let lastName = lastNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let firstName = firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let lastName = lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 			
 			//Create the user
 			Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, userCreationError in
@@ -88,7 +88,7 @@ class SignupVC: MainVC {
 				//check for errors
 				if userCreationError != nil {
 					//There was an error creating the user
-					self.showError(userCreationError!.localizedDescription)
+					self.showError(userCreationError?.localizedDescription ?? "Error")
 				} else {
 					//User was created successfully
 					let dataBase = Firestore.firestore()
