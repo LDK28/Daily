@@ -20,12 +20,10 @@ enum NewTaskOverlaySectionType {
 	case repeatSelector
 }
 
-
 protocol NewTaskOverlaySectionViewModel: DailySectionViewModel {
 	var type: NewTaskOverlaySectionType { get }
 }
 
-//Default values
 extension NewTaskOverlaySectionViewModel {
 	var rowCount: Int {
 		return 1
@@ -48,14 +46,14 @@ class NewTaskOverlayDateAndTimeSectionViewModel: NewTaskOverlaySectionViewModel 
 		return [
 				DailyCellViewModel(title: "Date",
 								   icon: Icon(symbolName: "calendar.badge.clock",
-								   tileColor: .dailyAdaptiveRed),
+											  tileColor: .dailyAdaptiveRed),
 								   cellType: .newTaskDate,
 								   isToggable: false,
 								   isSelectable: false),
 				
 				DailyCellViewModel(title: "Time",
 								   icon: Icon(symbolName: "clock.fill",
-								   tileColor: .dailyAdaptiveBlue),
+											  tileColor: .dailyAdaptiveBlue),
 								   cellType: .time,
 								   isToggable: true,
 								   isSelectable: false),
@@ -80,7 +78,7 @@ class NewTaskOverlayRemindViewModel: NewTaskOverlaySectionViewModel {
 		return [
 				DailyCellViewModel(title: "Remind",
 							   icon: Icon(symbolName: "alarm.fill",
-							   tileColor: .dailyAdaptiveYellow),
+										  tileColor: .dailyAdaptiveYellow),
 							   cellType: .remind,
 							   isToggable: true,
 							   isSelectable: false)
@@ -99,7 +97,7 @@ class NewTaskOverlayRepeatViewModel: NewTaskOverlaySectionViewModel {
 		return [
 				DailyCellViewModel(title: "Repeat",
 								   icon: Icon(symbolName: "repeat",
-								   tileColor: .dailyAdaptiveGreen),
+											  tileColor: .dailyAdaptiveGreen),
 								   cellType: .repeatSchedule,
 								   isToggable: false,
 								   isSelectable: true)

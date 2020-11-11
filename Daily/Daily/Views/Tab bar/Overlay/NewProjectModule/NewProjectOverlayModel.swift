@@ -7,16 +7,15 @@
 
 import UIKit
 
-enum NewProjectOverlaySectionTypes {
+enum NewProjectOverlaySectionType {
 	case dateAndTime
 	case teamProject
 }
 
 protocol NewProjectOverlaySectionViewModel: DailySectionViewModel {
-	var type: NewProjectOverlaySectionTypes { get }
+	var type: NewProjectOverlaySectionType { get }
 }
 
-//Default values
 extension NewProjectOverlaySectionViewModel {
 	var rowCount: Int {
 		return 1
@@ -25,7 +24,7 @@ extension NewProjectOverlaySectionViewModel {
 
 class NewProjectOverlayDateAndTimeSectionViewModel: NewProjectOverlaySectionViewModel {
 	
-	var type: NewProjectOverlaySectionTypes {
+	var type: NewProjectOverlaySectionType {
 		return .dateAndTime
 	}
 	
@@ -66,7 +65,7 @@ class NewProjectOverlayDateAndTimeSectionViewModel: NewProjectOverlaySectionView
 
 
 class NewProjectOverlayTeamProjectSectionViewModel: NewProjectOverlaySectionViewModel {
-	var type: NewProjectOverlaySectionTypes {
+	var type: NewProjectOverlaySectionType {
 		return .teamProject
 	}
 
@@ -74,7 +73,7 @@ class NewProjectOverlayTeamProjectSectionViewModel: NewProjectOverlaySectionView
 		return [
 				DailyCellViewModel(title: "Team project",
 							   icon: Icon(symbolName: "person.2.fill",
-							   tileColor: .dailyAdaptiveGreen),
+										  tileColor: .dailyAdaptiveGreen),
 							   cellType: .teamProject,
 							   isToggable: true,
 							   isSelectable: false),

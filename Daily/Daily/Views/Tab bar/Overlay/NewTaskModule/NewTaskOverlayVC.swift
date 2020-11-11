@@ -11,7 +11,7 @@ protocol  NewTaskOverlayDisplayLogic: class {
 	func display(cells: [[UITableViewCell]])
 }
 
-class NewTaskOverlayVC: OverlayTemplateVC {
+class NewTaskOverlayVC: OverlayVC {
 	var interactor: NewTaskOverlayBusinessLogic?
 	
 	override func loadView() {
@@ -34,9 +34,6 @@ class NewTaskOverlayVC: OverlayTemplateVC {
 		titleLabel.styleOverlayLabel(text: "Add new task")
 	}
 }
-
-
-// MARK: - Table View Delegate and DataSource
 
 // MARK: - View Protocol
 

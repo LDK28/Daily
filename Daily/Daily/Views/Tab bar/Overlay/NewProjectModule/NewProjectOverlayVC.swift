@@ -12,7 +12,7 @@ protocol NewProjectOverlayDisplayLogic: class {
 }
 
 
-class NewProjectOverlayVC: OverlayTemplateVC {
+class NewProjectOverlayVC: OverlayVC {
 	
 	var interactor: NewProjectOverlayBusinessLogic?
 	

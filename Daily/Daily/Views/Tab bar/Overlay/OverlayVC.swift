@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OverlayTemplateVC: UIViewController {
+class OverlayVC: UIViewController {
 
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
@@ -112,17 +112,15 @@ class OverlayTemplateVC: UIViewController {
 }
 
 
-//MARK: - OverlayTemplateVC TableView Delegate and DataSource
+//MARK: - OverlayVC TableView Delegate and DataSource
 
-extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
-	//MARK: Default implementation of dlegate and dataSource functions
+extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
+
 	func numberOfSections(in tableView: UITableView) -> Int {
-		//items represent an array of section
 		return cellsToDisplay?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		//each section in the array of items has definite amount of cells
 		return cellsToDisplay?[section].count ?? 0
 	}
 	
@@ -145,3 +143,4 @@ extension OverlayTemplateVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 }
+

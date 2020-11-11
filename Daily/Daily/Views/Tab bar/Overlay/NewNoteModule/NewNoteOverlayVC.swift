@@ -11,7 +11,7 @@ protocol NewNoteOverlayDisplayLogic: class {
 	func display()
 }
 
-class NewNoteOverlayVC: OverlayTemplateVC {
+class NewNoteOverlayVC: OverlayVC {
 	private let noteTitleTextField = UITextField()
 	var interactor: NewNoteOverlayBusinessLogic?
 	let descriptionTextView = UITextView()
