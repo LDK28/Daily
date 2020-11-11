@@ -45,16 +45,18 @@ final class LoginVC: MainVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		self.navigationController?.setNavigationBarHidden(true, animated: true)
+
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-		
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-		
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 		
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: true)
+	}
 	
 	
 	@objc func didTapLoginButton() {
@@ -65,18 +67,18 @@ final class LoginVC: MainVC {
 			showError(validationError!)
 		} else {
 			//create cleaned versions of the text field
-			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 			
 			//Sign in the user
 			Auth.auth().signIn(withEmail: email, password: password) { result, userLoginError in
 				
 				if userLoginError != nil {
 					//Couldnt sign in
-					self.showError(userLoginError!.localizedDescription)
+					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
-					let vc = TabBarVC()
+					let vc = DailyTabBarController()
 					vc.modalPresentationStyle = .fullScreen
 					self.present(vc, animated: true, completion: nil)
 				}
@@ -85,10 +87,9 @@ final class LoginVC: MainVC {
 	}
 	
 	@objc func didTapSignupButton() {
-
-		let vc = SignupVC()
-		vc.modalPresentationStyle = .fullScreen
-		self.navigationController?.pushViewController(vc, animated: true)
+		navigationController?.pushViewController(SignupVC(), animated: true)
+		emailField.text = ""
+		passwordField.text = ""
 	}
 	
 	func validateFields() -> String? {

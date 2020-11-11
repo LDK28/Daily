@@ -43,7 +43,7 @@ class SignupVC: MainVC {
 	
 		view.addSubview(mainStack)
 		
-		setupElements()
+		configureElements()
 		
 		styleElements()
 	}
@@ -54,6 +54,16 @@ class SignupVC: MainVC {
 		signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
 		loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		firstNameField.text = ""
+		lastNameField.text = ""
+		emailField.text = ""
+		passwordField.text = ""
+		confirmPasswordField.text = ""
+	}
     
 	
 	@objc func signupButtonTapped() {
@@ -64,10 +74,10 @@ class SignupVC: MainVC {
 			showError(validationError!)
 		} else {
 			//Created cleaned versions of the data
-			let firstName = firstNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let lastName = lastNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-			let password = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+			let firstName = firstNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let lastName = lastNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+			let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 			
 			//Create the user
 			Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, userCreationError in
@@ -78,7 +88,7 @@ class SignupVC: MainVC {
 				//check for errors
 				if userCreationError != nil {
 					//There was an error creating the user
-					self.showError(userCreationError!.localizedDescription)
+					self.showError(userCreationError?.localizedDescription ?? "Error")
 				} else {
 					//User was created successfully
 					let dataBase = Firestore.firestore()
@@ -117,10 +127,10 @@ class SignupVC: MainVC {
 	}
 	
 	@objc func loginButtonTapped() {
-		self.navigationController?.popViewController(animated: true)
+		navigationController?.popViewController(animated: true)
 	}
 	
-	func setupElements() {
+	func configureElements() {
 		
 		NSLayoutConstraint.activate([
 			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
@@ -164,7 +174,7 @@ class SignupVC: MainVC {
 	
 	
 	func transitionToHome() {
-		let vc = TabBarVC()
+		let vc = DailyTabBarController()
 		vc.modalPresentationStyle = .fullScreen
 		present(vc, animated: true, completion: nil)
 	}

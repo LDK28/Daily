@@ -88,7 +88,7 @@ extension UIColor {
 	static var dailyAdaptiveGreen = UIColor.systemGreen
 	
 	static var dailyAdaptiveRed: UIColor {
-		colorForTheme(light: UIColor("FF4A2F"), dark: UIColor("FF7E6A"))
+		colorForTheme(light: UIColor("FF375F"), dark: UIColor("FF376A"))
 	}
 	
 	static var dailyAdaptiveBlue: UIColor {
@@ -114,6 +114,20 @@ extension UIColor {
 	static var dailyLoginButtonColor = UIColor("82C1DF")
 	
 	static var dailySignupButtonColor = UIColor("82C1DF", alpha: 0.5)
+	
+	static var dailyOverlayButtonTextColor: UIColor {
+		colorForTheme(light: UIColor("292929"), dark: UIColor("F9F9F9"))
+	}
+	
+	static var dailyOverlayButtonTileColor: UIColor {
+		colorForTheme(light: UIColor("F9F9F9"), dark: UIColor("292929"))
+	}
+	
+	static var dailyTextFieldTextColor = dailyOverlayButtonTextColor
+	
+	static var dailyTextFieldColor = dailyOverlayButtonTileColor
+	
+	static var dailyPlaceholderColor = dailyTextFieldTextColor.withAlphaComponent(0.5)
 	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {
