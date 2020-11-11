@@ -9,7 +9,7 @@ import UIKit
 
 class NewTaskOverlayModule {
 	static func build() -> UIViewController {
-		let dataSource = NewTaskOverlayDataSource(sectionsViewModel: [
+		let dataSource = NewTaskOverlayDataSource(sectionViewModels: [
 			NewTaskOverlayDateAndTimeSectionViewModel(),
 			NewTaskOverlayRemindViewModel(),
 			NewTaskOverlayRepeatViewModel()

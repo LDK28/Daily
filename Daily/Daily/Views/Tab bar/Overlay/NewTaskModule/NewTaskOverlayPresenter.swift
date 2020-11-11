@@ -27,12 +27,12 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 		let numberOfSectionViewModels = data.sectionViewModels.count
 		for sectionViewModelIndex in 0 ..< numberOfSectionViewModels {
 			viewData.append([])
-			let sectionViewModels = data.sectionViewModels[sectionViewModelIndex]
-			let numberOfCellViewModels = sectionViewModels.cellViewModels.count
+			let currentSectionViewModel = data.sectionViewModels[sectionViewModelIndex]
+			let numberOfCellViewModels = currentSectionViewModel.cellViewModels.count
 			for cellViewModelIndex in 0 ..< numberOfCellViewModels {
 				let indexPath: IndexPath = .init(row: cellViewModelIndex, section: sectionViewModelIndex)
-				let currentCellViewModel = sectionViewModels.cellViewModels[cellViewModelIndex]
-				switch sectionViewModels.type {
+				let currentCellViewModel = currentSectionViewModel.cellViewModels[cellViewModelIndex]
+				switch currentSectionViewModel.type {
 				case .dateAndTime:
 					switch currentCellViewModel.cellType {
 					case .newTaskDate:
@@ -40,8 +40,7 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 							withIdentifier: DailyNewTaskDateCell.cellIdentifier,
 							for: indexPath) as? DailyNewTaskDateCell {
 								dateCell.viewModel = currentCellViewModel
-								dateCell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-								dateCell.selectedBackgroundView?.layer.maskedCorners = dateCell.layer.maskedCorners
+								dateCell.roundTopCorners(cornerRadius: 10)
 								viewData[sectionViewModelIndex].append(dateCell)
 						}
 					case .time:
@@ -49,7 +48,9 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 							withIdentifier: DailyTimeCell.cellIdentifier,
 							for: indexPath) as? DailyTimeCell {
 								timeCell.viewModel = currentCellViewModel
-								timeCell.layer.maskedCorners = sectionViewModels.cellViewModels.count > 2 ? [] : [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+								if cellViewModelIndex == currentSectionViewModel.cellViewModels.count - 1 {
+									timeCell.roundBottomCorners(cornerRadius: 10)
+								}
 								viewData[sectionViewModelIndex].append(timeCell)
 						}
 					case .timePicker:
@@ -57,7 +58,7 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 							withIdentifier: DailyTimePickerCell.cellIdentifier,
 							for: indexPath) as? DailyTimePickerCell {
 								timePickerCell.viewModel = nil
-								timePickerCell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+							timePickerCell.roundBottomCorners(cornerRadius: 10)
 								viewData[sectionViewModelIndex].append(timePickerCell)
 						}
 					default:
@@ -68,6 +69,7 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 						withIdentifier: DailyRemindCell.cellIdentifier,
 						for: indexPath) as? DailyRemindCell {
 							remindCell.viewModel = currentCellViewModel
+							remindCell.roundCorners(cornerRadius: 10)
 							viewData[sectionViewModelIndex].append(remindCell)
 					}
 				case .repeatSelector:
@@ -75,6 +77,7 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 						withIdentifier: DailyRepeatCell.cellIdentifier,
 						for: indexPath) as? DailyRepeatCell {
 							repeatCell.viewModel = currentCellViewModel
+							repeatCell.roundCorners(cornerRadius: 10)
 							repeatCell.accessoryType = .disclosureIndicator
 							viewData[sectionViewModelIndex].append(repeatCell)
 					}

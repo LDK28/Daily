@@ -10,10 +10,8 @@ import UIKit
 extension UITableViewCell {
 	func configureDailyCell(titleView: UIView?, icon: UIImageView?, switcher: UISwitch?) {
 		backgroundColor = .dailyOverlayButtonTileColor
-		layer.cornerRadius = 10
 		let selectedView = UIView()
 		selectedView.backgroundColor = UIColor.dailyTabBarColor.withAlphaComponent(0.5)
-		selectedView.layer.cornerRadius = 10
 		selectedBackgroundView = selectedView
 		
 		if let icon = icon {
@@ -48,5 +46,22 @@ extension UITableViewCell {
 			switcher.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
 			switcher.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
 		}
+	}
+	
+	func roundTopCorners(cornerRadius: CGFloat) {
+		layer.cornerRadius = cornerRadius
+		layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+		selectedBackgroundView?.layer.maskedCorners = layer.maskedCorners
+	}
+	
+	func roundBottomCorners(cornerRadius: CGFloat) {
+		layer.cornerRadius = cornerRadius
+		layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+		selectedBackgroundView?.layer.maskedCorners = layer.maskedCorners
+	}
+	
+	func roundCorners(cornerRadius: CGFloat) {
+		layer.cornerRadius = cornerRadius
+		selectedBackgroundView?.layer.maskedCorners = layer.maskedCorners
 	}
 }
