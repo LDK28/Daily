@@ -115,7 +115,7 @@ class NewTaskOverlayDataSource {
 	var shouldRemind = false
 	var isRepetitive = false
 	
-	init(sectionsViewModel: [NewTaskOverlaySectionViewModel]) {
-		self.sectionViewModels = sectionsViewModel
+	init(sectionViewModels: [NewTaskOverlaySectionViewModel]) {
+		self.sectionViewModels = sectionViewModels
 	}
 }

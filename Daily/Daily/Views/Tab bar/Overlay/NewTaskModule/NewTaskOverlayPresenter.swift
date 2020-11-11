@@ -28,10 +28,10 @@ extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 		for sectionViewModelIndex in 0 ..< numberOfSectionViewModels {
 			viewData.append([])
 			let sectionViewModels = data.sectionViewModels[sectionViewModelIndex]
-			let numberOfCells = sectionViewModels.cellViewModels.count
-			for cellIndex in 0 ..< numberOfCells {
-				let indexPath: IndexPath = .init(row: cellIndex, section: sectionViewModelIndex)
-				let currentCellViewModel = sectionViewModels.cellViewModels[cellIndex]
+			let numberOfCellViewModels = sectionViewModels.cellViewModels.count
+			for cellViewModelIndex in 0 ..< numberOfCellViewModels {
+				let indexPath: IndexPath = .init(row: cellViewModelIndex, section: sectionViewModelIndex)
+				let currentCellViewModel = sectionViewModels.cellViewModels[cellViewModelIndex]
 				switch sectionViewModels.type {
 				case .dateAndTime:
 					switch currentCellViewModel.cellType {
