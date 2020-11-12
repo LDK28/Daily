@@ -9,18 +9,47 @@ import UIKit
 
 class MainVC: UIViewController {
 
+	private var hasChangedGradient = false
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		view.backgroundColor = UIColor("E5E5E5")
+		view.layer.insertSublayer(CALayer(), at: 0)
     }
 	
 	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		view.addBackgroundGradient()
-		
+		if !hasChangedGradient {
+			switch traitCollection.userInterfaceStyle {
+			case .light:
+				view.lightLG()
+			case .dark:
+				view.darkLG()
+			default:
+				view.lightLG()
+			}
+			hasChangedGradient = true
+		}
 	}
 	
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		   super.traitCollectionDidChange(previousTraitCollection)
+
+		   if #available(iOS 13.0, *) {
+			   guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else {
+				   return
+			}
+			hasChangedGradient = false
+			view.layer.sublayers?.removeAll()
+			switch traitCollection.userInterfaceStyle {
+			case .light:
+				view.lightLG()
+			case .dark:
+				view.darkLG()
+			default:
+				view.lightLG()
+			}
+		   }
+	   }
 
 
 }
