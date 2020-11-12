@@ -15,7 +15,7 @@ protocol DailySectionViewModel {
 
 extension DailySectionViewModel {
 	var rowCount: Int {
-		return 1
+		cellViewModels.count
 	}
 }
 

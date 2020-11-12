@@ -7,10 +7,3 @@
 
 import UIKit
 
-/*
-
-	Initializing models to configure table view cells
-		
-*/
-
-

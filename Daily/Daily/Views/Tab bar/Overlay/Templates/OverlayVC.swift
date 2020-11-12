@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OverlayDisplayLogic: class {
-	func display(cells: [[UITableViewCell]])
+	func display(cells: [[UITableViewCell]]?)
 }
 
 class OverlayVC: UIViewController {
@@ -151,7 +151,7 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 
 
 extension OverlayVC: OverlayDisplayLogic {
-	func display(cells: [[UITableViewCell]]) {
+	func display(cells: [[UITableViewCell]]?) {
 		cellsToDisplay = cells
 		cellsToDisplay?.forEach({ (cellsInSection) in
 			cellsInSection.forEach { (cellInRow) in
