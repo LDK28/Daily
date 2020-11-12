@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol OverlayDisplayLogic: class {
+	func display(cells: [[UITableViewCell]])
+}
+
 class OverlayVC: UIViewController {
 
 	internal let saveButton = UIButton(type: .system)
@@ -144,3 +148,17 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 }
 
+
+
+extension OverlayVC: OverlayDisplayLogic {
+	func display(cells: [[UITableViewCell]]) {
+		cellsToDisplay = cells
+		cellsToDisplay?.forEach({ (cellsInSection) in
+			cellsInSection.forEach { (cellInRow) in
+				(cellInRow as? DailyTimeCell)?.parentView = self
+			}
+		})
+		
+		tableView.reloadData()
+	}
+}

@@ -9,10 +9,10 @@ import UIKit
 
 class NewProjectOverlayModule {
 	static func build() -> UIViewController {
-		let dataSource = NewProjectOverlayDataSource(
+		let dataSource = OverlayDataSource(
 			sectionViewModels: [
-				NewProjectOverlayTeamProjectSectionViewModel(),
-				NewProjectOverlayDateAndTimeSectionViewModel()
+				TeamProjectSectionViewModel(),
+				AssignableDateAndTimeSectionViewModel()
 		])
 		
 		let viewController = NewProjectOverlayVC()

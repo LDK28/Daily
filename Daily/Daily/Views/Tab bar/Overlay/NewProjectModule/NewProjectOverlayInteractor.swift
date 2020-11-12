@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol NewProjectOverlayBusinessLogic {
-	func fetchCells()
-	func didToggleTimeSwitcher()
+protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
 }
 
 class NewProjectOverlayInteractor {
 	let presenter: NewProjectOverlayPresentationLogic?
-	let dataSource: NewProjectOverlayDataSource
+	let dataSource: OverlayDataSource
 	
-	init(dataSource: NewProjectOverlayDataSource, presenter: NewProjectOverlayPresentationLogic) {
+	init(dataSource: OverlayDataSource, presenter: NewProjectOverlayPresentationLogic) {
 		self.dataSource = dataSource
 		self.presenter = presenter
 	}

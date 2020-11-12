@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol  NewTaskOverlayDisplayLogic: class {
-	func display(cells: [[UITableViewCell]])
+protocol  NewTaskOverlayDisplayLogic: OverlayDisplayLogic {
+//	func display(cells: [[UITableViewCell]])
 }
 
 class NewTaskOverlayVC: OverlayVC {
@@ -37,18 +37,18 @@ class NewTaskOverlayVC: OverlayVC {
 
 // MARK: - View Protocol
 
-extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
-	func display(cells: [[UITableViewCell]]) {
-		cellsToDisplay = cells
-		cellsToDisplay?.forEach({ (cellsInSection) in
-			cellsInSection.forEach { (cellInRow) in
-				(cellInRow as? DailyTimeCell)?.parentView = self
-			}
-		})
-		tableView.reloadData()
-	}
-	
-}
+//extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
+//	func display(cells: [[UITableViewCell]]) {
+//		cellsToDisplay = cells
+//		cellsToDisplay?.forEach({ (cellsInSection) in
+//			cellsInSection.forEach { (cellInRow) in
+//				(cellInRow as? DailyTimeCell)?.parentView = self
+//			}
+//		})
+//		tableView.reloadData()
+//	}
+//	
+//}
 
 extension NewTaskOverlayVC: DailyTimeCellDelegate {
 	func didToggleTimeSwitcher() {
