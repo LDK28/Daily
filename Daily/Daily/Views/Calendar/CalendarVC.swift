@@ -37,7 +37,7 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         styleHeaderLabel()
         styleCalendarView()
         
-        dayView.loadView(fullDate: getCurrentDate(), doneTasks: 8, missedTasks: missedTasks)
+        dayView.loadView(fullDate: getCurrentDate(), doneTasks: doneTasks, missedTasks: missedTasks)
     }
     
     override func viewDidLoad() {
@@ -48,11 +48,12 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     func configureScrollView(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        scrollView.showsVerticalScrollIndicator = false
     }
     
     func configureHeaderLabel() {
