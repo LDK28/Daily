@@ -12,6 +12,8 @@ class DailyCell: UITableViewCell {
 	internal let icon = UIImageView()
 	let switcher = UISwitch()
 	
+	weak var parentView: UIViewController?
+	
 	var viewModel: DailyCellViewModel? {
 		didSet {
 			guard let component = viewModel, let componentIcon = component.icon else { return }

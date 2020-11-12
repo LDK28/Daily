@@ -42,8 +42,8 @@ class NewTaskOverlayDateAndTimeSectionViewModel: NewTaskOverlaySectionViewModel 
 		return cellViewModels.count
 	}
 
-	var cellViewModels: [DailyCellViewModel] {
-		return [
+	var cellViewModels: [DailyCellViewModel] =
+		[
 				DailyCellViewModel(title: "Date",
 								   icon: Icon(symbolName: "calendar.badge.clock",
 											  tileColor: .dailyAdaptiveRed),
@@ -56,15 +56,8 @@ class NewTaskOverlayDateAndTimeSectionViewModel: NewTaskOverlaySectionViewModel 
 											  tileColor: .dailyAdaptiveBlue),
 								   cellType: .time,
 								   isToggable: true,
-								   isSelectable: false),
-				
-				DailyCellViewModel(title: nil,
-								   icon: nil,
-								   cellType: .timePicker,
-								   isToggable: false,
 								   isSelectable: false)
 		]
-	}
 }
 
 //MARK: - Reminder (on or off)
@@ -74,8 +67,8 @@ class NewTaskOverlayRemindViewModel: NewTaskOverlaySectionViewModel {
 		return .remindAlert
 	}
 	
-	var cellViewModels: [DailyCellViewModel] {
-		return [
+	var cellViewModels: [DailyCellViewModel] =
+		[
 				DailyCellViewModel(title: "Remind",
 							   icon: Icon(symbolName: "alarm.fill",
 										  tileColor: .dailyAdaptiveYellow),
@@ -83,7 +76,6 @@ class NewTaskOverlayRemindViewModel: NewTaskOverlaySectionViewModel {
 							   isToggable: true,
 							   isSelectable: false)
 		]
-	}
 }
 
 //MARK: - Repeat (never otherwise set interval)
@@ -93,8 +85,8 @@ class NewTaskOverlayRepeatViewModel: NewTaskOverlaySectionViewModel {
 		return .repeatSelector
 	}
 	
-	var cellViewModels: [DailyCellViewModel] {
-		return [
+	var cellViewModels: [DailyCellViewModel] =
+		[
 				DailyCellViewModel(title: "Repeat",
 								   icon: Icon(symbolName: "repeat",
 											  tileColor: .dailyAdaptiveGreen),
@@ -102,7 +94,6 @@ class NewTaskOverlayRepeatViewModel: NewTaskOverlaySectionViewModel {
 								   isToggable: false,
 								   isSelectable: true)
 		]
-	}
 }
 
 // MARK: - The main model that will hold all our table sections with cells

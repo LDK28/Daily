@@ -32,8 +32,8 @@ class NewProjectOverlayDateAndTimeSectionViewModel: NewProjectOverlaySectionView
 		return cellViewModels.count
 	}
 
-	var cellViewModels: [DailyCellViewModel] {
-		return [
+	var cellViewModels: [DailyCellViewModel] =
+		[
 				DailyCellViewModel(title: "Date",
 								   icon: Icon(symbolName: "calendar.badge.clock",
 											  tileColor: .dailyAdaptiveRed),
@@ -53,14 +53,7 @@ class NewProjectOverlayDateAndTimeSectionViewModel: NewProjectOverlaySectionView
 								   cellType: .time,
 								   isToggable: true,
 								   isSelectable: false),
-				
-				DailyCellViewModel(title: nil,
-								   icon: nil,
-								   cellType: .timePicker,
-								   isToggable: false,
-								   isSelectable: false)
 		]
-	}
 }
 
 
@@ -69,8 +62,8 @@ class NewProjectOverlayTeamProjectSectionViewModel: NewProjectOverlaySectionView
 		return .teamProject
 	}
 
-	var cellViewModels: [DailyCellViewModel] {
-		return [
+	var cellViewModels: [DailyCellViewModel] =
+		[
 				DailyCellViewModel(title: "Team project",
 							   icon: Icon(symbolName: "person.2.fill",
 										  tileColor: .dailyAdaptiveGreen),
@@ -78,11 +71,11 @@ class NewProjectOverlayTeamProjectSectionViewModel: NewProjectOverlaySectionView
 							   isToggable: true,
 							   isSelectable: false),
 		]
-	}
 }
 
 class NewProjectOverlayDataSource {
 	var sectionViewModels: [NewProjectOverlaySectionViewModel]
+	var isAssignedToTime = false
 	
 	init(sectionViewModels: [NewProjectOverlaySectionViewModel]) {
 		self.sectionViewModels = sectionViewModels

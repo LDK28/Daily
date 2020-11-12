@@ -8,7 +8,8 @@
 import UIKit
 
 protocol NewProjectOverlayBusinessLogic {
-	func fetchCells(in tableView: UITableView)
+	func fetchCells()
+	func didToggleTimeSwitcher()
 }
 
 class NewProjectOverlayInteractor {
@@ -21,8 +22,27 @@ class NewProjectOverlayInteractor {
 	}
 }
 
+
+
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
-	func fetchCells(in tableView: UITableView) {
-		presenter?.present(data: dataSource, in: tableView)
+	func didToggleTimeSwitcher() {
+		dataSource.isAssignedToTime.toggle()
+		if dataSource.isAssignedToTime {
+			dataSource.sectionViewModels[1].cellViewModels.append(
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .timePicker,
+								   isToggable: false,
+								   isSelectable: false)
+			)
+		} else {
+			dataSource.sectionViewModels[1].cellViewModels.removeLast()
+		}
+		
+		presenter?.present(data: dataSource)
+	}
+	
+	func fetchCells() {
+		presenter?.present(data: dataSource)
 	}
 }

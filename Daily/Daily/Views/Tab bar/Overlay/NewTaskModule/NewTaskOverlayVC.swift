@@ -25,7 +25,7 @@ class NewTaskOverlayVC: OverlayVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		interactor?.fetchCells(in: tableView)
+		interactor?.fetchCells()
     }
 	
 	
@@ -39,8 +39,19 @@ class NewTaskOverlayVC: OverlayVC {
 
 extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
 	func display(cells: [[UITableViewCell]]) {
-		self.cellsToDisplay = cells
+		cellsToDisplay = cells
+		cellsToDisplay?.forEach({ (cellsInSection) in
+			cellsInSection.forEach { (cellInRow) in
+				(cellInRow as? DailyTimeCell)?.parentView = self
+			}
+		})
 		tableView.reloadData()
 	}
 	
+}
+
+extension NewTaskOverlayVC: DailyTimeCellDelegate {
+	func didToggleTimeSwitcher() {
+		interactor?.didToggleTimeSwitcher()
+	}
 }

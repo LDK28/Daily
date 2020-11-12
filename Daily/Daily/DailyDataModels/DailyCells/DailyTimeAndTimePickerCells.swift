@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DailyTimeCellDelegate: class {
+	func didToggleTimeSwitcher()
+}
+
 final class DailyTimeCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyTimeCell"
 	
@@ -17,8 +21,13 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 			
 			titleLabel.text = component.title
 			dateAndTimeLabel.text = "Any time"
+			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
 			
 		}
+	}
+	
+	@objc func toggleSwitcher(switcher: UISwitch) {
+		(parentView as? DailyTimeCellDelegate)?.didToggleTimeSwitcher()
 	}
 }
 
@@ -28,7 +37,7 @@ final class DailyTimePickerCell: DailyTimeAndDatePickerCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .time
-		picker.heightAnchor.constraint(equalToConstant: 65).isActive = true
+		picker.heightAnchor.constraint(equalToConstant: 50).isActive = true
 	}
 	
 	required init?(coder: NSCoder) {

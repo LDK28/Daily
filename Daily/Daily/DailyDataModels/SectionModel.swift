@@ -9,6 +9,6 @@ import Foundation
 
 protocol DailySectionViewModel {
 	var rowCount: Int { get }
-	var cellViewModels: [DailyCellViewModel] { get }
+	var cellViewModels: [DailyCellViewModel] { get set }
 }
 

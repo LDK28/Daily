@@ -8,8 +8,8 @@
 import UIKit
 
 protocol NewTaskOverlayBusinessLogic {
-	func fetchCells(in tableView: UITableView)
-	func didTapDateCell()
+	func fetchCells()
+	func didToggleTimeSwitcher()
 }
 
 class NewTaskOverlayInteractor {
@@ -25,11 +25,24 @@ class NewTaskOverlayInteractor {
 // MARK: - Interactor Protocol
 
 extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
-	func didTapDateCell() {
+	func didToggleTimeSwitcher() {
+		dataSource.isAssignedToTime.toggle()
+		if dataSource.isAssignedToTime {
+			dataSource.sectionViewModels[0].cellViewModels.append(
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .timePicker,
+								   isToggable: false,
+								   isSelectable: false)
+			)
+		} else {
+			dataSource.sectionViewModels[0].cellViewModels.removeLast()
+		}
 		
+		presenter?.present(data: dataSource)
 	}
 	
-	func fetchCells(in tableView: UITableView) {
-		presenter?.present(data: dataSource, in: tableView)
+	func fetchCells() {
+		presenter?.present(data: dataSource)
 	}
 }
