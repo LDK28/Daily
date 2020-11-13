@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol NewProjectOverlayPresentationLogic {
-	func present(data: OverlayDataSource)
+	func present(data: NewProjectOverlayDataSource)
 }
 
 class NewProjectOverlayPresenter {
@@ -27,7 +27,8 @@ class NewProjectOverlayPresenter {
 
 // MARK: - Presenter Protocol
 extension NewProjectOverlayPresenter: NewProjectOverlayPresentationLogic {
-	func present(data: OverlayDataSource) {
-		view?.display(cells: fillCells(from: data, in: tableView))
+	func present(data: NewProjectOverlayDataSource) {
+		let viewData = fillCells(from: data, in: tableView)
+		view?.display(cells: viewData)
 	}
 }

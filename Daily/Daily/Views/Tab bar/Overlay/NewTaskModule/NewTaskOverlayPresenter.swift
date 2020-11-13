@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewTaskOverlayPresentationLogic {
-	func present(data: OverlayDataSource)
+	func present(data: NewTaskOverlayDataSource)
 }
 
 class NewTaskOverlayPresenter {
@@ -26,7 +26,7 @@ class NewTaskOverlayPresenter {
 
 // MARK: - Presenter Protocol
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
-	func present(data: OverlayDataSource) {
+	func present(data: NewTaskOverlayDataSource) {
 		view?.display(cells: fillCells(from: data, in: tableView))
 	}
 }

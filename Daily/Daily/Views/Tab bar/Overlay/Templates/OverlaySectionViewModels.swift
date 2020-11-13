@@ -20,14 +20,8 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 				DailyCellViewModel(title: "Date",
 								   icon: Icon(symbolName: "calendar.badge.clock",
 											  tileColor: .dailyAdaptiveRed),
-								   cellType: .newProjectDate,
+								   cellType: .optionalDate,
 								   isToggable: true,
-								   isSelectable: false),
-				
-				DailyCellViewModel(title: nil,
-								   icon: nil,
-								   cellType: .datePicker,
-								   isToggable: false,
 								   isSelectable: false),
 				
 				DailyCellViewModel(title: "Time",
@@ -70,7 +64,7 @@ class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
 				DailyCellViewModel(title: "Date",
 								   icon: Icon(symbolName: "calendar.badge.clock",
 											  tileColor: .dailyAdaptiveRed),
-								   cellType: .newTaskDate,
+								   cellType: .requiredDate,
 								   isToggable: false,
 								   isSelectable: false),
 				
@@ -117,17 +111,4 @@ class RepeatViewModel: DailySectionViewModel {
 								   isToggable: false,
 								   isSelectable: true)
 		]
-}
-
-// MARK: - The main model that will hold all our table sections with cells
-
-class NewTaskOverlayDataSource {
-	var sectionViewModels: [DailySectionViewModel]
-	var isAssignedToTime = false
-	var shouldRemind = false
-	var isRepetitive = false
-	
-	init(sectionViewModels: [DailySectionViewModel]) {
-		self.sectionViewModels = sectionViewModels
-	}
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DailyNewTaskDateCell: DailyDateAndTimeCell {
+final class DailyRequiredDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyNewTaskDateCell"
 	
 	override var viewModel: DailyCellViewModel? {
@@ -26,8 +26,11 @@ final class DailyNewTaskDateCell: DailyDateAndTimeCell {
 	}
 }
 
-final class DailyNewProjectDateCell: DailyDateAndTimeCell {
-	static let cellIdentifier = "DailyNewProjectDateCell"
+protocol DailyOptionalDateCellDelegate: class {
+	func didToggleDateSwitcher()
+}
+final class DailyOptionalDateCell: DailyDateAndTimeCell {
+	static let cellIdentifier = "DailyOptionalDateCell"
 	
 	override var viewModel: DailyCellViewModel? {
 		didSet {
@@ -36,8 +39,12 @@ final class DailyNewProjectDateCell: DailyDateAndTimeCell {
 			
 			titleLabel.text = component.title
 			dateAndTimeLabel.text = "Any day"
-			
+			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
 		}
+	}
+	
+	@objc func toggleSwitcher(switcher: UISwitch) {
+		(parentView as? DailyOptionalDateCellDelegate)?.didToggleDateSwitcher()
 	}
 }
 

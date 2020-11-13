@@ -7,3 +7,11 @@
 
 import UIKit
 
+enum RepeatSchedule {
+	case day, week, month, year
+}
+
+class NewTaskOverlayDataSource: OverlayDataSource {
+	var shouldRemind = false
+	var repearSchedule: RepeatSchedule?
+}

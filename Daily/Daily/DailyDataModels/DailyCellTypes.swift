@@ -10,8 +10,8 @@ import Foundation
 enum DailyCellTypes {
 	case remind
 	case repeatSchedule
-	case newTaskDate
-	case newProjectDate
+	case requiredDate
+	case optionalDate
 	case time
 	case timePicker
 	case datePicker

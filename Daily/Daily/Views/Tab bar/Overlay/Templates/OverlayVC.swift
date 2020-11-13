@@ -12,6 +12,7 @@ protocol OverlayDisplayLogic: class {
 }
 
 class OverlayVC: UIViewController {
+	private var cornerRadiusValue: CGFloat = 10
 
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
@@ -64,6 +65,7 @@ class OverlayVC: UIViewController {
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
+		tableView.layer.cornerRadius = cornerRadiusValue
 		
 		//cells registraion
 		tableView.register(DailyRemindCell.self, forCellReuseIdentifier: DailyRemindCell.cellIdentifier)
@@ -72,14 +74,15 @@ class OverlayVC: UIViewController {
 		tableView.register(DailyTimeCell.self, forCellReuseIdentifier: DailyTimeCell.cellIdentifier)
 		tableView.register(DailyTimePickerCell.self, forCellReuseIdentifier: DailyTimePickerCell.cellIdentifier)
 		tableView.register(DailyDatePickerCell.self, forCellReuseIdentifier: DailyDatePickerCell.cellIdentifier)
-		tableView.register(DailyNewTaskDateCell.self, forCellReuseIdentifier: DailyNewTaskDateCell.cellIdentifier)
-		tableView.register(DailyNewProjectDateCell.self, forCellReuseIdentifier: DailyNewProjectDateCell.cellIdentifier)
+		tableView.register(DailyRequiredDateCell.self, forCellReuseIdentifier: DailyRequiredDateCell.cellIdentifier)
+		tableView.register(DailyOptionalDateCell.self, forCellReuseIdentifier: DailyOptionalDateCell.cellIdentifier)
 		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
 		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
 		
 		
 		//adding header and default footer(empty view)
 		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)?.contentView
+		tableView.tableHeaderView?.layer.cornerRadius = cornerRadiusValue
 		tableView.tableFooterView = UIView(frame: .zero)
 		
 		//layuout
@@ -155,10 +158,9 @@ extension OverlayVC: OverlayDisplayLogic {
 		cellsToDisplay = cells
 		cellsToDisplay?.forEach({ (cellsInSection) in
 			cellsInSection.forEach { (cellInRow) in
-				(cellInRow as? DailyTimeCell)?.parentView = self
+				(cellInRow as? DailyCell)?.parentView = self
 			}
 		})
-		
 		tableView.reloadData()
 	}
 }

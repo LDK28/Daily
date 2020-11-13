@@ -12,9 +12,9 @@ protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
 
 class NewTaskOverlayInteractor {
 	let presenter: NewTaskOverlayPresentationLogic?
-	let dataSource: OverlayDataSource
+	let dataSource: NewTaskOverlayDataSource
 	
-	init(dataSource: OverlayDataSource, presenter: NewTaskOverlayPresentationLogic) {
+	init(dataSource: NewTaskOverlayDataSource, presenter: NewTaskOverlayPresentationLogic) {
 		self.dataSource = dataSource
 		self.presenter = presenter
 	}

@@ -22,14 +22,17 @@ func fillCells(from data: OverlayDataSource, in tableView: UITableView?) -> [[UI
 			switch currentSectionViewModel.type {
 			case .dateAndTime:
 				switch currentCellViewModel.cellType {
-				case .newProjectDate:
-					if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyNewProjectDateCell.cellIdentifier) as? DailyNewProjectDateCell {
-						dateCell.viewModel = currentCellViewModel
-						dateCell.roundTopCorners(cornerRadius: 10)
-						viewData[sectionViewModelIndex].append(dateCell)
-					}
-				case .newTaskDate:
-					if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyNewTaskDateCell.cellIdentifier) as? DailyNewTaskDateCell {
+				case .optionalDate:
+					if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyOptionalDateCell.cellIdentifier) as? DailyOptionalDateCell {
+							if let data = data as? NewProjectOverlayDataSource {
+								dateCell.switcher.isOn = data.isAssignedToDate
+								dateCell.viewModel = currentCellViewModel
+								dateCell.roundTopCorners(cornerRadius: 10)
+								viewData[sectionViewModelIndex].append(dateCell)
+							}
+						}
+				case .requiredDate:
+					if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyRequiredDateCell.cellIdentifier) as? DailyRequiredDateCell {
 						dateCell.viewModel = currentCellViewModel
 						dateCell.roundTopCorners(cornerRadius: 10)
 						viewData[sectionViewModelIndex].append(dateCell)
@@ -43,8 +46,10 @@ func fillCells(from data: OverlayDataSource, in tableView: UITableView?) -> [[UI
 					if let timeCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimeCell.cellIdentifier) as? DailyTimeCell {
 						timeCell.viewModel = currentCellViewModel
 						timeCell.switcher.isOn = data.isAssignedToTime
-						if cellViewModelIndex == currentSectionViewModel.cellViewModels.count - 1 {
+						if cellViewModelIndex == numberOfCellViewModelsInSection - 1 {
 							timeCell.roundBottomCorners(cornerRadius: 10)
+						} else {
+							timeCell.layer.maskedCorners = []
 						}
 						viewData[sectionViewModelIndex].append(timeCell)
 					}

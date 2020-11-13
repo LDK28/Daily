@@ -8,7 +8,6 @@
 import UIKit
 
 protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
-//	func display(cells: [[UITableViewCell]])
 	
 }
 
@@ -36,21 +35,14 @@ class NewProjectOverlayVC: OverlayVC {
 
 }
 
-//extension  NewProjectOverlayVC: NewProjectOverlayDisplayLogic {
-//	func display(cells: [[UITableViewCell]]) {
-//		cellsToDisplay = cells
-//		cellsToDisplay?.forEach({ (cellsInSection) in
-//			cellsInSection.forEach { (cellInRow) in
-//				(cellInRow as? DailyTimeCell)?.parentView = self
-//			}
-//		})
-//		
-//		tableView.reloadData()
-//	}
-//}
-
 extension NewProjectOverlayVC: DailyTimeCellDelegate {
 	func didToggleTimeSwitcher() {
 		interactor?.didToggleTimeSwitcher()
+	}
+}
+
+extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
+	func didToggleDateSwitcher() {
+		interactor?.didToggleDateSwitcher()
 	}
 }
