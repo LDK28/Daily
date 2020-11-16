@@ -35,21 +35,6 @@ class NewTaskOverlayVC: OverlayVC {
 	}
 }
 
-// MARK: - View Protocol
-
-//extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
-//	func display(cells: [[UITableViewCell]]) {
-//		cellsToDisplay = cells
-//		cellsToDisplay?.forEach({ (cellsInSection) in
-//			cellsInSection.forEach { (cellInRow) in
-//				(cellInRow as? DailyTimeCell)?.parentView = self
-//			}
-//		})
-//		tableView.reloadData()
-//	}
-//	
-//}
-
 extension NewTaskOverlayVC: DailyTimeCellDelegate {
 	func didToggleTimeSwitcher() {
 		interactor?.didToggleTimeSwitcher()

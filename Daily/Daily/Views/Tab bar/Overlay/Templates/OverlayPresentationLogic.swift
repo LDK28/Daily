@@ -9,7 +9,7 @@ import UIKit
 
 protocol OverlayPresentationLogic {
 	func present(data: OverlayDataSource)
-	func updateTimePickerCell()
+	func updateTimePickerCell(atSection section: Int)
 }
 
 class OverlayPresenter {
@@ -113,7 +113,23 @@ extension OverlayPresenter: OverlayPresentationLogic {
 		view?.display(cells: viewData)
 	}
 	
-	func updateTimePickerCell() {
+	func updateTimePickerCell(atSection section: Int) {
+		if dataSource.isAssignedToTime {
+			dataSource.sectionViewModels[section].cellViewModels.append(
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .timePicker,
+								   isToggable: false,
+								   isSelectable: false)
+			)
+			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
+				timePickerCell.roundBottomCorners(cornerRadius: 10)
+				view?.insert(cell: timePickerCell, at: IndexPath(row: 2, section: section))
+			}
+		} else {
+			dataSource.sectionViewModels[section].cellViewModels.removeLast()
+			view?.deleteCell(at: IndexPath(row: 2, section: section))
+		}
 	}		
 }
 

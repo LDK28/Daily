@@ -10,7 +10,7 @@ import UIKit
 protocol OverlayDisplayLogic: class {
 	func display(cells: [[UITableViewCell]]?)
 	func insert(cell: UITableViewCell, at indexPath: IndexPath)
-	func updateCell(at indexPath: IndexPath)
+	func deleteCell(at indexPath: IndexPath)
 }
 
 class OverlayVC: UIViewController {
@@ -22,7 +22,6 @@ class OverlayVC: UIViewController {
 	internal let tableView = UITableView()
 	
 	var cellsToDisplay: [[UITableViewCell]]?
-	
 	
 	override func loadView() {
 		super.loadView()
@@ -43,7 +42,6 @@ class OverlayVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		view.backgroundColor = .dailyTabBarColor
-		
 		cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
     }
 	
@@ -156,9 +154,17 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 
 
 extension OverlayVC: OverlayDisplayLogic {
+	func deleteCell(at indexPath: IndexPath) {
+		tableView.beginUpdates()
+		cellsToDisplay?[indexPath.section].removeLast()
+		tableView.deleteRows(at: [indexPath], with: .automatic)
+		tableView.endUpdates()
+	}
+	
 	func insert(cell: UITableViewCell, at indexPath: IndexPath) {
 		tableView.beginUpdates()
-	
+		cellsToDisplay?[indexPath.section].append(cell)
+		tableView.insertRows(at: [indexPath], with: .automatic)
 		tableView.endUpdates()
 	}
 	

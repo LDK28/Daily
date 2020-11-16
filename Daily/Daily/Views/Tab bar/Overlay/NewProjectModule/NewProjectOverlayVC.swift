@@ -8,7 +8,6 @@
 import UIKit
 
 protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
-	
 }
 
 class NewProjectOverlayVC: OverlayVC {
@@ -23,7 +22,6 @@ class NewProjectOverlayVC: OverlayVC {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		interactor?.fetchCells()
 	}
 	
