@@ -7,26 +7,13 @@
 
 import UIKit
 
-protocol NewTaskOverlayPresentationLogic {
-	func present(data: NewTaskOverlayDataSource)
+protocol NewTaskOverlayPresentationLogic: OverlayPresentationLogic {
 }
 
-class NewTaskOverlayPresenter {
-	weak var view: OverlayDisplayLogic?
-	weak var tableView: UITableView?
-	
-	init(view: OverlayDisplayLogic) {
-		self.view = view
-		if let tableView = (view as? NewTaskOverlayVC)?.tableView {
-			self.tableView = tableView
-		}
-	}
+class NewTaskOverlayPresenter: OverlayPresenter {
 }
 
 
 // MARK: - Presenter Protocol
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
-	func present(data: NewTaskOverlayDataSource) {
-		view?.display(cells: fillCells(from: data, in: tableView))
-	}
 }

@@ -9,6 +9,8 @@ import UIKit
 
 protocol OverlayDisplayLogic: class {
 	func display(cells: [[UITableViewCell]]?)
+	func insert(cell: UITableViewCell, at indexPath: IndexPath)
+	func updateCell(at indexPath: IndexPath)
 }
 
 class OverlayVC: UIViewController {
@@ -154,6 +156,16 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 
 
 extension OverlayVC: OverlayDisplayLogic {
+	func insert(cell: UITableViewCell, at indexPath: IndexPath) {
+		tableView.beginUpdates()
+	
+		tableView.endUpdates()
+	}
+	
+	func updateCell(at indexPath: IndexPath) {
+		
+	}
+	
 	func display(cells: [[UITableViewCell]]?) {
 		cellsToDisplay = cells
 		cellsToDisplay?.forEach({ (cellsInSection) in

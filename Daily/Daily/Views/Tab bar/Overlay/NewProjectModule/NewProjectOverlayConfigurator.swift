@@ -16,7 +16,7 @@ class NewProjectOverlayModule {
 		])
 		
 		let viewController = NewProjectOverlayVC()
-		let presenter = NewProjectOverlayPresenter(view: viewController)
+		let presenter = NewProjectOverlayPresenter(view: viewController, dataSource: dataSource)
 		let interactor = NewProjectOverlayInteractor(dataSource: dataSource, presenter: presenter)
 	
 		viewController.interactor = interactor

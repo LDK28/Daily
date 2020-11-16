@@ -16,7 +16,7 @@ class NewTaskOverlayModule {
 		])
 		
 		let viewController = NewTaskOverlayVC()
-		let presenter = NewTaskOverlayPresenter(view: viewController)
+		let presenter = NewTaskOverlayPresenter(view: viewController, dataSource: dataSource)
 		let interactor = NewTaskOverlayInteractor(dataSource: dataSource, presenter: presenter)
 	
 		viewController.interactor = interactor
