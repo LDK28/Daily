@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol OverlayPresentationLogic {
-	func present(data: OverlayDataSource)
-	func updateTimePickerCell(atSection section: Int)
-}
-
 class OverlayPresenter {
 	private weak var view: OverlayDisplayLogic?
 	private weak var tableView: UITableView?
@@ -27,15 +22,47 @@ class OverlayPresenter {
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
+	func updateTimePickerCell(atSection section: Int) {
+		guard let view = view else { return }
+		if dataSource.isAssignedToTime {
+			dataSource.sectionViewModels[section].cellViewModels.append(
+				DailyCellViewModel(title: nil,
+								   icon: nil,
+								   cellType: .timePicker,
+								   isToggable: false,
+								   isSelectable: false)
+			)
+			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell{
+				timePickerCell.roundBottomCorners(cornerRadius: 10)
+				view.cellsToDisplay[section].append(timePickerCell)
+				
+				let lastRow = view.cellsToDisplay[section].count - 1
+				let previousRow = lastRow - 1
+				view.cellsToDisplay[section][previousRow].sharpCorners()
+				view.insert(at: IndexPath(row: lastRow, section: section))
+			}
+		} else {
+			dataSource.sectionViewModels[section].cellViewModels.removeLast()
+			let lastRow = view.cellsToDisplay[section].count - 1
+			let previousRow = lastRow - 1
+			view.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
+			view.cellsToDisplay[section].remove(at: lastRow)
+			view.delete(at: IndexPath(row: lastRow, section: section))
+		}
+	}		
+}
+
+extension OverlayPresenter {
 	func present(data: OverlayDataSource) {
-		var viewData = [[UITableViewCell]]()
+		guard let view = view else { return }
+		view.cellsToDisplay.removeAll()
 		let numberOfSectionViewModels = data.sectionViewModels.count
-		viewData.reserveCapacity(numberOfSectionViewModels)
+		view.cellsToDisplay.reserveCapacity(numberOfSectionViewModels)
 		for sectionViewModelIndex in 0 ..< numberOfSectionViewModels {
-			viewData.append([])
+			view.cellsToDisplay.append([])
 			let currentSectionViewModel = data.sectionViewModels[sectionViewModelIndex]
 			let numberOfCellViewModelsInSection = currentSectionViewModel.cellViewModels.count
-			viewData[sectionViewModelIndex].reserveCapacity(numberOfCellViewModelsInSection)
+			view.cellsToDisplay[sectionViewModelIndex].reserveCapacity(numberOfCellViewModelsInSection)
 			for cellViewModelIndex in 0 ..< numberOfCellViewModelsInSection {
 				let indexPath: IndexPath = .init(row: cellViewModelIndex, section: sectionViewModelIndex)
 				let currentCellViewModel = currentSectionViewModel.cellViewModels[cellViewModelIndex]
@@ -48,45 +75,44 @@ extension OverlayPresenter: OverlayPresentationLogic {
 									dateCell.switcher.isOn = data.isAssignedToDate
 									dateCell.viewModel = currentCellViewModel
 									dateCell.roundTopCorners(cornerRadius: 10)
-									viewData[sectionViewModelIndex].append(dateCell)
+									view.cellsToDisplay[sectionViewModelIndex].append(dateCell)
 								}
 							}
 					case .requiredDate:
 						if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyRequiredDateCell.cellIdentifier) as? DailyRequiredDateCell {
 							dateCell.viewModel = currentCellViewModel
 							dateCell.roundTopCorners(cornerRadius: 10)
-							viewData[sectionViewModelIndex].append(dateCell)
+							view.cellsToDisplay[sectionViewModelIndex].append(dateCell)
 						}
 					case .datePicker:
 						if let datePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
 							datePickerCell.viewModel = nil
-							viewData[sectionViewModelIndex].append(datePickerCell)
+							view.cellsToDisplay[sectionViewModelIndex].append(datePickerCell)
 						}
 					case .time:
 						if let timeCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimeCell.cellIdentifier) as? DailyTimeCell {
 							timeCell.viewModel = currentCellViewModel
-							timeCell.switcher.isOn = data.isAssignedToTime
 							if cellViewModelIndex == numberOfCellViewModelsInSection - 1 {
 								timeCell.roundBottomCorners(cornerRadius: 10)
 							} else {
 								timeCell.layer.maskedCorners = []
 							}
-							viewData[sectionViewModelIndex].append(timeCell)
+							view.cellsToDisplay[sectionViewModelIndex].append(timeCell)
 						}
 					case .timePicker:
 						if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
 							timePickerCell.viewModel = nil
 							timePickerCell.roundBottomCorners(cornerRadius: 10)
-							viewData[sectionViewModelIndex].append(timePickerCell)
+							view.cellsToDisplay[sectionViewModelIndex].append(timePickerCell)
 						}
 					default:
-						viewData[sectionViewModelIndex].append(UITableViewCell())
+						view.cellsToDisplay[sectionViewModelIndex].append(UITableViewCell())
 					}
 				case .teamProject:
 					if let teamProjectCell = tableView?.dequeueReusableCell(withIdentifier: DailyTeamProjectCell.cellIdentifier, for: indexPath) as? DailyTeamProjectCell {
 						teamProjectCell.viewModel = currentCellViewModel
 						teamProjectCell.roundCorners(cornerRadius: 10)
-						viewData[sectionViewModelIndex].append(teamProjectCell)
+						view.cellsToDisplay[sectionViewModelIndex].append(teamProjectCell)
 					}
 				case .remindAlert:
 					if let remindCell = tableView?.dequeueReusableCell(
@@ -94,7 +120,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 						for: indexPath) as? DailyRemindCell {
 							remindCell.viewModel = currentCellViewModel
 							remindCell.roundCorners(cornerRadius: 10)
-							viewData[sectionViewModelIndex].append(remindCell)
+						view.cellsToDisplay[sectionViewModelIndex].append(remindCell)
 					}
 				case .repeatSelector:
 					if let repeatCell = tableView?.dequeueReusableCell(
@@ -103,40 +129,16 @@ extension OverlayPresenter: OverlayPresentationLogic {
 							repeatCell.viewModel = currentCellViewModel
 							repeatCell.roundCorners(cornerRadius: 10)
 							repeatCell.accessoryType = .disclosureIndicator
-							viewData[sectionViewModelIndex].append(repeatCell)
+						view.cellsToDisplay[sectionViewModelIndex].append(repeatCell)
 					}
 				default:
-					viewData[sectionViewModelIndex].append(UITableViewCell())
+					view.cellsToDisplay[sectionViewModelIndex].append(UITableViewCell())
 				}
 			}
 		}
-		view?.display(cells: viewData)
+		view.displayCells()
 	}
-	
-	func updateTimePickerCell(atSection section: Int) {
-		if dataSource.isAssignedToTime {
-			dataSource.sectionViewModels[section].cellViewModels.append(
-				DailyCellViewModel(title: nil,
-								   icon: nil,
-								   cellType: .timePicker,
-								   isToggable: false,
-								   isSelectable: false)
-			)
-			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
-				timePickerCell.roundBottomCorners(cornerRadius: 10)
-				view?.insert(cell: timePickerCell, at: IndexPath(row: 2, section: section))
-			}
-		} else {
-			dataSource.sectionViewModels[section].cellViewModels.removeLast()
-			view?.deleteCell(at: IndexPath(row: 2, section: section))
-		}
-	}		
 }
-
-
-
-
-
 
 
 

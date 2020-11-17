@@ -64,4 +64,9 @@ extension UITableViewCell {
 		layer.cornerRadius = cornerRadius
 		selectedBackgroundView?.layer.maskedCorners = layer.maskedCorners
 	}
+	
+	func sharpCorners() {
+		layer.maskedCorners = []
+		selectedBackgroundView?.layer.maskedCorners = layer.maskedCorners
+	}
 }

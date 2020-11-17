@@ -21,7 +21,7 @@ class NewNoteOverlayVC: OverlayVC {
 		
 		view.addSubview(descriptionTextView)
 		
-		styleElements()
+		styleUI()
 		
 		configureDescriptionTextView()
 	}
@@ -45,8 +45,8 @@ class NewNoteOverlayVC: OverlayVC {
 		])
 	}
 	
-	override func styleElements() {
-		super.styleElements()
+	override func styleUI() {
+		super.styleUI()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 		tableView.separatorStyle = .none

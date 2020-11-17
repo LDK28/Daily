@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol OverlayBusinessLogic {
-	func fetchCells()
-	func didToggleTimeSwitcher()
-}
-
-
 class OverlayInteractor {
 	let presenter: OverlayPresentationLogic?
 	let dataSource: OverlayDataSource

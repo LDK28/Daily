@@ -17,7 +17,7 @@ class NewTaskOverlayVC: OverlayVC {
 	override func loadView() {
 		super.loadView()
 		
-		styleElements()
+		styleUI()
 		
 		configureTableView()
 	}
@@ -29,8 +29,8 @@ class NewTaskOverlayVC: OverlayVC {
     }
 	
 	
-	override func styleElements() {
-		super.styleElements()
+	override func styleUI() {
+		super.styleUI()
 		titleLabel.styleOverlayLabel(text: "Add new task")
 	}
 }

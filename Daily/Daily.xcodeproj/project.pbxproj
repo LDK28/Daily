@@ -57,6 +57,7 @@
 		21BB2B812558195F00192B4A /* FooterCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BB2B802558195F00192B4A /* FooterCells.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderCells.swift */; };
 		21C1CA7F2552AA6400ACE18B /* OverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */; };
+		21CC5CF22563B953009C1D8E /* OverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
 		21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02525403975006A4206 /* SceneDelegate.swift */; };
 		21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02C25403975006A4206 /* Daily.xcdatamodeld */; };
@@ -150,6 +151,7 @@
 		21BB2B802558195F00192B4A /* FooterCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCells.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCells.swift; sourceTree = "<group>"; };
 		21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayVC.swift; sourceTree = "<group>"; };
+		21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayProtocols.swift; sourceTree = "<group>"; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E1D02325403975006A4206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E1D02525403975006A4206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		21173160255DBE870086A9EE /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */,
 				21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */,
 				2117317F255DC80A0086A9EE /* OverlayBusinessLogic.swift */,
 				2117318A255DC96D0086A9EE /* OverlayPresentationLogic.swift */,
@@ -708,6 +711,7 @@
 				215646AE25588AC3007264D4 /* NewNoteOverlayConfigurator.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
+				21CC5CF22563B953009C1D8E /* OverlayProtocols.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				2152B88D25547023005238B6 /* NewTaskOverlayInteractor.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
