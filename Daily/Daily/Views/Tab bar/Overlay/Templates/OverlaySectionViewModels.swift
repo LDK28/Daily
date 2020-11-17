@@ -23,13 +23,14 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 								   cellType: .optionalDate,
 								   isToggable: true,
 								   isSelectable: false),
-				
+			
 				DailyCellViewModel(title: "Time",
 								   icon: Icon(symbolName: "clock.fill",
 											  tileColor: .dailyAdaptiveBlue),
 								   cellType: .time,
 								   isToggable: true,
 								   isSelectable: false),
+				
 		]
 }
 

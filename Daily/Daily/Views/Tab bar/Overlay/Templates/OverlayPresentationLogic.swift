@@ -8,9 +8,9 @@
 import UIKit
 
 class OverlayPresenter {
-	private weak var view: OverlayDisplayLogic?
-	private weak var tableView: UITableView?
-	private let dataSource: OverlayDataSource
+	internal weak var view: OverlayDisplayLogic?
+	internal weak var tableView: UITableView?
+	internal let dataSource: OverlayDataSource
 	
 	init(view: OverlayDisplayLogic, dataSource: OverlayDataSource) {
 		self.view = view
@@ -24,30 +24,30 @@ class OverlayPresenter {
 extension OverlayPresenter: OverlayPresentationLogic {
 	func updateTimePickerCell(atSection section: Int) {
 		guard let view = view else { return }
+		guard let previousRow = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
+			cellViewModel.cellType == .time
+		}) else { return }
+		let rowToInsert = previousRow + 1
 		if dataSource.isAssignedToTime {
-			dataSource.sectionViewModels[section].cellViewModels.append(
+			dataSource.sectionViewModels[section].cellViewModels.insert(
 				DailyCellViewModel(title: nil,
 								   icon: nil,
 								   cellType: .timePicker,
 								   isToggable: false,
-								   isSelectable: false)
-			)
+								   isSelectable: false),
+				at: rowToInsert)
 			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell{
 				timePickerCell.roundBottomCorners(cornerRadius: 10)
-				view.cellsToDisplay[section].append(timePickerCell)
+				view.cellsToDisplay[section].insert(timePickerCell, at: rowToInsert)
 				
-				let lastRow = view.cellsToDisplay[section].count - 1
-				let previousRow = lastRow - 1
 				view.cellsToDisplay[section][previousRow].sharpCorners()
-				view.insert(at: IndexPath(row: lastRow, section: section))
+				view.insert(at: IndexPath(row: rowToInsert, section: section))
 			}
 		} else {
-			dataSource.sectionViewModels[section].cellViewModels.removeLast()
-			let lastRow = view.cellsToDisplay[section].count - 1
-			let previousRow = lastRow - 1
+			dataSource.sectionViewModels[section].cellViewModels.remove(at: rowToInsert)
 			view.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
-			view.cellsToDisplay[section].remove(at: lastRow)
-			view.delete(at: IndexPath(row: lastRow, section: section))
+			view.cellsToDisplay[section].remove(at: rowToInsert)
+			view.delete(at: IndexPath(row: rowToInsert, section: section))
 		}
 	}		
 }
@@ -106,7 +106,7 @@ extension OverlayPresenter {
 							view.cellsToDisplay[sectionViewModelIndex].append(timePickerCell)
 						}
 					default:
-						view.cellsToDisplay[sectionViewModelIndex].append(UITableViewCell())
+						view.cellsToDisplay[sectionViewModelIndex].append(DailyCell())
 					}
 				case .teamProject:
 					if let teamProjectCell = tableView?.dequeueReusableCell(withIdentifier: DailyTeamProjectCell.cellIdentifier, for: indexPath) as? DailyTeamProjectCell {
@@ -132,7 +132,7 @@ extension OverlayPresenter {
 						view.cellsToDisplay[sectionViewModelIndex].append(repeatCell)
 					}
 				default:
-					view.cellsToDisplay[sectionViewModelIndex].append(UITableViewCell())
+					view.cellsToDisplay[sectionViewModelIndex].append(DailyCell())
 				}
 			}
 		}

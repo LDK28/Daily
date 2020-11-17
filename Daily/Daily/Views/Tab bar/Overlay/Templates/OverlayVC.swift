@@ -10,7 +10,7 @@ import UIKit
 
 class OverlayVC: UIViewController {
 	private var cornerRadiusValue: CGFloat = 10
-	var cellsToDisplay: [[UITableViewCell]] = [[UITableViewCell]]()
+	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
 
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
@@ -93,13 +93,14 @@ extension OverlayVC: OverlayDisplayLogic {
 	func insert(at indexPath: IndexPath) {
 		tableView.beginUpdates()
 		tableView.insertRows(at: [indexPath], with: .automatic)
+		cellsToDisplay[indexPath.section][indexPath.row].parentView = self
 		tableView.endUpdates()
 	}
 	
 	func displayCells() {
 		cellsToDisplay.forEach({ (cellsInSection) in
 			cellsInSection.forEach { (cellInRow) in
-				(cellInRow as? DailyCell)?.parentView = self
+				cellInRow.parentView = self
 			}
 		})
 		tableView.reloadData()

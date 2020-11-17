@@ -8,17 +8,11 @@
 import UIKit
 
 protocol OverlayDisplayLogic: class {
-	var cellsToDisplay: [[UITableViewCell]] { get set }
+	var cellsToDisplay: [[DailyCell]] { get set }
 	
 	func displayCells()
 	func insert(at indexPath: IndexPath)
 	func delete(at indexPath: IndexPath)
-}
-
-extension OverlayDisplayLogic {
-	var cellsToDisplay: [[UITableViewCell]] {
-		return [[]]
-	}
 }
 
 protocol OverlayBusinessLogic {
