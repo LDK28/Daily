@@ -2,8 +2,8 @@
 //  NewProjectOverlayInteractor.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 08.11.2020.
-//
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 
 import UIKit
 
@@ -34,5 +34,5 @@ extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
 			dataSource.isAssignedToDate.toggle()
 			presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: .optionalDate)
 		}
-	}	
+	}
 }

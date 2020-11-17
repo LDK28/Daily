@@ -1,24 +1,23 @@
 //
-//  OverlayPresentationLogic.swift
+//  OverlayPresenter.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 12.11.2020.
-//
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 
 import UIKit
 
-class OverlayPresenter {
-	internal weak var view: OverlayDisplayLogic?
+class OverlayPresenter: OverlayDataStore {
 	internal weak var tableView: UITableView?
-	internal let dataSource: OverlayDataSource
-	
-	init(view: OverlayDisplayLogic, dataSource: OverlayDataSource) {
-		self.view = view
-		self.dataSource = dataSource
-		if let tableView = (view as? OverlayVC)?.tableView {
-			self.tableView = tableView
+	weak var viewController: OverlayDisplayLogic? {
+		didSet {
+			if let tableView =  (viewController as? OverlayVC)?.tableView {
+				self.tableView = tableView
+			}
 		}
 	}
+	var dataSource = OverlayDataSource(sectionViewModels: [])
+	
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
@@ -27,9 +26,9 @@ extension OverlayPresenter: OverlayPresentationLogic {
 		guard let timeCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
 			cellViewModel.cellType == .time
 		}) else { return }
-		guard let timeCell = view?.cellsToDisplay[section][timeCellIndex] as? DailyTimeCell else { return }
+		guard let timeCell = viewController?.cellsToDisplay[section][timeCellIndex] as? DailyTimeCell else { return }
 		timeCell.time = dataSource.assignedTime
-		view?.update(at: IndexPath(row: timeCellIndex, section: section))
+		viewController?.update(at: IndexPath(row: timeCellIndex, section: section))
 	}
 	
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType) {
@@ -40,12 +39,12 @@ extension OverlayPresenter: OverlayPresentationLogic {
 		
 		if cellType == .time {
 			if dataSource.isAssignedToTime {
-				view?.cellsToDisplay[section][previousRow].sharpCorners()
+				viewController?.cellsToDisplay[section][previousRow].sharpCorners()
 				insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .timePicker)
 				return
 			} else {
-				view?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
-				(view?.cellsToDisplay[section][previousRow] as? DailyTimeCell)?.time = nil
+				viewController?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
+				(viewController?.cellsToDisplay[section][previousRow] as? DailyTimeCell)?.time = nil
 			}
 		} else {
 			if let dataSource = dataSource as? NewProjectOverlayDataSource {
@@ -53,7 +52,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 					insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .datePicker)
 					return
 				} else {
-					(view?.cellsToDisplay[section][previousRow] as? DailyOptionalDateCell)?.date = nil
+					(viewController?.cellsToDisplay[section][previousRow] as? DailyOptionalDateCell)?.date = nil
 				}
 			}
 		}
@@ -70,37 +69,37 @@ extension OverlayPresenter: OverlayPresentationLogic {
 		dataSource.sectionViewModels[indexPath.section].cellViewModels.insert(newCellViewModel, at: indexPath.row)
 		if cellType == .datePicker {
 			if let datePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
-				view?.cellsToDisplay[indexPath.section].insert(datePickerCell, at: indexPath.row)
-				(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyOptionalDateCell)?.date = datePickerCell.dateAndTime
+				viewController?.cellsToDisplay[indexPath.section].insert(datePickerCell, at: indexPath.row)
+				(viewController?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyOptionalDateCell)?.date = datePickerCell.dateAndTime
 			}
 		} else {
 			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
-				view?.cellsToDisplay[indexPath.section].insert(timePickerCell, at: indexPath.row)
-				(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyTimeCell)?.time = timePickerCell.dateAndTime
-				view?.cellsToDisplay[indexPath.section][indexPath.row].roundBottomCorners(cornerRadius: 10)
+				viewController?.cellsToDisplay[indexPath.section].insert(timePickerCell, at: indexPath.row)
+				(viewController?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyTimeCell)?.time = timePickerCell.dateAndTime
+				viewController?.cellsToDisplay[indexPath.section][indexPath.row].roundBottomCorners(cornerRadius: 10)
 			}
 		}
-		view?.insert(at: indexPath)
+		viewController?.insert(at: indexPath)
 	}
 	
 	private func deleteCell(at indexPath: IndexPath) {
 		dataSource.sectionViewModels[indexPath.section].cellViewModels.remove(at: indexPath.row)
-		view?.cellsToDisplay[indexPath.section].remove(at: indexPath.row)
-		view?.delete(at: indexPath)
+		viewController?.cellsToDisplay[indexPath.section].remove(at: indexPath.row)
+		viewController?.delete(at: indexPath)
 	}
 }
 
 extension OverlayPresenter {
 	func present(data: OverlayDataSource) {
-		guard let view = view else { return }
-		view.cellsToDisplay.removeAll()
+		guard let viewController = viewController else { return }
+		viewController.cellsToDisplay.removeAll()
 		let numberOfSectionViewModels = data.sectionViewModels.count
-		view.cellsToDisplay.reserveCapacity(numberOfSectionViewModels)
+		viewController.cellsToDisplay.reserveCapacity(numberOfSectionViewModels)
 		for sectionViewModelIndex in 0 ..< numberOfSectionViewModels {
-			view.cellsToDisplay.append([])
+			viewController.cellsToDisplay.append([])
 			let currentSectionViewModel = data.sectionViewModels[sectionViewModelIndex]
 			let numberOfCellViewModelsInSection = currentSectionViewModel.cellViewModels.count
-			view.cellsToDisplay[sectionViewModelIndex].reserveCapacity(numberOfCellViewModelsInSection)
+			viewController.cellsToDisplay[sectionViewModelIndex].reserveCapacity(numberOfCellViewModelsInSection)
 			for cellViewModelIndex in 0 ..< numberOfCellViewModelsInSection {
 				let indexPath: IndexPath = .init(row: cellViewModelIndex, section: sectionViewModelIndex)
 				let currentCellViewModel = currentSectionViewModel.cellViewModels[cellViewModelIndex]
@@ -113,19 +112,19 @@ extension OverlayPresenter {
 									dateCell.switcher.isOn = data.isAssignedToDate
 									dateCell.viewModel = currentCellViewModel
 									dateCell.roundTopCorners(cornerRadius: 10)
-									view.cellsToDisplay[sectionViewModelIndex].append(dateCell)
+									viewController.cellsToDisplay[sectionViewModelIndex].append(dateCell)
 								}
 							}
 					case .requiredDate:
 						if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyRequiredDateCell.cellIdentifier) as? DailyRequiredDateCell {
 							dateCell.viewModel = currentCellViewModel
 							dateCell.roundTopCorners(cornerRadius: 10)
-							view.cellsToDisplay[sectionViewModelIndex].append(dateCell)
+							viewController.cellsToDisplay[sectionViewModelIndex].append(dateCell)
 						}
 					case .datePicker:
 						if let datePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
 							datePickerCell.viewModel = nil
-							view.cellsToDisplay[sectionViewModelIndex].append(datePickerCell)
+							viewController.cellsToDisplay[sectionViewModelIndex].append(datePickerCell)
 						}
 					case .time:
 						if let timeCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimeCell.cellIdentifier) as? DailyTimeCell {
@@ -135,22 +134,22 @@ extension OverlayPresenter {
 							} else {
 								timeCell.layer.maskedCorners = []
 							}
-							view.cellsToDisplay[sectionViewModelIndex].append(timeCell)
+							viewController.cellsToDisplay[sectionViewModelIndex].append(timeCell)
 						}
 					case .timePicker:
 						if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
 							timePickerCell.viewModel = nil
 							timePickerCell.roundBottomCorners(cornerRadius: 10)
-							view.cellsToDisplay[sectionViewModelIndex].append(timePickerCell)
+							viewController.cellsToDisplay[sectionViewModelIndex].append(timePickerCell)
 						}
 					default:
-						view.cellsToDisplay[sectionViewModelIndex].append(DailyCell())
+						viewController.cellsToDisplay[sectionViewModelIndex].append(DailyCell())
 					}
 				case .teamProject:
 					if let teamProjectCell = tableView?.dequeueReusableCell(withIdentifier: DailyTeamProjectCell.cellIdentifier, for: indexPath) as? DailyTeamProjectCell {
 						teamProjectCell.viewModel = currentCellViewModel
 						teamProjectCell.roundCorners(cornerRadius: 10)
-						view.cellsToDisplay[sectionViewModelIndex].append(teamProjectCell)
+						viewController.cellsToDisplay[sectionViewModelIndex].append(teamProjectCell)
 					}
 				case .remindAlert:
 					if let remindCell = tableView?.dequeueReusableCell(
@@ -158,7 +157,7 @@ extension OverlayPresenter {
 						for: indexPath) as? DailyRemindCell {
 							remindCell.viewModel = currentCellViewModel
 							remindCell.roundCorners(cornerRadius: 10)
-						view.cellsToDisplay[sectionViewModelIndex].append(remindCell)
+						viewController.cellsToDisplay[sectionViewModelIndex].append(remindCell)
 					}
 				case .repeatSelector:
 					if let repeatCell = tableView?.dequeueReusableCell(
@@ -167,13 +166,14 @@ extension OverlayPresenter {
 							repeatCell.viewModel = currentCellViewModel
 							repeatCell.roundCorners(cornerRadius: 10)
 							repeatCell.accessoryType = .disclosureIndicator
-						view.cellsToDisplay[sectionViewModelIndex].append(repeatCell)
+						viewController.cellsToDisplay[sectionViewModelIndex].append(repeatCell)
 					}
 				default:
-					view.cellsToDisplay[sectionViewModelIndex].append(DailyCell())
+					viewController.cellsToDisplay[sectionViewModelIndex].append(DailyCell())
 				}
 			}
 		}
-		view.displayCells()
+		viewController.displayCells()
 	}
 }
+

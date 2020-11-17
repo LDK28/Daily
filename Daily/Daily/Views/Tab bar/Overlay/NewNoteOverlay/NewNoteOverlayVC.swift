@@ -2,15 +2,18 @@
 //  NewNoteOverlayVC.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 02.11.2020.
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
 class NewNoteOverlayVC: OverlayVC {
+	var router: (NewNoteOverlayRoutingLogic & NewNoteOverlayDataPassing)?
+  
 	private let noteTitleTextField = UITextField()
 	let descriptionTextView = UITextView()
-	
+
 	override func loadView() {
 		super.loadView()
 		configureTableView()
@@ -18,11 +21,11 @@ class NewNoteOverlayVC: OverlayVC {
 		configureDescriptionTextView()
 		styleUI()
 	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-	
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
+
 	func configureDescriptionTextView() {
 		descriptionTextView.delegate = self
 		textViewDidBeginEditing(descriptionTextView)
@@ -35,18 +38,18 @@ class NewNoteOverlayVC: OverlayVC {
 			descriptionTextView.topAnchor.constraint(equalTo: tableView.tableHeaderView?.bottomAnchor ?? titleLabel.topAnchor, constant: 20)
 		])
 	}
-	
+
 	override func styleUI() {
 		super.styleUI()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 		tableView.separatorStyle = .none
 	}
-	
-}
 
-extension NewNoteOverlayVC: UITextViewDelegate {
-	
+	}
+
+	extension NewNoteOverlayVC: UITextViewDelegate {
+
 	func textViewDidBeginEditing(_ textView: UITextView) {
 		if textView.textColor != .dailyTextFieldTextColor {
 			textView.text = nil
@@ -60,7 +63,9 @@ extension NewNoteOverlayVC: UITextViewDelegate {
 			textView.textColor = UIColor.systemGray2
 		}
 	}
+		
+	func textViewDidChange(_ textView: UITextView) {
+		(interactor as? NewNoteOverlayInteractor)?.didEndEditingNote(text: textView.text)
+	}
 }
-
-
 

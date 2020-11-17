@@ -20,3 +20,12 @@ protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
 protocol NewProjectOverlayPresentationLogic: OverlayPresentationLogic {
 	func updateDateInDateCell(atSection section: Int)
 }
+
+protocol NewProjectOverlayRoutingLogic {
+	//func navigateTo()
+}
+
+protocol NewProjectOverlayDataPassing {
+	//variable to transfer between screens
+	var dataStore: OverlayDataStore? { get }
+}

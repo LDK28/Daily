@@ -1,5 +1,5 @@
 //
-//  Overlay Protocols.swift
+//  OverlayProtocols.swift
 //  Daily
 //
 //  Created by Арсений Токарев on 17.11.2020.
@@ -20,7 +20,12 @@ protocol OverlayBusinessLogic {
 	func fetchCells()
 	func didToggleTimeSwitcher()
 	func didChangeValueInTimePickerCell(newTime: Date)
+	func didChangeTitle(text: String)
 	
+}
+
+protocol OverlayDataStore: AnyObject {
+	var dataSource: OverlayDataSource { get set }
 }
 
 protocol OverlayPresentationLogic {
@@ -29,6 +34,10 @@ protocol OverlayPresentationLogic {
 	func updateTimeInTimeCell(atSection section: Int)
 }
 
-protocol OverlayRoutingLogci {
-	
+protocol OverlayRoutingLogic {
+	//func navigateTo()
+}
+
+protocol OverlayDataPassing {
+	var dataStore: OverlayDataStore { get }
 }

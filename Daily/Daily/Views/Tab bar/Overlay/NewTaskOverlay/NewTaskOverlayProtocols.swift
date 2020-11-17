@@ -15,4 +15,14 @@ protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
 }
 
 protocol NewTaskOverlayPresentationLogic: OverlayPresentationLogic {
+	
+}
+
+protocol NewTaskOverlayRoutingLogic {
+	//func navigateTo()
+}
+
+protocol NewTaskOverlayDataPassing {
+	//variable to transfer between screens
+	var dataStore: OverlayDataStore? { get }
 }

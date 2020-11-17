@@ -2,8 +2,8 @@
 //  NewTaskOverlayInteractor.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 05.11.2020.
-//
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 
 import UIKit
 

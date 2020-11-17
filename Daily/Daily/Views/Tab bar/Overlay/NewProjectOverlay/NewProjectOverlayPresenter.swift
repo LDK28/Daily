@@ -1,9 +1,9 @@
 //
-//  NewProjectOverlayPresener.swift
+//  NewProjectOverlayPresenter.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 08.11.2020.
-//
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 
 import UIKit
 
@@ -17,8 +17,8 @@ extension NewProjectOverlayPresenter: NewProjectOverlayPresentationLogic {
 		guard let dateCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
 			cellViewModel.cellType == .optionalDate
 		}) else { return }
-		guard let dateCell = view?.cellsToDisplay[section][dateCellIndex] as? DailyOptionalDateCell else { return }
+		guard let dateCell = viewController?.cellsToDisplay[section][dateCellIndex] as? DailyOptionalDateCell else { return }
 		dateCell.date = dataSource.assignedDay
-		view?.update(at: IndexPath(row: dateCellIndex, section: section))
+		viewController?.update(at: IndexPath(row: dateCellIndex, section: section))
 	}
 }

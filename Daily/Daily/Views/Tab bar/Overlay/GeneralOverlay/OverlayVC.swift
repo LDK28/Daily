@@ -1,17 +1,18 @@
 //
-//  OverlayTemplateVC.swift
+//  OverlayVC.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 04.11.2020.
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
-
 class OverlayVC: UIViewController {
-	private var cornerRadiusValue: CGFloat = 10
-	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
 	var interactor: OverlayBusinessLogic?
+	
+	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
+	private var cornerRadiusValue: CGFloat = 10
 
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
@@ -25,11 +26,11 @@ class OverlayVC: UIViewController {
 		
 	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		view.backgroundColor = .dailyTabBarColor
 		cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -124,6 +125,13 @@ extension OverlayVC: OverlayDisplayLogic {
 	}
 }
 
+extension OverlayVC: UITextFieldDelegate {
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		interactor?.didChangeTitle(text: textField.text ?? "")
+	}
+}
+
 
 // MARK: - Configuration of UI elements
 extension OverlayVC {
@@ -201,3 +209,4 @@ extension OverlayVC {
 		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
 	}
 }
+

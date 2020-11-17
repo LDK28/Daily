@@ -1,22 +1,23 @@
 //
-//  OverlayBusinessLogic.swift
+//  OverlayInteractor.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 12.11.2020.
-//
+//  Created by Арсений Токарев on 17.11.2020.
+//  Copyright (c) 2020 ___ORGANIZATIONNAME___. All rights reserved.
 
 import UIKit
 
-class OverlayInteractor {
-	internal let presenter: OverlayPresentationLogic?
-	internal let dataSource: OverlayDataSource
-	
-	init(dataSource: OverlayDataSource, presenter: OverlayPresentationLogic?) {
-		self.dataSource = dataSource
-		self.presenter = presenter
-	}
+class OverlayInteractor: OverlayDataStore {
+	var presenter: OverlayPresentationLogic?
+	var dataSource = OverlayDataSource(sectionViewModels: [])
 }
+
 extension OverlayInteractor: OverlayBusinessLogic {
+	
+	func didChangeTitle(text: String) {
+		dataSource.title = text
+		print(text)
+	}
 	
 	func didChangeValueInTimePickerCell(newTime: Date) {
 		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
