@@ -117,11 +117,9 @@ extension OverlayVC {
 		view.addSubview(cancelButton)
 		view.addSubview(tableView)
 		
-		configureTableView()
 		configureLabel()
 		configureButtons()
-		
-		styleUI()
+		configureTableView()
 	}
 	
 	func configureTableView() {

@@ -8,7 +8,6 @@
 import UIKit
 
 protocol  NewTaskOverlayDisplayLogic: OverlayDisplayLogic {
-//	func display(cells: [[UITableViewCell]])
 }
 
 class NewTaskOverlayVC: OverlayVC {
@@ -16,10 +15,7 @@ class NewTaskOverlayVC: OverlayVC {
 	
 	override func loadView() {
 		super.loadView()
-		
 		styleUI()
-		
-		configureTableView()
 	}
 	
     override func viewDidLoad() {

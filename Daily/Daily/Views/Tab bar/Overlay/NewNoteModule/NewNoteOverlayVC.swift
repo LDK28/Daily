@@ -7,8 +7,7 @@
 
 import UIKit
 
-protocol NewNoteOverlayDisplayLogic: class {
-	func display()
+protocol NewNoteOverlayDisplayLogic: OverlayDisplayLogic {
 }
 
 class NewNoteOverlayVC: OverlayVC {
@@ -18,18 +17,13 @@ class NewNoteOverlayVC: OverlayVC {
 	
 	override func loadView() {
 		super.loadView()
-		
 		view.addSubview(descriptionTextView)
-		
-		styleUI()
-		
 		configureDescriptionTextView()
+		styleUI()
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		interactor?.fetchCells()
     }
 	
 	func configureDescriptionTextView() {
@@ -52,12 +46,6 @@ class NewNoteOverlayVC: OverlayVC {
 		tableView.separatorStyle = .none
 	}
 	
-}
-
-extension NewNoteOverlayVC: NewNoteOverlayDisplayLogic {
-	func display() {
-		
-	}
 }
 
 extension NewNoteOverlayVC: UITextViewDelegate {

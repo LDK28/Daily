@@ -11,8 +11,8 @@ class NewNoteOverlayModule {
 	static func build() -> UIViewController {
 		
 		let viewController = NewNoteOverlayVC()
-		let dataSource = NewNoteOverlayDataSource()
-		let presenter = NewNoteOverlayPresenter(view: viewController)
+		let dataSource = NewNoteOverlayDataSource(sectionViewModels: [])
+		let presenter = NewNoteOverlayPresenter(view: viewController, dataSource: dataSource)
 		let interactor = NewNoteOverlayInteractor(dataSource: dataSource, presenter: presenter)
 		viewController.interactor = interactor
 		

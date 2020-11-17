@@ -7,23 +7,12 @@
 
 import UIKit
 
-protocol NewNoteOverlayBusinessLogic {
-	func fetchCells()
+protocol NewNoteOverlayBusinessLogic: OverlayBusinessLogic {
 }
 
-class NewNoteOverlayInteractor {
-	let presenter: NewNoteOverlayPresentationLogic?
-	let dataSource: NewNoteOverlayDataSource
-	
-	init(dataSource: NewNoteOverlayDataSource, presenter: NewNoteOverlayPresentationLogic) {
-		self.presenter = presenter
-		self.dataSource = dataSource
-	}
+class NewNoteOverlayInteractor: OverlayInteractor {
 }
 
 extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
-	func fetchCells() {
-		presenter?.present()
-	}
 	
 }

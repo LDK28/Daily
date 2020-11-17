@@ -7,20 +7,11 @@
 
 import Foundation
 
-protocol NewNoteOverlayPresentationLogic {
-	func present()
+protocol NewNoteOverlayPresentationLogic: OverlayPresentationLogic {
 }
 
-class NewNoteOverlayPresenter {
-	weak var view: NewNoteOverlayDisplayLogic?
-	
-	init(view: NewNoteOverlayDisplayLogic) {
-		self.view = view
-	}
+class NewNoteOverlayPresenter: OverlayPresenter {
 }
 
 extension NewNoteOverlayPresenter: NewNoteOverlayPresentationLogic {
-	func present() {
-		view?.display()
-	}
 }

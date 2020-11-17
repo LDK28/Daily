@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewNoteOverlayDataSource {
+class NewNoteOverlayDataSource: OverlayDataSource {
 	var title = ""
 	var description = ""
 }
