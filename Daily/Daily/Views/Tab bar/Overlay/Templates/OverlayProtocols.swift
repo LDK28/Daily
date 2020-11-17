@@ -13,17 +13,20 @@ protocol OverlayDisplayLogic: class {
 	func displayCells()
 	func insert(at indexPath: IndexPath)
 	func delete(at indexPath: IndexPath)
+	func update(at indexPath: IndexPath)
 }
 
 protocol OverlayBusinessLogic {
 	func fetchCells()
 	func didToggleTimeSwitcher()
+	func didChangeValueInTimePickerCell(newTime: Date)
 	
 }
 
 protocol OverlayPresentationLogic {
 	func present(data: OverlayDataSource)
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType)
+	func updateTimeInTimeCell(atSection section: Int)
 }
 
 protocol OverlayRoutingLogci {

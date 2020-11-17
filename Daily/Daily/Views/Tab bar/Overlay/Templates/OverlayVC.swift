@@ -11,6 +11,7 @@ import UIKit
 class OverlayVC: UIViewController {
 	private var cornerRadiusValue: CGFloat = 10
 	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
+	var interactor: OverlayBusinessLogic?
 
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
@@ -81,6 +82,18 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+extension OverlayVC: DailyTimeCellDelegate {
+	func didToggleTimeSwitcher() {
+		interactor?.didToggleTimeSwitcher()
+	}
+}
+
+extension OverlayVC: DailyTimePickerCellDelegate {
+	func didChangeTime(newTime: Date) {
+		interactor?.didChangeValueInTimePickerCell(newTime: newTime)
+	}
+}
+
 
 extension OverlayVC: OverlayDisplayLogic {
 	
@@ -95,6 +108,10 @@ extension OverlayVC: OverlayDisplayLogic {
 		tableView.insertRows(at: [indexPath], with: .automatic)
 		cellsToDisplay[indexPath.section][indexPath.row].parentView = self
 		tableView.endUpdates()
+	}
+	
+	func update(at indexPath: IndexPath) {
+		tableView.reloadData()
 	}
 	
 	func displayCells() {

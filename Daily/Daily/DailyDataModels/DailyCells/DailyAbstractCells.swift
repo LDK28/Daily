@@ -64,8 +64,11 @@ class DailyDateAndTimeCell: DailyCell {
 // MARK: - Cell with DateAndTimePicker without text, icon and other elements other than DateAndTimePicker
 
 class DailyTimeAndDatePickerCell: DailyCell {
-	let picker = UIDatePicker()
+	internal let picker = UIDatePicker()
 	
+	var dateAndTime: Date {
+		return picker.date
+	}
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		if #available(iOS 14, *) {

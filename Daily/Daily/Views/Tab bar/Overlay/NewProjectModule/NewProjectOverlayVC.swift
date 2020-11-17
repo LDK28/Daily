@@ -11,12 +11,9 @@ protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
 }
 
 class NewProjectOverlayVC: OverlayVC {
-	
-	var interactor: NewProjectOverlayBusinessLogic?
-	
 	override func loadView() {
 		super.loadView()
-		
+		configureTableView()
 		styleUI()
 	}
 	
@@ -33,14 +30,15 @@ class NewProjectOverlayVC: OverlayVC {
 
 }
 
-extension NewProjectOverlayVC: DailyTimeCellDelegate {
-	func didToggleTimeSwitcher() {
-		interactor?.didToggleTimeSwitcher()
+extension NewProjectOverlayVC: DailyDatePickerCellDelegate {
+	func didChangeDate(newDay: Date) {
+		(interactor as? NewProjectOverlayInteractor)?.didChangeValueInDatePickerCell(newDay: newDay)
 	}
+	
 }
 
 extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
 	func didToggleDateSwitcher() {
-		interactor?.didToggleDateSwitcher()
+		(interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()
 	}
 }

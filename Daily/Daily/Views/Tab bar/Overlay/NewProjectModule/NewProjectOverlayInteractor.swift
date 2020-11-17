@@ -9,6 +9,7 @@ import UIKit
 
 protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleDateSwitcher()
+	func didChangeValueInDatePickerCell(newDay: Date)
 }
 
 class NewProjectOverlayInteractor: OverlayInteractor {
@@ -17,6 +18,15 @@ class NewProjectOverlayInteractor: OverlayInteractor {
 
 
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
+	func didChangeValueInDatePickerCell(newDay: Date) {
+		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
+			section.type == .dateAndTime
+		}) {
+			dataSource.assignedDay = newDay
+			(presenter as? NewProjectOverlayPresenter)?.updateDateInDateCell(atSection: sectionToUpdate)
+		}
+	}
+	
 	func didToggleDateSwitcher() {
 		guard let dataSource = dataSource as? NewProjectOverlayDataSource else { return }
 		

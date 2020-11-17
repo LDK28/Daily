@@ -17,6 +17,17 @@ class OverlayInteractor {
 	}
 }
 extension OverlayInteractor: OverlayBusinessLogic {
+	
+	func didChangeValueInTimePickerCell(newTime: Date) {
+		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
+			section.type == .dateAndTime
+		}) {
+			dataSource.assignedTime = newTime
+			presenter?.updateTimeInTimeCell(atSection: sectionToUpdate)
+		}
+	}
+	
+	
 	func didToggleTimeSwitcher() {
 		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
 			section.type == .dateAndTime

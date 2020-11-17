@@ -12,11 +12,11 @@ protocol NewNoteOverlayDisplayLogic: OverlayDisplayLogic {
 
 class NewNoteOverlayVC: OverlayVC {
 	private let noteTitleTextField = UITextField()
-	var interactor: NewNoteOverlayBusinessLogic?
 	let descriptionTextView = UITextView()
 	
 	override func loadView() {
 		super.loadView()
+		configureTableView()
 		view.addSubview(descriptionTextView)
 		configureDescriptionTextView()
 		styleUI()

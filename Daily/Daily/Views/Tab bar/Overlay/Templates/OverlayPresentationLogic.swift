@@ -22,6 +22,16 @@ class OverlayPresenter {
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
+	
+	func updateTimeInTimeCell(atSection section: Int) {
+		guard let timeCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
+			cellViewModel.cellType == .time
+		}) else { return }
+		guard let timeCell = view?.cellsToDisplay[section][timeCellIndex] as? DailyTimeCell else { return }
+		timeCell.time = dataSource.assignedTime
+		view?.update(at: IndexPath(row: timeCellIndex, section: section))
+	}
+	
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType) {
 		guard cellType == .optionalDate || cellType == .time else { return }
 		guard let previousRow = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
@@ -58,10 +68,12 @@ extension OverlayPresenter: OverlayPresentationLogic {
 		if cellType == .datePicker {
 			if let datePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
 				view?.cellsToDisplay[indexPath.section].insert(datePickerCell, at: indexPath.row)
+				(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyOptionalDateCell)?.date = datePickerCell.dateAndTime
 			}
 		} else {
 			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
 				view?.cellsToDisplay[indexPath.section].insert(timePickerCell, at: indexPath.row)
+				(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyTimeCell)?.time = timePickerCell.dateAndTime
 				view?.cellsToDisplay[indexPath.section][indexPath.row].roundBottomCorners(cornerRadius: 10)
 			}
 		}
@@ -71,6 +83,8 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	private func deleteCell(at indexPath: IndexPath) {
 		dataSource.sectionViewModels[indexPath.section].cellViewModels.remove(at: indexPath.row)
 		view?.cellsToDisplay[indexPath.section].remove(at: indexPath.row)
+		(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyTimeCell)?.time = nil
+		(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyOptionalDateCell)?.date = nil
 		view?.delete(at: indexPath)
 	}
 }

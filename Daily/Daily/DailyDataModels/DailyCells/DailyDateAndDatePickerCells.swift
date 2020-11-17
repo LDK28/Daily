@@ -32,6 +32,18 @@ protocol DailyOptionalDateCellDelegate: class {
 final class DailyOptionalDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyOptionalDateCell"
 	
+	var date: Date? {
+		didSet {
+			if let date = date {
+				let formatter = DateFormatter()
+				formatter.dateFormat = "E, MMM d, yyyy"
+				dateAndTimeLabel.text = formatter.string(from: date)
+			} else {
+				dateAndTimeLabel.text = "Any date"
+			}
+		}
+	}
+	
 	override var viewModel: DailyCellViewModel? {
 		didSet {
 			guard let component = viewModel else { return }
@@ -48,13 +60,22 @@ final class DailyOptionalDateCell: DailyDateAndTimeCell {
 	}
 }
 
+protocol DailyDatePickerCellDelegate: class {
+	func didChangeDate(newDay: Date)
+}
+
 final class DailyDatePickerCell: DailyTimeAndDatePickerCell {
 	static let cellIdentifier = "DailyDatePickerCell"
+	
+	@objc func datePickerChanged(picker: UIDatePicker) {
+		(parentView as? DailyDatePickerCellDelegate)?.didChangeDate(newDay: picker.date)
+	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .date
 		picker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -5).isActive = true
+		picker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
 	}
 	
 	

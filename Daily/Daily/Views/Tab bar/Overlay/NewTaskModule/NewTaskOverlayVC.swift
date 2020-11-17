@@ -11,10 +11,10 @@ protocol  NewTaskOverlayDisplayLogic: OverlayDisplayLogic {
 }
 
 class NewTaskOverlayVC: OverlayVC {
-	var interactor: NewTaskOverlayBusinessLogic?
 	
 	override func loadView() {
 		super.loadView()
+		configureTableView()
 		styleUI()
 	}
 	
@@ -28,11 +28,5 @@ class NewTaskOverlayVC: OverlayVC {
 	override func styleUI() {
 		super.styleUI()
 		titleLabel.styleOverlayLabel(text: "Add new task")
-	}
-}
-
-extension NewTaskOverlayVC: DailyTimeCellDelegate {
-	func didToggleTimeSwitcher() {
-		interactor?.didToggleTimeSwitcher()
 	}
 }

@@ -14,6 +14,18 @@ protocol DailyTimeCellDelegate: class {
 final class DailyTimeCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyTimeCell"
 	
+	var time: Date? {
+		didSet {
+			if let time = time {
+				let formatter = DateFormatter()
+				formatter.dateFormat = "h:mm"
+				dateAndTimeLabel.text = formatter.string(from: time)
+			} else {
+				dateAndTimeLabel.text = "Any time"
+			}
+		}
+	}
+	
 	override var viewModel: DailyCellViewModel? {
 		didSet {
 			guard let component = viewModel else { return }
@@ -31,17 +43,26 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 	}
 }
 
+
+protocol DailyTimePickerCellDelegate: class {
+	func didChangeTime(newTime: Date)
+}
+
 final class DailyTimePickerCell: DailyTimeAndDatePickerCell {
 	static let cellIdentifier = "DailyTimePickerCell"
+	
+	@objc func datePickerChanged(picker: UIDatePicker) {
+		(parentView as? DailyTimePickerCellDelegate)?.didChangeTime(newTime: picker.date)
+	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .time
 		picker.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		picker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
 }
