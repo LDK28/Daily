@@ -12,8 +12,7 @@ class NewProjectOverlayModule {
 		let dataSource = NewProjectOverlayDataSource(
 			sectionViewModels: [
 				TeamProjectSectionViewModel(),
-				AssignableDateAndTimeSectionViewModel(),
-				TeamProjectSectionViewModel()
+				AssignableDateAndTimeSectionViewModel()
 		])
 		
 		let viewController = NewProjectOverlayVC()

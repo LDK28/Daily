@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol  NewTaskOverlayDisplayLogic: OverlayDisplayLogic {
-}
-
 class NewTaskOverlayVC: OverlayVC {
 	
 	override func loadView() {
@@ -30,3 +27,10 @@ class NewTaskOverlayVC: OverlayVC {
 		titleLabel.styleOverlayLabel(text: "Add new task")
 	}
 }
+
+extension NewTaskOverlayVC: DailyRemindCellDelegate {
+	func didToggleRemindState() {
+		(interactor as? NewTaskOverlayInteractor)?.didToggleRemindSwitcher()
+	}
+}
+

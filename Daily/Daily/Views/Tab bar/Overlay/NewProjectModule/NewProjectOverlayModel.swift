@@ -9,4 +9,5 @@ import UIKit
 
 class NewProjectOverlayDataSource: OverlayDataSource {
 	var isAssignedToDate = false
+	var isTeamProject = false
 }

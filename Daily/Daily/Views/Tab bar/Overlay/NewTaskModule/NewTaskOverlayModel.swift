@@ -8,10 +8,10 @@
 import UIKit
 
 enum RepeatSchedule {
-	case day, week, month, year
+	case day, week, month, year, never
 }
 
 class NewTaskOverlayDataSource: OverlayDataSource {
 	var shouldRemind = false
-	var repearSchedule: RepeatSchedule?
+	var repeatSchedule: RepeatSchedule = .never
 }

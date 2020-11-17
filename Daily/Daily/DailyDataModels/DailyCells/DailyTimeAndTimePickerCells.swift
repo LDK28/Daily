@@ -18,7 +18,7 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 		didSet {
 			if let time = time {
 				let formatter = DateFormatter()
-				formatter.dateFormat = "h:mm"
+				formatter.dateFormat = "h:mm a"
 				dateAndTimeLabel.text = formatter.string(from: time)
 			} else {
 				dateAndTimeLabel.text = "Any time"
@@ -34,12 +34,20 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 			titleLabel.text = component.title
 			dateAndTimeLabel.text = "Any time"
 			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
-			
 		}
 	}
 	
 	@objc func toggleSwitcher(switcher: UISwitch) {
 		(parentView as? DailyTimeCellDelegate)?.didToggleTimeSwitcher()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 }
 

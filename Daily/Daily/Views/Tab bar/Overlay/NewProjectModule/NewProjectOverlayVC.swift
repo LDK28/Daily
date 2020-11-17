@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
-}
-
 class NewProjectOverlayVC: OverlayVC {
 	override func loadView() {
 		super.loadView()
@@ -41,4 +38,12 @@ extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
 	func didToggleDateSwitcher() {
 		(interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()
 	}
+}
+
+extension NewProjectOverlayVC: DailyTeamProjectCellDelegate {
+	func didToggleTeamProjectState() {
+		(interactor as? NewProjectOverlayInteractor)?.didToggleTeamProjectSwitcher()
+	}
+	
+	
 }

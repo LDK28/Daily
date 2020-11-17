@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
-}
-
 class NewTaskOverlayInteractor: OverlayInteractor {
 }
 
 // MARK: - Interactor Protocol
 
 extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
+	func didToggleRemindSwitcher() {
+		(dataSource as? NewTaskOverlayDataSource)?.shouldRemind.toggle()
+	}
 }

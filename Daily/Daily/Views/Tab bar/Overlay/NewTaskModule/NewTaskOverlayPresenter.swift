@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol NewTaskOverlayPresentationLogic: OverlayPresentationLogic {
-}
-
 class NewTaskOverlayPresenter: OverlayPresenter {
 }
 

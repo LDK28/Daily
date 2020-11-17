@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol NewNoteOverlayPresentationLogic: OverlayPresentationLogic {
-}
-
 class NewNoteOverlayPresenter: OverlayPresenter {
 }
 

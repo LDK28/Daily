@@ -7,11 +7,6 @@
 
 import UIKit
 
-
-protocol NewProjectOverlayPresentationLogic: OverlayPresentationLogic {
-	func updateDateInDateCell(atSection section: Int)
-}
-
 class NewProjectOverlayPresenter: OverlayPresenter {
 }
 

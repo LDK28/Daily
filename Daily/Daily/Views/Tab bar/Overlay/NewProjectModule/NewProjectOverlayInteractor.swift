@@ -7,17 +7,15 @@
 
 import UIKit
 
-protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
-	func didToggleDateSwitcher()
-	func didChangeValueInDatePickerCell(newDay: Date)
-}
-
 class NewProjectOverlayInteractor: OverlayInteractor {
+	
 }
-
-
 
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
+	func didToggleTeamProjectSwitcher() {
+		(dataSource as? NewProjectOverlayDataSource)?.isTeamProject.toggle()
+	}
+	
 	func didChangeValueInDatePickerCell(newDay: Date) {
 		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
 			section.type == .dateAndTime

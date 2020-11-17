@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol NewNoteOverlayBusinessLogic: OverlayBusinessLogic {
-}
-
 class NewNoteOverlayInteractor: OverlayInteractor {
 }
 

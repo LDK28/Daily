@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol NewNoteOverlayDisplayLogic: OverlayDisplayLogic {
-}
-
 class NewNoteOverlayVC: OverlayVC {
 	private let noteTitleTextField = UITextField()
 	let descriptionTextView = UITextView()

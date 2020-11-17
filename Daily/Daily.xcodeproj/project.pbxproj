@@ -14,8 +14,8 @@
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
-		21173180255DC80A0086A9EE /* OverlayBusinessLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117317F255DC80A0086A9EE /* OverlayBusinessLogic.swift */; };
-		2117318B255DC96D0086A9EE /* OverlayPresentationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318A255DC96D0086A9EE /* OverlayPresentationLogic.swift */; };
+		21173180255DC80A0086A9EE /* OverlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117317F255DC80A0086A9EE /* OverlayInteractor.swift */; };
+		2117318B255DC96D0086A9EE /* OverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318A255DC96D0086A9EE /* OverlayPresenter.swift */; };
 		21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318F255DCAA10086A9EE /* OverlayDataSource.swift */; };
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		212F890925574C000097F894 /* DailyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModel.swift */; };
@@ -58,6 +58,9 @@
 		21BF82CA2557E61E001614EE /* HeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderCells.swift */; };
 		21C1CA7F2552AA6400ACE18B /* OverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */; };
 		21CC5CF22563B953009C1D8E /* OverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */; };
+		21CC5D1525643891009C1D8E /* NewProjectOverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5D1425643891009C1D8E /* NewProjectOverlayProtocols.swift */; };
+		21CC5D2025643960009C1D8E /* NewNoteOverlayPtotocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5D1F25643960009C1D8E /* NewNoteOverlayPtotocols.swift */; };
+		21CC5D2525643995009C1D8E /* NewTaskOverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5D2425643995009C1D8E /* NewTaskOverlayProtocols.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
 		21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02525403975006A4206 /* SceneDelegate.swift */; };
 		21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02C25403975006A4206 /* Daily.xcdatamodeld */; };
@@ -108,8 +111,8 @@
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		2117317F255DC80A0086A9EE /* OverlayBusinessLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayBusinessLogic.swift; sourceTree = "<group>"; };
-		2117318A255DC96D0086A9EE /* OverlayPresentationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationLogic.swift; sourceTree = "<group>"; };
+		2117317F255DC80A0086A9EE /* OverlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInteractor.swift; sourceTree = "<group>"; };
+		2117318A255DC96D0086A9EE /* OverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresenter.swift; sourceTree = "<group>"; };
 		2117318F255DCAA10086A9EE /* OverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		212F890825574C000097F894 /* DailyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +155,9 @@
 		21BF82C92557E61E001614EE /* HeaderCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCells.swift; sourceTree = "<group>"; };
 		21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayVC.swift; sourceTree = "<group>"; };
 		21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayProtocols.swift; sourceTree = "<group>"; };
+		21CC5D1425643891009C1D8E /* NewProjectOverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectOverlayProtocols.swift; sourceTree = "<group>"; };
+		21CC5D1F25643960009C1D8E /* NewNoteOverlayPtotocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayPtotocols.swift; sourceTree = "<group>"; };
+		21CC5D2425643995009C1D8E /* NewTaskOverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayProtocols.swift; sourceTree = "<group>"; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E1D02325403975006A4206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E1D02525403975006A4206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,12 +223,12 @@
 		21173160255DBE870086A9EE /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */,
-				21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */,
-				2117317F255DC80A0086A9EE /* OverlayBusinessLogic.swift */,
-				2117318A255DC96D0086A9EE /* OverlayPresentationLogic.swift */,
 				2117318F255DCAA10086A9EE /* OverlayDataSource.swift */,
 				21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */,
+				21CC5CF12563B953009C1D8E /* OverlayProtocols.swift */,
+				21C1CA7E2552AA6400ACE18B /* OverlayVC.swift */,
+				2117317F255DC80A0086A9EE /* OverlayInteractor.swift */,
+				2117318A255DC96D0086A9EE /* OverlayPresenter.swift */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -230,11 +236,12 @@
 		21239DF825546D7D0080C942 /* NewTaskModule */ = {
 			isa = PBXGroup;
 			children = (
-				2152B87425546DE4005238B6 /* NewTaskOverlayConfigurator.swift */,
 				2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */,
-				2152B88725546FDB005238B6 /* NewTaskOverlayPresenter.swift */,
-				2152B88C25547023005238B6 /* NewTaskOverlayInteractor.swift */,
+				2152B87425546DE4005238B6 /* NewTaskOverlayConfigurator.swift */,
+				21CC5D2425643995009C1D8E /* NewTaskOverlayProtocols.swift */,
 				2151CA4525509B2900732F68 /* NewTaskOverlayVC.swift */,
+				2152B88C25547023005238B6 /* NewTaskOverlayInteractor.swift */,
+				2152B88725546FDB005238B6 /* NewTaskOverlayPresenter.swift */,
 			);
 			path = NewTaskModule;
 			sourceTree = "<group>";
@@ -264,11 +271,12 @@
 		2152B87225546DB3005238B6 /* NewProjectModule */ = {
 			isa = PBXGroup;
 			children = (
-				2156469D25585029007264D4 /* NewProjectOverlayConfigurator.swift */,
 				215646A525585033007264D4 /* NewProjectOverlayModel.swift */,
-				215646952558501D007264D4 /* NewProjectOverlayPresener.swift */,
-				2156469025585003007264D4 /* NewProjectOverlayInteractor.swift */,
+				2156469D25585029007264D4 /* NewProjectOverlayConfigurator.swift */,
+				21CC5D1425643891009C1D8E /* NewProjectOverlayProtocols.swift */,
 				2156468B25584FDE007264D4 /* NewProjectOverlayVC.swift */,
+				2156469025585003007264D4 /* NewProjectOverlayInteractor.swift */,
+				215646952558501D007264D4 /* NewProjectOverlayPresener.swift */,
 			);
 			path = NewProjectModule;
 			sourceTree = "<group>";
@@ -276,11 +284,12 @@
 		2152B87325546DC0005238B6 /* NewNoteModule */ = {
 			isa = PBXGroup;
 			children = (
-				215646AD25588AC3007264D4 /* NewNoteOverlayConfigurator.swift */,
 				215646C225588AF7007264D4 /* NewNoteOverlayModel.swift */,
-				215646B525588ACF007264D4 /* NewNoteOverlayPresenter.swift */,
-				215646BD25588ADA007264D4 /* NewNoteOverlayInteractor.swift */,
+				215646AD25588AC3007264D4 /* NewNoteOverlayConfigurator.swift */,
+				21CC5D1F25643960009C1D8E /* NewNoteOverlayPtotocols.swift */,
 				2151CA3D25509B1C00732F68 /* NewNoteOverlayVC.swift */,
+				215646BD25588ADA007264D4 /* NewNoteOverlayInteractor.swift */,
+				215646B525588ACF007264D4 /* NewNoteOverlayPresenter.swift */,
 			);
 			path = NewNoteModule;
 			sourceTree = "<group>";
@@ -681,7 +690,8 @@
 				215DFBF9255D7D6500CD3939 /* DailyOrdinaryCell.swift in Sources */,
 				212F890925574C000097F894 /* DailyCellViewModel.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
-				2117318B255DC96D0086A9EE /* OverlayPresentationLogic.swift in Sources */,
+				2117318B255DC96D0086A9EE /* OverlayPresenter.swift in Sources */,
+				21CC5D2025643960009C1D8E /* NewNoteOverlayPtotocols.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				215646962558501D007264D4 /* NewProjectOverlayPresener.swift in Sources */,
@@ -690,7 +700,7 @@
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
-				21173180255DC80A0086A9EE /* OverlayBusinessLogic.swift in Sources */,
+				21173180255DC80A0086A9EE /* OverlayInteractor.swift in Sources */,
 				215646B625588ACF007264D4 /* NewNoteOverlayPresenter.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				2151CA4625509B2900732F68 /* NewTaskOverlayVC.swift in Sources */,
@@ -726,8 +736,10 @@
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */,
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
+				21CC5D1525643891009C1D8E /* NewProjectOverlayProtocols.swift in Sources */,
 				215DFC06255D7DD300CD3939 /* DailyRepeatCell.swift in Sources */,
 				055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */,
+				21CC5D2525643995009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
 				215646BE25588ADA007264D4 /* NewNoteOverlayInteractor.swift in Sources */,
 				215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */,
 				2152B87525546DE4005238B6 /* NewTaskOverlayConfigurator.swift in Sources */,

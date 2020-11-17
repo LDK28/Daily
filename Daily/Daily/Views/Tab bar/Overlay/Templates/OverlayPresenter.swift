@@ -45,12 +45,15 @@ extension OverlayPresenter: OverlayPresentationLogic {
 				return
 			} else {
 				view?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
+				(view?.cellsToDisplay[section][previousRow] as? DailyTimeCell)?.time = nil
 			}
 		} else {
 			if let dataSource = dataSource as? NewProjectOverlayDataSource {
 				if dataSource.isAssignedToDate {
 					insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .datePicker)
 					return
+				} else {
+					(view?.cellsToDisplay[section][previousRow] as? DailyOptionalDateCell)?.date = nil
 				}
 			}
 		}
@@ -83,8 +86,6 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	private func deleteCell(at indexPath: IndexPath) {
 		dataSource.sectionViewModels[indexPath.section].cellViewModels.remove(at: indexPath.row)
 		view?.cellsToDisplay[indexPath.section].remove(at: indexPath.row)
-		(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyTimeCell)?.time = nil
-		(view?.cellsToDisplay[indexPath.section][indexPath.row - 1] as? DailyOptionalDateCell)?.date = nil
 		view?.delete(at: indexPath)
 	}
 }
