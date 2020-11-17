@@ -22,34 +22,57 @@ class OverlayPresenter {
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
-	func updateTimePickerCell(atSection section: Int) {
-		guard let view = view else { return }
+	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType) {
+		guard cellType == .optionalDate || cellType == .time else { return }
 		guard let previousRow = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
-			cellViewModel.cellType == .time
+			cellViewModel.cellType == cellType
 		}) else { return }
-		let rowToInsert = previousRow + 1
-		if dataSource.isAssignedToTime {
-			dataSource.sectionViewModels[section].cellViewModels.insert(
-				DailyCellViewModel(title: nil,
-								   icon: nil,
-								   cellType: .timePicker,
-								   isToggable: false,
-								   isSelectable: false),
-				at: rowToInsert)
-			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell{
-				timePickerCell.roundBottomCorners(cornerRadius: 10)
-				view.cellsToDisplay[section].insert(timePickerCell, at: rowToInsert)
-				
-				view.cellsToDisplay[section][previousRow].sharpCorners()
-				view.insert(at: IndexPath(row: rowToInsert, section: section))
+		
+		if cellType == .time {
+			if dataSource.isAssignedToTime {
+				view?.cellsToDisplay[section][previousRow].sharpCorners()
+				insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .timePicker)
+				return
+			} else {
+				view?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
 			}
 		} else {
-			dataSource.sectionViewModels[section].cellViewModels.remove(at: rowToInsert)
-			view.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
-			view.cellsToDisplay[section].remove(at: rowToInsert)
-			view.delete(at: IndexPath(row: rowToInsert, section: section))
+			if let dataSource = dataSource as? NewProjectOverlayDataSource {
+				if dataSource.isAssignedToDate {
+					insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .datePicker)
+					return
+				}
+			}
 		}
-	}		
+		
+		deleteCell(at: IndexPath(row: previousRow + 1, section: section))
+	}
+	
+	private func insertCellViewModel(at indexPath: IndexPath, cellWithType cellType: DailyCellType) {
+		let newCellViewModel = DailyCellViewModel(title: nil,
+												  icon: nil,
+												  cellType: cellType,
+												  isToggable: false,
+												  isSelectable: false)
+		dataSource.sectionViewModels[indexPath.section].cellViewModels.insert(newCellViewModel, at: indexPath.row)
+		if cellType == .datePicker {
+			if let datePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
+				view?.cellsToDisplay[indexPath.section].insert(datePickerCell, at: indexPath.row)
+			}
+		} else {
+			if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
+				view?.cellsToDisplay[indexPath.section].insert(timePickerCell, at: indexPath.row)
+				view?.cellsToDisplay[indexPath.section][indexPath.row].roundBottomCorners(cornerRadius: 10)
+			}
+		}
+		view?.insert(at: indexPath)
+	}
+	
+	private func deleteCell(at indexPath: IndexPath) {
+		dataSource.sectionViewModels[indexPath.section].cellViewModels.remove(at: indexPath.row)
+		view?.cellsToDisplay[indexPath.section].remove(at: indexPath.row)
+		view?.delete(at: indexPath)
+	}
 }
 
 extension OverlayPresenter {

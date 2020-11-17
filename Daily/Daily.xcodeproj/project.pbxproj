@@ -51,7 +51,7 @@
 		215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */; };
 		215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */; };
 		217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */; };
-		218DD5CA25580ADB00C9EEBB /* DailyCellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DD5C925580ADB00C9EEBB /* DailyCellTypes.swift */; };
+		218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DD5C925580ADB00C9EEBB /* DailyCellType.swift */; };
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
 		21BB2B812558195F00192B4A /* FooterCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BB2B802558195F00192B4A /* FooterCells.swift */; };
@@ -145,7 +145,7 @@
 		215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTimeAndTimePickerCells.swift; sourceTree = "<group>"; };
 		215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateAndDatePickerCells.swift; sourceTree = "<group>"; };
 		217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAbstractCells.swift; sourceTree = "<group>"; };
-		218DD5C925580ADB00C9EEBB /* DailyCellTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellTypes.swift; sourceTree = "<group>"; };
+		218DD5C925580ADB00C9EEBB /* DailyCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellType.swift; sourceTree = "<group>"; };
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		21BB2B802558195F00192B4A /* FooterCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCells.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 				21BF82C82557E604001614EE /* DailyCells */,
 				2156464625584D64007264D4 /* SectionModel.swift */,
 				212F890825574C000097F894 /* DailyCellViewModel.swift */,
-				218DD5C925580ADB00C9EEBB /* DailyCellTypes.swift */,
+				218DD5C925580ADB00C9EEBB /* DailyCellType.swift */,
 			);
 			path = DailyDataModels;
 			sourceTree = "<group>";
@@ -717,7 +717,7 @@
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
-				218DD5CA25580ADB00C9EEBB /* DailyCellTypes.swift in Sources */,
+				218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,

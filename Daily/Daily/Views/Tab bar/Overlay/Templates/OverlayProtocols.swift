@@ -23,7 +23,7 @@ protocol OverlayBusinessLogic {
 
 protocol OverlayPresentationLogic {
 	func present(data: OverlayDataSource)
-	func updateTimePickerCell(atSection section: Int)
+	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType)
 }
 
 protocol OverlayRoutingLogci {

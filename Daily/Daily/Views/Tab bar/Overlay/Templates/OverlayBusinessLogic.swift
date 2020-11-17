@@ -22,7 +22,7 @@ extension OverlayInteractor: OverlayBusinessLogic {
 			section.type == .dateAndTime
 		}) {
 			dataSource.isAssignedToTime.toggle()
-			presenter?.updateTimePickerCell(atSection: sectionToUpdate)
+			presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: .time)
 		}
 	}
 	

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DailyCellTypes {
+enum DailyCellType {
 	case remind
 	case repeatSchedule
 	case requiredDate

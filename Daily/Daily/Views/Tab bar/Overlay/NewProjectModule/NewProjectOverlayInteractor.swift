@@ -18,14 +18,13 @@ class NewProjectOverlayInteractor: OverlayInteractor {
 
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
 	func didToggleDateSwitcher() {
-		guard let dataSource = dataSource as? NewProjectOverlayDataSource,
-			  let presenter = presenter as? NewProjectOverlayPresenter else { return }
+		guard let dataSource = dataSource as? NewProjectOverlayDataSource else { return }
 		
 		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
 			section.type == .dateAndTime
 		}) {
 			dataSource.isAssignedToDate.toggle()
-			presenter.updateDatePickerCell(atSection: sectionToUpdate, isAssignedToDate: dataSource.isAssignedToDate)
+			presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: .optionalDate)
 		}
 	}	
 }

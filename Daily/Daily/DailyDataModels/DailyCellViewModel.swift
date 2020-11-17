@@ -30,11 +30,11 @@ struct Icon {
 struct DailyCellViewModel {
 	var title: String?
 	var icon: Icon?
-	var cellType: DailyCellTypes
+	var cellType: DailyCellType
 	var isToggable: Bool
 	var isSelectable: Bool
 	
-	init(title: String?, icon: Icon?, cellType: DailyCellTypes, isToggable: Bool, isSelectable: Bool) {
+	init(title: String?, icon: Icon?, cellType: DailyCellType, isToggable: Bool, isSelectable: Bool) {
 		if let title = title {
 			self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
 		}
