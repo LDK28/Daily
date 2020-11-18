@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Ordinary cell with single line text
 class DailyOrdinaryCell: DailyCell {
-	private let titleLabel = UILabel()
+	internal let titleLabel = UILabel()
 	
 	override var viewModel: DailyCellViewModel? {
 		didSet {

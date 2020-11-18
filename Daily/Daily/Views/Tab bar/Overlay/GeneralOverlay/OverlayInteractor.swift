@@ -13,7 +13,7 @@ class OverlayInteractor: OverlayDataStore {
 	
 	func getFirstIndexOfSection(ofType type: DailySectionType) -> Int? {
 		dataSource.sectionViewModels.firstIndex(where: { section in
-			section.type == .dateAndTime
+			section.type == type
 		})
 	}
 }

@@ -167,8 +167,7 @@ extension OverlayPresenter {
 						for: indexPath) as? DailyRepeatCell {
 							repeatCell.viewModel = currentCellViewModel
 							repeatCell.roundCorners(cornerRadius: 10)
-							repeatCell.accessoryType = .disclosureIndicator
-						viewController.cellsToDisplay[sectionViewModelIndex].append(repeatCell)
+							viewController.cellsToDisplay[sectionViewModelIndex].append(repeatCell)
 					}
 				default:
 					viewController.cellsToDisplay[sectionViewModelIndex].append(DailyCell())

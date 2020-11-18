@@ -10,7 +10,11 @@ import UIKit
 class NewTaskOverlayPresenter: OverlayPresenter {
 }
 
-
-// MARK: - Presenter Protocol
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
+	func updateRepeatCell(atSection section: Int) {
+		if let repeatCellIndex = getFirstIndexOfRow(atSection: section, withType: .repeatSchedule) {
+			(viewController?.cellsToDisplay[section][repeatCellIndex] as? DailyRepeatCell)?.repeatSchedule = (dataSource as? NewTaskOverlayDataSource)?.repeatSchedule ?? .never
+			viewController?.update(at: IndexPath(row: repeatCellIndex, section: section))
+		}
+	}
 }

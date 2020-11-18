@@ -14,4 +14,11 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
 	func didToggleRemindSwitcher() {
 		(dataSource as? NewTaskOverlayDataSource)?.shouldRemind.toggle()
 	}
+	
+	func didTapRepeatCell() {
+		if let sectionToUpdate = getFirstIndexOfSection(ofType: .repeatSelector) {
+			(dataSource as? NewTaskOverlayDataSource)?.repeatSchedule.nextCase()
+			(presenter as? NewTaskOverlayPresenter)?.updateRepeatCell(atSection: sectionToUpdate)
+		}
+	}
 }
