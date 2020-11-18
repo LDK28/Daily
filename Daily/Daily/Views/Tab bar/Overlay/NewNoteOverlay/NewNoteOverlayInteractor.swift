@@ -12,9 +12,9 @@ class NewNoteOverlayInteractor: OverlayInteractor {
 }
 
 extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
+	
 	func didEndEditingNote(text: String) {
 		(dataSource as? NewNoteOverlayDataSource)?.noteContent = text
-		print((dataSource as? NewNoteOverlayDataSource)!.noteContent )
 	}
 	
 }

@@ -7,22 +7,17 @@
 
 import UIKit
 
-protocol  NewTaskOverlayDisplayLogic: OverlayDisplayLogic {
-}
-
 protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleRemindSwitcher()
 }
 
 protocol NewTaskOverlayPresentationLogic: OverlayPresentationLogic {
-	
+	//changes title in the repeat cell...
 }
 
 protocol NewTaskOverlayRoutingLogic {
-	//func navigateTo()
 }
 
 protocol NewTaskOverlayDataPassing {
-	//variable to transfer between screens
 	var dataStore: OverlayDataStore? { get }
 }

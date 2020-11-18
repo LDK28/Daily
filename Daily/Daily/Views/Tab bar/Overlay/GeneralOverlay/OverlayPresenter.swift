@@ -18,14 +18,18 @@ class OverlayPresenter: OverlayDataStore {
 	}
 	var dataSource = OverlayDataSource(sectionViewModels: [])
 	
+	
+	func getFirstIndexOfRow(atSection section: Int, withType type: DailyCellType) -> Int? {
+		dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
+			cellViewModel.cellType == type
+		})
+	}
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
 	
 	func updateTimeInTimeCell(atSection section: Int) {
-		guard let timeCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
-			cellViewModel.cellType == .time
-		}) else { return }
+		guard let timeCellIndex = getFirstIndexOfRow(atSection: section, withType: .time) else { return }
 		guard let timeCell = viewController?.cellsToDisplay[section][timeCellIndex] as? DailyTimeCell else { return }
 		timeCell.time = dataSource.assignedTime
 		viewController?.update(at: IndexPath(row: timeCellIndex, section: section))
@@ -33,14 +37,13 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType) {
 		guard cellType == .optionalDate || cellType == .time else { return }
-		guard let previousRow = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
-			cellViewModel.cellType == cellType
-		}) else { return }
+		guard let previousRow = getFirstIndexOfRow(atSection: section, withType: cellType) else { return }
+		let rowToUpdate = previousRow + 1
 		
 		if cellType == .time {
 			if dataSource.isAssignedToTime {
 				viewController?.cellsToDisplay[section][previousRow].sharpCorners()
-				insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .timePicker)
+				insertCellViewModel(at: IndexPath(row: rowToUpdate, section: section), cellWithType: .timePicker)
 				return
 			} else {
 				viewController?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
@@ -49,15 +52,14 @@ extension OverlayPresenter: OverlayPresentationLogic {
 		} else {
 			if let dataSource = dataSource as? NewProjectOverlayDataSource {
 				if dataSource.isAssignedToDate {
-					insertCellViewModel(at: IndexPath(row: previousRow + 1, section: section), cellWithType: .datePicker)
+					insertCellViewModel(at: IndexPath(row: rowToUpdate, section: section), cellWithType: .datePicker)
 					return
 				} else {
 					(viewController?.cellsToDisplay[section][previousRow] as? DailyOptionalDateCell)?.date = nil
 				}
 			}
 		}
-		
-		deleteCell(at: IndexPath(row: previousRow + 1, section: section))
+		deleteCell(at: IndexPath(row: rowToUpdate, section: section))
 	}
 	
 	private func insertCellViewModel(at indexPath: IndexPath, cellWithType cellType: DailyCellType) {

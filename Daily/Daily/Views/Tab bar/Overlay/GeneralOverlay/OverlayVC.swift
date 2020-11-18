@@ -10,24 +10,22 @@ import UIKit
 
 class OverlayVC: UIViewController {
 	var interactor: OverlayBusinessLogic?
-	
-	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
-	private var cornerRadiusValue: CGFloat = 10
 
+	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
 	internal let tableView = UITableView()
+	internal let textFieldView = TextFieldView()
 	
 	override func loadView() {
 		super.loadView()
-		
 		configureUI()
-		
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		interactor?.fetchCells()
 		view.backgroundColor = .dailyTabBarColor
 		cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
 	}
@@ -48,6 +46,38 @@ class OverlayVC: UIViewController {
 		cancelButton.styleOverlayButton(buttonType: .cancel)
 	}
 }
+
+//MARK: - Display Logic Protocol
+
+extension OverlayVC: OverlayDisplayLogic {
+	
+	func delete(at indexPath: IndexPath) {
+		tableView.beginUpdates()
+		tableView.deleteRows(at: [indexPath], with: .automatic)
+		tableView.endUpdates()
+	}
+	
+	func insert(at indexPath: IndexPath) {
+		tableView.beginUpdates()
+		tableView.insertRows(at: [indexPath], with: .automatic)
+		cellsToDisplay[indexPath.section][indexPath.row].parentView = self
+		tableView.endUpdates()
+	}
+	
+	func update(at indexPath: IndexPath) {
+		tableView.reloadData()
+	}
+	
+	func displayCells() {
+		cellsToDisplay.forEach({ (cellsInSection) in
+			cellsInSection.forEach { (cellInRow) in
+				cellInRow.parentView = self
+			}
+		})
+		tableView.reloadData()
+	}
+}
+
 
 
 //MARK: - OverlayVC TableView Delegate and DataSource
@@ -82,6 +112,7 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 }
 
+//MARK: - Custom Delegates
 
 extension OverlayVC: DailyTimeCellDelegate {
 	func didToggleTimeSwitcher() {
@@ -95,45 +126,15 @@ extension OverlayVC: DailyTimePickerCellDelegate {
 	}
 }
 
-
-extension OverlayVC: OverlayDisplayLogic {
-	
-	func delete(at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		tableView.deleteRows(at: [indexPath], with: .automatic)
-		tableView.endUpdates()
-	}
-	
-	func insert(at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		tableView.insertRows(at: [indexPath], with: .automatic)
-		cellsToDisplay[indexPath.section][indexPath.row].parentView = self
-		tableView.endUpdates()
-	}
-	
-	func update(at indexPath: IndexPath) {
-		tableView.reloadData()
-	}
-	
-	func displayCells() {
-		cellsToDisplay.forEach({ (cellsInSection) in
-			cellsInSection.forEach { (cellInRow) in
-				cellInRow.parentView = self
-			}
-		})
-		tableView.reloadData()
-	}
-}
-
 extension OverlayVC: UITextFieldDelegate {
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		interactor?.didChangeTitle(text: textField.text ?? "")
+		interactor?.didChangeTitle(text: textField.text)
 	}
 }
 
-
 // MARK: - Configuration of UI elements
+
 extension OverlayVC {
 	
 	func configureUI() {
@@ -180,6 +181,7 @@ extension OverlayVC {
 
 
 // MARK: - Preparation of TABLE VIEW
+
 extension OverlayVC {
 	func styleTableView() {
 		tableView.delegate = self
@@ -189,10 +191,12 @@ extension OverlayVC {
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
-		tableView.layer.cornerRadius = cornerRadiusValue
+		tableView.layer.cornerRadius = 10
 		
-		tableView.tableHeaderView = tableView.dequeueReusableCell(withIdentifier: TitleTextFieldCell.cellIdentifier)?.contentView
-		tableView.tableHeaderView?.layer.cornerRadius = cornerRadiusValue
+		textFieldView.frame.size = CGSize(width: tableView.frame.width, height: 45)
+		tableView.tableHeaderView = textFieldView
+		textFieldView.headerTextField.delegate = self
+		tableView.tableHeaderView?.layer.cornerRadius = 10
 		tableView.tableFooterView = UIView(frame: .zero)
 	}
 	
@@ -205,8 +209,5 @@ extension OverlayVC {
 		tableView.register(DailyDatePickerCell.self, forCellReuseIdentifier: DailyDatePickerCell.cellIdentifier)
 		tableView.register(DailyRequiredDateCell.self, forCellReuseIdentifier: DailyRequiredDateCell.cellIdentifier)
 		tableView.register(DailyOptionalDateCell.self, forCellReuseIdentifier: DailyOptionalDateCell.cellIdentifier)
-		tableView.register(TitleTextFieldCell.self, forCellReuseIdentifier: TitleTextFieldCell.cellIdentifier)
-		tableView.register(DescriptionCell.self, forCellReuseIdentifier: DescriptionCell.cellIdentifier)
 	}
 }
-

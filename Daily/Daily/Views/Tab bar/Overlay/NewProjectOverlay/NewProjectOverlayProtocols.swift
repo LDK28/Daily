@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
-	
-}
-
 protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleDateSwitcher()
 	func didChangeValueInDatePickerCell(newDay: Date)
@@ -22,10 +18,8 @@ protocol NewProjectOverlayPresentationLogic: OverlayPresentationLogic {
 }
 
 protocol NewProjectOverlayRoutingLogic {
-	//func navigateTo()
 }
 
 protocol NewProjectOverlayDataPassing {
-	//variable to transfer between screens
 	var dataStore: OverlayDataStore? { get }
 }

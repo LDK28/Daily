@@ -9,7 +9,7 @@ import UIKit
 
 
 class OverlayDataSource {
-	var title = ""
+	var title: String?
 	var isAssignedToTime = false
 	var assignedTime: Date?
 	var assignedDay: Date?

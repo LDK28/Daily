@@ -11,10 +11,9 @@ class OverlayModule {
 	static func build() -> OverlayVC {
 		let viewController = OverlayVC()
 		let interactor = OverlayInteractor()
-		
 		let presenter = OverlayPresenter()
-		presenter.viewController = viewController
 		
+		presenter.viewController = viewController
 		interactor.presenter = presenter
 		viewController.interactor = interactor
 		

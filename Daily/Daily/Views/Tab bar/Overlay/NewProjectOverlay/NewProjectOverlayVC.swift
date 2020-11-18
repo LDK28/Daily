@@ -13,15 +13,8 @@ class NewProjectOverlayVC: OverlayVC {
   
 	override func loadView() {
 		super.loadView()
-		configureTableView()
 		styleUI()
 	}
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		interactor?.fetchCells()
-	}
-	
 	
 	override func styleUI() {
 		super.styleUI()
@@ -47,6 +40,4 @@ extension NewProjectOverlayVC: DailyTeamProjectCellDelegate {
 	func didToggleTeamProjectState() {
 		(interactor as? NewProjectOverlayInteractor)?.didToggleTeamProjectSwitcher()
 	}
-	
-	
 }

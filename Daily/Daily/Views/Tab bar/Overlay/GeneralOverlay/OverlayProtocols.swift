@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol OverlayDisplayLogic: class {
+protocol OverlayDisplayLogic: AnyObject {
 	var cellsToDisplay: [[DailyCell]] { get set }
 	
 	func displayCells()
@@ -20,7 +20,7 @@ protocol OverlayBusinessLogic {
 	func fetchCells()
 	func didToggleTimeSwitcher()
 	func didChangeValueInTimePickerCell(newTime: Date)
-	func didChangeTitle(text: String)
+	func didChangeTitle(text: String?)
 	
 }
 
@@ -32,12 +32,4 @@ protocol OverlayPresentationLogic {
 	func present(data: OverlayDataSource)
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType)
 	func updateTimeInTimeCell(atSection section: Int)
-}
-
-protocol OverlayRoutingLogic {
-	//func navigateTo()
-}
-
-protocol OverlayDataPassing {
-	var dataStore: OverlayDataStore { get }
 }
