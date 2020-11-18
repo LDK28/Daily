@@ -46,8 +46,14 @@ extension OverlayPresenter: OverlayPresentationLogic {
 				insertCellViewModel(at: IndexPath(row: rowToUpdate, section: section), cellWithType: .timePicker)
 				return
 			} else {
-				viewController?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
 				(viewController?.cellsToDisplay[section][previousRow] as? DailyTimeCell)?.time = nil
+				UIView.animate(withDuration: 0.3, animations: {
+					self.deleteCell(at: IndexPath(row: rowToUpdate, section: section))
+				}) { _ in
+					if previousRow != 0 {
+						self.viewController?.cellsToDisplay[section][previousRow].roundBottomCorners(cornerRadius: 10)
+					}
+				}
 			}
 		} else {
 			if let dataSource = dataSource as? NewProjectOverlayDataSource {
@@ -56,10 +62,10 @@ extension OverlayPresenter: OverlayPresentationLogic {
 					return
 				} else {
 					(viewController?.cellsToDisplay[section][previousRow] as? DailyOptionalDateCell)?.date = nil
+					deleteCell(at: IndexPath(row: rowToUpdate, section: section))
 				}
 			}
 		}
-		deleteCell(at: IndexPath(row: rowToUpdate, section: section))
 	}
 	
 	private func insertCellViewModel(at indexPath: IndexPath, cellWithType cellType: DailyCellType) {

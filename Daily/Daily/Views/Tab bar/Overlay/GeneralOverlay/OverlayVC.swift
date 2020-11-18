@@ -52,9 +52,9 @@ class OverlayVC: UIViewController {
 extension OverlayVC: OverlayDisplayLogic {
 	
 	func delete(at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		tableView.deleteRows(at: [indexPath], with: .automatic)
-		tableView.endUpdates()
+			tableView.beginUpdates()
+			tableView.deleteRows(at: [indexPath], with: .automatic)
+			tableView.endUpdates()
 	}
 	
 	func insert(at indexPath: IndexPath) {
