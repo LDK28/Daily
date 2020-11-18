@@ -56,7 +56,7 @@ final class DailyOptionalDateCell: DailyDateAndTimeCell {
 	}
 	
 	@objc func toggleSwitcher(switcher: UISwitch) {
-		(parentView as? DailyOptionalDateCellDelegate)?.didToggleDateSwitcher()
+		(delegate as? DailyOptionalDateCellDelegate)?.didToggleDateSwitcher()
 	}
 }
 
@@ -68,7 +68,7 @@ final class DailyDatePickerCell: DailyTimeAndDatePickerCell {
 	static let cellIdentifier = "DailyDatePickerCell"
 	
 	@objc func datePickerChanged(picker: UIDatePicker) {
-		(parentView as? DailyDatePickerCellDelegate)?.didChangeDate(newDay: picker.date)
+		(delegate as? DailyDatePickerCellDelegate)?.didChangeDate(newDay: picker.date)
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

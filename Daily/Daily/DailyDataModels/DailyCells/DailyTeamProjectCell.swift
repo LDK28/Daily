@@ -15,7 +15,7 @@ final class DailyTeamProjectCell: DailyOrdinaryCell {
 	static let cellIdentifier = "DailyTeamProjectCell"
 	
 	@objc func toggleSwitcher(switcher: UISwitch) {
-		(parentView as? DailyTeamProjectCellDelegate)?.didToggleTeamProjectState()
+		(delegate as? DailyTeamProjectCellDelegate)?.didToggleTeamProjectState()
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

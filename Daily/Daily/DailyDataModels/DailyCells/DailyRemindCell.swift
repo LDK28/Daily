@@ -15,7 +15,7 @@ final class DailyRemindCell: DailyOrdinaryCell {
 	static let cellIdentifier = "DailyRemindCell"
 	
 	@objc func toggleSwitcher(switcher: UISwitch) {
-		(parentView as? DailyRemindCellDelegate)?.didToggleRemindState()
+		(delegate as? DailyRemindCellDelegate)?.didToggleRemindState()
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

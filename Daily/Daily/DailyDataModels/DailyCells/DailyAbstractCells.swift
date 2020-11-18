@@ -10,9 +10,9 @@ import UIKit
 //MARK: - Basic model for all other cells
 class DailyCell: UITableViewCell {
 	internal let icon = UIImageView()
-	let switcher = UISwitch()
-	
-	weak var parentView: UIViewController?
+	internal let switcher = UISwitch()
+
+	weak var delegate: UIViewController?
 	
 	var viewModel: DailyCellViewModel? {
 		didSet {

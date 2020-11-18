@@ -60,7 +60,7 @@ extension OverlayVC: OverlayDisplayLogic {
 	func insert(at indexPath: IndexPath) {
 		tableView.beginUpdates()
 		tableView.insertRows(at: [indexPath], with: .automatic)
-		cellsToDisplay[indexPath.section][indexPath.row].parentView = self
+		cellsToDisplay[indexPath.section][indexPath.row].delegate = self
 		tableView.endUpdates()
 	}
 	
@@ -71,7 +71,7 @@ extension OverlayVC: OverlayDisplayLogic {
 	func displayCells() {
 		cellsToDisplay.forEach({ (cellsInSection) in
 			cellsInSection.forEach { (cellInRow) in
-				cellInRow.parentView = self
+				cellInRow.delegate = self
 			}
 		})
 		tableView.reloadData()
