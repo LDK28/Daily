@@ -12,7 +12,6 @@ final class AddButton: UIButton {
 		super.init(frame: .zero)
 		
 		setTitle(title, for: .normal)
-		//titleLabel?.adjustsFontSizeToFitWidth = true
 		setImage(UIImage(systemName: symbolName), for: .normal)
 		setTitleColor(.dailyTabBarSelectedItemColor, for: .normal)
 		tintColor = .dailyTabBarSelectedItemColor
