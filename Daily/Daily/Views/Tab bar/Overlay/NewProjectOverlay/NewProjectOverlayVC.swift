@@ -23,13 +23,6 @@ class NewProjectOverlayVC: OverlayVC {
 
 }
 
-extension NewProjectOverlayVC: DailyDatePickerCellDelegate {
-	func didChangeDate(newDay: Date) {
-		(interactor as? NewProjectOverlayInteractor)?.didChangeValueInDatePickerCell(newDay: newDay)
-	}
-	
-}
-
 extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
 	func didToggleDateSwitcher() {
 		(interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()

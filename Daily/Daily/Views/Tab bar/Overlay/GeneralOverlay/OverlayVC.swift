@@ -98,6 +98,7 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
+		interactor?.didTapCellAt(indexPath: indexPath)
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -113,6 +114,13 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - Custom Delegates
+
+extension OverlayVC: DailyDatePickerCellDelegate {
+	func didChangeDate(newDay: Date) {
+		interactor?.didChangeValueInDatePickerCell(newDay: newDay)
+	}
+	
+}
 
 extension OverlayVC: DailyTimeCellDelegate {
 	func didToggleTimeSwitcher() {

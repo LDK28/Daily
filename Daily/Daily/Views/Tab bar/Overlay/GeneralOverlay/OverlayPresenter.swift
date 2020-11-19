@@ -28,6 +28,21 @@ class OverlayPresenter: OverlayDataStore {
 
 extension OverlayPresenter: OverlayPresentationLogic {
 	
+	func updateDateInDateCell(atSection section: Int) {
+		guard let dateCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
+			cellViewModel.cellType == .optionalDate || cellViewModel.cellType == .requiredDate
+		}) else { return }
+		switch dataSource.sectionViewModels[section].cellViewModels[dateCellIndex].cellType {
+		case .optionalDate:
+			guard let optionalDateCell = (viewController?.cellsToDisplay[section][dateCellIndex] as? DailyOptionalDateCell) else { return }
+			optionalDateCell.date = dataSource.assignedDay
+		default:
+			guard let requiredDateCell = (viewController?.cellsToDisplay[section][dateCellIndex] as? DailyRequiredDateCell) else { return }
+			requiredDateCell.date = dataSource.assignedDay ?? Date()
+		}
+		viewController?.update(at: IndexPath(row: dateCellIndex, section: section))
+	}
+	
 	func updateTimeInTimeCell(atSection section: Int) {
 		guard let timeCellIndex = getFirstIndexOfRow(atSection: section, withType: .time) else { return }
 		guard let timeCell = viewController?.cellsToDisplay[section][timeCellIndex] as? DailyTimeCell else { return }
@@ -36,11 +51,12 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	}
 	
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType) {
-		guard cellType == .optionalDate || cellType == .time else { return }
+		guard cellType == .optionalDate || cellType == .time || cellType == .requiredDate else { return }
 		guard let previousRow = getFirstIndexOfRow(atSection: section, withType: cellType) else { return }
 		let rowToUpdate = previousRow + 1
 		
-		if cellType == .time {
+		switch cellType {
+		case .time:
 			if dataSource.isAssignedToTime {
 				viewController?.cellsToDisplay[section][previousRow].sharpCorners()
 				insertCellViewModel(at: IndexPath(row: rowToUpdate, section: section), cellWithType: .timePicker)
@@ -55,7 +71,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 					}
 				}
 			}
-		} else {
+		case .optionalDate:
 			if let dataSource = dataSource as? NewProjectOverlayDataSource {
 				if dataSource.isAssignedToDate {
 					insertCellViewModel(at: IndexPath(row: rowToUpdate, section: section), cellWithType: .datePicker)
@@ -65,6 +81,16 @@ extension OverlayPresenter: OverlayPresentationLogic {
 					deleteCell(at: IndexPath(row: rowToUpdate, section: section))
 				}
 			}
+		case .requiredDate:
+			if let dataSource = dataSource as? NewTaskOverlayDataSource {
+				if dataSource.userIsChoosingDate {
+					insertCellViewModel(at: IndexPath(row: rowToUpdate, section: section), cellWithType: .datePicker)
+				} else {
+					deleteCell(at: IndexPath(row: rowToUpdate, section: section))
+				}
+			}
+		default:
+			return
 		}
 	}
 	

@@ -28,11 +28,3 @@ extension NewTaskOverlayVC: DailyRemindCellDelegate {
 		(interactor as? NewTaskOverlayInteractor)?.didToggleRemindSwitcher()
 	}
 }
-
-extension NewTaskOverlayVC {
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-		guard ((cellsToDisplay[indexPath.section][indexPath.row] as? DailyRepeatCell) != nil) else { return }
-		(interactor as? NewTaskOverlayInteractor)?.didTapRepeatCell()
-	}
-}

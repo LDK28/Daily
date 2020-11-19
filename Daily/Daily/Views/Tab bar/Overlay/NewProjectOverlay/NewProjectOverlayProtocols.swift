@@ -9,12 +9,10 @@ import UIKit
 
 protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleDateSwitcher()
-	func didChangeValueInDatePickerCell(newDay: Date)
 	func didToggleTeamProjectSwitcher()
 }
 
 protocol NewProjectOverlayPresentationLogic: OverlayPresentationLogic {
-	func updateDateInDateCell(atSection section: Int)
 }
 
 protocol NewProjectOverlayRoutingLogic {

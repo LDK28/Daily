@@ -15,10 +15,16 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
 		(dataSource as? NewTaskOverlayDataSource)?.shouldRemind.toggle()
 	}
 	
-	func didTapRepeatCell() {
-		if let sectionToUpdate = getFirstIndexOfSection(ofType: .repeatSelector) {
+	override func didTapCellAt(indexPath: IndexPath) {
+		switch dataSource.sectionViewModels[indexPath.section].type {
+		case .dateAndTime:
+			(dataSource as? NewTaskOverlayDataSource)?.userIsChoosingDate.toggle()
+			presenter?.updateDateAndTimeSection(atIndex: indexPath.section, afterCellOfType: .requiredDate)
+		case .repeatSelector:
 			(dataSource as? NewTaskOverlayDataSource)?.repeatSchedule.nextCase()
-			(presenter as? NewTaskOverlayPresenter)?.updateRepeatCell(atSection: sectionToUpdate)
+			(presenter as? NewTaskOverlayPresenter)?.updateRepeatCell(at: indexPath)
+		default:
+			return
 		}
 	}
 }

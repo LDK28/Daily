@@ -9,11 +9,10 @@ import UIKit
 
 protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleRemindSwitcher()
-	func didTapRepeatCell()
 }
 
 protocol NewTaskOverlayPresentationLogic: OverlayPresentationLogic {
-	func updateRepeatCell(atSection section: Int)
+	func updateRepeatCell(at indexPath: IndexPath)
 }
 
 protocol NewTaskOverlayRoutingLogic {

@@ -23,6 +23,19 @@ extension OverlayInteractor: OverlayBusinessLogic {
 		presenter?.present(data: dataSource)
 	}
 	
+	func didChangeValueInDatePickerCell(newDay: Date) {
+		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
+			section.type == .dateAndTime
+		}) {
+			dataSource.assignedDay = newDay
+			presenter?.updateDateInDateCell(atSection: sectionToUpdate)
+		}
+	}
+	
+	@objc func didTapCellAt(indexPath: IndexPath) {
+		
+	}
+	
 	func didChangeTitle(text: String?) {
 		dataSource.title = text
 	}

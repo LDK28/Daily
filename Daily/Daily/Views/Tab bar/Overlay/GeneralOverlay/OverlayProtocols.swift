@@ -21,6 +21,8 @@ protocol OverlayBusinessLogic {
 	func didToggleTimeSwitcher()
 	func didChangeValueInTimePickerCell(newTime: Date)
 	func didChangeTitle(text: String?)
+	func didTapCellAt(indexPath: IndexPath)
+	func didChangeValueInDatePickerCell(newDay: Date)
 	
 }
 
@@ -32,4 +34,5 @@ protocol OverlayPresentationLogic {
 	func present(data: OverlayDataSource)
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType)
 	func updateTimeInTimeCell(atSection section: Int)
+	func updateDateInDateCell(atSection section: Int)
 }

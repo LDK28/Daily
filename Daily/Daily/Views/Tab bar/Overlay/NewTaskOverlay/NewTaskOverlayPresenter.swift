@@ -11,10 +11,8 @@ class NewTaskOverlayPresenter: OverlayPresenter {
 }
 
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
-	func updateRepeatCell(atSection section: Int) {
-		if let repeatCellIndex = getFirstIndexOfRow(atSection: section, withType: .repeatSchedule) {
-			(viewController?.cellsToDisplay[section][repeatCellIndex] as? DailyRepeatCell)?.repeatSchedule = (dataSource as? NewTaskOverlayDataSource)?.repeatSchedule ?? .never
-			viewController?.update(at: IndexPath(row: repeatCellIndex, section: section))
-		}
+	func updateRepeatCell(at indexPath: IndexPath) {
+		(viewController?.cellsToDisplay[indexPath.section][indexPath.row] as? DailyRepeatCell)?.repeatSchedule = (dataSource as? NewTaskOverlayDataSource)?.repeatSchedule ?? .never
+		viewController?.update(at: indexPath)
 	}
 }

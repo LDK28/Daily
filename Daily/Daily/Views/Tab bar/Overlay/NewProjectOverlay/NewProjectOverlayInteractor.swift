@@ -16,15 +16,6 @@ extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
 		(dataSource as? NewProjectOverlayDataSource)?.isTeamProject.toggle()
 	}
 	
-	func didChangeValueInDatePickerCell(newDay: Date) {
-		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
-			section.type == .dateAndTime
-		}) {
-			dataSource.assignedDay = newDay
-			(presenter as? NewProjectOverlayPresenter)?.updateDateInDateCell(atSection: sectionToUpdate)
-		}
-	}
-	
 	func didToggleDateSwitcher() {
 		guard let dataSource = dataSource as? NewProjectOverlayDataSource else { return }
 		
