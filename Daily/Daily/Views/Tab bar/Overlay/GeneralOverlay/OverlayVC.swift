@@ -136,6 +136,11 @@ extension OverlayVC: DailyTimePickerCellDelegate {
 
 extension OverlayVC: UITextFieldDelegate {
 	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textFieldView.headerTextField.resignFirstResponder()
+		return true
+	}
+	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		interactor?.didChangeTitle(text: textField.text)
 	}
