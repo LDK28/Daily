@@ -87,6 +87,12 @@
 		21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */; };
 		21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8D52545CAC400E08CD2 /* LoginVC.swift */; };
 		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
+		21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3D2567073700F87D18 /* NotesPresenter.swift */; };
+		21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3E2567073700F87D18 /* NotesRouter.swift */; };
+		21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3F2567073700F87D18 /* NotesProtocols.swift */; };
+		21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B402567073700F87D18 /* NotesInteractor.swift */; };
+		21EA5B472567073700F87D18 /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B412567073700F87D18 /* NotesVC.swift */; };
+		21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B422567073700F87D18 /* NotesConfigurator.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
 		6CEC207ED487372A433E2931 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
@@ -192,6 +198,12 @@
 		21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21E8C8D52545CAC400E08CD2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		21EA5B3D2567073700F87D18 /* NotesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
+		21EA5B3E2567073700F87D18 /* NotesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
+		21EA5B3F2567073700F87D18 /* NotesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesProtocols.swift; sourceTree = "<group>"; };
+		21EA5B402567073700F87D18 /* NotesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesInteractor.swift; sourceTree = "<group>"; };
+		21EA5B412567073700F87D18 /* NotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
+		21EA5B422567073700F87D18 /* NotesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesConfigurator.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
 		B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +295,7 @@
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
+				21EA5B3C2567072400F87D18 /* Notes */,
 				215BC99F2542D8810069D30E /* IdeasVC.swift */,
 			);
 			path = Ideas;
@@ -500,6 +513,19 @@
 			path = "Login page";
 			sourceTree = "<group>";
 		};
+		21EA5B3C2567072400F87D18 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				21EA5B3D2567073700F87D18 /* NotesPresenter.swift */,
+				21EA5B3E2567073700F87D18 /* NotesRouter.swift */,
+				21EA5B3F2567073700F87D18 /* NotesProtocols.swift */,
+				21EA5B402567073700F87D18 /* NotesInteractor.swift */,
+				21EA5B412567073700F87D18 /* NotesVC.swift */,
+				21EA5B422567073700F87D18 /* NotesConfigurator.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
 		9D51B1C8649A3D00CE3DF630 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +724,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */,
+				21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */,
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				05112B462552B7690044D502 /* (null) in Sources */,
@@ -725,7 +752,10 @@
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
+				21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */,
+				21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */,
+				21EA5B472567073700F87D18 /* NotesVC.swift in Sources */,
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				2156464725584D64007264D4 /* SectionModel.swift in Sources */,
@@ -743,6 +773,7 @@
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
+				21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,
@@ -766,6 +797,7 @@
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,
 				215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */,
 				21CC5EAB25645EAF009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
+				21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */,
 				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
