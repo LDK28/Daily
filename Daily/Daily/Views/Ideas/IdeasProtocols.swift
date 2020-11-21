@@ -16,8 +16,8 @@ protocol IdeasPresentationLogic {
 }
 
 protocol IdeasDisplayLogic: class {
-    func display()
     var cellsToDisplay: [IdeasCell] { get set }
+    func display()
 }
 
 protocol IdeasDataStore: AnyObject {

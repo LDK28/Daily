@@ -16,8 +16,10 @@ class IdeasVC: MainTableVC {
 
     override func loadView() {
             super.loadView()
+        
         configureTableView()
         styleTableView()
+        registerCells()
     }
     
     override func viewDidLoad() {
@@ -44,20 +46,17 @@ class IdeasVC: MainTableVC {
         tableView.tableHeaderView = titleView
         titleView.frame.size.height = 100
     }
-
-}
-
-extension IdeasVC: IdeasDisplayLogic {
-    func display() {
-        tableView.reloadData()
-        
+    
+    func registerCells() {
+        tableView.register(IdeasCell.self, forCellReuseIdentifier: IdeasCell.cellIdentifier)
     }
+
 }
 
 extension IdeasVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellsToDisplay.count
+        return cellsToDisplay.count //is nil
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,10 +69,21 @@ extension IdeasVC {
 //            else { return UITableViewCell() }
 //        return cell
         
-        return cellsToDisplay[indexPath.section]
+        return cellsToDisplay[indexPath.section] //doesn't work (cellsToDisplay is nil)
         
-        //return UITableViewCell()
     }
     
-    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return UITableView.automaticDimension
+        } else {
+            return 40
+        }
+    }
+}
+
+extension IdeasVC: IdeasDisplayLogic {
+    func display() {
+        tableView.reloadData()
+    }
 }

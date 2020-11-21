@@ -34,21 +34,19 @@ class IdeasCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(cellTitle: String) {
-        button.setTitle(cellTitle, for: .normal)
-    }
-    
     func configureButton() {
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            button.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            button.heightAnchor.constraint(equalToConstant: 100),
             button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
     }
     
     func styleCell() {
+        selectedBackgroundView = nil //doesn't work
         backgroundColor = .clear
     }
     
