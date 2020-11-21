@@ -7,6 +7,16 @@
 
 import UIKit
 
+class MainTableVC: UITableViewController {
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		view.backgroundColor = UIColor("E5E5E5")
+		tableView.lightLG()
+		view.lightLG()
+	}
+}
+
 class MainVC: UIViewController {
 
 	private var hasChangedGradient = false

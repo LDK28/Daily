@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NotesVC: MainVC {
+class NotesVC: MainTableVC {
 	var interactor: NotesBusinessLogic?
 	var router: (NotesRoutingLogic & NotesDataPassing)?
   
