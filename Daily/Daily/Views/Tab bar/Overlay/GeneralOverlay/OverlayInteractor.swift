@@ -20,7 +20,7 @@ class OverlayInteractor: OverlayDataStore {
 
 extension OverlayInteractor: OverlayBusinessLogic {
 	func fetchCells() {
-		presenter?.present(data: dataSource)
+		presenter?.present()
 	}
 	
 	func didChangeValueInDatePickerCell(newDay: Date) {

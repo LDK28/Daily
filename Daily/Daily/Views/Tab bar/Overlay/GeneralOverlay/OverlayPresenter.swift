@@ -124,14 +124,14 @@ extension OverlayPresenter: OverlayPresentationLogic {
 }
 
 extension OverlayPresenter {
-	func present(data: OverlayDataSource) {
+	func present() {
 		guard let viewController = viewController else { return }
 		viewController.cellsToDisplay.removeAll()
-		let numberOfSectionViewModels = data.sectionViewModels.count
+		let numberOfSectionViewModels = dataSource.sectionViewModels.count
 		viewController.cellsToDisplay.reserveCapacity(numberOfSectionViewModels)
 		for sectionViewModelIndex in 0 ..< numberOfSectionViewModels {
 			viewController.cellsToDisplay.append([])
-			let currentSectionViewModel = data.sectionViewModels[sectionViewModelIndex]
+			let currentSectionViewModel = dataSource.sectionViewModels[sectionViewModelIndex]
 			let numberOfCellViewModelsInSection = currentSectionViewModel.cellViewModels.count
 			viewController.cellsToDisplay[sectionViewModelIndex].reserveCapacity(numberOfCellViewModelsInSection)
 			for cellViewModelIndex in 0 ..< numberOfCellViewModelsInSection {
@@ -142,12 +142,9 @@ extension OverlayPresenter {
 					switch currentCellViewModel.cellType {
 					case .optionalDate:
 						if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyOptionalDateCell.cellIdentifier) as? DailyOptionalDateCell {
-								if let data = data as? NewProjectOverlayDataSource {
-									dateCell.switcher.isOn = data.isAssignedToDate
-									dateCell.viewModel = currentCellViewModel
-									dateCell.roundTopCorners(cornerRadius: 10)
-									viewController.cellsToDisplay[sectionViewModelIndex].append(dateCell)
-								}
+								dateCell.viewModel = currentCellViewModel
+								dateCell.roundTopCorners(cornerRadius: 10)
+								viewController.cellsToDisplay[sectionViewModelIndex].append(dateCell)
 							}
 					case .requiredDate:
 						if let dateCell = tableView?.dequeueReusableCell(withIdentifier: DailyRequiredDateCell.cellIdentifier) as? DailyRequiredDateCell {
@@ -157,7 +154,6 @@ extension OverlayPresenter {
 						}
 					case .datePicker:
 						if let datePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyDatePickerCell.cellIdentifier) as? DailyDatePickerCell {
-							datePickerCell.viewModel = nil
 							viewController.cellsToDisplay[sectionViewModelIndex].append(datePickerCell)
 						}
 					case .time:
@@ -172,7 +168,6 @@ extension OverlayPresenter {
 						}
 					case .timePicker:
 						if let timePickerCell = tableView?.dequeueReusableCell(withIdentifier: DailyTimePickerCell.cellIdentifier) as? DailyTimePickerCell {
-							timePickerCell.viewModel = nil
 							timePickerCell.roundBottomCorners(cornerRadius: 10)
 							viewController.cellsToDisplay[sectionViewModelIndex].append(timePickerCell)
 						}

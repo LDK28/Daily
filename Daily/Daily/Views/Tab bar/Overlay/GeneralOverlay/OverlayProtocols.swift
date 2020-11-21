@@ -31,7 +31,7 @@ protocol OverlayDataStore: AnyObject {
 }
 
 protocol OverlayPresentationLogic {
-	func present(data: OverlayDataSource)
+	func present()
 	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType)
 	func updateTimeInTimeCell(atSection section: Int)
 	func updateDateInDateCell(atSection section: Int)

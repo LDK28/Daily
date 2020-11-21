@@ -13,7 +13,6 @@ class DailyCell: UITableViewCell {
 	internal let switcher = UISwitch()
 
 	weak var delegate: UIViewController?
-	
 	var viewModel: DailyCellViewModel? {
 		didSet {
 			guard let component = viewModel, let componentIcon = component.icon else { return }

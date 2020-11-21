@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum DailySectionType {
+	case teamProject
+	case dateAndTime
+	case remindAlert
+	case repeatSelector
+	case profile
+}
+
 protocol DailySectionViewModel {
 	var rowCount: Int { get }
 	var cellViewModels: [DailyCellViewModel] { get set }
@@ -17,12 +25,4 @@ extension DailySectionViewModel {
 	var rowCount: Int {
 		cellViewModels.count
 	}
-}
-
-enum DailySectionType {
-	case teamProject
-	case dateAndTime
-	case remindAlert
-	case repeatSelector
-	case profile
 }
