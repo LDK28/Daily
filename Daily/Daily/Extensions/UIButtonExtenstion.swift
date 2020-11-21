@@ -23,14 +23,12 @@ extension UIButton {
     func styleButton(title: String = "", backgroundColor: UIColor = .clear, textAlignment: UIControl.ContentHorizontalAlignment = .left) {
         translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = backgroundColor
-        if titleLabel?.text == "" {
-            setTitle(title, for: .normal)
-            tintColor = .dailyTextColor
-            setTitleColor(.dailyTextColor, for: .normal)
-            setTitleColor(.systemGray, for: .highlighted)
-            titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
-            titleLabel?.adjustsFontSizeToFitWidth = true
-        }
+        setTitle(title, for: .normal)
+        tintColor = .dailyTextColor
+        setTitleColor(.dailyTextColor, for: .normal)
+        setTitleColor(.systemGray, for: .highlighted)
+        titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
+        titleLabel?.adjustsFontSizeToFitWidth = true
         contentHorizontalAlignment = textAlignment
         if backgroundColor != .clear {
             layer.cornerRadius = 5
