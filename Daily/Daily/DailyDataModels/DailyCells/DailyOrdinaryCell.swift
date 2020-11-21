@@ -25,7 +25,6 @@ class DailyOrdinaryCell: DailyCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
-		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	required init?(coder: NSCoder) {

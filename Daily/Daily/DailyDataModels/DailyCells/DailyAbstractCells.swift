@@ -40,16 +40,21 @@ class DailyDateAndTimeCell: DailyCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		configureDailyCell(titleView: textStack, icon: icon, switcher: switcher)
+		titleLabel.styleLabel(font: .systemFont(ofSize: 16),
+							  text: nil,
+							  textAlignment: .left,
+							  textColor: .dailyOverlayButtonTextColor)
 		
-		titleLabel.font = .systemFont(ofSize: 16)
-		titleLabel.textColor = .dailyOverlayButtonTextColor
-		dateAndTimeLabel.font = .systemFont(ofSize: 12, weight: .regular)
-		dateAndTimeLabel.textColor = .dailyAdaptiveBlue
+		dateAndTimeLabel.styleLabel(font: .systemFont(ofSize: 12, weight: .regular),
+									text: nil,
+									textAlignment: .left,
+									textColor: .dailyAdaptiveBlue)
+		
 		
 		textStack.styleStackView(spacing: 0, axis: .vertical)
 		textStack.addArrangedSubview(titleLabel)
 		textStack.addArrangedSubview(dateAndTimeLabel)
+		configureDailyCell(titleView: textStack, icon: icon, switcher: switcher)
 	}
 	
 	required init?(coder: NSCoder) {

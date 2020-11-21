@@ -8,11 +8,13 @@
 import UIKit
 
 class NotesInteractor: NotesDataStore {
+	var dataSource = NotesDataSource()
+	
 	var presenter: NotesPresentationLogic?
 }
 
 extension NotesInteractor: NotesBusinessLogic {
-	func doSomething() {
-		
+	func fetchCells() {
+		presenter?.present()
 	}
 }

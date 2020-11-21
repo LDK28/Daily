@@ -8,12 +8,25 @@
 import UIKit
 
 class NotesPresenter: NotesDataStore {
-	weak var viewController: NotesDisplayLogic?
+	var dataSource = NotesDataSource()
+	weak var tableView: UITableView?
+	weak var viewController: NotesDisplayLogic? {
+		didSet {
+			tableView = (viewController as? NotesVC)?.tableView
+		}
+	}
 	
 }
 
 extension NotesPresenter: NotesPresentationLogic {
-	func presentSomething() {
-		
+	func present() {
+		guard let cellViewModels = dataSource.notesCellViewModels else { return }
+		for cellViewModel in cellViewModels {
+			if let cell = tableView?.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as?  NotesCell{
+				cell.viewModel = cellViewModel
+				viewController?.cellsToDisplay.append(cell)
+			}
+		}
+		viewController?.displaySomething()
 	}
 }

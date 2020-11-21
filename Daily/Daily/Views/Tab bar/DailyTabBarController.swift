@@ -137,7 +137,6 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	}
 	
 	func styleElements() {
-		
 		addButtonsStackView.styleStackView(spacing: 10, axis: .vertical)
 	}
 

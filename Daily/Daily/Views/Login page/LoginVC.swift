@@ -48,9 +48,6 @@ final class LoginVC: MainVC {
 
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-		
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -88,8 +85,6 @@ final class LoginVC: MainVC {
 	
 	@objc func didTapSignupButton() {
 		navigationController?.pushViewController(SignupVC(), animated: true)
-		emailField.text = ""
-		passwordField.text = ""
 	}
 	
 	func validateFields() -> String? {

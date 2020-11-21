@@ -8,19 +8,20 @@
 import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
-  func displaySomething()
+	func displaySomething()
+	var cellsToDisplay: [NotesCell] { get set }
 }
 
 protocol NotesBusinessLogic {
-  func doSomething()
+	func fetchCells()
 }
 
 protocol NotesDataStore: AnyObject {
-	
+	var dataSource: NotesDataSource { get set }
 }
 
 protocol NotesPresentationLogic {
-  func presentSomething()
+	func present()
 }
 
 protocol NotesRoutingLogic {

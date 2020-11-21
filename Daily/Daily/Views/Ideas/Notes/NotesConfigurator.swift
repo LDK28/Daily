@@ -9,19 +9,32 @@ import UIKit
 
 class NotesModule {
 	static func build() -> NotesVC {
-		//let dataSource = ...
+		let dataSource = NotesDataSource(notesCellViewModels: [
+			NotesCellViewModel(title: "Test1Test1Test1Test1Test1Test1Test1Test1",
+							   details: "TestTestTestTestTestTestTestTestTestTestTest",
+							   assignedDateAndTime: nil),
+			
+			NotesCellViewModel(title: "Test2",
+							   details: "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
+							   assignedDateAndTime: nil),
+			
+			NotesCellViewModel(title: "Test3",
+							   details: "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
+							   assignedDateAndTime: nil)
+		])
+		
 		let viewController = NotesVC()
 		let interactor = NotesInteractor()
 		
 		let presenter = NotesPresenter()
-		//presenter.dataSource = dataSource
+		presenter.dataSource = dataSource
 		presenter.viewController = viewController
 		
 		let router = NotesRouter()
 		router.viewController = viewController
 		viewController.router = router
 		
-		//interactor.dataSource = dataSource
+		interactor.dataSource = dataSource
 		interactor.presenter = presenter
 		router.dataStore = interactor
 		viewController.interactor = interactor
