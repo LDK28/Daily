@@ -13,6 +13,7 @@ class NotesVC: MainTableVC {
 	var router: (NotesRoutingLogic & NotesDataPassing)?
 	
 	var cellsToDisplay: [NotesCell] = []
+	private var isToAppearForTheFirstTime = true
 	
 	override func loadView() {
 		super.loadView()
@@ -25,7 +26,10 @@ class NotesVC: MainTableVC {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		interactor?.fetchCells()
+		if isToAppearForTheFirstTime {
+			interactor?.fetchCells()
+			isToAppearForTheFirstTime = false
+		}
 	}
   
 }
