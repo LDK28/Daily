@@ -7,98 +7,73 @@
 
 import UIKit
 
-protocol IdeasDisplayLogic: class {
-  func display(cellTitles: [String])
-}
-
-class IdeasVC: MainVC {
+class IdeasVC: MainTableVC {
     
     var interactor: IdeasBusinessLogic?
     var router: (IdeasRoutingLogic & IdeasDataPassing)?
     
-    var cellTitles = [String]()
-    
-    let headerLabel = UILabel()
-    let ideasTableView = UITableView()
+    var cellsToDisplay: [IdeasCell] = []
+
+    override func loadView() {
+            super.loadView()
+        configureTableView()
+        styleTableView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTableViewDelegate()
-        
-        view.addSubview(headerLabel)
-        view.addSubview(ideasTableView)
-        
-        configureHeaderLabel()
-        configureIdeasTableView()
-        
-        styleHeaderLabel()
-        styleIdeasTableView()
-        
     }
     
-    func setTableViewDelegate() {
-        ideasTableView.delegate = self
-        ideasTableView.dataSource = self
-        
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            interactor?.fetchCells()
     }
     
-    func configureHeaderLabel() {
-        NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 32),
-            headerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            headerLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-        ])
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-    func configureIdeasTableView() {
-        ideasTableView.register(IdeasCell.self, forCellReuseIdentifier: IdeasCell.cellIdentifier)
-        NSLayoutConstraint.activate([
-            ideasTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 16),
-            ideasTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            ideasTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            ideasTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-    
-    func styleHeaderLabel() {
-        if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
-            headerLabel.styleLabel(font: headerLabelFont, text: "Ideas", textAlignment: .center, textColor: .dailyTitleTextColor)
-            headerLabel.addShadow()
-        }
-    }
-    
-    func styleIdeasTableView() {
-        ideasTableView.translatesAutoresizingMaskIntoConstraints = false
-        ideasTableView.rowHeight = 150
-        ideasTableView.tableFooterView = UIView(frame: .zero)
-        ideasTableView.isUserInteractionEnabled = false
-        ideasTableView.separatorStyle = .none
-        ideasTableView.backgroundColor = .clear
+    func styleTableView() {
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.scrollsToTop = true
+        tableView.alwaysBounceVertical = false
+        let titleView = TitleView(title: "Ideas")
+        tableView.tableHeaderView = titleView
+        titleView.frame.size.height = 100
     }
 
 }
 
 extension IdeasVC: IdeasDisplayLogic {
-    func display(cellTitles: [String]) {
-        self.cellTitles.append(contentsOf: cellTitles)
-        ideasTableView.reloadData()
+    func display() {
+        tableView.reloadData()
         
     }
 }
 
-extension IdeasVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+extension IdeasVC {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellsToDisplay.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = ideasTableView.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as? IdeasCell
-            else { return UITableViewCell() }
-        
-//        cell.configureCell(cellTitle: cellTitles[indexPath.row]) // causes an error: Index out of range (cellTitles = 0 values)
-        
-        return cell
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard
+//            let cell = tableView.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as? IdeasCell
+//            else { return UITableViewCell() }
+//        return cell
+        
+        return cellsToDisplay[indexPath.section]
+        
+        //return UITableViewCell()
+    }
+    
+    
 }

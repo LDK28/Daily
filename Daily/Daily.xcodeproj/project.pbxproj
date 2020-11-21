@@ -18,6 +18,9 @@
 		054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */; };
 		054BEA2025697BAB0059FEDC /* IdeasCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1F25697BAB0059FEDC /* IdeasCells.swift */; };
 		054BEA2825697BBA0059FEDC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA2725697BBA0059FEDC /* IdeasCell.swift */; };
+		054BEA31256980900059FEDC /* IdeasTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA30256980900059FEDC /* IdeasTableHeader.swift */; };
+		054BEA3C256991A40059FEDC /* IdeasDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA3B256991A30059FEDC /* IdeasDataSource.swift */; };
+		054BEA41256991E10059FEDC /* IdeasCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */; };
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
@@ -124,6 +127,9 @@
 		054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasConfigurator.swift; sourceTree = "<group>"; };
 		054BEA1F25697BAB0059FEDC /* IdeasCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCells.swift; sourceTree = "<group>"; };
 		054BEA2725697BBA0059FEDC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
+		054BEA30256980900059FEDC /* IdeasTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasTableHeader.swift; sourceTree = "<group>"; };
+		054BEA3B256991A30059FEDC /* IdeasDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasDataSource.swift; sourceTree = "<group>"; };
+		054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCellViewModel.swift; sourceTree = "<group>"; };
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -238,6 +244,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		054BEA2F256980700059FEDC /* IdeasModels */ = {
+			isa = PBXGroup;
+			children = (
+				054BEA2725697BBA0059FEDC /* IdeasCell.swift */,
+				054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */,
+				054BEA3B256991A30059FEDC /* IdeasDataSource.swift */,
+				054BEA30256980900059FEDC /* IdeasTableHeader.swift */,
+			);
+			path = IdeasModels;
+			sourceTree = "<group>";
+		};
 		212F890725574BAD0097F894 /* DailyDataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,13 +264,6 @@
 				218DD5C925580ADB00C9EEBB /* DailyCellType.swift */,
 			);
 			path = DailyDataModels;
-			sourceTree = "<group>";
-		};
-		21495ACF2565A5B900995ACE /* 123 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = 123;
 			sourceTree = "<group>";
 		};
 		2151CA3C25509AF000732F68 /* Overlay */ = {
@@ -270,7 +280,6 @@
 		215615A82542F079005AB2DF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				21495ACF2565A5B900995ACE /* 123 */,
 				215BC9B12542E2620069D30E /* CalendarVC.swift */,
 				0545A45C2555379F0001F17D /* DayView.swift */,
 			);
@@ -297,8 +306,8 @@
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
+				054BEA2F256980700059FEDC /* IdeasModels */,
 				215BC99F2542D8810069D30E /* IdeasVC.swift */,
-				054BEA2725697BBA0059FEDC /* IdeasCell.swift */,
 				054BEA1F25697BAB0059FEDC /* IdeasCells.swift */,
 				054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */,
 				054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */,
@@ -755,6 +764,7 @@
 				054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */,
 				2156464725584D64007264D4 /* SectionModel.swift in Sources */,
 				21CC5E202564569C009C1D8E /* OverlayConfigurator.swift in Sources */,
+				054BEA41256991E10059FEDC /* IdeasCellViewModel.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* DailyTabBarController.swift in Sources */,
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
@@ -766,6 +776,7 @@
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
 				054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */,
+				054BEA3C256991A40059FEDC /* IdeasDataSource.swift in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
@@ -788,6 +799,7 @@
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 				215646C325588AF7007264D4 /* NewNoteOverlayModel.swift in Sources */,
 				21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */,
+				054BEA31256980900059FEDC /* IdeasTableHeader.swift in Sources */,
 				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
 				21CC5E8125645D2F009C1D8E /* NewProjectOverlayRouter.swift in Sources */,
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,

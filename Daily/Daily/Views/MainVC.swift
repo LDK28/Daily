@@ -7,6 +7,26 @@
 
 import UIKit
 
+class MainTableVC: UITableViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.isTranslucent = false
+        //navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
+        navigationController?.navigationBar.tintColor = .dailyTextColor
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        //tableView.backgroundColor = .dailyMainBackgroundColor
+        tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+}
+
 class MainVC: UIViewController {
 
 	private var hasChangedGradient = false

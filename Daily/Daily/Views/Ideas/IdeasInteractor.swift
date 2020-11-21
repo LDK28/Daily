@@ -7,21 +7,13 @@
 
 import UIKit
 
-protocol IdeasBusinessLogic {
-  func getCellTitles()
-}
-
 class IdeasInteractor: IdeasDataStore {
+    var dataSource = IdeasDataSource()
     var presenter: IdeasPresentationLogic?
 }
 
 extension IdeasInteractor: IdeasBusinessLogic {
-    func getCellTitles() {
-        
-        var cellTitles = [String]()
-        cellTitles.append(IdeasCells.notesCell)
-        cellTitles.append(IdeasCells.projectsCell)
-        
-        presenter?.present(data: cellTitles)
-    }
+    func fetchCells() {
+            presenter?.present()
+        }
 }

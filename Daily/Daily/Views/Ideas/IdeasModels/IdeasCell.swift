@@ -11,7 +11,15 @@ class IdeasCell: UITableViewCell {
     
     static let cellIdentifier = "IdeasCell"
     
-    var button = UIButton()
+    var buttonTitle = String()
+    let button = UIButton()
+    
+    var viewModel: IdeasCellViewModel? {
+            didSet {
+                guard let viewModel = viewModel else { return }
+                buttonTitle = viewModel.title
+            }
+        }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,7 +53,7 @@ class IdeasCell: UITableViewCell {
     }
     
     func styleButton() {
-        button.styleButton(backgroundColor: .dailyDiaryTileColor)
+        button.styleButton(title: buttonTitle, backgroundColor: .dailyDiaryTileColor)
     }
     
 }
