@@ -11,6 +11,13 @@
 		05112B462552B7690044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		05112B4B2552BD1F0044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0545A45D2555379F0001F17D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0545A45C2555379F0001F17D /* DayView.swift */; };
+		054BEA1325697AC40059FEDC /* IdeasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */; };
+		054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA0E25697AC40059FEDC /* IdeasRouter.swift */; };
+		054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1025697AC40059FEDC /* IdeasProtocols.swift */; };
+		054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1125697AC40059FEDC /* IdeasInteractor.swift */; };
+		054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */; };
+		054BEA2025697BAB0059FEDC /* IdeasCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1F25697BAB0059FEDC /* IdeasCells.swift */; };
+		054BEA2825697BBA0059FEDC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA2725697BBA0059FEDC /* IdeasCell.swift */; };
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
@@ -110,6 +117,13 @@
 
 /* Begin PBXFileReference section */
 		0545A45C2555379F0001F17D /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasPresenter.swift; sourceTree = "<group>"; };
+		054BEA0E25697AC40059FEDC /* IdeasRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasRouter.swift; sourceTree = "<group>"; };
+		054BEA1025697AC40059FEDC /* IdeasProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasProtocols.swift; sourceTree = "<group>"; };
+		054BEA1125697AC40059FEDC /* IdeasInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasInteractor.swift; sourceTree = "<group>"; };
+		054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasConfigurator.swift; sourceTree = "<group>"; };
+		054BEA1F25697BAB0059FEDC /* IdeasCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCells.swift; sourceTree = "<group>"; };
+		054BEA2725697BBA0059FEDC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -284,6 +298,13 @@
 			isa = PBXGroup;
 			children = (
 				215BC99F2542D8810069D30E /* IdeasVC.swift */,
+				054BEA2725697BBA0059FEDC /* IdeasCell.swift */,
+				054BEA1F25697BAB0059FEDC /* IdeasCells.swift */,
+				054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */,
+				054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */,
+				054BEA1125697AC40059FEDC /* IdeasInteractor.swift */,
+				054BEA0E25697AC40059FEDC /* IdeasRouter.swift */,
+				054BEA1025697AC40059FEDC /* IdeasProtocols.swift */,
 			);
 			path = Ideas;
 			sourceTree = "<group>";
@@ -705,8 +726,10 @@
 				212F890925574C000097F894 /* DailyCellViewModel.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
+				054BEA2025697BAB0059FEDC /* IdeasCells.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
+				054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
 				21CC5E8225645D2F009C1D8E /* NewProjectOverlayProtocols.swift in Sources */,
@@ -724,10 +747,12 @@
 				2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
+				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */,
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
+				054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */,
 				2156464725584D64007264D4 /* SectionModel.swift in Sources */,
 				21CC5E202564569C009C1D8E /* OverlayConfigurator.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* DailyTabBarController.swift in Sources */,
@@ -740,6 +765,7 @@
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
+				054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
@@ -753,6 +779,7 @@
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,
 				21CC5E1E2564569C009C1D8E /* OverlayInteractor.swift in Sources */,
 				21CC5E6225645B08009C1D8E /* NewNoteOverlayInteractor.swift in Sources */,
+				054BEA2825697BBA0059FEDC /* IdeasCell.swift in Sources */,
 				215DFC06255D7DD300CD3939 /* DailyRepeatCell.swift in Sources */,
 				055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */,
 				21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */,
@@ -766,6 +793,7 @@
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,
 				215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */,
 				21CC5EAB25645EAF009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
+				054BEA1325697AC40059FEDC /* IdeasPresenter.swift in Sources */,
 				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
