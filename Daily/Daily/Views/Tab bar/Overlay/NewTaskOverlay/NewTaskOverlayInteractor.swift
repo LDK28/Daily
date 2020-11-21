@@ -16,11 +16,11 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
 	}
 	
 	override func didTapCellAt(indexPath: IndexPath) {
-		switch dataSource.sectionViewModels[indexPath.section].type {
-		case .dateAndTime:
+		switch dataSource.sectionViewModels[indexPath.section].cellViewModels[indexPath.row].cellType {
+		case .requiredDate:
 			(dataSource as? NewTaskOverlayDataSource)?.userIsChoosingDate.toggle()
 			presenter?.updateDateAndTimeSection(atIndex: indexPath.section, afterCellOfType: .requiredDate)
-		case .repeatSelector:
+		case .repeatSchedule:
 			(dataSource as? NewTaskOverlayDataSource)?.repeatSchedule.nextCase()
 			(presenter as? NewTaskOverlayPresenter)?.updateRepeatCell(at: indexPath)
 		default:

@@ -33,12 +33,24 @@ class NotesCell: UITableViewCell {
 		selectedBackgroundView = selectedView
 		
 		contentView.addSubview(addToDiaryButton)
-		addToDiaryButton.setImage(UIImage(systemName: "calendar.badge.clock"), for: .normal)
 		addToDiaryButton.translatesAutoresizingMaskIntoConstraints = false
+		if let addToDiaryImage =
+			UIImage(systemName: "calendar.badge.clock")?
+				.withTintColor(UIColor.dailyTextColor
+				.withAlphaComponent(0.5))
+				.withRenderingMode(.alwaysOriginal) {
+			addToDiaryButton.setImage(addToDiaryImage, for: .normal)
+		}
 		
 		contentView.addSubview(tripletButton)
-		tripletButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
 		tripletButton.translatesAutoresizingMaskIntoConstraints = false
+		if let tripletImage =
+			UIImage(systemName: "ellipsis")?
+				.withTintColor(.dailyTextColor)
+				.withRenderingMode(.alwaysOriginal)
+				.withConfiguration(UIImage.SymbolConfiguration(pointSize: 24)) {
+			tripletButton.setImage(tripletImage, for: .normal)
+		}
 		
 		contentView.addSubview(titleLabel)
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Regular", size: 18),
@@ -58,11 +70,11 @@ class NotesCell: UITableViewCell {
 		
 		NSLayoutConstraint.activate([
 			tripletButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			tripletButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+			tripletButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
 			tripletButton.widthAnchor.constraint(equalToConstant: 30),
 			tripletButton.heightAnchor.constraint(equalTo: tripletButton.widthAnchor),
 			
-			addToDiaryButton.trailingAnchor.constraint(equalTo: tripletButton.leadingAnchor, constant: -5),
+			addToDiaryButton.trailingAnchor.constraint(equalTo: tripletButton.leadingAnchor, constant: -10),
 			addToDiaryButton.topAnchor.constraint(equalTo: tripletButton.topAnchor),
 			addToDiaryButton.widthAnchor.constraint(equalTo: tripletButton.widthAnchor),
 			addToDiaryButton.heightAnchor.constraint(equalTo: tripletButton.heightAnchor),

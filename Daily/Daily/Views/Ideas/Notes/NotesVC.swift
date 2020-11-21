@@ -72,11 +72,11 @@ extension NotesVC {
 		tableView.showsHorizontalScrollIndicator = false
 		let titleView = TitleView(title: "Notes")
 		titleView.frame.size.height = 100
+		
+		let addView = AddNewNoteFooterView()
+		addView.frame.size.height = 50
+		tableView.tableFooterView = addView
 		tableView.tableHeaderView = titleView
 		tableView.register(NotesCell.self, forCellReuseIdentifier: NotesCell.cellIdentifier)
-	}
-	
-	private func registerCells() {
-		
 	}
 }
