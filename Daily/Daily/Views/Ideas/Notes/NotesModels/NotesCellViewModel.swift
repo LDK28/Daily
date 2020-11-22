@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct NotesCellViewModel {
+struct NotesCellViewModel: Codable {
 	var title: String
 	var details: String
 	

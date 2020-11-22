@@ -75,7 +75,7 @@ final class LoginVC: MainVC {
 					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
-					let vc = DailyTabBarController()
+					let vc = DailyTabBarVC()
 					vc.modalPresentationStyle = .fullScreen
 					self.present(vc, animated: true, completion: nil)
 				}
@@ -103,8 +103,8 @@ final class LoginVC: MainVC {
 	
 	func configureElements() {
 		NSLayoutConstraint.activate([
-			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
 			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 8),
 			loginButton.heightAnchor.constraint(equalToConstant: 45),

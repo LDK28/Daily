@@ -1,98 +1,53 @@
 //
-//  TabBarVCViewController.swift
+//  DailyTabBarVC.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 23.10.2020.
+//  Created by Арсений Токарев on 22.11.2020.
+//  Copyright (c) 2020. All rights reserved.
 //
-import UIKit
-import FirebaseAuth
 
-class DailyTabBarController: TabBarControllerWithMiddleButton {
+import UIKit
+
+final class DailyTabBarVC: TabBarControllerWithMiddleButton {
+	var interactor: DailyTabBarBusinessLogic?
+	var router: (DailyTabBarRoutingLogic & DailyTabBarDataPassing)?
+  
 	private let plusButton = PlusButton()
-	
 	private let blackoutView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.backgroundColor = .dailyPlusButtonBlackoutColor
 		return view
 	}()
-	
 	private var overlayViewContoller: UIViewController? = nil
 	private let newProjectButton = AddButton(title: "New project", symbolName: "doc.on.doc")
 	private let newTaskButton = AddButton(title: "New task", symbolName: "paperclip")
 	private let newNoteButton = AddButton(title: "New note", symbolName: "highlighter")
 	private let addButtonsStackView = UIStackView()
-	private var rotationAngle: CGFloat = 0
 	
 	override func loadView() {
 		super.loadView()
-		
-		/*
-		
-			View Hierachy: Tab Bar -> Blackout Layer -> Button -> Overlay -> The rest of view components
-		
-		*/
-		
-		addButtonsStackView.addArrangedSubview(newProjectButton)
-		addButtonsStackView.addArrangedSubview(newNoteButton)
-		addButtonsStackView.addArrangedSubview(newTaskButton)
-		
-		view.addSubview(blackoutView)
-		view.addSubview(plusButton)
-		view.addSubview(addButtonsStackView)
-		
-		layoutMiddleButton(button: plusButton)
-		configureBlackoutView()
-		configureAddButtonsVerticalStackView()
-		
-		styleElements()
+		configureAndStyleUI()
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		newProjectButton.addTarget(self, action: #selector(didTapNewProjectButton), for: .touchUpInside)
 		newTaskButton.addTarget(self, action: #selector(didTapNewTaskButton), for: .touchUpInside)
 		newNoteButton.addTarget(self, action: #selector(didTapNewNoteButton), for: .touchUpInside)
 		plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(didTapPlusButton), name: Notification.Name("Close Overlay"), object: nil)
+	
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-
-		if Auth.auth().currentUser == nil {
-			let navController = UINavigationController(rootViewController: LoginVC())
-			navController.modalPresentationStyle = .fullScreen
-			self.present(navController, animated: true, completion: nil)
-		}
+		interactor?.checkUserLoginStatus()
 	}
+	
 	@objc func didTapPlusButton() {
-		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
-			plusButton.isSelected.toggle()
-			if plusButton.isSelected {
-				plusButton.transform = CGAffineTransform(rotationAngle: .pi / 2)
-				addButtonsStackView.isHidden = false //show stack
-				blackoutView.isHidden = false //blackout the background
-				blackoutView.alpha = 1 //and show it with animation
-				addButtonsStackView.frame.origin.y -= 20
-				addButtonsStackView.alpha = 1
-			} else {
-				plusButton.transform = CGAffineTransform(rotationAngle: 0)
-				overlayViewContoller?.remove()
-				overlayViewContoller = nil
-				addButtonsStackView.frame.origin.y += 15
-				addButtonsStackView.alpha = 0
-				blackoutView.alpha = 0
-			}
-		}) { [self] _ in
-			if !plusButton.isSelected {
-				addButtonsStackView.frame.origin.y += 5
-				blackoutView.isHidden = true
-				addButtonsStackView.isHidden = true
-			}
-		}
+		animatePlusButtonChange()
 	}
 	
 	@objc func didTapNewNoteButton() {
@@ -114,7 +69,60 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 			add(overlay, highestElementInTabBar: plusButton)
 		}
 	}
+}
+
+extension DailyTabBarVC: DailyTabBarDisplayLogic {
+	func askRouterToNavigateToLoginScreen() {
+		router?.navigateToLoginScreen()
+	}
+}
+
+// MARK: - UI Configuration and Animation
+extension DailyTabBarVC {
 	
+	func animatePlusButtonChange() {
+		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
+			plusButton.isSelected.toggle()
+			if plusButton.isSelected {
+				plusButton.transform = CGAffineTransform(rotationAngle: .pi / 2)
+				addButtonsStackView.isHidden = false
+				blackoutView.isHidden = false
+				blackoutView.alpha = 1
+				addButtonsStackView.frame.origin.y -= 20
+				addButtonsStackView.alpha = 1
+			} else {
+				plusButton.transform = CGAffineTransform(rotationAngle: 0)
+				overlayViewContoller?.remove()
+				overlayViewContoller = nil
+				addButtonsStackView.frame.origin.y += 15
+				addButtonsStackView.alpha = 0
+				blackoutView.alpha = 0
+			}
+		}) { [self] _ in
+			if !plusButton.isSelected {
+				addButtonsStackView.frame.origin.y += 5
+				blackoutView.isHidden = true
+				addButtonsStackView.isHidden = true
+			}
+		}
+	}
+	
+	func configureAndStyleUI() {
+		addButtonsStackView.addArrangedSubview(newProjectButton)
+		addButtonsStackView.addArrangedSubview(newNoteButton)
+		addButtonsStackView.addArrangedSubview(newTaskButton)
+		
+		view.addSubview(blackoutView)
+		view.addSubview(plusButton)
+		view.addSubview(addButtonsStackView)
+		
+		layoutMiddleButton(button: plusButton)
+		configureBlackoutView()
+		configureAddButtonsVerticalStackView()
+		
+		styleElements()
+		
+	}
 	
 	func configureAddButtonsVerticalStackView() {
 		addButtonsStackView.isHidden = true
@@ -123,7 +131,6 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 			addButtonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 			
 		])
-		
 	}
 	
 	func configureBlackoutView() {
@@ -139,5 +146,4 @@ class DailyTabBarController: TabBarControllerWithMiddleButton {
 	func styleElements() {
 		addButtonsStackView.styleStackView(spacing: 10, axis: .vertical)
 	}
-
 }
