@@ -66,19 +66,10 @@ extension IdeasVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard
-//            let cell = tableView.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as? IdeasCell
-//            else { return UITableViewCell() }
-//        return cell
-        
         return cellsToDisplay[indexPath.row]
         
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-        
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

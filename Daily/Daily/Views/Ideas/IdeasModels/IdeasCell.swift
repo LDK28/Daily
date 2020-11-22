@@ -10,38 +10,39 @@ import UIKit
 class IdeasCell: UITableViewCell {
     
     static let cellIdentifier = "IdeasCell"
-    
-    var buttonTitle = String()
-    let button = UIButton()
+
+    let label = UILabel()
     
     var viewModel: IdeasCellViewModel? {
             didSet {
                 guard let viewModel = viewModel else { return }
-				button.setTitle(viewModel.title, for: .normal)
+                label.text = viewModel.title
             }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-		contentView.addSubview(button)
-        configureButton()
-        styleButton()
+
         styleCell()
+        
+        contentView.addSubview(label)
+        configureLabel()
+        styleLabel()
+        
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureButton() {
-        button.translatesAutoresizingMaskIntoConstraints = false
+    func configureLabel() {
+        label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-			button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-			button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-			button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            button.heightAnchor.constraint(equalToConstant: 100),
-			button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            label.heightAnchor.constraint(equalToConstant: 100),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
     
@@ -50,7 +51,7 @@ class IdeasCell: UITableViewCell {
         backgroundColor = .clear
     }
     
-    func styleButton() {
-        button.styleButton(title: buttonTitle, backgroundColor: .dailyDiaryTileColor)
+    func styleLabel() {
+        //label.styleLabel()
     }
 }
