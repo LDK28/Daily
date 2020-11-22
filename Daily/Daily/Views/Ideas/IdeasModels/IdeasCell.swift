@@ -11,23 +11,28 @@ class IdeasCell: UITableViewCell {
     
     static let cellIdentifier = "IdeasCell"
 
-    let label = UILabel()
+    let titleLabel = UILabel()
+    let labelBackgroundView = UIView()
     
     var viewModel: IdeasCellViewModel? {
             didSet {
                 guard let viewModel = viewModel else { return }
-                label.text = viewModel.title
+                titleLabel.text = viewModel.title
             }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        styleCell()
         
-        contentView.addSubview(label)
-        configureLabel()
-        styleLabel()
+        contentView.addSubview(labelBackgroundView)
+        contentView.addSubview(titleLabel)
+        
+        configureLabelBackgroundView()
+        configureTitleLabel()
+        
+        styleCell()
+        styleLabelBackgroundView()
+        styleTitleLabel()
         
     }
 
@@ -35,14 +40,20 @@ class IdeasCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureLabel() {
-        label.translatesAutoresizingMaskIntoConstraints = false
+    func configureLabelBackgroundView() {
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            label.heightAnchor.constraint(equalToConstant: 100),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            labelBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            labelBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            labelBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            labelBackgroundView.heightAnchor.constraint(equalToConstant: 100),
+            labelBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+        ])
+    }
+    
+    func configureTitleLabel() {
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: labelBackgroundView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: labelBackgroundView.leadingAnchor, constant: 30)
         ])
     }
     
@@ -51,7 +62,13 @@ class IdeasCell: UITableViewCell {
         backgroundColor = .clear
     }
     
-    func styleLabel() {
-        //label.styleLabel()
+    func styleLabelBackgroundView() {
+        labelBackgroundView.styleView(backgroundColor: .dailyDiaryTileColor, cornerRadius: 10)
+    }
+    
+    func styleTitleLabel() {
+        if let labelFont = UIFont(name: "Stolzl-Regular", size: 30) {
+            titleLabel.styleLabel(font: labelFont, text: titleLabel.text ?? "", textAlignment: .left)
+        }
     }
 }
