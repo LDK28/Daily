@@ -58,7 +58,7 @@ class IdeasCell: UITableViewCell {
     }
     
     func styleCell() {
-        selectedBackgroundView = nil //doesn't work
+        selectionStyle = .none
         backgroundColor = .clear
     }
     
