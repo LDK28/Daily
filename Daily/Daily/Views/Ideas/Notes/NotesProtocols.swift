@@ -10,6 +10,7 @@ import UIKit
 protocol NotesDisplayLogic: AnyObject {
 	func displaySomething()
 	var cellsToDisplay: [NotesCell] { get set }
+	func insert(at: IndexPath)
 }
 
 protocol NotesBusinessLogic {
@@ -22,6 +23,7 @@ protocol NotesDataStore: AnyObject {
 
 protocol NotesPresentationLogic {
 	func present(notesCells: [NotesCellViewModel])
+	func updateNotesCells(with cellViewModel: NotesCellViewModel)
 }
 
 protocol NotesRoutingLogic {

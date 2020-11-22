@@ -15,7 +15,7 @@ class NewNoteOverlayModule {
 		let interactor = NewNoteOverlayInteractor()
 		interactor.dataSource = dataSource
 		
-		let presenter = OverlayPresenter()
+		let presenter = NewNoteOverlayPresenter()
 		presenter.viewController = viewController
 		presenter.dataSource = dataSource
 		

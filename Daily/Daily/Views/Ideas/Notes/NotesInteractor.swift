@@ -22,7 +22,7 @@ extension NotesInteractor: NotesBusinessLogic {
 	func fetchCells() {
 		UserRequest.shared.getNotes() { cellViewModels in
 			self.dataSource = cellViewModels
+			self.presenter?.present(notesCells: self.dataSource)
 		}
-		presenter?.present(notesCells: dataSource)
 	}
 }

@@ -38,12 +38,16 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 		plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(didTapPlusButton), name: Notification.Name("Close Overlay"), object: nil)
-	
+
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		interactor?.checkUserLoginStatus()
+	}
+	
+	@objc func changeItemView(to selectedIndex: Int) {
+		tabBarController?.selectedIndex = selectedIndex
 	}
 	
 	@objc func didTapPlusButton() {

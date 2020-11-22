@@ -51,12 +51,13 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 		let dataBase = Firestore.firestore()
 		let documentReference = dataBase.collection("users").document(userID)
-		documentReference.updateData([
-			"notes" : FieldValue.arrayUnion([[
-				"title" : "note.title",
-				"details" : "note.details"
-			]])
-		])
+		if let encodedData = try? JSONEncoder().encode(UserRequest.shared.userData) {
+			if let firestoreEncodedData = try? JSONSerialization.jsonObject(with: encodedData) as? [String : Any] {
+				documentReference.setData(firestoreEncodedData, merge: true)
+			}
+		}
+		
+		completion()
 	}
 	
 	

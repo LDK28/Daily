@@ -17,6 +17,15 @@ class NotesPresenter {
 }
 
 extension NotesPresenter: NotesPresentationLogic {
+	func updateNotesCells(with cellViewModel: NotesCellViewModel) {
+		if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
+			cell.viewModel = cellViewModel
+			viewController?.cellsToDisplay.append(cell)
+			viewController?.insert(at: IndexPath(row: 0, section: 0))
+		}
+	}
+
+	
 	func present(notesCells: [NotesCellViewModel]) {
 		viewController?.cellsToDisplay.removeAll()
 		for cellViewModel in notesCells {

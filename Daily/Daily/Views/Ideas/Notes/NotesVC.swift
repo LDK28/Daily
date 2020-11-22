@@ -54,6 +54,11 @@ extension NotesVC {
 }
 
 extension NotesVC: NotesDisplayLogic {
+	func insert(at: IndexPath) {
+		tableView.beginUpdates()
+		tableView.insertSections(IndexSet(at), with: .automatic)
+		tableView.endUpdates()
+	}
 	
 	func displaySomething() {
 		DispatchQueue.main.async {

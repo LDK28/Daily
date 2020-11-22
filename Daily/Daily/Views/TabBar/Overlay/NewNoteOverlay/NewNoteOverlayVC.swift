@@ -74,3 +74,10 @@ extension NewNoteOverlayVC {
 		])
 	}
 }
+
+
+extension NewNoteOverlayVC: NewNoteOverlayDisplayLogic {
+	func askRouterToNavigateToNotes() {
+		router?.navigateToNotes()
+	}
+}
