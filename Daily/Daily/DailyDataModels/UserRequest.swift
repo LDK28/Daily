@@ -12,8 +12,8 @@ import FirebaseAuth
 protocol DailyUserNetworkRequest {
 	var userData: CurrentUser? { get set }
 	func loadUserData(completion: @escaping (Bool) -> ())
-	func getNotes() -> [NotesCellViewModel]
-	func update(notes: [NotesCellViewModel])
+	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ())
+	func add(note: NotesCellViewModel, completion: @escaping () -> ())
 }
 
 final class UserRequest: DailyUserNetworkRequest {
@@ -26,9 +26,8 @@ final class UserRequest: DailyUserNetworkRequest {
 			completion(false)
 			return
 		}
-		
-		let db = Firestore.firestore()
-		let userReference = db.collection("users").whereField("id", isEqualTo: currentUser.uid)
+
+		let userReference = getUserReference(with: currentUser.uid)
 		
 		userReference.getDocuments() { (querySnapshot, error) in
 			guard error == nil, let document = querySnapshot?.documents.first, let jsonData = try? JSONSerialization.data(withJSONObject: document.data()) else {
@@ -40,12 +39,30 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 	}
 	
-	func getNotes() -> [NotesCellViewModel] {
-		return userData?.notes ?? []
+	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ()) {
+		 completion(userData?.notes ?? [])
 	}
 	
-	func update(notes: [NotesCellViewModel]) {
-		
+	func add(note: NotesCellViewModel, completion: @escaping () -> ()) {
+		UserRequest.shared.userData?.notes.append(note)
+		guard let userID = Auth.auth().currentUser?.uid else {
+			completion()
+			return
+		}
+		let dataBase = Firestore.firestore()
+		let documentReference = dataBase.collection("users").document(userID)
+		documentReference.updateData([
+			"notes" : FieldValue.arrayUnion([[
+				"title" : "note.title",
+				"details" : "note.details"
+			]])
+		])
+	}
+	
+	
+	private func getUserReference(with id: String) -> Query {
+		let dataBase = Firestore.firestore()
+		return dataBase.collection("users").whereField("id", isEqualTo: id)
 	}
 	
 	private init() {}

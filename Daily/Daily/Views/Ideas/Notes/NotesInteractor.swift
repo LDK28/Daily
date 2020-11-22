@@ -20,7 +20,9 @@ class NotesInteractor: NotesDataStore {
 
 extension NotesInteractor: NotesBusinessLogic {
 	func fetchCells() {
-		dataSource = UserRequest.shared.getNotes()
+		UserRequest.shared.getNotes() { cellViewModels in
+			self.dataSource = cellViewModels
+		}
 		presenter?.present(notesCells: dataSource)
 	}
 }

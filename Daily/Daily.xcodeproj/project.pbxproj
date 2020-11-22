@@ -261,6 +261,8 @@
 		212F890725574BAD0097F894 /* DailyDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				21D7BDB8256AED8E008BD30C /* UserRequest.swift */,
+				21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */,
 				21BF82C82557E604001614EE /* DailyCells */,
 				2156464625584D64007264D4 /* SectionModel.swift */,
 				212F890825574C000097F894 /* DailyCellViewModel.swift */,
@@ -409,7 +411,6 @@
 		21D7BD6A256A939B008BD30C /* DailyTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				21D7BDB8256AED8E008BD30C /* UserRequest.swift */,
 				21D7BD83256A94ED008BD30C /* Models */,
 				21D7BD70256A93BF008BD30C /* DailyTabBarProtocols.swift */,
 				21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */,
@@ -424,7 +425,6 @@
 		21D7BD83256A94ED008BD30C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */,
 				2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */,
 			);
 			path = Models;

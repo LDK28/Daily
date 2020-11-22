@@ -10,13 +10,13 @@ import Firebase
 
 struct CurrentUser: Codable {
 	let id: String
-	let name: Name
-	let email: String?
-	let password: String
-	let notes: [NotesCellViewModel]?
+	var name: Name
+	var email: String?
+	var password: String
+	var notes: [NotesCellViewModel]
 }
 
 struct Name: Codable {
-	let firstName: String
-	let lastName: String
+	var firstName: String
+	var lastName: String
 }

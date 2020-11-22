@@ -24,7 +24,7 @@ class NewNoteOverlayVC: OverlayVC {
 	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		saveButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+		saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
 	}
 	
 	override func styleUI() {
@@ -34,8 +34,8 @@ class NewNoteOverlayVC: OverlayVC {
 		tableView.separatorStyle = .none
 	}
 	
-	@objc func didTapAddButton() {
-		(interactor as? NewNoteOverlayInteractor)?.didAddNewNote()
+	@objc func tappedSaveButton() {
+		(interactor as? NewNoteOverlayInteractor)?.didTapSaveButton()
 		self.remove()
 		NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
 	}
