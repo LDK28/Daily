@@ -40,7 +40,9 @@ final class UserRequest: DailyUserNetworkRequest {
 	}
 	
 	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ()) {
-		 completion(userData?.notes ?? [])
+		loadUserData(completion: { _ in
+			completion(UserRequest.shared.userData?.notes ?? [])
+		})
 	}
 	
 	func add(note: NotesCellViewModel, completion: @escaping () -> ()) {
