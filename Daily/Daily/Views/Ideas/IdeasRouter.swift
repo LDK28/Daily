@@ -9,9 +9,13 @@ import UIKit
 
 class IdeasRouter: IdeasDataPassing {
     
-    weak var viewController: IdeasVC?
-    weak var dataStore: IdeasDataStore?
+    private weak var viewController: IdeasVC?
+    internal weak var dataStore: IdeasDataStore?
   
+    init(viewController: IdeasVC?, dataStore: IdeasDataStore?) {
+            self.dataStore = dataStore
+            self.viewController = viewController
+        }
 }
 
 extension IdeasRouter: IdeasRoutingLogic {

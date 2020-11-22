@@ -19,7 +19,6 @@
 		054BEA2025697BAB0059FEDC /* IdeasCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1F25697BAB0059FEDC /* IdeasCells.swift */; };
 		054BEA2825697BBA0059FEDC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA2725697BBA0059FEDC /* IdeasCell.swift */; };
 		054BEA31256980900059FEDC /* IdeasTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA30256980900059FEDC /* IdeasTableHeader.swift */; };
-		054BEA3C256991A40059FEDC /* IdeasDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA3B256991A30059FEDC /* IdeasDataSource.swift */; };
 		054BEA41256991E10059FEDC /* IdeasCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */; };
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
@@ -128,7 +127,6 @@
 		054BEA1F25697BAB0059FEDC /* IdeasCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCells.swift; sourceTree = "<group>"; };
 		054BEA2725697BBA0059FEDC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
 		054BEA30256980900059FEDC /* IdeasTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasTableHeader.swift; sourceTree = "<group>"; };
-		054BEA3B256991A30059FEDC /* IdeasDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasDataSource.swift; sourceTree = "<group>"; };
 		054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCellViewModel.swift; sourceTree = "<group>"; };
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 			children = (
 				054BEA2725697BBA0059FEDC /* IdeasCell.swift */,
 				054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */,
-				054BEA3B256991A30059FEDC /* IdeasDataSource.swift */,
 				054BEA30256980900059FEDC /* IdeasTableHeader.swift */,
 			);
 			path = IdeasModels;
@@ -776,7 +773,6 @@
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
 				054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */,
-				054BEA3C256991A40059FEDC /* IdeasDataSource.swift in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,

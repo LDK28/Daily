@@ -12,16 +12,16 @@ protocol IdeasBusinessLogic {
 }
 
 protocol IdeasPresentationLogic {
-    func present()
+    func present(ideasCells: [IdeasCellViewModel])
 }
 
-protocol IdeasDisplayLogic: class {
+protocol IdeasDisplayLogic: AnyObject {
     var cellsToDisplay: [IdeasCell] { get set }
     func display()
 }
 
 protocol IdeasDataStore: AnyObject {
-    var dataSource: IdeasDataSource { get set }
+    var dataSource: [IdeasCellViewModel] { get set }
 }
 
 protocol IdeasRoutingLogic {

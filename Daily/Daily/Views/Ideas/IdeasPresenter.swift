@@ -7,25 +7,24 @@
 
 import UIKit
 
-class IdeasPresenter: IdeasDataStore {
-    var dataSource = IdeasDataSource()
-    weak var tableView: UITableView?
-        weak var viewController: IdeasDisplayLogic? {
-            didSet {
-                tableView = (viewController as? IdeasVC)?.tableView
-            }
-        }
+class IdeasPresenter {
+    
+    private weak var viewController: IdeasDisplayLogic?
+        
+        init(viewController: IdeasDisplayLogic?) {
+            self.viewController = viewController
+    }
 }
 
 extension IdeasPresenter: IdeasPresentationLogic {
-    func present() {
-        guard let cellViewModels = dataSource.ideasCellViewModels else { return }
-        for cellViewModel in cellViewModels {
-            if let cell = tableView?.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as?  IdeasCell{
-                cell.viewModel = cellViewModel
-                viewController?.cellsToDisplay.append(cell)
+    func present(ideasCells: [IdeasCellViewModel]) {
+            viewController?.cellsToDisplay.removeAll()
+            for cellViewModel in ideasCells {
+                if let cell = (viewController as? IdeasVC)?.tableView.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as?  IdeasCell{
+                    cell.viewModel = cellViewModel
+                    viewController?.cellsToDisplay.append(cell)
+                }
             }
+            viewController?.display()
         }
-        viewController?.display()
-    }
 }

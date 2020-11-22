@@ -45,6 +45,8 @@ class IdeasVC: MainTableVC {
         let titleView = TitleView(title: "Ideas")
         tableView.tableHeaderView = titleView
         titleView.frame.size.height = 100
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
     }
     
     func registerCells() {
@@ -56,7 +58,7 @@ class IdeasVC: MainTableVC {
 extension IdeasVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellsToDisplay.count //is nil
+        return cellsToDisplay.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,17 +71,18 @@ extension IdeasVC {
 //            else { return UITableViewCell() }
 //        return cell
         
-        return cellsToDisplay[indexPath.section] //doesn't work (cellsToDisplay is nil)
+        return cellsToDisplay[indexPath.section]
         
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return UITableView.automaticDimension
-        } else {
-            return 40
-        }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
+        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+ 
 }
 
 extension IdeasVC: IdeasDisplayLogic {

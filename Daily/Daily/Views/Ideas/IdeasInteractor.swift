@@ -8,12 +8,17 @@
 import UIKit
 
 class IdeasInteractor: IdeasDataStore {
-    var dataSource = IdeasDataSource()
-    var presenter: IdeasPresentationLogic?
+    internal var dataSource: [IdeasCellViewModel]
+    private var presenter: IdeasPresentationLogic?
+        
+    init(presenter: IdeasPresentationLogic?, dataSource: [IdeasCellViewModel]) {
+        self.dataSource = dataSource
+        self.presenter = presenter
+    }
 }
 
 extension IdeasInteractor: IdeasBusinessLogic {
     func fetchCells() {
-            presenter?.present()
-        }
+        presenter?.present(ideasCells: dataSource)
+    }
 }
