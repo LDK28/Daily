@@ -9,25 +9,13 @@ import UIKit
 
 class DailyTabBarModule {
 	static func build() -> DailyTabBarVC {
-		//let dataSource = ...
 		let viewController = DailyTabBarVC()
-		let interactor = DailyTabBarInteractor()
-		
-		let presenter = DailyTabBarPresenter()
-		//presenter.dataSource = dataSource
-		presenter.viewController = viewController
-		
-		let router = DailyTabBarRouter()
-		router.viewController = viewController
+		let presenter = DailyTabBarPresenter(viewController: viewController)
+		let interactor = DailyTabBarInteractor(presenter: presenter, userData: nil)
+		let router = DailyTabBarRouter(viewController: viewController, dataStore: interactor)
 		viewController.router = router
-		
-		//interactor.dataSource = dataSource
-		interactor.presenter = presenter
-		router.dataStore = interactor
 		viewController.interactor = interactor
-		
-		
-		
+
 		return viewController
 	}
 }

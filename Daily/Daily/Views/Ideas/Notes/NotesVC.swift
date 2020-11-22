@@ -13,7 +13,6 @@ class NotesVC: MainTableVC {
 	var router: (NotesRoutingLogic & NotesDataPassing)?
 	
 	var cellsToDisplay: [NotesCell] = []
-	private var isToAppearForTheFirstTime = true
 	
 	override func loadView() {
 		super.loadView()
@@ -26,10 +25,7 @@ class NotesVC: MainTableVC {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		if isToAppearForTheFirstTime {
-			interactor?.fetchCells()
-			isToAppearForTheFirstTime = false
-		}
+		interactor?.fetchCells()
 	}
   
 }
@@ -37,7 +33,7 @@ class NotesVC: MainTableVC {
 extension NotesVC {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		cellsToDisplay.count
+		return cellsToDisplay.count
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +54,7 @@ extension NotesVC {
 }
 
 extension NotesVC: NotesDisplayLogic {
+	
 	func displaySomething() {
 		tableView.reloadData()
 	}

@@ -9,9 +9,13 @@ import UIKit
 
 class NotesRouter: NotesDataPassing {
 	
-	weak var viewController: NotesVC?
-	weak var dataStore: NotesDataStore?
+	private weak var viewController: NotesVC?
+	internal weak var dataStore: NotesDataStore?
   
+	init(viewController: NotesVC?, dataStore: NotesDataStore?) {
+		self.dataStore = dataStore
+		self.viewController = viewController
+	}
 }
 
 extension NotesRouter: NotesRoutingLogic {

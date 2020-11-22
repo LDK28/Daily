@@ -8,13 +8,17 @@
 import UIKit
 
 class NotesInteractor: NotesDataStore {
-	var dataSource = NotesDataSource()
+	internal var dataSource: [NotesCellViewModel]
+	private var presenter: NotesPresentationLogic?
 	
-	var presenter: NotesPresentationLogic?
+	init(presenter: NotesPresentationLogic?, dataSource: [NotesCellViewModel]) {
+		self.dataSource = dataSource
+		self.presenter = presenter
+	}
 }
 
 extension NotesInteractor: NotesBusinessLogic {
 	func fetchCells() {
-		presenter?.present()
+		presenter?.present(notesCells: dataSource)
 	}
 }

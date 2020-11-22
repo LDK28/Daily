@@ -92,7 +92,17 @@ class SignupVC: MainVC {
 				} else {
 					//User was created successfully
 					let dataBase = Firestore.firestore()
-					dataBase.collection("users").addDocument(data: ["firstname" : firstName, "lastname" : lastName, "uid" : result!.user.uid]) { savingUserError in
+					let userID = result?.user.uid ?? "userIDFailed_newID_Is=\(firstName)_\(lastName)_\(email)"
+					dataBase.collection("users").addDocument(data: [
+						"id" : userID,
+						"name": [
+							"firstName": firstName,
+							"lastName": lastName
+						],
+						"email": email,
+						"password": password,
+						"notes": [NotesCellViewModel]()
+					]) { savingUserError in
 						if savingUserError != nil {
 							//Show error message
 							self.showError(savingUserError!.localizedDescription)

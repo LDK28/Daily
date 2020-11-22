@@ -24,11 +24,12 @@ protocol DailyTabBarBusinessLogic {
 }
 
 protocol DailyTabBarDataStore: AnyObject {
-	
+	var userData: CurrentUser? { get set }
 }
 
 protocol DailyTabBarPresentationLogic {
 	func prepareViewForRoutingToLoginScreen()
+	func present(using userData: CurrentUser?)
 	
 }
 

@@ -8,39 +8,14 @@
 import UIKit
 
 class NotesModule {
-	static func build() -> NotesVC {
-		let dataSource = NotesDataSource(notesCellViewModels: [
-			NotesCellViewModel(title: "Test1Test1Test1Test1Test1Test1Test1Test1",
-							   details: "TestTestTestTestTestTestTestTestTestTestTest",
-							   assignedDateAndTime: nil),
-			
-			NotesCellViewModel(title: "Test2",
-							   details: "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
-							   assignedDateAndTime: nil),
-			
-			NotesCellViewModel(title: "Test3",
-							   details: "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
-							   assignedDateAndTime: nil)
-		])
+	static func build(with dataSource: [NotesCellViewModel] ) -> NotesVC {
 		
 		let viewController = NotesVC()
-		let interactor = NotesInteractor()
-		
-		let presenter = NotesPresenter()
-		presenter.dataSource = dataSource
-		presenter.viewController = viewController
-		
-		let router = NotesRouter()
-		router.viewController = viewController
+		let presenter = NotesPresenter(viewController: viewController)
+		let interactor = NotesInteractor(presenter: presenter, dataSource: dataSource)
+		let router = NotesRouter(viewController: viewController, dataStore: interactor)
 		viewController.router = router
-		
-		interactor.dataSource = dataSource
-		interactor.presenter = presenter
-		router.dataStore = interactor
 		viewController.interactor = interactor
-		
-		
-		
 		return viewController
 	}
 }

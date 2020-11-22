@@ -17,11 +17,11 @@ protocol NotesBusinessLogic {
 }
 
 protocol NotesDataStore: AnyObject {
-	var dataSource: NotesDataSource { get set }
+	var dataSource: [NotesCellViewModel] { get set }
 }
 
 protocol NotesPresentationLogic {
-	func present()
+	func present(notesCells: [NotesCellViewModel])
 }
 
 protocol NotesRoutingLogic {

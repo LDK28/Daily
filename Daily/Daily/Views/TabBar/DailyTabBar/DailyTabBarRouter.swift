@@ -12,6 +12,10 @@ class DailyTabBarRouter: DailyTabBarDataPassing {
 	weak var viewController: DailyTabBarVC?
 	weak var dataStore: DailyTabBarDataStore?
   
+	init(viewController: DailyTabBarVC?, dataStore: DailyTabBarDataStore?) {
+		self.dataStore = dataStore
+		self.viewController = viewController
+	}
 }
 
 extension DailyTabBarRouter: DailyTabBarRoutingLogic {

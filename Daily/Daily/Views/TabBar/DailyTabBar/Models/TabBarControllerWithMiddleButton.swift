@@ -54,17 +54,8 @@ class TabBarControllerWithMiddleButton: UITabBarController {
 	}
 
 	func createIdeasNC() -> UINavigationController {
-		/*
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-			TEMPORARY SOLUTION. REMOVE WHEN FINISHED
-		*/
 		
-		let ideasVC = NotesModule.build()
+		let ideasVC = NotesVC()
 		ideasVC.title = nil
 		ideasVC.tabBarItem = UITabBarItem(title: "Ideas", image: UIImage(systemName: "note"), tag: 1)
 		let ideaNavigationController = UINavigationController(rootViewController: ideasVC)
