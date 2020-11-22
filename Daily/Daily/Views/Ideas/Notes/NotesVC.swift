@@ -56,7 +56,9 @@ extension NotesVC {
 extension NotesVC: NotesDisplayLogic {
 	
 	func displaySomething() {
-		tableView.reloadData()
+		DispatchQueue.main.async {
+			self.tableView.reloadData()
+		}
 	}
 }
 

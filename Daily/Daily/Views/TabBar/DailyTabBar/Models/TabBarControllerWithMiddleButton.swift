@@ -55,7 +55,7 @@ class TabBarControllerWithMiddleButton: UITabBarController {
 
 	func createIdeasNC() -> UINavigationController {
 		
-		let ideasVC = NotesVC()
+		let ideasVC = NotesModule.build()
 		ideasVC.title = nil
 		ideasVC.tabBarItem = UITabBarItem(title: "Ideas", image: UIImage(systemName: "note"), tag: 1)
 		let ideaNavigationController = UINavigationController(rootViewController: ideasVC)

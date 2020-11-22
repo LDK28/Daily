@@ -15,5 +15,7 @@ class NewNoteOverlayRouter: NewNoteOverlayDataPassing {
 }
 
 extension NewNoteOverlayRouter: NewNoteOverlayRoutingLogic {
-	
+	func addNewNoteAndNavigateToNotes() {
+		
+	}
 }

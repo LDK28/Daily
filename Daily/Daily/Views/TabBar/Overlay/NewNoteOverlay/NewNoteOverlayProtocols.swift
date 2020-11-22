@@ -9,6 +9,7 @@ import UIKit
 
 protocol NewNoteOverlayBusinessLogic: OverlayBusinessLogic {
 	func didEndEditingNote(text: String)
+	func didAddNewNote()
 }
 
 protocol NewNoteOverlayRoutingLogic {

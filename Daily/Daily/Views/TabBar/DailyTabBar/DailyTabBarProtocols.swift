@@ -29,7 +29,7 @@ protocol DailyTabBarDataStore: AnyObject {
 
 protocol DailyTabBarPresentationLogic {
 	func prepareViewForRoutingToLoginScreen()
-	func present(using userData: CurrentUser?)
+	func present()
 	
 }
 

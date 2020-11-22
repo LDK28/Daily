@@ -73,6 +73,7 @@
 		21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD72256A93BF008BD30C /* DailyTabBarVC.swift */; };
 		21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */; };
 		21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */; };
+		21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BDB8256AED8E008BD30C /* UserRequest.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
 		21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02525403975006A4206 /* SceneDelegate.swift */; };
 		21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02C25403975006A4206 /* Daily.xcdatamodeld */; };
@@ -188,6 +189,7 @@
 		21D7BD72256A93BF008BD30C /* DailyTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarVC.swift; sourceTree = "<group>"; };
 		21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarConfigurator.swift; sourceTree = "<group>"; };
 		21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserBackendModel.swift; sourceTree = "<group>"; };
+		21D7BDB8256AED8E008BD30C /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E1D02325403975006A4206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E1D02525403975006A4206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		21D7BD6A256A939B008BD30C /* DailyTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				21D7BDB8256AED8E008BD30C /* UserRequest.swift */,
 				21D7BD83256A94ED008BD30C /* Models */,
 				21D7BD70256A93BF008BD30C /* DailyTabBarProtocols.swift */,
 				21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */,
@@ -849,6 +852,7 @@
 				21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */,
 				21D7BD77256A93BF008BD30C /* DailyTabBarInteractor.swift in Sources */,
 				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
+				21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */,
 				21CC5E8125645D2F009C1D8E /* NewProjectOverlayRouter.swift in Sources */,
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,
 				215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */,

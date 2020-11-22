@@ -6,19 +6,21 @@
 //  Copyright (c) 2020. All rights reserved.
 
 import UIKit
+import Firebase
 
 class NotesInteractor: NotesDataStore {
 	internal var dataSource: [NotesCellViewModel]
 	private var presenter: NotesPresentationLogic?
 	
-	init(presenter: NotesPresentationLogic?, dataSource: [NotesCellViewModel]) {
-		self.dataSource = dataSource
+	init(presenter: NotesPresentationLogic?) {
+		self.dataSource = []
 		self.presenter = presenter
 	}
 }
 
 extension NotesInteractor: NotesBusinessLogic {
 	func fetchCells() {
+		dataSource = UserRequest.shared.getNotes()
 		presenter?.present(notesCells: dataSource)
 	}
 }
