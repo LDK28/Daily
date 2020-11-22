@@ -71,7 +71,7 @@ extension IdeasVC {
 //            else { return UITableViewCell() }
 //        return cell
         
-        return cellsToDisplay[indexPath.section]
+        return cellsToDisplay[indexPath.row]
         
     }
     

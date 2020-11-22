@@ -17,14 +17,14 @@ class IdeasCell: UITableViewCell {
     var viewModel: IdeasCellViewModel? {
             didSet {
                 guard let viewModel = viewModel else { return }
-                buttonTitle = viewModel.title
+				button.setTitle(viewModel.title, for: .normal)
             }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubview(button)
+		contentView.addSubview(button)
         configureButton()
         styleButton()
         styleCell()
@@ -37,11 +37,11 @@ class IdeasCell: UITableViewCell {
     func configureButton() {
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+			button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+			button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             button.heightAnchor.constraint(equalToConstant: 100),
-            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+			button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
     
@@ -53,5 +53,4 @@ class IdeasCell: UITableViewCell {
     func styleButton() {
         button.styleButton(title: buttonTitle, backgroundColor: .dailyDiaryTileColor)
     }
-    
 }
