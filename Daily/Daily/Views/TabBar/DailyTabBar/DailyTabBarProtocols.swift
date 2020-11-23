@@ -9,13 +9,6 @@ import UIKit
 
 protocol DailyTabBarDisplayLogic: AnyObject {
 	func askRouterToNavigateToLoginScreen()
-//	var plusButton: PlusButton { get }
-//	var blackoutView: UIView { get }
-//	var overlayViewContoller: UIViewController? { get }
-//	var newProjectButton: AddButton { get }
-//	var newTaskButton: AddButton { get }
-//	var newNoteButton: AddButton { get }
-//	var addButtonsStackView: UIStackView { get }
 }
 
 protocol DailyTabBarBusinessLogic {

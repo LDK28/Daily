@@ -19,6 +19,11 @@ class NotesInteractor: NotesDataStore {
 }
 
 extension NotesInteractor: NotesBusinessLogic {
+	func didTapTripletButton(at indexPath: IndexPath) {
+		dataSource.remove(at: indexPath.row)
+		presenter?.deleteNoteCell(at: indexPath)
+	}
+	
 	func fetchCells() {
 		UserRequest.shared.getNotes() { cellViewModels in
 			self.dataSource = cellViewModels

@@ -33,15 +33,15 @@ class NotesVC: MainTableVC {
 extension NotesVC {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return cellsToDisplay.count
-	}
-	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 1
 	}
 	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return cellsToDisplay.count
+	}
+	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return cellsToDisplay[indexPath.section]
+		return cellsToDisplay[indexPath.row]
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -54,16 +54,33 @@ extension NotesVC {
 }
 
 extension NotesVC: NotesDisplayLogic {
+	func delete(at indexPath: IndexPath) {
+		tableView.beginUpdates()
+		tableView.deleteRows(at: [indexPath], with: .fade)
+		tableView.endUpdates()
+	}
+	
 	func insert(at: IndexPath) {
 		tableView.beginUpdates()
 		tableView.insertSections(IndexSet(at), with: .automatic)
 		tableView.endUpdates()
 	}
 	
-	func displaySomething() {
+	func finishDisplayingCells() {
 		DispatchQueue.main.async {
+			for cell in self.cellsToDisplay {
+				cell.delegate = self
+			}
 			self.tableView.reloadData()
 		}
+	}
+}
+
+extension NotesVC: TripletButtonDelegate {
+	func tappedTripletButton(_ sender: UIButton) {
+		let point = sender.convert(CGPoint.zero, to: tableView)
+		guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+		interactor?.didTapTripletButton(at: indexPath)
 	}
 }
 

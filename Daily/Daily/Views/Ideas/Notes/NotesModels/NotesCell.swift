@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TripletButtonDelegate {
+	func tappedTripletButton(_ sender: UIButton)
+}
+
 class NotesCell: UITableViewCell {
 	static let cellIdentifier = "NotesCell"
 	
@@ -14,6 +18,8 @@ class NotesCell: UITableViewCell {
 	private let detailsTextView =  UILabel()
 	private let addToDiaryButton = UIButton()
 	private let tripletButton = UIButton()
+	private let containerView = UIView()
+	var delegate: TripletButtonDelegate?
 	
 	var viewModel: NotesCellViewModel? {
 		didSet {
@@ -21,6 +27,10 @@ class NotesCell: UITableViewCell {
 			titleLabel.text = viewModel.title
 			detailsTextView.text = viewModel.details
 		}
+	}
+	
+	@objc func tappedTripletButton() {
+		delegate?.tappedTripletButton(tripletButton)
 	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -32,7 +42,7 @@ class NotesCell: UITableViewCell {
 		selectedView.backgroundColor = backgroundColor
 		selectedBackgroundView = selectedView
 		
-		contentView.addSubview(addToDiaryButton)
+		//contentView.addSubview(addToDiaryButton)
 		addToDiaryButton.translatesAutoresizingMaskIntoConstraints = false
 		if let addToDiaryImage =
 			UIImage(systemName: "calendar.badge.clock")?
@@ -42,7 +52,7 @@ class NotesCell: UITableViewCell {
 			addToDiaryButton.setImage(addToDiaryImage, for: .normal)
 		}
 		
-		contentView.addSubview(tripletButton)
+		//contentView.addSubview(tripletButton)
 		tripletButton.translatesAutoresizingMaskIntoConstraints = false
 		if let tripletImage =
 			UIImage(systemName: "ellipsis")?
@@ -52,7 +62,7 @@ class NotesCell: UITableViewCell {
 			tripletButton.setImage(tripletImage, for: .normal)
 		}
 		
-		contentView.addSubview(titleLabel)
+		//contentView.addSubview(titleLabel)
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Regular", size: 18),
 							  text: nil,
 							  textAlignment: .justified,
@@ -60,7 +70,7 @@ class NotesCell: UITableViewCell {
 							  numberOfLines: 2)
 		
 		
-		contentView.addSubview(detailsTextView)
+		//contentView.addSubview(detailsTextView)
 		detailsTextView.styleLabel(font: UIFont(name: "Stolzl-Book", size: 14),
 								   text: nil,
 								   textAlignment: .justified,
@@ -68,9 +78,27 @@ class NotesCell: UITableViewCell {
 								   numberOfLines: 4)
 		
 		
+		containerView.translatesAutoresizingMaskIntoConstraints = false
+		
+		[
+			tripletButton,
+			addToDiaryButton,
+			titleLabel,
+			detailsTextView
+		].forEach({
+			self.containerView.addSubview($0)
+		})
+		
+		contentView.addSubview(containerView)
+		
 		NSLayoutConstraint.activate([
-			tripletButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			tripletButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+			containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+			containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+			containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+			containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
+			
+			tripletButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
+			tripletButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
 			tripletButton.widthAnchor.constraint(equalToConstant: 30),
 			tripletButton.heightAnchor.constraint(equalTo: tripletButton.widthAnchor),
 			
@@ -79,15 +107,18 @@ class NotesCell: UITableViewCell {
 			addToDiaryButton.widthAnchor.constraint(equalTo: tripletButton.widthAnchor),
 			addToDiaryButton.heightAnchor.constraint(equalTo: tripletButton.heightAnchor),
 			
-			titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
 			titleLabel.trailingAnchor.constraint(equalTo: addToDiaryButton.leadingAnchor, constant: -40),
 			titleLabel.topAnchor.constraint(equalTo: tripletButton.topAnchor),
 			
 			detailsTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
-			detailsTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
+			detailsTextView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -25),
 			detailsTextView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			detailsTextView.trailingAnchor.constraint(equalTo: tripletButton.trailingAnchor)
 		])
+		
+		tripletButton.isUserInteractionEnabled = true
+		tripletButton.addTarget(self, action: #selector(tappedTripletButton), for: .touchUpInside)
 		
 	}
 	

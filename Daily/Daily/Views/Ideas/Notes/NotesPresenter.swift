@@ -17,6 +17,11 @@ class NotesPresenter {
 }
 
 extension NotesPresenter: NotesPresentationLogic {
+	func deleteNoteCell(at indexPath: IndexPath) {
+		viewController?.cellsToDisplay.remove(at: indexPath.row)
+		viewController?.delete(at: indexPath)
+	}
+	
 	func updateNotesCells(with cellViewModel: NotesCellViewModel) {
 		if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
 			cell.viewModel = cellViewModel
@@ -34,6 +39,6 @@ extension NotesPresenter: NotesPresentationLogic {
 				viewController?.cellsToDisplay.append(cell)
 			}
 		}
-		viewController?.displaySomething()
+		viewController?.finishDisplayingCells()
 	}
 }
