@@ -57,6 +57,7 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	}
 	
 	@objc func didTapPlusButton() {
+		UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
 		animatePlusButtonChange()
 	}
 	

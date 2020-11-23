@@ -18,7 +18,7 @@ class NotesCell: UITableViewCell {
 	private let detailsTextView =  UILabel()
 	private let addToDiaryButton = UIButton()
 	private let tripletButton = UIButton()
-	private let containerView = UIView()
+	private(set) var containerView = UIView()
 	var delegate: TripletButtonDelegate?
 	
 	var viewModel: NotesCellViewModel? {
@@ -96,8 +96,8 @@ class NotesCell: UITableViewCell {
 		NSLayoutConstraint.activate([
 			containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-			containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-			containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
+			containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12.5),
+			containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12.5),
 			
 			tripletButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
 			tripletButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
