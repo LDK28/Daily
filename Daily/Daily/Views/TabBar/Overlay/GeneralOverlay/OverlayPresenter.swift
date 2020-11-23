@@ -29,7 +29,8 @@ class OverlayPresenter: OverlayDataStore {
 extension OverlayPresenter: OverlayPresentationLogic {
 	
 	func updateDateInDateCell(atSection section: Int) {
-		guard let dateCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
+		guard
+			let dateCellIndex = dataSource.sectionViewModels[section].cellViewModels.firstIndex(where: { cellViewModel in
 			cellViewModel.cellType == .optionalDate || cellViewModel.cellType == .requiredDate
 		}) else { return }
 		switch dataSource.sectionViewModels[section].cellViewModels[dateCellIndex].cellType {

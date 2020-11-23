@@ -24,20 +24,32 @@ final class UserRequest: DailyUserNetworkRequest {
 	var userData: CurrentUser?
 	
 	func loadUserData(completion: @escaping (Bool) -> ()) {
-		guard let currentUser = Auth.auth().currentUser else {
+		guard
+			let currentUser = Auth.auth().currentUser
+		else {
 			completion(false)
 			return
 		}
 		
 		userID = currentUser.uid
 		let userReference = getUserReference(with: userID ?? currentUser.uid)
-		
 		userReference.getDocuments() { (querySnapshot, error) in
-			guard error == nil, let document = querySnapshot?.documents.first, let jsonData = try? JSONSerialization.data(withJSONObject: document.data()) else {
+			guard
+				error == nil,
+				let document = querySnapshot?.documents.first,
+				let jsonData = try? JSONSerialization.data(withJSONObject: document.data())
+			else {
 				completion(false)
 				return
 			}
-			UserRequest.shared.userData = try? JSONDecoder().decode(CurrentUser.self, from: jsonData)
+			
+			guard
+				let fetchedUserData = try? JSONDecoder().decode(CurrentUser.self, from: jsonData)
+			else {
+				completion(false)
+				return
+			}
+			UserRequest.shared.userData = fetchedUserData
 			completion(true)
 		}
 	}
@@ -49,7 +61,10 @@ final class UserRequest: DailyUserNetworkRequest {
 	}
 	
 	func add(note: NotesCellViewModel, completion: @escaping () -> ()) {
-		guard let userID = userID else {
+		guard
+			let userID = userID,
+			UserRequest.shared.userData != nil
+		else {
 			completion()
 			return
 		}
@@ -59,7 +74,10 @@ final class UserRequest: DailyUserNetworkRequest {
 	}
 	
 	func removeNote(at index: Int, completion: @escaping () -> ()) {
-		guard let userID = userID else {
+		guard
+			let userID = userID,
+			UserRequest.shared.userData != nil
+		else {
 			completion()
 			return
 		}
@@ -67,6 +85,11 @@ final class UserRequest: DailyUserNetworkRequest {
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	
+	private init() {}
+}
+
+//MARK: - Calls to dataBase (private!)
+extension UserRequest {
 	private func updateServerData(withUserID userID: String, completion: @escaping () -> ()) {
 		let dataBase = Firestore.firestore()
 		let documentReference = dataBase.collection("users").document(userID)
@@ -79,19 +102,26 @@ final class UserRequest: DailyUserNetworkRequest {
 	}
 	
 	private func getLatestUserData(completion: @escaping (CurrentUser?) -> ()) {
-		guard let userID = userID  else {
+		guard
+			let userID = userID
+		else {
 			completion(nil)
 			return
 		}
 		let dataBase = Firestore.firestore()
 		let documentReference = dataBase.collection("users").document(userID)
 		documentReference.getDocument() { result, error in
-			guard error == nil, let data = try? JSONSerialization.data(withJSONObject: result?.data() as Any) else {
+			guard
+				error == nil,
+				let data = try? JSONSerialization.data(withJSONObject: result?.data() as Any)
+			else {
 				completion(nil)
 				return
 			}
 			
-			guard let userNewData = try? JSONDecoder().decode(CurrentUser.self, from: data) else {
+			guard
+				let userNewData = try? JSONDecoder().decode(CurrentUser.self, from: data)
+			else {
 				completion(nil)
 				return
 			}
@@ -104,6 +134,4 @@ final class UserRequest: DailyUserNetworkRequest {
 		let dataBase = Firestore.firestore()
 		return dataBase.collection("users").whereField("id", isEqualTo: id)
 	}
-	
-	private init() {}
 }
