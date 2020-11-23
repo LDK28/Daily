@@ -24,9 +24,7 @@ extension OverlayInteractor: OverlayBusinessLogic {
 	}
 	
 	func didChangeValueInDatePickerCell(newDay: Date) {
-		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
-			section.type == .dateAndTime
-		}) {
+		if let sectionToUpdate = getFirstIndexOfSection(ofType: .dateAndTime) {
 			dataSource.assignedDay = newDay
 			presenter?.updateDateInDateCell(atSection: sectionToUpdate)
 		}

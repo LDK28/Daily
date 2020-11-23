@@ -60,6 +60,21 @@ extension NewNoteOverlayVC: UITextViewDelegate {
 	func textViewDidChange(_ textView: UITextView) {
 		(interactor as? NewNoteOverlayInteractor)?.didEndEditingNote(text: textView.text)
 	}
+	
+	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+		UIView.animate(withDuration: 0.2, animations: {
+			self.view.frame.origin.y -= 40
+		})
+		return true
+	}
+	
+	func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+		UIView.animate(withDuration: 0.2, animations: {
+			self.view.frame.origin.y += 40
+		})
+		self.resignFirstResponder()
+		return true
+	}
 }
 
 extension NewNoteOverlayVC {

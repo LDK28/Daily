@@ -47,7 +47,6 @@ class NotesCell: UITableViewCell {
 		selectedView.backgroundColor = backgroundColor
 		selectedBackgroundView = selectedView
 		
-		//contentView.addSubview(addToDiaryButton)
 		addToDiaryButton.translatesAutoresizingMaskIntoConstraints = false
 		if let addToDiaryImage =
 			UIImage(systemName: "calendar.badge.clock")?
@@ -57,8 +56,8 @@ class NotesCell: UITableViewCell {
 			addToDiaryButton.setImage(addToDiaryImage, for: .normal)
 		}
 		
-		//contentView.addSubview(tripletButton)
 		tripletButton.translatesAutoresizingMaskIntoConstraints = false
+		tripletButton.addTarget(self, action: #selector(tappedTripletButton), for: .touchUpInside)
 		if let tripletImage =
 			UIImage(systemName: "ellipsis")?
 				.withTintColor(.dailyTextColor)
@@ -67,15 +66,12 @@ class NotesCell: UITableViewCell {
 			tripletButton.setImage(tripletImage, for: .normal)
 		}
 		
-		//contentView.addSubview(titleLabel)
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Regular", size: 18),
 							  text: nil,
 							  textAlignment: .justified,
 							  textColor: .dailyTextColor,
 							  numberOfLines: 2)
-		
-		
-		//contentView.addSubview(detailsTextView)
+	
 		detailsTextView.styleLabel(font: UIFont(name: "Stolzl-Book", size: 14),
 								   text: nil,
 								   textAlignment: .justified,
@@ -122,10 +118,6 @@ class NotesCell: UITableViewCell {
 			detailsTextView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			detailsTextView.trailingAnchor.constraint(equalTo: tripletButton.trailingAnchor)
 		])
-		
-		tripletButton.isUserInteractionEnabled = true
-		tripletButton.addTarget(self, action: #selector(tappedTripletButton), for: .touchUpInside)
-		
 	}
 	
 	required init?(coder: NSCoder) {

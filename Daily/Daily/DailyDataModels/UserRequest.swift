@@ -14,10 +14,12 @@ protocol DailyUserNetworkRequest {
 	func loadUserData(completion: @escaping (Bool) -> ())
 	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ())
 	func add(note: NotesCellViewModel, completion: @escaping () -> ())
+	func removeNote(at index: Int, completion: @escaping () -> ())
 }
 
 final class UserRequest: DailyUserNetworkRequest {
 	static var shared: DailyUserNetworkRequest = UserRequest()
+	private var userID: String?
 	
 	var userData: CurrentUser?
 	
@@ -26,8 +28,9 @@ final class UserRequest: DailyUserNetworkRequest {
 			completion(false)
 			return
 		}
-
-		let userReference = getUserReference(with: currentUser.uid)
+		
+		userID = currentUser.uid
+		let userReference = getUserReference(with: userID ?? currentUser.uid)
 		
 		userReference.getDocuments() { (querySnapshot, error) in
 			guard error == nil, let document = querySnapshot?.documents.first, let jsonData = try? JSONSerialization.data(withJSONObject: document.data()) else {
@@ -40,17 +43,31 @@ final class UserRequest: DailyUserNetworkRequest {
 	}
 	
 	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ()) {
-		loadUserData(completion: { _ in
-			completion(UserRequest.shared.userData?.notes ?? [])
-		})
+		getLatestUserData() { userNewData in
+			completion(userNewData?.notes ?? [])
+		}
 	}
 	
 	func add(note: NotesCellViewModel, completion: @escaping () -> ()) {
-		UserRequest.shared.userData?.notes.append(note)
-		guard let userID = Auth.auth().currentUser?.uid else {
+		guard let userID = userID else {
 			completion()
 			return
 		}
+		
+		UserRequest.shared.userData?.notes.append(note)
+		updateServerData(withUserID: userID, completion: completion)
+	}
+	
+	func removeNote(at index: Int, completion: @escaping () -> ()) {
+		guard let userID = userID else {
+			completion()
+			return
+		}
+		UserRequest.shared.userData?.notes.remove(at: index)
+		updateServerData(withUserID: userID, completion: completion)
+	}
+	
+	private func updateServerData(withUserID userID: String, completion: @escaping () -> ()) {
 		let dataBase = Firestore.firestore()
 		let documentReference = dataBase.collection("users").document(userID)
 		if let encodedData = try? JSONEncoder().encode(UserRequest.shared.userData) {
@@ -58,10 +75,30 @@ final class UserRequest: DailyUserNetworkRequest {
 				documentReference.setData(firestoreEncodedData, merge: true)
 			}
 		}
-		
 		completion()
 	}
 	
+	private func getLatestUserData(completion: @escaping (CurrentUser?) -> ()) {
+		guard let userID = userID  else {
+			completion(nil)
+			return
+		}
+		let dataBase = Firestore.firestore()
+		let documentReference = dataBase.collection("users").document(userID)
+		documentReference.getDocument() { result, error in
+			guard error == nil, let data = try? JSONSerialization.data(withJSONObject: result?.data() as Any) else {
+				completion(nil)
+				return
+			}
+			
+			guard let userNewData = try? JSONDecoder().decode(CurrentUser.self, from: data) else {
+				completion(nil)
+				return
+			}
+			self.userData = userNewData
+			completion(self.userData)
+		}
+	}
 	
 	private func getUserReference(with id: String) -> Query {
 		let dataBase = Firestore.firestore()

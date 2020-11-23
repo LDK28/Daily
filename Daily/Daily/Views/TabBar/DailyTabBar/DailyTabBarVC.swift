@@ -38,7 +38,13 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 		plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(didTapPlusButton), name: Notification.Name("Close Overlay"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didTapAddNoteButton), name: Notification.Name("New note"), object: nil)
 
+	}
+	
+	@objc func didTapAddNoteButton() {
+		didTapPlusButton()
+		didTapNewNoteButton()
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {

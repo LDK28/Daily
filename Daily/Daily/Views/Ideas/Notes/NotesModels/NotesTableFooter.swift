@@ -11,6 +11,10 @@ import UIKit
 class AddNewNoteFooterView: UIView {
 	private let addButton = UIButton(type: .system)
 	
+	@objc func didTapAddNewNoteButton() {
+		NotificationCenter.default.post(name: Notification.Name("New note"), object: nil)
+	}
+	
 	init() {
 		super.init(frame: .zero)
 		addButton.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +25,8 @@ class AddNewNoteFooterView: UIView {
 			, for: .normal)
 		addButton.setTitle("Add new note", for: .normal)
 		addButton.setTitleColor(.dailyTextColor, for: .normal)
+		addButton.addTarget(self, action: #selector(didTapAddNewNoteButton), for: .touchUpInside)
+		
 		addSubview(addButton)
 		NSLayoutConstraint.activate([
 			addButton.topAnchor.constraint(equalTo: topAnchor, constant: 5),

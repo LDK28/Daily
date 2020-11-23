@@ -78,9 +78,7 @@ extension NotesVC: NotesDisplayLogic {
 
 extension NotesVC: TripletButtonDelegate {
 	func tappedTripletButton(_ sender: UIButton) {
-		let point = sender.convert(CGPoint.zero, to: tableView)
-		guard let indexPath = tableView.indexPathForRow(at: point) else { return }
-		interactor?.didTapTripletButton(at: indexPath)
+		
 	}
 }
 
