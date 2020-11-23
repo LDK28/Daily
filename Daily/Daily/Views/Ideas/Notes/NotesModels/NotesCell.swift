@@ -32,12 +32,16 @@ class NotesCell: UITableViewCell {
 	@objc func tappedTripletButton() {
 		delegate?.tappedTripletButton(tripletButton)
 	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		contentView.layer.cornerRadius = 5
+	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		backgroundColor = .dailyNoteTileColor
 		layer.cornerRadius = 5
-		
 		let selectedView = UIView()
 		selectedView.backgroundColor = backgroundColor
 		selectedBackgroundView = selectedView
@@ -79,6 +83,7 @@ class NotesCell: UITableViewCell {
 		
 		
 		containerView.translatesAutoresizingMaskIntoConstraints = false
+		containerView.clipsToBounds = true
 		
 		[
 			tripletButton,
@@ -89,13 +94,13 @@ class NotesCell: UITableViewCell {
 			self.containerView.addSubview($0)
 		})
 		
-		contentView.addSubview(containerView)
+		addSubview(containerView)
 		
 		NSLayoutConstraint.activate([
-			containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-			containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-			containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
-			containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
+			containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+			containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+			containerView.topAnchor.constraint(equalTo: topAnchor),
+			containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25),
 			
 			tripletButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
 			tripletButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
