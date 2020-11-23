@@ -35,13 +35,14 @@ class NotesCell: UITableViewCell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		contentView.layer.cornerRadius = 5
+		containerView.layer.cornerRadius = 5
 	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		backgroundColor = .dailyNoteTileColor
-		layer.cornerRadius = 5
+		backgroundColor = .clear
+		containerView.backgroundColor = .dailyNoteTileColor
+
 		let selectedView = UIView()
 		selectedView.backgroundColor = backgroundColor
 		selectedBackgroundView = selectedView
@@ -94,13 +95,13 @@ class NotesCell: UITableViewCell {
 			self.containerView.addSubview($0)
 		})
 		
-		addSubview(containerView)
+		contentView.addSubview(containerView)
 		
 		NSLayoutConstraint.activate([
-			containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-			containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-			containerView.topAnchor.constraint(equalTo: topAnchor),
-			containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25),
+			containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+			containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+			containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
 			
 			tripletButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
 			tripletButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
@@ -112,7 +113,7 @@ class NotesCell: UITableViewCell {
 			addToDiaryButton.widthAnchor.constraint(equalTo: tripletButton.widthAnchor),
 			addToDiaryButton.heightAnchor.constraint(equalTo: tripletButton.heightAnchor),
 			
-			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
 			titleLabel.trailingAnchor.constraint(equalTo: addToDiaryButton.leadingAnchor, constant: -40),
 			titleLabel.topAnchor.constraint(equalTo: tripletButton.topAnchor),
 			
