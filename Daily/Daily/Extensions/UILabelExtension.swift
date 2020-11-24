@@ -8,13 +8,16 @@
 import UIKit
 
 extension UILabel {
-	func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor) {
+    func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1, backgroundColor: UIColor = .clear, cornerRadius: Int = 0) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
 		self.text = text
 		self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
 		self.textColor = textColor
+        self.backgroundColor = backgroundColor
+        self.layer.cornerRadius = CGFloat(cornerRadius)
 	}
     
     func styleLabelWithMutableAttributedString(text: NSMutableAttributedString, textAlignment: NSTextAlignment = .center) {
