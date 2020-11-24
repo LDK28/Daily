@@ -24,7 +24,8 @@ extension IdeasPresenter: IdeasPresentationLogic {
                     cell.viewModel = cellViewModel
                     viewController?.cellsToDisplay.append(cell)
                 }
+                
             }
             viewController?.display()
-        }
+    }
 }

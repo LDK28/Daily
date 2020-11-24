@@ -12,11 +12,11 @@ class MainTableVC: UITableViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.isTranslucent = false
-        //navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
+        navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
         navigationController?.navigationBar.tintColor = .dailyTextColor
         navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 
-        //tableView.backgroundColor = .dailyMainBackgroundColor
+        tableView.backgroundColor = .dailyMainBackgroundColor
         tableView.tableFooterView = UIView()
     }
     

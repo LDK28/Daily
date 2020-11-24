@@ -12,12 +12,14 @@ class TitleView: UIView {
     
     init(title: String) {
         super.init(frame: .zero)
+        
         if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
             titleLabel.styleLabel(font: headerLabelFont, text: title, textAlignment: .center, textColor: .dailyTitleTextColor)
             titleLabel.addShadow()
         }
         
         addSubview(titleLabel)
+        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),

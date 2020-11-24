@@ -14,10 +14,13 @@ class IdeasCell: UITableViewCell {
     let titleLabel = UILabel()
     let labelBackgroundView = UIView()
     
+    var hasStatistics = false
+    
     var viewModel: IdeasCellViewModel? {
             didSet {
                 guard let viewModel = viewModel else { return }
                 titleLabel.text = viewModel.title
+                hasStatistics = viewModel.hasStatistics
             }
     }
     
@@ -33,6 +36,31 @@ class IdeasCell: UITableViewCell {
         styleCell()
         styleLabelBackgroundView()
         styleTitleLabel()
+        
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            return
+        }
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            
+            labelBackgroundView.backgroundColor = .systemGray5
+        }
+        
+//        else {
+//            labelBackgroundView.backgroundColor = .dailyDiaryTileColor
+//        }
+        
+//        guard isSelected != selected else {
+//                return
+//            }
+//            if animated {}
         
     }
 
@@ -70,5 +98,9 @@ class IdeasCell: UITableViewCell {
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 30) {
             titleLabel.styleLabel(font: labelFont, text: titleLabel.text ?? "", textAlignment: .left)
         }
+    }
+    
+    func setAnimation() {
+        
     }
 }
