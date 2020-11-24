@@ -23,6 +23,10 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		super.loadView()
 		configureTableView()
 		configureTrashIcon()
+		
+		let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+		longPressRecognizer.minimumPressDuration = 0.5
+		tableView.addGestureRecognizer(longPressRecognizer)
 	}
   
 	override func viewDidLoad() {
@@ -32,6 +36,14 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		interactor?.fetchCells()
+	}
+	
+	@objc func longPressed(sender: UILongPressGestureRecognizer) {
+		let locationInView = sender.location(in: tableView)
+		let indexPath = tableView.indexPathForRow(at: locationInView)
+		cellsToDisplay[indexPath?.row ?? 0].containerView.layer.borderColor = UIColor.blue.cgColor
+		cellsToDisplay[indexPath?.row ?? 0].containerView.layer.borderWidth = 4
+		trashIcon.isHidden = false
 	}
 }
 
