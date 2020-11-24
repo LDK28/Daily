@@ -17,6 +17,10 @@ protocol NotesDisplayLogic: AnyObject {
 protocol NotesBusinessLogic {
 	func fetchCells()
 	func didTapTripletButton(at indexPath: IndexPath)
+	
+	//MARK: Drag and Drop
+	func canHandle(_ session: UIDropSession) -> Bool
+	func dragItems(for indexPath: IndexPath) -> [UIDragItem]
 }
 
 protocol NotesDataStore: AnyObject {

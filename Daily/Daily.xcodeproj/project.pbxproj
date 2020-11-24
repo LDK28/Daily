@@ -42,6 +42,8 @@
 		215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */; };
 		217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */; };
 		218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DD5C925580ADB00C9EEBB /* DailyCellType.swift */; };
+		21A2979B256D09810013255D /* NotesDragDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2979A256D09810013255D /* NotesDragDelegate.swift */; };
+		21A297A0256D098F0013255D /* NoteDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2979F256D098F0013255D /* NoteDropDelegate.swift */; };
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderView.swift */; };
@@ -159,6 +161,8 @@
 		215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateAndDatePickerCells.swift; sourceTree = "<group>"; };
 		217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAbstractCells.swift; sourceTree = "<group>"; };
 		218DD5C925580ADB00C9EEBB /* DailyCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellType.swift; sourceTree = "<group>"; };
+		21A2979A256D09810013255D /* NotesDragDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDragDelegate.swift; sourceTree = "<group>"; };
+		21A2979F256D098F0013255D /* NoteDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDropDelegate.swift; sourceTree = "<group>"; };
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -338,6 +342,16 @@
 				215615E82543449E005AB2DF /* Buttons */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		21A29799256D09670013255D /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				21EA5B412567073700F87D18 /* NotesVC.swift */,
+				21A2979A256D09810013255D /* NotesDragDelegate.swift */,
+				21A2979F256D098F0013255D /* NoteDropDelegate.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		21BF82C82557E604001614EE /* DailyCells */ = {
@@ -570,7 +584,7 @@
 				21544E2D2569255F00F9A50C /* NotesModels */,
 				21EA5B3F2567073700F87D18 /* NotesProtocols.swift */,
 				21EA5B422567073700F87D18 /* NotesConfigurator.swift */,
-				21EA5B412567073700F87D18 /* NotesVC.swift */,
+				21A29799256D09670013255D /* View Controller */,
 				21EA5B402567073700F87D18 /* NotesInteractor.swift */,
 				21EA5B3D2567073700F87D18 /* NotesPresenter.swift */,
 				21EA5B3E2567073700F87D18 /* NotesRouter.swift */,
@@ -821,6 +835,7 @@
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
+				21A297A0256D098F0013255D /* NoteDropDelegate.swift in Sources */,
 				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
@@ -831,6 +846,7 @@
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				218DD5CA25580ADB00C9EEBB /* DailyCellType.swift in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
+				21A2979B256D09810013255D /* NotesDragDelegate.swift in Sources */,
 				21D7BD74256A93BF008BD30C /* DailyTabBarPresenter.swift in Sources */,
 				21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,

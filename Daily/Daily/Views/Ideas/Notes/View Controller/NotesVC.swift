@@ -14,6 +14,9 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	
 	var cellsToDisplay: [NotesCell] = []
 	
+	var dragInitialIndexPath: IndexPath?
+	var dragCellSnapshot: UIView?
+	
 	override func loadView() {
 		super.loadView()
 		configureTableView()
@@ -24,7 +27,6 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized))
 		longpress.minimumPressDuration = 0.5
 		tableView.addGestureRecognizer(longpress)
-		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -82,12 +84,7 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 			else {
 				return
 			}
-			
-			let tableHeaderHeight = tableView.tableHeaderView?.frame.size.height ?? 0
-			
-			if locationInView.y > self.tableView.frame.origin.y + tableHeaderHeight + 5  {
-				snapShot.center.y = locationInView.y
-			}
+			snapShot.center = locationInView
 			
 			guard
 				indexPath != InitialPath.initialIndexPath
@@ -124,7 +121,7 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 			return
 		}
 	}
-	
+		
 	@objc func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
 		firstThing(gestureRecognizer)
 	}
@@ -139,7 +136,35 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		cellSnapshot.layer.masksToBounds = false
 		return cellSnapshot
 	}
-  
+}
+
+extension NotesVC: NotesDisplayLogic {
+	func delete(at indexPath: IndexPath) {
+		tableView.beginUpdates()
+		tableView.deleteRows(at: [indexPath], with: .fade)
+		tableView.endUpdates()
+	}
+	
+	func insert(at: IndexPath) {
+		tableView.beginUpdates()
+		tableView.insertSections(IndexSet(at), with: .automatic)
+		tableView.endUpdates()
+	}
+	
+	func finishDisplayingCells() {
+		DispatchQueue.main.async {
+			for cell in self.cellsToDisplay {
+				cell.delegate = self
+			}
+			self.tableView.reloadData()
+		}
+	}
+}
+
+extension NotesVC: TripletButtonDelegate {
+	func tappedTripletButton(_ sender: UIButton) {
+		
+	}
 }
 
 extension NotesVC {
@@ -179,46 +204,20 @@ extension NotesVC {
 	}
 }
 
-extension NotesVC: NotesDisplayLogic {
-	func delete(at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		tableView.deleteRows(at: [indexPath], with: .fade)
-		tableView.endUpdates()
-	}
-	
-	func insert(at: IndexPath) {
-		tableView.beginUpdates()
-		tableView.insertSections(IndexSet(at), with: .automatic)
-		tableView.endUpdates()
-	}
-	
-	func finishDisplayingCells() {
-		DispatchQueue.main.async {
-			for cell in self.cellsToDisplay {
-				cell.delegate = self
-			}
-			self.tableView.reloadData()
-		}
-	}
-}
-
-extension NotesVC: TripletButtonDelegate {
-	func tappedTripletButton(_ sender: UIButton) {
-		
-	}
-}
-
 extension NotesVC {
 	private func configureTableView() {
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.separatorStyle = .none
+		//tableView.dragDelegate = self
+		//tableView.dropDelegate = self
+		//tableView.dragInteractionEnabled = true
 		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.separatorStyle = .none
 		tableView.scrollsToTop = true
 		tableView.alwaysBounceVertical = false
-		
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
+		
 		let titleView = TitleView(title: "Notes")
 		titleView.frame.size.height = 100
 		
