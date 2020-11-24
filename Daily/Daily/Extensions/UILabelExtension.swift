@@ -17,7 +17,8 @@ extension UILabel {
         self.numberOfLines = numberOfLines
 		self.textColor = textColor
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = CGFloat(cornerRadius)
+        layer.masksToBounds = true
+        layer.cornerRadius = CGFloat(cornerRadius)
 	}
     
     func styleLabelWithMutableAttributedString(text: NSMutableAttributedString, textAlignment: NSTextAlignment = .center) {
