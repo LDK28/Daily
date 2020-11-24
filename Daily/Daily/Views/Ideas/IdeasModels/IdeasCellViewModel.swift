@@ -13,9 +13,14 @@ struct IdeasCellViewModel {
     var doneProjects: Int?
     var missedProjects: Int?
     
-    init(title: String, hasStatistics: Bool = false, doneProjects: Int? = nil, missedProjects: Int? = nil) {
+    init(title: String) {
         self.title = title
-        self.hasStatistics = hasStatistics
+        self.hasStatistics = false
+    }
+    
+    init(title: String, doneProjects: Int? = 0, missedProjects: Int? = 0) {
+        self.title = title
+        self.hasStatistics = true
         self.doneProjects = doneProjects
         self.missedProjects = missedProjects
     }

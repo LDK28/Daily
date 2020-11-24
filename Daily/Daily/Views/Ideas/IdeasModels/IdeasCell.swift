@@ -19,6 +19,9 @@ class IdeasCell: UITableViewCell {
     let doneProjectsLabel = UILabel()
     let missedProjectsLabel = UILabel()
     
+    let doneProjects: Int = 2
+    let missedProjects: Int = 1
+    
     var viewModel: IdeasCellViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -93,8 +96,10 @@ class IdeasCell: UITableViewCell {
             doneProjectsLabel.widthAnchor.constraint(equalTo: doneProjectsLabel.heightAnchor)
         ])
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 13) {
-            missedProjectsLabel.styleLabel(font: labelFont, text: "1", textColor: .white, backgroundColor: .systemRed, cornerRadius: statisticsLabelSize / 2)
-            doneProjectsLabel.styleLabel(font: labelFont, text: "1", textColor: .white, backgroundColor: .systemGreen, cornerRadius: statisticsLabelSize / 2)
+            missedProjectsLabel.styleLabel(font: labelFont, text: String(missedProjects), textColor: .white,
+                                           backgroundColor: .systemRed, cornerRadius: statisticsLabelSize / 2)
+            doneProjectsLabel.styleLabel(font: labelFont, text: String(doneProjects), textColor: .white,
+                                         backgroundColor: .systemGreen, cornerRadius: statisticsLabelSize / 2)
             
         }
     }
