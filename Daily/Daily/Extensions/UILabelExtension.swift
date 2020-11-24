@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1, backgroundColor: UIColor = .clear, cornerRadius: Int = 0) {
+    func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1, backgroundColor: UIColor = .clear, cornerRadius: CGFloat = 0) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
@@ -19,7 +19,7 @@ extension UILabel {
         self.backgroundColor = backgroundColor
         if backgroundColor != .clear {
             layer.masksToBounds = true
-            layer.cornerRadius = CGFloat(cornerRadius)
+            layer.cornerRadius = cornerRadius
         }
 	}
     
