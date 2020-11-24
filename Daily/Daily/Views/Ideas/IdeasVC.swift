@@ -69,12 +69,6 @@ extension IdeasVC {
         return cellsToDisplay[indexPath.row]
         
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        tableView.cellForRow(at: indexPath)?.setHighlighted(true, animated: true)
-    }
  
 }
 

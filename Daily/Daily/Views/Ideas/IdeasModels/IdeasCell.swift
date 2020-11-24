@@ -16,12 +16,17 @@ class IdeasCell: UITableViewCell {
     
     var hasStatistics = false
     
+    let doneProjectsLabel = UILabel()
+    let missedProjectsLabel = UILabel()
+    
     var viewModel: IdeasCellViewModel? {
-            didSet {
-                guard let viewModel = viewModel else { return }
-                titleLabel.text = viewModel.title
-                hasStatistics = viewModel.hasStatistics
+        didSet {
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.title
+            if viewModel.hasStatistics {
+                configureStatisticsLabels()
             }
+        }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -71,6 +76,27 @@ class IdeasCell: UITableViewCell {
             titleLabel.centerYAnchor.constraint(equalTo: labelBackgroundView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: labelBackgroundView.leadingAnchor, constant: 30)
         ])
+    }
+    
+    func configureStatisticsLabels() {
+        labelBackgroundView.addSubview(missedProjectsLabel)
+        labelBackgroundView.addSubview(doneProjectsLabel)
+        let statisticsLabelSize: CGFloat = 25
+        NSLayoutConstraint.activate([
+            missedProjectsLabel.centerYAnchor.constraint(equalTo: labelBackgroundView.centerYAnchor),
+            missedProjectsLabel.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -30),
+            missedProjectsLabel.heightAnchor.constraint(equalToConstant: statisticsLabelSize),
+            missedProjectsLabel.widthAnchor.constraint(equalTo: missedProjectsLabel.heightAnchor),
+            doneProjectsLabel.centerYAnchor.constraint(equalTo: missedProjectsLabel.centerYAnchor),
+            doneProjectsLabel.trailingAnchor.constraint(equalTo: missedProjectsLabel.leadingAnchor, constant: -10),
+            doneProjectsLabel.heightAnchor.constraint(equalTo: missedProjectsLabel.heightAnchor),
+            doneProjectsLabel.widthAnchor.constraint(equalTo: doneProjectsLabel.heightAnchor)
+        ])
+        if let labelFont = UIFont(name: "Stolzl-Regular", size: 13) {
+            missedProjectsLabel.styleLabel(font: labelFont, text: "1", textColor: .white, backgroundColor: .systemRed, cornerRadius: statisticsLabelSize / 2)
+            doneProjectsLabel.styleLabel(font: labelFont, text: "1", textColor: .white, backgroundColor: .systemGreen, cornerRadius: statisticsLabelSize / 2)
+            
+        }
     }
     
     func styleCell() {

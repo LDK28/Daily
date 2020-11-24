@@ -10,7 +10,7 @@ import UIKit
 class IdeasModule {
     static func build() -> IdeasVC {
         
-        let dataSource = [IdeasCellViewModel(title: "Notes", hasStatistics: false), IdeasCellViewModel(title: "Projects", hasStatistics: true)]
+        let dataSource = [IdeasCellViewModel(title: "Notes"), IdeasCellViewModel(title: "Projects", hasStatistics: true)]
         
         let viewController = IdeasVC()
         let presenter = IdeasPresenter(viewController: viewController)
