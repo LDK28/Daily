@@ -15,7 +15,6 @@ class MainTableVC: UITableViewController {
 		navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
 		navigationController?.navigationBar.tintColor = .dailyTextColor
 		navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-		
 		tableView.backgroundColor = .dailyMainBackgroundColor
 	}
 	
