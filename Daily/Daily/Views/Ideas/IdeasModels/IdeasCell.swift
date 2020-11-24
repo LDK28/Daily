@@ -39,29 +39,17 @@ class IdeasCell: UITableViewCell {
         
     }
 
-//    override var isHighlighted: Bool {
-//        didSet {
-//            return
-//        }
-//    }
-
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
-//
-//        if highlighted {
-//            labelBackgroundView.backgroundColor = .systemGray5
-//        }
-//
-//        else {
-//            labelBackgroundView.backgroundColor = .dailyDiaryTileColor
-//        }
-//
-        guard isHighlighted != highlighted else {
-            return
+
+        if highlighted {
+            labelBackgroundView.backgroundColor = .dailyIdeasTileColor
         }
-        if animated {
-            labelBackgroundView.backgroundColor = .systemGray5
+
+        else {
+            labelBackgroundView.backgroundColor = .dailyDiaryTileColor
         }
+
     }
 
     required init?(coder: NSCoder) {
@@ -100,18 +88,4 @@ class IdeasCell: UITableViewCell {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        setHighlighted(true, animated: true)
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        setHighlighted(false, animated: true)
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        setHighlighted(false, animated: true)
-    }
 }
