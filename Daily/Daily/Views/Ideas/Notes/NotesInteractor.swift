@@ -26,11 +26,17 @@ extension NotesInteractor: NotesBusinessLogic {
 	}
 	
 	func fetchCells() {
-		UserRequest.shared.getNotes() { cellViewModels in
-			self.dataSource = cellViewModels
+		UserRequest.shared.getNotes() { notes in
+			self.dataSource = notes
 			self.presenter?.present(notesCells: self.dataSource)
 		}
 	}
+	
+	func moveRowAt(sourceRow: Int, destinationRow: Int) {
+		dataSource.insert(dataSource.remove(at: sourceRow), at: destinationRow)
+		UserRequest.shared.update(notes: dataSource, completion: nil)
+	}
+	
 }
 
 extension NotesDataStore {

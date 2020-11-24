@@ -24,9 +24,9 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
   
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized))
-		longpress.minimumPressDuration = 0.5
-		tableView.addGestureRecognizer(longpress)
+//		let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureRecognized))
+//		longpress.minimumPressDuration = 0.5
+//		tableView.addGestureRecognizer(longpress)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -198,19 +198,19 @@ extension NotesVC {
 	}
 
 	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		let movedObject = cellsToDisplay[sourceIndexPath.row]
-		cellsToDisplay.remove(at: sourceIndexPath.row)
-		cellsToDisplay.insert(movedObject, at: destinationIndexPath.row)
+		interactor?.moveRowAt(sourceRow: sourceIndexPath.row, destinationRow: destinationIndexPath.row)
+		cellsToDisplay.insert(cellsToDisplay.remove(at: sourceIndexPath.row), at: destinationIndexPath.row)
 	}
+	
 }
 
 extension NotesVC {
 	private func configureTableView() {
 		tableView.delegate = self
 		tableView.dataSource = self
-		//tableView.dragDelegate = self
-		//tableView.dropDelegate = self
-		//tableView.dragInteractionEnabled = true
+		tableView.dragDelegate = self
+		tableView.dropDelegate = self
+		tableView.dragInteractionEnabled = true
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.separatorStyle = .none
 		tableView.scrollsToTop = true

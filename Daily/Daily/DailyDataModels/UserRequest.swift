@@ -15,13 +15,14 @@ protocol DailyUserNetworkRequest {
 	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ())
 	func add(note: NotesCellViewModel, completion: @escaping () -> ())
 	func removeNote(at index: Int, completion: @escaping () -> ())
+	func update(notes: [NotesCellViewModel], completion: (() -> ())?) 
 }
 
 final class UserRequest: DailyUserNetworkRequest {
 	static var shared: DailyUserNetworkRequest = UserRequest()
 	private var userID: String?
 	
-	var userData: CurrentUser?
+	internal var userData: CurrentUser?
 	
 	func loadUserData(completion: @escaping (Bool) -> ()) {
 		guard
@@ -73,6 +74,19 @@ final class UserRequest: DailyUserNetworkRequest {
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	
+	func update(notes: [NotesCellViewModel], completion: (() -> ())?) {
+		guard
+			let userID = userID,
+			UserRequest.shared.userData != nil
+		else {
+			completion?()
+			return
+		}
+		
+		UserRequest.shared.userData?.notes = notes
+		updateServerData(withUserID: userID, completion: completion)
+	}
+	
 	func removeNote(at index: Int, completion: @escaping () -> ()) {
 		guard
 			let userID = userID,
@@ -90,7 +104,7 @@ final class UserRequest: DailyUserNetworkRequest {
 
 //MARK: - Calls to dataBase (private!)
 extension UserRequest {
-	private func updateServerData(withUserID userID: String, completion: @escaping () -> ()) {
+	private func updateServerData(withUserID userID: String, completion: (() -> ())?) {
 		let dataBase = Firestore.firestore()
 		let documentReference = dataBase.collection("users").document(userID)
 		if let encodedData = try? JSONEncoder().encode(UserRequest.shared.userData) {
@@ -98,7 +112,7 @@ extension UserRequest {
 				documentReference.setData(firestoreEncodedData, merge: true)
 			}
 		}
-		completion()
+		completion?()
 	}
 	
 	private func getLatestUserData(completion: @escaping (CurrentUser?) -> ()) {

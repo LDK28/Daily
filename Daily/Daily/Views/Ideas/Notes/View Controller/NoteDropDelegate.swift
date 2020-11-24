@@ -14,15 +14,11 @@ extension NotesVC: UITableViewDropDelegate {
 	}
 
 	func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-		var dropProposal = UITableViewDropProposal(operation: .cancel)
-		
-		guard session.items.count == 1 else { return dropProposal }
-		
-		if tableView.hasActiveDrag {
-			dropProposal = UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+		if session.localDragSession != nil { // Drag originated from the same app.
+			return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
 		}
 
-		return dropProposal
+		return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
 	}
 	
 	func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
