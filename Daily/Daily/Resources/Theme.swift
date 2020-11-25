@@ -70,7 +70,6 @@ extension UIColor {
 	
 	static var dailyRecentActionsTextColor = UIColor("0B3954", alpha: 0.6)
 	
-	//static var dailyRecentActionsPadColor = LinearGradient
 	
 	static var dailyProjectTileColor: UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))
@@ -80,7 +79,10 @@ extension UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.05), dark: UIColor("82C1DF", alpha: 0.1))
 	}
 	
-	static var dailyNoteTileColor = dailyProjectTaskTileColor
+	static var dailyUnpinnedNoteTileColor = dailyProjectTaskTileColor
+	static var dailyPinnedNoteTileColor: UIColor {
+		colorForTheme(light: UIColor("0B3954", alpha: 0.2), dark: UIColor("82C1DF", alpha: 0.3))
+	}
 	
 	static var dailyFoldUnfoldTileColor: UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.25), dark: UIColor("82C1DF", alpha: 0.25))

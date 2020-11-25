@@ -102,7 +102,10 @@ class SignupVC: MainVC {
 							],
 							"email": email,
 							"password": password,
-							"notes": [NotesCellViewModel]()
+							"notes": [
+								"pinnedNotes": [NotesCellViewModel](),
+								"unpinnedNotes": [NotesCellViewModel]()
+							]
 						]
 					) { savingUserError in
 						if savingUserError != nil {
@@ -186,9 +189,7 @@ class SignupVC: MainVC {
 	
 	
 	func transitionToHome() {
-		let vc = DailyTabBarVC()
-		vc.modalPresentationStyle = .fullScreen
-		present(vc, animated: true, completion: nil)
+		dismiss(animated: true, completion: nil)
 	}
 	
 }

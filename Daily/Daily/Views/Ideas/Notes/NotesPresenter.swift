@@ -31,14 +31,22 @@ extension NotesPresenter: NotesPresentationLogic {
 	}
 
 	
-	func present(notesCells: [NotesCellViewModel]) {
+	func present(notesCells: NotesDataSource) {
 		viewController?.cellsToDisplay.removeAll()
-		for cellViewModel in notesCells {
-			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as?  NotesCell{
-				cell.viewModel = cellViewModel
+		for pinnedCellViewModel in notesCells.pinnedNotes {
+			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
+				cell.viewModel = pinnedCellViewModel
 				viewController?.cellsToDisplay.append(cell)
 			}
 		}
+		
+		for unpinnedCellViewModel in notesCells.unpinnedNotes {
+			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
+				cell.viewModel = unpinnedCellViewModel
+				viewController?.cellsToDisplay.append(cell)
+			}
+		}
+		
 		viewController?.finishDisplayingCells()
 	}
 }

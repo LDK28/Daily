@@ -12,7 +12,7 @@ import FirebaseAuth
 protocol DailyUserNetworkRequest {
 	var userData: CurrentUser? { get set }
 	func loadUserData(completion: @escaping (Bool) -> ())
-	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ())
+	func getNotes(completion: @escaping (NotesDataSource?) -> ())
 	func add(note: NotesCellViewModel, completion: @escaping () -> ())
 	func removeNote(at index: Int, completion: @escaping () -> ())
 	func update(notes: [NotesCellViewModel], completion: (() -> ())?) 
@@ -55,9 +55,9 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 	}
 	
-	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ()) {
+	func getNotes(completion: @escaping (NotesDataSource?) -> ()) {
 		getLatestUserData() { userNewData in
-			completion(userNewData?.notes ?? [])
+			completion(userNewData?.notes)
 		}
 	}
 	
@@ -70,7 +70,7 @@ final class UserRequest: DailyUserNetworkRequest {
 			return
 		}
 		
-		UserRequest.shared.userData?.notes.append(note)
+		UserRequest.shared.userData?.notes.unpinnedNotes.insert(note, at: 0)
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	
@@ -83,7 +83,7 @@ final class UserRequest: DailyUserNetworkRequest {
 			return
 		}
 		
-		UserRequest.shared.userData?.notes = notes
+		//UserRequest.shared.userData?.notes = notes
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	
@@ -95,7 +95,7 @@ final class UserRequest: DailyUserNetworkRequest {
 			completion()
 			return
 		}
-		UserRequest.shared.userData?.notes.remove(at: index)
+		//UserRequest.shared.userData?.notes.remove(at: index)
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	

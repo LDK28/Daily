@@ -16,20 +16,14 @@ protocol NotesDisplayLogic: AnyObject {
 
 protocol NotesBusinessLogic {
 	func fetchCells()
-	func didTapTripletButton(at indexPath: IndexPath)
-	func moveRowAt(sourceRow: Int, destinationRow: Int)
-	
-	//MARK: Drag and Drop
-	func canHandle(_ session: UIDropSession) -> Bool
-	func dragItems(for indexPath: IndexPath) -> [UIDragItem]
 }
 
 protocol NotesDataStore: AnyObject {
-	var dataSource: [NotesCellViewModel] { get set }
+	var dataSource: NotesDataSource? { get set }
 }
 
 protocol NotesPresentationLogic {
-	func present(notesCells: [NotesCellViewModel])
+	func present(notesCells: NotesDataSource)
 	func updateNotesCells(with cellViewModel: NotesCellViewModel)
 	func deleteNoteCell(at indexPath: IndexPath)
 }

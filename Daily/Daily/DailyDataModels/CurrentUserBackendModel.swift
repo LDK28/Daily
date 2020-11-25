@@ -13,7 +13,7 @@ struct CurrentUser: Codable {
 	var name: Name
 	var email: String?
 	var password: String
-	var notes: [NotesCellViewModel]
+	var notes: NotesDataSource
 }
 
 struct Name: Codable {

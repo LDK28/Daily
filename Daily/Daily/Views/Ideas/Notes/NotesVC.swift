@@ -11,22 +11,45 @@ import UIKit
 class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	var interactor: NotesBusinessLogic?
 	var router: (NotesRoutingLogic & NotesDataPassing)?
-	
 	var cellsToDisplay: [NotesCell] = []
-	
 	var dragInitialIndexPath: IndexPath?
 	var dragCellSnapshot: UIView?
 	
 	private let trashIcon = UIImageView()
+	private let cancelIcon = UIImageView()
+	private let pinIcon = UIImageView()
+	private var isEditingNotes = false {
+		didSet {
+			if isEditingNotes {
+				UIView.animate(withDuration: 0.2, delay: 0.01, options: .curveEaseOut, animations: {
+					self.trashIcon.alpha = 1
+					self.cancelIcon.alpha = 1
+					self.pinIcon.alpha = 1
+					self.cancelIcon.transform = CGAffineTransform(rotationAngle: .pi)
+				})
+			} else {
+				UIView.animate(withDuration: 0.3, delay: 0.01, options: .curveEaseOut, animations: {
+					self.trashIcon.alpha = 0
+					self.cancelIcon.alpha = 0
+					self.pinIcon.alpha = 0
+					self.cancelIcon.transform = CGAffineTransform(rotationAngle: -0.01)
+				})
+			}
+		}
+	}
+	private var selectedIndexPaths: [IndexPath] = [] {
+		didSet {
+			if selectedIndexPaths.count == 0 {
+				isEditingNotes = false
+			}
+		}
+	}
 	
 	override func loadView() {
 		super.loadView()
 		configureTableView()
-		configureTrashIcon()
-		
-		let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
-		longPressRecognizer.minimumPressDuration = 0.5
-		tableView.addGestureRecognizer(longPressRecognizer)
+		configureNavigationBarItems()
+		configureLongPressGesture()
 	}
   
 	override func viewDidLoad() {
@@ -38,12 +61,10 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		interactor?.fetchCells()
 	}
 	
-	@objc func longPressed(sender: UILongPressGestureRecognizer) {
-		let locationInView = sender.location(in: tableView)
-		let indexPath = tableView.indexPathForRow(at: locationInView)
-		cellsToDisplay[indexPath?.row ?? 0].containerView.layer.borderColor = UIColor.blue.cgColor
-		cellsToDisplay[indexPath?.row ?? 0].containerView.layer.borderWidth = 4
-		trashIcon.isHidden = false
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		selectedIndexPaths.removeAll()
+		cellsToDisplay.forEach( { $0.isChosen = false })
 	}
 }
 
@@ -62,20 +83,67 @@ extension NotesVC: NotesDisplayLogic {
 	
 	func finishDisplayingCells() {
 		DispatchQueue.main.async {
-			for cell in self.cellsToDisplay {
-				cell.delegate = self
-			}
 			self.tableView.reloadData()
 		}
 	}
 }
 
-extension NotesVC: TripletButtonDelegate {
-	func tappedTripletButton(_ sender: UIButton) {
+// MARK: - Cells Selection
+
+extension NotesVC {
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if isEditingNotes {
+			cellsToDisplay[indexPath.row].isChosen.toggle()
+			if cellsToDisplay[indexPath.row].isChosen {
+				selectedIndexPaths.append(indexPath)
+			} else {
+				selectedIndexPaths.removeAll(where: { $0 == indexPath })
+			}
+		} else {
+			/* navigate to selected note view */
+		}
+	}
+	
+	private func configureNavigationBarItems() {
+		trashIcon.styleNavBarImageView(withImageName: "trash", color: .systemRed)
+		pinIcon.styleNavBarImageView(withImageName: "pinIcon")
+		navigationItem.rightBarButtonItems = [
+			UIBarButtonItem(customView: trashIcon),
+			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero, size: CGSize(width: 10, height: 30)))),
+			UIBarButtonItem(customView: pinIcon)]
 		
+		cancelIcon.styleNavBarImageView(withImageName: "cancel")
+		cancelIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelIconTapped)))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelIcon)
+	}
+	
+	@objc func cancelIconTapped() {
+		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+		cellsToDisplay.forEach( { $0.isChosen = false })
+		isEditingNotes = false
+	}
+	
+	func configureLongPressGesture() {
+		let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+		longPressRecognizer.minimumPressDuration = 0.5
+		tableView.addGestureRecognizer(longPressRecognizer)
+	}
+	
+	@objc func longPressed(sender: UILongPressGestureRecognizer) {
+		let locationInView = sender.location(in: tableView)
+		guard let indexPath = tableView.indexPathForRow(at: locationInView) else { return }
+		if sender.state == .began {
+			UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+			cellsToDisplay[indexPath.row].isChosen = true
+			selectedIndexPaths.append(indexPath)
+			isEditingNotes = true
+		}
 	}
 }
 
+
+// MARK: - Table view configuration
 extension NotesVC {
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -93,49 +161,12 @@ extension NotesVC {
 		return UIView()
 	}
 	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-	}
-	
 	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 		return .none
 	}
 
 	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
 		return false
-	}
-
-	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-		interactor?.moveRowAt(sourceRow: sourceIndexPath.row, destinationRow: destinationIndexPath.row)
-		cellsToDisplay.insert(cellsToDisplay.remove(at: sourceIndexPath.row), at: destinationIndexPath.row)
-	}
-	
-}
-
-extension NotesVC: UITableViewDragDelegate {
-	func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-		trashIcon.isHidden = false
-		return interactor?.dragItems(for: indexPath) ?? []
-	}
-	func tableView(_ tableView: UITableView, dragPreviewParametersForRowAt indexPath: IndexPath) -> UIDragPreviewParameters? {
-		let parametr = UIDragPreviewParameters()
-		parametr.visiblePath = UIBezierPath(roundedRect: cellsToDisplay[indexPath.row].containerView.frame, cornerRadius: 5)
-		parametr.backgroundColor = .clear
-		return parametr
-	}
-	func tableView(_ tableView: UITableView, dragSessionDidEnd session: UIDragSession) {
-		trashIcon.isHidden = true
-	}
-}
-
-
-extension NotesVC {
-	private func configureTrashIcon() {
-
-		trashIcon.image = UIImage(systemName: "trash.fill")?.withTintColor(UIColor.dailyAdaptiveRed.withAlphaComponent(0.5)).withRenderingMode(.alwaysOriginal)
-		trashIcon.isHidden = true
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashIcon)
 	}
 	
 	private func configureTableView() {

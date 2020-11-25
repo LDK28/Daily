@@ -7,19 +7,14 @@
 
 import UIKit
 
-protocol TripletButtonDelegate {
-	func tappedTripletButton(_ sender: UIButton)
-}
-
 class NotesCell: UITableViewCell {
 	static let cellIdentifier = "NotesCell"
 	
 	private let titleLabel = UILabel()
 	private let detailsTextView =  UILabel()
 	private let addToDiaryButton = UIButton()
-	private let tripletButton = UIButton()
+	private let pinIcon = UIImageView()
 	private(set) var containerView = UIView()
-	var delegate: TripletButtonDelegate?
 	
 	var viewModel: NotesCellViewModel? {
 		didSet {
@@ -29,8 +24,22 @@ class NotesCell: UITableViewCell {
 		}
 	}
 	
-	@objc func tappedTripletButton() {
-		delegate?.tappedTripletButton(tripletButton)
+	var isPinned: Bool = false {
+		didSet {
+			if isPinned {
+				containerView.backgroundColor = .dailyPinnedNoteTileColor
+				pinIcon.isHidden = false
+			} else {
+				containerView.backgroundColor = .dailyUnpinnedNoteTileColor
+				pinIcon.isHidden = true
+			}
+		}
+	}
+	
+	var isChosen: Bool = false {
+		didSet {
+			containerView.layer.borderWidth = isChosen ? 2 : 0
+		}
 	}
 	
 	override func layoutSubviews() {
@@ -40,38 +49,37 @@ class NotesCell: UITableViewCell {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		containerView.backgroundColor = .dailyUnpinnedNoteTileColor
+		containerView.layer.borderColor = UIColor.dailyTextColor.withAlphaComponent(0.8).cgColor
 		backgroundColor = .clear
-		containerView.backgroundColor = .dailyNoteTileColor
 
 		let selectedView = UIView()
 		selectedView.backgroundColor = backgroundColor
 		selectedBackgroundView = selectedView
 		
 		addToDiaryButton.translatesAutoresizingMaskIntoConstraints = false
+		addToDiaryButton.contentMode = .scaleAspectFill
 		if let addToDiaryImage =
 			UIImage(systemName: "calendar.badge.clock")?
 				.withTintColor(UIColor.dailyTextColor
 				.withAlphaComponent(0.5))
+				.withConfiguration(UIImage.SymbolConfiguration(pointSize: 18))
 				.withRenderingMode(.alwaysOriginal) {
 			addToDiaryButton.setImage(addToDiaryImage, for: .normal)
 		}
 		
-		tripletButton.translatesAutoresizingMaskIntoConstraints = false
-		tripletButton.addTarget(self, action: #selector(tappedTripletButton), for: .touchUpInside)
-		if let tripletImage =
-			UIImage(systemName: "ellipsis")?
-				.withTintColor(.dailyTextColor)
-				.withRenderingMode(.alwaysOriginal)
-				.withConfiguration(UIImage.SymbolConfiguration(pointSize: 24)) {
-			tripletButton.setImage(tripletImage, for: .normal)
-		}
+		pinIcon.translatesAutoresizingMaskIntoConstraints = false
+		pinIcon.isHidden = true
+		pinIcon.contentMode = .scaleAspectFit
+		pinIcon.image = UIImage(named: "pinIcon")?.withTintColor(.dailyTextColor).withRenderingMode(.alwaysOriginal)
+		
 		
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Regular", size: 18),
 							  text: nil,
 							  textAlignment: .justified,
 							  textColor: .dailyTextColor,
 							  numberOfLines: 2)
-	
+		
 		detailsTextView.styleLabel(font: UIFont(name: "Stolzl-Book", size: 14),
 								   text: nil,
 								   textAlignment: .justified,
@@ -83,7 +91,7 @@ class NotesCell: UITableViewCell {
 		containerView.clipsToBounds = true
 		
 		[
-			tripletButton,
+			pinIcon,
 			addToDiaryButton,
 			titleLabel,
 			detailsTextView
@@ -99,24 +107,26 @@ class NotesCell: UITableViewCell {
 			containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12.5),
 			containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12.5),
 			
-			tripletButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
-			tripletButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 15),
-			tripletButton.widthAnchor.constraint(equalToConstant: 30),
-			tripletButton.heightAnchor.constraint(equalTo: tripletButton.widthAnchor),
+			addToDiaryButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+			addToDiaryButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+			addToDiaryButton.widthAnchor.constraint(equalToConstant: 30),
+			addToDiaryButton.heightAnchor.constraint(equalTo: addToDiaryButton.widthAnchor),
 			
-			addToDiaryButton.trailingAnchor.constraint(equalTo: tripletButton.leadingAnchor, constant: -10),
-			addToDiaryButton.topAnchor.constraint(equalTo: tripletButton.topAnchor),
-			addToDiaryButton.widthAnchor.constraint(equalTo: tripletButton.widthAnchor),
-			addToDiaryButton.heightAnchor.constraint(equalTo: tripletButton.heightAnchor),
+			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 15),
+			titleLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 2 / 3),
+			titleLabel.topAnchor.constraint(equalTo: addToDiaryButton.topAnchor),
 			
-			titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-			titleLabel.trailingAnchor.constraint(equalTo: addToDiaryButton.leadingAnchor, constant: -40),
-			titleLabel.topAnchor.constraint(equalTo: tripletButton.topAnchor),
-			
-			detailsTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+			detailsTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
 			detailsTextView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -25),
 			detailsTextView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-			detailsTextView.trailingAnchor.constraint(equalTo: tripletButton.trailingAnchor)
+			detailsTextView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3 / 4),
+			//detailsTextView.trailingAnchor.constraint(equalTo: pinIcon.leadingAnchor, constant: -20),
+			
+			pinIcon.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15),
+			pinIcon.centerXAnchor.constraint(equalTo: addToDiaryButton.centerXAnchor),
+			//pinIcon.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+			pinIcon.widthAnchor.constraint(equalToConstant: 20),
+			pinIcon.heightAnchor.constraint(equalTo: pinIcon.widthAnchor)
 		])
 	}
 	
