@@ -61,8 +61,8 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		interactor?.fetchCells()
 	}
 	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
 		selectedIndexPaths.removeAll()
 		cellsToDisplay.forEach( { $0.isChosen = false })
 	}
@@ -162,12 +162,18 @@ extension NotesVC {
 	
 	@objc func longPressed(sender: UILongPressGestureRecognizer) {
 		let locationInView = sender.location(in: tableView)
-		guard let indexPath = tableView.indexPathForRow(at: locationInView) else { return }
-		if sender.state == .began {
-			UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-			cellsToDisplay[indexPath.row].isChosen = true
-			selectedIndexPaths.append(indexPath)
-			isEditingNotes = true
+		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+		guard
+			let indexPath = tableView.indexPathForRow(at: locationInView),
+			isEditingNotes != true
+		else { return }
+		cellsToDisplay[indexPath.row].tapAnimation { [weak self] in
+			if sender.state == .began {
+				guard let self = self else { return }
+				self.cellsToDisplay[indexPath.row].isChosen = true
+				self.selectedIndexPaths.append(indexPath)
+				self.isEditingNotes = true
+			}
 		}
 	}
 }
