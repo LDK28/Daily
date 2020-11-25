@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1, backgroundColor: UIColor = .clear, cornerRadius: CGFloat = 0) {
+    func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
@@ -16,11 +16,6 @@ extension UILabel {
 		self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
 		self.textColor = textColor
-        self.backgroundColor = backgroundColor
-        if backgroundColor != .clear {
-            layer.masksToBounds = true
-            layer.cornerRadius = cornerRadius
-        }
 	}
     
     func styleLabelWithMutableAttributedString(text: NSMutableAttributedString, textAlignment: NSTextAlignment = .center) {
@@ -46,6 +41,13 @@ extension UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         self.attributedText = finalText
         self.textAlignment = textAlignment
+    }
+    
+    func styleLabelWithBackground(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1, backgroundColor: UIColor = .clear, cornerRadius: CGFloat = 0) {
+        styleLabel(font: font, text: text, textAlignment: textAlignment, textColor: textColor, numberOfLines: numberOfLines)
+        self.backgroundColor = backgroundColor
+        layer.masksToBounds = true
+        layer.cornerRadius = cornerRadius
     }
 	
 	//MARK: Overlay extensions
