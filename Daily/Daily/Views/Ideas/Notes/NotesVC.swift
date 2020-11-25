@@ -107,7 +107,9 @@ extension NotesVC {
 	
 	private func configureNavigationBarItems() {
 		trashIcon.styleNavBarImageView(withImageName: "trash", color: .systemRed)
+		trashIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(trashIconTapped)))
 		pinIcon.styleNavBarImageView(withImageName: "pinIcon")
+		pinIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinIconTapped)))
 		navigationItem.rightBarButtonItems = [
 			UIBarButtonItem(customView: trashIcon),
 			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero, size: CGSize(width: 10, height: 30)))),
@@ -121,7 +123,35 @@ extension NotesVC {
 	@objc func cancelIconTapped() {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		cellsToDisplay.forEach( { $0.isChosen = false })
-		isEditingNotes = false
+		selectedIndexPaths = []
+	}
+	
+	@objc func trashIconTapped() {
+		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+		trashIcon.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			self.selectedIndexPaths.sort(by: <)
+			for i in stride(from: self.selectedIndexPaths.count - 1, through: 0, by: -1) {
+				self.cellsToDisplay.remove(at: self.selectedIndexPaths[i].row)
+			}
+			self.tableView.beginUpdates()
+			self.tableView.deleteRows(at: self.selectedIndexPaths, with: .fade)
+			self.tableView.endUpdates()
+			self.selectedIndexPaths = []
+		}
+	}
+	
+	@objc func pinIconTapped() {
+		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+		pinIcon.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			let unpinAll = self.cellsToDisplay.filter({ $0.isPinned && $0.isChosen }).count == self.selectedIndexPaths.count ? true : false
+			self.cellsToDisplay.filter({ $0.isChosen }).forEach({
+				$0.isPinned = unpinAll ? false : true
+				$0.isChosen = false
+			})
+			self.selectedIndexPaths = []
+		}
 	}
 	
 	func configureLongPressGesture() {

@@ -62,15 +62,24 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	}
 	
 	@objc func didTapNewNoteButton() {
-		showOverlay(overlay: NewNoteOverlayModule.build())
+		newNoteButton.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			self.showOverlay(overlay: NewNoteOverlayModule.build())
+		}
 	}
 	
 	@objc func didTapNewTaskButton() {
-		showOverlay(overlay: NewTaskOverlayModule.build())
+		newTaskButton.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			self.showOverlay(overlay: NewTaskOverlayModule.build())
+		}
 	}
 	
 	@objc func didTapNewProjectButton() {
-		showOverlay(overlay: NewProjectOverlayModule.build())
+		newProjectButton.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			self.showOverlay(overlay: NewProjectOverlayModule.build())
+		}
 	}
 	
 	func showOverlay(overlay: UIViewController) {
@@ -92,28 +101,30 @@ extension DailyTabBarVC: DailyTabBarDisplayLogic {
 extension DailyTabBarVC {
 	
 	func animatePlusButtonChange() {
-		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [self] in
-			plusButton.isSelected.toggle()
-			if plusButton.isSelected {
-				plusButton.transform = CGAffineTransform(rotationAngle: .pi / 2)
-				addButtonsStackView.isHidden = false
-				blackoutView.isHidden = false
-				blackoutView.alpha = 1
-				addButtonsStackView.frame.origin.y -= 20
-				addButtonsStackView.alpha = 1
+		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+			guard let self = self else { return }
+			self.plusButton.isSelected.toggle()
+			if self.plusButton.isSelected {
+				self.plusButton.transform = CGAffineTransform(rotationAngle: .pi / 2)
+				self.addButtonsStackView.isHidden = false
+				self.blackoutView.isHidden = false
+				self.blackoutView.alpha = 1
+				self.addButtonsStackView.frame.origin.y -= 20
+				self.addButtonsStackView.alpha = 1
 			} else {
-				plusButton.transform = CGAffineTransform(rotationAngle: 0)
-				overlayViewContoller?.remove()
-				overlayViewContoller = nil
-				addButtonsStackView.frame.origin.y += 15
-				addButtonsStackView.alpha = 0
-				blackoutView.alpha = 0
+				self.plusButton.transform = CGAffineTransform(rotationAngle: 0)
+				self.overlayViewContoller?.remove()
+				self.overlayViewContoller = nil
+				self.addButtonsStackView.frame.origin.y += 15
+				self.addButtonsStackView.alpha = 0
+				self.blackoutView.alpha = 0
 			}
-		}) { [self] _ in
-			if !plusButton.isSelected {
-				addButtonsStackView.frame.origin.y += 5
-				blackoutView.isHidden = true
-				addButtonsStackView.isHidden = true
+		}) { [weak self] _ in
+			guard let self = self else { return }
+			if !self.plusButton.isSelected {
+				self.addButtonsStackView.frame.origin.y += 5
+				self.blackoutView.isHidden = true
+				self.addButtonsStackView.isHidden = true
 			}
 		}
 	}
