@@ -17,15 +17,18 @@ class IdeasPresenter {
 }
 
 extension IdeasPresenter: IdeasPresentationLogic {
-    func present(ideasCells: [IdeasCellViewModel]) {
-            viewController?.cellsToDisplay.removeAll()
-            for cellViewModel in ideasCells {
-                if let cell = (viewController as? IdeasVC)?.tableView.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as?  IdeasCell{
-                    cell.viewModel = cellViewModel
-                    viewController?.cellsToDisplay.append(cell)
-                }
-                
+    func present(buttonCells: [IdeasCellViewModel], recentActions: RecentActionsViewModel) {
+        viewController?.buttonsCells.removeAll()
+        for cellViewModel in buttonCells {
+            if let cell = (viewController as? IdeasVC)?.tableView.dequeueReusableCell(withIdentifier: IdeasCell.cellIdentifier) as?  IdeasCell {
+                cell.viewModel = cellViewModel
+                viewController?.buttonsCells.append(cell)
             }
-            viewController?.display()
+        }
+        if let cell = (viewController as? IdeasVC)?.tableView.dequeueReusableCell(withIdentifier: RecentActionsCell.cellIdentifier) as? RecentActionsCell {
+            cell.viewModel = recentActions
+            viewController?.recentActionsCell = cell
+        }
+        viewController?.display()
     }
 }

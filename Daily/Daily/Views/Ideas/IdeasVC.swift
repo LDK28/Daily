@@ -12,7 +12,8 @@ class IdeasVC: MainTableVC {
     var interactor: IdeasBusinessLogic?
     var router: (IdeasRoutingLogic & IdeasDataPassing)?
     
-    var cellsToDisplay: [IdeasCell] = []
+    var buttonsCells: [IdeasCell] = []
+    var recentActionsCell = RecentActionsCell()
 
     override func loadView() {
             super.loadView()
@@ -51,6 +52,7 @@ class IdeasVC: MainTableVC {
     
     func registerCells() {
         tableView.register(IdeasCell.self, forCellReuseIdentifier: IdeasCell.cellIdentifier)
+        tableView.register(IdeasCell.self, forCellReuseIdentifier: RecentActionsCell.cellIdentifier)
     }
 
 }
@@ -58,7 +60,19 @@ class IdeasVC: MainTableVC {
 extension IdeasVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellsToDisplay.count
+        
+        //return buttonsCells.count
+        
+        return 3
+        
+//        var rowCount = 0
+//            if section == 0 {
+//                rowCount = buttonsCells.count
+//            }
+//            if section == 1 {
+//                rowCount = recentActionsCell.count
+//            }
+//            return rowCount
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,8 +80,30 @@ extension IdeasVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellsToDisplay[indexPath.row]
         
+//        return buttonsCells[indexPath.row]
+        
+        if indexPath.row == 0 || indexPath.row == 1 {
+            return buttonsCells[indexPath.row]
+        }
+        else {
+            
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentActionsCell.cellIdentifier) as? RecentActionsCell
+//            else { return UITableViewCell() }
+//
+//            return cell
+            
+            return recentActionsCell
+        }
+        
+//        var rowCount = 0
+//            if section == 0 {
+//                rowCount = buttonsCells.count
+//            }
+//            if section == 1 {
+//                rowCount = recentActionsCell.count
+//            }
+//            return rowCount
     }
  
 }

@@ -13,12 +13,18 @@ class IdeasModule {
         let doneProjects: Int = 2
         let missedProjects: Int = 1
         
-        let dataSource = [IdeasCellViewModel(title: "Notes"),
+        let recentActions: [String] = ["bom", "bam"]
+        
+        
+        let ideasButtonModels = [IdeasCellViewModel(title: "Notes"),
                           IdeasCellViewModel(title: "Projects", doneProjects: doneProjects, missedProjects: missedProjects)]
+        
+        let recentActionsModel = RecentActionsViewModel(headerLabelText: "RecentActions", recentActions: recentActions)
+        
         
         let viewController = IdeasVC()
         let presenter = IdeasPresenter(viewController: viewController)
-        let interactor = IdeasInteractor(presenter: presenter, dataSource: dataSource)
+        let interactor = IdeasInteractor(presenter: presenter, ideasCells: ideasButtonModels, recentActionsCell: recentActionsModel)
         let router = IdeasRouter(viewController: viewController, dataStore: interactor)
         
         viewController.router = router

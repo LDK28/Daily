@@ -5,4 +5,9 @@
 //  Created by julie on 25.11.2020.
 //
 
-import Foundation
+import UIKit
+
+struct RecentActionsViewModel {
+    let headerLabelText: String
+    let recentActions: [String]
+}

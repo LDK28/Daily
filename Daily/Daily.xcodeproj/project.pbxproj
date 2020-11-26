@@ -10,6 +10,8 @@
 		05112B412552AD1E0044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		05112B462552B7690044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		05112B4B2552BD1F0044D502 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		052F16F1256E4EE200782ED8 /* RecentActionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F16F0256E4EE200782ED8 /* RecentActionsViewModel.swift */; };
+		052F16F9256E511300782ED8 /* RecentActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F16F8256E511300782ED8 /* RecentActionsCell.swift */; };
 		0545A45D2555379F0001F17D /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0545A45C2555379F0001F17D /* DayView.swift */; };
 		054BEA1325697AC40059FEDC /* IdeasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */; };
 		054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA0E25697AC40059FEDC /* IdeasRouter.swift */; };
@@ -118,6 +120,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052F16F0256E4EE200782ED8 /* RecentActionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActionsViewModel.swift; sourceTree = "<group>"; };
+		052F16F8256E511300782ED8 /* RecentActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActionsCell.swift; sourceTree = "<group>"; };
 		0545A45C2555379F0001F17D /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasPresenter.swift; sourceTree = "<group>"; };
 		054BEA0E25697AC40059FEDC /* IdeasRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasRouter.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 			children = (
 				054BEA2725697BBA0059FEDC /* IdeasCell.swift */,
 				054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */,
+				052F16F8256E511300782ED8 /* RecentActionsCell.swift */,
+				052F16F0256E4EE200782ED8 /* RecentActionsViewModel.swift */,
 				054BEA30256980900059FEDC /* IdeasTableHeader.swift */,
 			);
 			path = IdeasModels;
@@ -739,12 +745,14 @@
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
 				21CC5E8225645D2F009C1D8E /* NewProjectOverlayProtocols.swift in Sources */,
+				052F16F9256E511300782ED8 /* RecentActionsCell.swift in Sources */,
 				21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */,
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
 				21CC5EA925645EAF009C1D8E /* NewTaskOverlayPresenter.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
+				052F16F1256E4EE200782ED8 /* RecentActionsViewModel.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,

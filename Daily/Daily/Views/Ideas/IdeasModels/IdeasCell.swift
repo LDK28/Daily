@@ -96,9 +96,9 @@ class IdeasCell: UITableViewCell {
             doneProjectsLabel.widthAnchor.constraint(equalTo: doneProjectsLabel.heightAnchor)
         ])
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 13) {
-            missedProjectsLabel.styleLabel(font: labelFont, text: String(missedProjects), textColor: .white,
+            missedProjectsLabel.styleLabelWithBackground(font: labelFont, text: String(missedProjects),
                                            backgroundColor: .systemRed, cornerRadius: statisticsLabelSize / 2)
-            doneProjectsLabel.styleLabel(font: labelFont, text: String(doneProjects), textColor: .white,
+            doneProjectsLabel.styleLabelWithBackground(font: labelFont, text: String(doneProjects),
                                          backgroundColor: .systemGreen, cornerRadius: statisticsLabelSize / 2)
             
         }
@@ -111,11 +111,13 @@ class IdeasCell: UITableViewCell {
     
     func styleLabelBackgroundView() {
         labelBackgroundView.styleView(backgroundColor: .dailyDiaryTileColor, cornerRadius: 10)
+        labelBackgroundView.addShadow()
     }
     
     func styleTitleLabel() {
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 30) {
             titleLabel.styleLabel(font: labelFont, text: titleLabel.text ?? "", textAlignment: .left)
+            titleLabel.addShadow()
         }
     }
     
