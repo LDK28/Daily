@@ -8,15 +8,15 @@
 import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
-	func finishDisplayingCells()
 	var cellsToDisplay: [NotesCell] { get set }
-	func insert(at: IndexPath)
-	func delete(at indexPath: IndexPath)
+	func finishDisplayingCells()
 }
 
 protocol NotesBusinessLogic {
 	func fetchCells()
-	func deleteModels(at indices: [Int])
+	func deleteModels(pinnedNotesIndices: [Int],
+					  unpinnedNotesIndices: [Int],
+					  completion: @escaping () -> ())
 }
 
 protocol NotesDataStore: AnyObject {
@@ -24,9 +24,8 @@ protocol NotesDataStore: AnyObject {
 }
 
 protocol NotesPresentationLogic {
-	func present(notesCells: NotesDataSource)
-	func updateNotesCells(with cellViewModel: NotesCellViewModel)
-	func deleteNoteCell(at indexPath: IndexPath)
+	func present(notes: [NotesCellViewModel])
+	func removeChosenNotes()
 }
 
 protocol NotesRoutingLogic {

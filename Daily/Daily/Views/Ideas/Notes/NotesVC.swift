@@ -63,24 +63,12 @@ class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
-		selectedIndexPaths.removeAll()
+		selectedIndexPaths = []
 		cellsToDisplay.forEach( { $0.isChosen = false })
 	}
 }
 
 extension NotesVC: NotesDisplayLogic {
-	func delete(at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		tableView.deleteRows(at: [indexPath], with: .fade)
-		tableView.endUpdates()
-	}
-	
-	func insert(at: IndexPath) {
-		tableView.beginUpdates()
-		tableView.insertSections(IndexSet(at), with: .automatic)
-		tableView.endUpdates()
-	}
-	
 	func finishDisplayingCells() {
 		DispatchQueue.main.async {
 			self.tableView.reloadData()
@@ -133,12 +121,23 @@ extension NotesVC {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		trashIcon.tapAnimation { [weak self] in
 			guard let self = self else { return }
-			self.cellsToDisplay = self.cellsToDisplay.filter( { $0.isChosen == false } )
-			self.interactor?.deleteModels(at: self.selectedIndexPaths.sorted(by: >).map({ $0.row }))
-			self.tableView.beginUpdates()
-			self.tableView.deleteRows(at: self.selectedIndexPaths, with: .fade)
-			self.tableView.endUpdates()
-			self.selectedIndexPaths = []
+			let rowsToDelete = self.selectedIndexPaths.map { $0.row }
+			let pinnedIndices =
+				self.cellsToDisplay
+					.enumerated()
+					.filter { rowsToDelete.contains($0.offset) && $0.element.isPinned }
+					.map { $0.offset}
+			
+			let unpinnedIndices =
+				rowsToDelete
+					.filter { !pinnedIndices.contains($0) }
+			
+			self.interactor?.deleteModels(pinnedNotesIndices: pinnedIndices, unpinnedNotesIndices: unpinnedIndices) {
+				self.tableView.beginUpdates()
+				self.tableView.deleteRows(at: self.selectedIndexPaths, with: .fade)
+				self.tableView.endUpdates()
+				self.selectedIndexPaths = []
+			}
 		}
 	}
 	

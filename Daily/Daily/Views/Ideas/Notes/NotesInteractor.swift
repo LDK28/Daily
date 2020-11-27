@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import MobileCoreServices
 
 class NotesInteractor: NotesDataStore {
 	internal var dataSource: NotesDataSource?
@@ -19,18 +18,27 @@ class NotesInteractor: NotesDataStore {
 }
 
 extension NotesInteractor: NotesBusinessLogic {
-	func deleteModels(at indices: [Int]) {
-		guard dataSource != nil else { return }
-		for i in indices {
-			//dataSource?.
+	func deleteModels(pinnedNotesIndices: [Int],
+					  unpinnedNotesIndices: [Int],
+					  completion: @escaping () -> ()) {
+		guard dataSource != nil else {
+			completion()
+			return
 		}
+		dataSource?.pinnedNotes.remove(at: pinnedNotesIndices)
+		dataSource?.unpinnedNotes.remove(at: unpinnedNotesIndices)
+		UserRequest.shared.update(notes: dataSource ?? NotesDataSource()) {
+			self.presenter?.removeChosenNotes()
+			completion()
+		}
+		
 	}
 	
 	func fetchCells() {
-		UserRequest.shared.getNotes() { notes in
-			guard let notes = notes else { return }
-			self.dataSource = notes
-			self.presenter?.present(notesCells: notes)
+		UserRequest.shared.getNotes() { dataSource in
+			guard let dataSource = dataSource else { return }
+			self.dataSource = dataSource
+			self.presenter?.present(notes: dataSource.allNotes)
 		}
 	}
 }

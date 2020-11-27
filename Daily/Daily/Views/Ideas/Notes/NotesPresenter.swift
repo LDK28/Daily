@@ -17,36 +17,19 @@ class NotesPresenter {
 }
 
 extension NotesPresenter: NotesPresentationLogic {
-	func deleteNoteCell(at indexPath: IndexPath) {
-		viewController?.cellsToDisplay.remove(at: indexPath.row)
-		viewController?.delete(at: indexPath)
+	func removeChosenNotes() {
+		guard let viewController = viewController else { return }
+		viewController.cellsToDisplay = viewController.cellsToDisplay.filter { !$0.isChosen }
 	}
 	
-	func updateNotesCells(with cellViewModel: NotesCellViewModel) {
-		if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
-			cell.viewModel = cellViewModel
-			viewController?.cellsToDisplay.append(cell)
-			viewController?.insert(at: IndexPath(row: 0, section: 0))
-		}
-	}
-
-	
-	func present(notesCells: NotesDataSource) {
+	func present(notes: [NotesCellViewModel]) {
 		viewController?.cellsToDisplay.removeAll()
-		for pinnedCellViewModel in notesCells.pinnedNotes {
+		notes.forEach {
 			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
-				cell.viewModel = pinnedCellViewModel
+				cell.viewModel = $0
 				viewController?.cellsToDisplay.append(cell)
 			}
 		}
-		
-		for unpinnedCellViewModel in notesCells.unpinnedNotes {
-			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
-				cell.viewModel = unpinnedCellViewModel
-				viewController?.cellsToDisplay.append(cell)
-			}
-		}
-		
 		viewController?.finishDisplayingCells()
 	}
 }
