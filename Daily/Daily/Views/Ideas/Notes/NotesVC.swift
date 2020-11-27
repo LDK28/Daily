@@ -108,15 +108,18 @@ extension NotesVC {
 	private func configureNavigationBarItems() {
 		trashIcon.styleNavBarImageView(withImageName: "trash", color: .systemRed)
 		trashIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(trashIconTapped)))
+		
 		pinIcon.styleNavBarImageView(withImageName: "pinIcon")
 		pinIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinIconTapped)))
+		
+		cancelIcon.styleNavBarImageView(withImageName: "cancel")
+		cancelIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelIconTapped)))
+		
 		navigationItem.rightBarButtonItems = [
 			UIBarButtonItem(customView: trashIcon),
 			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero, size: CGSize(width: 10, height: 30)))),
 			UIBarButtonItem(customView: pinIcon)]
 		
-		cancelIcon.styleNavBarImageView(withImageName: "cancel")
-		cancelIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelIconTapped)))
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelIcon)
 	}
 	
@@ -162,11 +165,11 @@ extension NotesVC {
 	
 	@objc func longPressed(sender: UILongPressGestureRecognizer) {
 		let locationInView = sender.location(in: tableView)
-		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 		guard
 			let indexPath = tableView.indexPathForRow(at: locationInView),
 			isEditingNotes != true
 		else { return }
+		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 		cellsToDisplay[indexPath.row].tapAnimation { [weak self] in
 			if sender.state == .began {
 				guard let self = self else { return }
@@ -217,7 +220,6 @@ extension NotesVC {
 		
 		let titleView = TitleView(title: "Notes")
 		titleView.frame.size.height = 100
-		
 		let addView = AddNewNoteFooterView()
 		addView.frame.size.height = 50
 		tableView.tableFooterView = addView
