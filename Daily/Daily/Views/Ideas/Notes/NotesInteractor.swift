@@ -18,7 +18,14 @@ class NotesInteractor: NotesDataStore {
 	}
 }
 
-extension NotesInteractor: NotesBusinessLogic {	
+extension NotesInteractor: NotesBusinessLogic {
+	func deleteModels(at indices: [Int]) {
+		guard dataSource != nil else { return }
+		for i in indices {
+			//dataSource?.
+		}
+	}
+	
 	func fetchCells() {
 		UserRequest.shared.getNotes() { notes in
 			guard let notes = notes else { return }

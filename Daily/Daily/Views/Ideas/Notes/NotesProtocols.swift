@@ -16,6 +16,7 @@ protocol NotesDisplayLogic: AnyObject {
 
 protocol NotesBusinessLogic {
 	func fetchCells()
+	func deleteModels(at indices: [Int])
 }
 
 protocol NotesDataStore: AnyObject {

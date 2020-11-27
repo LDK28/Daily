@@ -133,10 +133,8 @@ extension NotesVC {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		trashIcon.tapAnimation { [weak self] in
 			guard let self = self else { return }
-			self.selectedIndexPaths.sort(by: <)
-			for i in stride(from: self.selectedIndexPaths.count - 1, through: 0, by: -1) {
-				self.cellsToDisplay.remove(at: self.selectedIndexPaths[i].row)
-			}
+			self.cellsToDisplay = self.cellsToDisplay.filter( { $0.isChosen == false } )
+			self.interactor?.deleteModels(at: self.selectedIndexPaths.sorted(by: >).map({ $0.row }))
 			self.tableView.beginUpdates()
 			self.tableView.deleteRows(at: self.selectedIndexPaths, with: .fade)
 			self.tableView.endUpdates()
@@ -150,7 +148,7 @@ extension NotesVC {
 			guard let self = self else { return }
 			let unpinAll = self.cellsToDisplay.filter({ $0.isPinned && $0.isChosen }).count == self.selectedIndexPaths.count ? true : false
 			self.cellsToDisplay.filter({ $0.isChosen }).forEach({
-				$0.isPinned = unpinAll ? false : true
+				$0.isPinned = !unpinAll
 				$0.isChosen = false
 			})
 			self.selectedIndexPaths = []
