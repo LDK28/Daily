@@ -8,6 +8,11 @@
 import UIKit
 
 struct RecentActionsViewModel {
-    let headerLabelText: String
-    let recentActions: [String]
+    var headerLabelText: String
+    var recentActions: [String]
+    
+    init(headerLabelText: String, recentActions: [String]) {
+        self.headerLabelText = headerLabelText
+        self.recentActions = recentActions
+    }
 }

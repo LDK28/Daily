@@ -15,8 +15,8 @@ class IdeasInteractor: IdeasDataStore {
         
     init(presenter: IdeasPresentationLogic?, ideasCells: [IdeasCellViewModel], recentActionsCell: RecentActionsViewModel) {
         self.ideasCells = ideasCells
-        self.presenter = presenter
         self.recentActionsCell = recentActionsCell
+        self.presenter = presenter
     }
 }
 

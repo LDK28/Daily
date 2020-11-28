@@ -13,13 +13,13 @@ class IdeasModule {
         let doneProjects: Int = 2
         let missedProjects: Int = 1
         
-        let recentActions: [String] = ["bom", "bam"]
+        let recentActions: [String] = ["first", "second"]
         
         
         let ideasButtonModels = [IdeasCellViewModel(title: "Notes"),
                           IdeasCellViewModel(title: "Projects", doneProjects: doneProjects, missedProjects: missedProjects)]
         
-        let recentActionsModel = RecentActionsViewModel(headerLabelText: "RecentActions", recentActions: recentActions)
+        let recentActionsModel = RecentActionsViewModel(headerLabelText: "Recent Actions", recentActions: recentActions)
         
         
         let viewController = IdeasVC()

@@ -65,12 +65,12 @@ class RecentActionsCell: UITableViewCell {
     }
     
     func styleRecentActionsView() {
-        recentActionsView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10) //what color should i use
+        recentActionsView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10) 
     }
     
     func styleHeaderLabel() {
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 24) {
-            headerLabel.styleLabel(font: labelFont, text: headerLabel.text ?? "", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
+            headerLabel.styleLabel(font: labelFont, text: headerLabel.text ?? "header", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
         }
     }
 }
