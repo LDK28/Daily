@@ -28,13 +28,16 @@ extension NotesInteractor: NotesBusinessLogic {
 		}
 		switch action {
 		case .pin:
-			dataSource.allNotes
+			let indicesOfPinnedNotesToUpdate =
+				dataSource.allNotes
 				.enumerated()
-				.forEach {
-					if indices.contains($0.offset) && !$0.element.isPinned {
-						dataSource.pinnedNotes.insert(dataSource.unpinnedNotes.remove(at: $0.offset - dataSource.pinnedNotes.count), at: 0)
-					}
+				.filter { !$0.element.isPinned && indices.contains($0.offset) }
+				.map { $0.offset }
+			indicesOfPinnedNotesToUpdate
+				.forEach { i in
+					
 				}
+			
 		case .unpin:
 			dataSource.pinnedNotes
 				.enumerated()

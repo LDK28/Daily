@@ -126,11 +126,12 @@ extension NotesVC {
 				self.cellsToDisplay
 					.enumerated()
 					.filter { rowsToDelete.contains($0.offset) && $0.element.isPinned }
-					.map { $0.offset}
+					.map { $0.offset }
 			
 			let unpinnedIndices =
 				rowsToDelete
 					.filter { !pinnedIndices.contains($0) }
+					.map { $0 - pinnedIndices.count }
 			
 			self.interactor?.deleteModels(pinnedNotesIndices: pinnedIndices,
 										  unpinnedNotesIndices: unpinnedIndices) {
