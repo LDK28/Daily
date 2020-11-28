@@ -35,20 +35,18 @@ extension NotesInteractor: NotesBusinessLogic {
 	func updateModels(_ action: NotesUpdateAction,
 					  at indices: [Int],
 					  completion: @escaping () -> ()) {
-		let indexToInsertAt: Int
 		let notesToUpdate: [NotesCellViewModel]
 		switch action {
 		case .unpin:
 			notesToUpdate = grabNotes(at: indices, shouldBePinned: false)
-			indexToInsertAt = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
+			let indexAfterFirstPinnedNote = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
 			notesToUpdate.forEach {
-				notes.insert($0, at: indexToInsertAt)
+				notes.insert($0, at: indexAfterFirstPinnedNote)
 			}
 		case .pin:
 			notesToUpdate = grabNotes(at: indices, shouldBePinned: true)
-			indexToInsertAt = 0
 			notesToUpdate.forEach {
-				notes.insert($0, at: indexToInsertAt)
+				notes.insert($0, at: 0)
 			}
 		}
 		
