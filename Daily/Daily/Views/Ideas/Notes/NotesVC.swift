@@ -136,8 +136,13 @@ extension NotesVC {
 		pinIcon.tapAnimation { [weak self] in
 			guard let self = self else { return }
 			let unpinAll = self.cellsToDisplay.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
-			let rowsToUpdate = unpinAll ? self.selectedIndexPaths.map { $0.row } : self.selectedIndexPaths.map { $0.row }.filter { !self.cellsToDisplay[$0].isPinned }
-			self.interactor?.updateModels(unpinAll ? .unpin : .pin, at: rowsToUpdate) {
+			let rowsToUpdate = unpinAll ?
+				self.selectedIndexPaths
+					.map { $0.row } :
+				self.selectedIndexPaths
+					.map { $0.row }
+					.filter { !self.cellsToDisplay[$0].isPinned }
+			self.interactor?.updateModels(unpinAll ? .unpin : .pin, at: rowsToUpdate.sorted(by: >)) {
 				self.tableView.beginUpdates()
 				self.tableView.reloadRows(at: self.selectedIndexPaths, with: .automatic)
 				self.tableView.endUpdates()

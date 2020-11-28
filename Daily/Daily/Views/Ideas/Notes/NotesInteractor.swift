@@ -12,6 +12,19 @@ class NotesInteractor: NotesDataStore {
 	internal var notes = [NotesCellViewModel]()
 	private var presenter: NotesPresentationLogic?
 	
+	
+	private func grabNotes(at indices: [Int], shouldBePinned condition: Bool) -> [NotesCellViewModel] {
+		var grabbedNotes = [NotesCellViewModel]()
+		grabbedNotes.reserveCapacity(indices.count)
+		for index in indices {
+			var noteToTransfer = notes.remove(at: index)
+			noteToTransfer.isPinned = condition
+			grabbedNotes.append(noteToTransfer)
+		}
+		
+		return grabbedNotes
+	}
+	
 	init(presenter: NotesPresentationLogic?) {
 		self.presenter = presenter
 	}
@@ -23,25 +36,16 @@ extension NotesInteractor: NotesBusinessLogic {
 					  at indices: [Int],
 					  completion: @escaping () -> ()) {
 		let indexToInsertAt: Int
-		var notesToUpdate = [NotesCellViewModel]()
-		notesToUpdate.reserveCapacity(indices.count)
+		let notesToUpdate: [NotesCellViewModel]
 		switch action {
 		case .unpin:
-			for indexOfPinnedNote in indices.sorted(by: >) {
-				var noteToTransfer = notes.remove(at: indexOfPinnedNote)
-				noteToTransfer.isPinned = false
-				notesToUpdate.append(noteToTransfer)
-			}
+			notesToUpdate = grabNotes(at: indices, shouldBePinned: false)
 			indexToInsertAt = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
 			notesToUpdate.forEach {
 				notes.insert($0, at: indexToInsertAt)
 			}
 		case .pin:
-			for indexOfUnpinnedNote in indices.sorted(by: >) {
-				var noteToTransfer = notes.remove(at: indexOfUnpinnedNote)
-				noteToTransfer.isPinned = true
-				notesToUpdate.append(noteToTransfer)
-			}
+			notesToUpdate = grabNotes(at: indices, shouldBePinned: true)
 			indexToInsertAt = 0
 			notesToUpdate.forEach {
 				notes.insert($0, at: indexToInsertAt)
@@ -49,7 +53,6 @@ extension NotesInteractor: NotesBusinessLogic {
 		}
 		
 		UserRequest.shared.update(notes: notes) {
-			//self.presenter?.rearrangeCells(notesToUpdate, moveFrom: indices.sorted(by: >), moveTo: indexToInsertAt)
 			self.presenter?.present(notes: self.notes)
 			completion()
 		}

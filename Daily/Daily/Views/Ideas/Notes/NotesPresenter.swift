@@ -10,6 +10,12 @@ import UIKit
 class NotesPresenter {
 	private weak var viewController: NotesDisplayLogic?
 	
+	private func castNotesCell(usingViewModel viewModel: NotesCellViewModel) -> NotesCell? {
+		let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell
+		cell?.viewModel = viewModel
+		return cell
+	}
+	
 	init(viewController: NotesDisplayLogic?) {
 		self.viewController = viewController
 	}
@@ -44,11 +50,5 @@ extension NotesPresenter: NotesPresentationLogic {
 			}
 		}
 		viewController?.finishDisplayingCells()
-	}
-	
-	private func castNotesCell(usingViewModel viewModel: NotesCellViewModel) -> NotesCell? {
-		let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell
-		cell?.viewModel = viewModel
-		return cell
 	}
 }
