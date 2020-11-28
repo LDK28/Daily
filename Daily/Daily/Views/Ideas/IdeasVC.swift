@@ -52,7 +52,7 @@ class IdeasVC: MainTableVC {
     
     func registerCells() {
         tableView.register(IdeasCell.self, forCellReuseIdentifier: IdeasCell.cellIdentifier)
-        tableView.register(IdeasCell.self, forCellReuseIdentifier: RecentActionsCell.cellIdentifier)
+        tableView.register(RecentActionsCell.self, forCellReuseIdentifier: RecentActionsCell.cellIdentifier)
     }
 
 }
