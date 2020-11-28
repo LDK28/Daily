@@ -14,11 +14,17 @@ class RecentActionsCell: UITableViewCell {
     let recentActionsView = UIView()
     let headerLabel = UILabel()
     
+    var actionLabels = [UILabel]()
+    
     var viewModel: RecentActionsViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             headerLabel.text = viewModel.headerLabelText
-            
+            for action in viewModel.recentActions {
+                let actionLabel = UILabel()
+                actionLabel.text = action
+                actionLabels.append(actionLabel)
+            }
         }
     }
     
@@ -30,10 +36,12 @@ class RecentActionsCell: UITableViewCell {
         
         configureRecentActionsView()
         configureHeaderLabel()
+        configureActionLabels()
         
         styleCell()
         styleRecentActionsView()
         styleHeaderLabel()
+        styleActionLabels()
         
     }
     
@@ -43,7 +51,7 @@ class RecentActionsCell: UITableViewCell {
     
     func configureRecentActionsView() {
         NSLayoutConstraint.activate([
-            recentActionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            recentActionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             recentActionsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             recentActionsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             recentActionsView.heightAnchor.constraint(equalToConstant: 200),
@@ -59,18 +67,36 @@ class RecentActionsCell: UITableViewCell {
         ])
     }
     
+    func configureActionLabels() {
+        var topAnchorConstant: CGFloat = 0
+        for actionLabel in actionLabels {
+            NSLayoutConstraint.activate([
+                actionLabel.topAnchor.constraint(equalTo: headerLabel.topAnchor, constant: topAnchorConstant),
+                actionLabel.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor),
+                actionLabel.trailingAnchor.constraint(equalTo: headerLabel.trailingAnchor)
+            ])
+            topAnchorConstant += actionLabel.bounds.height + 10
+        }
+    }
+    
     func styleCell() {
         selectionStyle = .none
         backgroundColor = .clear
     }
     
     func styleRecentActionsView() {
-        recentActionsView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10) 
+        recentActionsView.styleView(backgroundColor: .dailyRecentActionsPadColor, cornerRadius: 10)
     }
     
     func styleHeaderLabel() {
-        if let labelFont = UIFont(name: "Stolzl-Regular", size: 24) {
+        if let labelFont = UIFont(name: "Stolzl-Regular", size: 22) {
             headerLabel.styleLabel(font: labelFont, text: headerLabel.text ?? "header", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
+        }
+    }
+    
+    func styleActionLabels() {
+        for actionLabel in actionLabels {
+            actionLabel.styleLabel(font: .systemFont(ofSize: 18), text: actionLabel.text ?? "", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
         }
     }
 }
