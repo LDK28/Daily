@@ -32,7 +32,10 @@ class RecentActionsCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(recentActionsView)
-        contentView.addSubview(headerLabel)
+        recentActionsView.addSubview(headerLabel)
+        for actionLabel in actionLabels {
+            recentActionsView.addSubview(actionLabel)
+        }
         
         configureRecentActionsView()
         configureHeaderLabel()
