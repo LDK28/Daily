@@ -18,6 +18,39 @@ class NotesInteractor: NotesDataStore {
 }
 
 extension NotesInteractor: NotesBusinessLogic {
+	
+	func updateModels(_ action: NotesUpdateAction,
+					  atIndices indices: [Int],
+					  completion: @escaping () -> ()) {
+		guard var dataSource = dataSource else {
+			completion()
+			return
+		}
+		switch action {
+		case .pin:
+			dataSource.allNotes
+				.enumerated()
+				.forEach {
+					if indices.contains($0.offset) && !$0.element.isPinned {
+						dataSource.pinnedNotes.insert(dataSource.unpinnedNotes.remove(at: $0.offset - dataSource.pinnedNotes.count), at: 0)
+					}
+				}
+		case .unpin:
+			dataSource.pinnedNotes
+				.enumerated()
+				.forEach {
+					if indices.contains($0.offset) {
+						dataSource.unpinnedNotes.insert(dataSource.pinnedNotes.remove(at: $0.offset), at: 0)
+					}
+				}
+				
+		}
+		self.dataSource = dataSource
+		UserRequest.shared.update(notes: dataSource) {
+			completion()
+		}
+	}
+	
 	func deleteModels(pinnedNotesIndices: [Int],
 					  unpinnedNotesIndices: [Int],
 					  completion: @escaping () -> ()) {

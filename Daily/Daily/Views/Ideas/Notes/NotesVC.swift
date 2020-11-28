@@ -132,7 +132,8 @@ extension NotesVC {
 				rowsToDelete
 					.filter { !pinnedIndices.contains($0) }
 			
-			self.interactor?.deleteModels(pinnedNotesIndices: pinnedIndices, unpinnedNotesIndices: unpinnedIndices) {
+			self.interactor?.deleteModels(pinnedNotesIndices: pinnedIndices,
+										  unpinnedNotesIndices: unpinnedIndices) {
 				self.tableView.beginUpdates()
 				self.tableView.deleteRows(at: self.selectedIndexPaths, with: .fade)
 				self.tableView.endUpdates()
@@ -145,12 +146,17 @@ extension NotesVC {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		pinIcon.tapAnimation { [weak self] in
 			guard let self = self else { return }
-			let unpinAll = self.cellsToDisplay.filter({ $0.isPinned && $0.isChosen }).count == self.selectedIndexPaths.count ? true : false
-			self.cellsToDisplay.filter({ $0.isChosen }).forEach({
-				$0.isPinned = !unpinAll
-				$0.isChosen = false
-			})
-			self.selectedIndexPaths = []
+			let rowsToUpdate = self.selectedIndexPaths.map { $0.row }
+			let unpinAll = self.cellsToDisplay.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
+			self.interactor?.updateModels(unpinAll ? .unpin : .pin, atIndices: rowsToUpdate) {
+				self.cellsToDisplay
+					.filter { $0.isChosen }
+					.forEach {
+						$0.isPinned = !unpinAll
+						$0.isChosen = false
+					}
+				self.selectedIndexPaths = []
+			}
 		}
 	}
 	

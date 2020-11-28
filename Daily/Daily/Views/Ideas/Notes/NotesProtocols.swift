@@ -12,10 +12,17 @@ protocol NotesDisplayLogic: AnyObject {
 	func finishDisplayingCells()
 }
 
+enum NotesUpdateAction {
+	case pin, unpin
+}
+
 protocol NotesBusinessLogic {
 	func fetchCells()
 	func deleteModels(pinnedNotesIndices: [Int],
 					  unpinnedNotesIndices: [Int],
+					  completion: @escaping () -> ())
+	func updateModels(_ action: NotesUpdateAction,
+					  atIndices indices: [Int],
 					  completion: @escaping () -> ())
 }
 

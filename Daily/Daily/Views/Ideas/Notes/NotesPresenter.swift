@@ -26,6 +26,7 @@ extension NotesPresenter: NotesPresentationLogic {
 		viewController?.cellsToDisplay.removeAll()
 		notes.forEach {
 			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
+				let a = $0
 				cell.viewModel = $0
 				viewController?.cellsToDisplay.append(cell)
 			}

@@ -20,6 +20,7 @@ class NotesCell: UITableViewCell {
 		didSet {
 			guard let viewModel = viewModel else { return }
 			titleLabel.text = viewModel.title
+			isPinned = viewModel.isPinned
 			detailsTextView.text = viewModel.details
 		}
 	}
@@ -45,6 +46,11 @@ class NotesCell: UITableViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		containerView.layer.cornerRadius = 5
+	}
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		isChosen = false
 	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -76,13 +82,13 @@ class NotesCell: UITableViewCell {
 		
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Regular", size: 18),
 							  text: nil,
-							  textAlignment: .justified,
+							  textAlignment: .left,
 							  textColor: .dailyTextColor,
 							  numberOfLines: 2)
 		
 		detailsTextView.styleLabel(font: UIFont(name: "Stolzl-Book", size: 14),
 								   text: nil,
-								   textAlignment: .justified,
+								   textAlignment: .left,
 								   textColor: titleLabel.textColor,
 								   numberOfLines: 4)
 		
