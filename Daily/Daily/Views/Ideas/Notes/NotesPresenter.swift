@@ -22,14 +22,33 @@ extension NotesPresenter: NotesPresentationLogic {
 		viewController.cellsToDisplay = viewController.cellsToDisplay.filter { !$0.isChosen }
 	}
 	
+	func rearrangeCells(_ notesViewModels: [NotesCellViewModel],
+						moveFrom indices: [Int],
+						moveTo index: Int) {
+		guard let viewController = viewController else { return }
+		indices.forEach {
+			viewController.cellsToDisplay.remove(at: $0)
+		}
+		notesViewModels.forEach {
+			if let cell = castNotesCell(usingViewModel: $0) {
+				viewController.cellsToDisplay.insert(cell, at: index)
+			}
+		}
+	}
+	
 	func present(notes: [NotesCellViewModel]) {
 		viewController?.cellsToDisplay.removeAll()
 		notes.forEach {
-			if let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell {
-				cell.viewModel = $0
+			if let cell = castNotesCell(usingViewModel: $0) {
 				viewController?.cellsToDisplay.append(cell)
 			}
 		}
 		viewController?.finishDisplayingCells()
+	}
+	
+	private func castNotesCell(usingViewModel viewModel: NotesCellViewModel) -> NotesCell? {
+		let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell
+		cell?.viewModel = viewModel
+		return cell
 	}
 }

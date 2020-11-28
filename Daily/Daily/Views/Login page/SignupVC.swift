@@ -102,10 +102,7 @@ class SignupVC: MainVC {
 							],
 							"email": email,
 							"password": password,
-							"notes": [
-								"pinnedNotes": [NotesCellViewModel](),
-								"unpinnedNotes": [NotesCellViewModel]()
-							]
+							"notes": [NotesCellViewModel]()
 						]
 					) { savingUserError in
 						if savingUserError != nil {

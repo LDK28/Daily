@@ -18,21 +18,23 @@ enum NotesUpdateAction {
 
 protocol NotesBusinessLogic {
 	func fetchCells()
-	func deleteModels(pinnedNotesIndices: [Int],
-					  unpinnedNotesIndices: [Int],
+	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ())
 	func updateModels(_ action: NotesUpdateAction,
-					  atIndices indices: [Int],
+					  at indices: [Int],
 					  completion: @escaping () -> ())
 }
 
 protocol NotesDataStore: AnyObject {
-	var dataSource: NotesDataSource? { get set }
+	var notes: [NotesCellViewModel] { get set }
 }
 
 protocol NotesPresentationLogic {
 	func present(notes: [NotesCellViewModel])
 	func removeChosenNotes()
+	func rearrangeCells(_ notesViewModels: [NotesCellViewModel],
+						moveFrom indices: [Int],
+						moveTo index: Int)
 }
 
 protocol NotesRoutingLogic {

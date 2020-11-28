@@ -12,10 +12,9 @@ import FirebaseAuth
 protocol DailyUserNetworkRequest {
 	var userData: CurrentUser? { get set }
 	func loadUserData(completion: @escaping (Bool) -> ())
-	func getNotes(completion: @escaping (NotesDataSource?) -> ())
+	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ())
 	func add(note: NotesCellViewModel, completion: @escaping () -> ())
-	func removeNote(at index: Int, completion: @escaping () -> ())
-	func update(notes: NotesDataSource, completion: (() -> ())?) 
+	func update(notes: [NotesCellViewModel], completion: (() -> ())?)
 }
 
 final class UserRequest: DailyUserNetworkRequest {
@@ -55,9 +54,9 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 	}
 	
-	func getNotes(completion: @escaping (NotesDataSource?) -> ()) {
+	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ()) {
 		getLatestUserData() { userNewData in
-			completion(userNewData?.notes)
+			completion(userNewData?.notes ?? [])
 		}
 	}
 	
@@ -69,12 +68,12 @@ final class UserRequest: DailyUserNetworkRequest {
 			completion()
 			return
 		}
-		
-		UserRequest.shared.userData?.notes.unpinnedNotes.insert(note, at: 0)
+		let indexToInsertAt = userData?.notes.firstIndex(where: { !$0.isPinned }) ?? 0
+		userData?.notes.insert(note, at: indexToInsertAt)
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	
-	func update(notes: NotesDataSource, completion: (() -> ())?) {
+	func update(notes: [NotesCellViewModel], completion: (() -> ())?) {
 		guard
 			let userID = userID,
 			UserRequest.shared.userData != nil
@@ -84,18 +83,6 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 		
 		UserRequest.shared.userData?.notes = notes
-		updateServerData(withUserID: userID, completion: completion)
-	}
-	
-	func removeNote(at index: Int, completion: @escaping () -> ()) {
-		guard
-			let userID = userID,
-			UserRequest.shared.userData != nil
-		else {
-			completion()
-			return
-		}
-		//UserRequest.shared.userData?.notes.remove(at: index)
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	

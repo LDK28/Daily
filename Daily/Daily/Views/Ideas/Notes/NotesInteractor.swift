@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class NotesInteractor: NotesDataStore {
-	internal var dataSource: NotesDataSource?
+	internal var notes = [NotesCellViewModel]()
 	private var presenter: NotesPresentationLogic?
 	
 	init(presenter: NotesPresentationLogic?) {
@@ -20,61 +20,53 @@ class NotesInteractor: NotesDataStore {
 extension NotesInteractor: NotesBusinessLogic {
 	
 	func updateModels(_ action: NotesUpdateAction,
-					  atIndices indices: [Int],
+					  at indices: [Int],
 					  completion: @escaping () -> ()) {
-		guard var dataSource = dataSource else {
-			completion()
-			return
-		}
+		let indexToInsertAt: Int
+		var notesToUpdate = [NotesCellViewModel]()
+		notesToUpdate.reserveCapacity(indices.count)
 		switch action {
-		case .pin:
-			let indicesOfPinnedNotesToUpdate =
-				dataSource.allNotes
-				.enumerated()
-				.filter { !$0.element.isPinned && indices.contains($0.offset) }
-				.map { $0.offset }
-			indicesOfPinnedNotesToUpdate
-				.forEach { i in
-					
-				}
-			
 		case .unpin:
-			dataSource.pinnedNotes
-				.enumerated()
-				.forEach {
-					if indices.contains($0.offset) {
-						dataSource.unpinnedNotes.insert(dataSource.pinnedNotes.remove(at: $0.offset), at: 0)
-					}
-				}
-				
+			for indexOfPinnedNote in indices.sorted(by: >) {
+				var noteToTransfer = notes.remove(at: indexOfPinnedNote)
+				noteToTransfer.isPinned = false
+				notesToUpdate.append(noteToTransfer)
+			}
+			indexToInsertAt = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
+			notesToUpdate.forEach {
+				notes.insert($0, at: indexToInsertAt)
+			}
+		case .pin:
+			for indexOfUnpinnedNote in indices.sorted(by: >) {
+				var noteToTransfer = notes.remove(at: indexOfUnpinnedNote)
+				noteToTransfer.isPinned = true
+				notesToUpdate.append(noteToTransfer)
+			}
+			indexToInsertAt = 0
+			notesToUpdate.forEach {
+				notes.insert($0, at: indexToInsertAt)
+			}
 		}
-		self.dataSource = dataSource
-		UserRequest.shared.update(notes: dataSource) {
+		
+		UserRequest.shared.update(notes: notes) {
+			//self.presenter?.rearrangeCells(notesToUpdate, moveFrom: indices.sorted(by: >), moveTo: indexToInsertAt)
+			self.presenter?.present(notes: self.notes)
 			completion()
 		}
 	}
 	
-	func deleteModels(pinnedNotesIndices: [Int],
-					  unpinnedNotesIndices: [Int],
+	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ()) {
-		guard dataSource != nil else {
-			completion()
-			return
-		}
-		dataSource?.pinnedNotes.remove(at: pinnedNotesIndices)
-		dataSource?.unpinnedNotes.remove(at: unpinnedNotesIndices)
-		UserRequest.shared.update(notes: dataSource ?? NotesDataSource()) {
+		UserRequest.shared.update(notes: notes.remove(at: indices)) {
 			self.presenter?.removeChosenNotes()
 			completion()
 		}
-		
 	}
 	
 	func fetchCells() {
-		UserRequest.shared.getNotes() { dataSource in
-			guard let dataSource = dataSource else { return }
-			self.dataSource = dataSource
-			self.presenter?.present(notes: dataSource.allNotes)
+		UserRequest.shared.getNotes() { notes in
+			self.notes = notes
+			self.presenter?.present(notes: notes)
 		}
 	}
 }
