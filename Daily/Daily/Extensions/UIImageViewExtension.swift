@@ -29,7 +29,6 @@ extension UIImageView {
 		let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 		self.image = resizedImage
-		alpha = 0
 		isUserInteractionEnabled = true
 	}
 }
