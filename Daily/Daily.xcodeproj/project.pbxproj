@@ -18,7 +18,6 @@
 		054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1025697AC40059FEDC /* IdeasProtocols.swift */; };
 		054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1125697AC40059FEDC /* IdeasInteractor.swift */; };
 		054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */; };
-		054BEA2025697BAB0059FEDC /* IdeasCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA1F25697BAB0059FEDC /* IdeasCells.swift */; };
 		054BEA2825697BBA0059FEDC /* IdeasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA2725697BBA0059FEDC /* IdeasCell.swift */; };
 		054BEA31256980900059FEDC /* IdeasTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA30256980900059FEDC /* IdeasTableHeader.swift */; };
 		054BEA41256991E10059FEDC /* IdeasCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */; };
@@ -128,7 +127,6 @@
 		054BEA1025697AC40059FEDC /* IdeasProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasProtocols.swift; sourceTree = "<group>"; };
 		054BEA1125697AC40059FEDC /* IdeasInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasInteractor.swift; sourceTree = "<group>"; };
 		054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasConfigurator.swift; sourceTree = "<group>"; };
-		054BEA1F25697BAB0059FEDC /* IdeasCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCells.swift; sourceTree = "<group>"; };
 		054BEA2725697BBA0059FEDC /* IdeasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCell.swift; sourceTree = "<group>"; };
 		054BEA30256980900059FEDC /* IdeasTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasTableHeader.swift; sourceTree = "<group>"; };
 		054BEA40256991E10059FEDC /* IdeasCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasCellViewModel.swift; sourceTree = "<group>"; };
@@ -258,6 +256,20 @@
 			path = IdeasModels;
 			sourceTree = "<group>";
 		};
+		056C15392574028500AE739E /* IdeasMainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				054BEA2F256980700059FEDC /* IdeasModels */,
+				215BC99F2542D8810069D30E /* IdeasVC.swift */,
+				054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */,
+				054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */,
+				054BEA1125697AC40059FEDC /* IdeasInteractor.swift */,
+				054BEA0E25697AC40059FEDC /* IdeasRouter.swift */,
+				054BEA1025697AC40059FEDC /* IdeasProtocols.swift */,
+			);
+			path = IdeasMainScreen;
+			sourceTree = "<group>";
+		};
 		212F890725574BAD0097F894 /* DailyDataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,14 +321,7 @@
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
-				054BEA2F256980700059FEDC /* IdeasModels */,
-				215BC99F2542D8810069D30E /* IdeasVC.swift */,
-				054BEA1F25697BAB0059FEDC /* IdeasCells.swift */,
-				054BEA1225697AC40059FEDC /* IdeasConfigurator.swift */,
-				054BEA0D25697AC40059FEDC /* IdeasPresenter.swift */,
-				054BEA1125697AC40059FEDC /* IdeasInteractor.swift */,
-				054BEA0E25697AC40059FEDC /* IdeasRouter.swift */,
-				054BEA1025697AC40059FEDC /* IdeasProtocols.swift */,
+				056C15392574028500AE739E /* IdeasMainScreen */,
 			);
 			path = Ideas;
 			sourceTree = "<group>";
@@ -738,7 +743,6 @@
 				212F890925574C000097F894 /* DailyCellViewModel.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
-				054BEA2025697BAB0059FEDC /* IdeasCells.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
 				054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */,

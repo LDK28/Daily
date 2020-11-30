@@ -14,17 +14,14 @@ class RecentActionsCell: UITableViewCell {
     let recentActionsView = UIView()
     let headerLabel = UILabel()
     
+    var actionLabelsTexts = [String]()
     var actionLabels = [UILabel]()
     
     var viewModel: RecentActionsViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             headerLabel.text = viewModel.headerLabelText
-            for action in viewModel.recentActions {
-                let actionLabel = UILabel()
-                actionLabel.text = action
-                actionLabels.append(actionLabel)
-            }
+            actionLabelsTexts.append(contentsOf: viewModel.recentActions)
         }
     }
     
@@ -33,6 +30,13 @@ class RecentActionsCell: UITableViewCell {
         
         contentView.addSubview(recentActionsView)
         recentActionsView.addSubview(headerLabel)
+        
+        for action in actionLabelsTexts {
+            let actionLabel = UILabel()
+            actionLabel.text = action
+            actionLabels.append(actionLabel)
+        }
+        
         for actionLabel in actionLabels {
             recentActionsView.addSubview(actionLabel)
         }
@@ -71,14 +75,15 @@ class RecentActionsCell: UITableViewCell {
     }
     
     func configureActionLabels() {
-        var topAnchorConstant: CGFloat = 0
+        var topAnchorConstant: CGFloat = 10
         for actionLabel in actionLabels {
             NSLayoutConstraint.activate([
-                actionLabel.topAnchor.constraint(equalTo: headerLabel.topAnchor, constant: topAnchorConstant),
+                actionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: topAnchorConstant),
                 actionLabel.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor),
                 actionLabel.trailingAnchor.constraint(equalTo: headerLabel.trailingAnchor)
             ])
-            topAnchorConstant += actionLabel.bounds.height + 10
+            //topAnchorConstant += actionLabel.bounds.height + 10
+            topAnchorConstant += 50
         }
     }
     
@@ -99,7 +104,7 @@ class RecentActionsCell: UITableViewCell {
     
     func styleActionLabels() {
         for actionLabel in actionLabels {
-            actionLabel.styleLabel(font: .systemFont(ofSize: 18), text: actionLabel.text ?? "", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
+            actionLabel.styleLabel(font: .systemFont(ofSize: 18), text: actionLabel.text ?? "action", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
         }
     }
 }
