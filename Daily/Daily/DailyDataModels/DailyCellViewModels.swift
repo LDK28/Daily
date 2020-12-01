@@ -42,7 +42,7 @@ class DailyCellViewModel: MainCellViewModel {
 	var isToggable: Bool
 	var cellPosition: CellPosition
 	
-	func determineCornerRadius(OfCellViewModelWithIndex row: Int,
+	func determineCornerMask(OfCellViewModelWithIndex row: Int,
 							   inSectionWithRowIndices indices: Range<Array<DailyCellViewModel>.Index>) {
 		switch (indices.contains(row - 1),indices.contains(row + 1)) {
 		case (true, true):

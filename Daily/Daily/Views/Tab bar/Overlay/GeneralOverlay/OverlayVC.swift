@@ -11,7 +11,7 @@ import UIKit
 class OverlayVC: UIViewController {
 	var interactor: OverlayBusinessLogic?
 
-	internal var cellsToDisplay: [DailySectionViewModel] = [DailySectionViewModel]()
+	internal var cellsToDisplay = [DailySectionViewModel]()
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
@@ -88,7 +88,7 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cellViewModel = cellsToDisplay[indexPath.section].cellViewModels[indexPath.row]
+		let cellViewModel = cellsToDisplay.getViewModel(at: indexPath)
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? DailyCell {
 			cell.setViewModel(cellViewModel)
 			cell.delegate = self

@@ -36,7 +36,7 @@ class OverlayPresenter: OverlayDataStore {
 			let viewController = viewController,
 			let cellIndexPath = getIndexPathWhere(sectionTypeIs: .dateAndTime,
 												  cellTypeIs: type),
-			let cellViewModel = viewController.cellsToDisplay[cellIndexPath.section].cellViewModels[cellIndexPath.row] as? DailyDateAndTimeCellViewModel
+			let cellViewModel = viewController.cellsToDisplay.getViewModel(at: cellIndexPath) as? DailyDateAndTimeCellViewModel
 		else { return }
 		cellViewModel.dateAndTime = dateAndTime
 		viewController.updateViewModelForCell(at: cellIndexPath)
@@ -50,22 +50,22 @@ class OverlayPresenter: OverlayDataStore {
 			let viewController = viewController,
 			let previousIndexPath = getIndexPathWhere(sectionTypeIs: .dateAndTime,
 													 cellTypeIs: cellType),
-			let dateOrTimeCellViewModel = (viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)
+			let dateOrTimeCellViewModel = viewController.cellsToDisplay.getViewModel(at: previousIndexPath) as? DailyDateAndTimeCellViewModel
 		else { return }
 		cellViewModel.dateAndTime = dateComponent
-		let indexPathToUpdate = IndexPath(row: previousIndexPath.row + 1, section: previousIndexPath.section)
+		let indexPathToUpdate = previousIndexPath.nextRow()
 		if conditionIsTrue {
-			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.insert(cellViewModel, at: indexPathToUpdate.row)
+			viewController.cellsToDisplay.insert(cellViewModel, at: indexPathToUpdate)
 			viewController.insert(at: [indexPathToUpdate])
 		} else {
-			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.remove(at: indexPathToUpdate.row)
+			viewController.cellsToDisplay.remove(at: indexPathToUpdate)
 			viewController.delete(at: [indexPathToUpdate])
 		}
 		dateOrTimeCellViewModel.dateAndTime = dateComponent
 		
 		let indices = viewController.cellsToDisplay[previousIndexPath.section].cellViewModels.indices
-		dateOrTimeCellViewModel.determineCornerRadius(OfCellViewModelWithIndex: previousIndexPath.row,
-													  inSectionWithRowIndices: indices)
+		dateOrTimeCellViewModel.determineCornerMask(OfCellViewModelWithIndex: previousIndexPath.row,
+													inSectionWithRowIndices: indices)
 		viewController.updateViewModelForCell(at: previousIndexPath)
 	}
 	

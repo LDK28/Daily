@@ -113,3 +113,24 @@ class RepeatViewModel: DailySectionViewModel {
 								   cellPosition: .theOnly)
 		]
 }
+
+
+extension Array where Element == DailySectionViewModel {
+	mutating func insert(_ cellViewModel: DailyCellViewModel, at indexPath: IndexPath) {
+		self[indexPath.section].cellViewModels.insert(cellViewModel, at: indexPath.row)
+	}
+	
+	mutating func remove(at indexPath: IndexPath) {
+		self[indexPath.section].cellViewModels.remove(at: indexPath.row)
+	}
+	
+	mutating func getViewModel(at indexPath: IndexPath) -> DailyCellViewModel {
+		return self[indexPath.section].cellViewModels[indexPath.row]
+	}
+}
+
+extension IndexPath {
+	func nextRow() -> IndexPath {
+		return IndexPath(row: self.row + 1, section: section)
+	}
+}
