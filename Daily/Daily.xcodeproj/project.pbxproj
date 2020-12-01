@@ -45,7 +45,6 @@
 		21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E172564569C009C1D8E /* OverlayProtocols.swift */; };
 		21CC5E1E2564569C009C1D8E /* OverlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E182564569C009C1D8E /* OverlayInteractor.swift */; };
 		21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E192564569C009C1D8E /* OverlayVC.swift */; };
-		21CC5E202564569C009C1D8E /* OverlayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E1A2564569C009C1D8E /* OverlayConfigurator.swift */; };
 		21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E5A25645B07009C1D8E /* NewNoteOverlayRouter.swift */; };
 		21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E5B25645B07009C1D8E /* NewNoteOverlayProtocols.swift */; };
 		21CC5E6225645B08009C1D8E /* NewNoteOverlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E5C25645B07009C1D8E /* NewNoteOverlayInteractor.swift */; };
@@ -144,7 +143,6 @@
 		21CC5E172564569C009C1D8E /* OverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayProtocols.swift; sourceTree = "<group>"; };
 		21CC5E182564569C009C1D8E /* OverlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInteractor.swift; sourceTree = "<group>"; };
 		21CC5E192564569C009C1D8E /* OverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayVC.swift; sourceTree = "<group>"; };
-		21CC5E1A2564569C009C1D8E /* OverlayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayConfigurator.swift; sourceTree = "<group>"; };
 		21CC5E5A25645B07009C1D8E /* NewNoteOverlayRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayRouter.swift; sourceTree = "<group>"; };
 		21CC5E5B25645B07009C1D8E /* NewNoteOverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayProtocols.swift; sourceTree = "<group>"; };
 		21CC5E5C25645B07009C1D8E /* NewNoteOverlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayInteractor.swift; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 				21CC5E172564569C009C1D8E /* OverlayProtocols.swift */,
 				21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */,
 				2117318F255DCAA10086A9EE /* OverlayDataSource.swift */,
-				21CC5E1A2564569C009C1D8E /* OverlayConfigurator.swift */,
 				21CC5E192564569C009C1D8E /* OverlayVC.swift */,
 				21CC5E182564569C009C1D8E /* OverlayInteractor.swift */,
 				21CC5E152564569C009C1D8E /* OverlayPresenter.swift */,
@@ -729,7 +726,6 @@
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				2156464725584D64007264D4 /* SectionModel.swift in Sources */,
-				21CC5E202564569C009C1D8E /* OverlayConfigurator.swift in Sources */,
 				215BC9AB2542DEDA0069D30E /* DailyTabBarController.swift in Sources */,
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,

@@ -10,25 +10,14 @@ import UIKit
 class NewTaskOverlayModule {
 	static func build() -> NewTaskOverlayVC {
 		let dataSource = NewTaskOverlayDataSource()
-		
 		let viewController = NewTaskOverlayVC()
-		let interactor = NewTaskOverlayInteractor()
-		
-		let presenter = NewTaskOverlayPresenter()
-		presenter.dataSource = dataSource
-		presenter.viewController = viewController
-		
+		let presenter = NewTaskOverlayPresenter(viewController: viewController, dataSource: dataSource)
+		let interactor = NewTaskOverlayInteractor(presenter: presenter, dataSource: dataSource)
 		let router = NewTaskOverlayRouter()
 		router.viewController = viewController
-		viewController.router = router
-		
-		interactor.dataSource = dataSource
-		interactor.presenter = presenter
 		router.dataStore = interactor
 		viewController.interactor = interactor
-		
-		
-		
+		viewController.router = router
 		return viewController
 	}
 }

@@ -67,6 +67,11 @@ class OverlayPresenter: OverlayDataStore {
 													  inSectionWithRowIndices: indices)
 		viewController.updateViewModelForCell(at: previousIndexPath)
 	}
+	
+	init(viewController: OverlayDisplayLogic?, dataSource: OverlayDataSource) {
+		self.viewController = viewController
+		self.dataSource = dataSource
+	}
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
