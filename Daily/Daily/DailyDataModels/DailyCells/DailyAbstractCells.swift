@@ -31,6 +31,19 @@ class DailyCell: UITableViewCell, MainCellProtocol {
 			icon.tintColor = iconComponent.symbolColor
 			icon.image = iconComponent.symbol
 		}
+		
+		UIView.animate(withDuration: 0.1, animations: {
+			switch viewModel.cellPosition {
+			case .first:
+				self.roundTopCorners(cornerRadius: 10)
+			case .last:
+				self.roundBottomCorners(cornerRadius: 10)
+			case .within:
+				self.sharpCorners()
+			case .theOnly:
+				self.roundCorners(cornerRadius: 10)
+			}
+		})
 	}
 }
 

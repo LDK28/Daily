@@ -27,6 +27,10 @@ struct Icon {
 	}
 }
 
+enum CellPosition {
+	case first, last, within, theOnly
+}
+
 protocol MainCellViewModel {
 	var cellType: UITableViewCell.Type { get }
 }
@@ -36,9 +40,23 @@ class DailyCellViewModel: MainCellViewModel {
 	var icon: Icon?
 	var cellType: UITableViewCell.Type
 	var isToggable: Bool
-	var isSelectable: Bool
+	var cellPosition: CellPosition
 	
-	init(title: String?, icon: Icon?, cellType: UITableViewCell.Type, isToggable: Bool, isSelectable: Bool) {
+	func determineCornerRadius(OfCellViewModelWithIndex row: Int,
+							   inSectionWithRowIndices indices: Range<Array<DailyCellViewModel>.Index>) {
+		switch (indices.contains(row - 1),indices.contains(row + 1)) {
+		case (true, true):
+			self.cellPosition = .within
+		case (false, false):
+			self.cellPosition = .theOnly
+		case (true, false):
+			self.cellPosition = .last
+		case (false, true):
+			self.cellPosition = .first
+		}
+	}
+	
+	init(title: String?, icon: Icon?, cellType: UITableViewCell.Type, isToggable: Bool, cellPosition: CellPosition) {
 		if let title = title {
 			self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
 		}
@@ -49,7 +67,7 @@ class DailyCellViewModel: MainCellViewModel {
 		
 		self.cellType = cellType
 		self.isToggable = isToggable
-		self.isSelectable = isSelectable
+		self.cellPosition = cellPosition
 	}
 }
 

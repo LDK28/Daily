@@ -22,14 +22,14 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyOptionalDateCell.self,
 										  isToggable: true,
-										  isSelectable: false),
+										  cellPosition: .first),
 			
 			DailyDateAndTimeCellViewModel(title: "Time",
 										  icon: Icon(symbolName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
 										  isToggable: true,
-										  isSelectable: false),
+										  cellPosition: .last)
 				
 		]
 }
@@ -47,7 +47,7 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 										  tileColor: .dailyAdaptiveGreen),
 							   cellType: DailyTeamProjectCell.self,
 							   isToggable: true,
-							   isSelectable: false),
+							   cellPosition: .theOnly),
 		]
 }
 
@@ -67,14 +67,14 @@ class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyRequiredDateCell.self,
 										  isToggable: false,
-										  isSelectable: false),
+										  cellPosition: .first),
 				
 			DailyDateAndTimeCellViewModel(title: "Time",
 										  icon: Icon(symbolName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
 										  isToggable: true,
-										  isSelectable: false)
+										  cellPosition: .last)
 		]
 }
 
@@ -92,7 +92,7 @@ class RemindViewModel: DailySectionViewModel {
 										  tileColor: .dailyAdaptiveYellow),
 							   cellType: DailyRemindCell.self,
 							   isToggable: true,
-							   isSelectable: false)
+							   cellPosition: .theOnly)
 		]
 }
 
@@ -110,6 +110,6 @@ class RepeatViewModel: DailySectionViewModel {
 											  tileColor: .dailyAdaptiveGreen),
 								   cellType: DailyRepeatCell.self,
 								   isToggable: false,
-								   isSelectable: true)
+								   cellPosition: .theOnly)
 		]
 }

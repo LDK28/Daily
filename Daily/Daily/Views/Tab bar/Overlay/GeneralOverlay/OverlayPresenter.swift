@@ -48,7 +48,8 @@ class OverlayPresenter: OverlayDataStore {
 		guard
 			let viewController = viewController,
 			let previousIndexPath = getIndexPathWith(sectionType: .dateAndTime,
-													 cellType: cellType)
+													 cellType: cellType),
+			let dateOrTimeCellViewModel = (viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)
 		else { return }
 		cellViewModel.dateAndTime = dateComponent
 		let indexPathToUpdate = IndexPath(row: previousIndexPath.row + 1, section: previousIndexPath.section)
@@ -59,7 +60,11 @@ class OverlayPresenter: OverlayDataStore {
 			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.remove(at: indexPathToUpdate.row)
 			viewController.delete(at: [indexPathToUpdate])
 		}
-		(viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)?.dateAndTime = dateComponent
+		dateOrTimeCellViewModel.dateAndTime = dateComponent
+		
+		let indices = viewController.cellsToDisplay[previousIndexPath.section].cellViewModels.indices
+		dateOrTimeCellViewModel.determineCornerRadius(OfCellViewModelWithIndex: previousIndexPath.row,
+													  inSectionWithRowIndices: indices)
 		viewController.updateViewModelForCell(at: previousIndexPath)
 	}
 }
@@ -81,7 +86,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 									icon: nil,
 									cellType: DailyDatePickerCell.self,
 									isToggable: false,
-									isSelectable: false),
+									cellPosition: .within),
 							afterCellOfType: precisedDateCellType,
 							dateComponent: dataSource.assignedDay,
 							if: dataSource.userIsChoosingDate)
@@ -93,7 +98,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 									icon: nil,
 									cellType: DailyTimePickerCell.self,
 									isToggable: false,
-									isSelectable: false),
+									cellPosition: .last),
 							afterCellOfType: DailyTimeCell.self,
 							dateComponent: dataSource.assignedTime,
 							if: dataSource.isAssignedToTime)
