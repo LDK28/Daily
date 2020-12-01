@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class OverlayDataSource {
 	var title: String?
 	var isAssignedToTime = false

@@ -31,8 +31,8 @@ protocol OverlayDataStore: AnyObject {
 
 protocol OverlayPresentationLogic {
 	func present(_ cellsToDisplay: [DailySectionViewModel])
-	func updateTimePickerViewModel()
 	func updateTimeInTimeCell()
+	func updateTimePickerCellViewModel()
 	func updateDateInDateCell()
 	func updateDatePickerCellViewModel(precisedDateCellType: UITableViewCell.Type)
 }

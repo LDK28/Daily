@@ -15,7 +15,7 @@ class NewProjectOverlayPresenter: OverlayPresenter {
 extension NewProjectOverlayPresenter: NewProjectOverlayPresentationLogic {
 	
 	override func updateDateInDateCell() {
-		updateDateAndTimeForView(withCellOfType: DailyOptionalDateCell.self, withNewDateAndTime: dataSource.assignedDay)
+		updateDateAndTimeCellViewModels(withCellOfType: DailyOptionalDateCell.self, withNewDateAndTime: dataSource.assignedDay)
 	}
 
 }

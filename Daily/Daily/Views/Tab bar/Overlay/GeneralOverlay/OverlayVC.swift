@@ -16,7 +16,7 @@ class OverlayVC: UIViewController {
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
 	internal let tableView = UITableView()
-	internal let textFieldView = TextFieldView()
+	internal let textFieldView = HeaderTextFieldView()
 	
 	override func loadView() {
 		super.loadView()

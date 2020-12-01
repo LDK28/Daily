@@ -11,8 +11,8 @@ class OverlayPresenter: OverlayDataStore {
 	weak var viewController: OverlayDisplayLogic?
 	var dataSource = OverlayDataSource()
 	
-	internal func getIndexPathWith(sectionType: DailySectionType,
-								   cellType: UITableViewCell.Type) -> IndexPath? {
+	internal func getIndexPathWhere(sectionTypeIs sectionType: DailySectionType,
+								    cellTypeIs cellType: UITableViewCell.Type) -> IndexPath? {
 		guard
 			let viewController = viewController,
 			let section =
@@ -30,25 +30,26 @@ class OverlayPresenter: OverlayDataStore {
 		return IndexPath(row: row, section: section)
 	}
 	
-	internal func updateDateAndTimeForView(withCellOfType type: UITableViewCell.Type,
-										   withNewDateAndTime dateAndTime: Date?) {
+	internal func updateDateAndTimeCellViewModels(withCellOfType type: UITableViewCell.Type,
+												  withNewDateAndTime dateAndTime: Date?) {
 		guard
 			let viewController = viewController,
-			let cellIndexPath = getIndexPathWith(sectionType: .dateAndTime, cellType: type),
+			let cellIndexPath = getIndexPathWhere(sectionTypeIs: .dateAndTime,
+												  cellTypeIs: type),
 			let cellViewModel = viewController.cellsToDisplay[cellIndexPath.section].cellViewModels[cellIndexPath.row] as? DailyDateAndTimeCellViewModel
 		else { return }
 		cellViewModel.dateAndTime = dateAndTime
 		viewController.updateViewModelForCell(at: cellIndexPath)
 	}
 	
-	internal func changeDateAndTimeSection(_ cellViewModel: DailyDateAndTimeCellViewModel,
-										   afterCellOfType cellType: UITableViewCell.Type,
-										   dateComponent: Date?,
-										   if conditionIsTrue: Bool) {
+	internal func updateDateAndTimePickerCellViewModel(with cellViewModel: DailyDateAndTimeCellViewModel,
+													   afterCellOfType cellType: UITableViewCell.Type,
+													   dateComponent: Date?,
+													   insertIf conditionIsTrue: Bool) {
 		guard
 			let viewController = viewController,
-			let previousIndexPath = getIndexPathWith(sectionType: .dateAndTime,
-													 cellType: cellType),
+			let previousIndexPath = getIndexPathWhere(sectionTypeIs: .dateAndTime,
+													 cellTypeIs: cellType),
 			let dateOrTimeCellViewModel = (viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)
 		else { return }
 		cellViewModel.dateAndTime = dateComponent
@@ -81,32 +82,33 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	}
 	
 	func updateTimeInTimeCell() {
-		updateDateAndTimeForView(withCellOfType: DailyTimeCell.self,
+		updateDateAndTimeCellViewModels(withCellOfType: DailyTimeCell.self,
 								 withNewDateAndTime: dataSource.assignedTime)
 	}
 	
 	func updateDatePickerCellViewModel(precisedDateCellType: UITableViewCell.Type) {
-		changeDateAndTimeSection(DailyDateAndTimeCellViewModel(
-									title: nil,
-									icon: nil,
-									cellType: DailyDatePickerCell.self,
-									isToggable: false,
-									cellPosition: .within),
-							afterCellOfType: precisedDateCellType,
-							dateComponent: dataSource.assignedDay,
-							if: dataSource.userIsChoosingDate)
+		updateDateAndTimePickerCellViewModel(
+			with: DailyDateAndTimeCellViewModel(
+				title: nil,
+				icon: nil,
+				cellType: DailyDatePickerCell.self,
+				isToggable: false,
+				cellPosition: .within),
+			afterCellOfType: precisedDateCellType,
+			dateComponent: dataSource.assignedDay,
+			insertIf: dataSource.userIsChoosingDate)
 	}
 	
-	func updateTimePickerViewModel() {
-		changeDateAndTimeSection(DailyDateAndTimeCellViewModel(
-									title: nil,
-									icon: nil,
-									cellType: DailyTimePickerCell.self,
-									isToggable: false,
-									cellPosition: .last),
-							afterCellOfType: DailyTimeCell.self,
-							dateComponent: dataSource.assignedTime,
-							if: dataSource.isAssignedToTime)
+	func updateTimePickerCellViewModel() {
+		updateDateAndTimePickerCellViewModel(with: DailyDateAndTimeCellViewModel(
+			title: nil,
+			icon: nil,
+			cellType: DailyTimePickerCell.self,
+			isToggable: false,
+			cellPosition: .last),
+		afterCellOfType: DailyTimeCell.self,
+		dateComponent: dataSource.assignedTime,
+		insertIf: dataSource.isAssignedToTime)
 	}
 }
 
