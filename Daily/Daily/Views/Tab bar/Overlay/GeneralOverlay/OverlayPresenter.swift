@@ -30,7 +30,8 @@ class OverlayPresenter: OverlayDataStore {
 		return IndexPath(row: row, section: section)
 	}
 	
-	internal func updateDateAndTimeSection(withCellOfType type: UITableViewCell.Type, withNewDateAndTime dateAndTime: Date?) {
+	internal func updateDateAndTimeForView(withCellOfType type: UITableViewCell.Type,
+										   withNewDateAndTime dateAndTime: Date?) {
 		guard
 			let viewController = viewController,
 			let cellIndexPath = getIndexPathWith(sectionType: .dateAndTime, cellType: type),
@@ -70,7 +71,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	}
 	
 	func updateTimeInTimeCell() {
-		updateDateAndTimeSection(withCellOfType: DailyTimeCell.self,
+		updateDateAndTimeForView(withCellOfType: DailyTimeCell.self,
 								 withNewDateAndTime: dataSource.assignedTime)
 	}
 	

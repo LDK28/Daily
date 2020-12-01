@@ -13,7 +13,7 @@ class NewTaskOverlayPresenter: OverlayPresenter {
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
 	
 	override func updateDateInDateCell() {
-		updateDateAndTimeSection(withCellOfType: DailyRequiredDateCell.self, withNewDateAndTime: dataSource.assignedDay)
+		updateDateAndTimeForView(withCellOfType: DailyRequiredDateCell.self, withNewDateAndTime: dataSource.assignedDay)
 	}
 	
 	func updateRepeatCellViewModel(at indexPath: IndexPath) {
