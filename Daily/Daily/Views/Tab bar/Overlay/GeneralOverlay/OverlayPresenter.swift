@@ -100,7 +100,8 @@ extension OverlayPresenter: OverlayPresentationLogic {
 	}
 	
 	func updateTimePickerCellViewModel() {
-		updateDateAndTimePickerCellViewModel(with: DailyDateAndTimeCellViewModel(
+		updateDateAndTimePickerCellViewModel(
+		with: DailyDateAndTimeCellViewModel(
 			title: nil,
 			icon: nil,
 			cellType: DailyTimePickerCell.self,
