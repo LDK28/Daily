@@ -27,14 +27,18 @@ struct Icon {
 	}
 }
 
-struct DailyCellViewModel {
+protocol MainCellViewModel {
+	var cellType: UITableViewCell.Type { get }
+}
+
+class DailyCellViewModel: MainCellViewModel {
 	var title: String?
 	var icon: Icon?
-	var cellType: DailyCellType
+	var cellType: UITableViewCell.Type
 	var isToggable: Bool
 	var isSelectable: Bool
 	
-	init(title: String?, icon: Icon?, cellType: DailyCellType, isToggable: Bool, isSelectable: Bool) {
+	init(title: String?, icon: Icon?, cellType: UITableViewCell.Type, isToggable: Bool, isSelectable: Bool) {
 		if let title = title {
 			self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
 		}
@@ -47,4 +51,8 @@ struct DailyCellViewModel {
 		self.isToggable = isToggable
 		self.isSelectable = isSelectable
 	}
+}
+
+class DailyDateAndTimeCellViewModel: DailyCellViewModel {
+	var dateAndTime: Date?
 }

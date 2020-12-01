@@ -11,7 +11,7 @@ import UIKit
 class OverlayVC: UIViewController {
 	var interactor: OverlayBusinessLogic?
 
-	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
+	internal var cellsToDisplay: [DailySectionViewModel] = [DailySectionViewModel]()
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
@@ -60,7 +60,6 @@ extension OverlayVC: OverlayDisplayLogic {
 	func insert(at indexPath: IndexPath) {
 		tableView.beginUpdates()
 		tableView.insertRows(at: [indexPath], with: .automatic)
-		cellsToDisplay[indexPath.section][indexPath.row].delegate = self
 		tableView.endUpdates()
 	}
 	
@@ -69,11 +68,6 @@ extension OverlayVC: OverlayDisplayLogic {
 	}
 	
 	func displayCells() {
-		cellsToDisplay.forEach({ (cellsInSection) in
-			cellsInSection.forEach { (cellInRow) in
-				cellInRow.delegate = self
-			}
-		})
 		tableView.reloadData()
 	}
 }
@@ -89,11 +83,17 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return cellsToDisplay[section].count
+		return cellsToDisplay[section].cellViewModels.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return cellsToDisplay[indexPath.section][indexPath.row]
+		let cellViewModel = cellsToDisplay[indexPath.section].cellViewModels[indexPath.row]
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? DailyCell {
+			cell.setViewModel(cellViewModel)
+			cell.delegate = self
+			return cell
+		}
+		return UITableViewCell()
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

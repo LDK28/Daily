@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OverlayDisplayLogic: AnyObject {
-	var cellsToDisplay: [[DailyCell]] { get set }
+	var cellsToDisplay: [DailySectionViewModel] { get set }
 	
 	func displayCells()
 	func insert(at indexPath: IndexPath)
@@ -31,8 +31,8 @@ protocol OverlayDataStore: AnyObject {
 }
 
 protocol OverlayPresentationLogic {
-	func present()
-	func updateDateAndTimeSection(atIndex section: Int, afterCellOfType cellType: DailyCellType)
-	func updateTimeInTimeCell(atSection section: Int)
-	func updateDateInDateCell(atSection section: Int)
+	func present(_ cellsToDisplay: [DailySectionViewModel])
+	func updateTimePickerViewModel()
+	func updateTimeInTimeCell(newTime: Date?)
+	func updateDateInDateCell()
 }

@@ -19,11 +19,11 @@ extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
 	func didToggleDateSwitcher() {
 		guard let dataSource = dataSource as? NewProjectOverlayDataSource else { return }
 		
-		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
-			section.type == .dateAndTime
-		}) {
-			dataSource.isAssignedToDate.toggle()
-			presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: .optionalDate)
-		}
+//		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
+//			section.type == .dateAndTime
+//		}) {
+//			dataSource.isAssignedToDate.toggle()
+//			//presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: DailyOptionalDateCell.self)
+//		}
 	}
 }

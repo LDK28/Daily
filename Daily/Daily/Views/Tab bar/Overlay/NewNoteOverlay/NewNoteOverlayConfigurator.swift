@@ -9,7 +9,7 @@ import UIKit
 
 class NewNoteOverlayModule {
 	static func build() -> NewNoteOverlayVC {
-		let dataSource = NewNoteOverlayDataSource(sectionViewModels: [])
+		let dataSource = NewNoteOverlayDataSource()
 		
 		let viewController = NewNoteOverlayVC()
 		let interactor = NewNoteOverlayInteractor()

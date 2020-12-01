@@ -10,8 +10,9 @@ import UIKit
 final class DailyRequiredDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyNewTaskDateCell"
 	
-	var date: Date = Date() {
+	override var dateAndTime: Date? {
 		didSet {
+			let date = dateAndTime ?? Date()
 			let formatter = DateFormatter()
 			formatter.dateFormat = "E, MMM d, yyyy"
 			dateAndTimeLabel.text = formatter.string(from: date)
@@ -23,7 +24,7 @@ final class DailyRequiredDateCell: DailyDateAndTimeCell {
 			guard let component = viewModel else { return }
 			super.viewModel = component
 			titleLabel.text = component.title
-			date = Date()
+			dateAndTime = Date()
 		}
 	}
 }
@@ -34,9 +35,9 @@ protocol DailyOptionalDateCellDelegate: class {
 final class DailyOptionalDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyOptionalDateCell"
 	
-	var date: Date? {
+	override var dateAndTime: Date? {
 		didSet {
-			if let date = date {
+			if let date = dateAndTime {
 				let formatter = DateFormatter()
 				formatter.dateFormat = "E, MMM d, yyyy"
 				dateAndTimeLabel.text = formatter.string(from: date)
@@ -50,9 +51,8 @@ final class DailyOptionalDateCell: DailyDateAndTimeCell {
 		didSet {
 			guard let component = viewModel else { return }
 			super.viewModel = component
-			
 			titleLabel.text = component.title
-			date = nil
+			dateAndTime = nil
 			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
 		}
 	}
