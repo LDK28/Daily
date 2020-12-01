@@ -82,6 +82,8 @@ class DailyTimeAndDatePickerCell: DailyCell {
 	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		super.setViewModel(viewModel)
 		picker.date = (viewModel as? DailyDateAndTimeCellViewModel)?.dateAndTime ?? Date()
+	
+		
 	}
 	
 	

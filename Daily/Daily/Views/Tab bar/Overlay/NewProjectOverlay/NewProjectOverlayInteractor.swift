@@ -25,6 +25,7 @@ extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
 	
 	func didToggleDateSwitcher() {
 		dataSource.userIsChoosingDate.toggle()
+		dataSource.assignedDay = dataSource.userIsChoosingDate ? Date() : nil
 		presenter?.updateDatePickerCellViewModel(precisedDateCellType: DailyOptionalDateCell.self)
 	}
 }

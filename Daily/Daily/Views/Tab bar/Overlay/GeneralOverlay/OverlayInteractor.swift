@@ -33,6 +33,7 @@ extension OverlayInteractor: OverlayBusinessLogic {
 	
 	func didToggleTimeSwitcher() {
 		dataSource.isAssignedToTime.toggle()
+		dataSource.assignedTime = dataSource.isAssignedToTime ? Date() : nil
 		presenter?.updateTimePickerViewModel()
 	}
 }

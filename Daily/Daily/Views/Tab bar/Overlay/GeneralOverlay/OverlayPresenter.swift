@@ -43,23 +43,23 @@ class OverlayPresenter: OverlayDataStore {
 	
 	internal func changeDateAndTimeSection(_ cellViewModel: DailyDateAndTimeCellViewModel,
 										   afterCellOfType cellType: UITableViewCell.Type,
+										   dateComponent: Date?,
 										   if conditionIsTrue: Bool) {
 		guard
 			let viewController = viewController,
 			let previousIndexPath = getIndexPathWith(sectionType: .dateAndTime,
 													 cellType: cellType)
 		else { return }
+		cellViewModel.dateAndTime = dateComponent
 		let indexPathToUpdate = IndexPath(row: previousIndexPath.row + 1, section: previousIndexPath.section)
 		if conditionIsTrue {
-			cellViewModel.dateAndTime = Date()
 			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.insert(cellViewModel, at: indexPathToUpdate.row)
 			viewController.insert(at: [indexPathToUpdate])
 		} else {
-			cellViewModel.dateAndTime = nil
 			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.remove(at: indexPathToUpdate.row)
 			viewController.delete(at: [indexPathToUpdate])
 		}
-		(viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)?.dateAndTime = cellViewModel.dateAndTime
+		(viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)?.dateAndTime = dateComponent
 		viewController.updateViewModelForCell(at: previousIndexPath)
 	}
 }
@@ -83,6 +83,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 									isToggable: false,
 									isSelectable: false),
 							afterCellOfType: precisedDateCellType,
+							dateComponent: dataSource.assignedDay,
 							if: dataSource.userIsChoosingDate)
 	}
 	
@@ -94,6 +95,7 @@ extension OverlayPresenter: OverlayPresentationLogic {
 									isToggable: false,
 									isSelectable: false),
 							afterCellOfType: DailyTimeCell.self,
+							dateComponent: dataSource.assignedTime,
 							if: dataSource.isAssignedToTime)
 	}
 }
