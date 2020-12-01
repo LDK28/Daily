@@ -50,13 +50,22 @@ extension UILabel {
         layer.cornerRadius = cornerRadius
     }
     
-    func styleLabelWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, for state: UIControl.State) {
+    func styleLabelWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, imageFirst: Bool = false, textAlignment: NSTextAlignment = .center) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let labelText = NSMutableAttributedString()
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = image.withTintColor(color)
         let textAttribute = [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor : color]
-        let labelText = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
-        labelText.append(NSAttributedString(attachment: imageAttachment))
+        let textAttachment = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
+        if imageFirst {
+            labelText.append(NSAttributedString(attachment: imageAttachment))
+            labelText.append(textAttachment)
+        } else {
+            labelText.append(textAttachment)
+            labelText.append(NSAttributedString(attachment: imageAttachment))
+        }
         self.attributedText = labelText
+        self.textAlignment = textAlignment
     }
 	
 	//MARK: Overlay extensions

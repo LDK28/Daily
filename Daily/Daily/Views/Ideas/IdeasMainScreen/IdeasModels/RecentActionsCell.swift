@@ -16,7 +16,7 @@ class RecentActionsCell: UITableViewCell {
     
     var actionLabelsTexts = [String]()
     var actionLabels = [UILabel]()
-    let singleActionImageView = UIImageView()
+    let singleActionImage = UIImage(systemName: "chevron.right")
     
     var viewModel: RecentActionsViewModel? {
         didSet {
@@ -105,13 +105,15 @@ class RecentActionsCell: UITableViewCell {
     
     func styleHeaderLabel() {
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 22) {
-            headerLabel.styleLabel(font: labelFont, text: headerLabel.text ?? "header", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
+            headerLabel.styleLabel(font: labelFont, text: headerLabel.text ?? "", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
         }
     }
     
     func styleActionLabels() {
         for actionLabel in actionLabels {
-            actionLabel.styleLabel(font: .systemFont(ofSize: 18), text: actionLabel.text ?? "action", textAlignment: .left, textColor: .dailyRecentActionsTextColor)
+            if let singleActionImage = UIImage(systemName: "person.fill") {
+                actionLabel.styleLabelWithImage(text: actionLabel.text ?? "", with: .systemFont(ofSize: 18), in: .dailyRecentActionsTextColor, image: singleActionImage, imageFirst: true, textAlignment: .left)
+            }
         }
     }
 }

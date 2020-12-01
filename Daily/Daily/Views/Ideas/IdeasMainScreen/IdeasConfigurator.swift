@@ -13,7 +13,7 @@ class IdeasModule {
         let doneProjects: Int = 2
         let missedProjects: Int = 1
         
-        let recentActions: [String] = ["first", "second"]
+        let recentActions: [String] = [" first", " second"]
         
         
         let ideasButtonModels = [IdeasCellViewModel(title: "Notes"),
