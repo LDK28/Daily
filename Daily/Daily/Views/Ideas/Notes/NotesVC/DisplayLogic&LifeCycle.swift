@@ -56,6 +56,8 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		super.viewWillAppear(animated)
 		selectedIndexPaths = []
 		cellsToDisplay.forEach( { $0.isChosen = false })
+		isSearching = false
+		searchBar.text = nil
 		interactor?.fetchCells()
 	}
 	
