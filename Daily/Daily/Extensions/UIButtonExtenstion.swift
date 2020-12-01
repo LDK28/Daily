@@ -36,14 +36,9 @@ extension UIButton {
     }
 	
     func setTitleWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, for state: UIControl.State) {
-        
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = image.withTintColor(color)
-        let textAttribute = [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor : color]
-        let buttonTitle = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
-        buttonTitle.append(NSAttributedString(attachment: imageAttachment))
-        
-        setAttributedTitle(buttonTitle, for: state)
+        let buttonLabel = UILabel()
+        buttonLabel.styleLabelWithImage(text: text, with: font, in: color, image: image, for: state)
+        setAttributedTitle(buttonLabel.attributedText, for: state)
     }
 	
 	enum OverlayButtons: String {

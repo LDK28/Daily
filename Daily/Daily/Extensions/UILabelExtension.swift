@@ -49,6 +49,15 @@ extension UILabel {
         layer.masksToBounds = true
         layer.cornerRadius = cornerRadius
     }
+    
+    func styleLabelWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, for state: UIControl.State) {
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = image.withTintColor(color)
+        let textAttribute = [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor : color]
+        let labelText = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
+        labelText.append(NSAttributedString(attachment: imageAttachment))
+        self.attributedText = labelText
+    }
 	
 	//MARK: Overlay extensions
 	func styleOverlayLabel(text: String) {

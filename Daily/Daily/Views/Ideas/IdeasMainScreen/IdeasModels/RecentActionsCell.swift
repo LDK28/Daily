@@ -16,17 +16,27 @@ class RecentActionsCell: UITableViewCell {
     
     var actionLabelsTexts = [String]()
     var actionLabels = [UILabel]()
+    let singleActionImageView = UIImageView()
     
     var viewModel: RecentActionsViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             headerLabel.text = viewModel.headerLabelText
             actionLabelsTexts.append(contentsOf: viewModel.recentActions)
+            setUpCell()
         }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setUpCell(){
         
         contentView.addSubview(recentActionsView)
         recentActionsView.addSubview(headerLabel)
@@ -52,10 +62,6 @@ class RecentActionsCell: UITableViewCell {
         
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func configureRecentActionsView() {
         NSLayoutConstraint.activate([
             recentActionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
@@ -75,15 +81,16 @@ class RecentActionsCell: UITableViewCell {
     }
     
     func configureActionLabels() {
+        let heightConstant: CGFloat = 19
         var topAnchorConstant: CGFloat = 10
         for actionLabel in actionLabels {
             NSLayoutConstraint.activate([
                 actionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: topAnchorConstant),
+                actionLabel.heightAnchor.constraint(equalToConstant: heightConstant),
                 actionLabel.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor),
                 actionLabel.trailingAnchor.constraint(equalTo: headerLabel.trailingAnchor)
             ])
-            //topAnchorConstant += actionLabel.bounds.height + 10
-            topAnchorConstant += 50
+            topAnchorConstant += heightConstant + 10
         }
     }
     
