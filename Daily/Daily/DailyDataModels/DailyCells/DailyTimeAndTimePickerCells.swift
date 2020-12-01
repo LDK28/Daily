@@ -25,18 +25,7 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 			}
 		}
 	}
-	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			
-			titleLabel.text = component.title
-			dateAndTimeLabel.text = "Any time"
-			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
-		}
-	}
-	
+
 	@objc func toggleSwitcher(switcher: UISwitch) {
 		(delegate as? DailyTimeCellDelegate)?.didToggleTimeSwitcher()
 	}

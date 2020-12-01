@@ -26,5 +26,4 @@ enum RepeatSchedule: String, CaseIterable, Equatable {
 class NewTaskOverlayDataSource: OverlayDataSource {
 	var shouldRemind = false
 	var repeatSchedule: RepeatSchedule = .never
-	var userIsChoosingDate = false
 }

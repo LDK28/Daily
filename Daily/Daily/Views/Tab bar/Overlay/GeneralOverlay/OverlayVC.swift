@@ -51,20 +51,21 @@ class OverlayVC: UIViewController {
 
 extension OverlayVC: OverlayDisplayLogic {
 	
-	func delete(at indexPath: IndexPath) {
+	func delete(at indexPaths: [IndexPath]) {
 			tableView.beginUpdates()
-			tableView.deleteRows(at: [indexPath], with: .automatic)
+			tableView.deleteRows(at: indexPaths, with: .automatic)
 			tableView.endUpdates()
 	}
 	
-	func insert(at indexPath: IndexPath) {
+	func insert(at indexPaths: [IndexPath]) {
 		tableView.beginUpdates()
-		tableView.insertRows(at: [indexPath], with: .automatic)
+		tableView.insertRows(at: indexPaths, with: .automatic)
 		tableView.endUpdates()
 	}
 	
-	func update(at indexPath: IndexPath) {
-		tableView.reloadData()
+	func updateViewModelForCell(at indexPath: IndexPath) {
+		(tableView.cellForRow(at: indexPath) as? DailyCell)?.setViewModel(cellsToDisplay[indexPath.section].cellViewModels[indexPath.row])
+
 	}
 	
 	func displayCells() {
@@ -98,7 +99,6 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		interactor?.didTapCellAt(indexPath: indexPath)
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

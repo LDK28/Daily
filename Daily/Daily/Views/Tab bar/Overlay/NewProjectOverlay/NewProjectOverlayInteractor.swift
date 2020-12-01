@@ -12,18 +12,19 @@ class NewProjectOverlayInteractor: OverlayInteractor {
 }
 
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
+	override func fetchCells() {
+		presenter?.present([
+			TeamProjectSectionViewModel(),
+			AssignableDateAndTimeSectionViewModel()
+		])
+	}
+	
 	func didToggleTeamProjectSwitcher() {
 		(dataSource as? NewProjectOverlayDataSource)?.isTeamProject.toggle()
 	}
 	
 	func didToggleDateSwitcher() {
-		guard let dataSource = dataSource as? NewProjectOverlayDataSource else { return }
-		
-//		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
-//			section.type == .dateAndTime
-//		}) {
-//			dataSource.isAssignedToDate.toggle()
-//			//presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: DailyOptionalDateCell.self)
-//		}
+		dataSource.userIsChoosingDate.toggle()
+		presenter?.updateDatePickerCellViewModel(precisedDateCellType: DailyOptionalDateCell.self)
 	}
 }

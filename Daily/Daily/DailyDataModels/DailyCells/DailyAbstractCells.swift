@@ -8,34 +8,29 @@
 import UIKit
 
 protocol MainCellProtocol: UITableViewCell {
-	func setViewModel(_ viewModel: MainCellViewModel)
+	func setViewModel(_ viewModel: MainCellViewModel?)
 }
 
 //MARK: - Basic model for all other cells
 class DailyCell: UITableViewCell, MainCellProtocol {
 	internal let icon = UIImageView()
 	internal let switcher = UISwitch()
-
 	weak var delegate: UIViewController?
-	var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel, let componentIcon = component.icon else { return }
-			icon.backgroundColor = componentIcon.tileColor
-			icon.tintColor = componentIcon.symbolColor
-			icon.image = componentIcon.symbol
-
-			if component.isToggable {
-				switcher.isHidden = false
-				selectionStyle = .none
-			} else {
-				switcher.isHidden = true
-			}
-		}
-	}
 	
-	func setViewModel(_ viewModel: MainCellViewModel) {
+	func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? DailyCellViewModel else { return }
-		self.viewModel = viewModel
+		if viewModel.isToggable {
+			switcher.isHidden = false
+			selectionStyle = .none
+		} else {
+			switcher.isHidden = true
+		}
+		
+		if let iconComponent = viewModel.icon {
+			icon.backgroundColor = iconComponent.tileColor
+			icon.tintColor = iconComponent.symbolColor
+			icon.image = iconComponent.symbol
+		}
 	}
 }
 
@@ -48,13 +43,10 @@ class DailyDateAndTimeCell: DailyCell {
 	
 	var dateAndTime: Date?
 	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let viewModel = viewModel as? DailyDateAndTimeCellViewModel else { return }
-			super.viewModel = viewModel
-			let a = dateAndTime
-			dateAndTime = viewModel.dateAndTime
-		}
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		super.setViewModel(viewModel)
+		self.dateAndTime = (viewModel as? DailyDateAndTimeCellViewModel)?.dateAndTime
+		self.titleLabel.text = (viewModel as? DailyDateAndTimeCellViewModel)?.title
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -86,6 +78,12 @@ class DailyTimeAndDatePickerCell: DailyCell {
 	var dateAndTime: Date {
 		return picker.date
 	}
+	
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		super.setViewModel(viewModel)
+		picker.date = (viewModel as? DailyDateAndTimeCellViewModel)?.dateAndTime ?? Date()
+	}
+	
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)

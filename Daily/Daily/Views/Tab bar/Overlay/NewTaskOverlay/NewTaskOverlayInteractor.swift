@@ -11,11 +11,17 @@ class NewTaskOverlayInteractor: OverlayInteractor {
 }
 
 extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
+	func didTapDateCell(at indexPath: IndexPath) {
+		dataSource.userIsChoosingDate.toggle()
+		presenter?.updateDatePickerCellViewModel(precisedDateCellType: DailyRequiredDateCell.self)
+	}
+	
 	func didToggleRemindSwitcher() {
 		(dataSource as? NewTaskOverlayDataSource)?.shouldRemind.toggle()
 	}
 	
 	override func fetchCells() {
+		dataSource.assignedDay = Date()
 		presenter?.present([
 				DateAndAssignableTimeSectionViewModel(),
 				RemindViewModel(),
@@ -23,16 +29,8 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
 		])
 	}
 	
-	override func didTapCellAt(indexPath: IndexPath) {
-//		switch dataSource.sectionViewModels[indexPath.section].type {
-//		case .dateAndTime:
-//			(dataSource as? NewTaskOverlayDataSource)?.userIsChoosingDate.toggle()
-//			//presenter?.updateDateAndTimeSection(atIndex: indexPath.section, afterCellOfType: DailyRequiredDateCell.self)
-//		case .repeatSelector:
-//			(dataSource as? NewTaskOverlayDataSource)?.repeatSchedule.nextCase()
-//			(presenter as? NewTaskOverlayPresenter)?.updateRepeatCell(at: indexPath)
-//		default:
-//			return
-//		}
+	func didTapRepeatCell(at indexPath: IndexPath) {
+		(dataSource as? NewTaskOverlayDataSource)?.repeatSchedule.nextCase()
+		(presenter as? NewTaskOverlayPresenter)?.updateRepeatCellViewModel(at: indexPath)
 	}
 }

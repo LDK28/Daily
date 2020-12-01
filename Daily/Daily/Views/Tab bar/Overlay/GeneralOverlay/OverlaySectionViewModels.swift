@@ -105,7 +105,7 @@ class RepeatViewModel: DailySectionViewModel {
 	
 	var cellViewModels: [DailyCellViewModel] =
 		[
-				DailyCellViewModel(title: "Repeat",
+			DailyRepeatCellViewModel(title: "Repeat",
 								   icon: Icon(symbolName: "repeat",
 											  tileColor: .dailyAdaptiveGreen),
 								   cellType: DailyRepeatCell.self,

@@ -14,21 +14,12 @@ class OverlayInteractor: OverlayDataStore {
 
 extension OverlayInteractor: OverlayBusinessLogic {
 	@objc func fetchCells() {
-		
+		/* override if needed */
 	}
 	
 	func didChangeValueInDatePickerCell(newDay: Date) {
 		dataSource.assignedDay = newDay
-//		if let sectionToUpdate = dataSource.sectionViewModels.firstIndex(where: { section in
-//			section.type == .dateAndTime
-//		}) {
-//			dataSource.assignedDay = newDay
-//			presenter?.updateDateInDateCell(atSection: sectionToUpdate)
-//		}
-	}
-	
-	@objc func didTapCellAt(indexPath: IndexPath) {
-		
+		presenter?.updateDateInDateCell()
 	}
 	
 	func didChangeTitle(text: String?) {
@@ -37,7 +28,7 @@ extension OverlayInteractor: OverlayBusinessLogic {
 	
 	func didChangeValueInTimePickerCell(newTime: Date) {
 		dataSource.assignedTime = newTime
-		presenter?.updateTimeInTimeCell(newTime: newTime)
+		presenter?.updateTimeInTimeCell()
 	}
 	
 	func didToggleTimeSwitcher() {

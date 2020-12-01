@@ -8,7 +8,7 @@
 import UIKit
 
 final class DailyRequiredDateCell: DailyDateAndTimeCell {
-	static let cellIdentifier = "DailyNewTaskDateCell"
+	static let cellIdentifier = "DailyRequiredDateCell"
 	
 	override var dateAndTime: Date? {
 		didSet {
@@ -16,15 +16,6 @@ final class DailyRequiredDateCell: DailyDateAndTimeCell {
 			let formatter = DateFormatter()
 			formatter.dateFormat = "E, MMM d, yyyy"
 			dateAndTimeLabel.text = formatter.string(from: date)
-		}
-	}
-	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			titleLabel.text = component.title
-			dateAndTime = Date()
 		}
 	}
 }
@@ -47,18 +38,17 @@ final class DailyOptionalDateCell: DailyDateAndTimeCell {
 		}
 	}
 	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			titleLabel.text = component.title
-			dateAndTime = nil
-			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
-		}
-	}
-	
 	@objc func toggleSwitcher(switcher: UISwitch) {
 		(delegate as? DailyOptionalDateCellDelegate)?.didToggleDateSwitcher()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 }
 
@@ -72,7 +62,7 @@ final class DailyDatePickerCell: DailyTimeAndDatePickerCell {
 	@objc func datePickerChanged(picker: UIDatePicker) {
 		(delegate as? DailyDatePickerCellDelegate)?.didChangeDate(newDay: picker.date)
 	}
-	
+
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .date

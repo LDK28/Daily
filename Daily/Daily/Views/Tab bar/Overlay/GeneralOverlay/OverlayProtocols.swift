@@ -11,9 +11,9 @@ protocol OverlayDisplayLogic: AnyObject {
 	var cellsToDisplay: [DailySectionViewModel] { get set }
 	
 	func displayCells()
-	func insert(at indexPath: IndexPath)
-	func delete(at indexPath: IndexPath)
-	func update(at indexPath: IndexPath)
+	func insert(at indexPaths: [IndexPath])
+	func delete(at indexPaths: [IndexPath])
+	func updateViewModelForCell(at indexPath: IndexPath)
 }
 
 protocol OverlayBusinessLogic {
@@ -21,7 +21,6 @@ protocol OverlayBusinessLogic {
 	func didToggleTimeSwitcher()
 	func didChangeValueInTimePickerCell(newTime: Date)
 	func didChangeTitle(text: String?)
-	func didTapCellAt(indexPath: IndexPath)
 	func didChangeValueInDatePickerCell(newDay: Date)
 	
 }
@@ -33,6 +32,7 @@ protocol OverlayDataStore: AnyObject {
 protocol OverlayPresentationLogic {
 	func present(_ cellsToDisplay: [DailySectionViewModel])
 	func updateTimePickerViewModel()
-	func updateTimeInTimeCell(newTime: Date?)
+	func updateTimeInTimeCell()
 	func updateDateInDateCell()
+	func updateDatePickerCellViewModel(precisedDateCellType: UITableViewCell.Type)
 }

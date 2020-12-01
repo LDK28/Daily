@@ -11,8 +11,8 @@ class OverlayPresenter: OverlayDataStore {
 	weak var viewController: OverlayDisplayLogic?
 	var dataSource = OverlayDataSource()
 	
-	private func getIndexPathWith(sectionType: DailySectionType,
-										 cellType: UITableViewCell.Type) -> IndexPath? {
+	internal func getIndexPathWith(sectionType: DailySectionType,
+								   cellType: UITableViewCell.Type) -> IndexPath? {
 		guard
 			let viewController = viewController,
 			let section =
@@ -29,43 +29,71 @@ class OverlayPresenter: OverlayDataStore {
 		
 		return IndexPath(row: row, section: section)
 	}
+	
+	internal func updateDateAndTimeSection(withCellOfType type: UITableViewCell.Type, withNewDateAndTime dateAndTime: Date?) {
+		guard
+			let viewController = viewController,
+			let cellIndexPath = getIndexPathWith(sectionType: .dateAndTime, cellType: type),
+			let cellViewModel = viewController.cellsToDisplay[cellIndexPath.section].cellViewModels[cellIndexPath.row] as? DailyDateAndTimeCellViewModel
+		else { return }
+		cellViewModel.dateAndTime = dateAndTime
+		viewController.updateViewModelForCell(at: cellIndexPath)
+	}
+	
+	internal func changeDateAndTimeSection(_ cellViewModel: DailyDateAndTimeCellViewModel,
+										   afterCellOfType cellType: UITableViewCell.Type,
+										   if conditionIsTrue: Bool) {
+		guard
+			let viewController = viewController,
+			let previousIndexPath = getIndexPathWith(sectionType: .dateAndTime,
+													 cellType: cellType)
+		else { return }
+		let indexPathToUpdate = IndexPath(row: previousIndexPath.row + 1, section: previousIndexPath.section)
+		if conditionIsTrue {
+			cellViewModel.dateAndTime = Date()
+			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.insert(cellViewModel, at: indexPathToUpdate.row)
+			viewController.insert(at: [indexPathToUpdate])
+		} else {
+			cellViewModel.dateAndTime = nil
+			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.remove(at: indexPathToUpdate.row)
+			viewController.delete(at: [indexPathToUpdate])
+		}
+		(viewController.cellsToDisplay[previousIndexPath.section].cellViewModels[previousIndexPath.row] as? DailyDateAndTimeCellViewModel)?.dateAndTime = cellViewModel.dateAndTime
+		viewController.updateViewModelForCell(at: previousIndexPath)
+	}
 }
 
 extension OverlayPresenter: OverlayPresentationLogic {
 	
-	func updateDateInDateCell() {
-		
+	@objc func updateDateInDateCell() {
+		/* override if needed */
 	}
 	
-	func updateTimeInTimeCell(newTime: Date?) {
-		guard
-			let viewController = viewController,
-			let timeCellIndexPath = getIndexPathWith(sectionType: .dateAndTime, cellType: DailyTimeCell.self),
-			let timeCellViewModel = viewController.cellsToDisplay[timeCellIndexPath.section].cellViewModels[timeCellIndexPath.row] as? DailyDateAndTimeCellViewModel
-		else { return }
-		timeCellViewModel.dateAndTime = newTime
-		viewController.update(at: timeCellIndexPath)
+	func updateTimeInTimeCell() {
+		updateDateAndTimeSection(withCellOfType: DailyTimeCell.self,
+								 withNewDateAndTime: dataSource.assignedTime)
+	}
+	
+	func updateDatePickerCellViewModel(precisedDateCellType: UITableViewCell.Type) {
+		changeDateAndTimeSection(DailyDateAndTimeCellViewModel(
+									title: nil,
+									icon: nil,
+									cellType: DailyDatePickerCell.self,
+									isToggable: false,
+									isSelectable: false),
+							afterCellOfType: precisedDateCellType,
+							if: dataSource.userIsChoosingDate)
 	}
 	
 	func updateTimePickerViewModel() {
-		guard
-			let viewController = viewController,
-			let previousCellIndexPath = getIndexPathWith(sectionType: .dateAndTime, cellType: DailyTimeCell.self)
-		else { return }
-		let indexPathToUpdate = IndexPath(row: previousCellIndexPath.row + 1, section: previousCellIndexPath.section)
-		if dataSource.isAssignedToTime {
-			let timePickerCellViewModel =
-				DailyCellViewModel(
-					title: nil, icon: nil,
-					cellType: DailyTimePickerCell.self,
-					isToggable: false,
-					isSelectable: false)
-			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.insert(timePickerCellViewModel, at: indexPathToUpdate.row)
-			viewController.insert(at: indexPathToUpdate)
-		} else {
-			viewController.cellsToDisplay[indexPathToUpdate.section].cellViewModels.remove(at: indexPathToUpdate.row)
-			viewController.delete(at: indexPathToUpdate)
-		}
+		changeDateAndTimeSection(DailyDateAndTimeCellViewModel(
+									title: nil,
+									icon: nil,
+									cellType: DailyTimePickerCell.self,
+									isToggable: false,
+									isSelectable: false),
+							afterCellOfType: DailyTimeCell.self,
+							if: dataSource.isAssignedToTime)
 	}
 }
 

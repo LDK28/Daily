@@ -56,3 +56,7 @@ class DailyCellViewModel: MainCellViewModel {
 class DailyDateAndTimeCellViewModel: DailyCellViewModel {
 	var dateAndTime: Date?
 }
+
+class DailyRepeatCellViewModel: DailyCellViewModel {
+	var repeatSchedule: RepeatSchedule = .never
+}

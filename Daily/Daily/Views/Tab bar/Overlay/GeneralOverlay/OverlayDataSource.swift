@@ -11,6 +11,7 @@ import UIKit
 class OverlayDataSource {
 	var title: String?
 	var isAssignedToTime = false
+	var userIsChoosingDate = false
 	var assignedTime: Date?
 	var assignedDay: Date?
 }
