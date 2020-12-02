@@ -7,27 +7,43 @@
 
 import UIKit
 
+protocol MainCellProtocol: UITableViewCell {
+	func setViewModel(_ viewModel: MainCellViewModel?)
+}
+
 //MARK: - Basic model for all other cells
-class DailyCell: UITableViewCell {
+class DailyCell: UITableViewCell, MainCellProtocol {
 	internal let icon = UIImageView()
 	internal let switcher = UISwitch()
-
 	weak var delegate: UIViewController?
 	
-	var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel, let componentIcon = component.icon else { return }
-			icon.backgroundColor = componentIcon.tileColor
-			icon.tintColor = componentIcon.symbolColor
-			icon.image = componentIcon.symbol
-
-			if component.isToggable {
-				switcher.isHidden = false
-				selectionStyle = .none
-			} else {
-				switcher.isHidden = true
-			}
+	func setViewModel(_ viewModel: MainCellViewModel?) {
+		guard let viewModel = viewModel as? DailyCellViewModel else { return }
+		if viewModel.isToggable {
+			switcher.isHidden = false
+			selectionStyle = .none
+		} else {
+			switcher.isHidden = true
 		}
+		
+		if let iconComponent = viewModel.icon {
+			icon.backgroundColor = iconComponent.tileColor
+			icon.tintColor = iconComponent.symbolColor
+			icon.image = iconComponent.symbol
+		}
+		
+		UIView.animate(withDuration: 0.1, animations: {
+			switch viewModel.cellPosition {
+			case .first:
+				self.roundTopCorners(cornerRadius: 10)
+			case .last:
+				self.roundBottomCorners(cornerRadius: 10)
+			case .within:
+				self.sharpCorners()
+			case .theOnly:
+				self.roundCorners(cornerRadius: 10)
+			}
+		})
 	}
 }
 
@@ -37,6 +53,14 @@ class DailyDateAndTimeCell: DailyCell {
 	internal let titleLabel = UILabel()
 	internal let dateAndTimeLabel = UILabel()
 	internal let textStack = UIStackView()
+	
+	var dateAndTime: Date?
+	
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		super.setViewModel(viewModel)
+		self.dateAndTime = (viewModel as? DailyDateAndTimeCellViewModel)?.dateAndTime
+		self.titleLabel.text = (viewModel as? DailyDateAndTimeCellViewModel)?.title
+	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,8 +88,6 @@ class DailyDateAndTimeCell: DailyCell {
 }
 
 
-
-
 // MARK: - Cell with DateAndTimePicker without text, icon and other elements other than DateAndTimePicker
 
 class DailyTimeAndDatePickerCell: DailyCell {
@@ -74,6 +96,15 @@ class DailyTimeAndDatePickerCell: DailyCell {
 	var dateAndTime: Date {
 		return picker.date
 	}
+	
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		super.setViewModel(viewModel)
+		picker.date = (viewModel as? DailyDateAndTimeCellViewModel)?.dateAndTime ?? Date()
+	
+		
+	}
+	
+	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		if #available(iOS 14, *) {

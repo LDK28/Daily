@@ -9,29 +9,22 @@ import UIKit
 
 class OverlayInteractor: OverlayDataStore {
 	var presenter: OverlayPresentationLogic?
-	var dataSource = OverlayDataSource(sectionViewModels: [])
+	var dataSource: OverlayDataSource
 	
-	func getFirstIndexOfSection(ofType type: DailySectionType) -> Int? {
-		dataSource.sectionViewModels.firstIndex(where: { section in
-			section.type == type
-		})
+	init(presenter: OverlayPresentationLogic?, dataSource: OverlayDataSource) {
+		self.presenter = presenter
+		self.dataSource = dataSource
 	}
 }
 
 extension OverlayInteractor: OverlayBusinessLogic {
-	func fetchCells() {
-		presenter?.present(data: dataSource)
+	@objc func fetchCells() {
+		/* override if needed */
 	}
 	
 	func didChangeValueInDatePickerCell(newDay: Date) {
-		if let sectionToUpdate = getFirstIndexOfSection(ofType: .dateAndTime) {
-			dataSource.assignedDay = newDay
-			presenter?.updateDateInDateCell(atSection: sectionToUpdate)
-		}
-	}
-	
-	@objc func didTapCellAt(indexPath: IndexPath) {
-		
+		dataSource.assignedDay = newDay
+		presenter?.updateDateInDateCell()
 	}
 	
 	func didChangeTitle(text: String?) {
@@ -39,16 +32,13 @@ extension OverlayInteractor: OverlayBusinessLogic {
 	}
 	
 	func didChangeValueInTimePickerCell(newTime: Date) {
-		if let sectionToUpdate = getFirstIndexOfSection(ofType: .dateAndTime) {
-			dataSource.assignedTime = newTime
-			presenter?.updateTimeInTimeCell(atSection: sectionToUpdate)
-		}
+		dataSource.assignedTime = newTime
+		presenter?.updateTimeInTimeCell()
 	}
 	
 	func didToggleTimeSwitcher() {
-		if let sectionToUpdate = getFirstIndexOfSection(ofType: .dateAndTime) {
-			dataSource.isAssignedToTime.toggle()
-			presenter?.updateDateAndTimeSection(atIndex: sectionToUpdate, afterCellOfType: .time)
-		}
+		dataSource.isAssignedToTime.toggle()
+		dataSource.assignedTime = dataSource.isAssignedToTime ? Date() : nil
+		presenter?.updateTimePickerCellViewModel()
 	}
 }

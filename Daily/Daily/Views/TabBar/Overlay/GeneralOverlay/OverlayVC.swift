@@ -11,12 +11,12 @@ import UIKit
 class OverlayVC: UIViewController {
 	var interactor: OverlayBusinessLogic?
 
-	internal var cellsToDisplay: [[DailyCell]] = [[DailyCell]]()
+	internal var cellsToDisplay = [DailySectionViewModel]()
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
 	internal let titleLabel = UILabel()
 	internal let tableView = UITableView()
-	internal let textFieldView = TextFieldView()
+	internal let textFieldView = HeaderTextFieldView()
 	
 	override func loadView() {
 		super.loadView()
@@ -54,29 +54,24 @@ class OverlayVC: UIViewController {
 
 extension OverlayVC: OverlayDisplayLogic {
 	
-	func delete(at indexPath: IndexPath) {
+	func delete(at indexPaths: [IndexPath]) {
 			tableView.beginUpdates()
-			tableView.deleteRows(at: [indexPath], with: .automatic)
+			tableView.deleteRows(at: indexPaths, with: .automatic)
 			tableView.endUpdates()
 	}
 	
-	func insert(at indexPath: IndexPath) {
+	func insert(at indexPaths: [IndexPath]) {
 		tableView.beginUpdates()
-		tableView.insertRows(at: [indexPath], with: .automatic)
-		cellsToDisplay[indexPath.section][indexPath.row].delegate = self
+		tableView.insertRows(at: indexPaths, with: .automatic)
 		tableView.endUpdates()
 	}
 	
-	func update(at indexPath: IndexPath) {
-		tableView.reloadData()
+	func updateViewModelForCell(at indexPath: IndexPath) {
+		(tableView.cellForRow(at: indexPath) as? DailyCell)?.setViewModel(cellsToDisplay[indexPath.section].cellViewModels[indexPath.row])
+
 	}
 	
 	func displayCells() {
-		cellsToDisplay.forEach({ (cellsInSection) in
-			cellsInSection.forEach { (cellInRow) in
-				cellInRow.delegate = self
-			}
-		})
 		tableView.reloadData()
 	}
 }
@@ -92,16 +87,21 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return cellsToDisplay[section].count
+		return cellsToDisplay[section].cellViewModels.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return cellsToDisplay[indexPath.section][indexPath.row]
+		let cellViewModel = cellsToDisplay.getViewModel(at: indexPath)
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? DailyCell {
+			cell.setViewModel(cellViewModel)
+			cell.delegate = self
+			return cell
+		}
+		return UITableViewCell()
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		interactor?.didTapCellAt(indexPath: indexPath)
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -18,6 +18,11 @@ final class DailyRepeatCell: DailyOrdinaryCell {
 		}
 	}
 	
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		super.setViewModel(viewModel)
+		self.repeatSchedule = (viewModel as? DailyRepeatCellViewModel)?.repeatSchedule ?? .never
+	}
+	
 	func configureRepeatScheduleLabel() {
 		contentView.addSubview(repeatScheduleLabel)
 		

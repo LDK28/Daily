@@ -22,6 +22,5 @@ extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
 	
 	func didEndEditingNote(text: String) {
 		(dataSource as? NewNoteOverlayDataSource)?.noteContent = text
-	}
-	
+	}	
 }

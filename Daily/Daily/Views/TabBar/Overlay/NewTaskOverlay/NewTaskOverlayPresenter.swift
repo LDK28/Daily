@@ -11,8 +11,19 @@ class NewTaskOverlayPresenter: OverlayPresenter {
 }
 
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
-	func updateRepeatCell(at indexPath: IndexPath) {
-		(viewController?.cellsToDisplay[indexPath.section][indexPath.row] as? DailyRepeatCell)?.repeatSchedule = (dataSource as? NewTaskOverlayDataSource)?.repeatSchedule ?? .never
-		viewController?.update(at: indexPath)
+	
+	override func updateDateInDateCell() {
+		updateDateAndTimeCellViewModels(withCellOfType: DailyRequiredDateCell.self, withNewDateAndTime: dataSource.assignedDay)
+	}
+	
+	func updateRepeatCellViewModel(at indexPath: IndexPath) {
+		guard
+			let viewController = viewController,
+			let repeatCellViewModel = viewController.cellsToDisplay[indexPath.section].cellViewModels[indexPath.row] as? DailyRepeatCellViewModel,
+			let repeatSchedule = (dataSource as? NewTaskOverlayDataSource)?.repeatSchedule
+		else { return }
+		
+		repeatCellViewModel.repeatSchedule = repeatSchedule
+		viewController.updateViewModelForCell(at: indexPath)
 	}
 }
