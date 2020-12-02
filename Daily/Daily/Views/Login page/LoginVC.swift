@@ -48,9 +48,6 @@ final class LoginVC: MainVC {
 
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
-		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-		
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +75,7 @@ final class LoginVC: MainVC {
 					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
-					let vc = DailyTabBarController()
+					let vc = DailyTabBarVC()
 					vc.modalPresentationStyle = .fullScreen
 					self.present(vc, animated: true, completion: nil)
 				}
@@ -88,8 +85,6 @@ final class LoginVC: MainVC {
 	
 	@objc func didTapSignupButton() {
 		navigationController?.pushViewController(SignupVC(), animated: true)
-		emailField.text = ""
-		passwordField.text = ""
 	}
 	
 	func validateFields() -> String? {
@@ -108,8 +103,8 @@ final class LoginVC: MainVC {
 	
 	func configureElements() {
 		NSLayoutConstraint.activate([
-			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
 			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 8),
 			loginButton.heightAnchor.constraint(equalToConstant: 45),

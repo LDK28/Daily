@@ -14,12 +14,17 @@
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
+		211084F4256B10B100F32D0F /* NewNoteOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211084F3256B10B100F32D0F /* NewNoteOverlayPresenter.swift */; };
 		21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318F255DCAA10086A9EE /* OverlayDataSource.swift */; };
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModels.swift */; };
 		2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */; };
 		2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */; };
 		215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215387F9255289E600EE8AB2 /* UITextViewExtension.swift */; };
+		21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E2E2569256900F9A50C /* NotesTableHeader.swift */; };
+		21544E3D25693B6700F9A50C /* NotesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E3C25693B6700F9A50C /* NotesCellViewModel.swift */; };
+		21544E4825693B7400F9A50C /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E4725693B7400F9A50C /* NotesCell.swift */; };
+		21544E5E2569408F00F9A50C /* NotesTableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E5D2569408F00F9A50C /* NotesTableFooter.swift */; };
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156461925583762007264D4 /* UITableViewCellExtension.swift */; };
@@ -28,7 +33,6 @@
 		215646C325588AF7007264D4 /* NewNoteOverlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215646C225588AF7007264D4 /* NewNoteOverlayModel.swift */; };
 		2158545225449CAF00A60F75 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158545125449CAF00A60F75 /* AddButton.swift */; };
 		215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC99F2542D8810069D30E /* IdeasVC.swift */; };
-		215BC9AB2542DEDA0069D30E /* DailyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9AA2542DEDA0069D30E /* DailyTabBarController.swift */; };
 		215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BC9B12542E2620069D30E /* CalendarVC.swift */; };
 		215DFBF9255D7D6500CD3939 /* DailyOrdinaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFBF8255D7D6500CD3939 /* DailyOrdinaryCell.swift */; };
 		215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFBFD255D7D8B00CD3939 /* DailyRemindCell.swift */; };
@@ -37,8 +41,10 @@
 		215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */; };
 		215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */; };
 		217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */; };
+		2198887425757AFF00198443 /* UIElementsInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198887325757AFF00198443 /* UIElementsInteraction.swift */; };
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
+		21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderView.swift */; };
 		21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E152564569C009C1D8E /* OverlayPresenter.swift */; };
 		21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E172564569C009C1D8E /* OverlayProtocols.swift */; };
@@ -61,6 +67,14 @@
 		21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5EA625645EAF009C1D8E /* NewTaskOverlayInteractor.swift */; };
 		21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5EA725645EAF009C1D8E /* NewTaskOverlayVC.swift */; };
 		21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5EA825645EAF009C1D8E /* NewTaskOverlayConfigurator.swift */; };
+		21D7BD74256A93BF008BD30C /* DailyTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD6E256A93BF008BD30C /* DailyTabBarPresenter.swift */; };
+		21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD6F256A93BF008BD30C /* DailyTabBarRouter.swift */; };
+		21D7BD76256A93BF008BD30C /* DailyTabBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD70256A93BF008BD30C /* DailyTabBarProtocols.swift */; };
+		21D7BD77256A93BF008BD30C /* DailyTabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD71256A93BF008BD30C /* DailyTabBarInteractor.swift */; };
+		21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD72256A93BF008BD30C /* DailyTabBarVC.swift */; };
+		21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */; };
+		21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */; };
+		21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BDB8256AED8E008BD30C /* UserRequest.swift */; };
 		21E1D02425403975006A4206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02325403975006A4206 /* AppDelegate.swift */; };
 		21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02525403975006A4206 /* SceneDelegate.swift */; };
 		21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D02C25403975006A4206 /* Daily.xcdatamodeld */; };
@@ -85,6 +99,12 @@
 		21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */; };
 		21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8D52545CAC400E08CD2 /* LoginVC.swift */; };
 		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
+		21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3D2567073700F87D18 /* NotesPresenter.swift */; };
+		21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3E2567073700F87D18 /* NotesRouter.swift */; };
+		21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3F2567073700F87D18 /* NotesProtocols.swift */; };
+		21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B402567073700F87D18 /* NotesInteractor.swift */; };
+		21EA5B472567073700F87D18 /* DisplayLogic&LifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B412567073700F87D18 /* DisplayLogic&LifeCycle.swift */; };
+		21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B422567073700F87D18 /* NotesConfigurator.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
 		6CEC207ED487372A433E2931 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
@@ -111,12 +131,17 @@
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		211084F3256B10B100F32D0F /* NewNoteOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayPresenter.swift; sourceTree = "<group>"; };
 		2117318F255DCAA10086A9EE /* OverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		212F890825574C000097F894 /* DailyCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModels.swift; sourceTree = "<group>"; };
 		2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerWithMiddleButton.swift; sourceTree = "<group>"; };
 		2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayModel.swift; sourceTree = "<group>"; };
 		215387F9255289E600EE8AB2 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		21544E2E2569256900F9A50C /* NotesTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableHeader.swift; sourceTree = "<group>"; };
+		21544E3C25693B6700F9A50C /* NotesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCellViewModel.swift; sourceTree = "<group>"; };
+		21544E4725693B7400F9A50C /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
+		21544E5D2569408F00F9A50C /* NotesTableFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableFooter.swift; sourceTree = "<group>"; };
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2156461925583762007264D4 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
@@ -125,7 +150,6 @@
 		215646C225588AF7007264D4 /* NewNoteOverlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayModel.swift; sourceTree = "<group>"; };
 		2158545125449CAF00A60F75 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		215BC99F2542D8810069D30E /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
-		215BC9AA2542DEDA0069D30E /* DailyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarController.swift; sourceTree = "<group>"; };
 		215BC9B12542E2620069D30E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = Daily/Views/Calendar/CalendarVC.swift; sourceTree = SOURCE_ROOT; };
 		215DFBF8255D7D6500CD3939 /* DailyOrdinaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyOrdinaryCell.swift; sourceTree = "<group>"; };
 		215DFBFD255D7D8B00CD3939 /* DailyRemindCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRemindCell.swift; sourceTree = "<group>"; };
@@ -134,8 +158,10 @@
 		215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTimeAndTimePickerCells.swift; sourceTree = "<group>"; };
 		215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateAndDatePickerCells.swift; sourceTree = "<group>"; };
 		217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAbstractCells.swift; sourceTree = "<group>"; };
+		2198887325757AFF00198443 /* UIElementsInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsInteraction.swift; sourceTree = "<group>"; };
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsConfiguration.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		21CC5E152564569C009C1D8E /* OverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresenter.swift; sourceTree = "<group>"; };
 		21CC5E172564569C009C1D8E /* OverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayProtocols.swift; sourceTree = "<group>"; };
@@ -158,6 +184,14 @@
 		21CC5EA625645EAF009C1D8E /* NewTaskOverlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayInteractor.swift; sourceTree = "<group>"; };
 		21CC5EA725645EAF009C1D8E /* NewTaskOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayVC.swift; sourceTree = "<group>"; };
 		21CC5EA825645EAF009C1D8E /* NewTaskOverlayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayConfigurator.swift; sourceTree = "<group>"; };
+		21D7BD6E256A93BF008BD30C /* DailyTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarPresenter.swift; sourceTree = "<group>"; };
+		21D7BD6F256A93BF008BD30C /* DailyTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarRouter.swift; sourceTree = "<group>"; };
+		21D7BD70256A93BF008BD30C /* DailyTabBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarProtocols.swift; sourceTree = "<group>"; };
+		21D7BD71256A93BF008BD30C /* DailyTabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarInteractor.swift; sourceTree = "<group>"; };
+		21D7BD72256A93BF008BD30C /* DailyTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarVC.swift; sourceTree = "<group>"; };
+		21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTabBarConfigurator.swift; sourceTree = "<group>"; };
+		21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserBackendModel.swift; sourceTree = "<group>"; };
+		21D7BDB8256AED8E008BD30C /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		21E1D02025403975006A4206 /* Daily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E1D02325403975006A4206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E1D02525403975006A4206 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +222,12 @@
 		21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		21E8C8D52545CAC400E08CD2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		21EA5B3D2567073700F87D18 /* NotesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
+		21EA5B3E2567073700F87D18 /* NotesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
+		21EA5B3F2567073700F87D18 /* NotesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesProtocols.swift; sourceTree = "<group>"; };
+		21EA5B402567073700F87D18 /* NotesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesInteractor.swift; sourceTree = "<group>"; };
+		21EA5B412567073700F87D18 /* DisplayLogic&LifeCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayLogic&LifeCycle.swift"; sourceTree = "<group>"; };
+		21EA5B422567073700F87D18 /* NotesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesConfigurator.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
 		B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,18 +263,13 @@
 		212F890725574BAD0097F894 /* DailyDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				21D7BDB8256AED8E008BD30C /* UserRequest.swift */,
+				21D7BD8A256A9F41008BD30C /* CurrentUserBackendModel.swift */,
 				21BF82C82557E604001614EE /* DailyCells */,
 				2156464625584D64007264D4 /* DailySectionModel.swift */,
 				212F890825574C000097F894 /* DailyCellViewModels.swift */,
 			);
 			path = DailyDataModels;
-			sourceTree = "<group>";
-		};
-		21495ACF2565A5B900995ACE /* 123 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = 123;
 			sourceTree = "<group>";
 		};
 		2151CA3C25509AF000732F68 /* Overlay */ = {
@@ -248,10 +283,20 @@
 			path = Overlay;
 			sourceTree = "<group>";
 		};
+		21544E2D2569255F00F9A50C /* NotesModels */ = {
+			isa = PBXGroup;
+			children = (
+				21544E3C25693B6700F9A50C /* NotesCellViewModel.swift */,
+				21544E4725693B7400F9A50C /* NotesCell.swift */,
+				21544E2E2569256900F9A50C /* NotesTableHeader.swift */,
+				21544E5D2569408F00F9A50C /* NotesTableFooter.swift */,
+			);
+			path = NotesModels;
+			sourceTree = "<group>";
+		};
 		215615A82542F079005AB2DF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				21495ACF2565A5B900995ACE /* 123 */,
 				215BC9B12542E2620069D30E /* CalendarVC.swift */,
 				0545A45C2555379F0001F17D /* DayView.swift */,
 			);
@@ -278,20 +323,30 @@
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
+				21EA5B3C2567072400F87D18 /* Notes */,
 				215BC99F2542D8810069D30E /* IdeasVC.swift */,
 			);
 			path = Ideas;
 			sourceTree = "<group>";
 		};
-		215BC9BE2542E3180069D30E /* Tab bar */ = {
+		215BC9BE2542E3180069D30E /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				215BC9AA2542DEDA0069D30E /* DailyTabBarController.swift */,
-				2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */,
+				21D7BD6A256A939B008BD30C /* DailyTabBar */,
 				2151CA3C25509AF000732F68 /* Overlay */,
 				215615E82543449E005AB2DF /* Buttons */,
 			);
-			path = "Tab bar";
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		2198886125757A3000198443 /* NotesVC */ = {
+			isa = PBXGroup;
+			children = (
+				21EA5B412567073700F87D18 /* DisplayLogic&LifeCycle.swift */,
+				21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */,
+				2198887325757AFF00198443 /* UIElementsInteraction.swift */,
+			);
+			path = NotesVC;
 			sourceTree = "<group>";
 		};
 		21BF82C82557E604001614EE /* DailyCells */ = {
@@ -329,6 +384,7 @@
 				215646C225588AF7007264D4 /* NewNoteOverlayModel.swift */,
 				21CC5E5E25645B07009C1D8E /* NewNoteOverlayConfigurator.swift */,
 				21CC5E5D25645B07009C1D8E /* NewNoteOverlayVC.swift */,
+				211084F3256B10B100F32D0F /* NewNoteOverlayPresenter.swift */,
 				21CC5E5C25645B07009C1D8E /* NewNoteOverlayInteractor.swift */,
 				21CC5E5A25645B07009C1D8E /* NewNoteOverlayRouter.swift */,
 			);
@@ -361,6 +417,28 @@
 				21CC5EA425645EAF009C1D8E /* NewTaskOverlayRouter.swift */,
 			);
 			path = NewTaskOverlay;
+			sourceTree = "<group>";
+		};
+		21D7BD6A256A939B008BD30C /* DailyTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				21D7BD83256A94ED008BD30C /* Models */,
+				21D7BD70256A93BF008BD30C /* DailyTabBarProtocols.swift */,
+				21D7BD73256A93BF008BD30C /* DailyTabBarConfigurator.swift */,
+				21D7BD72256A93BF008BD30C /* DailyTabBarVC.swift */,
+				21D7BD71256A93BF008BD30C /* DailyTabBarInteractor.swift */,
+				21D7BD6E256A93BF008BD30C /* DailyTabBarPresenter.swift */,
+				21D7BD6F256A93BF008BD30C /* DailyTabBarRouter.swift */,
+			);
+			path = DailyTabBar;
+			sourceTree = "<group>";
+		};
+		21D7BD83256A94ED008BD30C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		21E1D01725403975006A4206 = {
@@ -452,7 +530,7 @@
 				21E8C8D42545CA8F00E08CD2 /* Login page */,
 				215615D92542F512005AB2DF /* UserInfo */,
 				215615A82542F079005AB2DF /* Calendar */,
-				215BC9BE2542E3180069D30E /* Tab bar */,
+				215BC9BE2542E3180069D30E /* TabBar */,
 				215BC99E2542D86D0069D30E /* Ideas */,
 				21E1D0992540AB98006A4206 /* Dairy */,
 			);
@@ -492,6 +570,20 @@
 				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
 			);
 			path = "Login page";
+			sourceTree = "<group>";
+		};
+		21EA5B3C2567072400F87D18 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				21544E2D2569255F00F9A50C /* NotesModels */,
+				21EA5B3F2567073700F87D18 /* NotesProtocols.swift */,
+				21EA5B422567073700F87D18 /* NotesConfigurator.swift */,
+				2198886125757A3000198443 /* NotesVC */,
+				21EA5B402567073700F87D18 /* NotesInteractor.swift */,
+				21EA5B3D2567073700F87D18 /* NotesPresenter.swift */,
+				21EA5B3E2567073700F87D18 /* NotesRouter.swift */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		9D51B1C8649A3D00CE3DF630 /* Pods */ = {
@@ -692,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */,
+				21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */,
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				05112B462552B7690044D502 /* (null) in Sources */,
@@ -699,10 +792,14 @@
 				212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
+				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
+				21544E3D25693B6700F9A50C /* NotesCellViewModel.swift in Sources */,
+				21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
+				21D7BD76256A93BF008BD30C /* DailyTabBarProtocols.swift in Sources */,
 				21CC5E8225645D2F009C1D8E /* NewProjectOverlayProtocols.swift in Sources */,
 				21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */,
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
@@ -711,6 +808,7 @@
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
+				21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */,
 				21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */,
@@ -719,7 +817,10 @@
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
+				21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */,
+				21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */,
+				21EA5B472567073700F87D18 /* DisplayLogic&LifeCycle.swift in Sources */,
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				2156464725584D64007264D4 /* DailySectionModel.swift in Sources */,
@@ -727,6 +828,7 @@
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
+				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */,
@@ -735,7 +837,11 @@
 				05112B412552AD1E0044D502 /* (null) in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
+				21D7BD74256A93BF008BD30C /* DailyTabBarPresenter.swift in Sources */,
+				21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
+				21544E5E2569408F00F9A50C /* NotesTableFooter.swift in Sources */,
+				21544E4825693B7400F9A50C /* NotesCell.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
@@ -752,12 +858,18 @@
 				215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 				215646C325588AF7007264D4 /* NewNoteOverlayModel.swift in Sources */,
+				21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */,
 				21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */,
+				21D7BD77256A93BF008BD30C /* DailyTabBarInteractor.swift in Sources */,
+				21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */,
 				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
+				21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */,
 				21CC5E8125645D2F009C1D8E /* NewProjectOverlayRouter.swift in Sources */,
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,
 				215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */,
 				21CC5EAB25645EAF009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
+				2198887425757AFF00198443 /* UIElementsInteraction.swift in Sources */,
+				21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */,
 				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

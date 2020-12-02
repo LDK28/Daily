@@ -8,12 +8,13 @@
 import UIKit
 
 extension UILabel {
-	func styleLabel(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor) {
+	func styleLabel(font: UIFont?, text: String?, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
 		self.text = text
 		self.textAlignment = textAlignment
+		self.numberOfLines = numberOfLines
 		self.textColor = textColor
 	}
     
@@ -42,7 +43,7 @@ extension UILabel {
         self.textAlignment = textAlignment
     }
 	
-	//MARK: Overlay extensions
+	//MARK: - Overlay extensions
 	func styleOverlayLabel(text: String) {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = UIFont(name: "Stolzl-Book", size: 36)

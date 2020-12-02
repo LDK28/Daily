@@ -37,8 +37,11 @@ class OverlayVC: UIViewController {
 	}
 	
 	@objc func didTapCancelButton() {
-		self.remove()
-		NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
+		cancelButton.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			self.remove()
+			NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
+		}
 	}
 	
 	func styleUI() {

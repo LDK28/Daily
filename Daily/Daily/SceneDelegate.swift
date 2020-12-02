@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 		window?.windowScene = windowScene
 
-		let homeVC = DailyTabBarController()
+		let homeVC = DailyTabBarModule.build()
 		self.window?.rootViewController = homeVC
 		window?.makeKeyAndVisible()
 	}

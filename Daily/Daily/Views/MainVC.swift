@@ -7,49 +7,29 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainTableVC: UITableViewController {	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		navigationController?.setNavigationBarHidden(false, animated: false)
+		navigationController?.navigationBar.isTranslucent = false
+		navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
+		navigationController?.navigationBar.tintColor = .dailyTextColor
+		navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+		tableView.backgroundColor = .dailyMainBackgroundColor
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		tableView.estimatedRowHeight = 100
+		tableView.rowHeight = UITableView.automaticDimension
+	}
+}
 
-	private var hasChangedGradient = false
+class MainVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		view.backgroundColor = UIColor("E5E5E5")
-		view.layer.insertSublayer(CALayer(), at: 0)
+		view.backgroundColor = .dailyMainBackgroundColor
     }
-	
-	override func viewDidLayoutSubviews() {
-		if !hasChangedGradient {
-			switch traitCollection.userInterfaceStyle {
-			case .light:
-				view.lightLG()
-			case .dark:
-				view.darkLG()
-			default:
-				view.lightLG()
-			}
-			hasChangedGradient = true
-		}
-	}
-	
-	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-		   super.traitCollectionDidChange(previousTraitCollection)
-
-		   if #available(iOS 13.0, *) {
-			   guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else {
-				   return
-			}
-			hasChangedGradient = false
-			view.layer.sublayers?.removeAll()
-			switch traitCollection.userInterfaceStyle {
-			case .light:
-				view.lightLG()
-			case .dark:
-				view.darkLG()
-			default:
-				view.lightLG()
-			}
-		   }
-	   }
-
 
 }

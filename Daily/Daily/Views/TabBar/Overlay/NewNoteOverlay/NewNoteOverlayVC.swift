@@ -22,6 +22,10 @@ class NewNoteOverlayVC: OverlayVC {
 		
 		styleUI()
 	}
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+	}
 	
 	override func styleUI() {
 		super.styleUI()
@@ -29,7 +33,15 @@ class NewNoteOverlayVC: OverlayVC {
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 		tableView.separatorStyle = .none
 	}
-
+	
+	@objc func tappedSaveButton() {
+		saveButton.tapAnimation { [weak self] in
+			guard let self = self else { return }
+			(self.interactor as? NewNoteOverlayInteractor)?.didTapSaveButton()
+			self.remove()
+			NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
+		}
+	}
 }
 
 extension NewNoteOverlayVC: UITextViewDelegate {
@@ -51,6 +63,21 @@ extension NewNoteOverlayVC: UITextViewDelegate {
 	func textViewDidChange(_ textView: UITextView) {
 		(interactor as? NewNoteOverlayInteractor)?.didEndEditingNote(text: textView.text)
 	}
+	
+	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+		UIView.animate(withDuration: 0.2, animations: {
+			self.view.frame.origin.y -= 40
+		})
+		return true
+	}
+	
+	func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+		UIView.animate(withDuration: 0.2, animations: {
+			self.view.frame.origin.y += 40
+		})
+		self.resignFirstResponder()
+		return true
+	}
 }
 
 extension NewNoteOverlayVC {
@@ -63,5 +90,12 @@ extension NewNoteOverlayVC {
 			descriptionTextView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
 			descriptionTextView.topAnchor.constraint(equalTo: tableView.tableHeaderView?.bottomAnchor ?? titleLabel.topAnchor, constant: 20)
 		])
+	}
+}
+
+
+extension NewNoteOverlayVC: NewNoteOverlayDisplayLogic {
+	func askRouterToNavigateToNotes() {
+		router?.navigateToNotes()
 	}
 }
