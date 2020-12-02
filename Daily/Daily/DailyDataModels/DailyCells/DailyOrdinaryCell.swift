@@ -11,14 +11,9 @@ import UIKit
 class DailyOrdinaryCell: DailyCell {
 	internal let titleLabel = UILabel()
 	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			titleLabel.text = component.title
-			titleLabel.font = .systemFont(ofSize: 16)
-			
-		}
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		super.setViewModel(viewModel)
+		titleLabel.text = (viewModel as? DailyCellViewModel)?.title
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,6 +21,7 @@ class DailyOrdinaryCell: DailyCell {
 		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		titleLabel.font = .systemFont(ofSize: 16)
 	}
 	
 	required init?(coder: NSCoder) {
