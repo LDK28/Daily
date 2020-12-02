@@ -1,4 +1,4 @@
-//
+ //
 //  IdeasRouter.swift
 //  Daily
 //
@@ -19,5 +19,13 @@ class IdeasRouter: IdeasDataPassing {
 }
 
 extension IdeasRouter: IdeasRoutingLogic {
-    
+    func navigateTo(_ destination: IdeasNavigationDestination) {
+        switch destination {
+        case .notes:
+            let vc = NotesModule.build()
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        case .projects:
+            return
+        }
+    }
 }

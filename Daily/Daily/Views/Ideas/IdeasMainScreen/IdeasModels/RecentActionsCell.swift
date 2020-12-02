@@ -7,7 +7,14 @@
 
 import UIKit
 
-class RecentActionsCell: UITableViewCell {
+class RecentActionsCell: UITableViewCell, MainCellProtocol {
+    
+    func setViewModel(_ viewModel: MainCellViewModel?) {
+        guard let viewModel = viewModel as? RecentActionsViewModel else { return }
+        headerLabel.text = viewModel.headerLabelText
+        actionLabelsTexts.append(contentsOf: viewModel.recentActions)
+        setUpCell()
+    }
     
     static let cellIdentifier = "RecentActionsCell"
     
@@ -18,15 +25,6 @@ class RecentActionsCell: UITableViewCell {
     var actionLabels = [UILabel]()
     let singleActionImage = UIImage(systemName: "chevron.right")
     
-    var viewModel: RecentActionsViewModel? {
-        didSet {
-            guard let viewModel = viewModel else { return }
-            headerLabel.text = viewModel.headerLabelText
-            actionLabelsTexts.append(contentsOf: viewModel.recentActions)
-            setUpCell()
-        }
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -35,6 +33,9 @@ class RecentActionsCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension RecentActionsCell {
     
     func setUpCell(){
         

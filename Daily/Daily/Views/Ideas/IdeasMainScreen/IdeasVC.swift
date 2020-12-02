@@ -11,9 +11,6 @@ class IdeasVC: MainTableVC {
     
     var interactor: IdeasBusinessLogic?
     var router: (IdeasRoutingLogic & IdeasDataPassing)?
-    
-    var buttonsCells: [IdeasCell] = []
-    var recentActionsCell = RecentActionsCell()
 
     override func loadView() {
             super.loadView()
@@ -25,12 +22,12 @@ class IdeasVC: MainTableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        interactor?.fetchCells()
     }
     
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            interactor?.fetchCells()
+            
     }
     
     func configureTableView() {
@@ -54,37 +51,16 @@ class IdeasVC: MainTableVC {
         tableView.register(IdeasCell.self, forCellReuseIdentifier: IdeasCell.cellIdentifier)
         tableView.register(RecentActionsCell.self, forCellReuseIdentifier: RecentActionsCell.cellIdentifier)
     }
-
-}
-
-extension IdeasVC {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-//        var rowCount = 0
-//            if section == 0 {
-//                rowCount = buttonsCells.count
-//            }
-//            if section == 1 {
-//                rowCount = recentActionsCell.count
-//            }
-//            return rowCount
-    }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 || indexPath.row == 1 {
-            return buttonsCells[indexPath.row]
-        }
-        else {
-            return recentActionsCell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            router?.navigateTo(.notes)
         }
         
     }
- 
+
 }
 
 extension IdeasVC: IdeasDisplayLogic {
@@ -92,4 +68,6 @@ extension IdeasVC: IdeasDisplayLogic {
         tableView.reloadData()
     }
 }
+
+
 

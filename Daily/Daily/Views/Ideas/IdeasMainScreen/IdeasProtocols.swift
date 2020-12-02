@@ -7,27 +7,28 @@
 
 import UIKit
 
+enum IdeasNavigationDestination {
+    case notes, projects
+}
+
 protocol IdeasBusinessLogic {
     func fetchCells()
 }
 
 protocol IdeasPresentationLogic {
-    func present(buttonCells: [IdeasCellViewModel], recentActions: RecentActionsViewModel)
+    func present()
 }
 
 protocol IdeasDisplayLogic: AnyObject {
-    var buttonsCells: [IdeasCell] { get set }
-    var recentActionsCell: RecentActionsCell { get set }
+    var cellsToDisplay: [MainCellViewModel] { get set }
     func display()
 }
 
 protocol IdeasDataStore: AnyObject {
-    var ideasCells: [IdeasCellViewModel] { get set }
-    var recentActionsCell: RecentActionsViewModel { get set }
 }
 
 protocol IdeasRoutingLogic {
-    
+    func navigateTo(_ destination: IdeasNavigationDestination)
 }
 
 protocol IdeasDataPassing {

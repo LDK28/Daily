@@ -7,9 +7,28 @@
 
 import UIKit
 
-class IdeasCell: UITableViewCell {
+enum IdeasCellType {
+    case notes, projects
+}
+
+class IdeasCell: UITableViewCell, MainCellProtocol {
+    
+    func setViewModel(_ viewModel: MainCellViewModel?) {
+        guard let viewModel = viewModel as? IdeasCellViewModel else { return }
+        titleLabel.text = viewModel.title
+        if viewModel.hasStatistics {
+            configureStatisticsLabels()
+            doneProjectsLabel.text = String(viewModel.doneProjects ?? 0)
+            missedProjectsLabel.text = String(viewModel.missedProjects ?? 0)
+//            cellType = .projects
+//        } else {
+//            cellType = .notes
+        }
+    }
     
     static let cellIdentifier = "IdeasCell"
+    
+    //var cellType: IdeasCellType
 
     let titleLabel = UILabel()
     let labelBackgroundView = UIView()
@@ -18,19 +37,6 @@ class IdeasCell: UITableViewCell {
     
     let doneProjectsLabel = UILabel()
     let missedProjectsLabel = UILabel()
-    
-    let doneProjects: Int = 2
-    let missedProjects: Int = 1
-    
-    var viewModel: IdeasCellViewModel? {
-        didSet {
-            guard let viewModel = viewModel else { return }
-            titleLabel.text = viewModel.title
-            if viewModel.hasStatistics {
-                configureStatisticsLabels()
-            }
-        }
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,6 +70,9 @@ class IdeasCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension IdeasCell {
     func configureLabelBackgroundView() {
         NSLayoutConstraint.activate([
             labelBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -96,9 +105,9 @@ class IdeasCell: UITableViewCell {
             doneProjectsLabel.widthAnchor.constraint(equalTo: doneProjectsLabel.heightAnchor)
         ])
         if let labelFont = UIFont(name: "Stolzl-Regular", size: 13) {
-            missedProjectsLabel.styleLabelWithBackground(font: labelFont, text: String(missedProjects),
+            missedProjectsLabel.styleLabelWithBackground(font: labelFont, text: String(0),
                                            backgroundColor: .systemRed, cornerRadius: statisticsLabelSize / 2)
-            doneProjectsLabel.styleLabelWithBackground(font: labelFont, text: String(doneProjects),
+            doneProjectsLabel.styleLabelWithBackground(font: labelFont, text: String(0),
                                          backgroundColor: .systemGreen, cornerRadius: statisticsLabelSize / 2)
             
         }
@@ -120,5 +129,4 @@ class IdeasCell: UITableViewCell {
             titleLabel.addShadow()
         }
     }
-    
 }
