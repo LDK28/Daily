@@ -60,12 +60,12 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		isSearching = false
-//		if let selectedCells =
-//			selectedIndexPaths
-//				.map({ tableView.cellForRow(at: $0)}) as? [NotesCell] {
-//			selectedCells
-//				.forEach{ $0.isChosen = false }
-//		}
+		if let selectedCells =
+			selectedIndexPaths
+				.map({ tableView.cellForRow(at: $0)}) as? [NotesCell] {
+			selectedCells
+				.forEach{ $0.isChosen = false }
+		}
 		selectedIndexPaths = []
 	}
 	

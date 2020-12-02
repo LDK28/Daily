@@ -58,7 +58,7 @@ extension NotesInteractor: NotesBusinessLogic {
 	
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ()) {
-		UserRequest.shared.update(notes: notes.remove(at: indices)) {
+ 		UserRequest.shared.update(notes: notes.remove(at: indices)) {
 			self.presenter?.removeNotes(at: indices)
 			completion()
 		}

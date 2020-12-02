@@ -26,11 +26,6 @@ extension NotesPresenter: NotesPresentationLogic {
 					.map({ $0.element })
 		else { return }
 		viewController.cellsToDisplay = filteredViewModels
-		let indexPathsToUpdate =
-			filteredViewModels
-				.indices
-				.map { IndexPath(row: $0, section: 0) }
-		viewController.updateViewModelForCell(at: indexPathsToUpdate)
 	}
 	
 	func present(notes: [NotesCellViewBackendModel]) {
