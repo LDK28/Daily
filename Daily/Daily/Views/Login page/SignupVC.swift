@@ -92,7 +92,19 @@ class SignupVC: MainVC {
 				} else {
 					//User was created successfully
 					let dataBase = Firestore.firestore()
-					dataBase.collection("users").addDocument(data: ["firstname" : firstName, "lastname" : lastName, "uid" : result!.user.uid]) { savingUserError in
+					let userID = result?.user.uid ?? "userIDFailed_newID_Is=\(firstName)_\(lastName)_\(email)"
+					dataBase.collection("users").document(userID).setData(
+						[
+							"id" : userID,
+							"name": [
+								"firstName": firstName,
+								"lastName": lastName
+							],
+							"email": email,
+							"password": password,
+							"notes": [NotesCellViewBackendModel]()
+						]
+					) { savingUserError in
 						if savingUserError != nil {
 							//Show error message
 							self.showError(savingUserError!.localizedDescription)
@@ -133,8 +145,8 @@ class SignupVC: MainVC {
 	func configureElements() {
 		
 		NSLayoutConstraint.activate([
-			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
 			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 15),
 			signupButton.heightAnchor.constraint(equalToConstant: 45),
@@ -166,7 +178,7 @@ class SignupVC: MainVC {
 		}
 		
 		//Stack views
-		fieldsStask.styleStackView(spacing: 15, axis: .vertical)
+		fieldsStask.styleStackView(spacing: 20, axis: .vertical)
 		buttonsStack.styleStackView(spacing: 10, axis: .vertical, distribution: .equalSpacing)
 		mainStack.styleStackView(spacing: 30, axis: .vertical, distribution: .fillProportionally)
 		
@@ -174,9 +186,7 @@ class SignupVC: MainVC {
 	
 	
 	func transitionToHome() {
-		let vc = DailyTabBarController()
-		vc.modalPresentationStyle = .fullScreen
-		present(vc, animated: true, completion: nil)
+		dismiss(animated: true, completion: nil)
 	}
 	
 }

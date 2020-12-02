@@ -14,9 +14,9 @@ protocol DailyTimeCellDelegate: class {
 final class DailyTimeCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyTimeCell"
 	
-	var time: Date? {
+	override var dateAndTime: Date? {
 		didSet {
-			if let time = time {
+			if let time = dateAndTime {
 				let formatter = DateFormatter()
 				formatter.dateFormat = "h:mm a"
 				dateAndTimeLabel.text = formatter.string(from: time)
@@ -25,18 +25,7 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 			}
 		}
 	}
-	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			
-			titleLabel.text = component.title
-			dateAndTimeLabel.text = "Any time"
-			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
-		}
-	}
-	
+
 	@objc func toggleSwitcher(switcher: UISwitch) {
 		(delegate as? DailyTimeCellDelegate)?.didToggleTimeSwitcher()
 	}
@@ -60,7 +49,7 @@ final class DailyTimePickerCell: DailyTimeAndDatePickerCell {
 	static let cellIdentifier = "DailyTimePickerCell"
 	
 	@objc func datePickerChanged(picker: UIDatePicker) {
-		(delegate as? DailyTimePickerCellDelegate)?.didChangeTime(newTime: picker.date)
+		(delegate as? DailyTimePickerCellDelegate)?.didChangeTime(newTime: dateAndTime)
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

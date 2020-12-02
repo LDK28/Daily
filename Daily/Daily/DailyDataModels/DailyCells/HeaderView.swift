@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextFieldView: UIView {
+class HeaderTextFieldView: UIView {
 	let headerTextField = UITextField()
 	
 	init() {

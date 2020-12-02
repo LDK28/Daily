@@ -8,22 +8,14 @@
 import UIKit
 
 final class DailyRequiredDateCell: DailyDateAndTimeCell {
-	static let cellIdentifier = "DailyNewTaskDateCell"
+	static let cellIdentifier = "DailyRequiredDateCell"
 	
-	var date: Date = Date() {
+	override var dateAndTime: Date? {
 		didSet {
+			let date = dateAndTime ?? Date()
 			let formatter = DateFormatter()
 			formatter.dateFormat = "E, MMM d, yyyy"
 			dateAndTimeLabel.text = formatter.string(from: date)
-		}
-	}
-	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			titleLabel.text = component.title
-			date = Date()
 		}
 	}
 }
@@ -34,9 +26,9 @@ protocol DailyOptionalDateCellDelegate: class {
 final class DailyOptionalDateCell: DailyDateAndTimeCell {
 	static let cellIdentifier = "DailyOptionalDateCell"
 	
-	var date: Date? {
+	override var dateAndTime: Date? {
 		didSet {
-			if let date = date {
+			if let date = dateAndTime {
 				let formatter = DateFormatter()
 				formatter.dateFormat = "E, MMM d, yyyy"
 				dateAndTimeLabel.text = formatter.string(from: date)
@@ -46,19 +38,17 @@ final class DailyOptionalDateCell: DailyDateAndTimeCell {
 		}
 	}
 	
-	override var viewModel: DailyCellViewModel? {
-		didSet {
-			guard let component = viewModel else { return }
-			super.viewModel = component
-			
-			titleLabel.text = component.title
-			date = nil
-			switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
-		}
-	}
-	
 	@objc func toggleSwitcher(switcher: UISwitch) {
 		(delegate as? DailyOptionalDateCellDelegate)?.didToggleDateSwitcher()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		switcher.addTarget(self, action: #selector(toggleSwitcher), for: .valueChanged)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 }
 
@@ -72,7 +62,7 @@ final class DailyDatePickerCell: DailyTimeAndDatePickerCell {
 	@objc func datePickerChanged(picker: UIDatePicker) {
 		(delegate as? DailyDatePickerCellDelegate)?.didChangeDate(newDay: picker.date)
 	}
-	
+
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		picker.datePickerMode = .date

@@ -92,3 +92,4 @@ extension IdeasVC: IdeasDisplayLogic {
         tableView.reloadData()
     }
 }
+
