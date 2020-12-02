@@ -7,9 +7,6 @@
 
 import UIKit
 
-
-
-
 extension NotesVC: UISearchBarDelegate {
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 		isSearching = false
@@ -27,8 +24,9 @@ extension NotesVC {
 		
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if isEditingNotes {
-			cellsToDisplay[indexPath.row].isChosen.toggle()
-			if cellsToDisplay[indexPath.row].isChosen {
+			guard let selectedCell = (tableView.cellForRow(at: indexPath) as? NotesCell) else { return }
+			selectedCell.isChosen.toggle()
+			if selectedCell.isChosen {
 				selectedIndexPaths.append(indexPath)
 			} else {
 				selectedIndexPaths.removeAll(where: { $0 == indexPath })
@@ -44,7 +42,12 @@ extension NotesVC {
 		
 	@objc func cancelIconTapped() {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-		cellsToDisplay.forEach( { $0.isChosen = false })
+		guard
+			let selectedCells =
+				self.selectedIndexPaths
+					.map ({ self.tableView.cellForRow(at: $0) }) as? [NotesCell]
+		else { return }
+		selectedCells.forEach( { $0.isChosen = false })
 		selectedIndexPaths = []
 	}
 	
@@ -65,14 +68,20 @@ extension NotesVC {
 	@objc func pinIconTapped() {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		pinIcon.tapAnimation { [weak self] in
-			guard let self = self else { return }
-			let unpinAll = self.cellsToDisplay.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
+			guard
+				let self = self,
+				let cellViewModels = self.cellsToDisplay as? [NotesCellTableViewModel]
+			else { return }
+			
+			let unpinAll = cellViewModels.filter { $0.isPinned }.count == self.selectedIndexPaths.count ? true : false
 			let rowsToUpdate = unpinAll ?
 				self.selectedIndexPaths
 					.map { $0.row } :
 				self.selectedIndexPaths
 					.map { $0.row }
-					.filter { !self.cellsToDisplay[$0].isPinned }
+					.filter {
+						!cellViewModels[$0].isPinned
+					}
 			self.interactor?.updateModels(unpinAll ? .unpin : .pin, at: rowsToUpdate.sorted(by: >)) {
 				self.tableView.beginUpdates()
 				self.tableView.reloadRows(at: self.selectedIndexPaths, with: .automatic)
@@ -86,13 +95,14 @@ extension NotesVC {
 		let locationInView = sender.location(in: tableView)
 		guard
 			let indexPath = tableView.indexPathForRow(at: locationInView),
+			let cell = tableView.cellForRow(at: indexPath) as? NotesCell,
 			isEditingNotes != true
 		else { return }
 		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-		cellsToDisplay[indexPath.row].tapAnimation { [weak self] in
+		cell.tapAnimation { [weak self] in
 			if sender.state == .began {
 				guard let self = self else { return }
-				self.cellsToDisplay[indexPath.row].isChosen = true
+				cell.isChosen = true
 				self.selectedIndexPaths.append(indexPath)
 				self.isEditingNotes = true
 			}

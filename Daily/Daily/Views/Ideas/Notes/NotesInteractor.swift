@@ -9,15 +9,15 @@ import UIKit
 import Firebase
 
 class NotesInteractor: NotesDataStore {
-	internal var notes = [NotesCellViewModel]()
+	internal var notes = [NotesCellViewBackendModel]()
 	private var presenter: NotesPresentationLogic?
 	
 	
-	private func grabNotes(at indices: [Int], shouldBePinned condition: Bool) -> [NotesCellViewModel] {
-		var grabbedNotes = [NotesCellViewModel]()
+	private func grabNotes(at indices: [Int], shouldBePinned condition: Bool) -> [NotesCellViewBackendModel] {
+		var grabbedNotes = [NotesCellViewBackendModel]()
 		grabbedNotes.reserveCapacity(indices.count)
 		for index in indices {
-			var noteToTransfer = notes.remove(at: index)
+			let noteToTransfer = notes.remove(at: index)
 			noteToTransfer.isPinned = condition
 			grabbedNotes.append(noteToTransfer)
 		}
@@ -35,7 +35,7 @@ extension NotesInteractor: NotesBusinessLogic {
 	func updateModels(_ action: NotesUpdateAction,
 					  at indices: [Int],
 					  completion: @escaping () -> ()) {
-		let notesToUpdate: [NotesCellViewModel]
+		let notesToUpdate: [NotesCellViewBackendModel]
 		switch action {
 		case .unpin:
 			notesToUpdate = grabNotes(at: indices, shouldBePinned: false)
@@ -59,7 +59,7 @@ extension NotesInteractor: NotesBusinessLogic {
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ()) {
 		UserRequest.shared.update(notes: notes.remove(at: indices)) {
-			self.presenter?.removeChosenNotes()
+			self.presenter?.removeNotes(at: indices)
 			completion()
 		}
 	}

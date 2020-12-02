@@ -12,9 +12,9 @@ import FirebaseAuth
 protocol DailyUserNetworkRequest {
 	var userData: CurrentUser? { get set }
 	func loadUserData(completion: @escaping (Bool) -> ())
-	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ())
-	func add(note: NotesCellViewModel, completion: @escaping () -> ())
-	func update(notes: [NotesCellViewModel], completion: (() -> ())?)
+	func getNotes(completion: @escaping ([NotesCellViewBackendModel]) -> ())
+	func add(note: NotesCellViewBackendModel, completion: @escaping () -> ())
+	func update(notes: [NotesCellViewBackendModel], completion: (() -> ())?)
 }
 
 final class UserRequest: DailyUserNetworkRequest {
@@ -54,13 +54,13 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 	}
 	
-	func getNotes(completion: @escaping ([NotesCellViewModel]) -> ()) {
+	func getNotes(completion: @escaping ([NotesCellViewBackendModel]) -> ()) {
 		getLatestUserData() { userNewData in
 			completion(userNewData?.notes ?? [])
 		}
 	}
 	
-	func add(note: NotesCellViewModel, completion: @escaping () -> ()) {
+	func add(note: NotesCellViewBackendModel, completion: @escaping () -> ()) {
 		guard
 			let userID = userID,
 			UserRequest.shared.userData != nil
@@ -73,7 +73,7 @@ final class UserRequest: DailyUserNetworkRequest {
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	
-	func update(notes: [NotesCellViewModel], completion: (() -> ())?) {
+	func update(notes: [NotesCellViewBackendModel], completion: (() -> ())?) {
 		guard
 			let userID = userID,
 			UserRequest.shared.userData != nil

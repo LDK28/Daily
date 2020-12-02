@@ -8,7 +8,6 @@
 import UIKit
 
 class NewNoteOverlayPresenter: OverlayPresenter {
-	
 }
 
 extension NewNoteOverlayPresenter: NewNoteOverlayPresentationLogic {

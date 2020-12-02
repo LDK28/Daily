@@ -8,8 +8,9 @@
 import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
-	var cellsToDisplay: [NotesCell] { get set }
+	var cellsToDisplay: [MainCellViewModel] { get set }
 	func finishDisplayingCells()
+	func updateViewModelForCell(at indexPaths: [IndexPath])
 }
 
 enum NotesUpdateAction {
@@ -26,15 +27,12 @@ protocol NotesBusinessLogic {
 }
 
 protocol NotesDataStore: AnyObject {
-	var notes: [NotesCellViewModel] { get set }
+	var notes: [NotesCellViewBackendModel] { get set }
 }
 
 protocol NotesPresentationLogic {
-	func present(notes: [NotesCellViewModel])
-	func removeChosenNotes()
-	func rearrangeCells(_ notesViewModels: [NotesCellViewModel],
-						moveFrom indices: [Int],
-						moveTo index: Int)
+	func present(notes: [NotesCellViewBackendModel])
+	func removeNotes(at indices: [Int])
 }
 
 protocol NotesRoutingLogic {

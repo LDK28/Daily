@@ -14,7 +14,6 @@
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
-		211084F4256B10B100F32D0F /* NewNoteOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211084F3256B10B100F32D0F /* NewNoteOverlayPresenter.swift */; };
 		21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318F255DCAA10086A9EE /* OverlayDataSource.swift */; };
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModels.swift */; };
@@ -22,7 +21,7 @@
 		2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */; };
 		215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215387F9255289E600EE8AB2 /* UITextViewExtension.swift */; };
 		21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E2E2569256900F9A50C /* NotesTableHeader.swift */; };
-		21544E3D25693B6700F9A50C /* NotesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E3C25693B6700F9A50C /* NotesCellViewModel.swift */; };
+		21544E3D25693B6700F9A50C /* NotesCellViewBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E3C25693B6700F9A50C /* NotesCellViewBackendModel.swift */; };
 		21544E4825693B7400F9A50C /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E4725693B7400F9A50C /* NotesCell.swift */; };
 		21544E5E2569408F00F9A50C /* NotesTableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E5D2569408F00F9A50C /* NotesTableFooter.swift */; };
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
@@ -44,6 +43,7 @@
 		2198887425757AFF00198443 /* UIElementsInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198887325757AFF00198443 /* UIElementsInteraction.swift */; };
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
+		21B2A9B52577B5B20010EB0B /* NewNoteOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */; };
 		21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderView.swift */; };
 		21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E152564569C009C1D8E /* OverlayPresenter.swift */; };
@@ -131,7 +131,6 @@
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
-		211084F3256B10B100F32D0F /* NewNoteOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayPresenter.swift; sourceTree = "<group>"; };
 		2117318F255DCAA10086A9EE /* OverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		212F890825574C000097F894 /* DailyCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModels.swift; sourceTree = "<group>"; };
@@ -139,7 +138,7 @@
 		2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayModel.swift; sourceTree = "<group>"; };
 		215387F9255289E600EE8AB2 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		21544E2E2569256900F9A50C /* NotesTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableHeader.swift; sourceTree = "<group>"; };
-		21544E3C25693B6700F9A50C /* NotesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCellViewModel.swift; sourceTree = "<group>"; };
+		21544E3C25693B6700F9A50C /* NotesCellViewBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCellViewBackendModel.swift; sourceTree = "<group>"; };
 		21544E4725693B7400F9A50C /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
 		21544E5D2569408F00F9A50C /* NotesTableFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableFooter.swift; sourceTree = "<group>"; };
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 		2198887325757AFF00198443 /* UIElementsInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsInteraction.swift; sourceTree = "<group>"; };
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayPresenter.swift; sourceTree = "<group>"; };
 		21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsConfiguration.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		21CC5E152564569C009C1D8E /* OverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresenter.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 		21544E2D2569255F00F9A50C /* NotesModels */ = {
 			isa = PBXGroup;
 			children = (
-				21544E3C25693B6700F9A50C /* NotesCellViewModel.swift */,
+				21544E3C25693B6700F9A50C /* NotesCellViewBackendModel.swift */,
 				21544E4725693B7400F9A50C /* NotesCell.swift */,
 				21544E2E2569256900F9A50C /* NotesTableHeader.swift */,
 				21544E5D2569408F00F9A50C /* NotesTableFooter.swift */,
@@ -384,7 +384,7 @@
 				215646C225588AF7007264D4 /* NewNoteOverlayModel.swift */,
 				21CC5E5E25645B07009C1D8E /* NewNoteOverlayConfigurator.swift */,
 				21CC5E5D25645B07009C1D8E /* NewNoteOverlayVC.swift */,
-				211084F3256B10B100F32D0F /* NewNoteOverlayPresenter.swift */,
+				21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */,
 				21CC5E5C25645B07009C1D8E /* NewNoteOverlayInteractor.swift */,
 				21CC5E5A25645B07009C1D8E /* NewNoteOverlayRouter.swift */,
 			);
@@ -795,7 +795,7 @@
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
-				21544E3D25693B6700F9A50C /* NotesCellViewModel.swift in Sources */,
+				21544E3D25693B6700F9A50C /* NotesCellViewBackendModel.swift in Sources */,
 				21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
@@ -824,8 +824,8 @@
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				2156464725584D64007264D4 /* DailySectionModel.swift in Sources */,
-				215BC9AB2542DEDA0069D30E /* DailyTabBarController.swift in Sources */,
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
+				21B2A9B52577B5B20010EB0B /* NewNoteOverlayPresenter.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
 				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,

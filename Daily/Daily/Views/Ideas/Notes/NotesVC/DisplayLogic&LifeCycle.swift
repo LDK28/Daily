@@ -11,7 +11,6 @@ import UIKit
 final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	var interactor: NotesBusinessLogic?
 	var router: (NotesRoutingLogic & NotesDataPassing)?
-	var cellsToDisplay: [NotesCell] = []
 	
 	internal let trashIcon = UIImageView()
 	internal let cancelIcon = UIImageView()
@@ -54,19 +53,20 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		selectedIndexPaths = []
-		cellsToDisplay.forEach( { $0.isChosen = false })
-		isSearching = false
 		searchBar.text = nil
 		interactor?.fetchCells()
 	}
 	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return cellsToDisplay.count
-	}
-	
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return cellsToDisplay[indexPath.row]
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		isSearching = false
+//		if let selectedCells =
+//			selectedIndexPaths
+//				.map({ tableView.cellForRow(at: $0)}) as? [NotesCell] {
+//			selectedCells
+//				.forEach{ $0.isChosen = false }
+//		}
+		selectedIndexPaths = []
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -87,6 +87,13 @@ extension NotesVC: NotesDisplayLogic {
 		DispatchQueue.main.async {
 			self.tableView.reloadData()
 		}
+	}
+	
+	func updateViewModelForCell(at indexPaths: [IndexPath]) {
+		indexPaths
+			.forEach {
+				(tableView.cellForRow(at: $0) as? NotesCell)?.setViewModel(cellsToDisplay[$0.row])
+			}
 	}
 }
 

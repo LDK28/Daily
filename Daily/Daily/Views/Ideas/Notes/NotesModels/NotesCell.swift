@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotesCell: UITableViewCell {
+class NotesCell: UITableViewCell, MainCellProtocol {
 	static let cellIdentifier = "NotesCell"
 	
 	private let titleLabel = UILabel()
@@ -15,15 +15,6 @@ class NotesCell: UITableViewCell {
 	private let addToDiaryButton = UIButton()
 	private let pinIcon = UIImageView()
 	private(set) var containerView = UIView()
-	
-	var viewModel: NotesCellViewModel? {
-		didSet {
-			guard let viewModel = viewModel else { return }
-			titleLabel.text = viewModel.title
-			isPinned = viewModel.isPinned
-			detailsTextView.text = viewModel.details
-		}
-	}
 	
 	var isPinned: Bool = false {
 		didSet {
@@ -41,6 +32,13 @@ class NotesCell: UITableViewCell {
 		didSet {
 			containerView.layer.borderWidth = isChosen ? 2 : 0
 		}
+	}
+	
+	func setViewModel(_ viewModel: MainCellViewModel?) {
+		guard let viewModel = viewModel as? NotesCellViewBackendModel else { return }
+		titleLabel.text = viewModel.title
+		isPinned = viewModel.isPinned
+		detailsTextView.text = viewModel.details
 	}
 	
 	override func layoutSubviews() {

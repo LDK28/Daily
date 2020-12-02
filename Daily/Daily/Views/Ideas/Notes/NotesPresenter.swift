@@ -10,44 +10,35 @@ import UIKit
 class NotesPresenter {
 	private weak var viewController: NotesDisplayLogic?
 	
-	private func castNotesCell(usingViewModel viewModel: NotesCellViewModel) -> NotesCell? {
-		let cell = (viewController as? NotesVC)?.tableView.dequeueReusableCell(withIdentifier: NotesCell.cellIdentifier) as? NotesCell
-		cell?.viewModel = viewModel
-		return cell
-	}
-	
 	init(viewController: NotesDisplayLogic?) {
 		self.viewController = viewController
 	}
-	
 }
 
 extension NotesPresenter: NotesPresentationLogic {
-	func removeChosenNotes() {
-		guard let viewController = viewController else { return }
-		viewController.cellsToDisplay = viewController.cellsToDisplay.filter { !$0.isChosen }
+	func removeNotes(at indices: [Int]) {
+		guard
+			let viewController = viewController,
+			let filteredViewModels =
+				(viewController.cellsToDisplay as? Array<NotesCellTableViewModel>)?
+					.enumerated()
+					.filter({ !indices.contains($0.offset) })
+					.map({ $0.element })
+		else { return }
+		viewController.cellsToDisplay = filteredViewModels
+		let indexPathsToUpdate =
+			filteredViewModels
+				.indices
+				.map { IndexPath(row: $0, section: 0) }
+		viewController.updateViewModelForCell(at: indexPathsToUpdate)
 	}
 	
-	func rearrangeCells(_ notesViewModels: [NotesCellViewModel],
-						moveFrom indices: [Int],
-						moveTo index: Int) {
-		guard let viewController = viewController else { return }
-		indices.forEach {
-			viewController.cellsToDisplay.remove(at: $0)
-		}
-		notesViewModels.forEach {
-			if let cell = castNotesCell(usingViewModel: $0) {
-				viewController.cellsToDisplay.insert(cell, at: index)
-			}
-		}
-	}
-	
-	func present(notes: [NotesCellViewModel]) {
+	func present(notes: [NotesCellViewBackendModel]) {
 		viewController?.cellsToDisplay.removeAll()
 		notes.forEach {
-			if let cell = castNotesCell(usingViewModel: $0) {
-				viewController?.cellsToDisplay.append(cell)
-			}
+			viewController?.cellsToDisplay.append(
+				NotesCellTableViewModel(cellType: NotesCell.self,
+										backendModel: $0))
 		}
 		viewController?.finishDisplayingCells()
 	}

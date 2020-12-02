@@ -7,7 +7,9 @@
 
 import UIKit
 
-class MainTableVC: UITableViewController {	
+class MainTableVC: UITableViewController {
+	var cellsToDisplay: [MainCellViewModel] = []
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.setNavigationBarHidden(false, animated: false)
@@ -22,6 +24,19 @@ class MainTableVC: UITableViewController {
 		super.viewWillAppear(animated)
 		tableView.estimatedRowHeight = 100
 		tableView.rowHeight = UITableView.automaticDimension
+	}
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return cellsToDisplay.count
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cellViewModel = cellsToDisplay[indexPath.row]
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? MainCellProtocol {
+			cell.setViewModel(cellViewModel)
+			return cell
+		}
+		return UITableViewCell()
 	}
 }
 
