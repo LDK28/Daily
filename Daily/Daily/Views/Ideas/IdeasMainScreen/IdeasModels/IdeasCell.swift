@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum IdeasCellType {
-    case notes, projects
-}
-
 class IdeasCell: UITableViewCell, MainCellProtocol {
     
     func setViewModel(_ viewModel: MainCellViewModel?) {
@@ -20,15 +16,10 @@ class IdeasCell: UITableViewCell, MainCellProtocol {
             configureStatisticsLabels()
             doneProjectsLabel.text = String(viewModel.doneProjects ?? 0)
             missedProjectsLabel.text = String(viewModel.missedProjects ?? 0)
-//            cellType = .projects
-//        } else {
-//            cellType = .notes
         }
     }
     
     static let cellIdentifier = "IdeasCell"
-    
-    //var cellType: IdeasCellType
 
     let titleLabel = UILabel()
     let labelBackgroundView = UIView()

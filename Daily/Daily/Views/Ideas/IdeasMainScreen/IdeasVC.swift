@@ -55,8 +55,13 @@ class IdeasVC: MainTableVC {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        
+        guard let selectedCellModel = cellsToDisplay[indexPath.row] as? IdeasCellViewModel else { return }
+        switch selectedCellModel.buttonType {
+        case .notes:
             router?.navigateTo(.notes)
+        case .projects:
+            return
         }
         
     }
