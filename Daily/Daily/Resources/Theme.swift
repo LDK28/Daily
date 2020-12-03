@@ -10,9 +10,9 @@ import UIKit
 
 extension UIColor {
 	
-	static var dailyMainBackgroundColor: UIColor {
-		colorForTheme(light: UIColor("D8F3FF"), dark: UIColor("034561"))
-	}
+    static var dailyMainBackgroundColor: UIColor {
+            colorForTheme(light: UIColor("D8F3FF"), dark: UIColor("034561"))
+    }
 	
 	static var dailyDiaryTileColor: UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))
@@ -70,6 +70,7 @@ extension UIColor {
 	
 	static var dailyRecentActionsTextColor = UIColor("0B3954", alpha: 0.6)
 	
+    static var dailyRecentActionsPadColor = UIColor("FFFFFF", alpha: 0.5)
 	
 	static var dailyProjectTileColor: UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))

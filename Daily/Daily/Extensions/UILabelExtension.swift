@@ -8,13 +8,14 @@
 import UIKit
 
 extension UILabel {
+
 	func styleLabel(font: UIFont?, text: String?, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
 		self.text = text
 		self.textAlignment = textAlignment
-		self.numberOfLines = numberOfLines
+        self.numberOfLines = numberOfLines
 		self.textColor = textColor
 	}
     
@@ -40,6 +41,31 @@ extension UILabel {
         
         translatesAutoresizingMaskIntoConstraints = false
         self.attributedText = finalText
+        self.textAlignment = textAlignment
+    }
+    
+    func styleLabelWithBackground(font: UIFont, text: String, textAlignment: NSTextAlignment = .center, textColor: UIColor = .dailyTextColor, numberOfLines: Int = 1, backgroundColor: UIColor = .clear, cornerRadius: CGFloat = 0) {
+        styleLabel(font: font, text: text, textAlignment: textAlignment, textColor: textColor, numberOfLines: numberOfLines)
+        self.backgroundColor = backgroundColor
+        layer.masksToBounds = true
+        layer.cornerRadius = cornerRadius
+    }
+    
+    func styleLabelWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, imageFirst: Bool = false, textAlignment: NSTextAlignment = .center) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let labelText = NSMutableAttributedString()
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = image.withTintColor(color)
+        let textAttribute = [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor : color]
+        let textAttachment = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
+        if imageFirst {
+            labelText.append(NSAttributedString(attachment: imageAttachment))
+            labelText.append(textAttachment)
+        } else {
+            labelText.append(textAttachment)
+            labelText.append(NSAttributedString(attachment: imageAttachment))
+        }
+        self.attributedText = labelText
         self.textAlignment = textAlignment
     }
 	
