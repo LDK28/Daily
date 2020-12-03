@@ -22,6 +22,7 @@ class IdeasVC: MainTableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.backButtonTitle = "Ideas"
         interactor?.fetchCells()
     }
     

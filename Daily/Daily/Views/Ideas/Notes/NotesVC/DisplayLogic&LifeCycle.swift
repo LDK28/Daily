@@ -49,17 +49,18 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		searchBar.delegate = self
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchIcon)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		searchBar.text = nil
+		isSearching = false
 		interactor?.fetchCells()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		isSearching = false
 		if let selectedCells =
 			selectedIndexPaths
 				.map({ tableView.cellForRow(at: $0)}) as? [NotesCell] {

@@ -114,10 +114,10 @@ extension NotesVC {
 // MARK: - Nav bar items change
 extension NotesVC {
 	internal func didToggleSearchingMode() {
-		
+		let durationConstant = 0.2
 		if isSearching {
 			searchBar.showsCancelButton = true
-			UIView.animate(withDuration: 0.2, delay: 0.01,
+			UIView.animate(withDuration: durationConstant, delay: 0.01,
 						   options: .curveEaseOut,
 						   animations: { [weak self] in
 				
@@ -127,7 +127,7 @@ extension NotesVC {
 			}) { [weak self] _ in
 				guard let self = self else { return }
 				self.setSearchBarItem()
-				UIView.animate(withDuration: 0.2, delay: 0.01,
+				UIView.animate(withDuration: durationConstant, delay: 0.01,
 							   options: .curveEaseOut,
 							   animations: { [weak self] in
 								
@@ -141,7 +141,7 @@ extension NotesVC {
 			searchBar.showsCancelButton = false
 			searchBar.resignFirstResponder()
 			
-			UIView.animate(withDuration: 0.2, delay: 0.01,
+			UIView.animate(withDuration: durationConstant, delay: 0.01,
 						   options: .curveEaseOut,
 						   animations: { [weak self] in
 				
@@ -164,8 +164,9 @@ extension NotesVC {
 	}
 	
 	internal func didToggleEditingNotesMode() {
+		let durationConstant = 0.2
 		if isEditingNotes {
-			UIView.animate(withDuration: 0.1, delay: 0.01,
+			UIView.animate(withDuration: durationConstant, delay: 0.01,
 						   options: .curveEaseOut,
 						   animations: { [weak self] in
 				
@@ -175,7 +176,7 @@ extension NotesVC {
 			}) { [weak self] _ in
 				guard let self = self else { return }
 				self.setEditingItems()
-				UIView.animate(withDuration: 0.1, delay: 0.01,
+				UIView.animate(withDuration: durationConstant, delay: 0.01,
 							   options: .curveEaseOut,
 							   animations: { [weak self] in
 								
@@ -188,7 +189,7 @@ extension NotesVC {
 			}
 
 		} else {
-			UIView.animate(withDuration: 0.1, delay: 0.01,
+			UIView.animate(withDuration: durationConstant, delay: 0.01,
 						   options: .curveEaseOut,
 						   animations: { [weak self] in
 			
@@ -201,7 +202,7 @@ extension NotesVC {
 			}) { [weak self] _ in
 				guard let self = self else { return }
 				self.setDefaultItems()
-				UIView.animate(withDuration: 0.1, delay: 0.01,
+				UIView.animate(withDuration: durationConstant, delay: 0.01,
 							   options: .curveEaseOut,
 							   animations: { [weak self] in
 								
