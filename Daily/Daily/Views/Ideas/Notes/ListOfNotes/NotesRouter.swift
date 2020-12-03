@@ -19,5 +19,10 @@ class NotesRouter: NotesDataPassing {
 }
 
 extension NotesRouter: NotesRoutingLogic {
-	
+	func navigateToEditingNote(withViewModel viewModel: NotesCellViewBackendModel) {
+		let vc = EditNoteModule.build()
+		vc.modalPresentationStyle = .fullScreen
+		vc.router?.dataStore?.noteCellViewBackendModel = viewModel
+		viewController?.navigationController?.pushViewController(vc, animated: true)
+	}
 }

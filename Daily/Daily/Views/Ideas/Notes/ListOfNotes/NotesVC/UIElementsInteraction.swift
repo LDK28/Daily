@@ -23,8 +23,8 @@ extension NotesVC: UISearchBarDelegate {
 extension NotesVC {
 		
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let selectedCell = (tableView.cellForRow(at: indexPath) as? NotesCell) else { return }
 		if isEditingNotes {
-			guard let selectedCell = (tableView.cellForRow(at: indexPath) as? NotesCell) else { return }
 			selectedCell.isChosen.toggle()
 			if selectedCell.isChosen {
 				selectedIndexPaths.append(indexPath)
@@ -32,7 +32,8 @@ extension NotesVC {
 				selectedIndexPaths.removeAll(where: { $0 == indexPath })
 			}
 		} else {
-			/* navigate to selected note view */
+			guard let selectedCellViewModel = self.cellsToDisplay[indexPath.row] as? NotesCellTableViewModel else { return }
+			router?.navigateToEditingNote(withViewModel: selectedCellViewModel)
 		}
 	}
 	

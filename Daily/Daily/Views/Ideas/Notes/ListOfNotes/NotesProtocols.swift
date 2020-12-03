@@ -36,7 +36,7 @@ protocol NotesPresentationLogic {
 }
 
 protocol NotesRoutingLogic {
-	
+	func navigateToEditingNote(withViewModel viewModel: NotesCellViewBackendModel)
 }
 
 protocol NotesDataPassing {
