@@ -12,7 +12,7 @@ class NewNoteOverlayVC: OverlayVC {
 	var router: (NewNoteOverlayRoutingLogic & NewNoteOverlayDataPassing)?
   
 	private let noteTitleTextField = UITextField()
-	let descriptionTextView = UITextView()
+	private let descriptionTextView = UITextView()
 
 	override func loadView() {
 		super.loadView()

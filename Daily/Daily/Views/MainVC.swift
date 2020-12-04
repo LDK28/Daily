@@ -18,6 +18,7 @@ class MainTableVC: UITableViewController {
 		navigationController?.navigationBar.tintColor = .dailyTextColor
 		navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 		tableView.backgroundColor = .dailyMainBackgroundColor
+		tableView.tableFooterView = UIView()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
