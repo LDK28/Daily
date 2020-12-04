@@ -16,7 +16,7 @@ extension NotesVC: UISearchBarDelegate {
 	}
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		/* filter cells */
+		interactor?.filterNotesThatHave(substring: searchText)
 	}
 }
 

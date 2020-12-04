@@ -85,7 +85,7 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 }
 
 extension NotesVC: NotesDisplayLogic {
-	func finishDisplayingCells() {
+	func displayCells() {
 		DispatchQueue.main.async {
 			self.tableView.reloadData()
 		}

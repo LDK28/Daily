@@ -59,6 +59,7 @@ extension EditNoteVC {
 		view.addSubview(textField)
 		textField.styleEditingTextField(placeholder: "Title",
 										fontSize: 36,
+										textColor: .dailyTextColor,
 										borderStyle: .none)
 		
 		NSLayoutConstraint.activate([

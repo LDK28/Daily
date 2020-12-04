@@ -16,6 +16,22 @@ class NotesPresenter {
 }
 
 extension NotesPresenter: NotesPresentationLogic {
+	
+	func prepareFilteredNotes(_ notesCellViewBackdendModels: [NotesCellViewBackendModel]) {
+		guard let viewController = viewController else { return }
+		viewController.cellsToDisplay = []
+		notesCellViewBackdendModels
+			.forEach {
+				viewController.cellsToDisplay.append(
+					NotesCellTableViewModel(cellType: NotesCell.self,
+											isPinned: $0.isPinned,
+											title: $0.title,
+											details: $0.details,
+											assignedDateAndTime: $0.assignedDateAndTime))
+			}
+		viewController.displayCells()
+	}
+	
 	func removeNotes(at indices: [Int]) {
 		guard
 			let viewController = viewController,
@@ -29,12 +45,13 @@ extension NotesPresenter: NotesPresentationLogic {
 	}
 	
 	func present(notes: [NotesCellViewBackendModel]) {
-		viewController?.cellsToDisplay.removeAll()
+		guard let viewController = viewController else { return }
+		viewController.cellsToDisplay.removeAll()
 		notes.forEach {
-			viewController?.cellsToDisplay.append(
+			viewController.cellsToDisplay.append(
 				NotesCellTableViewModel(cellType: NotesCell.self,
 										backendModel: $0))
 		}
-		viewController?.finishDisplayingCells()
+		viewController.displayCells()
 	}
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
 	var cellsToDisplay: [MainCellViewModel] { get set }
-	func finishDisplayingCells()
+	func displayCells()
 	func updateViewModelForCell(at indexPaths: [IndexPath])
 }
 
@@ -19,6 +19,7 @@ enum NotesUpdateAction {
 
 protocol NotesBusinessLogic {
 	func fetchCells()
+	func filterNotesThatHave(substring: String)
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ())
 	func updateModels(_ action: NotesUpdateAction,
@@ -33,6 +34,7 @@ protocol NotesDataStore: AnyObject {
 protocol NotesPresentationLogic {
 	func present(notes: [NotesCellViewBackendModel])
 	func removeNotes(at indices: [Int])
+	func prepareFilteredNotes(_ notesCellViewBackdendModels: [NotesCellViewBackendModel])
 }
 
 protocol NotesRoutingLogic {

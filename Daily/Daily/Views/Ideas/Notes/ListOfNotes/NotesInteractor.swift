@@ -32,6 +32,20 @@ class NotesInteractor: NotesDataStore {
 
 extension NotesInteractor: NotesBusinessLogic {
 	
+	func filterNotesThatHave(substring: String) {
+		let formattedSubstring = substring.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+		if formattedSubstring.isEmpty {
+			presenter?.prepareFilteredNotes(notes)
+			return
+		}
+		
+		let matchingCells = notes.filter {
+			$0.title.lowercased().contains(formattedSubstring) || $0.details.lowercased().contains(formattedSubstring)
+		}
+		
+		presenter?.prepareFilteredNotes(matchingCells)
+	}
+	
 	func updateModels(_ action: NotesUpdateAction,
 					  at indices: [Int],
 					  completion: @escaping () -> ()) {

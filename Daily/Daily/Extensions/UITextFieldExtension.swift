@@ -31,10 +31,11 @@ extension UITextField {
 	
 	func styleEditingTextField(placeholder: String,
 							   fontSize: CGFloat,
+							   textColor: UIColor,
 							   borderStyle: UITextField.BorderStyle) {
 		self.borderStyle = borderStyle
 		self.font = UIFont(name: "Stolzl-Regular", size: fontSize)
-		self.tintColor = .dailyTextColor
+		self.textColor = textColor 
 		self.placeholder = NSLocalizedString(placeholder, comment: "Title placeholder for note")
 		self.translatesAutoresizingMaskIntoConstraints = false
 	}
