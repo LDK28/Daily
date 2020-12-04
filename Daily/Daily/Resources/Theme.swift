@@ -128,11 +128,13 @@ extension UIColor {
 		colorForTheme(light: UIColor("F9F9F9"), dark: UIColor("292929"))
 	}
 	
-	static var dailyTextFieldTextColor = dailyOverlayButtonTextColor
+	static var dailyOverlayTextFieldTextColor = dailyOverlayButtonTextColor
 	
-	static var dailyTextFieldColor = dailyOverlayButtonTileColor
+	static var dailyOverlayTextFieldColor = dailyOverlayButtonTileColor
 	
-	static var dailyPlaceholderColor = dailyTextFieldTextColor.withAlphaComponent(0.5)
+	static var dailyNoteTextFieldTextColor = dailyTextColor
+	
+	static var dailyPlaceholderColor = dailyOverlayTextFieldTextColor.withAlphaComponent(0.5)
 	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {

@@ -39,7 +39,7 @@ class TabBarControllerWithMiddleButton: UITabBarController {
 		UITabBarItem.appearance().setTitleTextAttributes(systemFontAttributes, for: .normal)
 
 	
-		self.viewControllers = [createDiaryNC(), createIdeasNC(), createCalendarNC(), createProfileNC()]
+		self.viewControllers = [createDiaryNC(), createIdeasNC(), UIViewController(), createCalendarNC(), createProfileNC()]
 	}
 	
 	func createDiaryNC() -> UINavigationController {

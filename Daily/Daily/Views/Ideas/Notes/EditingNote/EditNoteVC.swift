@@ -28,12 +28,33 @@ class EditNoteVC: MainVC {
   
 }
 extension EditNoteVC: EditNoteDisplayLogic {
-	func displaySomething() {
-	  
+	func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel) {
+		textField.text = data.title
+		textView.text = data.details
 	}
 }
 
+// MARK: - text view delegate
 extension EditNoteVC: UITextViewDelegate {
+	func textViewDidBeginEditing(_ textView: UITextView) {
+		if textView.textColor != .dailyNoteTextFieldTextColor {
+			textView.text = nil
+			textView.textColor = .dailyNoteTextFieldTextColor
+		}
+	}
+
+	func textViewDidEndEditing(_ textView: UITextView) {
+		if textView.text.isEmpty {
+			textView.text = NSLocalizedString("Details", comment: "")
+			textView.textColor = UITextView.placeholderColor
+		}
+	}
+	func textViewDidChange(_ textView: UITextView) {
+		
+	}
+}
+
+extension EditNoteVC {
 	func configureTextField() {
 		view.addSubview(textField)
 		textField.styleNoteTextField(placeholder: "Title")
@@ -49,8 +70,11 @@ extension EditNoteVC: UITextViewDelegate {
 	func configureTextView() {
 		view.addSubview(textView)
 		textView.delegate = self
-		textView.styleMultiLineTextView(placeholder: "Description of your note", backgroundColor: .clear)
+		textView.styleMultiLineTextView(placeholder: "Details",
+										backgroundColor: .clear,
+										cornerRadius: 0)
 		
+		textView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			textView.topAnchor.constraint(equalTo: textField.bottomAnchor),
 			textView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),

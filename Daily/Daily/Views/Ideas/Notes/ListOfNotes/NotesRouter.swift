@@ -22,7 +22,7 @@ extension NotesRouter: NotesRoutingLogic {
 	func navigateToEditingNote(withViewModel viewModel: NotesCellViewBackendModel) {
 		let vc = EditNoteModule.build()
 		vc.modalPresentationStyle = .fullScreen
-		vc.router?.dataStore?.noteCellViewBackendModel = viewModel
+		vc.router?.integrateNoteInModule(viewModel)
 		viewController?.navigationController?.pushViewController(vc, animated: true)
 	}
 }

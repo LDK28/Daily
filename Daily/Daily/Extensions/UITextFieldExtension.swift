@@ -8,6 +8,7 @@
 import UIKit
 
 extension UITextField {
+	
 	func styleTextField(placeholder: String, isFirstLetterAutoCapitalized: Bool, isSecuredString: Bool)  {
 		
 		self.standartStyling(placeholder: placeholder)
@@ -42,7 +43,7 @@ extension UITextField {
 		self.placeholder = NSLocalizedString(placeholder, comment: "placeholder for textField")
 		self.leftViewMode = .always
 		self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-		self.backgroundColor = .dailyTextFieldColor
-		self.tintColor = .dailyTextFieldTextColor
+		self.backgroundColor = .dailyOverlayTextFieldColor
+		self.tintColor = .dailyOverlayTextFieldTextColor
 	}
 }
