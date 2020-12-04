@@ -32,12 +32,12 @@ class PlusButton: UIButton {
 		super.layoutSubviews()
 		layer.cornerRadius = 10
 		layer.borderWidth = 2.5
-		let plusConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.8, weight: .light)
+		let plusConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
 		let plusImage = UIImage(systemName: "plus", withConfiguration: plusConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
 		setImage(plusImage, for: .normal)
 		
 		let chevronConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.8, weight: .light)
-		let chevronImage = UIImage(systemName: "chevron.right", withConfiguration: chevronConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+		let chevronImage = UIImage(systemName: "chevron.down", withConfiguration: chevronConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
 		setImage(chevronImage, for: [.selected])
 		
 	}

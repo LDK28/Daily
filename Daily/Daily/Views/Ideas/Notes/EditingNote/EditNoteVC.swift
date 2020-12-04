@@ -57,11 +57,13 @@ extension EditNoteVC: UITextViewDelegate {
 extension EditNoteVC {
 	func configureTextField() {
 		view.addSubview(textField)
-		textField.styleNoteTextField(placeholder: "Title")
+		textField.styleEditingTextField(placeholder: "Title",
+										fontSize: 36,
+										borderStyle: .none)
 		
 		NSLayoutConstraint.activate([
 			textField.topAnchor.constraint(equalTo: view.topAnchor, constant: 35),
-			textField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			textField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			textField.heightAnchor.constraint(equalToConstant: 45)
 		])
@@ -70,15 +72,16 @@ extension EditNoteVC {
 	func configureTextView() {
 		view.addSubview(textView)
 		textView.delegate = self
-		textView.styleMultiLineTextView(placeholder: "Details",
+		textView.styleMultiLineTextView(placeholder: "Tap here to edit",
+										fontSize: 20,
 										backgroundColor: .clear,
 										cornerRadius: 0)
 		
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			textView.topAnchor.constraint(equalTo: textField.bottomAnchor),
+			textView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15),
 			textView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
-			textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 		])
 	}

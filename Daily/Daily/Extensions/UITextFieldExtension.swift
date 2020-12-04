@@ -25,13 +25,15 @@ extension UITextField {
 	
 	func styleOverlayTextField(placeholder: String) {
 		self.standartStyling(placeholder: placeholder)
-		self.font = .systemFont(ofSize: 20, weight: .semibold)
+		self.font = .systemFont(ofSize: 28, weight: .semibold)
 	
 	}
 	
-	func styleNoteTextField(placeholder: String) {
-		self.borderStyle = .bezel
-		self.font = UIFont(name: "Stolzl-Regular", size: 26)
+	func styleEditingTextField(placeholder: String,
+							   fontSize: CGFloat,
+							   borderStyle: UITextField.BorderStyle) {
+		self.borderStyle = borderStyle
+		self.font = UIFont(name: "Stolzl-Regular", size: fontSize)
 		self.tintColor = .dailyTextColor
 		self.placeholder = NSLocalizedString(placeholder, comment: "Title placeholder for note")
 		self.translatesAutoresizingMaskIntoConstraints = false

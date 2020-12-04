@@ -49,7 +49,7 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		searchBar.delegate = self
-		navigationItem.backButtonTitle = "Notes"
+		navigationItem.backButtonTitle = NSLocalizedString("Notes", comment: "")
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchIcon)
 	}
 	
@@ -98,6 +98,3 @@ extension NotesVC: NotesDisplayLogic {
 			}
 	}
 }
-
-
-

@@ -8,15 +8,16 @@
 import UIKit
 
 extension UITextView {
-	static let placeholderColor = UIColor.systemGray2
+	static let placeholderColor = UIColor.dailyTextColor.withAlphaComponent(0.25)
 
 	func styleMultiLineTextView(placeholder: String,
+								fontSize: CGFloat,
 								backgroundColor: UIColor,
 								cornerRadius: CGFloat) {
 		self.text = NSLocalizedString(placeholder, comment: "Text view placeholder")
 		self.textColor = UITextView.placeholderColor
 		self.backgroundColor = backgroundColor
-		self.font = .preferredFont(forTextStyle: .callout)
+		self.font = .systemFont(ofSize: fontSize, weight: .regular)
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.layer.cornerRadius = cornerRadius
 	}

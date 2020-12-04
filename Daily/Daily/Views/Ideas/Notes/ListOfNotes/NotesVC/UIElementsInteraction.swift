@@ -33,7 +33,9 @@ extension NotesVC {
 			}
 		} else {
 			guard let selectedCellViewModel = self.cellsToDisplay[indexPath.row] as? NotesCellTableViewModel else { return }
-			router?.navigateToEditingNote(withViewModel: selectedCellViewModel)
+			selectedCell.flashAnimation {
+				self.router?.navigateToEditingNote(withViewModel: selectedCellViewModel)
+			}
 		}
 	}
 	

@@ -30,10 +30,11 @@ class NewNoteOverlayVC: OverlayVC {
 	override func styleUI() {
 		super.styleUI()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
+		tableView.separatorStyle = .none
 		descriptionTextView.styleMultiLineTextView(placeholder: "Details",
+												   fontSize: 18,
 												   backgroundColor: .dailyOverlayTextFieldColor,
 												   cornerRadius: 10)
-		tableView.separatorStyle = .none
 	}
 	
 	@objc func tappedSaveButton() {

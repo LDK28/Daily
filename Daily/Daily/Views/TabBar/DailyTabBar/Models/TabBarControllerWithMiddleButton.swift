@@ -33,7 +33,7 @@ class TabBarControllerWithMiddleButton: UITabBarController, UITabBarControllerDe
 		
 		NSLayoutConstraint.activate([
 			button.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
-			button.centerYAnchor.constraint(equalTo: tabBar.safeAreaLayoutGuide.centerYAnchor),
+			button.centerYAnchor.constraint(equalTo: tabBar.safeAreaLayoutGuide.centerYAnchor, constant: 2),
 			button.heightAnchor.constraint(equalToConstant: size),
 			button.widthAnchor.constraint(equalTo: button.heightAnchor)
 		])

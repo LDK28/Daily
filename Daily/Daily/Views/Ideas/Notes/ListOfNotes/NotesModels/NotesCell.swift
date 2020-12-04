@@ -41,6 +41,27 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		detailsTextView.text = viewModel.details
 	}
 	
+	func flashAnimation(competion: @escaping () -> ()) {
+		let currentColor = containerView.backgroundColor
+		UIView.animate(withDuration: 0.1, animations: { [weak self] in
+			guard let self = self else {
+				competion()
+				return
+			}
+			self.containerView.backgroundColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.5)
+		}) {_ in
+			UIView.animate(withDuration: 0.1, animations: { [weak self] in
+				guard let self = self else {
+					competion()
+					return
+				}
+				self.containerView.backgroundColor = currentColor
+				competion()
+			}) { _ in
+			}
+		}
+	}
+	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		containerView.layer.cornerRadius = 5
@@ -56,11 +77,9 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		containerView.backgroundColor = .dailyUnpinnedNoteTileColor
 		containerView.layer.borderColor = UIColor.dailyTextColor.withAlphaComponent(0.8).cgColor
 		backgroundColor = .clear
-
-		let selectedView = UIView()
-		selectedView.backgroundColor = backgroundColor
+		let selectedView = UIView(frame: containerView.frame)
+		selectedView.backgroundColor = .clear
 		selectedBackgroundView = selectedView
-		
 		addToDiaryButton.translatesAutoresizingMaskIntoConstraints = false
 		addToDiaryButton.contentMode = .scaleAspectFill
 		if let addToDiaryImage =
