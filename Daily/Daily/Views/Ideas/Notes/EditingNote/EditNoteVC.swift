@@ -31,6 +31,7 @@ extension EditNoteVC: EditNoteDisplayLogic {
 	func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel) {
 		textField.text = data.title
 		textView.text = data.details
+		
 	}
 }
 
@@ -48,9 +49,6 @@ extension EditNoteVC: UITextViewDelegate {
 			textView.text = NSLocalizedString("Details", comment: "")
 			textView.textColor = UITextView.placeholderColor
 		}
-	}
-	func textViewDidChange(_ textView: UITextView) {
-		
 	}
 }
 

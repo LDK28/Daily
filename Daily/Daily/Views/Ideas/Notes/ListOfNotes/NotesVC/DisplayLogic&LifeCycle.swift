@@ -49,15 +49,13 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		searchBar.delegate = self
+		interactor?.fetchCells()
 		navigationItem.backButtonTitle = NSLocalizedString("Notes", comment: "")
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchIcon)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		searchBar.text = nil
-		isSearching = false
-		interactor?.fetchCells()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {

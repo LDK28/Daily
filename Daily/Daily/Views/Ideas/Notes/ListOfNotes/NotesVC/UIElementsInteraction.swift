@@ -9,10 +9,17 @@ import UIKit
 
 extension NotesVC: UISearchBarDelegate {
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.text = ""
+		searchBar.resignFirstResponder()
 		isSearching = false
 	}
+	
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()
+	}
+	
+	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+		interactor?.filterNotesThatHave(substring: searchBar.text ?? "")
 	}
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -99,7 +106,8 @@ extension NotesVC {
 		guard
 			let indexPath = tableView.indexPathForRow(at: locationInView),
 			let cell = tableView.cellForRow(at: indexPath) as? NotesCell,
-			isEditingNotes != true
+			isEditingNotes != true,
+			isSearching != true
 		else { return }
 		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 		cell.tapAnimation { [weak self] in
@@ -219,7 +227,6 @@ extension NotesVC {
 	
 	
 	fileprivate func setEditingItems() {
-		navigationController?.navigationBar.topItem?.titleView = nil
 		navigationItem.rightBarButtonItems = [
 			UIBarButtonItem(customView: trashIcon),
 			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero, size: CGSize(width: 10, height: 30)))),
@@ -230,7 +237,6 @@ extension NotesVC {
 	}
 	
 	fileprivate func setDefaultItems() {
-		navigationController?.navigationBar.topItem?.titleView = nil
 		navigationItem.leftBarButtonItems = nil
 		navigationItem.hidesBackButton = false
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchIcon)
@@ -240,7 +246,7 @@ extension NotesVC {
 		navigationItem.rightBarButtonItems = nil
 		navigationItem.leftBarButtonItems = nil
 		navigationItem.hidesBackButton = true
-		navigationController?.navigationBar.topItem?.titleView = self.searchBar
+		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.searchBar)
 		searchBar.becomeFirstResponder()
 	}
 }
