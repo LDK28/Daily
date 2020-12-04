@@ -204,7 +204,7 @@ extension NotesVC {
 							
 			}) { [weak self] _ in
 				guard let self = self else { return }
-				self.setDefaultItems()
+				self.isSearching ? self.setSearchBarItem() : self.setDefaultItems()
 				UIView.animate(withDuration: durationConstant, delay: 0.01,
 							   options: .curveEaseOut,
 							   animations: { [weak self] in
@@ -219,6 +219,7 @@ extension NotesVC {
 	
 	
 	fileprivate func setEditingItems() {
+		navigationController?.navigationBar.topItem?.titleView = nil
 		navigationItem.rightBarButtonItems = [
 			UIBarButtonItem(customView: trashIcon),
 			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero, size: CGSize(width: 10, height: 30)))),
@@ -240,5 +241,6 @@ extension NotesVC {
 		navigationItem.leftBarButtonItems = nil
 		navigationItem.hidesBackButton = true
 		navigationController?.navigationBar.topItem?.titleView = self.searchBar
+		searchBar.becomeFirstResponder()
 	}
 }
