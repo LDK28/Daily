@@ -14,10 +14,10 @@ class PlusButton: UIButton {
 		super.init(frame: frame)
 		translatesAutoresizingMaskIntoConstraints = false
 		layer.borderColor = UIColor.white.cgColor
-		layer.shadowColor = UIColor.dailyShadowColor
-		layer.shadowOffset = CGSize(width: 0, height: 10)
-		layer.shadowRadius = 4
-		layer.shadowOpacity = 0.1
+//		layer.shadowColor = UIColor.dailyShadowColor
+//		layer.shadowOffset = CGSize(width: 0, height: 10)
+//		layer.shadowRadius = 4
+//		layer.shadowOpacity = 0.1
 		backgroundColor = .dailyTabBarColor
 		
 	}
@@ -30,15 +30,16 @@ class PlusButton: UIButton {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		layer.cornerRadius = frame.height / 2
-		layer.borderWidth = frame.height / 15
-		let plusConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.5, weight: .light)
+		layer.cornerRadius = 10
+		layer.borderWidth = 2.5
+		let plusConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.8, weight: .light)
 		let plusImage = UIImage(systemName: "plus", withConfiguration: plusConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
 		setImage(plusImage, for: .normal)
 		
 		let chevronConfig = UIImage.SymbolConfiguration(pointSize: frame.height / 1.8, weight: .light)
 		let chevronImage = UIImage(systemName: "chevron.right", withConfiguration: chevronConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
 		setImage(chevronImage, for: [.selected])
+		
 	}
 	
 }

@@ -20,8 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 		window?.windowScene = windowScene
-
-		let homeVC = DailyTabBarModule.build()
+		
+		//let storyboard = UIStoryboard(name: "TabBarInspector", bundle: nil)
+		let homeVC = DailyTabBarModule.build()//storyboard.instantiateViewController(identifier: "customTabBar")
 		self.window?.rootViewController = homeVC
 		window?.makeKeyAndVisible()
 	}

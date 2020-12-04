@@ -105,14 +105,14 @@ extension DailyTabBarVC {
 			guard let self = self else { return }
 			self.plusButton.isSelected.toggle()
 			if self.plusButton.isSelected {
-				self.plusButton.transform = CGAffineTransform(rotationAngle: .pi / 2)
+				self.plusButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi / 2)
 				self.addButtonsStackView.isHidden = false
 				self.blackoutView.isHidden = false
 				self.blackoutView.alpha = 1
 				self.addButtonsStackView.frame.origin.y -= 20
 				self.addButtonsStackView.alpha = 1
 			} else {
-				self.plusButton.transform = CGAffineTransform(rotationAngle: 0)
+				self.plusButton.imageView?.transform = CGAffineTransform(rotationAngle: 0)
 				self.overlayViewContoller?.remove()
 				self.overlayViewContoller = nil
 				self.addButtonsStackView.frame.origin.y += 15
