@@ -40,8 +40,13 @@ extension NotesVC {
 			}
 		} else {
 			guard let selectedCellViewModel = self.cellsToDisplay[indexPath.row] as? NotesCellTableViewModel else { return }
-			selectedCell.flashAnimation {
-				self.router?.navigateToEditingNote(withViewModel: selectedCellViewModel)
+			selectedCell.flashAnimation { [weak self] in
+				guard let self = self else { return }
+				self.interactor?.giveIndexOfNote(withViewModel: selectedCellViewModel) { index in
+					guard let indexOfSelectedCell = index else { return }
+					self.router?.navigateToEditingNote(withViewModel: selectedCellViewModel,
+													   withIndex: indexOfSelectedCell)
+				}
 			}
 		}
 	}
@@ -92,7 +97,8 @@ extension NotesVC {
 					.filter {
 						!cellViewModels[$0].isPinned
 					}
-			self.interactor?.updateModels(unpinAll ? .unpin : .pin, at: rowsToUpdate.sorted(by: >)) {
+			self.interactor?.updateModels(unpinAll ? .unpin : .pin,
+										  at: rowsToUpdate.sorted(by: >)) { [unowned self] in
 				self.tableView.beginUpdates()
 				self.tableView.reloadRows(at: self.selectedIndexPaths, with: .automatic)
 				self.tableView.endUpdates()

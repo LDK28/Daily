@@ -13,6 +13,10 @@ class NotesCellViewBackendModel: Codable {
 	var details: String
 	var assignedDateAndTime: Date?
 	
+	static func ==(lhs: NotesCellViewBackendModel, rhs: NotesCellViewBackendModel) -> Bool {
+		return lhs.isPinned == rhs.isPinned && lhs.assignedDateAndTime == rhs.assignedDateAndTime && lhs.details == rhs.details && lhs.title == rhs.title
+	}
+	
 	init(isPinned: Bool, title: String, details: String, assignedDateAndTime: Date? = nil) {
 		self.isPinned = isPinned
 		self.title = title
@@ -21,6 +25,13 @@ class NotesCellViewBackendModel: Codable {
 	}
 	
 	init(copiedModel: NotesCellViewBackendModel) {
+		self.isPinned = copiedModel.isPinned
+		self.title = copiedModel.title
+		self.details = copiedModel.details
+		self.assignedDateAndTime = copiedModel.assignedDateAndTime
+	}
+	
+	init(copiedModel: NotesCellTableViewModel) {
 		self.isPinned = copiedModel.isPinned
 		self.title = copiedModel.title
 		self.details = copiedModel.details

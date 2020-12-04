@@ -15,6 +15,7 @@ protocol DailyUserNetworkRequest {
 	func getNotes(completion: @escaping ([NotesCellViewBackendModel]) -> ())
 	func add(note: NotesCellViewBackendModel, completion: @escaping () -> ())
 	func update(notes: [NotesCellViewBackendModel], completion: (() -> ())?)
+	func update(note: NotesCellViewBackendModel, at index: Int, completion: (() -> ())?)
 }
 
 final class UserRequest: DailyUserNetworkRequest {
@@ -81,6 +82,20 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 		
 		UserRequest.shared.userData?.notes = notes
+		updateServerData(withUserID: userID, completion: completion)
+	}
+	
+	func update(note: NotesCellViewBackendModel, at index: Int, completion: (() -> ())?) {
+		guard
+			let userID = userID,
+			UserRequest.shared.userData != nil,
+			UserRequest.shared.userData?.notes.indices.contains(index) != false
+		else {
+			completion?()
+			return
+		}
+		
+		UserRequest.shared.userData?.notes[index] = note
 		updateServerData(withUserID: userID, completion: completion)
 	}
 	

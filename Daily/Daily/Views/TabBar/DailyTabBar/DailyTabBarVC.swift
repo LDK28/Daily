@@ -86,7 +86,7 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 		addButtonsStackView.isHidden = true
 		overlayViewContoller = overlay
 		if let overlay = overlayViewContoller {
-			add(overlay, highestElementInTabBar: plusButton)
+			add(overlay)
 		}
 	}
 }
@@ -149,7 +149,7 @@ extension DailyTabBarVC {
 	func configureAddButtonsVerticalStackView() {
 		addButtonsStackView.isHidden = true
 		NSLayoutConstraint.activate([
-			addButtonsStackView.bottomAnchor.constraint(equalTo: plusButton.safeAreaLayoutGuide.topAnchor),
+			addButtonsStackView.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: -5),
 			addButtonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 			
 		])

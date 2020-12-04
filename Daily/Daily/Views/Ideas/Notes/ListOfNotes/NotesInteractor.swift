@@ -32,18 +32,24 @@ class NotesInteractor: NotesDataStore {
 
 extension NotesInteractor: NotesBusinessLogic {
 	
+	func giveIndexOfNote(withViewModel viewModel: NotesCellTableViewModel,
+						 completion: @escaping (Int?) -> ()) {
+		let backendModel = NotesCellViewBackendModel(copiedModel: viewModel)
+		completion(notes.firstIndex(where: { $0 == backendModel }))
+	}
+	
 	func filterNotesThatHave(substring: String) {
 		let formattedSubstring = substring.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
 		if formattedSubstring.isEmpty {
-			presenter?.prepareFilteredNotes(notes)
+			presenter?.present(notes: notes)
 			return
 		}
 		
-		let matchingCells = notes.filter {
+		let matchingNotes = notes.filter {
 			$0.title.lowercased().contains(formattedSubstring) || $0.details.lowercased().contains(formattedSubstring)
 		}
 		
-		presenter?.prepareFilteredNotes(matchingCells)
+		presenter?.present(notes: matchingNotes)
 	}
 	
 	func updateModels(_ action: NotesUpdateAction,
@@ -78,10 +84,10 @@ extension NotesInteractor: NotesBusinessLogic {
 		}
 	}
 	
-	func fetchCells() {
-		UserRequest.shared.getNotes() { notes in
+	func fetchLatestData(latestInputInSearchBar: String?) {
+		UserRequest.shared.getNotes { notes in
 			self.notes = notes
-			self.presenter?.present(notes: notes)
+			self.filterNotesThatHave(substring: latestInputInSearchBar ?? "")
 		}
 	}
 }

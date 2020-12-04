@@ -18,7 +18,9 @@ enum NotesUpdateAction {
 }
 
 protocol NotesBusinessLogic {
-	func fetchCells()
+	func fetchLatestData(latestInputInSearchBar: String?)
+	func giveIndexOfNote(withViewModel viewModel: NotesCellTableViewModel,
+						 completion: @escaping (Int?) -> ())
 	func filterNotesThatHave(substring: String)
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ())
@@ -34,11 +36,11 @@ protocol NotesDataStore: AnyObject {
 protocol NotesPresentationLogic {
 	func present(notes: [NotesCellViewBackendModel])
 	func removeNotes(at indices: [Int])
-	func prepareFilteredNotes(_ notesCellViewBackdendModels: [NotesCellViewBackendModel])
 }
 
 protocol NotesRoutingLogic {
-	func navigateToEditingNote(withViewModel viewModel: NotesCellViewBackendModel)
+	func navigateToEditingNote(withViewModel viewModel: NotesCellViewBackendModel,
+							   withIndex index: Int)
 }
 
 protocol NotesDataPassing {
