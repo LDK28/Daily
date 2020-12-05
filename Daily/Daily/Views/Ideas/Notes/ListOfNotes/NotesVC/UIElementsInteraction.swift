@@ -92,9 +92,6 @@ extension NotesVC {
 			else { return }
 			
 			let unpinAll = cells.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
-//			cellViewModels.forEach { print($0.isPinned)}
-//			print(self.selectedIndexPaths.count)
-//			print(cellViewModels.filter { $0.isPinned }.count)
 			let rowsToUpdate = unpinAll ?
 				self.selectedIndexPaths
 					.map { $0.row } :
