@@ -31,12 +31,17 @@ class EditNoteVC: MainVC {
 		textView.delegate = self
 		textField.delegate = self
 	}
-  
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		interactor?.fetchNoteData()
+	}
 }
 extension EditNoteVC: EditNoteDisplayLogic {
 	func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel) {
 		textField.text = data.title
 		textView.text = data.details
+		textViewDidBeginEditing(textView)
 	}
 }
 
@@ -44,7 +49,6 @@ extension EditNoteVC: EditNoteDisplayLogic {
 extension EditNoteVC: UITextViewDelegate {
 	func textViewDidBeginEditing(_ textView: UITextView) {
 		if textView.textColor != .dailyNoteTextFieldTextColor {
-			textView.text = nil
 			textView.textColor = .dailyNoteTextFieldTextColor
 		}
 	}

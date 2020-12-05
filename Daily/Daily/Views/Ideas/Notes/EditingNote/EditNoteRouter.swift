@@ -18,6 +18,5 @@ extension EditNoteRouter: EditNoteRoutingLogic {
 	func integrateNoteInModule(_ note: NotesCellViewBackendModel, index: Int) {
 		dataStore?.noteCellViewBackendModel = note
 		dataStore?.index = index
-		viewController?.interactor?.fetchNoteData()
 	}
 }
