@@ -85,10 +85,16 @@ extension NotesVC {
 		pinIcon.tapAnimation { [weak self] in
 			guard
 				let self = self,
-				let cellViewModels = self.cellsToDisplay as? [NotesCellTableViewModel]
+				let cellViewModels = self.cellsToDisplay as? [NotesCellTableViewModel],
+				let cells =
+					self.selectedIndexPaths
+					.map ({ self.tableView.cellForRow(at: $0) }) as? [NotesCell]
 			else { return }
 			
-			let unpinAll = cellViewModels.filter { $0.isPinned }.count == self.selectedIndexPaths.count ? true : false
+			let unpinAll = cells.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
+//			cellViewModels.forEach { print($0.isPinned)}
+//			print(self.selectedIndexPaths.count)
+//			print(cellViewModels.filter { $0.isPinned }.count)
 			let rowsToUpdate = unpinAll ?
 				self.selectedIndexPaths
 					.map { $0.row } :
@@ -98,7 +104,7 @@ extension NotesVC {
 						!cellViewModels[$0].isPinned
 					}
 			self.interactor?.updateModels(unpinAll ? .unpin : .pin,
-										  at: rowsToUpdate.sorted(by: >)) { [unowned self] in
+										  at: rowsToUpdate.sorted(by: >)) {
 				self.tableView.beginUpdates()
 				self.tableView.reloadRows(at: self.selectedIndexPaths, with: .automatic)
 				self.tableView.endUpdates()
