@@ -30,7 +30,7 @@ extension IdeasPresenter: IdeasPresentationLogic {
                                        missedProjects: 0,
                                        cellType: IdeasCell.self),
             
-            RecentActionsViewModel(headerLabelText: "Recent Actions", recentActions: [" first", " second"], cellType: RecentActionsCell.self)
+            RecentActionsViewModel(headerLabelText: "Recent Actions", recentActions: [" first", " second", " third"], cellType: RecentActionsCell.self)
         ]
         
         
