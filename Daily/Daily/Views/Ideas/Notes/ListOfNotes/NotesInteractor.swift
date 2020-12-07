@@ -49,7 +49,7 @@ extension NotesInteractor: NotesBusinessLogic {
 			$0.title.lowercased().contains(formattedSubstring) || $0.details.lowercased().contains(formattedSubstring)
 		}
 		
-		presenter?.present(notes: matchingNotes)
+		presenter?.presentFilteredNotes(notes: matchingNotes, withSubstring: substring)
 	}
 	
 	func updateModels(_ action: NotesUpdateAction,

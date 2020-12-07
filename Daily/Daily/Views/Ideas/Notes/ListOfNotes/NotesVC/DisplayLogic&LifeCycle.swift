@@ -83,9 +83,20 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 }
 
 extension NotesVC: NotesDisplayLogic {
-	func displayCells() {
+	func showAllCells() {
 		DispatchQueue.main.async {
 			self.tableView.reloadData()
+		}
+	}
+	
+	func showFilteredCells(thatHaveSubstring substring: String) {
+		tableView.reloadData()
+		let indexPaths = cellsToDisplay.indices.map {
+			IndexPath(row: $0, section: 0)
+		}
+		
+		indexPaths.forEach {
+			(tableView.cellForRow(at: $0) as? NotesCell)?.highlightWhereLabelsHave(substring: substring)
 		}
 	}
 	

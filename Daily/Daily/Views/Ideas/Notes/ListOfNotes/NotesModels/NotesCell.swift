@@ -36,9 +36,28 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 	
 	func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? NotesCellViewBackendModel else { return }
+		titleLabel.attributedText = nil
 		titleLabel.text = viewModel.title
 		isPinned = viewModel.isPinned
+		detailsTextView.attributedText = nil
 		detailsTextView.text = viewModel.details
+	}
+	
+	func highlightWhereLabelsHave(substring: String) {
+		let highlightedAttributes: [NSAttributedString.Key: Any] =
+			[NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
+		
+		let attributedTitle = NSMutableAttributedString(string: titleLabel.text ?? "")
+		let rangeForTitle = NSString(string: titleLabel.text ?? "").range(of: substring, options: .caseInsensitive)
+		attributedTitle.addAttributes(highlightedAttributes, range: rangeForTitle)
+		titleLabel.attributedText = attributedTitle
+		
+		
+		let attributedDetails = NSMutableAttributedString(string: detailsTextView.text ?? "")
+		let rangeForDetails = NSString(string: detailsTextView.text ?? "").range(of: substring, options: .caseInsensitive)
+		attributedDetails.addAttributes(highlightedAttributes, range: rangeForDetails)
+		detailsTextView.attributedText = attributedDetails
+		
 	}
 	
 	func flashAnimation(competion: @escaping () -> ()) {
@@ -57,8 +76,7 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 				}
 				self.containerView.backgroundColor = currentColor
 				competion()
-			}) { _ in
-			}
+			})
 		}
 	}
 	

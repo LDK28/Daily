@@ -47,6 +47,5 @@ class MainVC: UIViewController {
         super.viewDidLoad()
 		view.backgroundColor = .dailyMainBackgroundColor
     }
-
 }
 

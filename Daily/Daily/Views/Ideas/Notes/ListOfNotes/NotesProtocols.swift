@@ -9,7 +9,8 @@ import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
 	var cellsToDisplay: [MainCellViewModel] { get set }
-	func displayCells()
+	func showAllCells()
+	func showFilteredCells(thatHaveSubstring substring: String)
 	func updateViewModelForCell(at indexPaths: [IndexPath])
 }
 
@@ -35,6 +36,7 @@ protocol NotesDataStore: AnyObject {
 
 protocol NotesPresentationLogic {
 	func present(notes: [NotesCellViewBackendModel])
+	func presentFilteredNotes(notes: [NotesCellViewBackendModel], withSubstring substring: String)
 	func removeNotes(at indices: [Int])
 }
 

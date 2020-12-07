@@ -29,7 +29,17 @@ extension NotesPresenter: NotesPresentationLogic {
 		viewController.cellsToDisplay = filteredViewModels
 	}
 	
+	func presentFilteredNotes(notes: [NotesCellViewBackendModel], withSubstring substring: String) {
+		fillCells(with: notes)
+		viewController?.showFilteredCells(thatHaveSubstring: substring)
+	}
+	
 	func present(notes: [NotesCellViewBackendModel]) {
+		fillCells(with: notes)
+		viewController?.showAllCells()
+	}
+	
+	private func fillCells(with notes: [NotesCellViewBackendModel]) {
 		guard let viewController = viewController else { return }
 		viewController.cellsToDisplay.removeAll()
 		notes.forEach {
@@ -37,6 +47,5 @@ extension NotesPresenter: NotesPresentationLogic {
 				NotesCellTableViewModel(cellType: NotesCell.self,
 										backendModel: $0))
 		}
-		viewController.displayCells()
 	}
 }

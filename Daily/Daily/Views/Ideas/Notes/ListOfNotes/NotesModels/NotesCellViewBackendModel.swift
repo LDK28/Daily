@@ -8,13 +8,14 @@
 import UIKit
 
 class NotesCellViewBackendModel: Codable {
+	var noteID = UUID()
 	var isPinned: Bool
 	var title: String
 	var details: String
 	var assignedDateAndTime: Date?
 	
 	static func ==(lhs: NotesCellViewBackendModel, rhs: NotesCellViewBackendModel) -> Bool {
-		return lhs.isPinned == rhs.isPinned && lhs.assignedDateAndTime == rhs.assignedDateAndTime && lhs.details == rhs.details && lhs.title == rhs.title
+		return lhs.noteID == rhs.noteID
 	}
 	
 	init(isPinned: Bool, title: String, details: String, assignedDateAndTime: Date? = nil) {
@@ -29,6 +30,7 @@ class NotesCellViewBackendModel: Codable {
 		self.title = copiedModel.title
 		self.details = copiedModel.details
 		self.assignedDateAndTime = copiedModel.assignedDateAndTime
+		self.noteID = copiedModel.noteID
 	}
 	
 	init(copiedModel: NotesCellTableViewModel) {
@@ -36,6 +38,7 @@ class NotesCellViewBackendModel: Codable {
 		self.title = copiedModel.title
 		self.details = copiedModel.details
 		self.assignedDateAndTime = copiedModel.assignedDateAndTime
+		self.noteID = copiedModel.noteID
 	}
 }
 
