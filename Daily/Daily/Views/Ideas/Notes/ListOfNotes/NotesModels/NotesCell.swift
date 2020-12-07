@@ -173,7 +173,6 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 			
 			pinIcon.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15),
 			pinIcon.centerXAnchor.constraint(equalTo: addToDiaryButton.centerXAnchor),
-			//pinIcon.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
 			pinIcon.widthAnchor.constraint(equalToConstant: 20),
 			pinIcon.heightAnchor.constraint(equalTo: pinIcon.widthAnchor)
 		])
