@@ -13,16 +13,25 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	var router: (DailyTabBarRoutingLogic & DailyTabBarDataPassing)?
   
 	private let plusButton = PlusButton()
+	
 	private let blackoutView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.backgroundColor = .dailyPlusButtonBlackoutColor
 		return view
 	}()
+	
 	private var overlayViewContoller: UIViewController? = nil
-	private let newProjectButton = AddButton(title: "New project", symbolName: "doc.on.doc")
-	private let newTaskButton = AddButton(title: "New task", symbolName: "paperclip")
-	private let newNoteButton = AddButton(title: "New note", symbolName: "highlighter")
+	
+	private let newProjectButton = AddButton(title: "New project",
+											 symbolName: "doc.on.doc")
+	
+	private let newTaskButton = AddButton(title: "New task",
+										  symbolName: "paperclip")
+	
+	private let newNoteButton = AddButton(title: "New note",
+										  symbolName: "highlighter")
+	
 	private let addButtonsStackView = UIStackView()
 	
 	override func loadView() {
@@ -32,13 +41,30 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		newProjectButton.addTarget(self, action: #selector(didTapNewProjectButton), for: .touchUpInside)
-		newTaskButton.addTarget(self, action: #selector(didTapNewTaskButton), for: .touchUpInside)
-		newNoteButton.addTarget(self, action: #selector(didTapNewNoteButton), for: .touchUpInside)
-		plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
+		newProjectButton.addTarget(self,
+								   action: #selector(didTapNewProjectButton),
+								   for: .touchUpInside)
 		
-		NotificationCenter.default.addObserver(self, selector: #selector(didTapPlusButton), name: Notification.Name("Close Overlay"), object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(didTapAddNoteButton), name: Notification.Name("New note"), object: nil)
+		newTaskButton.addTarget(self,
+								action: #selector(didTapNewTaskButton),
+								for: .touchUpInside)
+		
+		newNoteButton.addTarget(self,
+								action: #selector(didTapNewNoteButton),
+								for: .touchUpInside)
+		plusButton.addTarget(self,
+							 action: #selector(didTapPlusButton),
+							 for: .touchUpInside)
+		
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(didTapPlusButton),
+											   name: Notification.Name("Close Overlay"),
+											   object: nil)
+		
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(didTapAddNoteButton),
+											   name: Notification.Name("New note"),
+											   object: nil)
 
 	}
 	
@@ -50,10 +76,6 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		interactor?.checkUserLoginStatus()
-	}
-	
-	@objc func changeItemView(to selectedIndex: Int) {
-		tabBarController?.selectedIndex = selectedIndex
 	}
 	
 	@objc func didTapPlusButton() {

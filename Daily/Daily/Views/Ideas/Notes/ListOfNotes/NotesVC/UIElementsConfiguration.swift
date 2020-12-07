@@ -51,12 +51,9 @@ extension NotesVC {
 		
 		let titleView = TitleView(title: "Notes")
 		titleView.frame.size.height = 100
-		let addView = AddNewNoteFooterView()
-		addView.frame.size.height = 50
-		tableView.tableFooterView = addView
 		tableView.tableHeaderView = titleView
 		
-		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: addView.frame.size.height, right: 0)
+		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 		
 		tableView.register(NotesCell.self, forCellReuseIdentifier: NotesCell.cellIdentifier)
 	}

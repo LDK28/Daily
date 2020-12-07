@@ -22,14 +22,16 @@ extension NotesVC: UISearchBarDelegate {
 		interactor?.filterNotesThatHave(substring: searchBar.text ?? "")
 	}
 	
-	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+	func searchBar(_ searchBar: UISearchBar,
+				   textDidChange searchText: String) {
 		interactor?.filterNotesThatHave(substring: searchText)
 	}
 }
 
 extension NotesVC {
 		
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView,
+							didSelectRowAt indexPath: IndexPath) {
 		guard let selectedCell = (tableView.cellForRow(at: indexPath) as? NotesCell) else { return }
 		if isEditingNotes {
 			selectedCell.isChosen.toggle()

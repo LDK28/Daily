@@ -12,12 +12,15 @@ protocol EditNoteDisplayLogic: AnyObject {
 }
 
 protocol EditNoteBusinessLogic {
-  func fetchNoteData()
-	func didChange(title: String?, details: String?)
+	func fetchNoteData()
+	
+	func didChange(title: String?,
+				   details: String?)
 }
 
 protocol EditNoteDataStore: AnyObject {
 	var noteCellViewBackendModel: NoteBackendModel? { get set }
+	
 	var index: Int? { get set }
 }
 
@@ -31,5 +34,7 @@ protocol EditNoteRoutingLogic {
 
 protocol EditNoteDataPassing {
 	var dataStore: EditNoteDataStore? { get }
-	func integrateNoteInModule(_ note: NoteBackendModel, index: Int)
+	
+	func integrateNoteInModule(_ note: NoteBackendModel,
+							   index: Int)
 }

@@ -13,7 +13,8 @@ class NotesInteractor: NotesDataStore {
 	private var presenter: NotesPresentationLogic?
 	
 	
-	private func grabNotes(at indices: [Int], shouldBePinned condition: Bool) -> [NoteBackendModel] {
+	private func grabNotes(at indices: [Int],
+						   shouldBePinned condition: Bool) -> [NoteBackendModel] {
 		var grabbedNotes = [NoteBackendModel]()
 		grabbedNotes.reserveCapacity(indices.count)
 		for index in indices {
@@ -49,7 +50,8 @@ extension NotesInteractor: NotesBusinessLogic {
 			$0.title.lowercased().contains(formattedSubstring) || $0.details.lowercased().contains(formattedSubstring)
 		}
 		
-		presenter?.presentFilteredNotes(notes: matchingNotes, withSubstring: substring)
+		presenter?.presentFilteredNotes(notes: matchingNotes,
+										withSubstring: substring)
 	}
 	
 	func updateModels(_ action: NotesUpdateAction,
@@ -58,13 +60,16 @@ extension NotesInteractor: NotesBusinessLogic {
 		let notesToUpdate: [NoteBackendModel]
 		switch action {
 		case .unpin:
-			notesToUpdate = grabNotes(at: indices, shouldBePinned: false)
+			notesToUpdate = grabNotes(at: indices,
+									  shouldBePinned: false)
 			let indexAfterFirstPinnedNote = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
 			notesToUpdate.forEach {
-				notes.insert($0, at: indexAfterFirstPinnedNote)
+				notes.insert($0,
+							 at: indexAfterFirstPinnedNote)
 			}
 		case .pin:
-			notesToUpdate = grabNotes(at: indices, shouldBePinned: true)
+			notesToUpdate = grabNotes(at: indices,
+									  shouldBePinned: true)
 			notesToUpdate.forEach {
 				notes.insert($0, at: 0)
 			}

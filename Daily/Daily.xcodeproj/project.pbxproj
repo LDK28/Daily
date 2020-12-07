@@ -32,7 +32,6 @@
 		21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E2E2569256900F9A50C /* NotesTableHeader.swift */; };
 		21544E3D25693B6700F9A50C /* NoteBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E3C25693B6700F9A50C /* NoteBackendModel.swift */; };
 		21544E4825693B7400F9A50C /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E4725693B7400F9A50C /* NotesCell.swift */; };
-		21544E5E2569408F00F9A50C /* NotesTableFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E5D2569408F00F9A50C /* NotesTableFooter.swift */; };
 		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156461925583762007264D4 /* UITableViewCellExtension.swift */; };
@@ -166,7 +165,6 @@
 		21544E2E2569256900F9A50C /* NotesTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableHeader.swift; sourceTree = "<group>"; };
 		21544E3C25693B6700F9A50C /* NoteBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBackendModel.swift; sourceTree = "<group>"; };
 		21544E4725693B7400F9A50C /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
-		21544E5D2569408F00F9A50C /* NotesTableFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableFooter.swift; sourceTree = "<group>"; };
 		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2156461925583762007264D4 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 				21544E3C25693B6700F9A50C /* NoteBackendModel.swift */,
 				21544E4725693B7400F9A50C /* NotesCell.swift */,
 				21544E2E2569256900F9A50C /* NotesTableHeader.swift */,
-				21544E5D2569408F00F9A50C /* NotesTableFooter.swift */,
 			);
 			path = NotesModels;
 			sourceTree = "<group>";
@@ -945,7 +942,6 @@
 				21D7BD74256A93BF008BD30C /* DailyTabBarPresenter.swift in Sources */,
 				21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
-				21544E5E2569408F00F9A50C /* NotesTableFooter.swift in Sources */,
 				21544E4825693B7400F9A50C /* NotesCell.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,

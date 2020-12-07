@@ -83,13 +83,13 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 }
 
 extension NotesVC: NotesDisplayLogic {
-	func showAllCells() {
+	func displayAllCells() {
 		DispatchQueue.main.async {
 			self.tableView.reloadData()
 		}
 	}
 	
-	func showFilteredCells(thatHaveSubstring substring: String) {
+	func displayFilteredCells(thatHaveSubstring substring: String) {
 		tableView.reloadData()
 		let indexPaths = cellsToDisplay.indices.map {
 			IndexPath(row: $0, section: 0)
@@ -98,12 +98,5 @@ extension NotesVC: NotesDisplayLogic {
 		indexPaths.forEach {
 			(tableView.cellForRow(at: $0) as? NotesCell)?.highlightWhereLabelsHave(substring: substring)
 		}
-	}
-	
-	func updateViewModelForCell(at indexPaths: [IndexPath]) {
-		indexPaths
-			.forEach {
-				(tableView.cellForRow(at: $0) as? NotesCell)?.setViewModel(cellsToDisplay[$0.row])
-			}
 	}
 }

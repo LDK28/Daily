@@ -75,14 +75,16 @@ extension EditNoteVC: UITextViewDelegate {
 	}
 	
 	func textViewDidChange(_ textView: UITextView) {
-		interactor?.didChange(title: nil, details: textView.text)
+		interactor?.didChange(title: nil,
+							  details: textView.text)
 	}
 	
 }
 
 extension EditNoteVC: UITextFieldDelegate {
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		interactor?.didChange(title: textField.text, details: nil)
+		interactor?.didChange(title: textField.text,
+							  details: nil)
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -16,10 +16,10 @@ extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
 	func didTapSaveButton() {
 		guard let dataSource = dataSource as? NewNoteOverlayDataSource else { return }
 		UserRequest.shared.append(NoteBackendModel(isPinned: false,
-															   title: dataSource.title ?? "",
-															   details: dataSource.noteContent,
-															   assignedDateAndTime:
-																dataSource.assignedDay)) { result in
+												   title: dataSource.title ?? "",
+												   details: dataSource.noteContent,
+												   assignedDateAndTime:
+												   dataSource.assignedDay)) { result in
 			switch result {
 			case .success(()):
 				(self.presenter as? NewNoteOverlayPresentationLogic)?.prepareViewForRoutingToNotes()

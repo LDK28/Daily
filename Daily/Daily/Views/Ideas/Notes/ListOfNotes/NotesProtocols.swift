@@ -9,9 +9,10 @@ import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
 	var cellsToDisplay: [MainCellViewModel] { get set }
-	func showAllCells()
-	func showFilteredCells(thatHaveSubstring substring: String)
-	func updateViewModelForCell(at indexPaths: [IndexPath])
+	
+	func displayAllCells()
+	
+	func displayFilteredCells(thatHaveSubstring substring: String)
 }
 
 enum NotesUpdateAction {
@@ -20,11 +21,14 @@ enum NotesUpdateAction {
 
 protocol NotesBusinessLogic {
 	func fetchLatestData(latestInputInSearchBar: String?)
+	
 	func giveIndexOfNote(withViewModel viewModel: NoteCellViewModel,
 						 completion: @escaping (Int?) -> ())
 	func filterNotesThatHave(substring: String)
+	
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ())
+	
 	func updateModels(_ action: NotesUpdateAction,
 					  at indices: [Int],
 					  completion: @escaping () -> ())
@@ -36,7 +40,9 @@ protocol NotesDataStore: AnyObject {
 
 protocol NotesPresentationLogic {
 	func present(notes: [NoteBackendModel])
+	
 	func presentFilteredNotes(notes: [NoteBackendModel], withSubstring substring: String)
+	
 	func removeNotes(at indices: [Int])
 }
 

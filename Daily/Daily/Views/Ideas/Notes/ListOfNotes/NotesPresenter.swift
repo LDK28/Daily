@@ -29,14 +29,15 @@ extension NotesPresenter: NotesPresentationLogic {
 		viewController.cellsToDisplay = filteredViewModels
 	}
 	
-	func presentFilteredNotes(notes: [NoteBackendModel], withSubstring substring: String) {
+	func presentFilteredNotes(notes: [NoteBackendModel],
+							  withSubstring substring: String) {
 		fillCells(with: notes)
-		viewController?.showFilteredCells(thatHaveSubstring: substring)
+		viewController?.displayFilteredCells(thatHaveSubstring: substring)
 	}
 	
 	func present(notes: [NoteBackendModel]) {
 		fillCells(with: notes)
-		viewController?.showAllCells()
+		viewController?.displayAllCells()
 	}
 	
 	private func fillCells(with notes: [NoteBackendModel]) {

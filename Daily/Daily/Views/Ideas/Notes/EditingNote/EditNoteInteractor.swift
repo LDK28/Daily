@@ -19,7 +19,8 @@ extension EditNoteInteractor: EditNoteBusinessLogic {
 		presenter?.transferNoteDataToView(noteData)
 	}
 	
-	func didChange(title: String?, details: String?) {
+	func didChange(title: String?,
+				   details: String?) {
 		guard
 			let viewModel = noteCellViewBackendModel,
 			let index = index
@@ -33,7 +34,8 @@ extension EditNoteInteractor: EditNoteBusinessLogic {
 			viewModel.title = title
 		}
 		
-		UserRequest.shared.update(viewModel, at: index) { result in
+		UserRequest.shared.update(viewModel,
+								  at: index) { result in
 			switch result {
 			case .failure(let error):
 				debugPrint(error.localizedDescription)

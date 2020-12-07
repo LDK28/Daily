@@ -15,7 +15,8 @@ class EditNoteRouter: EditNoteDataPassing {
 }
 
 extension EditNoteRouter: EditNoteRoutingLogic {
-	func integrateNoteInModule(_ note: NoteBackendModel, index: Int) {
+	func integrateNoteInModule(_ note: NoteBackendModel,
+							   index: Int) {
 		dataStore?.noteCellViewBackendModel = note
 		dataStore?.index = index
 	}
