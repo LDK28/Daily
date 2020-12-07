@@ -39,7 +39,7 @@ extension NotesVC {
 				selectedIndexPaths.removeAll(where: { $0 == indexPath })
 			}
 		} else {
-			guard let selectedCellViewModel = self.cellsToDisplay[indexPath.row] as? NotesCellTableViewModel else { return }
+			guard let selectedCellViewModel = self.cellsToDisplay[indexPath.row] as? NoteCellViewModel else { return }
 			selectedCell.flashAnimation { [weak self] in
 				guard let self = self else { return }
 				self.interactor?.giveIndexOfNote(withViewModel: selectedCellViewModel) { index in
@@ -85,7 +85,7 @@ extension NotesVC {
 		pinIcon.tapAnimation { [weak self] in
 			guard
 				let self = self,
-				let cellViewModels = self.cellsToDisplay as? [NotesCellTableViewModel],
+				let cellViewModels = self.cellsToDisplay as? [NoteCellViewModel],
 				let cells =
 					self.selectedIndexPaths
 					.map ({ self.tableView.cellForRow(at: $0) }) as? [NotesCell]

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditNoteDisplayLogic: AnyObject {
-  func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel)
+  func fillFieldsWithNoteContent(_ data: NoteBackendModel)
 }
 
 protocol EditNoteBusinessLogic {
@@ -17,12 +17,12 @@ protocol EditNoteBusinessLogic {
 }
 
 protocol EditNoteDataStore: AnyObject {
-	var noteCellViewBackendModel: NotesCellViewBackendModel? { get set }
+	var noteCellViewBackendModel: NoteBackendModel? { get set }
 	var index: Int? { get set }
 }
 
 protocol EditNotePresentationLogic {
-	func transferNoteDataToView(_ data: NotesCellViewBackendModel)
+	func transferNoteDataToView(_ data: NoteBackendModel)
 }
 
 protocol EditNoteRoutingLogic {
@@ -31,5 +31,5 @@ protocol EditNoteRoutingLogic {
 
 protocol EditNoteDataPassing {
 	var dataStore: EditNoteDataStore? { get }
-	func integrateNoteInModule(_ note: NotesCellViewBackendModel, index: Int)
+	func integrateNoteInModule(_ note: NoteBackendModel, index: Int)
 }

@@ -13,7 +13,7 @@ class EditNotePresenter {
 }
 
 extension EditNotePresenter: EditNotePresentationLogic {
-	func transferNoteDataToView(_ data: NotesCellViewBackendModel) {
+	func transferNoteDataToView(_ data: NoteBackendModel) {
 		viewController?.fillFieldsWithNoteContent(data)
 	}
 }

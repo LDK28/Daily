@@ -15,12 +15,17 @@ class NewNoteOverlayInteractor: OverlayInteractor {
 extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
 	func didTapSaveButton() {
 		guard let dataSource = dataSource as? NewNoteOverlayDataSource else { return }
-		UserRequest.shared.add(note: NotesCellViewBackendModel(isPinned: false,
+		UserRequest.shared.append(NoteBackendModel(isPinned: false,
 															   title: dataSource.title ?? "",
 															   details: dataSource.noteContent,
 															   assignedDateAndTime:
-																dataSource.assignedDay)) {
-			(self.presenter as? NewNoteOverlayPresentationLogic)?.prepareViewForRoutingToNotes()
+																dataSource.assignedDay)) { result in
+			switch result {
+			case .success(()):
+				(self.presenter as? NewNoteOverlayPresentationLogic)?.prepareViewForRoutingToNotes()
+			case .failure(let error):
+				debugPrint(error)
+			}
 		}
 	}
 	

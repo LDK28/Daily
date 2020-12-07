@@ -9,12 +9,12 @@ import UIKit
 import Firebase
 
 class NotesInteractor: NotesDataStore {
-	internal var notes = [NotesCellViewBackendModel]()
+	internal var notes = [NoteBackendModel]()
 	private var presenter: NotesPresentationLogic?
 	
 	
-	private func grabNotes(at indices: [Int], shouldBePinned condition: Bool) -> [NotesCellViewBackendModel] {
-		var grabbedNotes = [NotesCellViewBackendModel]()
+	private func grabNotes(at indices: [Int], shouldBePinned condition: Bool) -> [NoteBackendModel] {
+		var grabbedNotes = [NoteBackendModel]()
 		grabbedNotes.reserveCapacity(indices.count)
 		for index in indices {
 			let noteToTransfer = notes.remove(at: index)
@@ -32,9 +32,9 @@ class NotesInteractor: NotesDataStore {
 
 extension NotesInteractor: NotesBusinessLogic {
 	
-	func giveIndexOfNote(withViewModel viewModel: NotesCellTableViewModel,
+	func giveIndexOfNote(withViewModel viewModel: NoteCellViewModel,
 						 completion: @escaping (Int?) -> ()) {
-		let backendModel = NotesCellViewBackendModel(copiedModel: viewModel)
+		let backendModel = NoteBackendModel(copiedModel: viewModel)
 		completion(notes.firstIndex(where: { $0 == backendModel }))
 	}
 	
@@ -55,7 +55,7 @@ extension NotesInteractor: NotesBusinessLogic {
 	func updateModels(_ action: NotesUpdateAction,
 					  at indices: [Int],
 					  completion: @escaping () -> ()) {
-		let notesToUpdate: [NotesCellViewBackendModel]
+		let notesToUpdate: [NoteBackendModel]
 		switch action {
 		case .unpin:
 			notesToUpdate = grabNotes(at: indices, shouldBePinned: false)
@@ -70,24 +70,40 @@ extension NotesInteractor: NotesBusinessLogic {
 			}
 		}
 		
-		UserRequest.shared.update(notes: notes) {
-			self.presenter?.present(notes: self.notes)
-			completion()
+		UserRequest.shared.update(notes) { result in
+			switch result {
+			case .success(()):
+				self.presenter?.present(notes: self.notes)
+				completion()
+			case .failure(let error):
+				debugPrint(error.localizedDescription)
+			}
 		}
 	}
 	
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ()) {
- 		UserRequest.shared.update(notes: notes.remove(at: indices)) {
-			self.presenter?.removeNotes(at: indices)
-			completion()
+ 		UserRequest.shared.update(notes.remove(at: indices)) { result in
+			switch result {
+			case .success(()):
+				self.presenter?.removeNotes(at: indices)
+				completion()
+			case .failure(let error):
+				debugPrint(error.localizedDescription)
+			}
 		}
 	}
 	
 	func fetchLatestData(latestInputInSearchBar: String?) {
-		UserRequest.shared.getNotes { notes in
-			self.notes = notes
-			self.filterNotesThatHave(substring: latestInputInSearchBar ?? "")
+		UserRequest.shared.getNotes { result in
+			switch result {
+			case .success(let notes):
+				self.notes = notes
+				self.filterNotesThatHave(substring: latestInputInSearchBar ?? "")
+			default:
+				/* handle errors lateron if needed */
+				return
+			}
 		}
 	}
 }

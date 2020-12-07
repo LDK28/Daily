@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NoteTransferDelegate {
-	func didChangeContentIn(note: NotesCellViewBackendModel)
+	func didChangeContentIn(note: NoteBackendModel)
 }
 
 class EditNoteVC: MainVC {
@@ -45,7 +45,7 @@ class EditNoteVC: MainVC {
 
 //MARK: - DisplayLogic
 extension EditNoteVC: EditNoteDisplayLogic {
-	func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel) {
+	func fillFieldsWithNoteContent(_ data: NoteBackendModel) {
 		textField.text = data.title
 		
 		if data.details.isEmpty {

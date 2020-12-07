@@ -7,14 +7,14 @@
 
 import UIKit
 
-class NotesCellViewBackendModel: Codable {
+class NoteBackendModel: Codable {
 	var noteID = UUID()
 	var isPinned: Bool
 	var title: String
 	var details: String
 	var assignedDateAndTime: Date?
 	
-	static func ==(lhs: NotesCellViewBackendModel, rhs: NotesCellViewBackendModel) -> Bool {
+	static func ==(lhs: NoteBackendModel, rhs: NoteBackendModel) -> Bool {
 		return lhs.noteID == rhs.noteID
 	}
 	
@@ -25,7 +25,7 @@ class NotesCellViewBackendModel: Codable {
 		self.assignedDateAndTime = assignedDateAndTime
 	}
 	
-	init(copiedModel: NotesCellViewBackendModel) {
+	init(copiedModel: NoteBackendModel) {
 		self.isPinned = copiedModel.isPinned
 		self.title = copiedModel.title
 		self.details = copiedModel.details
@@ -33,7 +33,7 @@ class NotesCellViewBackendModel: Codable {
 		self.noteID = copiedModel.noteID
 	}
 	
-	init(copiedModel: NotesCellTableViewModel) {
+	init(copiedModel: NoteCellViewModel) {
 		self.isPinned = copiedModel.isPinned
 		self.title = copiedModel.title
 		self.details = copiedModel.details
@@ -42,7 +42,7 @@ class NotesCellViewBackendModel: Codable {
 	}
 }
 
-final class NotesCellTableViewModel: NotesCellViewBackendModel, MainCellViewModel {
+final class NoteCellViewModel: NoteBackendModel, MainCellViewModel {
 	var cellType: UITableViewCell.Type
 	init(cellType: UITableViewCell.Type,
 		 isPinned: Bool, title: String,
@@ -52,7 +52,7 @@ final class NotesCellTableViewModel: NotesCellViewBackendModel, MainCellViewMode
 		super.init(isPinned: isPinned, title: title, details: details, assignedDateAndTime: assignedDateAndTime)
 	}
 	
-	init(cellType: UITableViewCell.Type, backendModel: NotesCellViewBackendModel) {
+	init(cellType: UITableViewCell.Type, backendModel: NoteBackendModel) {
 		self.cellType = cellType
 		super.init(copiedModel: backendModel)
 	}
@@ -62,8 +62,8 @@ final class NotesCellTableViewModel: NotesCellViewBackendModel, MainCellViewMode
 	}
 }
 
-extension Array where Element == NotesCellViewBackendModel {
-	mutating func remove(at indices: [Int]) -> [NotesCellViewBackendModel] {
+extension Array where Element == NoteBackendModel {
+	mutating func remove(at indices: [Int]) -> [NoteBackendModel] {
 		self = self
 			.enumerated()
 			.filter { !indices.contains($0.offset) }

@@ -21,7 +21,7 @@ extension NotesPresenter: NotesPresentationLogic {
 		guard
 			let viewController = viewController,
 			let filteredViewModels =
-				(viewController.cellsToDisplay as? Array<NotesCellTableViewModel>)?
+				(viewController.cellsToDisplay as? Array<NoteCellViewModel>)?
 					.enumerated()
 					.filter({ !indices.contains($0.offset) })
 					.map({ $0.element })
@@ -29,22 +29,22 @@ extension NotesPresenter: NotesPresentationLogic {
 		viewController.cellsToDisplay = filteredViewModels
 	}
 	
-	func presentFilteredNotes(notes: [NotesCellViewBackendModel], withSubstring substring: String) {
+	func presentFilteredNotes(notes: [NoteBackendModel], withSubstring substring: String) {
 		fillCells(with: notes)
 		viewController?.showFilteredCells(thatHaveSubstring: substring)
 	}
 	
-	func present(notes: [NotesCellViewBackendModel]) {
+	func present(notes: [NoteBackendModel]) {
 		fillCells(with: notes)
 		viewController?.showAllCells()
 	}
 	
-	private func fillCells(with notes: [NotesCellViewBackendModel]) {
+	private func fillCells(with notes: [NoteBackendModel]) {
 		guard let viewController = viewController else { return }
 		viewController.cellsToDisplay.removeAll()
 		notes.forEach {
 			viewController.cellsToDisplay.append(
-				NotesCellTableViewModel(cellType: NotesCell.self,
+				NoteCellViewModel(cellType: NotesCell.self,
 										backendModel: $0))
 		}
 	}

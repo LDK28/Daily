@@ -35,15 +35,16 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 	}
 	
 	func setViewModel(_ viewModel: MainCellViewModel?) {
-		guard let viewModel = viewModel as? NotesCellViewBackendModel else { return }
+		guard let viewModel = viewModel as? NoteBackendModel else { return }
 		titleLabel.attributedText = nil
-		titleLabel.text = viewModel.title
-		isPinned = viewModel.isPinned
 		detailsTextView.attributedText = nil
+		titleLabel.text = viewModel.title
 		detailsTextView.text = viewModel.details
+		isPinned = viewModel.isPinned
 	}
 	
-	func highlightWhereLabelsHave(substring: String) {
+	func highlightWhereLabelsHave(substring: String?) {
+		guard let substring = substring else { return }
 		let highlightedAttributes: [NSAttributedString.Key: Any] =
 			[NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
 		

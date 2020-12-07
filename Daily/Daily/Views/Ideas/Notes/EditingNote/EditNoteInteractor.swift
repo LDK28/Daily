@@ -10,7 +10,7 @@ import UIKit
 class EditNoteInteractor: EditNoteDataStore {
 	var presenter: EditNotePresentationLogic?
 	var index: Int?
-	var noteCellViewBackendModel: NotesCellViewBackendModel?
+	var noteCellViewBackendModel: NoteBackendModel?
 }
 
 extension EditNoteInteractor: EditNoteBusinessLogic {
@@ -33,6 +33,13 @@ extension EditNoteInteractor: EditNoteBusinessLogic {
 			viewModel.title = title
 		}
 		
-		UserRequest.shared.update(note: viewModel, at: index, completion: nil)
+		UserRequest.shared.update(viewModel, at: index) { result in
+			switch result {
+			case .failure(let error):
+				debugPrint(error.localizedDescription)
+			default:
+				return
+			}
+		}
 	}
 }
