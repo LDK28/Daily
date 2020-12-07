@@ -47,26 +47,26 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		guard let substring = substring else { return }
 		let highlightedAttributes = [NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
 		
-		if let titleText = titleLabel.text {
-			let attributedTitle = NSMutableAttributedString(string: titleText)
-			let rangeForTitle = NSString(string: titleText).range(of: substring, options: .caseInsensitive)
-			attributedTitle.addAttributes(highlightedAttributes, range: rangeForTitle)
-			titleLabel.attributedText = attributedTitle
-		}
-		
-		if let text = detailsTextView.text {
-			let components = text.components(separatedBy: [" ", "\n", "\t"])
-			if let startIndex = components.firstIndex(where: { $0.contains(substring) }) {
-				var stringToShow = ""
-				components[startIndex...].forEach {
-					stringToShow += $0 + " "
+	
+		containerView.subviews
+			.compactMap ({ $0 as? UILabel })
+			.forEach ({ label in
+				if let text = label.text {
+					let components = text.components(separatedBy: [" ", "\n", "\t"])
+					if let startIndex = components.firstIndex(where: {
+																$0.lowercased().contains(substring)
+															  }) {
+						var stringToShow = ""
+						components[startIndex...].forEach {
+							stringToShow += $0 + " "
+						}
+						let rangeForDetails = NSString(string: stringToShow).range(of: substring, options: .caseInsensitive)
+						let attributedDetails = NSMutableAttributedString(string: stringToShow)
+						attributedDetails.addAttributes(highlightedAttributes, range: rangeForDetails)
+						label.attributedText = attributedDetails
+					}
 				}
-				let rangeForDetails = NSString(string: stringToShow).range(of: substring, options: .caseInsensitive)
-				let attributedDetails = NSMutableAttributedString(string: stringToShow)
-				attributedDetails.addAttributes(highlightedAttributes, range: rangeForDetails)
-				detailsTextView.attributedText = attributedDetails
-			}
-		}
+			})
 	}
 	
 	func flashAnimation(competion: @escaping () -> ()) {
