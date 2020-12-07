@@ -11,8 +11,8 @@ class IdeasPresenter {
     
     private weak var viewController: IdeasDisplayLogic?
         
-        init(viewController: IdeasDisplayLogic?) {
-            self.viewController = viewController
+    init(viewController: IdeasDisplayLogic?) {
+        self.viewController = viewController
     }
 }
 

@@ -23,6 +23,12 @@
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
+		05D634D1257ECFF100FFF5E7 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */; };
+		05D634D2257ECFF100FFF5E7 /* ProjectsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */; };
+		05D634D3257ECFF100FFF5E7 /* ProjectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */; };
+		05D634D4257ECFF200FFF5E7 /* ProjectsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CE257ECFF100FFF5E7 /* ProjectsProtocols.swift */; };
+		05D634D5257ECFF200FFF5E7 /* ProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CF257ECFF100FFF5E7 /* ProjectsInteractor.swift */; };
+		05D634D6257ECFF200FFF5E7 /* ProjectsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634D0257ECFF100FFF5E7 /* ProjectsConfigurator.swift */; };
 		21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318F255DCAA10086A9EE /* OverlayDataSource.swift */; };
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModels.swift */; };
@@ -149,6 +155,12 @@
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
+		05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsRouter.swift; sourceTree = "<group>"; };
+		05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsVC.swift; sourceTree = "<group>"; };
+		05D634CE257ECFF100FFF5E7 /* ProjectsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsProtocols.swift; sourceTree = "<group>"; };
+		05D634CF257ECFF100FFF5E7 /* ProjectsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsInteractor.swift; sourceTree = "<group>"; };
+		05D634D0257ECFF100FFF5E7 /* ProjectsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsConfigurator.swift; sourceTree = "<group>"; };
 		2117318F255DCAA10086A9EE /* OverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		212F890825574C000097F894 /* DailyCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModels.swift; sourceTree = "<group>"; };
@@ -303,6 +315,19 @@
 			path = IdeasMainScreen;
 			sourceTree = "<group>";
 		};
+		05D634A2257E7F0B00FFF5E7 /* ProjectsMainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */,
+				05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */,
+				05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */,
+				05D634CE257ECFF100FFF5E7 /* ProjectsProtocols.swift */,
+				05D634CF257ECFF100FFF5E7 /* ProjectsInteractor.swift */,
+				05D634D0257ECFF100FFF5E7 /* ProjectsConfigurator.swift */,
+			);
+			path = ProjectsMainScreen;
+			sourceTree = "<group>";
+		};
 		212F890725574BAD0097F894 /* DailyDataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +391,7 @@
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
+				05D634A2257E7F0B00FFF5E7 /* ProjectsMainScreen */,
 				056C15392574028500AE739E /* IdeasMainScreen */,
 				21EA5B3C2567072400F87D18 /* Notes */,
 			);
@@ -861,6 +887,8 @@
 				2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */,
 				2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
+				05D634D6257ECFF200FFF5E7 /* ProjectsConfigurator.swift in Sources */,
+				05D634D4257ECFF200FFF5E7 /* ProjectsProtocols.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
@@ -882,8 +910,11 @@
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
+				05D634D3257ECFF100FFF5E7 /* ProjectsVC.swift in Sources */,
 				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
+				05D634D5257ECFF200FFF5E7 /* ProjectsInteractor.swift in Sources */,
+				05D634D1257ECFF100FFF5E7 /* ProjectsPresenter.swift in Sources */,
 				054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
@@ -896,6 +927,7 @@
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21CC5E8425645D2F009C1D8E /* NewProjectOverlayVC.swift in Sources */,
+				05D634D2257ECFF100FFF5E7 /* ProjectsRouter.swift in Sources */,
 				21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */,
 				21CC5EAA25645EAF009C1D8E /* NewTaskOverlayRouter.swift in Sources */,
 				21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */,

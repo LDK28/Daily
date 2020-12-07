@@ -25,7 +25,8 @@ extension IdeasRouter: IdeasRoutingLogic {
             let vc = NotesModule.build()
             viewController?.navigationController?.pushViewController(vc, animated: true)
         case .projects:
-            return
+            let vc = ProjectsModule.build()
+            viewController?.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

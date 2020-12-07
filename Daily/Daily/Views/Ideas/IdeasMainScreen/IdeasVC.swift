@@ -61,7 +61,7 @@ class IdeasVC: MainTableVC {
         case .notes:
             router?.navigateTo(.notes)
         case .projects:
-            return
+            router?.navigateTo(.projects)
         }
         
     }
