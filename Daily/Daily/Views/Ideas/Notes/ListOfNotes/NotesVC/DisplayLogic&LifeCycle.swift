@@ -13,7 +13,7 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 	var router: (NotesRoutingLogic & NotesDataPassing)?
 	
 	internal let trashIcon = UIImageView()
-	internal let cancelIcon = UIImageView()
+	internal let crossIcon = UIImageView()
 	internal let pinIcon = UIImageView()
 	internal let searchIcon = UIImageView()
 	internal let searchBar = UISearchBar()
@@ -69,15 +69,18 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		selectedIndexPaths = []
 	}
 	
-	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+	override func tableView(_ tableView: UITableView,
+							viewForFooterInSection section: Int) -> UIView? {
 		return UIView()
 	}
 	
-	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+	override func tableView(_ tableView: UITableView,
+							editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 		return .none
 	}
 
-	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+	override func tableView(_ tableView: UITableView,
+							shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
 		return false
 	}
 }

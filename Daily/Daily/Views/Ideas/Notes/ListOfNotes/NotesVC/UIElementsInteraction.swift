@@ -55,9 +55,10 @@ extension NotesVC {
 	
 	@objc func searchIconTapped() {
 		isSearching = true
+		searchBar.becomeFirstResponder()
 	}
 		
-	@objc func cancelIconTapped() {
+	@objc func crossIconTapped() {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		guard
 			let selectedCells =
@@ -204,9 +205,9 @@ extension NotesVC {
 								
 								guard let self = self else { return }
 								self.trashIcon.alpha = 1
-								self.cancelIcon.alpha = 1
+								self.crossIcon.alpha = 1
 								self.pinIcon.alpha = 1
-								self.cancelIcon.transform = CGAffineTransform(rotationAngle: .pi)
+								self.crossIcon.transform = CGAffineTransform(rotationAngle: .pi)
 				})
 			}
 
@@ -217,9 +218,9 @@ extension NotesVC {
 			
 							guard let self = self else { return }
 							self.trashIcon.alpha = 0
-							self.cancelIcon.alpha = 0
+							self.crossIcon.alpha = 0
 							self.pinIcon.alpha = 0
-							self.cancelIcon.transform = CGAffineTransform(rotationAngle: -0.01)
+							self.crossIcon.transform = CGAffineTransform(rotationAngle: -0.01)
 							
 			}) { [weak self] _ in
 				guard let self = self else { return }
@@ -240,10 +241,11 @@ extension NotesVC {
 	fileprivate func setEditingItems() {
 		navigationItem.rightBarButtonItems = [
 			UIBarButtonItem(customView: trashIcon),
-			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero, size: CGSize(width: 10, height: 30)))),
+			UIBarButtonItem(customView: UIView(frame: CGRect(origin: .zero,
+															 size: CGSize(width: 10, height: 30)))),
 			UIBarButtonItem(customView: pinIcon)]
 		
-		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: cancelIcon)
+		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: crossIcon)
 		navigationItem.hidesBackButton = true
 	}
 	
@@ -258,6 +260,5 @@ extension NotesVC {
 		navigationItem.leftBarButtonItems = nil
 		navigationItem.hidesBackButton = true
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.searchBar)
-		searchBar.becomeFirstResponder()
 	}
 }

@@ -19,18 +19,30 @@ extension NotesVC {
 	}
 	
 	internal func configureInteractionIcons() {
-		
-		searchIcon.styleNavBarImageView(withImageName: "search", color: .dailyTextColor)
-		searchIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchIconTapped)))
-		
-		trashIcon.styleNavBarImageView(withImageName: "trash", color: .systemRed)
-		trashIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(trashIconTapped)))
+		searchIcon.styleNavBarImageView(withImageName: "search",
+										color: .dailyTextColor)
+	
+		trashIcon.styleNavBarImageView(withImageName: "trash",
+									   color: .systemRed)
 		
 		pinIcon.styleNavBarImageView(withImageName: "pinIcon")
-		pinIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinIconTapped)))
 		
-		cancelIcon.styleNavBarImageView(withImageName: "cancel")
-		cancelIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelIconTapped)))
+		crossIcon.styleNavBarImageView(withImageName: "cancel")
+		
+		
+		searchIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															   action: #selector(searchIconTapped)))
+		
+		
+		trashIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															  action: #selector(trashIconTapped)))
+		
+		
+		pinIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															action: #selector(pinIconTapped)))
+		
+		crossIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															   action: #selector(crossIconTapped)))
 	}
 	
 	internal func configureLongPressGesture() {

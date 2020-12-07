@@ -51,7 +51,7 @@ extension NotesInteractor: NotesBusinessLogic {
 		}
 		
 		presenter?.presentFilteredNotes(notes: matchingNotes,
-										withSubstring: substring)
+										withSubstring: formattedSubstring)
 	}
 	
 	func updateModels(_ action: NotesUpdateAction,

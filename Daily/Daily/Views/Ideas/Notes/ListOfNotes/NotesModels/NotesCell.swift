@@ -45,20 +45,28 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 	
 	func highlightWhereLabelsHave(substring: String?) {
 		guard let substring = substring else { return }
-		let highlightedAttributes: [NSAttributedString.Key: Any] =
-			[NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
+		let highlightedAttributes = [NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
 		
-		let attributedTitle = NSMutableAttributedString(string: titleLabel.text ?? "")
-		let rangeForTitle = NSString(string: titleLabel.text ?? "").range(of: substring, options: .caseInsensitive)
-		attributedTitle.addAttributes(highlightedAttributes, range: rangeForTitle)
-		titleLabel.attributedText = attributedTitle
+		if let titleText = titleLabel.text {
+			let attributedTitle = NSMutableAttributedString(string: titleText)
+			let rangeForTitle = NSString(string: titleText).range(of: substring, options: .caseInsensitive)
+			attributedTitle.addAttributes(highlightedAttributes, range: rangeForTitle)
+			titleLabel.attributedText = attributedTitle
+		}
 		
-		
-		let attributedDetails = NSMutableAttributedString(string: detailsTextView.text ?? "")
-		let rangeForDetails = NSString(string: detailsTextView.text ?? "").range(of: substring, options: .caseInsensitive)
-		attributedDetails.addAttributes(highlightedAttributes, range: rangeForDetails)
-		detailsTextView.attributedText = attributedDetails
-		
+		if let text = detailsTextView.text {
+			let components = text.components(separatedBy: [" ", "\n", "\t"])
+			if let startIndex = components.firstIndex(where: { $0.contains(substring) }) {
+				var stringToShow = ""
+				components[startIndex...].forEach {
+					stringToShow += $0 + " "
+				}
+				let rangeForDetails = NSString(string: stringToShow).range(of: substring, options: .caseInsensitive)
+				let attributedDetails = NSMutableAttributedString(string: stringToShow)
+				attributedDetails.addAttributes(highlightedAttributes, range: rangeForDetails)
+				detailsTextView.attributedText = attributedDetails
+			}
+		}
 	}
 	
 	func flashAnimation(competion: @escaping () -> ()) {
