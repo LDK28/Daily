@@ -36,26 +36,40 @@ class EditNoteVC: MainVC {
 		super.viewWillAppear(animated)
 		interactor?.fetchNoteData()
 	}
-}
-extension EditNoteVC: EditNoteDisplayLogic {
-	func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel) {
-		textField.text = data.title
-		textView.text = data.details
-		textViewDidBeginEditing(textView)
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		textField.resignFirstResponder()
 	}
 }
 
-// MARK: - text view delegate
+//MARK: - DisplayLogic
+extension EditNoteVC: EditNoteDisplayLogic {
+	func fillFieldsWithNoteContent(_ data: NotesCellViewBackendModel) {
+		textField.text = data.title
+		
+		if data.details.isEmpty {
+			textViewDidEndEditing(textView)
+			return
+		}
+		
+		textView.text = data.details
+		textView.textColor = .dailyNoteTextFieldTextColor
+	}
+}
+
+// MARK: - TextView and TextField delegates
 extension EditNoteVC: UITextViewDelegate {
 	func textViewDidBeginEditing(_ textView: UITextView) {
 		if textView.textColor != .dailyNoteTextFieldTextColor {
 			textView.textColor = .dailyNoteTextFieldTextColor
+			textView.text = nil
 		}
 	}
 
 	func textViewDidEndEditing(_ textView: UITextView) {
 		if textView.text.isEmpty {
-			textView.text = NSLocalizedString("Details", comment: "")
+			textView.text = NSLocalizedString("Tap here to edit", comment: "")
 			textView.textColor = UITextView.placeholderColor
 		}
 	}
@@ -77,6 +91,7 @@ extension EditNoteVC: UITextFieldDelegate {
 	}
 }
 
+// MARK: - UIElements Configuration
 extension EditNoteVC {
 	func configureTextField() {
 		view.addSubview(textField)
