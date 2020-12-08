@@ -21,6 +21,7 @@ class RecentActionsCell: UITableViewCell, MainCellProtocol {
     let recentActionsView = UIView()
     let headerLabel = UILabel()
     
+    //let isGroupProject = Bool()
     var actionLabelsTexts = [String]()
     var actionLabels = [UILabel]()
     var recentActionsViewHeight: CGFloat = 0.0

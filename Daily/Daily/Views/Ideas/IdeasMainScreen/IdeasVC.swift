@@ -42,7 +42,7 @@ class IdeasVC: MainTableVC {
         tableView.alwaysBounceVertical = false
         let titleView = TitleView(title: "Ideas")
         tableView.tableHeaderView = titleView
-        titleView.frame.size.height = 100
+        titleView.frame.size.height = 80
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
     }
@@ -52,10 +52,7 @@ class IdeasVC: MainTableVC {
         tableView.register(RecentActionsCell.self, forCellReuseIdentifier: RecentActionsCell.cellIdentifier)
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         guard let selectedCellModel = cellsToDisplay[indexPath.row] as? IdeasCellViewModel else { return }
         switch selectedCellModel.buttonType {
         case .notes:

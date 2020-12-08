@@ -8,11 +8,12 @@
 import UIKit
 
 protocol ProjectsDisplayLogic: class {
-  func displaySomething()
+    func display()
+    var cellsToDisplay: [MainCellViewModel] { get set }
 }
 
 protocol ProjectsBusinessLogic {
-  func doSomething()
+    func fetchCells()
 }
 
 protocol ProjectsDataStore {
@@ -20,7 +21,7 @@ protocol ProjectsDataStore {
 }
 
 protocol ProjectsPresentationLogic {
-  func presentSomething()
+    func present()
 }
 
 protocol ProjectsRoutingLogic {

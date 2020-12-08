@@ -8,6 +8,7 @@
 import UIKit
 
 class ProjectsInteractor: ProjectsDataStore {
+    
   var presenter: ProjectsPresentationLogic?
     
     init(presenter: ProjectsPresentationLogic?) {
@@ -16,7 +17,7 @@ class ProjectsInteractor: ProjectsDataStore {
 }
 
 extension ProjectsInteractor: ProjectsBusinessLogic {
-	func doSomething() {
-		
+	func fetchCells() {
+        presenter?.present()
 	}
 }

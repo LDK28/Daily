@@ -60,9 +60,11 @@ extension UILabel {
         let textAttachment = NSMutableAttributedString(string: NSLocalizedString(text, comment: "Label with image text"), attributes: textAttribute as [NSAttributedString.Key : Any])
         if imageFirst {
             labelText.append(NSAttributedString(attachment: imageAttachment))
+            labelText.append(NSAttributedString(string: " "))
             labelText.append(textAttachment)
         } else {
             labelText.append(textAttachment)
+            labelText.append(NSAttributedString(string: " "))
             labelText.append(NSAttributedString(attachment: imageAttachment))
         }
         self.attributedText = labelText

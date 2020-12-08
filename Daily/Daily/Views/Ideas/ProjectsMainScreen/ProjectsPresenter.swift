@@ -8,7 +8,8 @@
 import UIKit
 
 class ProjectsPresenter: ProjectsDataStore {
-  weak var viewController: ProjectsDisplayLogic?
+    
+    weak var viewController: ProjectsDisplayLogic?
 	
     init(viewController: ProjectsDisplayLogic?) {
         self.viewController = viewController
@@ -16,7 +17,14 @@ class ProjectsPresenter: ProjectsDataStore {
 }
 
 extension ProjectsPresenter: ProjectsPresentationLogic {
-	func presentSomething() {
-		
+	func present() {
+        viewController?.cellsToDisplay.removeAll()
+        
+        viewController?.cellsToDisplay = [
+            ProjectsCellViewModel(title: "My Project 1", cellType: ProjectsCell.self),
+            ProjectsCellViewModel(title: "My Project 2", cellType: ProjectsCell.self),
+            ProjectsCellViewModel(title: "My Project 3", cellType: ProjectsCell.self)]
+        
+        viewController?.display()
 	}
 }
