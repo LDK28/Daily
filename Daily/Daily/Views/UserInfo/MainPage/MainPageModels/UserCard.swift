@@ -19,6 +19,8 @@ class UserCard: UIView {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
+		layer.cornerRadius = 15
+		layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
 		userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
 		userImageView.clipsToBounds = true
 	}
@@ -34,7 +36,7 @@ class UserCard: UIView {
 		
 		usernameLabel.styleLabel(font: UIFont(name: "Stolzl-Book",
 											  size: 24),
-								 text: "Test Testovich",
+								 text: "Username",
 								 textAlignment: .center,
 								 textColor: .dailyTextColor,
 								 numberOfLines: 1)

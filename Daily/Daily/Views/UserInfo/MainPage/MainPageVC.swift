@@ -20,7 +20,9 @@ class MainPageVC: ProfileTableVC {
 	}
 	
 	override func viewDidLoad() {
-    super.viewDidLoad()
+		super.viewDidLoad()
+		navigationItem.backButtonTitle = NSLocalizedString("Profile", comment: "")
+
 		tableView.register(DailyProfileSettingCell.self,
 						   forCellReuseIdentifier: DailyProfileSettingCell.cellIdentifier)
 		tableView.register(DailyProfileAchievementsCell.self,
@@ -34,7 +36,22 @@ class MainPageVC: ProfileTableVC {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
+		let destinationViewController: UIViewController
+		switch cellsToDisplay[indexPath.row].cellType {
+		case is DailyProfileSettingCell.Type:
+			destinationViewController = ProfileSettingsModule.build()
+		case is DailyProfileAchievementsCell.Type:
+			destinationViewController = ProfileAchievementsModule.build()
+		case is DailyProfileHelpCell.Type:
+			destinationViewController = ProfileHelpModule.build()
+		case is DailyProfileLogoutCell.Type:
+			/* LOGOUT  */
+			return
+		default:
+			return
+		}
 		
+		router?.navigateTo(viewController: destinationViewController)
 	}
 }
 extension MainPageVC: MainPageDisplayLogic {	

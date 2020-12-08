@@ -18,25 +18,37 @@ extension UITableView {
 }
 
 class ProfileTableVC: MainTableVC {
-	override func loadView() {
-		super.loadView()
-		//tableView.setAndLayoutTableHeaderView(header: userCard)
-	}
+	private let statusBar = UIView()
 	
 	override func viewDidLoad() {
 	super.viewDidLoad()
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 		self.navigationController?.navigationBar.isTranslucent = true
 		self.navigationController?.navigationBar.backgroundColor = .dailyProfileTileColor
-		if #available(iOS 13.0, *) {
-			let statusBar = UIView(frame: UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero)
-			statusBar.backgroundColor = .dailyProfileTileColor
-			 UIApplication.shared.keyWindow?.addSubview(statusBar)
-		}
 		
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.alwaysBounceVertical = false
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		if let keyWindow = UIApplication.shared.connectedScenes
+				.filter({$0.activationState == .foregroundActive})
+				.map({$0 as? UIWindowScene})
+				.compactMap({$0})
+				.first?.windows
+			.filter({$0.isKeyWindow}).first {
+			
+			statusBar.frame = keyWindow.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+			statusBar.backgroundColor = .dailyProfileTileColor
+			keyWindow.addSubview(statusBar)
+		}
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		statusBar.removeFromSuperview()
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

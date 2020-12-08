@@ -25,7 +25,7 @@ protocol MainPagePresentationLogic {
 }
 
 protocol MainPageRoutingLogic {
-	
+	func navigateTo(viewController: UIViewController)
 }
 
 protocol MainPageDataPassing {

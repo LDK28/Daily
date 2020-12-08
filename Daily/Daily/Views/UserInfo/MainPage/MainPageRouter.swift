@@ -19,5 +19,8 @@ class MainPageRouter: MainPageDataPassing {
 }
 
 extension MainPageRouter: MainPageRoutingLogic {
-	
+	func navigateTo(viewController: UIViewController) {
+		self.viewController?.navigationController?.pushViewController(viewController,
+																	  animated: true)
+	}
 }

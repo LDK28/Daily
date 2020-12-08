@@ -132,6 +132,24 @@
 		21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B422567073700F87D18 /* NotesConfigurator.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
 		21F72880257FACC3006297A1 /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7287F257FACC3006297A1 /* ProfileTableVC.swift */; };
+		21F7288D257FB9CE006297A1 /* ProfileHelpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72887257FB9CE006297A1 /* ProfileHelpPresenter.swift */; };
+		21F7288E257FB9CE006297A1 /* ProfileHelpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72888257FB9CE006297A1 /* ProfileHelpRouter.swift */; };
+		21F7288F257FB9CE006297A1 /* ProfileHelpProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72889257FB9CE006297A1 /* ProfileHelpProtocols.swift */; };
+		21F72890257FB9CE006297A1 /* ProfileHelpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7288A257FB9CE006297A1 /* ProfileHelpInteractor.swift */; };
+		21F72891257FB9CE006297A1 /* ProfileHelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7288B257FB9CE006297A1 /* ProfileHelpVC.swift */; };
+		21F72892257FB9CE006297A1 /* ProfileHelpConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7288C257FB9CE006297A1 /* ProfileHelpConfigurator.swift */; };
+		21F7289C257FB9EC006297A1 /* ProfileAchievementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72896257FB9EC006297A1 /* ProfileAchievementsPresenter.swift */; };
+		21F7289D257FB9EC006297A1 /* ProfileAchievementsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72897257FB9EC006297A1 /* ProfileAchievementsRouter.swift */; };
+		21F7289E257FB9EC006297A1 /* ProfileAchievementsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72898257FB9EC006297A1 /* ProfileAchievementsProtocols.swift */; };
+		21F7289F257FB9EC006297A1 /* ProfileAchievementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72899257FB9EC006297A1 /* ProfileAchievementsInteractor.swift */; };
+		21F728A0257FB9EC006297A1 /* ProfileAchievementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7289A257FB9EC006297A1 /* ProfileAchievementsVC.swift */; };
+		21F728A1257FB9EC006297A1 /* ProfileAchievementsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7289B257FB9EC006297A1 /* ProfileAchievementsConfigurator.swift */; };
+		21F728AB257FB9F9006297A1 /* ProfileSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A5257FB9F9006297A1 /* ProfileSettingsPresenter.swift */; };
+		21F728AC257FB9F9006297A1 /* ProfileSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A6257FB9F9006297A1 /* ProfileSettingsRouter.swift */; };
+		21F728AD257FB9F9006297A1 /* ProfileSettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A7257FB9F9006297A1 /* ProfileSettingsProtocols.swift */; };
+		21F728AE257FB9F9006297A1 /* ProfileSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A8257FB9F9006297A1 /* ProfileSettingsInteractor.swift */; };
+		21F728AF257FB9F9006297A1 /* ProfileSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A9257FB9F9006297A1 /* ProfileSettingsVC.swift */; };
+		21F728B0257FB9F9006297A1 /* ProfileSettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728AA257FB9F9006297A1 /* ProfileSettingsConfigurator.swift */; };
 		6CEC207ED487372A433E2931 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +299,24 @@
 		21EA5B422567073700F87D18 /* NotesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesConfigurator.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		21F7287F257FACC3006297A1 /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
+		21F72887257FB9CE006297A1 /* ProfileHelpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpPresenter.swift; sourceTree = "<group>"; };
+		21F72888257FB9CE006297A1 /* ProfileHelpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpRouter.swift; sourceTree = "<group>"; };
+		21F72889257FB9CE006297A1 /* ProfileHelpProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpProtocols.swift; sourceTree = "<group>"; };
+		21F7288A257FB9CE006297A1 /* ProfileHelpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpInteractor.swift; sourceTree = "<group>"; };
+		21F7288B257FB9CE006297A1 /* ProfileHelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpVC.swift; sourceTree = "<group>"; };
+		21F7288C257FB9CE006297A1 /* ProfileHelpConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpConfigurator.swift; sourceTree = "<group>"; };
+		21F72896257FB9EC006297A1 /* ProfileAchievementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsPresenter.swift; sourceTree = "<group>"; };
+		21F72897257FB9EC006297A1 /* ProfileAchievementsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsRouter.swift; sourceTree = "<group>"; };
+		21F72898257FB9EC006297A1 /* ProfileAchievementsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsProtocols.swift; sourceTree = "<group>"; };
+		21F72899257FB9EC006297A1 /* ProfileAchievementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsInteractor.swift; sourceTree = "<group>"; };
+		21F7289A257FB9EC006297A1 /* ProfileAchievementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsVC.swift; sourceTree = "<group>"; };
+		21F7289B257FB9EC006297A1 /* ProfileAchievementsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAchievementsConfigurator.swift; sourceTree = "<group>"; };
+		21F728A5257FB9F9006297A1 /* ProfileSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsPresenter.swift; sourceTree = "<group>"; };
+		21F728A6257FB9F9006297A1 /* ProfileSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsRouter.swift; sourceTree = "<group>"; };
+		21F728A7257FB9F9006297A1 /* ProfileSettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsProtocols.swift; sourceTree = "<group>"; };
+		21F728A8257FB9F9006297A1 /* ProfileSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsInteractor.swift; sourceTree = "<group>"; };
+		21F728A9257FB9F9006297A1 /* ProfileSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsVC.swift; sourceTree = "<group>"; };
+		21F728AA257FB9F9006297A1 /* ProfileSettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsConfigurator.swift; sourceTree = "<group>"; };
 		9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
 		B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
 		CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -410,8 +446,8 @@
 				21F7287F257FACC3006297A1 /* ProfileTableVC.swift */,
 				2142BB05257F637400AC26BA /* Cells */,
 				21B398B9257F5BEB00A1E553 /* Help */,
-				21B398B8257F5BE300A1E553 /* Report */,
-				21B398B7257F5BBE00A1E553 /* Options */,
+				21B398B8257F5BE300A1E553 /* Achievements */,
+				21B398B7257F5BBE00A1E553 /* Settings */,
 				21B398B6257F5BB600A1E553 /* MainPage */,
 			);
 			path = UserInfo;
@@ -507,23 +543,41 @@
 			path = MainPage;
 			sourceTree = "<group>";
 		};
-		21B398B7257F5BBE00A1E553 /* Options */ = {
+		21B398B7257F5BBE00A1E553 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				21F728A5257FB9F9006297A1 /* ProfileSettingsPresenter.swift */,
+				21F728A6257FB9F9006297A1 /* ProfileSettingsRouter.swift */,
+				21F728A7257FB9F9006297A1 /* ProfileSettingsProtocols.swift */,
+				21F728A8257FB9F9006297A1 /* ProfileSettingsInteractor.swift */,
+				21F728A9257FB9F9006297A1 /* ProfileSettingsVC.swift */,
+				21F728AA257FB9F9006297A1 /* ProfileSettingsConfigurator.swift */,
 			);
-			path = Options;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		21B398B8257F5BE300A1E553 /* Report */ = {
+		21B398B8257F5BE300A1E553 /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
+				21F72896257FB9EC006297A1 /* ProfileAchievementsPresenter.swift */,
+				21F72897257FB9EC006297A1 /* ProfileAchievementsRouter.swift */,
+				21F72898257FB9EC006297A1 /* ProfileAchievementsProtocols.swift */,
+				21F72899257FB9EC006297A1 /* ProfileAchievementsInteractor.swift */,
+				21F7289A257FB9EC006297A1 /* ProfileAchievementsVC.swift */,
+				21F7289B257FB9EC006297A1 /* ProfileAchievementsConfigurator.swift */,
 			);
-			path = Report;
+			path = Achievements;
 			sourceTree = "<group>";
 		};
 		21B398B9257F5BEB00A1E553 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				21F72887257FB9CE006297A1 /* ProfileHelpPresenter.swift */,
+				21F72888257FB9CE006297A1 /* ProfileHelpRouter.swift */,
+				21F72889257FB9CE006297A1 /* ProfileHelpProtocols.swift */,
+				21F7288A257FB9CE006297A1 /* ProfileHelpInteractor.swift */,
+				21F7288B257FB9CE006297A1 /* ProfileHelpVC.swift */,
+				21F7288C257FB9CE006297A1 /* ProfileHelpConfigurator.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -972,14 +1026,17 @@
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
+				21F7288F257FB9CE006297A1 /* ProfileHelpProtocols.swift in Sources */,
 				054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */,
 				21544E3D25693B6700F9A50C /* NoteBackendModel.swift in Sources */,
 				21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
 				21D7BD76256A93BF008BD30C /* DailyTabBarProtocols.swift in Sources */,
+				21F7288E257FB9CE006297A1 /* ProfileHelpRouter.swift in Sources */,
 				21CC5E8225645D2F009C1D8E /* NewProjectOverlayProtocols.swift in Sources */,
 				052F16F9256E511300782ED8 /* RecentActionsCell.swift in Sources */,
+				21F728AC257FB9F9006297A1 /* ProfileSettingsRouter.swift in Sources */,
 				2171A619257943DD00D8AD76 /* EditNoteRouter.swift in Sources */,
 				21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */,
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
@@ -989,12 +1046,14 @@
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
 				052F16F1256E4EE200782ED8 /* RecentActionsViewModel.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
+				21F7289D257FB9EC006297A1 /* ProfileAchievementsRouter.swift in Sources */,
 				21B398C5257F5C0000A1E553 /* MainPageConfigurator.swift in Sources */,
 				21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */,
 				21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				2171A61C257943DD00D8AD76 /* EditNoteVC.swift in Sources */,
 				21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */,
+				21F7288D257FB9CE006297A1 /* ProfileHelpPresenter.swift in Sources */,
 				2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */,
 				21B398C2257F5C0000A1E553 /* MainPageProtocols.swift in Sources */,
 				2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */,
@@ -1019,10 +1078,12 @@
 				2156464725584D64007264D4 /* DailySectionModel.swift in Sources */,
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
 				21B2A9B52577B5B20010EB0B /* NewNoteOverlayPresenter.swift in Sources */,
+				21F728B0257FB9F9006297A1 /* ProfileSettingsConfigurator.swift in Sources */,
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
 				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
+				21F7289F257FB9EC006297A1 /* ProfileAchievementsInteractor.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
@@ -1031,6 +1092,7 @@
 				2142BB15257F65ED00AC26BA /* Cells.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
 				054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */,
+				21F72890257FB9CE006297A1 /* ProfileHelpInteractor.swift in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
 				2158545225449CAF00A60F75 /* AddButton.swift in Sources */,
 				21D7BD74256A93BF008BD30C /* DailyTabBarPresenter.swift in Sources */,
@@ -1038,9 +1100,12 @@
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
 				21B398D0257F603900A1E553 /* DailyProfileNavigationCell.swift in Sources */,
 				21544E4825693B7400F9A50C /* NotesCell.swift in Sources */,
+				21F7289E257FB9EC006297A1 /* ProfileAchievementsProtocols.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,
+				21F72891257FB9CE006297A1 /* ProfileHelpVC.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
+				21F728AE257FB9F9006297A1 /* ProfileSettingsInteractor.swift in Sources */,
 				2193C747257E971A006F5B74 /* UserRequestProtocols.swift in Sources */,
 				21CC5E8425645D2F009C1D8E /* NewProjectOverlayVC.swift in Sources */,
 				21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */,
@@ -1054,16 +1119,23 @@
 				21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */,
 				21CC5E6425645B08009C1D8E /* NewNoteOverlayConfigurator.swift in Sources */,
 				215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */,
+				21F728AF257FB9F9006297A1 /* ProfileSettingsVC.swift in Sources */,
 				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
+				21F7289C257FB9EC006297A1 /* ProfileAchievementsPresenter.swift in Sources */,
 				215646C325588AF7007264D4 /* NewNoteOverlayModel.swift in Sources */,
 				21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */,
 				21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */,
 				21D7BD77256A93BF008BD30C /* DailyTabBarInteractor.swift in Sources */,
 				21B398C0257F5C0000A1E553 /* MainPagePresenter.swift in Sources */,
+				21F728A1257FB9EC006297A1 /* ProfileAchievementsConfigurator.swift in Sources */,
 				21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */,
+				21F728AB257FB9F9006297A1 /* ProfileSettingsPresenter.swift in Sources */,
+				21F72892257FB9CE006297A1 /* ProfileHelpConfigurator.swift in Sources */,
 				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
 				21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */,
+				21F728AD257FB9F9006297A1 /* ProfileSettingsProtocols.swift in Sources */,
 				21CC5E8125645D2F009C1D8E /* NewProjectOverlayRouter.swift in Sources */,
+				21F728A0257FB9EC006297A1 /* ProfileAchievementsVC.swift in Sources */,
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,
 				215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */,
 				21CC5EAB25645EAF009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
