@@ -26,13 +26,16 @@
 		21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318F255DCAA10086A9EE /* OverlayDataSource.swift */; };
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModels.swift */; };
+		2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */; };
+		2142BB15257F65ED00AC26BA /* DailyProfileLogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB14257F65ED00AC26BA /* DailyProfileLogoutCell.swift */; };
+		2142BB1A257F68B800AC26BA /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB19257F68B800AC26BA /* UserCard.swift */; };
+		2142BB20257F692F00AC26BA /* MainPageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB1F257F692F00AC26BA /* MainPageDataSource.swift */; };
 		2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */; };
 		2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */; };
 		215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215387F9255289E600EE8AB2 /* UITextViewExtension.swift */; };
 		21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E2E2569256900F9A50C /* NotesTableHeader.swift */; };
 		21544E3D25693B6700F9A50C /* NoteBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E3C25693B6700F9A50C /* NoteBackendModel.swift */; };
 		21544E4825693B7400F9A50C /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21544E4725693B7400F9A50C /* NotesCell.swift */; };
-		215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615DA2542F521005AB2DF /* UserInfoVC.swift */; };
 		215615FA25434547005AB2DF /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215615F925434547005AB2DF /* PlusButton.swift */; };
 		2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156461925583762007264D4 /* UITableViewCellExtension.swift */; };
 		2156464725584D64007264D4 /* DailySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156464625584D64007264D4 /* DailySectionModel.swift */; };
@@ -60,6 +63,13 @@
 		21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */; };
 		21A2C4A22550A728002CB81B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */; };
 		21B2A9B52577B5B20010EB0B /* NewNoteOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */; };
+		21B398C0257F5C0000A1E553 /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398BA257F5C0000A1E553 /* MainPagePresenter.swift */; };
+		21B398C1257F5C0000A1E553 /* MainPageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398BB257F5C0000A1E553 /* MainPageRouter.swift */; };
+		21B398C2257F5C0000A1E553 /* MainPageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398BC257F5C0000A1E553 /* MainPageProtocols.swift */; };
+		21B398C3257F5C0000A1E553 /* MainPageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398BD257F5C0000A1E553 /* MainPageInteractor.swift */; };
+		21B398C4257F5C0000A1E553 /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398BE257F5C0000A1E553 /* MainPageVC.swift */; };
+		21B398C5257F5C0000A1E553 /* MainPageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398BF257F5C0000A1E553 /* MainPageConfigurator.swift */; };
+		21B398D0257F603900A1E553 /* DailyProfileNavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */; };
 		21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderView.swift */; };
 		21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E152564569C009C1D8E /* OverlayPresenter.swift */; };
@@ -159,13 +169,16 @@
 		2117318F255DCAA10086A9EE /* OverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		212F890825574C000097F894 /* DailyCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModels.swift; sourceTree = "<group>"; };
+		2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProfileCell.swift; sourceTree = "<group>"; };
+		2142BB14257F65ED00AC26BA /* DailyProfileLogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProfileLogoutCell.swift; sourceTree = "<group>"; };
+		2142BB19257F68B800AC26BA /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		2142BB1F257F692F00AC26BA /* MainPageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageDataSource.swift; sourceTree = "<group>"; };
 		2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerWithMiddleButton.swift; sourceTree = "<group>"; usesTabs = 1; };
 		2152B87F25546EAB005238B6 /* NewTaskOverlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskOverlayModel.swift; sourceTree = "<group>"; };
 		215387F9255289E600EE8AB2 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		21544E2E2569256900F9A50C /* NotesTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableHeader.swift; sourceTree = "<group>"; };
 		21544E3C25693B6700F9A50C /* NoteBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBackendModel.swift; sourceTree = "<group>"; };
 		21544E4725693B7400F9A50C /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
-		215615DA2542F521005AB2DF /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		215615F925434547005AB2DF /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		2156461925583762007264D4 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		2156464625584D64007264D4 /* DailySectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySectionModel.swift; sourceTree = "<group>"; };
@@ -193,6 +206,13 @@
 		21A2C49C25509FD9002CB81B /* UITabBarControllerExntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExntension.swift; sourceTree = "<group>"; };
 		21A2C4A12550A728002CB81B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteOverlayPresenter.swift; sourceTree = "<group>"; };
+		21B398BA257F5C0000A1E553 /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
+		21B398BB257F5C0000A1E553 /* MainPageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageRouter.swift; sourceTree = "<group>"; };
+		21B398BC257F5C0000A1E553 /* MainPageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageProtocols.swift; sourceTree = "<group>"; };
+		21B398BD257F5C0000A1E553 /* MainPageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageInteractor.swift; sourceTree = "<group>"; };
+		21B398BE257F5C0000A1E553 /* MainPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageVC.swift; sourceTree = "<group>"; };
+		21B398BF257F5C0000A1E553 /* MainPageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageConfigurator.swift; sourceTree = "<group>"; };
+		21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProfileNavigationCell.swift; sourceTree = "<group>"; };
 		21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsConfiguration.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		21CC5E152564569C009C1D8E /* OverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresenter.swift; sourceTree = "<group>"; };
@@ -329,6 +349,25 @@
 			path = DailyDataModels;
 			sourceTree = "<group>";
 		};
+		2142BB05257F637400AC26BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */,
+				21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */,
+				2142BB14257F65ED00AC26BA /* DailyProfileLogoutCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2142BB1E257F691E00AC26BA /* MainPageModels */ = {
+			isa = PBXGroup;
+			children = (
+				2142BB19257F68B800AC26BA /* UserCard.swift */,
+				2142BB1F257F692F00AC26BA /* MainPageDataSource.swift */,
+			);
+			path = MainPageModels;
+			sourceTree = "<group>";
+		};
 		2151CA3C25509AF000732F68 /* Overlay */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +401,11 @@
 		215615D92542F512005AB2DF /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				215615DA2542F521005AB2DF /* UserInfoVC.swift */,
+				2142BB05257F637400AC26BA /* Cells */,
+				21B398B9257F5BEB00A1E553 /* Help */,
+				21B398B8257F5BE300A1E553 /* Report */,
+				21B398B7257F5BBE00A1E553 /* Options */,
+				21B398B6257F5BB600A1E553 /* MainPage */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -440,6 +483,41 @@
 				2198887325757AFF00198443 /* UIElementsInteraction.swift */,
 			);
 			path = NotesVC;
+			sourceTree = "<group>";
+		};
+		21B398B6257F5BB600A1E553 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				2142BB1E257F691E00AC26BA /* MainPageModels */,
+				21B398BC257F5C0000A1E553 /* MainPageProtocols.swift */,
+				21B398BF257F5C0000A1E553 /* MainPageConfigurator.swift */,
+				21B398BE257F5C0000A1E553 /* MainPageVC.swift */,
+				21B398BD257F5C0000A1E553 /* MainPageInteractor.swift */,
+				21B398BA257F5C0000A1E553 /* MainPagePresenter.swift */,
+				21B398BB257F5C0000A1E553 /* MainPageRouter.swift */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
+		21B398B7257F5BBE00A1E553 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
+		21B398B8257F5BE300A1E553 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		21B398B9257F5BEB00A1E553 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		21BF82C82557E604001614EE /* DailyCells */ = {
@@ -871,12 +949,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2142BB20257F692F00AC26BA /* MainPageDataSource.swift in Sources */,
 				21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */,
 				21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */,
+				2142BB1A257F68B800AC26BA /* UserCard.swift in Sources */,
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
+				2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */,
 				05112B462552B7690044D502 /* (null) in Sources */,
 				215DFBF9255D7D6500CD3939 /* DailyOrdinaryCell.swift in Sources */,
+				21B398C4257F5C0000A1E553 /* MainPageVC.swift in Sources */,
 				212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
@@ -900,12 +982,14 @@
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
 				052F16F1256E4EE200782ED8 /* RecentActionsViewModel.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
+				21B398C5257F5C0000A1E553 /* MainPageConfigurator.swift in Sources */,
 				21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */,
 				21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
 				2171A61C257943DD00D8AD76 /* EditNoteVC.swift in Sources */,
 				21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */,
 				2152B88025546EAB005238B6 /* NewTaskOverlayModel.swift in Sources */,
+				21B398C2257F5C0000A1E553 /* MainPageProtocols.swift in Sources */,
 				2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */,
 				2171A61A257943DD00D8AD76 /* EditNoteProtocols.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
@@ -918,6 +1002,8 @@
 				21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */,
 				21EA5B472567073700F87D18 /* DisplayLogic&LifeCycle.swift in Sources */,
+				21B398C3257F5C0000A1E553 /* MainPageInteractor.swift in Sources */,
+				21B398C1257F5C0000A1E553 /* MainPageRouter.swift in Sources */,
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */,
@@ -934,7 +1020,7 @@
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				2171A61D257943DD00D8AD76 /* EditNoteConfigurator.swift in Sources */,
 				2171A61B257943DD00D8AD76 /* EditNoteInteractor.swift in Sources */,
-				215615DB2542F521005AB2DF /* UserInfoVC.swift in Sources */,
+				2142BB15257F65ED00AC26BA /* DailyProfileLogoutCell.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,
 				054BEA1825697AC40059FEDC /* IdeasConfigurator.swift in Sources */,
 				05112B4B2552BD1F0044D502 /* (null) in Sources */,
@@ -942,6 +1028,7 @@
 				21D7BD74256A93BF008BD30C /* DailyTabBarPresenter.swift in Sources */,
 				21EA5B462567073700F87D18 /* NotesInteractor.swift in Sources */,
 				055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */,
+				21B398D0257F603900A1E553 /* DailyProfileNavigationCell.swift in Sources */,
 				21544E4825693B7400F9A50C /* NotesCell.swift in Sources */,
 				215615FA25434547005AB2DF /* PlusButton.swift in Sources */,
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,
@@ -964,6 +1051,7 @@
 				21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */,
 				21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */,
 				21D7BD77256A93BF008BD30C /* DailyTabBarInteractor.swift in Sources */,
+				21B398C0257F5C0000A1E553 /* MainPagePresenter.swift in Sources */,
 				21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */,
 				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
 				21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */,

@@ -66,7 +66,7 @@ class TabBarControllerWithMiddleButton: UITabBarController, UITabBarControllerDe
 									   withTitle: NSLocalizedString("Calendar", comment: ""),
 									   withImage: "calendar.circle.fill"),
 			
-			createNavigationController(for: UserInfoVC(),
+			createNavigationController(for: MainPageModule.build(),
 									   withTitle: NSLocalizedString("Profile", comment: ""),
 									   withImage: "person.crop.circle"),
 			
