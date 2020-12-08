@@ -20,24 +20,24 @@ extension MainPagePresenter: MainPagePresentationLogic {
 		guard let viewController = viewController else { return }
 		viewController.cellsToDisplay =
 		[
-			DailyCellViewModel(title: NSLocalizedString("Options", comment: ""),
+			DailyCellViewModel(title: NSLocalizedString("Settings", comment: ""),
 							   icon: Icon(symbolName: "gearshape.fill",
 										  tileColor: .dailyAdaptiveGray),
-							   cellType: DailyProfileNavigationCell.self,
+							   cellType: DailyProfileSettingCell.self,
 							   isToggable: false,
 							   cellPosition: .within),
 			
 			DailyCellViewModel(title: NSLocalizedString("Achievements", comment: ""),
 							   icon: Icon(symbolName: "rosette",
 										  tileColor: .dailyAdaptiveBlue2),
-							   cellType: DailyProfileNavigationCell.self,
+							   cellType: DailyProfileAchievementsCell.self,
 							   isToggable: false,
 							   cellPosition: .within),
 			
 			DailyCellViewModel(title: NSLocalizedString("Help", comment: ""),
 							   icon: Icon(symbolName: "info.circle.fill",
 										  tileColor: .dailyAdaptiveDarkBlue),
-							   cellType: DailyProfileNavigationCell.self,
+							   cellType: DailyProfileHelpCell.self,
 							   isToggable: false,
 							   cellPosition: .within),
 			
