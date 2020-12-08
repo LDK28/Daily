@@ -19,9 +19,14 @@ class TitleView: UIView {
 		
 		addSubview(titleLabel)
 		NSLayoutConstraint.activate([
-			titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+			titleLabel.topAnchor.constraint(equalTo: topAnchor,
+											constant: 16),
+			
+			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
+												constant: 30),
+			
+			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+												 constant: -30)
 		])
 	}
 	

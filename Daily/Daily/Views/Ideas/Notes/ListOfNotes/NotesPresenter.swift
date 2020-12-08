@@ -16,11 +16,12 @@ class NotesPresenter {
 }
 
 extension NotesPresenter: NotesPresentationLogic {
+	
 	func removeNotes(at indices: [Int]) {
 		guard
 			let viewController = viewController,
 			let filteredViewModels =
-				(viewController.cellsToDisplay as? Array<NotesCellTableViewModel>)?
+				(viewController.cellsToDisplay as? Array<NoteCellViewModel>)?
 					.enumerated()
 					.filter({ !indices.contains($0.offset) })
 					.map({ $0.element })
@@ -28,13 +29,24 @@ extension NotesPresenter: NotesPresentationLogic {
 		viewController.cellsToDisplay = filteredViewModels
 	}
 	
-	func present(notes: [NotesCellViewBackendModel]) {
-		viewController?.cellsToDisplay.removeAll()
+	func presentFilteredNotes(notes: [NoteBackendModel],
+							  withSubstring substring: String) {
+		fillCells(with: notes)
+		viewController?.displayFilteredCells(thatHaveSubstring: substring)
+	}
+	
+	func present(notes: [NoteBackendModel]) {
+		fillCells(with: notes)
+		viewController?.displayAllCells()
+	}
+	
+	private func fillCells(with notes: [NoteBackendModel]) {
+		guard let viewController = viewController else { return }
+		viewController.cellsToDisplay.removeAll()
 		notes.forEach {
-			viewController?.cellsToDisplay.append(
-				NotesCellTableViewModel(cellType: NotesCell.self,
+			viewController.cellsToDisplay.append(
+				NoteCellViewModel(cellType: NotesCell.self,
 										backendModel: $0))
 		}
-		viewController?.finishDisplayingCells()
 	}
 }

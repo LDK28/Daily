@@ -20,20 +20,16 @@ extension DailyTabBarPresenter: DailyTabBarPresentationLogic {
 	func prepareViewForRoutingToLoginScreen() {
 		viewController?.askRouterToNavigateToLoginScreen()
 	}
-	
-	func present() {
-	}
 }
-
-
-
 
 extension DailyTabBarPresenter {
 	private func createDiaryNC() -> UINavigationController {
 
 		let diaryVC = DiaryVC()
 		diaryVC.title = nil
-		diaryVC.tabBarItem = UITabBarItem(title: "Diary", image: UIImage(systemName: "note.text.badge.plus"), tag: 0)
+		diaryVC.tabBarItem = UITabBarItem(title: "Diary",
+										  image: UIImage(systemName: "note.text.badge.plus"),
+										  tag: 0)
 		let diaryNavigationController =  UINavigationController(rootViewController: diaryVC)
 		diaryNavigationController.setNavigationBarHidden(true, animated: false)
 		return diaryNavigationController

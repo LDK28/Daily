@@ -19,18 +19,30 @@ extension NotesVC {
 	}
 	
 	internal func configureInteractionIcons() {
-		
-		searchIcon.styleNavBarImageView(withImageName: "search", color: .dailyTextColor)
-		searchIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchIconTapped)))
-		
-		trashIcon.styleNavBarImageView(withImageName: "trash", color: .systemRed)
-		trashIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(trashIconTapped)))
+		searchIcon.styleNavBarImageView(withImageName: "search",
+										color: .dailyTextColor)
+	
+		trashIcon.styleNavBarImageView(withImageName: "trash",
+									   color: .systemRed)
 		
 		pinIcon.styleNavBarImageView(withImageName: "pinIcon")
-		pinIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pinIconTapped)))
 		
-		cancelIcon.styleNavBarImageView(withImageName: "cancel")
-		cancelIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelIconTapped)))
+		crossIcon.styleNavBarImageView(withImageName: "cancel")
+		
+		
+		searchIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															   action: #selector(searchIconTapped)))
+		
+		
+		trashIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															  action: #selector(trashIconTapped)))
+		
+		
+		pinIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															action: #selector(pinIconTapped)))
+		
+		crossIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
+															   action: #selector(crossIconTapped)))
 	}
 	
 	internal func configureLongPressGesture() {
@@ -51,12 +63,9 @@ extension NotesVC {
 		
 		let titleView = TitleView(title: "Notes")
 		titleView.frame.size.height = 100
-		let addView = AddNewNoteFooterView()
-		addView.frame.size.height = 50
-		tableView.tableFooterView = addView
 		tableView.tableHeaderView = titleView
 		
-		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: addView.frame.size.height, right: 0)
+		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 		
 		tableView.register(NotesCell.self, forCellReuseIdentifier: NotesCell.cellIdentifier)
 	}

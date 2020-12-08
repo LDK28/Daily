@@ -14,10 +14,12 @@ class NewTaskOverlayModule {
 		let presenter = NewTaskOverlayPresenter(viewController: viewController, dataSource: dataSource)
 		let interactor = NewTaskOverlayInteractor(presenter: presenter, dataSource: dataSource)
 		let router = NewTaskOverlayRouter()
+		
 		router.viewController = viewController
 		router.dataStore = interactor
 		viewController.interactor = interactor
 		viewController.router = router
+		
 		return viewController
 	}
 }

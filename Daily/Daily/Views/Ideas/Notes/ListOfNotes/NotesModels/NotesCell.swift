@@ -35,10 +35,58 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 	}
 	
 	func setViewModel(_ viewModel: MainCellViewModel?) {
-		guard let viewModel = viewModel as? NotesCellViewBackendModel else { return }
+		guard let viewModel = viewModel as? NoteBackendModel else { return }
+		titleLabel.attributedText = nil
+		detailsTextView.attributedText = nil
 		titleLabel.text = viewModel.title
-		isPinned = viewModel.isPinned
 		detailsTextView.text = viewModel.details
+		isPinned = viewModel.isPinned
+	}
+	
+	func highlightWhereLabelsHave(substring: String?) {
+		guard let substring = substring else { return }
+		let highlightedAttributes = [NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
+		
+	
+		containerView.subviews
+			.compactMap ({ $0 as? UILabel })
+			.forEach ({ label in
+				if let text = label.text {
+					let components = text.components(separatedBy: [" ", "\n", "\t"])
+					if let startIndex = components.firstIndex(where: {
+																$0.lowercased().contains(substring)
+															  }) {
+						var stringToShow = ""
+						components[startIndex...].forEach {
+							stringToShow += $0 + " "
+						}
+						let rangeForDetails = NSString(string: stringToShow).range(of: substring, options: .caseInsensitive)
+						let attributedDetails = NSMutableAttributedString(string: stringToShow)
+						attributedDetails.addAttributes(highlightedAttributes, range: rangeForDetails)
+						label.attributedText = attributedDetails
+					}
+				}
+			})
+	}
+	
+	func flashAnimation(competion: @escaping () -> ()) {
+		let currentColor = containerView.backgroundColor
+		UIView.animate(withDuration: 0.1, animations: { [weak self] in
+			guard let self = self else {
+				competion()
+				return
+			}
+			self.containerView.backgroundColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.5)
+		}) {_ in
+			UIView.animate(withDuration: 0.1, animations: { [weak self] in
+				guard let self = self else {
+					competion()
+					return
+				}
+				self.containerView.backgroundColor = currentColor
+				competion()
+			})
+		}
 	}
 	
 	override func layoutSubviews() {
@@ -56,11 +104,9 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		containerView.backgroundColor = .dailyUnpinnedNoteTileColor
 		containerView.layer.borderColor = UIColor.dailyTextColor.withAlphaComponent(0.8).cgColor
 		backgroundColor = .clear
-
-		let selectedView = UIView()
-		selectedView.backgroundColor = backgroundColor
+		let selectedView = UIView(frame: containerView.frame)
+		selectedView.backgroundColor = .clear
 		selectedBackgroundView = selectedView
-		
 		addToDiaryButton.translatesAutoresizingMaskIntoConstraints = false
 		addToDiaryButton.contentMode = .scaleAspectFill
 		if let addToDiaryImage =
@@ -124,11 +170,9 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 			detailsTextView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -25),
 			detailsTextView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			detailsTextView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 3 / 4),
-			//detailsTextView.trailingAnchor.constraint(equalTo: pinIcon.leadingAnchor, constant: -20),
 			
 			pinIcon.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -15),
 			pinIcon.centerXAnchor.constraint(equalTo: addToDiaryButton.centerXAnchor),
-			//pinIcon.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
 			pinIcon.widthAnchor.constraint(equalToConstant: 20),
 			pinIcon.heightAnchor.constraint(equalTo: pinIcon.widthAnchor)
 		])

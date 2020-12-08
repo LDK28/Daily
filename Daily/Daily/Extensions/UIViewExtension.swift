@@ -21,15 +21,15 @@ extension UIView {
         layer.shadowRadius = 4
     }
 	
-	func tapAnimation(_ completion: @escaping () -> Void) {
+	func tapAnimation(duration: TimeInterval = 0.1, _ completion: @escaping () -> Void) {
 	  isUserInteractionEnabled = false
-		UIView.animate(withDuration: 0.1,
+		UIView.animate(withDuration: duration,
 					   delay: 0,
 					   options: .curveLinear,
 					   animations: { [weak self] in
 							self?.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
 		}) { done in
-			UIView.animate(withDuration: 0.1,
+			UIView.animate(withDuration: duration,
 						   delay: 0,
 						   options: .curveLinear,
 						   animations: { [weak self] in
