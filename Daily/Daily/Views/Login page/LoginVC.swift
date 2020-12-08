@@ -11,6 +11,7 @@ import Firebase
 
 
 final class LoginVC: MainVC {
+	weak var coordinator: DailyCoordinator?
 
 	private let emailField = UITextField()
 	private let passwordField = UITextField()
@@ -75,7 +76,7 @@ final class LoginVC: MainVC {
 					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
-					let vc = DailyTabBarVC()
+					let vc = DailyTabBarModule.build()
 					vc.modalPresentationStyle = .fullScreen
 					self.present(vc, animated: true, completion: nil)
 				}

@@ -71,6 +71,8 @@
 		21B398D0257F603900A1E553 /* DailyProfileNavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */; };
 		21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */; };
 		21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF82C92557E61E001614EE /* HeaderView.swift */; };
+		21C83C9C258015ED009DE03C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C83C9B258015ED009DE03C /* Coordinator.swift */; };
+		21C83CA12580223C009DE03C /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C83CA02580223C009DE03C /* SplashScreenViewController.swift */; };
 		21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E152564569C009C1D8E /* OverlayPresenter.swift */; };
 		21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E172564569C009C1D8E /* OverlayProtocols.swift */; };
 		21CC5E1E2564569C009C1D8E /* OverlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC5E182564569C009C1D8E /* OverlayInteractor.swift */; };
@@ -232,6 +234,8 @@
 		21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProfileNavigationCell.swift; sourceTree = "<group>"; };
 		21B8A57F25757E8B00162362 /* UIElementsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsConfiguration.swift; sourceTree = "<group>"; };
 		21BF82C92557E61E001614EE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		21C83C9B258015ED009DE03C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		21C83CA02580223C009DE03C /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		21CC5E152564569C009C1D8E /* OverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresenter.swift; sourceTree = "<group>"; };
 		21CC5E172564569C009C1D8E /* OverlayProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayProtocols.swift; sourceTree = "<group>"; };
 		21CC5E182564569C009C1D8E /* OverlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInteractor.swift; sourceTree = "<group>"; };
@@ -704,6 +708,8 @@
 				21E64242254AFB9300564B78 /* Extensions */,
 				21E1D0592540399B006A4206 /* Resources */,
 				21E1D02325403975006A4206 /* AppDelegate.swift */,
+				21C83C9B258015ED009DE03C /* Coordinator.swift */,
+				21C83CA02580223C009DE03C /* SplashScreenViewController.swift */,
 				21E1D02525403975006A4206 /* SceneDelegate.swift */,
 				21E1D02F25403977006A4206 /* Assets.xcassets */,
 				21E1D03125403977006A4206 /* LaunchScreen.storyboard */,
@@ -1017,6 +1023,7 @@
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */,
+				21C83C9C258015ED009DE03C /* Coordinator.swift in Sources */,
 				05112B462552B7690044D502 /* (null) in Sources */,
 				215DFBF9255D7D6500CD3939 /* DailyOrdinaryCell.swift in Sources */,
 				21B398C4257F5C0000A1E553 /* MainPageVC.swift in Sources */,
@@ -1033,6 +1040,7 @@
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
 				21D7BD76256A93BF008BD30C /* DailyTabBarProtocols.swift in Sources */,
+				21C83CA12580223C009DE03C /* SplashScreenViewController.swift in Sources */,
 				21F7288E257FB9CE006297A1 /* ProfileHelpRouter.swift in Sources */,
 				21CC5E8225645D2F009C1D8E /* NewProjectOverlayProtocols.swift in Sources */,
 				052F16F9256E511300782ED8 /* RecentActionsCell.swift in Sources */,

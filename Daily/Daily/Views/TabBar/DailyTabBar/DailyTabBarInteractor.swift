@@ -18,17 +18,14 @@ class DailyTabBarInteractor: DailyTabBarDataStore {
 }
 
 extension DailyTabBarInteractor: DailyTabBarBusinessLogic {
-	
 	func checkUserLoginStatus() {
 		UserRequest.shared.loadUserData { result in
 			switch result {
 			case .success(()):
 				return
 			case .failure(let error):
-				/* get data from CoreData */
 				self.presenter?.prepareViewForRoutingToLoginScreen()
 				debugPrint(error.localizedDescription)
-				return
 			}
 		}
 	}

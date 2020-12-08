@@ -36,22 +36,19 @@ class MainPageVC: ProfileTableVC {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		let destinationViewController: UIViewController
 		switch cellsToDisplay[indexPath.row].cellType {
 		case is DailyProfileSettingCell.Type:
-			destinationViewController = ProfileSettingsModule.build()
+			router?.navigateTo(viewController: ProfileSettingsModule.build())
 		case is DailyProfileAchievementsCell.Type:
-			destinationViewController = ProfileAchievementsModule.build()
+			router?.navigateTo(viewController: ProfileAchievementsModule.build())
 		case is DailyProfileHelpCell.Type:
-			destinationViewController = ProfileHelpModule.build()
+			router?.navigateTo(viewController: ProfileHelpModule.build())
 		case is DailyProfileLogoutCell.Type:
-			/* LOGOUT  */
-			return
+			router?.logOut()
 		default:
 			return
 		}
 		
-		router?.navigateTo(viewController: destinationViewController)
 	}
 }
 extension MainPageVC: MainPageDisplayLogic {	

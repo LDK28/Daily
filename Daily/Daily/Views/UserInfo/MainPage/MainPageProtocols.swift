@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainPageDisplayLogic: AnyObject {
 	var cellsToDisplay: [MainCellViewModel] { get set }
+	
 	func displayCells()
 }
 
@@ -26,6 +27,8 @@ protocol MainPagePresentationLogic {
 
 protocol MainPageRoutingLogic {
 	func navigateTo(viewController: UIViewController)
+	
+	func logOut()
 }
 
 protocol MainPageDataPassing {

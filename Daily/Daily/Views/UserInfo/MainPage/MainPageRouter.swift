@@ -6,6 +6,7 @@
 //  Copyright (c) 2020. All rights reserved.
 
 import UIKit
+import FirebaseAuth
 
 class MainPageRouter: MainPageDataPassing {
 	
@@ -22,5 +23,16 @@ extension MainPageRouter: MainPageRoutingLogic {
 	func navigateTo(viewController: UIViewController) {
 		self.viewController?.navigationController?.pushViewController(viewController,
 																	  animated: true)
+	}
+	
+	func logOut() {
+		do {
+			try Auth.auth().signOut()
+			let vc = LoginVC()
+			vc.modalPresentationStyle = .fullScreen
+			viewController?.present(vc, animated: true, completion: nil)
+		} catch {
+			
+		}
 	}
 }

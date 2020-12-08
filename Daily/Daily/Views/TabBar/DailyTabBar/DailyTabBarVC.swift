@@ -11,7 +11,7 @@ import UIKit
 final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	var interactor: DailyTabBarBusinessLogic?
 	var router: (DailyTabBarRoutingLogic & DailyTabBarDataPassing)?
-  
+	
 	private let plusButton = PlusButton()
 	
 	private let blackoutView: UIView = {
