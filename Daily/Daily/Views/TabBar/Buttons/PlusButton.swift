@@ -14,10 +14,6 @@ class PlusButton: UIButton {
 		super.init(frame: frame)
 		translatesAutoresizingMaskIntoConstraints = false
 		layer.borderColor = UIColor.white.cgColor
-		layer.shadowColor = UIColor.dailyShadowColor
-		layer.shadowOffset = CGSize(width: 0, height: 10)
-		layer.shadowRadius = 4
-		layer.shadowOpacity = 0.1
 		backgroundColor = .dailyTabBarColor
 		
 	}
