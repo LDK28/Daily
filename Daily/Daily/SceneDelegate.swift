@@ -20,8 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 		window?.windowScene = windowScene
-		window?.rootViewController = DailyTabBarModule.build()
+		let coordinator = DailyCoordinator()
+		coordinator.start()
+		window?.rootViewController = coordinator.mainViewController
 		window?.makeKeyAndVisible()
+		
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {

@@ -76,9 +76,7 @@ final class LoginVC: MainVC {
 					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
-					let vc = DailyTabBarModule.build()
-					vc.modalPresentationStyle = .fullScreen
-					self.present(vc, animated: true, completion: nil)
+					self.coordinator?.authorize()
 				}
 			}
 		}

@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol DailyCoordinatorProtocol {
-	var navigationController: UINavigationController { get set }
+	var mainViewController: UIViewController { get set }
 	
 	func authorize()
 	
@@ -17,44 +18,38 @@ protocol DailyCoordinatorProtocol {
 }
 
 final class DailyCoordinator: DailyCoordinatorProtocol {
-	var navigationController: UINavigationController
+	var mainViewController: UIViewController
 	
 	func logout() {
-		let loginVC = LoginVC()
-		loginVC.coordinator = self
-		navigationController.pushViewController(loginVC,
-												animated: true)
-		navigationController.viewControllers.removeFirst()
+		try? Auth.auth().signOut()
+		let viewController = LoginVC()
+		viewController.coordinator = self
+		viewController.modalPresentationStyle = .fullScreen
+		self.mainViewController.present(viewController,
+										animated: true)
 	}
 		
 	func authorize() {
-		let appVC = DailyTabBarModule.build()
-		//appVC.coordinator = self
-		navigationController.pushViewController(appVC,
-												animated: true)
-		navigationController.viewControllers.removeFirst()
+		let viewController = DailyTabBarModule.build()
+		viewController.coordinator = self
+		viewController.modalPresentationStyle = .fullScreen
+		self.mainViewController.present(viewController,
+										animated: true)
 	}
 	
-	init() {
-		navigationController = UINavigationController(rootViewController: SpashScreenVC())
-		navigationController.setNavigationBarHidden(true, animated: false)
-		
+	func start() {
 		UserRequest.shared.loadUserData { result in
 			switch result {
 			case .success(()):
-				let viewController = DailyTabBarModule.build()
-			//	viewController.coordinator = self
-				viewController.modalPresentationStyle = .fullScreen
-				self.navigationController.pushViewController(viewController,
-															 animated: true)
+				self.authorize()
 			case .failure(let error):
-				let viewController = LoginVC()
-			//	viewController.coordinator = self
-				self.navigationController.pushViewController(viewController,
-															 animated: true)
+				self.logout()
 				debugPrint(error.localizedDescription)
 			}
-			self.navigationController.viewControllers.removeFirst()
 		}
+	}
+	
+	init() {
+		mainViewController = SpashScreenVC()
 	}
 }

@@ -11,6 +11,7 @@ import UIKit
 final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	var interactor: DailyTabBarBusinessLogic?
 	var router: (DailyTabBarRoutingLogic & DailyTabBarDataPassing)?
+	weak var coordinator: DailyCoordinator?
 	
 	private let plusButton = PlusButton()
 	

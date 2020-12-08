@@ -26,13 +26,6 @@ extension MainPageRouter: MainPageRoutingLogic {
 	}
 	
 	func logOut() {
-		do {
-			try Auth.auth().signOut()
-			let vc = LoginVC()
-			vc.modalPresentationStyle = .fullScreen
-			viewController?.present(vc, animated: true, completion: nil)
-		} catch {
-			
-		}
+		(viewController?.tabBarController as? DailyTabBarVC)?.coordinator?.logout()
 	}
 }
