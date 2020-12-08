@@ -28,7 +28,6 @@ class ProfileTableVC: MainTableVC {
 		
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.alwaysBounceVertical = false
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
