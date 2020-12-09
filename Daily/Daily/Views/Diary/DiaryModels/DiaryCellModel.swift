@@ -1,8 +1,9 @@
-//
-//  DiaryCellModel.swift
-//  Daily
-//
-//  Created by Владимир Проценко on 09.12.2020.
-//
-
 import Foundation
+
+struct DiaryCellModel {
+    let time: String
+    let taskName: String
+    let taskDescription: String
+    let progress: Bool
+    let notification: Bool
+}
