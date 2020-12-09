@@ -29,6 +29,7 @@ class AppStatusSwitcher: AppSwitcherProtocol {
 				AppStatusSwitcher.currentVC.present(viewController, animated: true, completion: nil)
 			}
 		} else {
+			try? Auth.auth().signOut()
 			let viewController = LoginVC()
 			viewController.modalPresentationStyle = .fullScreen
 			AppStatusSwitcher.currentVC.dismiss(animated: true, completion: nil)
