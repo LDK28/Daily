@@ -8,23 +8,17 @@
 import UIKit
 import FirebaseAuth
 
-class MainPageRouter: MainPageDataPassing {
-	
-	weak var viewController: MainPageVC?
+class MainPageRouter: ProfileRouter, MainPageDataPassing {
 	weak var dataStore: MainPageDataStore?
 	
 	init(viewController: MainPageVC?, dataStore: MainPageDataStore?) {
+		super.init()
 		self.viewController = viewController
 		self.dataStore = dataStore
 	}
 }
 
 extension MainPageRouter: MainPageRoutingLogic {
-	func navigateTo(viewController: UIViewController) {
-		self.viewController?.navigationController?.pushViewController(viewController,
-																	  animated: true)
-	}
-	
 	func logOut() {
 		(viewController?.tabBarController as? DailyTabBarVC)?.coordinator?.logout()
 	}

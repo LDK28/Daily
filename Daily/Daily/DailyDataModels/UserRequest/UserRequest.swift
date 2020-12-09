@@ -59,6 +59,14 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 	}
 	
+	func getName(completion: @escaping (Result<(UIImage?, Name?), DailyError>) -> ()) {
+		guard let userData = UserRequest.shared.userData else {
+			completion(.failure(.couldnotFindUserData))
+			return
+		}
+		completion(.success((nil, userData.name)))
+	}
+	
 	private init() {}
 }
 

@@ -7,27 +7,21 @@
 
 import UIKit
 
-protocol MainPageDisplayLogic: AnyObject {
-	var cellsToDisplay: [MainCellViewModel] { get set }
-	
-	func displayCells()
+protocol MainPageDisplayLogic: ProfileDisplayLogic {
 }
 
-protocol MainPageBusinessLogic {
-	func fetchCells()
+protocol MainPageBusinessLogic: ProfileBusinessLogic {
 }
 
 protocol MainPageDataStore: AnyObject {
 	
 }
 
-protocol MainPagePresentationLogic {
-	func prepareCells()
+protocol MainPagePresentationLogic: ProfilePresentationLogic {
+	func prepareUserInfo(_ userCard: (UIImage?, Name?))
 }
 
-protocol MainPageRoutingLogic {
-	func navigateTo(viewController: UIViewController)
-	
+protocol MainPageRoutingLogic: ProfileRoutingLogic {
 	func logOut()
 }
 

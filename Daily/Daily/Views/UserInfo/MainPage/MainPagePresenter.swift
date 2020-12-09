@@ -7,19 +7,16 @@
 
 import UIKit
 
-class MainPagePresenter: MainPageDataStore {
-	weak var viewController: MainPageDisplayLogic?
-	
-	init(viewController: MainPageDisplayLogic?) {
-		self.viewController = viewController
-	}
+class MainPagePresenter: ProfilePresenter, MainPageDataStore {
+
 }
 
 extension MainPagePresenter: MainPagePresentationLogic {
-	func prepareCells() {
-		guard let viewController = viewController else { return }
-		viewController.cellsToDisplay =
-		[
+	func prepareUserInfo(_ userCard: (UIImage?, Name?)) {
+		
+		let name = (userCard.1?.firstName ?? "") + " " + (userCard.1?.lastName ?? "")
+		let profileModel = ProfileModel(text: name, image: userCard.0)
+		let viewModels = [
 			DailyCellViewModel(title: NSLocalizedString("Settings", comment: ""),
 							   icon: Icon(symbolName: "gearshape.fill",
 										  tileColor: .dailyAdaptiveGray),
@@ -48,5 +45,6 @@ extension MainPagePresenter: MainPagePresentationLogic {
 							   isToggable: false,
 							   cellPosition: .within),
 		]
+		present(viewModels: viewModels, headerModel: profileModel)
 	}
 }

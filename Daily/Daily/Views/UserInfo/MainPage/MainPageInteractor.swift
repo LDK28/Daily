@@ -17,6 +17,13 @@ class MainPageInteractor: MainPageDataStore {
 
 extension MainPageInteractor: MainPageBusinessLogic {
 	func fetchCells() {
-		presenter?.prepareCells()
+		UserRequest.shared.getName() { result in
+			switch result {
+			case .success(let userCard):
+				self.presenter?.prepareUserInfo(userCard)
+			case .failure(let error):
+				debugPrint(error.localizedDescription)
+			}
+		}
 	}
 }

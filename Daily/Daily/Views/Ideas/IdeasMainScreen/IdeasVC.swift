@@ -26,11 +26,6 @@ class IdeasVC: MainTableVC {
         interactor?.fetchCells()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            
-    }
-    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self

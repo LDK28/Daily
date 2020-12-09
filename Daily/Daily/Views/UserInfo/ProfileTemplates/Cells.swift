@@ -14,9 +14,31 @@ class DailyProfileSettingCell: DailyProfileNavigationCell  {
 class DailyProfileAchievementsCell: DailyProfileNavigationCell {
 	static let cellIdentifier = "DailyProfileAchievementsCell"
 }
+
 class DailyProfileHelpCell: DailyProfileNavigationCell {
 	static let cellIdentifier = "DailyProfileHelpCell"
 }
+
+class DailySettingsNotificationsCell: DailyProfileNavigationCell {
+	static let cellIdentifier = "DailySettingsNotificationsCell"
+}
+
+class DailySettingsLanguageCell: DailyProfileNavigationCell {
+	static let cellIdentifier = "DailySettingsLanguageCell"
+}
+
+class DailyNotificationsSoundCell: DailyProfileNavigationCell {
+	static let cellIdentifier = "DailyNotificationsSoundCell"
+}
+
+class DailyNotificationsAlarmCell: DailyProfileCell {
+	static let cellIdentifier = "DailyNotificationsAlarmCell"
+}
+
+class DailyNotificationsReportCell: DailyProfileCell {
+	static let cellIdentifier = "DailyNotificationsReportCell"
+}
+
 
 class DailyProfileLogoutCell: DailyProfileCell {
 	static let cellIdentifier = "DailyProfileLogoutCell"

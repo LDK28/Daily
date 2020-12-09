@@ -174,10 +174,22 @@ extension UIColor {
 		colorForTheme(light: UIColor("5AC8FA"), dark: UIColor("64D2FF"))
 	}
 	
+	static var dailyAdaptiveBlue3: UIColor {
+		colorForTheme(light: UIColor("5856D6"), dark: UIColor("5E5CE6"))
+	}
+	
 	static var dailyAdaptiveDarkBlue = UIColor("0B3954")
 	
 	static var dailyAdaptiveYellow: UIColor {
 		colorForTheme(light: UIColor("FFCC00"), dark: UIColor("FFD60A"))
+	}
+	
+	static var dailyAdaptiveOrange: UIColor {
+		colorForTheme(light: UIColor("FF9500"), dark: UIColor("FF9F0A"))
+	}
+	
+	static var dailyAdaptivePink: UIColor {
+		colorForTheme(light: UIColor("AF52DE"), dark: UIColor("BF5AF2"))
 	}
 	
 	static var dailyAdaptiveGray = UIColor("AEAEB2")

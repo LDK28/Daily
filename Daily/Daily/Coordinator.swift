@@ -32,7 +32,7 @@ final class DailyCoordinator: DailyCoordinatorProtocol {
 	func authorize() {
 		let viewController = DailyTabBarModule.build()
 		viewController.coordinator = self
-		print(viewController.coordinator.debugDescription)
+		viewController.modalPresentationStyle = .fullScreen
 		self.mainViewController.present(viewController,
 										animated: true)
 	}

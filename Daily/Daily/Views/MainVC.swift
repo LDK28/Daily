@@ -19,7 +19,6 @@ class MainTableVC: UITableViewController {
 		navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 		tableView.backgroundColor = .dailyMainBackgroundColor
 		tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
-		tableView.separatorColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.5)
 		tableView.alwaysBounceVertical = false
 	}
 	

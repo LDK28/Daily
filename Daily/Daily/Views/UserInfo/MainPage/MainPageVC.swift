@@ -11,12 +11,10 @@ import UIKit
 class MainPageVC: ProfileTableVC {
 	var interactor: MainPageBusinessLogic?
 	var router: (MainPageRoutingLogic & MainPageDataPassing)?
-  
-	internal let userCard = UserCard()
 	
 	override func loadView() {
+		headerView = UserCard()
 		super.loadView()
-		tableView.setAndLayoutTableHeaderView(header: userCard)
 	}
 	
 	override func viewDidLoad() {
@@ -38,7 +36,7 @@ class MainPageVC: ProfileTableVC {
 		tableView.deselectRow(at: indexPath, animated: true)
 		switch cellsToDisplay[indexPath.row].cellType {
 		case is DailyProfileSettingCell.Type:
-			router?.navigateTo(viewController: ProfileSettingsModule.build())
+			router?.navigateTo(viewController: SettingsModule.build())
 		case is DailyProfileAchievementsCell.Type:
 			router?.navigateTo(viewController: ProfileAchievementsModule.build())
 		case is DailyProfileHelpCell.Type:
@@ -52,7 +50,5 @@ class MainPageVC: ProfileTableVC {
 	}
 }
 extension MainPageVC: MainPageDisplayLogic {	
-	func displayCells() {
-		tableView.reloadData()
-	}
+ 
 }

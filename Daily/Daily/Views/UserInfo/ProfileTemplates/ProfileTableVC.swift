@@ -7,8 +7,18 @@
 //
 
 import UIKit
+
+protocol ProfileDisplayLogic: AnyObject {
+	var cellsToDisplay: [MainCellViewModel] { get set }
+	
+	var headerView: ProfileHeader? { get set }
+	
+	func displayCells()
+}
+
 extension UITableView {
-	func setAndLayoutTableHeaderView(header: UIView) {
+	func setAndLayoutTableHeaderView(header: UIView?) {
+		guard let header = header else { return }
 		self.tableHeaderView = header
 		header.setNeedsLayout()
 		header.layoutIfNeeded()
@@ -20,12 +30,19 @@ extension UITableView {
 class ProfileTableVC: MainTableVC {
 	private let statusBar = UIView()
 	
+	internal var headerView: ProfileHeader?
+	
+	override func loadView() {
+		super.loadView()
+		tableView.setAndLayoutTableHeaderView(header: headerView)
+	}
+	
 	override func viewDidLoad() {
 	super.viewDidLoad()
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 		self.navigationController?.navigationBar.isTranslucent = true
 		self.navigationController?.navigationBar.backgroundColor = .dailyProfileTileColor
-		
+		tableView.separatorColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.25)
 		tableView.delegate = self
 		tableView.dataSource = self
 	}
@@ -55,5 +72,10 @@ class ProfileTableVC: MainTableVC {
 		header.backgroundColor = .clear
 		return header
 	}
-  
+}
+
+extension ProfileTableVC: ProfileDisplayLogic {
+	func displayCells() {
+		tableView.reloadData()
+	}
 }
