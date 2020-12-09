@@ -29,14 +29,6 @@ class NotificationsVC: ProfileTableVC {
 		interactor?.fetchCells()
 		
 	}
-	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-		switch cellsToDisplay[indexPath.row].cellType {
-		default:
-			return
-		}
-	}
 }
 extension NotificationsVC: NotificationsDisplayLogic {
 

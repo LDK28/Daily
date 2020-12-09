@@ -425,12 +425,12 @@
 		210EC16C2580EBF8000E9578 /* ChooseLanguage */ = {
 			isa = PBXGroup;
 			children = (
+				210EC16F2580EC10000E9578 /* ChooseLanguageProtocols.swift */,
+				210EC1722580EC10000E9578 /* ChooseLanguageConfigurator.swift */,
+				210EC1712580EC10000E9578 /* ChooseLanguageVC.swift */,
+				210EC1702580EC10000E9578 /* ChooseLanguageInteractor.swift */,
 				210EC16D2580EC10000E9578 /* ChooseLanguagePresenter.swift */,
 				210EC16E2580EC10000E9578 /* ChooseLanguageRouter.swift */,
-				210EC16F2580EC10000E9578 /* ChooseLanguageProtocols.swift */,
-				210EC1702580EC10000E9578 /* ChooseLanguageInteractor.swift */,
-				210EC1712580EC10000E9578 /* ChooseLanguageVC.swift */,
-				210EC1722580EC10000E9578 /* ChooseLanguageConfigurator.swift */,
 			);
 			path = ChooseLanguage;
 			sourceTree = "<group>";
@@ -458,15 +458,6 @@
 				212F890825574C000097F894 /* DailyCellViewModels.swift */,
 			);
 			path = DailyDataModels;
-			sourceTree = "<group>";
-		};
-		2142BB05257F637400AC26BA /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */,
-				21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		2151CA3C25509AF000732F68 /* Overlay */ = {
@@ -503,7 +494,6 @@
 			isa = PBXGroup;
 			children = (
 				211733A32580D1FF00C72192 /* ProfileTemplates */,
-				2142BB05257F637400AC26BA /* Cells */,
 				21B398B9257F5BEB00A1E553 /* Help */,
 				21B398B8257F5BE300A1E553 /* Achievements */,
 				21B398B7257F5BBE00A1E553 /* Settings */,
@@ -590,8 +580,6 @@
 		21B398B6257F5BB600A1E553 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				210EC16C2580EBF8000E9578 /* ChooseLanguage */,
-				210EC15C2580EBD0000E9578 /* Notifications */,
 				21B398BC257F5C0000A1E553 /* MainPageProtocols.swift */,
 				21B398BF257F5C0000A1E553 /* MainPageConfigurator.swift */,
 				21B398BE257F5C0000A1E553 /* MainPageVC.swift */,
@@ -605,6 +593,8 @@
 		21B398B7257F5BBE00A1E553 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				210EC15C2580EBD0000E9578 /* Notifications */,
+				210EC16C2580EBF8000E9578 /* ChooseLanguage */,
 				21F728A7257FB9F9006297A1 /* SettingsProtocols.swift */,
 				21F728AA257FB9F9006297A1 /* SettingsConfigurator.swift */,
 				21F728A9257FB9F9006297A1 /* SettingsVC.swift */,
@@ -645,6 +635,8 @@
 			isa = PBXGroup;
 			children = (
 				217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */,
+				2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */,
+				21B398CF257F603900A1E553 /* DailyProfileNavigationCell.swift */,
 				215DFBF8255D7D6500CD3939 /* DailyOrdinaryCell.swift */,
 				215DFBFD255D7D8B00CD3939 /* DailyRemindCell.swift */,
 				215DFC05255D7DD300CD3939 /* DailyRepeatCell.swift */,

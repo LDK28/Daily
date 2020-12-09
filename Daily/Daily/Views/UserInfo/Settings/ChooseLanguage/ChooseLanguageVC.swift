@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseLanguageVC: UIViewController {
+class ChooseLanguageVC: ProfileTableVC {
 	var interactor: ChooseLanguageBusinessLogic?
 	var router: (ChooseLanguageRoutingLogic & ChooseLanguageDataPassing)?
   
