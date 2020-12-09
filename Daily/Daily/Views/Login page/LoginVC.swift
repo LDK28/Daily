@@ -83,7 +83,8 @@ final class LoginVC: MainVC {
 	}
 	
 	@objc func didTapSignupButton() {
-		navigationController?.pushViewController(SignupVC(), animated: true)
+		//navigationController?.pushViewController(SignupVC(), animated: true)
+		present(SignupVC(), animated: true, completion: nil)
 	}
 	
 	func validateFields() -> String? {
