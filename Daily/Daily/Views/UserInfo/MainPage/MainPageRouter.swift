@@ -20,6 +20,6 @@ class MainPageRouter: ProfileRouter, MainPageDataPassing {
 
 extension MainPageRouter: MainPageRoutingLogic {
 	func logOut() {
-		(viewController?.tabBarController as? DailyTabBarVC)?.coordinator?.logout()
+		AppStatusSwitcher.shared.updateRootVC()
 	}
 }

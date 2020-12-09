@@ -76,7 +76,7 @@ final class LoginVC: MainVC {
 					self.showError(userLoginError?.localizedDescription ?? "Error")
 					
 				} else {
-					self.coordinator?.authorize()
+					AppStatusSwitcher.shared.updateRootVC()
 				}
 			}
 		}

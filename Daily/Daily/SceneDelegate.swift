@@ -18,13 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		
 		guard let windowScene = (scene as? UIWindowScene) else { return }
-		let viewController = SpashScreenVC()
 		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 		window?.windowScene = windowScene
-		window?.rootViewController = viewController
+		window?.rootViewController = AppStatusSwitcher.currentVC
 		window?.makeKeyAndVisible()
-		let coordinator = DailyCoordinator(viewController: viewController)
-		coordinator.start()
+		AppStatusSwitcher.shared.start()
 		
 	}
 

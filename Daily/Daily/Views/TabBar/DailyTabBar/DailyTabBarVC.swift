@@ -76,7 +76,6 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		interactor?.checkUserLoginStatus()
 	}
 	
 	@objc func didTapPlusButton() {
