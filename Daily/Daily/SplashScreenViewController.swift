@@ -21,8 +21,20 @@ class SpashScreenVC: UIViewController {
 		NSLayoutConstraint.activate([
 			imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+			imageView.topAnchor.constraint(equalTo: view.topAnchor),
+			imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		view.backgroundColor = .dailyMainBackgroundColor
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		UIView.animate(withDuration: 1, animations: {
+			self.imageView.transform = CGAffineTransform(scaleX: 2, y: 2)
+			self.imageView.alpha = 0
+		})
 	}
 }

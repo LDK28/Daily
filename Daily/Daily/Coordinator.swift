@@ -32,7 +32,7 @@ final class DailyCoordinator: DailyCoordinatorProtocol {
 	func authorize() {
 		let viewController = DailyTabBarModule.build()
 		viewController.coordinator = self
-		viewController.modalPresentationStyle = .fullScreen
+		print(viewController.coordinator.debugDescription)
 		self.mainViewController.present(viewController,
 										animated: true)
 	}
@@ -49,7 +49,8 @@ final class DailyCoordinator: DailyCoordinatorProtocol {
 		}
 	}
 	
-	init() {
-		mainViewController = SpashScreenVC()
+	init(viewController: UIViewController) {
+		mainViewController = viewController
+		
 	}
 }
