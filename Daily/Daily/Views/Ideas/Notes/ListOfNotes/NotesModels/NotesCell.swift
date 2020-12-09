@@ -46,15 +46,16 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 	func highlightWhereLabelsHave(substring: String?) {
 		guard let substring = substring else { return }
 		let highlightedAttributes = [NSAttributedString.Key.backgroundColor: UIColor.dailyAdaptiveGreen]
-		
-	
+		let characterSet: CharacterSet = [" ", "\n", "\t"]
+		let wordToBeginWith = substring.components(separatedBy: characterSet).first
 		containerView.subviews
 			.compactMap ({ $0 as? UILabel })
 			.forEach ({ label in
-				if let text = label.text {
-					let components = text.components(separatedBy: [" ", "\n", "\t"])
+				if let text = label.text,
+				   let wordToBeginWith = wordToBeginWith {
+					let components = text.components(separatedBy: characterSet)
 					if let startIndex = components.firstIndex(where: {
-																$0.lowercased().contains(substring)
+																$0.lowercased().contains(wordToBeginWith)
 															  }) {
 						var stringToShow = ""
 						components[startIndex...].forEach {
