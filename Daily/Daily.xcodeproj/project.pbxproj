@@ -149,6 +149,7 @@
 		21EA5B472567073700F87D18 /* DisplayLogic&LifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B412567073700F87D18 /* DisplayLogic&LifeCycle.swift */; };
 		21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B422567073700F87D18 /* NotesConfigurator.swift */; };
 		21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0F8F62544CF8200B5D6FB /* MainVC.swift */; };
+		21F39A90258147C400DD4F27 /* LanguageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F39A8F258147C400DD4F27 /* LanguageCellViewModel.swift */; };
 		21F72880257FACC3006297A1 /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F7287F257FACC3006297A1 /* ProfileTableVC.swift */; };
 		21F7288D257FB9CE006297A1 /* ProfileHelpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72887257FB9CE006297A1 /* ProfileHelpPresenter.swift */; };
 		21F7288E257FB9CE006297A1 /* ProfileHelpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F72888257FB9CE006297A1 /* ProfileHelpRouter.swift */; };
@@ -334,6 +335,7 @@
 		21EA5B412567073700F87D18 /* DisplayLogic&LifeCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayLogic&LifeCycle.swift"; sourceTree = "<group>"; };
 		21EA5B422567073700F87D18 /* NotesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesConfigurator.swift; sourceTree = "<group>"; };
 		21F0F8F62544CF8200B5D6FB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		21F39A8F258147C400DD4F27 /* LanguageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCellViewModel.swift; sourceTree = "<group>"; };
 		21F7287F257FACC3006297A1 /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
 		21F72887257FB9CE006297A1 /* ProfileHelpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpPresenter.swift; sourceTree = "<group>"; };
 		21F72888257FB9CE006297A1 /* ProfileHelpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpRouter.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 		210EC16C2580EBF8000E9578 /* ChooseLanguage */ = {
 			isa = PBXGroup;
 			children = (
+				21F39A8F258147C400DD4F27 /* LanguageCellViewModel.swift */,
 				210EC16F2580EC10000E9578 /* ChooseLanguageProtocols.swift */,
 				210EC1722580EC10000E9578 /* ChooseLanguageConfigurator.swift */,
 				210EC1712580EC10000E9578 /* ChooseLanguageVC.swift */,
@@ -1123,6 +1126,7 @@
 				2156461A25583762007264D4 /* UITableViewCellExtension.swift in Sources */,
 				2171A61A257943DD00D8AD76 /* EditNoteProtocols.swift in Sources */,
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
+				21F39A90258147C400DD4F27 /* LanguageCellViewModel.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,

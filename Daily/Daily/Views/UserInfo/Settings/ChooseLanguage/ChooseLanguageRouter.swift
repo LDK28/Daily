@@ -7,13 +7,11 @@
 
 import UIKit
 
-class ChooseLanguageRouter: ChooseLanguageDataPassing {
-	
-	weak var viewController: ChooseLanguageVC?
+class ChooseLanguageRouter: ProfileRouter, ChooseLanguageDataPassing {
 	weak var dataStore: ChooseLanguageDataStore?
   
 	init(viewController: ChooseLanguageVC?, dataStore: ChooseLanguageDataStore?) {
-		self.viewController = viewController
+		super.init(viewController: viewController)
 		self.dataStore = dataStore
 	}
 }

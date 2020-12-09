@@ -23,7 +23,7 @@ extension NotificationsInteractor: NotificationsBusinessLogic {
 		let viewModels = [
 			DailyCellViewModel(title: NSLocalizedString("Sound",
 														comment: ""),
-							   icon: Icon(symbolName: "speaker.wave.2.fill",
+							   icon: Icon(systemName: "speaker.wave.2.fill",
 										  tileColor: .dailyAdaptivePink),
 							   cellType: DailyNotificationsSoundCell.self,
 							   isToggable: false,
@@ -31,7 +31,7 @@ extension NotificationsInteractor: NotificationsBusinessLogic {
 			
 			DailyCellViewModel(title: NSLocalizedString("Notify beforehand",
 														comment: ""),
-							   icon: Icon(symbolName: "iphone.homebutton.radiowaves.left.and.right",
+							   icon: Icon(systemName: "iphone.homebutton.radiowaves.left.and.right",
 										  tileColor: .dailyAdaptiveRed),
 							   cellType: DailyNotificationsAlarmCell.self,
 							   isToggable: true,
@@ -39,12 +39,13 @@ extension NotificationsInteractor: NotificationsBusinessLogic {
 			
 			DailyCellViewModel(title: NSLocalizedString("Evening report",
 														comment: ""),
-							   icon: Icon(symbolName: "exclamationmark.bubble.fill",
+							   icon: Icon(systemName: "exclamationmark.bubble.fill",
 										  tileColor: .dailyAdaptiveBlue),
 							   cellType: DailyNotificationsReportCell.self,
 							   isToggable: true,
 							   cellPosition: .within),
 		]
-		presenter?.present(viewModels: viewModels, headerModel: headerModel)
+		presenter?.present(viewModels: viewModels,
+						   headerModel: headerModel)
 	}
 }

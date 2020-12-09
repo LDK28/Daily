@@ -12,8 +12,7 @@ class MainPageRouter: ProfileRouter, MainPageDataPassing {
 	weak var dataStore: MainPageDataStore?
 	
 	init(viewController: MainPageVC?, dataStore: MainPageDataStore?) {
-		super.init()
-		self.viewController = viewController
+		super.init(viewController: viewController)
 		self.dataStore = dataStore
 	}
 }

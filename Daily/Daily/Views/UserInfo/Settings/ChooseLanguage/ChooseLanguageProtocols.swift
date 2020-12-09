@@ -7,23 +7,20 @@
 
 import UIKit
 
-protocol ChooseLanguageDisplayLogic: AnyObject {
-  func displaySomething()
+protocol ChooseLanguageDisplayLogic: ProfileDisplayLogic {
 }
 
-protocol ChooseLanguageBusinessLogic {
-  func doSomething()
+protocol ChooseLanguageBusinessLogic: ProfileBusinessLogic {
 }
 
 protocol ChooseLanguageDataStore: AnyObject {
 	
 }
 
-protocol ChooseLanguagePresentationLogic {
-  func presentSomething()
+protocol ChooseLanguagePresentationLogic: ProfilePresentationLogic {
 }
 
-protocol ChooseLanguageRoutingLogic {
+protocol ChooseLanguageRoutingLogic: ProfileRoutingLogic {
 	
 }
 

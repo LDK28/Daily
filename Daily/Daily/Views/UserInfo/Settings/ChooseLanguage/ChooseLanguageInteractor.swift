@@ -16,7 +16,27 @@ class ChooseLanguageInteractor: ChooseLanguageDataStore {
 }
 
 extension ChooseLanguageInteractor: ChooseLanguageBusinessLogic {
-	func doSomething() {
-		
+	func fetchCells() {
+		let headerModel = ProfileModel(text: NSLocalizedString("Choose language",
+															   comment: ""),
+									   image: UIImage(systemName: "globe")?.withTintColor(.dailyTitleTextColor))
+		let viewModels = [
+			LanguageCellViewModel(language: .russian,
+								  cellViewModel: DailyCellViewModel(title: "Russian",
+																	icon: Icon(named: "Russia",
+																			   tileColor: .clear),
+																	cellType: DailyLanguageCell.self,
+																	isToggable: false,
+																	cellPosition: .within)),
+			LanguageCellViewModel(language: .english,
+								  cellViewModel: DailyCellViewModel(title: "English",
+																	icon: Icon(named: "USA",
+																			   tileColor: .clear),
+																	cellType: DailyLanguageCell.self,
+																	isToggable: false,
+																	cellPosition: .within))
+		]
+		presenter?.present(viewModels: viewModels,
+						   headerModel: headerModel)
 	}
 }

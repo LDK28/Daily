@@ -11,8 +11,7 @@ class SettingsRouter: ProfileRouter, SettingsDataPassing {
 	weak var dataStore: SettingsDataStore?
   
 	init(viewController: SettingsVC?, dataStore: SettingsDataStore?) {
-		super.init()
-		self.viewController = viewController
+		super.init(viewController: viewController)
 		self.dataStore = dataStore
 	}
 }

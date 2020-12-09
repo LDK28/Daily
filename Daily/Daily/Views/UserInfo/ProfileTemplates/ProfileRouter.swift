@@ -12,7 +12,11 @@ protocol ProfileRoutingLogic {
 }
 
 class ProfileRouter {
-	weak var viewController: UIViewController?
+	weak var viewController: ProfileTableVC?
+	
+	init(viewController: ProfileTableVC?) {
+		self.viewController = viewController
+	}
 }
 
 extension ProfileRouter: ProfileRoutingLogic {

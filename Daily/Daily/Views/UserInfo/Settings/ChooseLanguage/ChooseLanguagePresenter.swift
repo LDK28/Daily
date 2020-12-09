@@ -7,16 +7,9 @@
 
 import UIKit
 
-class ChooseLanguagePresenter: ChooseLanguageDataStore {
-	weak var viewController: ChooseLanguageDisplayLogic?
-	
-	init(viewController: ChooseLanguageDisplayLogic?) {
-		self.viewController = viewController
-	}
+class ChooseLanguagePresenter: ProfilePresenter, ChooseLanguageDataStore {
 }
 
 extension ChooseLanguagePresenter: ChooseLanguagePresentationLogic {
-	func presentSomething() {
-		
-	}
+
 }

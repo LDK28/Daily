@@ -14,16 +14,27 @@ struct Icon {
 	let symbolColor: UIColor
 	
 	
-	init(symbolName: String, tileColor: UIColor, symbolColor: UIColor = .white) {
+	init(systemName: String, tileColor: UIColor, symbolColor: UIColor = .white) {
 		self.tileColor = tileColor
 		self.symbolColor = symbolColor
 		
-		guard let symbol = UIImage(systemName: symbolName) else {
+		guard let symbol = UIImage(systemName: systemName) else {
 			self.symbol = nil
 			return
 		}
-		
-		self.symbol = symbol.withAlignmentRectInsets(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
+		self.symbol = symbol.withAlignmentRectInsets(UIEdgeInsets(top: 5,
+																  left: 5,
+																  bottom: 5,
+																  right: 5))
+	}
+	
+	init(named: String, tileColor: UIColor, symbolColor: UIColor = .white) {
+		self.tileColor = tileColor
+		self.symbolColor = symbolColor
+		self.symbol = UIImage(named: named)?.withAlignmentRectInsets(UIEdgeInsets(top: 5,
+																				  left: 5,
+																				  bottom: 5,
+																				  right: 5))
 	}
 }
 
@@ -56,15 +67,18 @@ class DailyCellViewModel: MainCellViewModel {
 		}
 	}
 	
+	/* want to make in convenience, but something goes wrong ((( */
+	init(cellViewModel: DailyCellViewModel) {
+		self.title = cellViewModel.title?.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
+		self.icon = cellViewModel.icon
+		self.cellType = cellViewModel.cellType
+		self.isToggable =  cellViewModel.isToggable
+		self.cellPosition = cellViewModel.cellPosition
+	}
+	
 	init(title: String?, icon: Icon?, cellType: UITableViewCell.Type, isToggable: Bool, cellPosition: CellPosition) {
-		if let title = title {
-			self.title = title.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
-		}
-		
-		if let icon = icon {
-			self.icon = icon
-		}
-		
+		self.title = title?.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
+		self.icon = icon
 		self.cellType = cellType
 		self.isToggable = isToggable
 		self.cellPosition = cellPosition

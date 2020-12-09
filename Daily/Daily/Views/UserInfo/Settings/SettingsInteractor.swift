@@ -21,19 +21,20 @@ extension SettingsInteractor: SettingsBusinessLogic {
 									   image: UIImage(systemName: "gearshape.fill")?.withTintColor(.dailyTitleTextColor))
 		let viewModels = [
 			DailyCellViewModel(title: NSLocalizedString("Notifications", comment: ""),
-							   icon: Icon(symbolName: "app.badge.fill",
+							   icon: Icon(systemName: "app.badge.fill",
 										  tileColor: .dailyAdaptiveOrange),
 							   cellType: DailySettingsNotificationsCell.self,
 							   isToggable: false,
 							   cellPosition: .within),
 
 			DailyCellViewModel(title: NSLocalizedString("Lanugage", comment: ""),
-							   icon: Icon(symbolName: "globe",
+							   icon: Icon(systemName: "globe",
 										  tileColor: .dailyAdaptiveBlue3),
 							   cellType: DailySettingsLanguageCell.self,
 							   isToggable: false,
 							   cellPosition: .within),
 		]
-		presenter?.present(viewModels: viewModels, headerModel: headerModel)
+		presenter?.present(viewModels: viewModels,
+						   headerModel: headerModel)
 	}
 }

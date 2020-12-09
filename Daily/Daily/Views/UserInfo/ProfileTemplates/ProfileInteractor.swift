@@ -11,16 +11,3 @@ protocol ProfileBusinessLogic {
 	func fetchCells()
 }
 
-class ProfileInteractor: SettingsDataStore {
-	var presenter: ProfilePresentationLogic?
-	
-	init(presenter: ProfilePresentationLogic?) {
-		self.presenter = presenter
-	}
-}
-
-extension ProfileInteractor: ProfileBusinessLogic {
-	@objc func fetchCells() {
-	}
-}
-

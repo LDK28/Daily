@@ -11,8 +11,7 @@ class NotificationsRouter: ProfileRouter, NotificationsDataPassing {
 	weak var dataStore: NotificationsDataStore?
   
 	init(viewController: NotificationsVC?, dataStore: NotificationsDataStore?) {
-		super.init()
-		self.viewController = viewController
+		super.init(viewController: viewController)
 		self.dataStore = dataStore
 	}
 }
