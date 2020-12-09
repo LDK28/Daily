@@ -213,7 +213,10 @@ extension OverlayVC {
 		tableView.tableHeaderView = textFieldView
 		textFieldView.headerTextField.delegate = self
 		tableView.tableHeaderView?.layer.cornerRadius = 10
-		tableView.tableFooterView = UIView(frame: .zero)
+		tableView.tableFooterView = UIView(frame: CGRect(x: 0,
+														 y: 0,
+														 width: tableView.frame.size.width,
+														 height: 1))
 	}
 	
 	func registerCellsInTableView() {

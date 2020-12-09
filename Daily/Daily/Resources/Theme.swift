@@ -7,16 +7,12 @@
 
 import UIKit
 
-
+// MARK: - Main And general
 extension UIColor {
 	
     static var dailyMainBackgroundColor: UIColor {
             colorForTheme(light: UIColor("D8F3FF"), dark: UIColor("034561"))
     }
-	
-	static var dailyDiaryTileColor: UIColor {
-		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))
-	}
 	
 	static var dailyTitleTextColor: UIColor {
 		colorForTheme(light: UIColor("0E79AB"), dark: UIColor("FFFFFE"))
@@ -40,6 +36,34 @@ extension UIColor {
 		colorForTheme(light: UIColor("0B3954"), dark: UIColor("82C1DF"))
 	}
 	
+	static var dailyPlusButtonBlackoutColor = UIColor("000000", alpha: 0.6)
+	
+	static var dailyMoreButtonBlackoutColor = UIColor("000000", alpha: 0.3)
+	
+	static var dailyShadowColor: CGColor {
+		colorForTheme(light: UIColor.black, dark: .clear).cgColor
+	}
+	
+	static var dailyPlaceholderColor = dailyOverlayTextFieldTextColor.withAlphaComponent(0.5)
+	
+	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
+		if #available(iOS 13, *) {
+			return UIColor.init { traitCollection in
+				return traitCollection.userInterfaceStyle == .dark ? dark : light
+			}
+		} else {
+			return light
+		}
+	}
+}
+
+//MARK: - Diary
+extension UIColor {
+
+	static var dailyDiaryTileColor: UIColor {
+		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))
+	}
+	
 	static var dailyNotificationClockOffColor: UIColor {
 		return dailySubtitleTextColor
 	}
@@ -55,7 +79,10 @@ extension UIColor {
 	static var dailyTaskTimeColor: UIColor {
 		colorForTheme(light: UIColor("2081AD"), dark: UIColor("DDD1EF"))
 	}
-	
+}
+
+//MARK: - Ideas
+extension UIColor {
 	static var dailyIdeasTileColor: UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.5), dark: UIColor("82C1DF", alpha: 0.5))
 	}
@@ -67,6 +94,8 @@ extension UIColor {
 	static var dailyInProcessProjectsCounterColor: UIColor {
 		colorForTheme(light: UIColor("FF375F"), dark: UIColor("FF376A"))
 	}
+	
+	static var dailyNoteTextFieldTextColor = dailyTextColor
 	
 	static var dailyRecentActionsTextColor = UIColor("0B3954", alpha: 0.6)
 	
@@ -89,37 +118,33 @@ extension UIColor {
 		colorForTheme(light: UIColor("0B3954", alpha: 0.25), dark: UIColor("82C1DF", alpha: 0.25))
 	}
 	
-	
-	static var dailyAdaptiveGreen = UIColor.systemGreen
-	
-	static var dailyAdaptiveRed: UIColor {
-		colorForTheme(light: UIColor("FF375F"), dark: UIColor("FF376A"))
+}
+
+//MARK: - Profile
+extension UIColor {
+	static var dailyProfileTileColor: UIColor {
+		colorForTheme(light: UIColor("0B3954").withAlphaComponent(0.05),
+					  dark: UIColor("82C1DF").withAlphaComponent(0.25))
 	}
-	
-	static var dailyAdaptiveBlue: UIColor {
-		colorForTheme(light: UIColor("0084FF"), dark: UIColor("3DA3FF"))
-	}
-	
-	static var dailyAdaptiveYellow: UIColor {
-		colorForTheme(light: UIColor("FFCC00"), dark: UIColor("FFD60A"))
-	}
-	
-	static var dailyPlusButtonBlackoutColor = UIColor("000000", alpha: 0.6)
-	
-	static var dailyMoreButtonBlackoutColor = UIColor("000000", alpha: 0.3)
-	
-	static var dailyShadowColor: CGColor {
-		colorForTheme(light: UIColor.black, dark: .clear).cgColor
-	}
-    
+}
+
+//MARK: - Calendar
+extension UIColor {
     static var dailyCalendarBackgroundColor: UIColor {
         colorForTheme(light: UIColor.white, dark: UIColor("1C1C1E"))
     }
-	
+}
+
+//MARK: - Login Page
+extension UIColor {
 	static var dailyLoginButtonColor = UIColor("82C1DF")
 	
 	static var dailySignupButtonColor = UIColor("82C1DF", alpha: 0.5)
 	
+}
+
+//MARK: - Overlay
+extension UIColor {
 	static var dailyOverlayButtonTextColor: UIColor {
 		colorForTheme(light: UIColor("292929"), dark: UIColor("F9F9F9"))
 	}
@@ -131,18 +156,42 @@ extension UIColor {
 	static var dailyOverlayTextFieldTextColor = dailyOverlayButtonTextColor
 	
 	static var dailyOverlayTextFieldColor = dailyOverlayButtonTileColor
+}
+
+//MARK: - Adaptive Colors
+extension UIColor {
+	static var dailyAdaptiveGreen = UIColor.systemGreen
 	
-	static var dailyNoteTextFieldTextColor = dailyTextColor
-	
-	static var dailyPlaceholderColor = dailyOverlayTextFieldTextColor.withAlphaComponent(0.5)
-	
-	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
-		if #available(iOS 13, *) {
-			return UIColor.init { traitCollection in
-				return traitCollection.userInterfaceStyle == .dark ? dark : light
-			}
-		} else {
-			return light
-		}
+	static var dailyAdaptiveRed: UIColor {
+		colorForTheme(light: UIColor("FF375F"), dark: UIColor("FF376A"))
 	}
+	
+	static var dailyAdaptiveBlue: UIColor {
+		colorForTheme(light: UIColor("0084FF"), dark: UIColor("3DA3FF"))
+	}
+	
+	static var dailyAdaptiveBlue2: UIColor {
+		colorForTheme(light: UIColor("5AC8FA"), dark: UIColor("64D2FF"))
+	}
+	
+	static var dailyAdaptiveBlue3: UIColor {
+		colorForTheme(light: UIColor("5856D6"), dark: UIColor("5E5CE6"))
+	}
+	
+	static var dailyAdaptiveDarkBlue = UIColor("0B3954")
+	
+	static var dailyAdaptiveYellow: UIColor {
+		colorForTheme(light: UIColor("FFCC00"), dark: UIColor("FFD60A"))
+	}
+	
+	static var dailyAdaptiveOrange: UIColor {
+		colorForTheme(light: UIColor("FF9500"), dark: UIColor("FF9F0A"))
+	}
+	
+	static var dailyAdaptivePink: UIColor {
+		colorForTheme(light: UIColor("AF52DE"), dark: UIColor("BF5AF2"))
+	}
+	
+	static var dailyAdaptiveGray = UIColor("AEAEB2")
+	
 }

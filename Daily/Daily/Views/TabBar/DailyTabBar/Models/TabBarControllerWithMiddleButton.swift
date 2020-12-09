@@ -33,7 +33,7 @@ class TabBarControllerWithMiddleButton: UITabBarController, UITabBarControllerDe
 		
 		NSLayoutConstraint.activate([
 			button.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
-			button.centerYAnchor.constraint(equalTo: tabBar.safeAreaLayoutGuide.centerYAnchor, constant: 2),
+			button.centerYAnchor.constraint(equalTo: tabBar.safeAreaLayoutGuide.centerYAnchor, constant: 1),
 			button.heightAnchor.constraint(equalToConstant: size),
 			button.widthAnchor.constraint(equalTo: button.heightAnchor)
 		])
@@ -66,7 +66,7 @@ class TabBarControllerWithMiddleButton: UITabBarController, UITabBarControllerDe
 									   withTitle: NSLocalizedString("Calendar", comment: ""),
 									   withImage: "calendar.circle.fill"),
 			
-			createNavigationController(for: UserInfoVC(),
+			createNavigationController(for: MainPageModule.build(),
 									   withTitle: NSLocalizedString("Profile", comment: ""),
 									   withImage: "person.crop.circle"),
 			

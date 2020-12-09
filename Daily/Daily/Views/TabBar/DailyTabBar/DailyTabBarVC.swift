@@ -11,7 +11,8 @@ import UIKit
 final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	var interactor: DailyTabBarBusinessLogic?
 	var router: (DailyTabBarRoutingLogic & DailyTabBarDataPassing)?
-  
+	weak var coordinator: DailyCoordinator?
+	
 	private let plusButton = PlusButton()
 	
 	private let blackoutView: UIView = {
@@ -44,7 +45,6 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 		newProjectButton.addTarget(self,
 								   action: #selector(didTapNewProjectButton),
 								   for: .touchUpInside)
-		
 		newTaskButton.addTarget(self,
 								action: #selector(didTapNewTaskButton),
 								for: .touchUpInside)
@@ -75,7 +75,6 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		interactor?.checkUserLoginStatus()
 	}
 	
 	@objc func didTapPlusButton() {
