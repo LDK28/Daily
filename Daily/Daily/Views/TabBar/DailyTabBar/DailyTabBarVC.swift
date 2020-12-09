@@ -45,7 +45,6 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 		newProjectButton.addTarget(self,
 								   action: #selector(didTapNewProjectButton),
 								   for: .touchUpInside)
-		
 		newTaskButton.addTarget(self,
 								action: #selector(didTapNewTaskButton),
 								for: .touchUpInside)

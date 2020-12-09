@@ -10,7 +10,7 @@ import UIKit
 protocol DailyUserNetworkRequest {
 	//MARK: Initial values
 	var userData: CurrentUser? { get set }
-	
+  
 	func loadUserData(completion: @escaping (Result<Void, DailyError>) -> ())
 	
 	func getName(completion: @escaping (Result<(UIImage?, Name?), DailyError>) -> ())
@@ -21,6 +21,6 @@ protocol DailyUserNetworkRequest {
 	func append(_ note: NoteBackendModel, completion: @escaping (Result<Void, DailyError>) -> ())
 	
 	func update(_ notes: [NoteBackendModel], completion: @escaping (Result<Void, DailyError>) -> ())
-	 
+  
 	func update(_ note: NoteBackendModel, at index: Int, completion:  @escaping (Result<Void, DailyError>) -> ())
 }

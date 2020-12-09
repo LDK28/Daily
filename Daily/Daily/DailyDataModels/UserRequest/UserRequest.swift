@@ -66,7 +66,7 @@ final class UserRequest: DailyUserNetworkRequest {
 		}
 		completion(.success((nil, userData.name)))
 	}
-	
+  
 	private init() {}
 }
 
