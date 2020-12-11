@@ -22,8 +22,6 @@ protocol DailyTabBarDataStore: AnyObject {
 
 protocol DailyTabBarPresentationLogic {
 	func prepareViewForRoutingToLoginScreen()
-	func present()
-	
 }
 
 protocol DailyTabBarRoutingLogic {

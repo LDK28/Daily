@@ -26,25 +26,26 @@ extension UITableViewCell {
 			icon.heightAnchor.constraint(equalTo: icon.widthAnchor).isActive = true
 		}
 		
-		if let titleView = titleView {
-			titleView.translatesAutoresizingMaskIntoConstraints = false
-			contentView.addSubview(titleView)
-			
-			titleView.leadingAnchor.constraint(equalTo: icon?.trailingAnchor ?? contentView.leadingAnchor, constant: 15).isActive = true
-			titleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-	
-		}
-		
 		if let switcher = switcher {
 			switcher.translatesAutoresizingMaskIntoConstraints = false
 			switcher.isHidden = true
 			switcher.onTintColor = .dailyAdaptiveBlue
 			contentView.addSubview(switcher)
-			
+	
 			switcher.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
 			switcher.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 			switcher.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
 			switcher.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+			
+		}
+		
+		if let titleView = titleView {
+			contentView.addSubview(titleView)
+			titleView.translatesAutoresizingMaskIntoConstraints = false
+			titleView.leadingAnchor.constraint(equalTo: icon?.trailingAnchor ?? contentView.leadingAnchor, constant: 15).isActive = true
+			titleView.trailingAnchor.constraint(equalTo: switcher?.leadingAnchor ?? contentView.trailingAnchor, constant: -15).isActive = true
+			titleView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+	
 		}
 	}
 	

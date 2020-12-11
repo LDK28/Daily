@@ -18,10 +18,11 @@ class DailyOrdinaryCell: DailyCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
 		titleLabel.textColor = .dailyOverlayButtonTextColor
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		titleLabel.adjustsFontSizeToFitWidth = true
 		titleLabel.font = .systemFont(ofSize: 16)
+		configureDailyCell(titleView: titleLabel, icon: icon, switcher: switcher)
 	}
 	
 	required init?(coder: NSCoder) {

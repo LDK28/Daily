@@ -9,7 +9,9 @@ import UIKit
 
 protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleRemindSwitcher()
+	
 	func didTapRepeatCell(at indexPath: IndexPath)
+	
 	func didTapDateCell(at indexPath: IndexPath)
 }
 

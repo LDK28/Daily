@@ -18,6 +18,8 @@ class MainTableVC: UITableViewController {
 		navigationController?.navigationBar.tintColor = .dailyTextColor
 		navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 		tableView.backgroundColor = .dailyMainBackgroundColor
+		tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
+		tableView.alwaysBounceVertical = false
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,9 @@ class MainTableVC: UITableViewController {
 		}
 		return UITableViewCell()
 	}
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
 }
 
 class MainVC: UIViewController {
@@ -46,5 +51,5 @@ class MainVC: UIViewController {
         super.viewDidLoad()
 		view.backgroundColor = .dailyMainBackgroundColor
     }
-
 }
+

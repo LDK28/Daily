@@ -102,7 +102,7 @@ class SignupVC: MainVC {
 							],
 							"email": email,
 							"password": password,
-							"notes": [NotesCellViewBackendModel]()
+							"notes": [NoteBackendModel]()
 						]
 					) { savingUserError in
 						if savingUserError != nil {
@@ -139,7 +139,8 @@ class SignupVC: MainVC {
 	}
 	
 	@objc func loginButtonTapped() {
-		navigationController?.popViewController(animated: true)
+		//navigationController?.popViewController(animated: true)
+		dismiss(animated: true, completion: nil)
 	}
 	
 	func configureElements() {
@@ -186,7 +187,7 @@ class SignupVC: MainVC {
 	
 	
 	func transitionToHome() {
-		dismiss(animated: true, completion: nil)
+		AppStatusSwitcher.shared.updateRootVC()
 	}
 	
 }

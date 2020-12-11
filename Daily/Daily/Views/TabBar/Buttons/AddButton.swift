@@ -23,9 +23,6 @@ final class AddButton: UIButton {
 		titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
 		titleLabel?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
 		imageView?.contentMode = .scaleAspectFit
-		
-		
-		
 	}
 	
 	required init?(coder: NSCoder) {

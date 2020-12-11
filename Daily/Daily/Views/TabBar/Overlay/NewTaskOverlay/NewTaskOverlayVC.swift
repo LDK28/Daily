@@ -22,14 +22,16 @@ class NewTaskOverlayVC: OverlayVC {
 		titleLabel.styleOverlayLabel(text: "Add new task")
 	}
 	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView,
+							didSelectRowAt indexPath: IndexPath) {
 		super.tableView(tableView, didSelectRowAt: indexPath)
-		if tableView.cellForRow(at: indexPath) as? DailyRepeatCell != nil {
+		switch cellsToDisplay[indexPath.section].cellViewModels[indexPath.row].cellType {
+		case is DailyRepeatCell.Type:
 			(interactor as? NewTaskOverlayInteractor)?.didTapRepeatCell(at: indexPath)
-		}
-		
-		if tableView.cellForRow(at: indexPath) as? DailyRequiredDateCell != nil {
+		case is DailyRequiredDateCell.Type:
 			(interactor as? NewTaskOverlayInteractor)?.didTapDateCell(at: indexPath)
+		default:
+			return
 		}
 	}
 }

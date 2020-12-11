@@ -13,6 +13,7 @@ class DailyTabBarModule {
 		let presenter = DailyTabBarPresenter(viewController: viewController)
 		let interactor = DailyTabBarInteractor(presenter: presenter, userData: nil)
 		let router = DailyTabBarRouter(viewController: viewController, dataStore: interactor)
+		
 		viewController.router = router
 		viewController.interactor = interactor
 

@@ -22,12 +22,8 @@ class IdeasVC: MainTableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.backButtonTitle = "Ideas"
         interactor?.fetchCells()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            
     }
     
     func configureTableView() {

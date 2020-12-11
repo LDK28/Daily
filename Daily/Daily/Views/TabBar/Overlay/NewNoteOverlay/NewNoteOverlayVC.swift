@@ -12,7 +12,7 @@ class NewNoteOverlayVC: OverlayVC {
 	var router: (NewNoteOverlayRoutingLogic & NewNoteOverlayDataPassing)?
   
 	private let noteTitleTextField = UITextField()
-	let descriptionTextView = UITextView()
+	private let descriptionTextView = UITextView()
 
 	override func loadView() {
 		super.loadView()
@@ -30,8 +30,11 @@ class NewNoteOverlayVC: OverlayVC {
 	override func styleUI() {
 		super.styleUI()
 		titleLabel.styleOverlayLabel(text: "Write new memo")
-		descriptionTextView.styleMultiLineTextView(placeholder: "Details")
 		tableView.separatorStyle = .none
+		descriptionTextView.styleMultiLineTextView(placeholder: "Details",
+												   fontSize: 18,
+												   backgroundColor: .dailyOverlayTextFieldColor,
+												   cornerRadius: 10)
 	}
 	
 	@objc func tappedSaveButton() {
@@ -44,22 +47,23 @@ class NewNoteOverlayVC: OverlayVC {
 	}
 }
 
+// MARK: - UITextViewDelegate
 extension NewNoteOverlayVC: UITextViewDelegate {
-
+	
 	func textViewDidBeginEditing(_ textView: UITextView) {
-		if textView.textColor != .dailyTextFieldTextColor {
+		if textView.textColor != .dailyOverlayTextFieldTextColor {
 			textView.text = nil
-			textView.textColor = .dailyTextFieldTextColor
+			textView.textColor = .dailyOverlayTextFieldTextColor
 		}
 	}
 
 	func textViewDidEndEditing(_ textView: UITextView) {
 		if textView.text.isEmpty {
-			textView.text = "Details"
-			textView.textColor = UIColor.systemGray2
+			textView.text = NSLocalizedString("Details", comment: "")
+			textView.textColor = UITextView.placeholderColor
 		}
 	}
-		
+	
 	func textViewDidChange(_ textView: UITextView) {
 		(interactor as? NewNoteOverlayInteractor)?.didEndEditingNote(text: textView.text)
 	}

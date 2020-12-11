@@ -14,10 +14,12 @@ class NewNoteOverlayModule {
 		let presenter = NewNoteOverlayPresenter(viewController: viewController, dataSource: dataSource)
 		let interactor = NewNoteOverlayInteractor(presenter: presenter, dataSource: dataSource)
 		let router = NewNoteOverlayRouter()
+		
 		router.viewController = viewController
 		router.dataStore = interactor
 		viewController.interactor = interactor
 		viewController.router = router
+		
 		return viewController
 	}
 }
