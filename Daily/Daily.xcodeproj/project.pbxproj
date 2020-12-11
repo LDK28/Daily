@@ -405,9 +405,9 @@
 		215BC99E2542D86D0069D30E /* Ideas */ = {
 			isa = PBXGroup;
 			children = (
-				05D634A2257E7F0B00FFF5E7 /* ProjectsMainScreen */,
 				056C15392574028500AE739E /* IdeasMainScreen */,
 				21EA5B3C2567072400F87D18 /* Notes */,
+				05D634A2257E7F0B00FFF5E7 /* ProjectsMainScreen */,
 			);
 			path = Ideas;
 			sourceTree = "<group>";
