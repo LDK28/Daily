@@ -50,6 +50,7 @@ final class UserRequest: DailyUserNetworkRequest {
 				completion(.failure(.couldnotFetchData))
 				return
 			}
+			
 			guard let decodedData = try? JSONDecoder().decode(CurrentUser.self, from: jsonData) else {
 				completion(.failure(.couldnotDecodeData))
 				return

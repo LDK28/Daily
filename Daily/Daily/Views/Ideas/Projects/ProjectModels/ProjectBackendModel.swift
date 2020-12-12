@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class ProjectBackendModel: Codable {
-    var projectID = UUID()
+	var projectID: UUID
     var title: String
 //    var items: [ProjectItem] = [
 //        ProjectItem(headerTitle: "Test",
@@ -26,10 +26,12 @@ class ProjectBackendModel: Codable {
     
     init(title: String) {
         self.title = title
+		self.projectID = UUID()
     }
     
     init(model: ProjectBackendModel) {
         self.title = model.title
+		self.projectID = model.projectID
     }
     
 }
