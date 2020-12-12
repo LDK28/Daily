@@ -73,8 +73,11 @@ final class UserRequest: DailyUserNetworkRequest {
 
 //MARK: - Calls to dataBase (private!)
 extension UserRequest {
-	internal func updateServerData(withUserID userID: String,
-								   completion: @escaping ((Result<Void, DailyError>) -> ())) {
+	internal func updateServerData(completion: @escaping ((Result<Void, DailyError>) -> ())) {
+		guard let userID = userID else {
+			completion(.failure(.userDoesNotExist))
+			return
+		}
 		let dataBase = Firestore.firestore()
 		let documentReference = dataBase.collection("users").document(userID)
 		if let encodedData = try? JSONEncoder().encode(UserRequest.shared.userData) {
