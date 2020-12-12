@@ -9,7 +9,8 @@ import UIKit
 
 class ProjectsInteractor: ProjectsDataStore {
     
-  var presenter: ProjectsPresentationLogic?
+    var projectBackendModels = [ProjectBackendModel]()
+    var presenter: ProjectsPresentationLogic?
     
     init(presenter: ProjectsPresentationLogic?) {
         self.presenter = presenter
@@ -17,6 +18,18 @@ class ProjectsInteractor: ProjectsDataStore {
 }
 
 extension ProjectsInteractor: ProjectsBusinessLogic {
+    func fetchLatestData() {
+        UserRequest.shared.getProjects { result in
+            switch result {
+            case .success(let projects):
+                self.projectBackendModels = projects
+            default:
+                /* handle errors lateron if needed */
+                return
+            }
+        }
+    }
+    
 	func fetchCells() {
         presenter?.present()
 	}

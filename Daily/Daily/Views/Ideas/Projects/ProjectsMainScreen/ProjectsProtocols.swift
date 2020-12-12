@@ -13,6 +13,7 @@ protocol ProjectsDisplayLogic: class {
 }
 
 protocol ProjectsBusinessLogic {
+    func fetchLatestData()
     func fetchCells()
 }
 

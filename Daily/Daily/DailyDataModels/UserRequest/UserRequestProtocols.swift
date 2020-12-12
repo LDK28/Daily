@@ -23,4 +23,7 @@ protocol DailyUserNetworkRequest {
 	func update(_ notes: [NoteBackendModel], completion: @escaping (Result<Void, DailyError>) -> ())
   
 	func update(_ note: NoteBackendModel, at index: Int, completion:  @escaping (Result<Void, DailyError>) -> ())
+    
+    //MARK: -Projects
+    func getProjects(completion: @escaping (Result<[ProjectBackendModel], DailyError>) -> ())
 }
