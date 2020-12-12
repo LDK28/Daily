@@ -8,7 +8,13 @@
 import UIKit
 
 class EditProjectInteractor: EditProjectDataStore {
+    //var project: ProjectBackendModel
 	var presenter: EditProjectPresentationLogic?
+    
+    init(presenter: EditProjectPresentationLogic?) {
+        self.presenter = presenter
+        //project = 
+    }
 }
 
 extension EditProjectInteractor: EditProjectBusinessLogic {

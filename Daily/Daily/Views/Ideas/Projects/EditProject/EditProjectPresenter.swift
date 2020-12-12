@@ -8,8 +8,12 @@
 import UIKit
 
 class EditProjectPresenter: EditProjectDataStore {
+    
 	weak var viewController: EditProjectDisplayLogic?
-	
+    
+    init(viewController: EditProjectDisplayLogic?) {
+        self.viewController = viewController
+    }
 }
 
 extension EditProjectPresenter: EditProjectPresentationLogic {
