@@ -62,7 +62,10 @@ extension NotesInteractor: NotesBusinessLogic {
 		case .unpin:
 			notesToUpdate = grabNotes(at: indices,
 									  shouldBePinned: false)
-			let indexAfterFirstPinnedNote = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
+			notes.forEach {
+				print("\($0.title)   \($0.isPinned)")
+			}
+			let indexAfterFirstPinnedNote = (notes.lastIndex(where: { $0.isPinned }) ?? -1) + 1
 			notesToUpdate.forEach {
 				notes.insert($0,
 							 at: indexAfterFirstPinnedNote)

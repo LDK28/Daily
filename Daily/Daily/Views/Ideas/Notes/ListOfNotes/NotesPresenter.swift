@@ -46,7 +46,7 @@ extension NotesPresenter: NotesPresentationLogic {
 		notes.forEach {
 			viewController.cellsToDisplay.append(
 				NoteCellViewModel(cellType: NotesCell.self,
-										backendModel: $0))
+								  backendModel: $0))
 		}
 	}
 }
