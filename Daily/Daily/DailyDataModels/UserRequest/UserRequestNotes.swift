@@ -18,7 +18,6 @@ extension UserRequest {
 
 	func append(_ note: NoteBackendModel, completion: @escaping (Result<Void, DailyError>) -> ()) {
 		guard
-			let userID = userID,
 			UserRequest.shared.userData != nil
 		else {
 			completion(.failure(.couldnotFindUserData))
@@ -26,7 +25,7 @@ extension UserRequest {
 		}
 		let indexToInsertAt = userData?.notes.firstIndex(where: { !$0.isPinned }) ?? 0
 		userData?.notes.insert(note, at: indexToInsertAt)
-		updateServerData(withUserID: userID) { result in
+		updateServerData() { result in
 			switch result {
 			case .success(()):
 				completion(.success(()))
@@ -39,14 +38,13 @@ extension UserRequest {
 	func update(_ notes: [NoteBackendModel],
 				completion: @escaping (Result<Void, DailyError>) -> ()) {
 		guard
-			let userID = userID,
 			UserRequest.shared.userData != nil
 		else {
 			completion(.failure(.couldnotFindUserData))
 			return
 		}
 		UserRequest.shared.userData?.notes = notes
-		updateServerData(withUserID: userID) { result in
+		updateServerData() { result in
 			switch result {
 			case .success(()):
 				completion(.success(()))
@@ -60,7 +58,6 @@ extension UserRequest {
 				at index: Int,
 				completion: @escaping (Result<Void, DailyError>) -> ()) {
 		guard
-			let userID = userID,
 			UserRequest.shared.userData != nil
 		else {
 			completion(.failure(.couldnotFindUserData))
@@ -71,7 +68,7 @@ extension UserRequest {
 			return
 		}
 		UserRequest.shared.userData?.notes[index] = note
-		updateServerData(withUserID: userID) { result in
+		updateServerData() { result in
 			switch result {
 			case .success(()):
 				completion(.success(()))
