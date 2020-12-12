@@ -10,6 +10,7 @@ import UIKit
 class ProjectsPresenter: ProjectsDataStore {
     
     weak var viewController: ProjectsDisplayLogic?
+    var projectTitles = [String]()
 	
     init(viewController: ProjectsDisplayLogic?) {
         self.viewController = viewController
@@ -17,13 +18,12 @@ class ProjectsPresenter: ProjectsDataStore {
 }
 
 extension ProjectsPresenter: ProjectsPresentationLogic {
-	func present() {
+    func present(projects: [ProjectBackendModel]) {
         viewController?.cellsToDisplay.removeAll()
         
-        viewController?.cellsToDisplay = [
-            ProjectsCellViewModel(title: "My Project 1", cellType: ProjectsCell.self),
-            ProjectsCellViewModel(title: "My Project 2", cellType: ProjectsCell.self),
-            ProjectsCellViewModel(title: "My Project 3", cellType: ProjectsCell.self)]
+        for project in projects {
+            viewController?.cellsToDisplay.append(ProjectsCellViewModel(title: project.title, projectID: project.projectID, cellType: ProjectsCell.self))
+        }
         
         viewController?.display()
 	}

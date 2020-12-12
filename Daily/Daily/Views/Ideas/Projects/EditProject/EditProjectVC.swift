@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProjectVC: UIViewController {
+class EditProjectVC: MainTableVC {
 	var interactor: EditProjectBusinessLogic?
 	var router: (EditProjectRoutingLogic & EditProjectDataPassing)?
   

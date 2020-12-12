@@ -19,5 +19,8 @@ class ProjectsRouter: ProjectsDataPassing {
 }
 
 extension ProjectsRouter: ProjectsRoutingLogic {
-	
+    func navigateTo() {
+        let vc = EditProjectModule.build()
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
 }

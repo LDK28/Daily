@@ -12,6 +12,7 @@ struct ProjectsCellViewModel: MainCellViewModel {
     var title: String
 //    var doneProjectTasks: Int
 //    var missedProjectTasks: Int
+    var projectID: UUID
     
     var cellType: UITableViewCell.Type
 }
