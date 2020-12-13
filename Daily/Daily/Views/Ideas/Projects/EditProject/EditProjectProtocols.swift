@@ -8,7 +8,9 @@
 import UIKit
 
 protocol EditProjectDisplayLogic: AnyObject {
-  func display(project: ProjectBackendModel)
+    func display()
+    func getProject(_ project: ProjectBackendModel)
+    var cellsToDisplay: [MainCellViewModel] { get set }
 }
 
 protocol EditProjectBusinessLogic {

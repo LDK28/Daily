@@ -40,7 +40,7 @@ class EditProjectVC: MainTableVC {
     func styleTableViewTitle() {
         let titleView = EditProjectTitleView(title: project?.title ?? "Project title")
         tableView.tableHeaderView = titleView
-        titleView.frame.size.height = 80
+        titleView.frame.size.height = 120
     }
     
     func styleTableView() {
@@ -53,13 +53,16 @@ class EditProjectVC: MainTableVC {
     }
     
     func registerCells() {
-        
+        tableView.register(ProjectItemCell.self, forCellReuseIdentifier: ProjectItemCell.cellIdentifier)
     }
   
 }
 
 extension EditProjectVC: EditProjectDisplayLogic {
-    func display(project: ProjectBackendModel) {
+    func getProject(_ project: ProjectBackendModel) {
         self.project = project
-	}
+    }
+    func display() {
+        tableView.reloadData()
+    }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ProjectItem: Codable {
+class ProjectItem: Codable {
     var id: UUID
     var headerTitle: String
     var subItems: [ProjectSubitem]

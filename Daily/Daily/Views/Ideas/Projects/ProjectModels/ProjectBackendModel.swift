@@ -19,6 +19,7 @@ class ProjectBackendModel: Codable {
 //                                       assignedDate: [:])
 //                    ])
 //    ]
+    var items = [ProjectItem]()
     
     static func ==(lhs: ProjectBackendModel, rhs: ProjectBackendModel) -> Bool {
         return lhs.projectID == rhs.projectID

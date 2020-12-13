@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ProjectSubitem: Codable {
+class ProjectSubitem: Codable {
     var id: UUID
     var title: String
     var isChecked: Bool
