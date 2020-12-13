@@ -12,19 +12,24 @@ class EditProjectVC: MainTableVC {
     
 	var interactor: EditProjectBusinessLogic?
 	var router: (EditProjectRoutingLogic & EditProjectDataPassing)?
+    
+    var project: ProjectBackendModel?
   
 	override func loadView() {
         super.loadView()
         
-        configureTableView()
-        styleTableViewTitle()
-        styleTableView()
-        registerCells()
 	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureTableView()
+        styleTableView()
+        registerCells()
+        
+        interactor?.fetchProjectData()
+        
+        styleTableViewTitle()
     }
     
     func configureTableView() {
@@ -33,7 +38,7 @@ class EditProjectVC: MainTableVC {
     }
     
     func styleTableViewTitle() {
-        let titleView = EditProjectTitleView(title: "Project Title")
+        let titleView = EditProjectTitleView(title: project?.title ?? "Project title")
         tableView.tableHeaderView = titleView
         titleView.frame.size.height = 80
     }
@@ -54,7 +59,7 @@ class EditProjectVC: MainTableVC {
 }
 
 extension EditProjectVC: EditProjectDisplayLogic {
-	func displaySomething() {
-	  
+    func display(project: ProjectBackendModel) {
+        self.project = project
 	}
 }

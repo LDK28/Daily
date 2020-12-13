@@ -26,7 +26,7 @@ protocol ProjectsPresentationLogic {
 }
 
 protocol ProjectsRoutingLogic {
-    func navigateTo()
+    func navigateTo(project: ProjectBackendModel)
 }
 
 protocol ProjectsDataPassing {

@@ -8,19 +8,19 @@
 import UIKit
 
 protocol EditProjectDisplayLogic: AnyObject {
-  func displaySomething()
+  func display(project: ProjectBackendModel)
 }
 
 protocol EditProjectBusinessLogic {
-  func doSomething()
+  func fetchProjectData()
 }
 
 protocol EditProjectDataStore: AnyObject {
-	
+    var projectBackendModel: ProjectBackendModel? { get set }
 }
 
 protocol EditProjectPresentationLogic {
-  func presentSomething()
+    func presentProject(_ project: ProjectBackendModel)
 }
 
 protocol EditProjectRoutingLogic {
@@ -29,4 +29,5 @@ protocol EditProjectRoutingLogic {
 
 protocol EditProjectDataPassing {
 	var dataStore: EditProjectDataStore? { get }
+    func getProjectModel(_ project: ProjectBackendModel)
 }

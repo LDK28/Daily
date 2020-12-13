@@ -7,17 +7,16 @@
 
 import UIKit
 
-class EditProjectPresenter: EditProjectDataStore {
-    
+class EditProjectPresenter {
 	weak var viewController: EditProjectDisplayLogic?
     
-    init(viewController: EditProjectDisplayLogic?) {
+    init(_ viewController: EditProjectDisplayLogic?) {
         self.viewController = viewController
     }
 }
 
 extension EditProjectPresenter: EditProjectPresentationLogic {
-	func presentSomething() {
-		
+	func presentProject(_ project: ProjectBackendModel) {
+        viewController?.display(project: project)
 	}
 }

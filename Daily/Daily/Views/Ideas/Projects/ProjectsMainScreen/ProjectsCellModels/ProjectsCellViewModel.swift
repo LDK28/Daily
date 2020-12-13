@@ -7,12 +7,20 @@
 
 import UIKit
 
-struct ProjectsCellViewModel: MainCellViewModel {
-    
-    var title: String
-//    var doneProjectTasks: Int
-//    var missedProjectTasks: Int
-    var projectID: UUID
-    
+class ProjectsCellViewModel: ProjectBackendModel, MainCellViewModel {
     var cellType: UITableViewCell.Type
+    
+    init(cellType: UITableViewCell.Type, model: ProjectBackendModel) {
+        self.cellType = cellType
+        super.init(model: model)
+    }
+    
+    init(cellType: UITableViewCell.Type, title: String) {
+        self.cellType = cellType
+        super.init(title: title)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }

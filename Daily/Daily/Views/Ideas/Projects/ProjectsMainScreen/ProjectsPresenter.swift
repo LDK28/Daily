@@ -22,7 +22,7 @@ extension ProjectsPresenter: ProjectsPresentationLogic {
         viewController?.cellsToDisplay.removeAll()
         
         for project in projects {
-            viewController?.cellsToDisplay.append(ProjectsCellViewModel(title: project.title, projectID: project.projectID, cellType: ProjectsCell.self))
+            viewController?.cellsToDisplay.append(ProjectsCellViewModel(cellType: ProjectsCell.self, title: project.title))
         }
         
         viewController?.display()

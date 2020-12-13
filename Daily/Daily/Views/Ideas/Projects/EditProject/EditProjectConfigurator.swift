@@ -11,9 +11,9 @@ class EditProjectModule {
     static func build() -> EditProjectVC {
         
         let viewController = EditProjectVC()
-        let presenter = EditProjectPresenter(viewController: viewController)
-        let interactor = EditProjectInteractor(presenter: presenter)
-        let router = EditProjectRouter()
+        let presenter = EditProjectPresenter(viewController)
+        let interactor = EditProjectInteractor(presenter)
+        let router = EditProjectRouter(viewController: viewController, dataStore: interactor)
         
         viewController.router = router
         viewController.interactor = interactor

@@ -437,13 +437,13 @@
 		05327F5525842DB000887D21 /* EditProject */ = {
 			isa = PBXGroup;
 			children = (
+				05327F8925861D2400887D21 /* EditProjectModels */,
 				05327F4625842D9F00887D21 /* EditProjectPresenter.swift */,
 				05327F4725842D9F00887D21 /* EditProjectRouter.swift */,
 				05327F4825842D9F00887D21 /* EditProjectProtocols.swift */,
 				05327F4925842D9F00887D21 /* EditProjectInteractor.swift */,
 				05327F4A25842D9F00887D21 /* EditProjectVC.swift */,
 				05327F4B25842D9F00887D21 /* EditProjectConfigurator.swift */,
-				05327F8425854BAA00887D21 /* EditProjectTitleView.swift */,
 			);
 			path = EditProject;
 			sourceTree = "<group>";
@@ -456,6 +456,14 @@
 				05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */,
 			);
 			path = ProjectModels;
+			sourceTree = "<group>";
+		};
+		05327F8925861D2400887D21 /* EditProjectModels */ = {
+			isa = PBXGroup;
+			children = (
+				05327F8425854BAA00887D21 /* EditProjectTitleView.swift */,
+			);
+			path = EditProjectModels;
 			sourceTree = "<group>";
 		};
 		054BEA2F256980700059FEDC /* IdeasModels */ = {
