@@ -1,13 +1,13 @@
 //
-//  EditProjectTitleView.swift
+//  EditProjectHeaderView.swift
 //  Daily
 //
-//  Created by julie on 12.12.2020.
+//  Created by julie on 15.12.2020.
 //
 
 import UIKit
 
-class EditProjectTitleView: UIView {
+class EditProjectHeaderView: UIView {
     
     let titleImageView = UIImageView(image: UIImage(systemName: "person.fill"))
     let titleLabel = UILabel()

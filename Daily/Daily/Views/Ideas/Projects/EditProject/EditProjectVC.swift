@@ -38,9 +38,12 @@ class EditProjectVC: MainTableVC {
     }
     
     func styleTableViewTitle() {
-        let titleView = EditProjectTitleView(title: project?.title ?? "Project title")
-        tableView.tableHeaderView = titleView
-        titleView.frame.size.height = 120
+        let headerView = EditProjectHeaderView(title: project?.title ?? "Project title")
+        tableView.tableHeaderView = headerView
+        headerView.frame.size.height = 120
+        let footerView = EditProjectFooterView(title: "Add new item")
+        tableView.tableFooterView = footerView
+        footerView.frame.size.height = 120
     }
     
     func styleTableView() {

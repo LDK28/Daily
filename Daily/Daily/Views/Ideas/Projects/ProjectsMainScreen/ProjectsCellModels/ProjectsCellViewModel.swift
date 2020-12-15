@@ -15,9 +15,9 @@ class ProjectsCellViewModel: ProjectBackendModel, MainCellViewModel {
         super.init(model: model)
     }
     
-    init(cellType: UITableViewCell.Type, title: String) {
+    init(cellType: UITableViewCell.Type, title: String, items: [ProjectItem]) {
         self.cellType = cellType
-        super.init(title: title)
+        super.init(title: title, items: items)
     }
     
     required init(from decoder: Decoder) throws {

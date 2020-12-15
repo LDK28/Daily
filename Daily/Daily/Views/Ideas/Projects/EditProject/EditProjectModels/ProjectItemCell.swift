@@ -12,44 +12,62 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     func setViewModel(_ viewModel: MainCellViewModel?) {
         guard let viewModel = viewModel as? ProjectItemViewModel else { return }
         itemLabel.text = viewModel.headerTitle
+        //viewModel.subItems
     }
     
     static let cellIdentifier = "ProjectItemCell"
     
-    var isDone = Bool()
+    var isDone: Bool = false
     
     let labelBackgroundView = UIView()
     let itemLabel = UILabel()
-    let missedItemImage = UIImage(systemName: "circle")
-    let doneItemImage = UIImage(systemName: "circle.fill")
-    var itemImageView = UIImageView(image: UIImage(systemName: "circle"))
+    let statusButton = UIButton()
+    let missedItemImage = UIImage(systemName: "circle",
+                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
+    let doneItemImage = UIImage(systemName: "circle.fill",
+                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
+    let dividerView = UIView()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(labelBackgroundView)
-        labelBackgroundView.addSubview(itemImageView)
+        labelBackgroundView.addSubview(statusButton)
         labelBackgroundView.addSubview(itemLabel)
+        labelBackgroundView.addSubview(dividerView)
         
-        styleCell()
-        
+        configureCell()
         configureLabelBackgroundView()
-        configureItemImageView()
         configureItemLabel()
-        
-        styleLabel()
-        
+        configureStatusButton()
+        configureDividerView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        if selected {
-            itemImageView = UIImageView(image: doneItemImage)
+    
+    
+    @objc func didTapStatusButton(sender: UIButton) {
+        if isDone {
+            statusButton.setImage(missedItemImage, for: .normal)
+            isDone = false
+        } else {
+            statusButton.setImage(doneItemImage, for: .normal)
+            isDone = true
         }
-    } //doesn't work
+     }
+}
+
+extension ProjectItemCell {
+    
+    func configureCell() {
+        selectionStyle = .none
+        backgroundColor = .clear
+        heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
     
     func configureLabelBackgroundView() {
         NSLayoutConstraint.activate([
@@ -62,36 +80,35 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
         labelBackgroundView.styleView(backgroundColor: .dailyProjectTileColor, cornerRadius: 10)
     }
     
-    func configureItemImageView() {
-        //itemImageView = UIImageView(image: missedItemImage)
-        itemImageView.styleImageView(color: .dailyTextColor)
+    func configureStatusButton() {
         NSLayoutConstraint.activate([
-            itemImageView.centerYAnchor.constraint(equalTo: labelBackgroundView.centerYAnchor),
-            itemImageView.leadingAnchor.constraint(equalTo: labelBackgroundView.leadingAnchor, constant: 10),
-            itemImageView.heightAnchor.constraint(equalToConstant: 20),
-            itemImageView.widthAnchor.constraint(equalTo: itemImageView.heightAnchor)
+            statusButton.topAnchor.constraint(equalTo: labelBackgroundView.topAnchor, constant: 16),
+            statusButton.leadingAnchor.constraint(equalTo: labelBackgroundView.leadingAnchor, constant: 16),
+            statusButton.heightAnchor.constraint(equalToConstant: 25),
+            statusButton.widthAnchor.constraint(equalTo: statusButton.heightAnchor)
         ])
+        statusButton.styleButton()
+        statusButton.setImage(missedItemImage, for: .normal)
+        statusButton.addTarget(self, action: #selector(didTapStatusButton), for: .touchUpInside)
     }
     
     func configureItemLabel() {
         NSLayoutConstraint.activate([
-            itemLabel.centerYAnchor.constraint(equalTo: itemImageView.centerYAnchor),
-            itemLabel.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 10),
-            itemLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            itemLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            itemLabel.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
+            itemLabel.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10)
         ])
-    }
-    
-    func styleCell() {
-        selectionStyle = .none
-        backgroundColor = .clear
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
-    }
-    
-    func styleLabel() {
-        if let labelFont = UIFont(name: "Stolzl-Book", size: 18) {
+        if let labelFont = UIFont(name: "Stolzl-Medium", size: 24) {
             itemLabel.styleLabel(font: labelFont, text: itemLabel.text, textAlignment: .left)
         }
     }
     
+    func configureDividerView() {
+        NSLayoutConstraint.activate([
+            dividerView.topAnchor.constraint(equalTo: itemLabel.bottomAnchor, constant: 10),
+            dividerView.leadingAnchor.constraint(equalTo: statusButton.leadingAnchor),
+            dividerView.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -10), //change later for ...
+            dividerView.heightAnchor.constraint(equalToConstant: 0.5)
+        ])
+        dividerView.styleView(backgroundColor: .dailyTextColor, cornerRadius: 0)
+    }
 }

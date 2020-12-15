@@ -17,9 +17,13 @@ class EditProjectPresenter {
 
 extension EditProjectPresenter: EditProjectPresentationLogic {
 	func presentProject(_ project: ProjectBackendModel) {
-        viewController?.getProject(project)
         
-        viewController?.cellsToDisplay.append(ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: "To do magic!", subItems: []))
+        viewController?.cellsToDisplay.removeAll()
+        
+        viewController?.getProject(project)
+        for item in project.items {
+            viewController?.cellsToDisplay.append(ProjectItemViewModel(cellType: ProjectItemCell.self, copiedItem: item))
+        }
         
         viewController?.display()
 	}
