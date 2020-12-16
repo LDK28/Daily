@@ -22,11 +22,11 @@ protocol ProjectsDataStore {
 }
 
 protocol ProjectsPresentationLogic {
-    func present()
+    func present(projects: [ProjectBackendModel])
 }
 
 protocol ProjectsRoutingLogic {
-	//func navigateTo()
+    func navigateTo(project: ProjectBackendModel)
 }
 
 protocol ProjectsDataPassing {

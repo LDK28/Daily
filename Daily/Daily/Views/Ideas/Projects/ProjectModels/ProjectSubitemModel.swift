@@ -7,11 +7,11 @@
 
 import UIKit
 
-struct ProjectSubitem: Codable {
+class ProjectSubitem: Codable {
     var id: UUID
     var title: String
     var isChecked: Bool
-    var assignedDate: [String : Date]
+    var assignedDate: [String : Date]?
     
     init(title: String, isChecked: Bool, assignedDate: [String : Date]) {
         self.title = title

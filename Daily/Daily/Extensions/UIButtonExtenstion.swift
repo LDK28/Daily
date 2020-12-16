@@ -35,9 +35,9 @@ extension UIButton {
         }
     }
 	
-    func setTitleWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, for state: UIControl.State) {
+    func setTitleWithImage(text: String, with font: UIFont, in color: UIColor = .dailyTextColor, image: UIImage, for state: UIControl.State, imageFirst: Bool = false) {
         let buttonLabel = UILabel()
-        buttonLabel.styleLabelWithImage(text: text, with: font, in: color, image: image)
+        buttonLabel.styleLabelWithImage(text: text, with: font, in: color, image: image, imageFirst: imageFirst)
         setAttributedTitle(buttonLabel.attributedText, for: state)
     }
 	

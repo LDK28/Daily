@@ -54,7 +54,8 @@ class ProjectsVC: MainTableVC {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // guard let selectedCellModel = cellsToDisplay[indexPath.row] as? ProjectsCellViewModel else { return }
+        guard let selectedCellModel = cellsToDisplay[indexPath.row] as? ProjectBackendModel else { return }
+        router?.navigateTo(project: selectedCellModel)
     }
   
 }

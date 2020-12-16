@@ -31,6 +31,6 @@ extension ProjectsInteractor: ProjectsBusinessLogic {
     }
     
 	func fetchCells() {
-        presenter?.present()
+        presenter?.present(projects: projectBackendModels)
 	}
 }

@@ -10,6 +10,7 @@
 ####
 # Xcode temporary files that should never be committed
 *~.nib
+*Podfile.lock
 
 #####
 # DotEnv files

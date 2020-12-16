@@ -19,11 +19,8 @@ class ProjectsCell: UITableViewCell, MainCellProtocol {
     let titleLabel = UILabel()
     let labelBackgroundView = UIView()
     
-    //let isGroupProject = Bool()
-    
     let singleProjectImageView = UIImageView(image: UIImage(systemName: "person.fill",
                                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .medium)))
-    //let groupProjectImageView = UIImageView(image: UIImage(systemName: "person.2.fill"))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -102,7 +99,7 @@ extension ProjectsCell {
     }
     
     func styleTitleLabel() {
-        if let labelFont = UIFont(name: "Stolzl-Regular", size: 24) {
+        if let labelFont = UIFont(name: "Stolzl-Book", size: 24) {
             titleLabel.styleLabel(font: labelFont, text: titleLabel.text ?? "", textAlignment: .left)
             titleLabel.addShadow()
         }
