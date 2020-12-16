@@ -77,7 +77,7 @@ extension ProjectItemCell {
             labelBackgroundView.heightAnchor.constraint(equalToConstant: 80),
             labelBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
-        labelBackgroundView.styleView(backgroundColor: .dailyProjectTileColor, cornerRadius: 10)
+        labelBackgroundView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10)
     }
     
     func configureStatusButton() {
@@ -97,7 +97,7 @@ extension ProjectItemCell {
             itemLabel.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
             itemLabel.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10)
         ])
-        if let labelFont = UIFont(name: "Stolzl-Medium", size: 24) {
+        if let labelFont = UIFont(name: "Stolzl-Book", size: 22) {
             itemLabel.styleLabel(font: labelFont, text: itemLabel.text, textAlignment: .left)
         }
     }

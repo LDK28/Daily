@@ -15,5 +15,7 @@ class NewProjectOverlayRouter: NewProjectOverlayDataPassing {
 }
 
 extension NewProjectOverlayRouter: NewProjectOverlayRoutingLogic {
-	
+    func navigateToProjects() {
+        
+    }
 }

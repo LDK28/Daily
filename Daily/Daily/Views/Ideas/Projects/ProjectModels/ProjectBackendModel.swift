@@ -17,7 +17,7 @@ class ProjectBackendModel: Codable {
         return lhs.projectID == rhs.projectID
     }
     
-    init(title: String, items: [ProjectItem]) {
+    init(title: String, items: [ProjectItem] = []) {
         self.projectID = UUID()
         self.title = title
         self.items = items
