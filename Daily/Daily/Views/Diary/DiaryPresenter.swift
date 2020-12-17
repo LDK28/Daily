@@ -1,5 +1,5 @@
 import Foundation
-
+import UIKit
 class DiaryPresenter {
     
     // MARK: - External vars
@@ -9,9 +9,13 @@ class DiaryPresenter {
 // MARK: - Presentation logic
 extension DiaryPresenter: DiaryPresentationLogic {
     
-    func present(data: [DiaryCellModel]) {
-        let viewModel = data.map { model -> DiaryCellModel in
-            let cellModel = DiaryCellModel(time: model.time, taskName: model.taskName, taskDescription: model.taskDescription, progress: model.progress, notification: model.notification)
+    func present(data: [DiaryBackendModel]) {
+        let viewModel = data.map { model -> DiaryCellViewModel in
+            let cellModel = DiaryCellViewModel(time: model.time,
+                                               title: model.title,
+                                               description: model.description,
+                                               isMade: model.isMade,
+                                               shouldRemind: model.shouldRemind)
             
             return cellModel
         }

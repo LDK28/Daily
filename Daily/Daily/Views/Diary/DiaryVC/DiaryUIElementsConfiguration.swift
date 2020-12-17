@@ -60,7 +60,10 @@ extension DiaryVC {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView(frame: .zero)
-        tableView.rowHeight = UITableView.automaticDimension
+        
+        // MARK: - Incorrect work with automaticDimension
+        tableView.rowHeight = 200 //UITableView.automaticDimension
+        
         tableView.estimatedRowHeight = 200
         
         tableView.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.identifier)

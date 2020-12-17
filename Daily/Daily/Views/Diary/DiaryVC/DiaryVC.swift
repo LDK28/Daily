@@ -7,7 +7,7 @@ class DiaryVC: MainVC {
     internal var subheaderLabel = UILabel()
     internal let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     
-    var dataToDisplay = [DiaryCellModel]()
+    var dataToDisplay = [DiaryCellViewModel]()
     private var interactor: DiaryBusinessLogic?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -23,7 +23,7 @@ class DiaryVC: MainVC {
     private func setup() {
         let viewController = self
         let presenter = DiaryPresenter()
-        let interactor = DiaryInteractor()
+        let interactor = DiaryInteractor(presenter: presenter)
         interactor.presenter = presenter
         presenter.viewController = viewController
         viewController.interactor = interactor
@@ -44,9 +44,12 @@ class DiaryVC: MainVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchDiary()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.fetchLatestData()
+    }
 }
 
 // MARK: - UITableViewDataSource & Delegate implementation
@@ -88,7 +91,7 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension DiaryVC: DiaryDisplayLogic {
-    func display(data: [DiaryCellModel]) {
+    func display(data: [DiaryCellViewModel]) {
         dataToDisplay.removeAll()
         dataToDisplay.append(contentsOf: data)
         tableView.reloadData()

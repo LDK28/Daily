@@ -1,31 +1,29 @@
 import Foundation
 import UIKit
+import Firebase
 
 class DiaryInteractor {
-    
-    // MARK: - External vars
     var presenter: DiaryPresentationLogic?
+    internal var tasks = [DiaryBackendModel]()
+    
+    init(presenter: DiaryPresentationLogic?) {
+        self.presenter = presenter
+    }
 }
 
 // MARK: - Business logic
 extension DiaryInteractor: DiaryBusinessLogic {
     
-    func fetchDiary() {
-        
-        var backendResponce = [DiaryCellModel]()
-        
-        let model = DiaryCellModel(time: "2:28",
-                                   taskName: "Task",
-                                   taskDescription: "Loreum ipsum",
-                                   progress: false,
-                                   notification: true )
-        
-        backendResponce.append(model)
-        backendResponce.append(model)
-        backendResponce.append(model)
-        backendResponce.append(model)
-        backendResponce.append(model)
-
-        presenter?.present(data: backendResponce)
+    func fetchLatestData() {
+        UserRequest.shared.getTasks { result in
+            switch result {
+            case .success(let tasks):
+                self.tasks = tasks
+                self.presenter?.present(data: tasks)
+            default:
+                /* handle errors lateron if needed */
+                return
+            }
+        }
     }
 }

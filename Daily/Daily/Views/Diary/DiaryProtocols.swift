@@ -1,13 +1,22 @@
 import Foundation
 
 protocol DiaryDisplayLogic: class {
-    func display(data: [DiaryCellModel])
+    func display(data: [DiaryCellViewModel])
 }
 
 protocol DiaryPresentationLogic {
-    func present(data: [DiaryCellModel])
+    func present(data: [DiaryBackendModel])
 }
 
 protocol DiaryBusinessLogic {
-    func fetchDiary()
+    func fetchLatestData()
+}
+
+// Зачем???
+protocol DiaryDataStore: AnyObject {
+    var tasks: [DiaryBackendModel] { get set }
+}
+
+protocol DiaryDataPassing {
+    var dataStore: DiaryDataStore? { get }
 }

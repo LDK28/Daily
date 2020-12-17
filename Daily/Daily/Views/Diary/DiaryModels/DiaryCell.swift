@@ -4,7 +4,7 @@ import UIKit
 class DiaryCell: UITableViewCell {
     static let identifier = "TaskTableViewCell"
         
-    let progressButton: UIButton = {
+    private let progressButton: UIButton = {
         let button = UIButton()
         button.isSelected = false
         button.setImage(UIImage(systemName: "circle"), for: .normal)
@@ -32,7 +32,7 @@ class DiaryCell: UITableViewCell {
         return description
     }()
     
-    let alarmButton: UIButton = {
+    private let alarmButton: UIButton = {
         let button = UIButton()
         button.isSelected = false
         button.setImage(UIImage(systemName: "alarm.fill"), for: .normal)
@@ -44,7 +44,7 @@ class DiaryCell: UITableViewCell {
         return button
     }()
     
-    let moreButton: UIButton = {
+    private let moreButton: UIButton = {
         let button = UIButton()
         button.isSelected = false
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
@@ -55,7 +55,6 @@ class DiaryCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -143,19 +142,20 @@ class DiaryCell: UITableViewCell {
             alarmButton.widthAnchor.constraint(equalToConstant: 27),
             alarmButton.heightAnchor.constraint(equalToConstant: 27),
         ])
+        
     }
     
-    func setup(data: DiaryCellModel) {
-        taskName.text = data.taskName
-        taskDescription.text = data.taskDescription
-        if data.notification == true {
+    func setup(data: DiaryCellViewModel) {
+        taskName.text = data.title
+        taskDescription.text = data.description
+        if data.shouldRemind == true {
             alarmButton.isSelected = true
             alarmButton.tintColor = .dailyAdaptiveBlue
         } else {
             alarmButton.isSelected = false
             alarmButton.tintColor = .dailyDiaryTileElementColor
         }
-        if data.progress == true {
+        if data.isMade == true {
             progressButton.isSelected = true
             progressButton.tintColor = .dailyAdaptiveBlue
         } else {
