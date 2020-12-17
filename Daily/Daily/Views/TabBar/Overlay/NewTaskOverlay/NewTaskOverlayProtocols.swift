@@ -7,19 +7,27 @@
 
 import UIKit
 
+protocol NewTaskOverlayDisplayLogic: OverlayDisplayLogic {
+    func askRouterToNavigateToDiary()
+}
+
 protocol NewTaskOverlayBusinessLogic: OverlayBusinessLogic {
 	func didToggleRemindSwitcher()
 	
 	func didTapRepeatCell(at indexPath: IndexPath)
 	
 	func didTapDateCell(at indexPath: IndexPath)
+    
+    func didTapSaveButton()
 }
 
 protocol NewTaskOverlayPresentationLogic: OverlayPresentationLogic {
 	func updateRepeatCellViewModel(at indexPath: IndexPath)
+    func prepareViewForRoutingToDiary()
 }
 
 protocol NewTaskOverlayRoutingLogic {
+    func navigateToDiary()
 }
 
 protocol NewTaskOverlayDataPassing {

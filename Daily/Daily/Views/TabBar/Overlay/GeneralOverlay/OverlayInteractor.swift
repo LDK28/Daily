@@ -29,6 +29,7 @@ extension OverlayInteractor: OverlayBusinessLogic {
 	
 	func didChangeTitle(text: String?) {
 		dataSource.title = text
+        print(dataSource.title ?? "😹")
 	}
 	
 	func didChangeValueInTimePickerCell(newTime: Date) {

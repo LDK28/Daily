@@ -15,5 +15,9 @@ class NewTaskOverlayRouter: NewTaskOverlayDataPassing {
 }
 
 extension NewTaskOverlayRouter: NewTaskOverlayRoutingLogic {
-	
+    func navigateToDiary() {
+        guard let tabBarController = viewController?.tabBarController else { return }
+        tabBarController.selectedIndex = 0
+        return
+    }
 }
