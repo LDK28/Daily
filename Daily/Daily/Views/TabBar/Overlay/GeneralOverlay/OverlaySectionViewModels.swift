@@ -18,14 +18,14 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 	var cellViewModels: [DailyCellViewModel] =
 		[
 			DailyDateAndTimeCellViewModel(title: "Date",
-										  icon: Icon(symbolName: "calendar.badge.clock",
+										  icon: Icon(systemName: "calendar.badge.clock",
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyOptionalDateCell.self,
 										  isToggable: true,
 										  cellPosition: .first),
 			
 			DailyDateAndTimeCellViewModel(title: "Time",
-										  icon: Icon(symbolName: "clock.fill",
+										  icon: Icon(systemName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
 										  isToggable: true,
@@ -43,7 +43,7 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 	var cellViewModels: [DailyCellViewModel] =
 		[
 				DailyCellViewModel(title: "Team project",
-							   icon: Icon(symbolName: "person.2.fill",
+							   icon: Icon(systemName: "person.2.fill",
 										  tileColor: .dailyAdaptiveGreen),
 							   cellType: DailyTeamProjectCell.self,
 							   isToggable: true,
@@ -63,14 +63,14 @@ class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
 	var cellViewModels: [DailyCellViewModel] =
 		[
 			DailyDateAndTimeCellViewModel(title: "Date",
-										  icon: Icon(symbolName: "calendar.badge.clock",
+										  icon: Icon(systemName: "calendar.badge.clock",
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyRequiredDateCell.self,
 										  isToggable: false,
 										  cellPosition: .first),
 				
 			DailyDateAndTimeCellViewModel(title: "Time",
-										  icon: Icon(symbolName: "clock.fill",
+										  icon: Icon(systemName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
 										  isToggable: true,
@@ -88,7 +88,7 @@ class RemindViewModel: DailySectionViewModel {
 	var cellViewModels: [DailyCellViewModel] =
 		[
 				DailyCellViewModel(title: "Remind",
-							   icon: Icon(symbolName: "alarm.fill",
+							   icon: Icon(systemName: "alarm.fill",
 										  tileColor: .dailyAdaptiveYellow),
 							   cellType: DailyRemindCell.self,
 							   isToggable: true,
@@ -106,7 +106,7 @@ class RepeatViewModel: DailySectionViewModel {
 	var cellViewModels: [DailyCellViewModel] =
 		[
 			DailyRepeatCellViewModel(title: "Repeat",
-								   icon: Icon(symbolName: "repeat",
+								   icon: Icon(systemName: "repeat",
 											  tileColor: .dailyAdaptiveGreen),
 								   cellType: DailyRepeatCell.self,
 								   isToggable: false,
