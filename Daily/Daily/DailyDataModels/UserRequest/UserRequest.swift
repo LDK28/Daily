@@ -19,6 +19,7 @@ enum DailyError: Error {
 	case couldnotEncodeData
 	case couldnotFetchData
 	case wrongNoteIndex
+    case wrongTaskIndex
 }
 
 final class UserRequest: DailyUserNetworkRequest {

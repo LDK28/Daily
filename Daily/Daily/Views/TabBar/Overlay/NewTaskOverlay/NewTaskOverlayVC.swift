@@ -11,11 +11,18 @@ import UIKit
 class NewTaskOverlayVC: OverlayVC {
 	
 	var router: (NewTaskOverlayRoutingLogic & NewTaskOverlayDataPassing)?
+    
+    private let taskTitleTextField = UITextField()
   
 	override func loadView() {
 		super.loadView()
 		styleUI()
 	}
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+    }
 	
 	override func styleUI() {
 		super.styleUI()
@@ -34,10 +41,30 @@ class NewTaskOverlayVC: OverlayVC {
 			return
 		}
 	}
+    
+    @objc func tappedSaveButton() {
+        saveButton.tapAnimation { [weak self] in
+            guard let self = self else { return }
+            (self.interactor as? NewTaskOverlayInteractor)?.didTapSaveButton()
+            self.remove()
+            NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
+        }
+    }
 }
 
 extension NewTaskOverlayVC: DailyRemindCellDelegate {
+    
 	func didToggleRemindState() {
 		(interactor as? NewTaskOverlayInteractor)?.didToggleRemindSwitcher()
 	}
+    
+    func didToggleTimeState() {
+        (interactor as? NewTaskOverlayInteractor)?.didToggleTimeSwitcher()
+    }
+}
+
+extension NewTaskOverlayVC: NewTaskOverlayDisplayLogic {
+    func askRouterToNavigateToDiary() {
+        router?.navigateToDiary()
+    }
 }

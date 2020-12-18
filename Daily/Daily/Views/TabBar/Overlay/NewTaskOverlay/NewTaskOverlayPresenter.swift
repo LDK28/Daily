@@ -11,7 +11,11 @@ class NewTaskOverlayPresenter: OverlayPresenter {
 }
 
 extension NewTaskOverlayPresenter: NewTaskOverlayPresentationLogic {
-	
+    	
+    func prepareViewForRoutingToDiary() {
+        (viewController as? NewTaskOverlayDisplayLogic)?.askRouterToNavigateToDiary()
+    }
+    
 	override func updateDateInDateCell() {
 		updateDateAndTimeCellViewModels(withCellOfType: DailyRequiredDateCell.self, withNewDateAndTime: dataSource.assignedDay)
 	}

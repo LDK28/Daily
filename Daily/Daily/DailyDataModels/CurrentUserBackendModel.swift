@@ -14,6 +14,7 @@ struct CurrentUser: Codable {
 	var email: String?
 	var password: String
 	var notes: [NoteBackendModel]
+    var tasks: [DiaryBackendModel]
 }
 
 struct Name: Codable {

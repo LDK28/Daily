@@ -14,6 +14,16 @@ extension UIColor {
             colorForTheme(light: UIColor("D8F3FF"), dark: UIColor("034561"))
     }
 	
+
+	static var dailyDiaryTileColor: UIColor {
+		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))
+	}
+    
+    static var dailyDiaryTileElementColor: UIColor {
+        colorForTheme(light: UIColor("000000"), dark: UIColor("FFFFFF"))
+    }
+	
+
 	static var dailyTitleTextColor: UIColor {
 		colorForTheme(light: UIColor("0E79AB"), dark: UIColor("FFFFFE"))
 	}
