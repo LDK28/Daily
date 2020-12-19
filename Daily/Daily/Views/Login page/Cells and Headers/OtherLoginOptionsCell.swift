@@ -21,47 +21,34 @@ class OtherLoginOptionsCell: UITableViewCell, MainCellProtocol {
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Book", size: 18),
 							  text: viewModel.text)
 	}
-	
-	private func createPath() -> UIBezierPath {
-		let path = UIBezierPath()
-		path.move(to: CGPoint(x: 10,
-							  y: contentView.center.y))
-		
-		path.addLine(to: CGPoint(x: 50,
-								 y: contentView.center.y))
-		
-		path.move(to: CGPoint(x: 150,
-							  y: contentView.center.y))
-		
-		path.addLine(to: CGPoint(x: -10,
-								 y: contentView.center.y))
-		
-		return path
-	}
-	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		addLineLayer()
-	}
-	
-	private func addLineLayer() {
-		let shapeLayer = CAShapeLayer()
-		shapeLayer.path = createPath().cgPath
-		shapeLayer.strokeColor = UIColor.dailySeparatorColor.cgColor
-		shapeLayer.lineWidth = 2
-		
-		contentView.layer.addSublayer(shapeLayer)
-	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		backgroundColor = .clear
 		selectedBackgroundView = UIView()
 		contentView.addSubview(titleLabel)
+		
+		let leftLineView = UIView()
+		let rightLineView = UIView()
+		[leftLineView, rightLineView].forEach {
+			$0.translatesAutoresizingMaskIntoConstraints = false
+			$0.backgroundColor = .dailySeparatorColor
+			contentView.addSubview($0)
+		}
 		NSLayoutConstraint.activate([
 			titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
 			titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-			titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+			titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+			
+			leftLineView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+			leftLineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			leftLineView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -10),
+			leftLineView.heightAnchor.constraint(equalToConstant: 2),
+			
+			rightLineView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+			rightLineView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
+			rightLineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+			rightLineView.heightAnchor.constraint(equalTo: leftLineView.heightAnchor)
 		])
 		
 	}

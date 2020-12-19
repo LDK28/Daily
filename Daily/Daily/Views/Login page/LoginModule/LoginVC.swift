@@ -56,6 +56,10 @@ class LoginVC: MainTableVC {
 		errorLabel.text = message
 		errorLabel.alpha = 1
 	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+	}
   
 }
 
@@ -78,6 +82,7 @@ extension LoginVC {
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.delaysContentTouches = false
+		tableView.showsVerticalScrollIndicator = false
 		tableView.separatorStyle = .none
 		tableView.register(TextFieldCell.self,
 						   forCellReuseIdentifier: TextFieldCell.cellIdentifier)
