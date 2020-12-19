@@ -85,6 +85,8 @@ extension LoginVC {
 						   forCellReuseIdentifier: LoginButtonCell.cellIdentifier)
 		tableView.register(SignupButtonCell.self,
 						   forCellReuseIdentifier: SignupButtonCell.cellIdentifier)
+		tableView.register(OtherLoginOptionsCell.self,
+						   forCellReuseIdentifier: OtherLoginOptionsCell.cellIdentifier)
 	}
 		
 	func styleElements() {

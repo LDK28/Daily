@@ -28,7 +28,7 @@ class TextFieldCell: UITableViewCell, MainCellProtocol {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		backgroundColor = .clear
-		selectedBackgroundView = .none
+		selectedBackgroundView = UIView()
 		contentView.addSubview(textField)
 		NSLayoutConstraint.activate([
 			textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),

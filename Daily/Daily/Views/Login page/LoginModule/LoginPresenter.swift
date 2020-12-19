@@ -34,7 +34,10 @@ extension LoginPresenter: LoginPresentationLogic {
 			
 			ButtonCellViewModel(cellType: SignupButtonCell.self,
 								title: "Sign up",
-								backgroundColor: .dailySignupButtonColor)
+								backgroundColor: .dailySignupButtonColor),
+			
+			OtherLoginOptionsCellViewModel(cellType: OtherLoginOptionsCell.self,
+										   text: NSLocalizedString("Or", comment: ""))
 		]
 		viewController?.displayCells()
 	}

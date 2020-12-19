@@ -46,6 +46,8 @@ extension UIColor {
 	
 	static var dailyPlaceholderColor = dailyOverlayTextFieldTextColor.withAlphaComponent(0.5)
 	
+	static var dailySeparatorColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.25)
+	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {
 			return UIColor.init { traitCollection in

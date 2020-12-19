@@ -27,7 +27,7 @@ class ButtonCell: UITableViewCell, MainCellProtocol {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		backgroundColor = .clear
 		contentView.addSubview(button)
-		selectedBackgroundView = .none
+		selectedBackgroundView = UIView()
 		NSLayoutConstraint.activate([
 			button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
