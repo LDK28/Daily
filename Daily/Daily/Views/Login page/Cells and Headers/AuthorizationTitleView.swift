@@ -14,6 +14,7 @@ class AuthorizationTitleView: UIView {
 		label.styleLabel(font: UIFont(name: "Stolzl-Light", size: 38),
 								 text: text,
 								 textAlignment: .center)
+		label.adjustsFontSizeToFitWidth = true
 		addSubview(label)
 		let topAnchorConstant = UIScreen.main.bounds.height * 1 / 10
 		NSLayoutConstraint.activate([
