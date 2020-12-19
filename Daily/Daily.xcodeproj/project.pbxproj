@@ -256,7 +256,6 @@
 		05D634D0257ECFF100FFF5E7 /* ProjectsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsConfigurator.swift; sourceTree = "<group>"; };
 		05D634DE257EEEE000FFF5E7 /* ProjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
 		05D634E3257EEEF800FFF5E7 /* ProjectsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCellViewModel.swift; sourceTree = "<group>"; };
-		210C95CF258DF45B006B2EE0 /* TextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
 		210C95D9258DF475006B2EE0 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		210C95E1258E00DA006B2EE0 /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		210C95E6258E02D6006B2EE0 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
@@ -685,7 +684,6 @@
 				21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */,
 				21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */,
 				21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */,
-				210C95CF258DF45B006B2EE0 /* TextFieldCell.h */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";

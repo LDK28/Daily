@@ -37,7 +37,18 @@ extension LoginPresenter: LoginPresentationLogic {
 								backgroundColor: .dailySignupButtonColor),
 			
 			OtherLoginOptionsCellViewModel(cellType: OtherLoginOptionsCell.self,
-										   text: NSLocalizedString("You also can", comment: ""))
+										   text: NSLocalizedString("You can also", comment: "")),
+			
+			ButtonCellViewModel(cellType: SignupButtonCell.self,
+								title: " Sign in with Apple",
+								backgroundColor: .white,
+								foregroundColor: .black),
+			
+			ButtonCellViewModel(cellType: ContinueWithoutLoginInCell.self,
+								title: NSLocalizedString("Continue without creating account", comment: ""),
+								backgroundColor: .clear,
+								foregroundColor: .dailyPlaceholderColor)
+			
 		]
 		viewController?.displayCells()
 	}

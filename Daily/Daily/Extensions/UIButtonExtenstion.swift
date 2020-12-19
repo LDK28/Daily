@@ -8,13 +8,14 @@
 import UIKit
 
 extension UIButton {
-	func styleAccountButton(title: String, backgroundColor: UIColor, foregroundColor: UIColor = .dailyTextColor) {
+	func styleAccountButton(title: String,
+							backgroundColor: UIColor,
+							foregroundColor: UIColor = .dailyTextColor) {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(NSLocalizedString(title, comment: "Account button title"), for: .normal)
 		self.backgroundColor = backgroundColor
-		self.tintColor = .dailyTextColor
-		self.setTitleColor(.dailyTextColor, for: .normal)
+		self.setTitleColor(foregroundColor, for: .normal)
 		self.titleLabel?.font = UIFont(name: "Stolzl-Book", size: 18)
 		self.titleLabel?.adjustsFontSizeToFitWidth = true
 		self.layer.cornerRadius = 5

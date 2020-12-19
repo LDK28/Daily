@@ -42,7 +42,7 @@ extension UITextField {
 	
 	private func standartStyling(placeholder: String) {
 		self.translatesAutoresizingMaskIntoConstraints = false
-		self.layer.cornerRadius = 10
+		self.layer.cornerRadius = 5
 		self.placeholder = NSLocalizedString(placeholder, comment: "placeholder for textField")
 		self.leftViewMode = .always
 		self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))

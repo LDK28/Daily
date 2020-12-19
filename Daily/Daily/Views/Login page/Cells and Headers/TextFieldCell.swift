@@ -27,6 +27,7 @@ class TextFieldCell: UITableViewCell, MainCellProtocol {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		textField.delegate = self
 		backgroundColor = .clear
 		selectedBackgroundView = UIView()
 		contentView.addSubview(textField)
@@ -43,4 +44,11 @@ class TextFieldCell: UITableViewCell, MainCellProtocol {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+}
+
+extension TextFieldCell: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
 }

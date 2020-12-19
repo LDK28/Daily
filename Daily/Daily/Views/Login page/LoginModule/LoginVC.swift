@@ -69,6 +69,7 @@ extension LoginVC: LoginDisplayLogic {
 	}
 	
 	func handleValidationResponse(message: String) {
+		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		showError(message)
 	}
 	
@@ -92,6 +93,8 @@ extension LoginVC {
 						   forCellReuseIdentifier: SignupButtonCell.cellIdentifier)
 		tableView.register(OtherLoginOptionsCell.self,
 						   forCellReuseIdentifier: OtherLoginOptionsCell.cellIdentifier)
+		tableView.register(ContinueWithoutLoginInCell.self,
+						   forCellReuseIdentifier: ContinueWithoutLoginInCell.cellIdentifier)
 	}
 		
 	func styleElements() {
