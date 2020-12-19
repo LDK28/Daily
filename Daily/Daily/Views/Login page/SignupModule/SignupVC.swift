@@ -35,6 +35,7 @@ extension SignupVC: FirstNameTextFieldDelegate,
 
 extension SignupVC: SignupButtonDelegate {
 	func signupButtonTapped() {
+		tableView.endEditing(true)
 		(interactor as? SignupBusinessLogic)?.validateFields()
 	}
 }

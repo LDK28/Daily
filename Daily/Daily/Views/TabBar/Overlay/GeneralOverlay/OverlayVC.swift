@@ -20,6 +20,7 @@ class OverlayVC: UIViewController {
 	
 	override func loadView() {
 		super.loadView()
+		tableView.setAndLayoutTableHeaderView(header: textFieldView)
 		configureUI()
 	}
 	
@@ -207,12 +208,7 @@ extension OverlayVC {
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
-		tableView.layer.cornerRadius = 10
-		
-		textFieldView.frame.size = CGSize(width: tableView.frame.width, height: 45)
-		tableView.tableHeaderView = textFieldView
 		textFieldView.headerTextField.delegate = self
-		tableView.tableHeaderView?.layer.cornerRadius = 10
 		tableView.tableFooterView = UIView(frame: CGRect(x: 0,
 														 y: 0,
 														 width: tableView.frame.size.width,

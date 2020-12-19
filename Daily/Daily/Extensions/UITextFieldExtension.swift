@@ -13,7 +13,8 @@ extension UITextField {
 						isFirstLetterAutoCapitalized: Bool,
 						isSecuredString: Bool)  {
 		
-		self.standartStyling(placeholder: placeholder)
+		self.standartStyling(placeholder: placeholder,
+							 cornerRadius: 5)
 		self.overrideUserInterfaceStyle = .light
 		
 		if isFirstLetterAutoCapitalized {
@@ -26,8 +27,11 @@ extension UITextField {
 	}
 	
 	func styleOverlayTextField(placeholder: String) {
-		self.standartStyling(placeholder: placeholder)
-		self.font = .systemFont(ofSize: 28, weight: .semibold)
+		self.standartStyling(placeholder:
+								placeholder, cornerRadius: 10)
+		
+		self.font = .systemFont(ofSize: 28,
+								weight: .semibold)
 	
 	}
 	
@@ -42,9 +46,10 @@ extension UITextField {
 		self.translatesAutoresizingMaskIntoConstraints = false
 	}
 	
-	private func standartStyling(placeholder: String) {
+	private func standartStyling(placeholder: String,
+								 cornerRadius: CGFloat) {
 		self.translatesAutoresizingMaskIntoConstraints = false
-		self.layer.cornerRadius = 5
+		self.layer.cornerRadius = cornerRadius
 		self.placeholder = NSLocalizedString(placeholder, comment: "placeholder for textField")
 		self.leftViewMode = .always
 		self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))

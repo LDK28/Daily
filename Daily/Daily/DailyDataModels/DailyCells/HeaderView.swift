@@ -20,7 +20,8 @@ class HeaderTextFieldView: UIView {
 			headerTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
 			headerTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
 			headerTextField.topAnchor.constraint(equalTo: topAnchor),
-			headerTextField.bottomAnchor.constraint(equalTo: bottomAnchor)
+			headerTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
+			headerTextField.heightAnchor.constraint(equalToConstant: 45)
 		])
 		
 	}

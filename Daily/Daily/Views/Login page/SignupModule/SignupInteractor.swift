@@ -135,6 +135,7 @@ extension SignupInteractor: SignupBusinessLogic {
 																							comment: ""))
 					}
 				}
+				self.presenter?.presentValidationMessage(message: nil)
 			}
 		}
 	}
