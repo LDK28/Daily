@@ -86,6 +86,12 @@
 		215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC0A255D7DEE00CD3939 /* DailyTeamProjectCell.swift */; };
 		215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */; };
 		215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */; };
+		21631DE4258D3ACC00F8A1C0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */; };
+		21631DE5258D3ACC00F8A1C0 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */; };
+		21631DE6258D3ACC00F8A1C0 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE0258D3ACC00F8A1C0 /* LoginProtocols.swift */; };
+		21631DE7258D3ACC00F8A1C0 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */; };
+		21631DE8258D3ACC00F8A1C0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE2258D3ACC00F8A1C0 /* LoginVC.swift */; };
+		21631DE9258D3ACC00F8A1C0 /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE3258D3ACC00F8A1C0 /* LoginConfigurator.swift */; };
 		2171A618257943DD00D8AD76 /* EditNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171A612257943DD00D8AD76 /* EditNotePresenter.swift */; };
 		2171A619257943DD00D8AD76 /* EditNoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171A613257943DD00D8AD76 /* EditNoteRouter.swift */; };
 		2171A61A257943DD00D8AD76 /* EditNoteProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171A614257943DD00D8AD76 /* EditNoteProtocols.swift */; };
@@ -162,7 +168,6 @@
 		21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */; };
 		21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64255254AFC0600564B78 /* UIStackViewExtension.swift */; };
 		21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */; };
-		21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8D52545CAC400E08CD2 /* LoginVC.swift */; };
 		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
 		21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3D2567073700F87D18 /* NotesPresenter.swift */; };
 		21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3E2567073700F87D18 /* NotesRouter.swift */; };
@@ -288,6 +293,12 @@
 		215DFC0A255D7DEE00CD3939 /* DailyTeamProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTeamProjectCell.swift; sourceTree = "<group>"; };
 		215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTimeAndTimePickerCells.swift; sourceTree = "<group>"; };
 		215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateAndDatePickerCells.swift; sourceTree = "<group>"; };
+		21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		21631DE0258D3ACC00F8A1C0 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		21631DE2258D3ACC00F8A1C0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		21631DE3258D3ACC00F8A1C0 /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		2171A612257943DD00D8AD76 /* EditNotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotePresenter.swift; sourceTree = "<group>"; };
 		2171A613257943DD00D8AD76 /* EditNoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteRouter.swift; sourceTree = "<group>"; };
 		2171A614257943DD00D8AD76 /* EditNoteProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteProtocols.swift; sourceTree = "<group>"; };
@@ -370,7 +381,6 @@
 		21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenstion.swift; sourceTree = "<group>"; };
 		21E64255254AFC0600564B78 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		21E8C8D52545CAC400E08CD2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		21EA5B3D2567073700F87D18 /* NotesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
 		21EA5B3E2567073700F87D18 /* NotesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
@@ -644,6 +654,19 @@
 				215615E82543449E005AB2DF /* Buttons */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		21631DDD258D3ABC00F8A1C0 /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				21631DE0258D3ACC00F8A1C0 /* LoginProtocols.swift */,
+				21631DE3258D3ACC00F8A1C0 /* LoginConfigurator.swift */,
+				21631DE2258D3ACC00F8A1C0 /* LoginVC.swift */,
+				21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */,
+				21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */,
+				21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */,
+			);
+			path = LoginModule;
 			sourceTree = "<group>";
 		};
 		2171A60D2579435600D8AD76 /* ListOfNotes */ = {
@@ -970,7 +993,7 @@
 		21E8C8D42545CA8F00E08CD2 /* Login page */ = {
 			isa = PBXGroup;
 			children = (
-				21E8C8D52545CAC400E08CD2 /* LoginVC.swift */,
+				21631DDD258D3ABC00F8A1C0 /* LoginModule */,
 				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
 			);
 			path = "Login page";
@@ -1200,6 +1223,7 @@
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
+				21631DE4258D3ACC00F8A1C0 /* LoginPresenter.swift in Sources */,
 				21F7288F257FB9CE006297A1 /* ProfileHelpProtocols.swift in Sources */,
 				054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */,
 				05327F5025842D9F00887D21 /* EditProjectVC.swift in Sources */,
@@ -1249,6 +1273,7 @@
 				21E1D02625403975006A4206 /* SceneDelegate.swift in Sources */,
 				05D634D6257ECFF200FFF5E7 /* ProjectsConfigurator.swift in Sources */,
 				05D634D4257ECFF200FFF5E7 /* ProjectsProtocols.swift in Sources */,
+				21631DE8258D3ACC00F8A1C0 /* LoginVC.swift in Sources */,
 				21F39A90258147C400DD4F27 /* LanguageCellViewModel.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
@@ -1257,6 +1282,7 @@
 				2117339F2580D1F800C72192 /* Headers.swift in Sources */,
 				2171A618257943DD00D8AD76 /* EditNotePresenter.swift in Sources */,
 				210EC1652580EBE0000E9578 /* NotificationsProtocols.swift in Sources */,
+				21631DE9258D3ACC00F8A1C0 /* LoginConfigurator.swift in Sources */,
 				2193C741257E96F1006F5B74 /* UserRequestNotes.swift in Sources */,
 				21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */,
 				21F72880257FACC3006297A1 /* ProfileTableVC.swift in Sources */,
@@ -1284,11 +1310,13 @@
 				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21F7289F257FB9EC006297A1 /* ProfileAchievementsInteractor.swift in Sources */,
+				21631DE5258D3ACC00F8A1C0 /* LoginRouter.swift in Sources */,
 				05327F8E258652D400887D21 /* ProjectItemCell.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */,
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				05D634D3257ECFF100FFF5E7 /* ProjectsVC.swift in Sources */,
+				21631DE6258D3ACC00F8A1C0 /* LoginProtocols.swift in Sources */,
 				2171A61D257943DD00D8AD76 /* EditNoteConfigurator.swift in Sources */,
 				2171A61B257943DD00D8AD76 /* EditNoteInteractor.swift in Sources */,
 				210EC1682580EBE0000E9578 /* NotificationsConfigurator.swift in Sources */,
@@ -1310,6 +1338,7 @@
 				210EC1762580EC10000E9578 /* ChooseLanguageInteractor.swift in Sources */,
 				21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */,
 				052171AD2588839800C33C3A /* EditProjectFooterView.swift in Sources */,
+				21631DE7258D3ACC00F8A1C0 /* LoginInteractor.swift in Sources */,
 				21F72891257FB9CE006297A1 /* ProfileHelpVC.swift in Sources */,
 				21F0F8F72544CF8200B5D6FB /* MainVC.swift in Sources */,
 				21F728AE257FB9F9006297A1 /* SettingsInteractor.swift in Sources */,
@@ -1329,7 +1358,6 @@
 				21CC5E6425645B08009C1D8E /* NewNoteOverlayConfigurator.swift in Sources */,
 				215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */,
 				21F728AF257FB9F9006297A1 /* SettingsVC.swift in Sources */,
-				21E8C8D62545CAC400E08CD2 /* LoginVC.swift in Sources */,
 				21F7289C257FB9EC006297A1 /* ProfileAchievementsPresenter.swift in Sources */,
 				215646C325588AF7007264D4 /* NewNoteOverlayModel.swift in Sources */,
 				21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */,

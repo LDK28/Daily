@@ -2,17 +2,17 @@
 //  LoginVC.swift
 //  Daily
 //
-//  Created by Арсений Токарев on 25.10.2020.
+//  Created by Арсений Токарев on 18.12.2020.
+//  Copyright (c) 2020. All rights reserved.
 //
 
 import UIKit
-import FirebaseAuth
-import Firebase
 
-
-final class LoginVC: MainVC {
+class LoginVC: MainVC {
 	weak var coordinator: DailyCoordinator?
-
+	var interactor: LoginBusinessLogic?
+	var router: (LoginRoutingLogic & LoginDataPassing)?
+	
 	private let emailField = UITextField()
 	private let passwordField = UITextField()
 	private let loginButton = UIButton(type: .system)
@@ -43,64 +43,50 @@ final class LoginVC: MainVC {
 		
 		styleElements()
 	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+  
+	override func viewDidLoad() {
+    super.viewDidLoad()
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		navigationController?.setNavigationBarHidden(true, animated: true)
+		view.subviews
+			.compactMap{ $0 as? UITextField }
+			.forEach {
+				$0.text = nil
+			}
 	}
 	
-	
 	@objc func didTapLoginButton() {
-		
-		let validationError = validateFields()
-		
-		if validationError != nil {
-			showError(validationError!)
-		} else {
-			//create cleaned versions of the text field
-			let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-			let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-			
-			//Sign in the user
-			Auth.auth().signIn(withEmail: email, password: password) { result, userLoginError in
-				
-				if userLoginError != nil {
-					//Couldnt sign in
-					self.showError(userLoginError?.localizedDescription ?? "Error")
-					
-				} else {
-					AppStatusSwitcher.shared.updateRootVC()
-				}
-			}
-		}
+		interactor?.validateFields(email: emailField.text,
+								   password: passwordField.text)
 	}
 	
 	@objc func didTapSignupButton() {
-		//navigationController?.pushViewController(SignupVC(), animated: true)
-		present(SignupVC(), animated: true, completion: nil)
-	}
-	
-	func validateFields() -> String? {
-		guard emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != "" && passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
-		else {
-			return "Please fill in all fields"
-		}
-		return nil
+		router?.navigateTo(.signupScreen)
 	}
 	
 	func showError(_ message: String) {
 		errorLabel.text = message
 		errorLabel.alpha = 1
 	}
+  
+}
+
+extension LoginVC: LoginDisplayLogic {
+	func handleValidationResponse(message: String) {
+		showError(message)
+	}
 	
-	
+	func routeToApp() {
+		router?.navigateTo(.app)
+	}
+}
+
+extension LoginVC {
 	func configureElements() {
 		NSLayoutConstraint.activate([
 			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
@@ -112,28 +98,27 @@ final class LoginVC: MainVC {
 			emailField.heightAnchor.constraint(equalToConstant: 40),
 		])
 	}
-	
-	func styleElements() {
-		//Text Fields
-		emailField.styleTextField(placeholder: "Email", isFirstLetterAutoCapitalized: true, isSecuredString: false)
-		passwordField.styleTextField(placeholder: "Password", isFirstLetterAutoCapitalized: false, isSecuredString: true)
 		
-		//Buttons
+	func styleElements() {
+		emailField.styleTextField(placeholder: "Email",
+								  isFirstLetterAutoCapitalized: true,
+								  isSecuredString: false)
+		passwordField.styleTextField(placeholder: "Password",
+									 isFirstLetterAutoCapitalized: false,
+									 isSecuredString: true)
+		
 		loginButton.styleAccountButton(title: "Log in", backgroundColor: .dailyLoginButtonColor)
 		signupButton.styleAccountButton(title: "Sign up", backgroundColor: .dailySignupButtonColor)
-		
-		//Labels
-		if let greetingLabelFont = UIFont(name: "Stolzl-Light", size: 32) {
-			greetingLabel.styleLabel(font: greetingLabelFont, text: "Welcome to Daily")
-		}
-		
-		if let errorLabelFont = UIFont(name: "Stolzl-book", size: 16) {
-			errorLabel.styleLabel(font: errorLabelFont, text: "", textAlignment: .left, textColor: .dailyAdaptiveRed)
-			errorLabel.alpha = 0
-		}
+		greetingLabel.styleLabel(font: UIFont(name: "Stolzl-Light", size: 32),
+								 text: "Welcome to Daily")
+		errorLabel.styleLabel(font: UIFont(name: "Stolzl-book", size: 16),
+							  text: "",
+							  textAlignment: .left,
+							  textColor: .dailyAdaptiveRed,
+							  numberOfLines: 0)
+		errorLabel.alpha = 0
 		
 		
-		//Stack Views
 		textFieldsStack.styleStackView(spacing: 10, axis: .vertical)
 		buttonsStack.styleStackView(spacing: 20, axis: .vertical)
 		mainStack.styleStackView(spacing: 30, axis: .vertical, distribution: .fillProportionally)
