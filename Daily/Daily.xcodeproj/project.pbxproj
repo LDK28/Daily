@@ -104,6 +104,12 @@
 		2171A61D257943DD00D8AD76 /* EditNoteConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171A617257943DD00D8AD76 /* EditNoteConfigurator.swift */; };
 		217892B62581213F0003D1AB /* AppStatusSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217892B52581213F0003D1AB /* AppStatusSwitcher.swift */; };
 		217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */; };
+		2190D6EC258E454E002EA3EF /* AuthorizationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */; };
+		2190D6FA258E5E06002EA3EF /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6F4258E5E06002EA3EF /* AuthorizationPresenter.swift */; };
+		2190D6FC258E5E06002EA3EF /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6F6258E5E06002EA3EF /* AuthorizationProtocols.swift */; };
+		2190D6FE258E5E06002EA3EF /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6F8258E5E06002EA3EF /* AuthorizationVC.swift */; };
+		2190D710258E5F3B002EA3EF /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D70F258E5F3B002EA3EF /* AuthorizationInteractor.swift */; };
+		2190D722258E6C34002EA3EF /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D71C258E6C34002EA3EF /* AuthorizationRouter.swift */; };
 		2193C741257E96F1006F5B74 /* UserRequestNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193C740257E96F1006F5B74 /* UserRequestNotes.swift */; };
 		2193C747257E971A006F5B74 /* UserRequestProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193C746257E971A006F5B74 /* UserRequestProtocols.swift */; };
 		2198887425757AFF00198443 /* UIElementsInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198887325757AFF00198443 /* UIElementsInteraction.swift */; };
@@ -315,6 +321,12 @@
 		2171A617257943DD00D8AD76 /* EditNoteConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteConfigurator.swift; sourceTree = "<group>"; };
 		217892B52581213F0003D1AB /* AppStatusSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatusSwitcher.swift; sourceTree = "<group>"; };
 		217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAbstractCells.swift; sourceTree = "<group>"; };
+		2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCell.swift; sourceTree = "<group>"; };
+		2190D6F4258E5E06002EA3EF /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
+		2190D6F6258E5E06002EA3EF /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
+		2190D6F8258E5E06002EA3EF /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
+		2190D70F258E5F3B002EA3EF /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
+		2190D71C258E6C34002EA3EF /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		2193C740257E96F1006F5B74 /* UserRequestNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestNotes.swift; sourceTree = "<group>"; };
 		2193C746257E971A006F5B74 /* UserRequestProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestProtocols.swift; sourceTree = "<group>"; };
 		2198887325757AFF00198443 /* UIElementsInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsInteraction.swift; sourceTree = "<group>"; };
@@ -544,6 +556,7 @@
 		210C95D5258DF462006B2EE0 /* Cells and Headers */ = {
 			isa = PBXGroup;
 			children = (
+				2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */,
 				210C95D9258DF475006B2EE0 /* TextFieldCell.swift */,
 				210C95E6258E02D6006B2EE0 /* ButtonCell.swift */,
 				210C95E1258E00DA006B2EE0 /* GreetingView.swift */,
@@ -713,6 +726,18 @@
 				2171A613257943DD00D8AD76 /* EditNoteRouter.swift */,
 			);
 			path = EditingNote;
+			sourceTree = "<group>";
+		};
+		2190D6F3258E5DF9002EA3EF /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				2190D6F6258E5E06002EA3EF /* AuthorizationProtocols.swift */,
+				2190D6F8258E5E06002EA3EF /* AuthorizationVC.swift */,
+				2190D70F258E5F3B002EA3EF /* AuthorizationInteractor.swift */,
+				2190D6F4258E5E06002EA3EF /* AuthorizationPresenter.swift */,
+				2190D71C258E6C34002EA3EF /* AuthorizationRouter.swift */,
+			);
+			path = Template;
 			sourceTree = "<group>";
 		};
 		2193C745257E96F6006F5B74 /* UserRequest */ = {
@@ -1012,6 +1037,7 @@
 		21E8C8D42545CA8F00E08CD2 /* Login page */ = {
 			isa = PBXGroup;
 			children = (
+				2190D6F3258E5DF9002EA3EF /* Template */,
 				210C95D5258DF462006B2EE0 /* Cells and Headers */,
 				21631DDD258D3ABC00F8A1C0 /* LoginModule */,
 				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
@@ -1253,6 +1279,7 @@
 				21544E3D25693B6700F9A50C /* NoteBackendModel.swift in Sources */,
 				21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
+				2190D6EC258E454E002EA3EF /* AuthorizationCell.swift in Sources */,
 				05D634E4257EEEF800FFF5E7 /* ProjectsCellViewModel.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
 				21D7BD76256A93BF008BD30C /* DailyTabBarProtocols.swift in Sources */,
@@ -1265,6 +1292,7 @@
 				21F728AC257FB9F9006297A1 /* SettingsRouter.swift in Sources */,
 				2171A619257943DD00D8AD76 /* EditNoteRouter.swift in Sources */,
 				21BF82CA2557E61E001614EE /* HeaderView.swift in Sources */,
+				2190D6FA258E5E06002EA3EF /* AuthorizationPresenter.swift in Sources */,
 				210EC1742580EC10000E9578 /* ChooseLanguageRouter.swift in Sources */,
 				05327F4E25842D9F00887D21 /* EditProjectProtocols.swift in Sources */,
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
@@ -1284,6 +1312,7 @@
 				21B398C5257F5C0000A1E553 /* MainPageConfigurator.swift in Sources */,
 				2152908F2580EF320080052F /* ProfileInteractor.swift in Sources */,
 				21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */,
+				2190D710258E5F3B002EA3EF /* AuthorizationInteractor.swift in Sources */,
 				21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */,
 				210EC1632580EBE0000E9578 /* NotificationsPresenter.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
@@ -1299,6 +1328,7 @@
 				05D634D4257ECFF200FFF5E7 /* ProjectsProtocols.swift in Sources */,
 				21631DE8258D3ACC00F8A1C0 /* LoginVC.swift in Sources */,
 				21F39A90258147C400DD4F27 /* LanguageCellViewModel.swift in Sources */,
+				2190D722258E6C34002EA3EF /* AuthorizationRouter.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
 				05327F6F25842F6E00887D21 /* ProjectSubitemModel.swift in Sources */,
@@ -1406,7 +1436,9 @@
 				21CC5EAB25645EAF009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
 				054BEA1325697AC40059FEDC /* IdeasPresenter.swift in Sources */,
 				2198887425757AFF00198443 /* UIElementsInteraction.swift in Sources */,
+				2190D6FC258E5E06002EA3EF /* AuthorizationProtocols.swift in Sources */,
 				21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */,
+				2190D6FE258E5E06002EA3EF /* AuthorizationVC.swift in Sources */,
 				2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

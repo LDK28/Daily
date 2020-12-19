@@ -8,21 +8,50 @@
 import UIKit
 import FirebaseAuth
 
-class LoginInteractor: LoginDataStore {
-	var presenter: LoginPresentationLogic?
-	
-	init(presenter: LoginPresentationLogic?) {
-		self.presenter = presenter
-	}
+class LoginInteractor: AuthorizationInteractor {
+
 }
 
 extension LoginInteractor: LoginBusinessLogic {
-	func fetchCells() {
-		presenter?.presentCells()
+	
+	override func fetchCells() {
+		let cellViewModels: [MainCellViewModel] = [
+			TextFieldCellViewModel(cellType: EmailTextFieldCell.self,
+								   placeholder: "Email",
+								   isFirstLetterAutoCapitalized: true,
+								   isSecuredString: false),
+			
+			TextFieldCellViewModel(cellType: PasswordTextFieldCell.self,
+								   placeholder: "Password",
+								   isFirstLetterAutoCapitalized: false,
+								   isSecuredString: true),
+			
+			ButtonCellViewModel(cellType: LoginButtonCell.self,
+								title: "Log in",
+								backgroundColor: .dailyLoginButtonColor),
+			
+			ButtonCellViewModel(cellType: SignupButtonCell.self,
+								title: "Sign up",
+								backgroundColor: .dailySignupButtonColor),
+			
+			OtherLoginOptionsCellViewModel(cellType: OtherLoginOptionsCell.self,
+										   text: NSLocalizedString("You can also", comment: "")),
+			
+			ButtonCellViewModel(cellType: SignupButtonCell.self,
+								title: " Sign in with Apple",
+								backgroundColor: .white,
+								foregroundColor: .black),
+			
+			ButtonCellViewModel(cellType: ContinueWithoutLoginInCell.self,
+								title: NSLocalizedString("Continue without creating account", comment: ""),
+								backgroundColor: .clear,
+								foregroundColor: .dailyPlaceholderColor)
+			
+		]
+		presenter?.presentCells(cellViewModels)
 	}
 	
-	func validateFields(email: String?,
-						password: String?) {
+	func validateFields() {
 		guard
 			let email = email?.trimmingCharacters(in: .whitespacesAndNewlines),
 			email != ""

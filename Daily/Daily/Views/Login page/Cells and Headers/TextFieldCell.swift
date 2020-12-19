@@ -14,22 +14,19 @@ struct TextFieldCellViewModel: MainCellViewModel {
 	var isSecuredString: Bool
 }
 
-class TextFieldCell: UITableViewCell, MainCellProtocol {
-	static let cellIdentifier = "TextFieldCell"
+class TextFieldCell: AuthorizationCell {
 	private let textField = UITextField()
 	
-	func setViewModel(_ viewModel: MainCellViewModel?) {
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? TextFieldCellViewModel else { return }
 		textField.styleTextField(placeholder: viewModel.placeholder,
 								 isFirstLetterAutoCapitalized: viewModel.isFirstLetterAutoCapitalized,
 								 isSecuredString: viewModel.isSecuredString)
 	}
-
+	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		textField.delegate = self
-		backgroundColor = .clear
-		selectedBackgroundView = UIView()
 		contentView.addSubview(textField)
 		NSLayoutConstraint.activate([
 			textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -52,3 +49,29 @@ extension TextFieldCell: UITextFieldDelegate {
 		return true
 	}
 }
+
+
+protocol EmailTextFieldCellDelegate {
+	func changedEmail(_ email: String?)
+}
+
+final class EmailTextFieldCell: TextFieldCell {
+	static let cellIdentifier = "EmailTextFieldCell"
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		(delegate as? EmailTextFieldCellDelegate)?.changedEmail(textField.text)
+	}
+}
+
+protocol PasswordTextFieldCellDelegate {
+	func changedPassword(_ password: String?)
+}
+
+final class PasswordTextFieldCell: TextFieldCell {
+	static let cellIdentifier = "PasswordTextFieldCell"
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		(delegate as? PasswordTextFieldCellDelegate)?.changedPassword(textField.text)
+	}
+}
+

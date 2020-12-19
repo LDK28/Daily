@@ -9,7 +9,9 @@ import UIKit
 
 extension UITextField {
 	
-	func styleTextField(placeholder: String, isFirstLetterAutoCapitalized: Bool, isSecuredString: Bool)  {
+	func styleTextField(placeholder: String,
+						isFirstLetterAutoCapitalized: Bool,
+						isSecuredString: Bool)  {
 		
 		self.standartStyling(placeholder: placeholder)
 		self.overrideUserInterfaceStyle = .light

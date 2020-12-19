@@ -11,7 +11,7 @@ protocol MainDisplayLogic: AnyObject {
 	var cellsToDisplay: [MainCellViewModel] { get set }
 }
 
-class MainTableVC: UITableViewController {
+class MainTableVC: UITableViewController, MainDisplayLogic {
 	var cellsToDisplay: [MainCellViewModel] = []
 	
 	override func viewDidLoad() {

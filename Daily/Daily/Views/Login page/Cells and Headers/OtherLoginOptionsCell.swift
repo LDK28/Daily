@@ -12,11 +12,11 @@ struct OtherLoginOptionsCellViewModel: MainCellViewModel {
 	var text: String
 }
 
-class OtherLoginOptionsCell: UITableViewCell, MainCellProtocol {
+class OtherLoginOptionsCell: AuthorizationCell {
 	static let cellIdentifier = "OtherLoginOptionsCell"
 	private let titleLabel = UILabel()
 	
-	func setViewModel(_ viewModel: MainCellViewModel?) {
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? OtherLoginOptionsCellViewModel else { return }
 		titleLabel.styleLabel(font: UIFont(name: "Stolzl-Book", size: 18),
 							  text: viewModel.text)
@@ -24,8 +24,6 @@ class OtherLoginOptionsCell: UITableViewCell, MainCellProtocol {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		backgroundColor = .clear
-		selectedBackgroundView = UIView()
 		contentView.addSubview(titleLabel)
 		
 		let leftLineView = UIView()

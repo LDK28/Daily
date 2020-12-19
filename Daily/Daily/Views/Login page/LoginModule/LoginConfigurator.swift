@@ -12,7 +12,7 @@ class LoginModule {
 		let viewController = LoginVC()
 		let presenter = LoginPresenter(viewController: viewController)
 		let interactor = LoginInteractor(presenter: presenter)
-		let router = LoginRouter(viewController: viewController, dataStore: interactor)
+		let router = AuthorizationRouter(viewController: viewController)
 		
 		viewController.router = router
 		viewController.interactor = interactor

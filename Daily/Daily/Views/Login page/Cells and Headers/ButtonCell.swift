@@ -15,10 +15,10 @@ struct ButtonCellViewModel: MainCellViewModel {
 	
 }
 
-class ButtonCell: UITableViewCell, MainCellProtocol {
+class ButtonCell: AuthorizationCell {
 	internal let button = UIButton(type: .system)
 	
-	func setViewModel(_ viewModel: MainCellViewModel?) {
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? ButtonCellViewModel else { return }
 		button.styleAccountButton(title: viewModel.title,
 								  backgroundColor: viewModel.backgroundColor,
@@ -27,9 +27,7 @@ class ButtonCell: UITableViewCell, MainCellProtocol {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		backgroundColor = .clear
 		contentView.addSubview(button)
-		selectedBackgroundView = UIView()
 		NSLayoutConstraint.activate([
 			button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 			button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
@@ -43,12 +41,21 @@ class ButtonCell: UITableViewCell, MainCellProtocol {
 	}
 }
 
+protocol LoginButtonDelegate {
+	func loginButtonTapped()
+}
+
 final class LoginButtonCell: ButtonCell {
 	static let cellIdentifier = "LoginButtonCell"
+	
+	@objc func loginButtonTapped() {
+		(delegate as? LoginButtonDelegate)?.loginButtonTapped()
+	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25).isActive = true
+		button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 	}
 	
 	required init?(coder: NSCoder) {
