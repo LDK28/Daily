@@ -46,7 +46,7 @@
 		05D634DF257EEEE000FFF5E7 /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634DE257EEEE000FFF5E7 /* ProjectsCell.swift */; };
 		05D634E4257EEEF800FFF5E7 /* ProjectsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634E3257EEEF800FFF5E7 /* ProjectsCellViewModel.swift */; };
 		210C95DA258DF475006B2EE0 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95D9258DF475006B2EE0 /* TextFieldCell.swift */; };
-		210C95E2258E00DA006B2EE0 /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95E1258E00DA006B2EE0 /* GreetingView.swift */; };
+		210C95E2258E00DA006B2EE0 /* AuthorizationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95E1258E00DA006B2EE0 /* AuthorizationTitleView.swift */; };
 		210C95E7258E02D6006B2EE0 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95E6258E02D6006B2EE0 /* ButtonCell.swift */; };
 		210C95EF258E0891006B2EE0 /* OtherLoginOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95EE258E0891006B2EE0 /* OtherLoginOptionsCell.swift */; };
 		210EC1632580EBE0000E9578 /* NotificationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC15D2580EBE0000E9578 /* NotificationsPresenter.swift */; };
@@ -61,6 +61,11 @@
 		210EC1762580EC10000E9578 /* ChooseLanguageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC1702580EC10000E9578 /* ChooseLanguageInteractor.swift */; };
 		210EC1772580EC10000E9578 /* ChooseLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC1712580EC10000E9578 /* ChooseLanguageVC.swift */; };
 		210EC1782580EC10000E9578 /* ChooseLanguageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC1722580EC10000E9578 /* ChooseLanguageConfigurator.swift */; };
+		2116B0CB258E76D700829517 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2116B0C5258E76D700829517 /* SignupPresenter.swift */; };
+		2116B0CD258E76D700829517 /* SignupProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2116B0C7258E76D700829517 /* SignupProtocols.swift */; };
+		2116B0CE258E76D700829517 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2116B0C8258E76D700829517 /* SignupInteractor.swift */; };
+		2116B0CF258E76D700829517 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2116B0C9258E76D700829517 /* SignupVC.swift */; };
+		2116B0D0258E76D700829517 /* SignupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2116B0CA258E76D700829517 /* SignupConfigurator.swift */; };
 		21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117318F255DCAA10086A9EE /* OverlayDataSource.swift */; };
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		2117339F2580D1F800C72192 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117339E2580D1F800C72192 /* Headers.swift */; };
@@ -91,7 +96,6 @@
 		215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */; };
 		215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */; };
 		21631DE4258D3ACC00F8A1C0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */; };
-		21631DE5258D3ACC00F8A1C0 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */; };
 		21631DE6258D3ACC00F8A1C0 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE0258D3ACC00F8A1C0 /* LoginProtocols.swift */; };
 		21631DE7258D3ACC00F8A1C0 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */; };
 		21631DE8258D3ACC00F8A1C0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21631DE2258D3ACC00F8A1C0 /* LoginVC.swift */; };
@@ -178,7 +182,6 @@
 		21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */; };
 		21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64255254AFC0600564B78 /* UIStackViewExtension.swift */; };
 		21E8C8B22545C75D00E08CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */; };
-		21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */; };
 		21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3D2567073700F87D18 /* NotesPresenter.swift */; };
 		21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3E2567073700F87D18 /* NotesRouter.swift */; };
 		21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EA5B3F2567073700F87D18 /* NotesProtocols.swift */; };
@@ -263,7 +266,7 @@
 		05D634DE257EEEE000FFF5E7 /* ProjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
 		05D634E3257EEEF800FFF5E7 /* ProjectsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCellViewModel.swift; sourceTree = "<group>"; };
 		210C95D9258DF475006B2EE0 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		210C95E1258E00DA006B2EE0 /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
+		210C95E1258E00DA006B2EE0 /* AuthorizationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationTitleView.swift; sourceTree = "<group>"; };
 		210C95E6258E02D6006B2EE0 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		210C95EE258E0891006B2EE0 /* OtherLoginOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherLoginOptionsCell.swift; sourceTree = "<group>"; };
 		210EC15D2580EBE0000E9578 /* NotificationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPresenter.swift; sourceTree = "<group>"; };
@@ -278,6 +281,11 @@
 		210EC1702580EC10000E9578 /* ChooseLanguageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLanguageInteractor.swift; sourceTree = "<group>"; };
 		210EC1712580EC10000E9578 /* ChooseLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLanguageVC.swift; sourceTree = "<group>"; };
 		210EC1722580EC10000E9578 /* ChooseLanguageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLanguageConfigurator.swift; sourceTree = "<group>"; };
+		2116B0C5258E76D700829517 /* SignupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
+		2116B0C7258E76D700829517 /* SignupProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupProtocols.swift; sourceTree = "<group>"; };
+		2116B0C8258E76D700829517 /* SignupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
+		2116B0C9258E76D700829517 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		2116B0CA258E76D700829517 /* SignupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupConfigurator.swift; sourceTree = "<group>"; };
 		2117318F255DCAA10086A9EE /* OverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		2117339E2580D1F800C72192 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
@@ -308,7 +316,6 @@
 		215DFC0F255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTimeAndTimePickerCells.swift; sourceTree = "<group>"; };
 		215DFC14255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateAndDatePickerCells.swift; sourceTree = "<group>"; };
 		21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		21631DE0258D3ACC00F8A1C0 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
 		21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		21631DE2258D3ACC00F8A1C0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -401,7 +408,6 @@
 		21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenstion.swift; sourceTree = "<group>"; };
 		21E64255254AFC0600564B78 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		21E8C8B12545C75D00E08CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		21EA5B3D2567073700F87D18 /* NotesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
 		21EA5B3E2567073700F87D18 /* NotesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
 		21EA5B3F2567073700F87D18 /* NotesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesProtocols.swift; sourceTree = "<group>"; };
@@ -559,7 +565,7 @@
 				2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */,
 				210C95D9258DF475006B2EE0 /* TextFieldCell.swift */,
 				210C95E6258E02D6006B2EE0 /* ButtonCell.swift */,
-				210C95E1258E00DA006B2EE0 /* GreetingView.swift */,
+				210C95E1258E00DA006B2EE0 /* AuthorizationTitleView.swift */,
 				210C95EE258E0891006B2EE0 /* OtherLoginOptionsCell.swift */,
 			);
 			path = "Cells and Headers";
@@ -590,6 +596,18 @@
 				210EC16E2580EC10000E9578 /* ChooseLanguageRouter.swift */,
 			);
 			path = ChooseLanguage;
+			sourceTree = "<group>";
+		};
+		2116B0C4258E76C300829517 /* SignupModule */ = {
+			isa = PBXGroup;
+			children = (
+				2116B0C7258E76D700829517 /* SignupProtocols.swift */,
+				2116B0CA258E76D700829517 /* SignupConfigurator.swift */,
+				2116B0C9258E76D700829517 /* SignupVC.swift */,
+				2116B0C8258E76D700829517 /* SignupInteractor.swift */,
+				2116B0C5258E76D700829517 /* SignupPresenter.swift */,
+			);
+			path = SignupModule;
 			sourceTree = "<group>";
 		};
 		211733A32580D1FF00C72192 /* ProfileTemplates */ = {
@@ -696,7 +714,6 @@
 				21631DE2258D3ACC00F8A1C0 /* LoginVC.swift */,
 				21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */,
 				21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */,
-				21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -1040,7 +1057,7 @@
 				2190D6F3258E5DF9002EA3EF /* Template */,
 				210C95D5258DF462006B2EE0 /* Cells and Headers */,
 				21631DDD258D3ABC00F8A1C0 /* LoginModule */,
-				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
+				2116B0C4258E76C300829517 /* SignupModule */,
 			);
 			path = "Login page";
 			sourceTree = "<group>";
@@ -1254,6 +1271,7 @@
 			files = (
 				21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */,
 				21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */,
+				2116B0CE258E76D700829517 /* SignupInteractor.swift in Sources */,
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */,
@@ -1265,7 +1283,7 @@
 				212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */,
 				210EC1732580EC10000E9578 /* ChooseLanguagePresenter.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
-				210C95E2258E00DA006B2EE0 /* GreetingView.swift in Sources */,
+				210C95E2258E00DA006B2EE0 /* AuthorizationTitleView.swift in Sources */,
 				210EC1772580EC10000E9578 /* ChooseLanguageVC.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
@@ -1273,6 +1291,7 @@
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
 				21631DE4258D3ACC00F8A1C0 /* LoginPresenter.swift in Sources */,
+				2116B0CD258E76D700829517 /* SignupProtocols.swift in Sources */,
 				21F7288F257FB9CE006297A1 /* ProfileHelpProtocols.swift in Sources */,
 				054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */,
 				05327F5025842D9F00887D21 /* EditProjectVC.swift in Sources */,
@@ -1298,6 +1317,7 @@
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
 				21CC5EA925645EAF009C1D8E /* NewTaskOverlayPresenter.swift in Sources */,
 				05D634DF257EEEE000FFF5E7 /* ProjectsCell.swift in Sources */,
+				2116B0CF258E76D700829517 /* SignupVC.swift in Sources */,
 				210EC1752580EC10000E9578 /* ChooseLanguageProtocols.swift in Sources */,
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				05327F4D25842D9F00887D21 /* EditProjectRouter.swift in Sources */,
@@ -1360,12 +1380,11 @@
 				21F728B0257FB9F9006297A1 /* SettingsConfigurator.swift in Sources */,
 				210C95EF258E0891006B2EE0 /* OtherLoginOptionsCell.swift in Sources */,
 				05327F8025851AC100887D21 /* UserRequestProjects.swift in Sources */,
-				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
 				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,
 				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21F7289F257FB9EC006297A1 /* ProfileAchievementsInteractor.swift in Sources */,
-				21631DE5258D3ACC00F8A1C0 /* LoginRouter.swift in Sources */,
+				2116B0D0258E76D700829517 /* SignupConfigurator.swift in Sources */,
 				05327F8E258652D400887D21 /* ProjectItemCell.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */,
@@ -1412,6 +1431,7 @@
 				21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */,
 				21CC5E6425645B08009C1D8E /* NewNoteOverlayConfigurator.swift in Sources */,
 				215387FA255289E600EE8AB2 /* UITextViewExtension.swift in Sources */,
+				2116B0CB258E76D700829517 /* SignupPresenter.swift in Sources */,
 				21F728AF257FB9F9006297A1 /* SettingsVC.swift in Sources */,
 				21F7289C257FB9EC006297A1 /* ProfileAchievementsPresenter.swift in Sources */,
 				215646C325588AF7007264D4 /* NewNoteOverlayModel.swift in Sources */,

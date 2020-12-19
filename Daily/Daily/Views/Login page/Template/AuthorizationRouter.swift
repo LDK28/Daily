@@ -18,12 +18,15 @@ class AuthorizationRouter {
 extension AuthorizationRouter: AuthorizationRoutingLogic {
 	func navigateTo(_ destination: LoginNavigationDestination) {
 		switch destination {
+		case .loginScreen:
+			print(viewController?.navigationController)
+			viewController?.navigationController?.popViewController(animated: true)
 		case .signupScreen:
-			viewController?.present(SignupVC(), animated: true, completion: nil)
+			viewController?.navigationController?.pushViewController(SignupModule.build(),
+																	animated: true)
 		case .app :
 			AppStatusSwitcher.shared.updateRootVC()
-		case .loginScreen:
-			viewController?.present(LoginModule.build(), animated: true, completion: nil)
+			return
 		}
 	}
 }

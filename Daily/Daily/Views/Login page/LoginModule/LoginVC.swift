@@ -11,8 +11,8 @@ import UIKit
 class LoginVC: AuthorizationVC {
 	weak var coordinator: DailyCoordinator?
 	
-	private let greetingView = GreetingView()
-	private let errorLabel = UILabel()
+	private let greetingView = AuthorizationTitleView(text: NSLocalizedString("Welcome to Daily",
+																			comment: ""))
 
 	override func loadView() {
 		super.loadView()
@@ -32,16 +32,18 @@ class LoginVC: AuthorizationVC {
 	func didTapSignupButton() {
 		router?.navigateTo(.signupScreen)
 	}
-	
-	func showError(_ message: String) {
-		errorLabel.text = message
-		errorLabel.alpha = 1
-	}
 }
 
 extension LoginVC: LoginButtonDelegate {
 	func loginButtonTapped() {
+		tableView.endEditing(true)
 		(interactor as? LoginBusinessLogic)?.validateFields()
+	}
+}
+
+extension LoginVC: SignupFromLoginButtonDelegate {
+	func signupFromLoginButtonTapped() {
+		router?.navigateTo(.signupScreen)
 	}
 }
 
@@ -50,20 +52,14 @@ extension LoginVC {
 		super.configureTableView()
 		tableView.register(LoginButtonCell.self,
 						   forCellReuseIdentifier: LoginButtonCell.cellIdentifier)
-		tableView.register(SignupButtonCell.self,
-						   forCellReuseIdentifier: SignupButtonCell.cellIdentifier)
+		
+		tableView.register(SignupFromLoginButtonCell.self,
+						   forCellReuseIdentifier: SignupFromLoginButtonCell.cellIdentifier)
+		
 		tableView.register(OtherLoginOptionsCell.self,
 						   forCellReuseIdentifier: OtherLoginOptionsCell.cellIdentifier)
+		
 		tableView.register(ContinueWithoutLoginInCell.self,
 						   forCellReuseIdentifier: ContinueWithoutLoginInCell.cellIdentifier)
-	}
-		
-	func styleElements() {
-		errorLabel.styleLabel(font: UIFont(name: "Stolzl-book", size: 16),
-							  text: "",
-							  textAlignment: .left,
-							  textColor: .dailyAdaptiveRed,
-							  numberOfLines: 0)
-		errorLabel.alpha = 0
 	}
 }

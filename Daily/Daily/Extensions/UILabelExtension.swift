@@ -13,6 +13,7 @@ extension UILabel {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
+		self.adjustsFontSizeToFitWidth = true
         self.text = NSLocalizedString(text ?? "", comment: "Label text")
 		self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines

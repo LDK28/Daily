@@ -15,6 +15,7 @@ struct ButtonCellViewModel: MainCellViewModel {
 	
 }
 
+//MARK: - General model
 class ButtonCell: AuthorizationCell {
 	internal let button = UIButton(type: .system)
 	
@@ -41,6 +42,7 @@ class ButtonCell: AuthorizationCell {
 	}
 }
 
+//MARK: - Log in
 protocol LoginButtonDelegate {
 	func loginButtonTapped()
 }
@@ -64,7 +66,7 @@ final class LoginButtonCell: ButtonCell {
 }
 
 // MARK: - Singing in
-class RegisterUserButtonCell: ButtonCell {
+class SecondaryButtonCell: ButtonCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
@@ -75,12 +77,75 @@ class RegisterUserButtonCell: ButtonCell {
 	}
 }
 
-final class SignupButtonCell: RegisterUserButtonCell {
-	static let cellIdentifier = "SignupButtonCell"
+//MARK: - Sign up
+protocol SignupFromLoginButtonDelegate {
+	func signupFromLoginButtonTapped()
 }
 
-final class ContinueWithoutLoginInCell: RegisterUserButtonCell {
+final class SignupFromLoginButtonCell: SecondaryButtonCell {
+	static let cellIdentifier = "SignupFromLoginButtonCell"
+	
+	@objc func signupFromLoginButtonTapped() {
+		(delegate as? SignupFromLoginButtonDelegate)?.signupFromLoginButtonTapped()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		button.addTarget(self, action: #selector(signupFromLoginButtonTapped), for: .touchUpInside)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+protocol SignupButtonDelegate {
+	func signupButtonTapped()
+}
+
+final class SignupButtonCell: ButtonCell {
+	static let cellIdentifier = "SignupButtonCell"
+	
+	@objc func signupButtonTapped() {
+		(delegate as? SignupButtonDelegate)?.signupButtonTapped()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25).isActive = true
+		button.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+//MARK: - Continue withour creating a user
+final class ContinueWithoutLoginInCell: SecondaryButtonCell {
 	static let cellIdentifier = "ContinueWithoutLoginInCell"
 	
+}
+
+//MARK: - Already have an account
+protocol AlreadyHaveAccountButtonDelegate {
+	func alreadyHaveAccountButtonTapped()
+}
+
+final class AlreadyHaveAccountButtonCell: SecondaryButtonCell {
+	static let cellIdentifier = "AlreadyHaveAccountButtonCell"
+	
+	@objc func alreadyHaveAccountButtonTapped() {
+		(delegate as? AlreadyHaveAccountButtonDelegate)?.alreadyHaveAccountButtonTapped()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		button.addTarget(self, action: #selector(alreadyHaveAccountButtonTapped), for: .touchUpInside)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 }
 

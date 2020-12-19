@@ -75,7 +75,10 @@ extension NotesInteractor: NotesBusinessLogic {
 			}
 		}
 		
-		UserRequest.shared.update(notes) { result in
+		UserRequest.shared.update(notes) { [weak self] result in
+			guard let self = self else {
+				return
+			}
 			switch result {
 			case .success(()):
 				self.presenter?.present(notes: self.notes)
@@ -88,7 +91,8 @@ extension NotesInteractor: NotesBusinessLogic {
 	
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ()) {
- 		UserRequest.shared.update(notes.remove(at: indices)) { result in
+ 		UserRequest.shared.update(notes.remove(at: indices)) { [weak self] result in
+			guard let self = self else { return }
 			switch result {
 			case .success(()):
 				self.presenter?.removeNotes(at: indices)

@@ -30,14 +30,14 @@ extension LoginInteractor: LoginBusinessLogic {
 								title: "Log in",
 								backgroundColor: .dailyLoginButtonColor),
 			
-			ButtonCellViewModel(cellType: SignupButtonCell.self,
+			ButtonCellViewModel(cellType: SignupFromLoginButtonCell.self,
 								title: "Sign up",
 								backgroundColor: .dailySignupButtonColor),
 			
 			OtherLoginOptionsCellViewModel(cellType: OtherLoginOptionsCell.self,
 										   text: NSLocalizedString("You can also", comment: "")),
 			
-			ButtonCellViewModel(cellType: SignupButtonCell.self,
+			ButtonCellViewModel(cellType: SignupFromLoginButtonCell.self,
 								title: " Sign in with Apple",
 								backgroundColor: .white,
 								foregroundColor: .black),
@@ -70,7 +70,8 @@ extension LoginInteractor: LoginBusinessLogic {
 			return
 		}
 		
-		Auth.auth().signIn(withEmail: email, password: password) { result, error in
+		Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+			guard let self = self else { return }
 			guard error == nil else {
 				self.presenter?.presentValidationMessage(message: error?.localizedDescription ?? "")
 				return

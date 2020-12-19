@@ -24,7 +24,7 @@ class AuthorizationVC: MainTableVC {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		navigationController?.setNavigationBarHidden(true, animated: true)
+		navigationController?.setNavigationBarHidden(true, animated: false)
 		view.subviews
 			.compactMap{ $0 as? UITextField }
 			.forEach {
@@ -64,13 +64,13 @@ extension AuthorizationVC: AuthorizationDisplayLogic {
 	}
 }
 
-extension AuthorizationVC: EmailTextFieldCellDelegate {
+extension AuthorizationVC: EmailTextFieldDelegate {
 	func changedEmail(_ email: String?) {
 		interactor?.didChangeEmail(email)
 	}
 }
 
-extension AuthorizationVC: PasswordTextFieldCellDelegate {
+extension AuthorizationVC: PasswordTextFieldDelegate {
 	func changedPassword(_ password: String?) {
 		interactor?.didChangePassword(password)
 	}
