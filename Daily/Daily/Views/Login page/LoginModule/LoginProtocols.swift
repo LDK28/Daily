@@ -22,7 +22,8 @@ enum LoginNavigationDestination {
 	case app
 }
 
-protocol LoginDisplayLogic: AnyObject {
+protocol LoginDisplayLogic: MainDisplayLogic {
+	func displayCells()
 	func handleValidationResponse(message: String)
 	func routeToApp()
 }
@@ -30,6 +31,7 @@ protocol LoginDisplayLogic: AnyObject {
 protocol LoginBusinessLogic {
 	func validateFields(email: String?,
 						password: String?)
+	func fetchCells()
 }
 
 protocol LoginDataStore: AnyObject {
@@ -37,6 +39,7 @@ protocol LoginDataStore: AnyObject {
 }
 
 protocol LoginPresentationLogic {
+	func presentCells()
 	func presentValidationMessage(message: String?)
 }
 

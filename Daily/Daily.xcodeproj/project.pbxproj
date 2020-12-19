@@ -45,6 +45,9 @@
 		05D634D6257ECFF200FFF5E7 /* ProjectsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634D0257ECFF100FFF5E7 /* ProjectsConfigurator.swift */; };
 		05D634DF257EEEE000FFF5E7 /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634DE257EEEE000FFF5E7 /* ProjectsCell.swift */; };
 		05D634E4257EEEF800FFF5E7 /* ProjectsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634E3257EEEF800FFF5E7 /* ProjectsCellViewModel.swift */; };
+		210C95DA258DF475006B2EE0 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95D9258DF475006B2EE0 /* TextFieldCell.swift */; };
+		210C95E2258E00DA006B2EE0 /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95E1258E00DA006B2EE0 /* GreetingView.swift */; };
+		210C95E7258E02D6006B2EE0 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C95E6258E02D6006B2EE0 /* ButtonCell.swift */; };
 		210EC1632580EBE0000E9578 /* NotificationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC15D2580EBE0000E9578 /* NotificationsPresenter.swift */; };
 		210EC1642580EBE0000E9578 /* NotificationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC15E2580EBE0000E9578 /* NotificationsRouter.swift */; };
 		210EC1652580EBE0000E9578 /* NotificationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EC15F2580EBE0000E9578 /* NotificationsProtocols.swift */; };
@@ -252,6 +255,10 @@
 		05D634D0257ECFF100FFF5E7 /* ProjectsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsConfigurator.swift; sourceTree = "<group>"; };
 		05D634DE257EEEE000FFF5E7 /* ProjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
 		05D634E3257EEEF800FFF5E7 /* ProjectsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCellViewModel.swift; sourceTree = "<group>"; };
+		210C95CF258DF45B006B2EE0 /* TextFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
+		210C95D9258DF475006B2EE0 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		210C95E1258E00DA006B2EE0 /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
+		210C95E6258E02D6006B2EE0 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		210EC15D2580EBE0000E9578 /* NotificationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPresenter.swift; sourceTree = "<group>"; };
 		210EC15E2580EBE0000E9578 /* NotificationsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsRouter.swift; sourceTree = "<group>"; };
 		210EC15F2580EBE0000E9578 /* NotificationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsProtocols.swift; sourceTree = "<group>"; };
@@ -533,6 +540,16 @@
 			path = ProjectsCellModels;
 			sourceTree = "<group>";
 		};
+		210C95D5258DF462006B2EE0 /* Cells and Headers */ = {
+			isa = PBXGroup;
+			children = (
+				210C95D9258DF475006B2EE0 /* TextFieldCell.swift */,
+				210C95E6258E02D6006B2EE0 /* ButtonCell.swift */,
+				210C95E1258E00DA006B2EE0 /* GreetingView.swift */,
+			);
+			path = "Cells and Headers";
+			sourceTree = "<group>";
+		};
 		210EC15C2580EBD0000E9578 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +682,7 @@
 				21631DE1258D3ACC00F8A1C0 /* LoginInteractor.swift */,
 				21631DDE258D3ACC00F8A1C0 /* LoginPresenter.swift */,
 				21631DDF258D3ACC00F8A1C0 /* LoginRouter.swift */,
+				210C95CF258DF45B006B2EE0 /* TextFieldCell.h */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -993,6 +1011,7 @@
 		21E8C8D42545CA8F00E08CD2 /* Login page */ = {
 			isa = PBXGroup;
 			children = (
+				210C95D5258DF462006B2EE0 /* Cells and Headers */,
 				21631DDD258D3ABC00F8A1C0 /* LoginModule */,
 				21E8C8FA2545F9EF00E08CD2 /* SignupVC.swift */,
 			);
@@ -1094,6 +1113,7 @@
 				TargetAttributes = {
 					21E1D01F25403975006A4206 = {
 						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1220;
 					};
 					21E1D03825403978006A4206 = {
 						CreatedOnToolsVersion = 12.1;
@@ -1218,9 +1238,11 @@
 				212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */,
 				210EC1732580EC10000E9578 /* ChooseLanguagePresenter.swift in Sources */,
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
+				210C95E2258E00DA006B2EE0 /* GreetingView.swift in Sources */,
 				210EC1772580EC10000E9578 /* ChooseLanguageVC.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
+				210C95E7258E02D6006B2EE0 /* ButtonCell.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
 				21631DE4258D3ACC00F8A1C0 /* LoginPresenter.swift in Sources */,
@@ -1251,6 +1273,7 @@
 				215BC9A02542D8810069D30E /* IdeasVC.swift in Sources */,
 				05327F4D25842D9F00887D21 /* EditProjectRouter.swift in Sources */,
 				210EC1662580EBE0000E9578 /* NotificationsInteractor.swift in Sources */,
+				210C95DA258DF475006B2EE0 /* TextFieldCell.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				05327F962586AA3900887D21 /* ProjectItemViewModel.swift in Sources */,
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
@@ -1551,6 +1574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N8G9Q3V5FX;
 				INFOPLIST_FILE = Daily/Info.plist;
@@ -1561,6 +1585,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.DUMAA.Daily;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1572,6 +1597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N8G9Q3V5FX;
 				INFOPLIST_FILE = Daily/Info.plist;

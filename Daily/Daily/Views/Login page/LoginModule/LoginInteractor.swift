@@ -17,6 +17,10 @@ class LoginInteractor: LoginDataStore {
 }
 
 extension LoginInteractor: LoginBusinessLogic {
+	func fetchCells() {
+		presenter?.presentCells()
+	}
+	
 	func validateFields(email: String?,
 						password: String?) {
 		guard

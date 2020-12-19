@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: MainVC {
+class LoginVC: MainTableVC {
 	weak var coordinator: DailyCoordinator?
 	var interactor: LoginBusinessLogic?
 	var router: (LoginRoutingLogic & LoginDataPassing)?
@@ -17,35 +17,18 @@ class LoginVC: MainVC {
 	private let passwordField = UITextField()
 	private let loginButton = UIButton(type: .system)
 	private let signupButton = UIButton(type: .system)
-	private let greetingLabel = UILabel()
+	private let greetingView = GreetingView()
 	private let errorLabel = UILabel()
-	private let textFieldsStack = UIStackView()
-	private let buttonsStack = UIStackView()
-	private let mainStack = UIStackView()
 
 	override func loadView() {
 		super.loadView()
-		
-		textFieldsStack.addArrangedSubview(errorLabel)
-		textFieldsStack.addArrangedSubview(emailField)
-		textFieldsStack.addArrangedSubview(passwordField)
-		
-		buttonsStack.addArrangedSubview(loginButton)
-		buttonsStack.addArrangedSubview(signupButton)
-		
-		mainStack.addArrangedSubview(greetingLabel)
-		mainStack.addArrangedSubview(textFieldsStack)
-		mainStack.addArrangedSubview(buttonsStack)
-		
-		view.addSubview(mainStack)
-		
-		configureElements()
-		
-		styleElements()
+		configureTableView()
+		tableView.setAndLayoutTableHeaderView(header: greetingView)
 	}
   
 	override func viewDidLoad() {
     super.viewDidLoad()
+		interactor?.fetchCells()
 		loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
 		signupButton.addTarget(self, action: #selector(didTapSignupButton), for: .touchUpInside)
 	}
@@ -77,6 +60,10 @@ class LoginVC: MainVC {
 }
 
 extension LoginVC: LoginDisplayLogic {
+	func displayCells() {
+		tableView.reloadData()
+	}
+	
 	func handleValidationResponse(message: String) {
 		showError(message)
 	}
@@ -87,41 +74,26 @@ extension LoginVC: LoginDisplayLogic {
 }
 
 extension LoginVC {
-	func configureElements() {
-		NSLayoutConstraint.activate([
-			mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-			mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-			mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIScreen.main.bounds.height / 8),
-			loginButton.heightAnchor.constraint(equalToConstant: 45),
-		
-			emailField.heightAnchor.constraint(equalToConstant: 40),
-		])
+	func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.delaysContentTouches = false
+		tableView.separatorStyle = .none
+		tableView.register(TextFieldCell.self,
+						   forCellReuseIdentifier: TextFieldCell.cellIdentifier)
+		tableView.register(LoginButtonCell.self,
+						   forCellReuseIdentifier: LoginButtonCell.cellIdentifier)
+		tableView.register(SignupButtonCell.self,
+						   forCellReuseIdentifier: SignupButtonCell.cellIdentifier)
 	}
 		
 	func styleElements() {
-		emailField.styleTextField(placeholder: "Email",
-								  isFirstLetterAutoCapitalized: true,
-								  isSecuredString: false)
-		passwordField.styleTextField(placeholder: "Password",
-									 isFirstLetterAutoCapitalized: false,
-									 isSecuredString: true)
-		
-		loginButton.styleAccountButton(title: "Log in", backgroundColor: .dailyLoginButtonColor)
-		signupButton.styleAccountButton(title: "Sign up", backgroundColor: .dailySignupButtonColor)
-		greetingLabel.styleLabel(font: UIFont(name: "Stolzl-Light", size: 32),
-								 text: "Welcome to Daily")
 		errorLabel.styleLabel(font: UIFont(name: "Stolzl-book", size: 16),
 							  text: "",
 							  textAlignment: .left,
 							  textColor: .dailyAdaptiveRed,
 							  numberOfLines: 0)
 		errorLabel.alpha = 0
-		
-		
-		textFieldsStack.styleStackView(spacing: 10, axis: .vertical)
-		buttonsStack.styleStackView(spacing: 20, axis: .vertical)
-		mainStack.styleStackView(spacing: 30, axis: .vertical, distribution: .fillProportionally)
 		
 	}
 }

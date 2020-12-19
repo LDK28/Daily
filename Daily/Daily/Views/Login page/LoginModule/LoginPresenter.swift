@@ -16,6 +16,29 @@ class LoginPresenter: LoginDataStore {
 }
 
 extension LoginPresenter: LoginPresentationLogic {
+	func presentCells() {
+		viewController?.cellsToDisplay = [
+			TextFieldCellViewModel(cellType: TextFieldCell.self,
+								   placeholder: "Email",
+								   isFirstLetterAutoCapitalized: true,
+								   isSecuredString: false),
+			
+			TextFieldCellViewModel(cellType: TextFieldCell.self,
+								   placeholder: "Password",
+								   isFirstLetterAutoCapitalized: false,
+								   isSecuredString: true),
+			
+			ButtonCellViewModel(cellType: LoginButtonCell.self,
+								title: "Log in",
+								backgroundColor: .dailyLoginButtonColor),
+			
+			ButtonCellViewModel(cellType: SignupButtonCell.self,
+								title: "Sign up",
+								backgroundColor: .dailySignupButtonColor)
+		]
+		viewController?.displayCells()
+	}
+	
 	func presentValidationMessage(message: String?) {
 		if let message = message {
 			viewController?.handleValidationResponse(message: message)
