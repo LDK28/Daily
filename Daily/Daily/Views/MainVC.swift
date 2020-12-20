@@ -7,7 +7,11 @@
 
 import UIKit
 
-class MainTableVC: UITableViewController {
+protocol MainDisplayLogic: AnyObject {
+	var cellsToDisplay: [MainCellViewModel] { get set }
+}
+
+class MainTableVC: UITableViewController, MainDisplayLogic {
 	var cellsToDisplay: [MainCellViewModel] = []
 	
 	override func viewDidLoad() {
@@ -42,6 +46,12 @@ class MainTableVC: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let header = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 25))
+		header.backgroundColor = .clear
+		return header
 	}
 }
 

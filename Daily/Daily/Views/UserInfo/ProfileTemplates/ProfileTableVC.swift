@@ -42,7 +42,7 @@ class ProfileTableVC: MainTableVC {
 		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 		self.navigationController?.navigationBar.isTranslucent = true
 		self.navigationController?.navigationBar.backgroundColor = .dailyProfileTileColor
-		tableView.separatorColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.25)
+		tableView.separatorColor = .dailySeparatorColor
 		tableView.delegate = self
 		tableView.dataSource = self
 	}
@@ -65,12 +65,6 @@ class ProfileTableVC: MainTableVC {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		statusBar.removeFromSuperview()
-	}
-	
-	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let header = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 25))
-		header.backgroundColor = .clear
-		return header
 	}
 }
 

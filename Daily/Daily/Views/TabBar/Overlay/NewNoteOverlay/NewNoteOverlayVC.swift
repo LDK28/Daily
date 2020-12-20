@@ -40,6 +40,7 @@ class NewNoteOverlayVC: OverlayVC {
 	@objc func tappedSaveButton() {
 		saveButton.tapAnimation { [weak self] in
 			guard let self = self else { return }
+			self.tableView.endEditing(true)
 			(self.interactor as? NewNoteOverlayInteractor)?.didTapSaveButton()
 			self.remove()
 			NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)

@@ -49,12 +49,9 @@ class IdeasCell: UITableViewCell, MainCellProtocol {
 
         if highlighted {
             labelBackgroundView.backgroundColor = .dailyIdeasTileColor
-        }
-
-        else {
+        } else {
             labelBackgroundView.backgroundColor = .dailyDiaryTileColor
         }
-
     }
 
     required init?(coder: NSCoder) {

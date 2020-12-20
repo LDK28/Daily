@@ -12,6 +12,7 @@ struct RecentActionsViewModel: MainCellViewModel {
     var cellType: UITableViewCell.Type
     var headerLabelText: String
     var recentActions: [String]
+    //var isGroupProject: Bool
     
     init(headerLabelText: String, recentActions: [String], cellType: UITableViewCell.Type) {
         self.headerLabelText = headerLabelText

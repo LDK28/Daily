@@ -21,9 +21,10 @@ class RecentActionsCell: UITableViewCell, MainCellProtocol {
     let recentActionsView = UIView()
     let headerLabel = UILabel()
     
+    //let isGroupProject = Bool()
     var actionLabelsTexts = [String]()
     var actionLabels = [UILabel]()
-    let singleActionImage = UIImage(systemName: "chevron.right")
+    var recentActionsViewHeight: CGFloat = 0.0
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -68,7 +69,6 @@ extension RecentActionsCell {
             recentActionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             recentActionsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             recentActionsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            recentActionsView.heightAnchor.constraint(equalToConstant: 200),
             recentActionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
@@ -79,6 +79,7 @@ extension RecentActionsCell {
             headerLabel.leadingAnchor.constraint(equalTo: recentActionsView.leadingAnchor, constant: 20),
             headerLabel.trailingAnchor.constraint(equalTo: recentActionsView.trailingAnchor, constant: -10)
         ])
+        recentActionsViewHeight += headerLabel.font.pointSize + headerLabel.fs_bottom + headerLabel.fs_top
     }
     
     func configureActionLabels() {
@@ -93,15 +94,18 @@ extension RecentActionsCell {
             ])
             topAnchorConstant += heightConstant + 10
         }
+        recentActionsViewHeight += heightConstant + topAnchorConstant
     }
     
     func styleCell() {
         selectionStyle = .none
         backgroundColor = .clear
+        contentView.sizeToFit()
     }
     
     func styleRecentActionsView() {
         recentActionsView.styleView(backgroundColor: .dailyRecentActionsPadColor, cornerRadius: 10)
+        recentActionsView.heightAnchor.constraint(equalToConstant: recentActionsViewHeight).isActive = true
     }
     
     func styleHeaderLabel() {
