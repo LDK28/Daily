@@ -69,10 +69,6 @@ extension UIColor {
 
 //MARK: - Diary
 extension UIColor {
-
-	static var dailyDiaryTileColor: UIColor {
-		colorForTheme(light: UIColor("0B3954", alpha: 0.3), dark: UIColor("82C1DF", alpha: 0.3))
-	}
 	
 	static var dailyNotificationClockOffColor: UIColor {
 		return dailySubtitleTextColor
