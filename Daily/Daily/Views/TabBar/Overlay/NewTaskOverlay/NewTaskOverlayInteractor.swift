@@ -41,8 +41,6 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
                                                      description: "",
                                                      isMade: false,
                                                      shouldRemind: dataSource.shouldRemind,
-                                                     isAssignedToTime: dataSource.isAssignedToTime,
-                                                     userIsChoosingDate: dataSource.userIsChoosingDate,
                                                      assignedTime: dataSource.assignedTime ?? Date(),
                                                      assignedDay: dataSource.assignedDay ?? Date(),
                                                      repeatSchedule: dataSource.repeatSchedule)) { result in

@@ -134,7 +134,6 @@
 		21E1D06A2540399B006A4206 /* Stolzl-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0612540399B006A4206 /* Stolzl-Thin.ttf */; };
 		21E1D06B2540399B006A4206 /* Stolzl-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0622540399B006A4206 /* Stolzl-Book.ttf */; };
 		21E1D06C2540399B006A4206 /* Stolzl-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */; };
-		21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1D09A2540ABD0006A4206 /* DiaryVC.swift */; };
 		21E64244254AFBB400564B78 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64243254AFBB400564B78 /* UILabelExtension.swift */; };
 		21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E64248254AFBC300564B78 /* UITextFieldExtension.swift */; };
 		21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */; };
@@ -169,6 +168,15 @@
 		21F728AE257FB9F9006297A1 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A8257FB9F9006297A1 /* SettingsInteractor.swift */; };
 		21F728AF257FB9F9006297A1 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A9257FB9F9006297A1 /* SettingsVC.swift */; };
 		21F728B0257FB9F9006297A1 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728AA257FB9F9006297A1 /* SettingsConfigurator.swift */; };
+		5B8CD4BC258FAB9300C87FA1 /* UserRequestTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */; };
+		5B8CD4C6258FADCE00C87FA1 /* DiaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */; };
+		5B8CD4CE258FADE800C87FA1 /* DiaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */; };
+		5B8CD4D3258FAE0000C87FA1 /* DiaryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4D2258FAE0000C87FA1 /* DiaryProtocols.swift */; };
+		5B8CD4D9258FAE2400C87FA1 /* DiaryBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4D8258FAE2400C87FA1 /* DiaryBackendModel.swift */; };
+		5B8CD4DE258FAE4700C87FA1 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4DD258FAE4700C87FA1 /* DiaryCell.swift */; };
+		5B8CD4E3258FAE5B00C87FA1 /* DiaryTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4E2258FAE5B00C87FA1 /* DiaryTableHeader.swift */; };
+		5B8CD4E9258FAE8700C87FA1 /* DiaryUIElementsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4E8258FAE8700C87FA1 /* DiaryUIElementsConfiguration.swift */; };
+		5B8CD4F1258FAE9D00C87FA1 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4F0258FAE9D00C87FA1 /* DiaryVC.swift */; };
 		6CEC207ED487372A433E2931 /* Pods_Daily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */; };
 /* End PBXBuildFile section */
 
@@ -320,7 +328,6 @@
 		21E1D0612540399B006A4206 /* Stolzl-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Thin.ttf"; sourceTree = "<group>"; };
 		21E1D0622540399B006A4206 /* Stolzl-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Book.ttf"; sourceTree = "<group>"; };
 		21E1D0632540399B006A4206 /* Stolzl-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stolzl-Bold.ttf"; sourceTree = "<group>"; };
-		21E1D09A2540ABD0006A4206 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
 		21E64243254AFBB400564B78 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		21E64248254AFBC300564B78 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		21E6424D254AFBE600564B78 /* UIButtonExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtenstion.swift; sourceTree = "<group>"; };
@@ -355,6 +362,15 @@
 		21F728A8257FB9F9006297A1 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		21F728A9257FB9F9006297A1 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		21F728AA257FB9F9006297A1 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestTasks.swift; sourceTree = "<group>"; };
+		5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInteractor.swift; sourceTree = "<group>"; };
+		5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryPresenter.swift; sourceTree = "<group>"; };
+		5B8CD4D2258FAE0000C87FA1 /* DiaryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryProtocols.swift; sourceTree = "<group>"; };
+		5B8CD4D8258FAE2400C87FA1 /* DiaryBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryBackendModel.swift; sourceTree = "<group>"; };
+		5B8CD4DD258FAE4700C87FA1 /* DiaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		5B8CD4E2258FAE5B00C87FA1 /* DiaryTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableHeader.swift; sourceTree = "<group>"; };
+		5B8CD4E8258FAE8700C87FA1 /* DiaryUIElementsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUIElementsConfiguration.swift; sourceTree = "<group>"; };
+		5B8CD4F0258FAE9D00C87FA1 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
 		9ED289FBA091B7BD87407C81 /* Pods-Daily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.debug.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.debug.xcconfig"; sourceTree = "<group>"; };
 		B218BF6B54A9C629C5BF6952 /* Pods-Daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily.release.xcconfig"; path = "Target Support Files/Pods-Daily/Pods-Daily.release.xcconfig"; sourceTree = "<group>"; };
 		CAF6BEE138DC93B6D868F560 /* Pods_Daily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -566,6 +582,7 @@
 				2193C746257E971A006F5B74 /* UserRequestProtocols.swift */,
 				21D7BDB8256AED8E008BD30C /* UserRequest.swift */,
 				2193C740257E96F1006F5B74 /* UserRequestNotes.swift */,
+				5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */,
 			);
 			path = UserRequest;
 			sourceTree = "<group>";
@@ -816,23 +833,15 @@
 		21E1D08E2540AB13006A4206 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5B8CD4C4258FADBA00C87FA1 /* Diary */,
 				21F0F8F62544CF8200B5D6FB /* MainVC.swift */,
 				21E8C8D42545CA8F00E08CD2 /* Login page */,
 				215615D92542F512005AB2DF /* UserInfo */,
 				215615A82542F079005AB2DF /* Calendar */,
 				215BC9BE2542E3180069D30E /* TabBar */,
 				215BC99E2542D86D0069D30E /* Ideas */,
-				21E1D0992540AB98006A4206 /* Dairy */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		21E1D0992540AB98006A4206 /* Dairy */ = {
-			isa = PBXGroup;
-			children = (
-				21E1D09A2540ABD0006A4206 /* DiaryVC.swift */,
-			);
-			path = Dairy;
 			sourceTree = "<group>";
 		};
 		21E64242254AFB9300564B78 /* Extensions */ = {
@@ -869,6 +878,37 @@
 				2171A60D2579435600D8AD76 /* ListOfNotes */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		5B8CD4C4258FADBA00C87FA1 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				5B8CD4E7258FAE7B00C87FA1 /* DiaryVC */,
+				5B8CD4D7258FAE1500C87FA1 /* DiaryModels */,
+				5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */,
+				5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */,
+				5B8CD4D2258FAE0000C87FA1 /* DiaryProtocols.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		5B8CD4D7258FAE1500C87FA1 /* DiaryModels */ = {
+			isa = PBXGroup;
+			children = (
+				5B8CD4D8258FAE2400C87FA1 /* DiaryBackendModel.swift */,
+				5B8CD4DD258FAE4700C87FA1 /* DiaryCell.swift */,
+				5B8CD4E2258FAE5B00C87FA1 /* DiaryTableHeader.swift */,
+			);
+			path = DiaryModels;
+			sourceTree = "<group>";
+		};
+		5B8CD4E7258FAE7B00C87FA1 /* DiaryVC */ = {
+			isa = PBXGroup;
+			children = (
+				5B8CD4E8258FAE8700C87FA1 /* DiaryUIElementsConfiguration.swift */,
+				5B8CD4F0258FAE9D00C87FA1 /* DiaryVC.swift */,
+			);
+			path = DiaryVC;
 			sourceTree = "<group>";
 		};
 		9D51B1C8649A3D00CE3DF630 /* Pods */ = {
@@ -1069,7 +1109,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A2C49D25509FD9002CB81B /* UITabBarControllerExntension.swift in Sources */,
+				5B8CD4CE258FADE800C87FA1 /* DiaryPresenter.swift in Sources */,
 				21EA5B432567073700F87D18 /* NotesPresenter.swift in Sources */,
+				5B8CD4DE258FAE4700C87FA1 /* DiaryCell.swift in Sources */,
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
 				2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */,
@@ -1083,6 +1125,7 @@
 				215DFC10255D7E2500CD3939 /* DailyTimeAndTimePickerCells.swift in Sources */,
 				210EC1772580EC10000E9578 /* ChooseLanguageVC.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
+				5B8CD4BC258FAB9300C87FA1 /* UserRequestTasks.swift in Sources */,
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
@@ -1135,6 +1178,7 @@
 				210EC1652580EBE0000E9578 /* NotificationsProtocols.swift in Sources */,
 				2193C741257E96F1006F5B74 /* UserRequestNotes.swift in Sources */,
 				21EA5B452567073700F87D18 /* NotesProtocols.swift in Sources */,
+				5B8CD4F1258FAE9D00C87FA1 /* DiaryVC.swift in Sources */,
 				21F72880257FACC3006297A1 /* ProfileTableVC.swift in Sources */,
 				21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */,
@@ -1154,7 +1198,6 @@
 				21E8C8FB2545F9EF00E08CD2 /* SignupVC.swift in Sources */,
 				055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */,
 				21D7BD8B256A9F41008BD30C /* CurrentUserBackendModel.swift in Sources */,
-				21E1D09B2540ABD0006A4206 /* DiaryVC.swift in Sources */,
 				21F7289F257FB9EC006297A1 /* ProfileAchievementsInteractor.swift in Sources */,
 				21E1D0662540399B006A4206 /* Theme.swift in Sources */,
 				21CC5E1D2564569C009C1D8E /* OverlayProtocols.swift in Sources */,
@@ -1200,21 +1243,26 @@
 				21D7BD78256A93BF008BD30C /* DailyTabBarVC.swift in Sources */,
 				21CC5E1F2564569C009C1D8E /* OverlayVC.swift in Sources */,
 				21D7BD77256A93BF008BD30C /* DailyTabBarInteractor.swift in Sources */,
+				5B8CD4C6258FADCE00C87FA1 /* DiaryInteractor.swift in Sources */,
 				21B398C0257F5C0000A1E553 /* MainPagePresenter.swift in Sources */,
 				21F728A1257FB9EC006297A1 /* ProfileAchievementsConfigurator.swift in Sources */,
 				21B8A58025757E8B00162362 /* UIElementsConfiguration.swift in Sources */,
 				210EC1782580EC10000E9578 /* ChooseLanguageConfigurator.swift in Sources */,
 				21F728AB257FB9F9006297A1 /* SettingsPresenter.swift in Sources */,
+				5B8CD4E3258FAE5B00C87FA1 /* DiaryTableHeader.swift in Sources */,
 				21F72892257FB9CE006297A1 /* ProfileHelpConfigurator.swift in Sources */,
 				215646A625585033007264D4 /* NewProjectOverlayModel.swift in Sources */,
 				21D7BDB9256AED8E008BD30C /* UserRequest.swift in Sources */,
 				21F728AD257FB9F9006297A1 /* SettingsProtocols.swift in Sources */,
 				21CC5E8125645D2F009C1D8E /* NewProjectOverlayRouter.swift in Sources */,
 				210EC1672580EBE0000E9578 /* NotificationsVC.swift in Sources */,
+				5B8CD4D9258FAE2400C87FA1 /* DiaryBackendModel.swift in Sources */,
 				21F728A0257FB9EC006297A1 /* ProfileAchievementsVC.swift in Sources */,
+				5B8CD4E9258FAE8700C87FA1 /* DiaryUIElementsConfiguration.swift in Sources */,
 				215DFC0B255D7DEE00CD3939 /* DailyTeamProjectCell.swift in Sources */,
 				215DFBFE255D7D8B00CD3939 /* DailyRemindCell.swift in Sources */,
 				21CC5EAB25645EAF009C1D8E /* NewTaskOverlayProtocols.swift in Sources */,
+				5B8CD4D3258FAE0000C87FA1 /* DiaryProtocols.swift in Sources */,
 				054BEA1325697AC40059FEDC /* IdeasPresenter.swift in Sources */,
 				2198887425757AFF00198443 /* UIElementsInteraction.swift in Sources */,
 				21EA5B442567073700F87D18 /* NotesRouter.swift in Sources */,
