@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ItemCellDelegate {
-    func itemDidChange(_ projectItemViewModel: ProjectItemViewModel)
+    func itemDidChange(projectItemViewModel: ProjectItemViewModel, index: Int)
 }
 
 class ProjectItemCell: UITableViewCell, MainCellProtocol {
@@ -33,6 +33,7 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     let dividerView = UIView()
     
     var isDone: Bool = false
+    var itemIndex: Int?
     
     var delegate: ItemCellDelegate?
     
@@ -59,12 +60,14 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
             isDone = true
         }
         
-        delegate?.itemDidChange(ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []))
+        guard let index = itemIndex else { return }
+        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []), index: index)
      }
     
     @objc func didEndEditing(sender: UITextField) {
         
-        delegate?.itemDidChange(ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []))
+        guard let index = itemIndex else { return }
+        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []), index: index)
     }
     
     func setUpCell() {

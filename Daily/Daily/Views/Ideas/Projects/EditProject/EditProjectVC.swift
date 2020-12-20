@@ -15,6 +15,8 @@ class EditProjectVC: MainTableVC {
     
     var project: ProjectBackendModel?
   
+    let optionsImage = UIImage(systemName: "ellipsis")
+    
     override func loadView() {
         super.loadView()
         
@@ -79,8 +81,19 @@ extension EditProjectVC {
 }
 
 extension EditProjectVC: ItemCellDelegate {
-    func itemDidChange(_ projectItemViewModel: ProjectItemViewModel) {
-        interactor?.updateItem(projectItemViewModel)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellViewModel = cellsToDisplay[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? ProjectItemCell {
+            (cell as? ProjectItemCell)?.itemIndex = indexPath.row
+            cell.setViewModel(cellViewModel)
+            cell.delegate = self
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func itemDidChange(projectItemViewModel: ProjectItemViewModel, index: Int) {
+        interactor?.updateItem(projectItemViewModel: projectItemViewModel, index: index)
     }
 
 }

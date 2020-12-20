@@ -16,7 +16,7 @@ protocol EditProjectDisplayLogic: AnyObject {
 protocol EditProjectBusinessLogic {
     func fetchProjectData()
     func askPresenterToAddNewItem()
-    func updateItem(_ projectItemViewModel: ProjectItemViewModel)
+    func updateItem(projectItemViewModel: ProjectItemViewModel, index: Int)
 }
 
 protocol EditProjectDataStore: AnyObject {

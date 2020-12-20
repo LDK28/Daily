@@ -45,20 +45,14 @@ extension EditProjectInteractor: EditProjectBusinessLogic {
         fetchProjectData()
     }
     
-    func updateItem(_ projectItemViewModel: ProjectItemViewModel) {
+    func updateItem(projectItemViewModel: ProjectItemViewModel, index: Int) {
         
-        let itemID = projectItemViewModel.itemID
-        
-        for item in projectBackendModel?.items ?? [] {
-            if item.itemID == itemID {
-                item.headerTitle = projectItemViewModel.headerTitle
-                item.isDone = projectItemViewModel.isDone
-                item.subItems = projectItemViewModel.subItems
-            }
-        }
+        projectBackendModel?.items[index].headerTitle = projectItemViewModel.headerTitle
+        projectBackendModel?.items[index].isDone = projectItemViewModel.isDone
+        projectBackendModel?.items[index].subItems = projectItemViewModel.subItems
         
         if let project = projectBackendModel,
-           let projectIndex = index {
+           let projectIndex = self.index {
             UserRequest.shared.update(project,
                                       at: projectIndex) { result in
                 switch result {

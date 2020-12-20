@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class ProjectItemViewModel: ProjectItem, MainCellViewModel {
     
     var cellType: UITableViewCell.Type
