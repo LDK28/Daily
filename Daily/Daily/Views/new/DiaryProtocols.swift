@@ -1,8 +1,22 @@
-//
-//  DiaryProtocols.swift
-//  Daily
-//
-//  Created by Владимир Проценко on 21.12.2020.
-//
-
 import Foundation
+
+protocol DiaryDisplayLogic: class {
+    func display(data: [DiaryCellViewModel])
+}
+
+protocol DiaryPresentationLogic {
+    func present(data: [DiaryBackendModel])
+}
+
+protocol DiaryBusinessLogic {
+    func fetchLatestData()
+}
+
+// Зачем???
+protocol DiaryDataStore: AnyObject {
+    var tasks: [DiaryBackendModel] { get set }
+}
+
+protocol DiaryDataPassing {
+    var dataStore: DiaryDataStore? { get }
+}
