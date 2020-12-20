@@ -15,6 +15,9 @@ class EditProjectHeaderView: UIView {
     init(title: String) {
         super.init(frame: .zero)
         
+        addSubview(titleImageView)
+        addSubview(titleLabel)
+        
         titleImageView.styleImageView(color: .dailyTitleTextColor)
         
         if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 30) {
@@ -22,17 +25,13 @@ class EditProjectHeaderView: UIView {
             titleLabel.addShadow()
         }
         
-        addSubview(titleImageView)
-        addSubview(titleLabel)
-        
         NSLayoutConstraint.activate([
             titleImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             titleImageView.heightAnchor.constraint(equalToConstant: 30),
             titleImageView.widthAnchor.constraint(equalTo: titleImageView.heightAnchor),
             titleImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: titleImageView.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
     

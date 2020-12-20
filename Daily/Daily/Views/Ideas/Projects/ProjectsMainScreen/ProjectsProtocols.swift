@@ -18,7 +18,7 @@ protocol ProjectsBusinessLogic {
 }
 
 protocol ProjectsDataStore {
-	
+    
 }
 
 protocol ProjectsPresentationLogic {
@@ -26,10 +26,10 @@ protocol ProjectsPresentationLogic {
 }
 
 protocol ProjectsRoutingLogic {
-    func navigateTo(project: ProjectBackendModel)
+    func navigateTo(project: ProjectBackendModel, index: Int)
 }
 
 protocol ProjectsDataPassing {
-	//variable to transfer between screens
-	var dataStore: ProjectsDataStore? { get }
+    //variable to transfer between screens
+    var dataStore: ProjectsDataStore? { get }
 }

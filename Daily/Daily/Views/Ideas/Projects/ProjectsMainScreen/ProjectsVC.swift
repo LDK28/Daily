@@ -55,12 +55,12 @@ class ProjectsVC: MainTableVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCellModel = cellsToDisplay[indexPath.row] as? ProjectBackendModel else { return }
-        router?.navigateTo(project: selectedCellModel)
+        router?.navigateTo(project: selectedCellModel, index: indexPath.row)
     }
   
 }
 extension ProjectsVC: ProjectsDisplayLogic {
-	func display() {
+    func display() {
         tableView.reloadData()
-	}
+    }
 }

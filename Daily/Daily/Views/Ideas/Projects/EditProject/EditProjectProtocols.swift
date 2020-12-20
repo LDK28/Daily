@@ -14,11 +14,14 @@ protocol EditProjectDisplayLogic: AnyObject {
 }
 
 protocol EditProjectBusinessLogic {
-  func fetchProjectData()
+    func fetchProjectData()
+    func askPresenterToAddNewItem()
+    func updateItem(_ projectItemViewModel: ProjectItemViewModel)
 }
 
 protocol EditProjectDataStore: AnyObject {
     var projectBackendModel: ProjectBackendModel? { get set }
+    var index: Int? { get set }
 }
 
 protocol EditProjectPresentationLogic {
@@ -26,10 +29,9 @@ protocol EditProjectPresentationLogic {
 }
 
 protocol EditProjectRoutingLogic {
-	
 }
 
 protocol EditProjectDataPassing {
-	var dataStore: EditProjectDataStore? { get }
-    func getProjectModel(_ project: ProjectBackendModel)
+    var dataStore: EditProjectDataStore? { get }
+    func getProjectModel(project: ProjectBackendModel, index: Int)
 }

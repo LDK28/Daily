@@ -7,20 +7,24 @@
 
 import UIKit
 
+protocol ItemCellDelegate {
+    func itemDidChange(_ projectItemViewModel: ProjectItemViewModel)
+}
+
 class ProjectItemCell: UITableViewCell, MainCellProtocol {
     
     func setViewModel(_ viewModel: MainCellViewModel?) {
         guard let viewModel = viewModel as? ProjectItemViewModel else { return }
-        itemLabel.text = viewModel.headerTitle
+        itemTextField.text = viewModel.headerTitle
+        isDone = viewModel.isDone
         //viewModel.subItems
+        setUpCell()
     }
     
     static let cellIdentifier = "ProjectItemCell"
     
-    var isDone: Bool = false
-    
     let labelBackgroundView = UIView()
-    let itemLabel = UILabel()
+    let itemTextField = UITextField()
     let statusButton = UIButton()
     let missedItemImage = UIImage(systemName: "circle",
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
@@ -28,27 +32,23 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
                                 withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
     let dividerView = UIView()
     
+    var isDone: Bool = false
+    
+    var delegate: ItemCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(labelBackgroundView)
         labelBackgroundView.addSubview(statusButton)
-        labelBackgroundView.addSubview(itemLabel)
+        labelBackgroundView.addSubview(itemTextField)
         labelBackgroundView.addSubview(dividerView)
         
-        configureCell()
-        configureLabelBackgroundView()
-        configureItemLabel()
-        configureStatusButton()
-        configureDividerView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
     @objc func didTapStatusButton(sender: UIButton) {
         if isDone {
@@ -58,7 +58,22 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
             statusButton.setImage(doneItemImage, for: .normal)
             isDone = true
         }
+        
+        delegate?.itemDidChange(ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []))
      }
+    
+    @objc func didEndEditing(sender: UITextField) {
+        
+        delegate?.itemDidChange(ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []))
+    }
+    
+    func setUpCell() {
+        configureCell()
+        configureLabelBackgroundView()
+        configureItemLabel()
+        configureStatusButton()
+        configureDividerView()
+    }
 }
 
 extension ProjectItemCell {
@@ -88,23 +103,28 @@ extension ProjectItemCell {
             statusButton.widthAnchor.constraint(equalTo: statusButton.heightAnchor)
         ])
         statusButton.styleButton()
-        statusButton.setImage(missedItemImage, for: .normal)
+        if isDone {
+            statusButton.setImage(doneItemImage, for: .normal)
+        } else {
+            statusButton.setImage(missedItemImage, for: .normal)
+        }
         statusButton.addTarget(self, action: #selector(didTapStatusButton), for: .touchUpInside)
     }
     
     func configureItemLabel() {
         NSLayoutConstraint.activate([
-            itemLabel.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
-            itemLabel.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10)
+            itemTextField.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
+            itemTextField.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10)
         ])
-        if let labelFont = UIFont(name: "Stolzl-Book", size: 22) {
-            itemLabel.styleLabel(font: labelFont, text: itemLabel.text, textAlignment: .left)
+        if let itemFont = UIFont(name: "Stolzl-Book", size: 22) {
+            itemTextField.styleProjectItemTextField(font: itemFont, text: itemTextField.text ?? "item")
         }
+        itemTextField.addTarget(self, action: #selector(didEndEditing), for: .editingDidEnd)
     }
     
     func configureDividerView() {
         NSLayoutConstraint.activate([
-            dividerView.topAnchor.constraint(equalTo: itemLabel.bottomAnchor, constant: 10),
+            dividerView.topAnchor.constraint(equalTo: itemTextField.bottomAnchor, constant: 10),
             dividerView.leadingAnchor.constraint(equalTo: statusButton.leadingAnchor),
             dividerView.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -10), //change later for ...
             dividerView.heightAnchor.constraint(equalToConstant: 0.5)

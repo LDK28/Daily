@@ -10,15 +10,15 @@ import UIKit
 
 class EditProjectVC: MainTableVC {
     
-	var interactor: EditProjectBusinessLogic?
-	var router: (EditProjectRoutingLogic & EditProjectDataPassing)?
+    var interactor: EditProjectBusinessLogic?
+    var router: (EditProjectRoutingLogic & EditProjectDataPassing)?
     
     var project: ProjectBackendModel?
   
-	override func loadView() {
+    override func loadView() {
         super.loadView()
         
-	}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,21 +29,38 @@ class EditProjectVC: MainTableVC {
         
         interactor?.fetchProjectData()
         
-        styleTableViewTitle()
+        styleTableViewTitles()
+        
+        
     }
+    
+    @objc func didTapAddButton(sender: UIButton) {
+        interactor?.askPresenterToAddNewItem()
+    }
+    
+    @objc func didTapOptions(sender: UIBarButtonItem) {
+        
+    }
+  
+}
+
+extension EditProjectVC {
     
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
-    func styleTableViewTitle() {
+    func styleTableViewTitles() {
         let headerView = EditProjectHeaderView(title: project?.title ?? "Project title")
         tableView.tableHeaderView = headerView
-        headerView.frame.size.height = 120
+        headerView.frame.size.height = 100
         let footerView = EditProjectFooterView(title: "Add new item")
         tableView.tableFooterView = footerView
-        footerView.frame.size.height = 120
+        footerView.frame.size.height = 50
+        footerView.addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(didTapOptions))
     }
     
     func styleTableView() {
@@ -58,10 +75,18 @@ class EditProjectVC: MainTableVC {
     func registerCells() {
         tableView.register(ProjectItemCell.self, forCellReuseIdentifier: ProjectItemCell.cellIdentifier)
     }
-  
+    
+}
+
+extension EditProjectVC: ItemCellDelegate {
+    func itemDidChange(_ projectItemViewModel: ProjectItemViewModel) {
+        interactor?.updateItem(projectItemViewModel)
+    }
+
 }
 
 extension EditProjectVC: EditProjectDisplayLogic {
+    
     func getProject(_ project: ProjectBackendModel) {
         self.project = project
     }
