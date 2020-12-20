@@ -30,12 +30,13 @@ class NewProjectOverlayVC: OverlayVC {
     @objc func tappedSaveButton() {
         saveButton.tapAnimation { [weak self] in
             guard let self = self else { return }
+            self.tableView.endEditing(true)
             (self.interactor as? NewProjectOverlayInteractor)?.didTapSaveButton()
             self.remove()
             NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
         }
     }
-} // i have no idea why it isn't working
+}
 
 extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
     func didToggleDateSwitcher() {
