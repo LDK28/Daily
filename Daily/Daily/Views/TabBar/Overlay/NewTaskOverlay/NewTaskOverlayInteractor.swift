@@ -36,8 +36,7 @@ extension NewTaskOverlayInteractor: NewTaskOverlayBusinessLogic {
     
     func didTapSaveButton() {
         guard let dataSource = dataSource as? NewTaskOverlayDataSource else { return }
-        UserRequest.shared.append(DiaryBackendModel( time: dataSource.assignedTime ?? Date(),
-                                                     title: dataSource.title ?? "",
+        UserRequest.shared.append(DiaryBackendModel( title: dataSource.title ?? "",
                                                      description: "",
                                                      isMade: false,
                                                      shouldRemind: dataSource.shouldRemind,

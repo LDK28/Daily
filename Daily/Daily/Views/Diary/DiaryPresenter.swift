@@ -11,7 +11,7 @@ extension DiaryPresenter: DiaryPresentationLogic {
     
     func present(data: [DiaryBackendModel]) {
         let viewModel = data.map { model -> DiaryCellViewModel in
-            let cellModel = DiaryCellViewModel(time: model.time,
+            let cellModel = DiaryCellViewModel(time: model.assignedTime,
                                                title: model.title,
                                                description: model.description,
                                                isMade: model.isMade,

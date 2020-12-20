@@ -83,7 +83,7 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: DiaryCell.identifier, for: indexPath) as? DiaryCell
             else { return UITableViewCell() }
-        cell.setup(data: dataToDisplay[indexPath.row])
+        cell.setup(data: dataToDisplay[indexPath.section])
         return cell
     }
 
