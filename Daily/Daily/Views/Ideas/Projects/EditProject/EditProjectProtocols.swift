@@ -17,6 +17,7 @@ protocol EditProjectBusinessLogic {
     func fetchProjectData()
     func askPresenterToAddNewItem()
     func updateItem(projectItemViewModel: ProjectItemViewModel, index: Int)
+    func updateProjectName(projectName: String)
 }
 
 protocol EditProjectDataStore: AnyObject {

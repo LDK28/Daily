@@ -15,7 +15,11 @@ class EditProjectVC: MainTableVC {
     
     var project: ProjectBackendModel?
   
-    let optionsImage = UIImage(systemName: "ellipsis")
+    var optionsImage = UIImage(systemName: "ellipsis",
+                               withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
+    
+    var optionsVCIsOpened: Bool = false
+    let optionsVC = OptionsOverlayVC()
     
     override func loadView() {
         super.loadView()
@@ -26,6 +30,7 @@ class EditProjectVC: MainTableVC {
         super.viewDidLoad()
         
         configureTableView()
+        styleNavigationBar()
         styleTableView()
         registerCells()
         
@@ -40,7 +45,22 @@ class EditProjectVC: MainTableVC {
         interactor?.askPresenterToAddNewItem()
     }
     
+    @objc func didEndEditingProjectName(sender: UITextField) {
+        interactor?.updateProjectName(projectName: sender.text ?? "")
+    }
+    
     @objc func didTapOptions(sender: UIBarButtonItem) {
+//        if optionsVCIsOpened {
+//            optionsVC.willMove(toParent: nil)
+//            optionsVC.view.removeFromSuperview()
+//            optionsVC.removeFromParent()
+//            optionsVCIsOpened = false
+//        } else {
+//            addChild(optionsVC)
+//            tableView.addSubview(optionsVC.view)
+//            optionsVC.didMove(toParent: self)
+//            optionsVCIsOpened = true
+//        }
         
     }
   
@@ -54,15 +74,26 @@ extension EditProjectVC {
         
     }
     
+    func styleNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: optionsImage,
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(didTapOptions))
+    }
+    
     func styleTableViewTitles() {
         let headerView = EditProjectHeaderView(title: project?.title ?? "Project title")
         tableView.tableHeaderView = headerView
         headerView.frame.size.height = 100
+        headerView.titleTextFiels.addTarget(self,
+                                            action: #selector(didEndEditingProjectName),
+                                            for: .editingDidEnd)
         let footerView = EditProjectFooterView(title: "Add new item")
         tableView.tableFooterView = footerView
         footerView.frame.size.height = 50
-        footerView.addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "...", style: .plain, target: self, action: #selector(didTapOptions))
+        footerView.addButton.addTarget(self,
+                                       action: #selector(didTapAddButton),
+                                       for: .touchUpInside)
     }
     
     func styleTableView() {
@@ -75,16 +106,18 @@ extension EditProjectVC {
     }
     
     func registerCells() {
-        tableView.register(ProjectItemCell.self, forCellReuseIdentifier: ProjectItemCell.cellIdentifier)
+        tableView.register(ProjectItemCell.self,
+                           forCellReuseIdentifier: ProjectItemCell.cellIdentifier)
     }
     
 }
 
 extension EditProjectVC: ItemCellDelegate {
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellViewModel = cellsToDisplay[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? ProjectItemCell {
-            (cell as? ProjectItemCell)?.itemIndex = indexPath.row
+            cell.itemIndex = indexPath.row
             cell.setViewModel(cellViewModel)
             cell.delegate = self
             return cell
@@ -103,7 +136,9 @@ extension EditProjectVC: EditProjectDisplayLogic {
     func getProject(_ project: ProjectBackendModel) {
         self.project = project
     }
+    
     func display() {
         tableView.reloadData()
     }
+    
 }

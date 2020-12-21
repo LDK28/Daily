@@ -67,7 +67,7 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     @objc func didEndEditing(sender: UITextField) {
         
         guard let index = itemIndex else { return }
-        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []), index: index)
+        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.text ?? "", isDone: isDone, subItems: []), index: index)
     }
     
     func setUpCell() {
@@ -122,6 +122,7 @@ extension ProjectItemCell {
         if let itemFont = UIFont(name: "Stolzl-Book", size: 22) {
             itemTextField.styleProjectItemTextField(font: itemFont, text: itemTextField.text ?? "item")
         }
+        itemTextField.placeholder = "To do"
         itemTextField.addTarget(self, action: #selector(didEndEditing), for: .editingDidEnd)
     }
     

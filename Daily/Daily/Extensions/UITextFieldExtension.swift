@@ -50,12 +50,12 @@ extension UITextField {
         self.tintColor = .dailyOverlayTextFieldTextColor
     }
     
-    func styleProjectItemTextField(font: UIFont, text: String) {
+    func styleProjectItemTextField(font: UIFont, text: String, textColor: UIColor = .dailyTextColor, textAlignment: NSTextAlignment = .left) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
         self.font = font
         self.placeholder = text
-        self.textColor = .dailyTextColor
-        self.textAlignment = .left
+        self.textColor = textColor
+        self.textAlignment = textAlignment
     }
 }
