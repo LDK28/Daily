@@ -17,6 +17,11 @@ protocol DiaryDataStore: AnyObject {
     var tasks: [DiaryBackendModel] { get set }
 }
 
+protocol DiaryRoutingLogic {
+    func navigateToEditingTask(withViewModel viewModel: DiaryBackendModel,
+                               withIndex index: Int)
+}
+
 protocol DiaryDataPassing {
     var dataStore: DiaryDataStore? { get }
 }
