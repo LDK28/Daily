@@ -29,4 +29,7 @@ protocol EditTaskRoutingLogic {
 
 protocol EditTaskDataPassing {
 	var dataStore: EditTaskDataStore? { get }
+    
+    func integrateTaskInModule(_ note: DiaryBackendModel,
+                               index: Int)
 }

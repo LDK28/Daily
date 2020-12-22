@@ -168,6 +168,13 @@
 		21F728AE257FB9F9006297A1 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A8257FB9F9006297A1 /* SettingsInteractor.swift */; };
 		21F728AF257FB9F9006297A1 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728A9257FB9F9006297A1 /* SettingsVC.swift */; };
 		21F728B0257FB9F9006297A1 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F728AA257FB9F9006297A1 /* SettingsConfigurator.swift */; };
+		5B50A7112592684B005D7416 /* DiaryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A7102592684B005D7416 /* DiaryRouter.swift */; };
+		5B50A717259269F5005D7416 /* EditTaskConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A716259269F5005D7416 /* EditTaskConfigurator.swift */; };
+		5B50A71C25926A31005D7416 /* EditTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A71B25926A31005D7416 /* EditTaskVC.swift */; };
+		5B50A72225926BC0005D7416 /* EditTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72125926BC0005D7416 /* EditTaskInteractor.swift */; };
+		5B50A72C25926C3B005D7416 /* EditTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72925926C3B005D7416 /* EditTaskPresenter.swift */; };
+		5B50A72D25926C3B005D7416 /* EditTaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72A25926C3B005D7416 /* EditTaskRouter.swift */; };
+		5B50A72E25926C3B005D7416 /* EditTaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72B25926C3B005D7416 /* EditTaskProtocols.swift */; };
 		5B8CD4BC258FAB9300C87FA1 /* UserRequestTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */; };
 		5B8CD4C6258FADCE00C87FA1 /* DiaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */; };
 		5B8CD4CE258FADE800C87FA1 /* DiaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */; };
@@ -362,6 +369,13 @@
 		21F728A8257FB9F9006297A1 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		21F728A9257FB9F9006297A1 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		21F728AA257FB9F9006297A1 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		5B50A7102592684B005D7416 /* DiaryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRouter.swift; sourceTree = "<group>"; };
+		5B50A716259269F5005D7416 /* EditTaskConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskConfigurator.swift; sourceTree = "<group>"; };
+		5B50A71B25926A31005D7416 /* EditTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskVC.swift; sourceTree = "<group>"; };
+		5B50A72125926BC0005D7416 /* EditTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractor.swift; sourceTree = "<group>"; };
+		5B50A72925926C3B005D7416 /* EditTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenter.swift; sourceTree = "<group>"; };
+		5B50A72A25926C3B005D7416 /* EditTaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskRouter.swift; sourceTree = "<group>"; };
+		5B50A72B25926C3B005D7416 /* EditTaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskProtocols.swift; sourceTree = "<group>"; };
 		5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestTasks.swift; sourceTree = "<group>"; };
 		5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInteractor.swift; sourceTree = "<group>"; };
 		5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryPresenter.swift; sourceTree = "<group>"; };
@@ -880,7 +894,20 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
-		5B8CD4C4258FADBA00C87FA1 /* Diary */ = {
+		5B50A715259269DA005D7416 /* EditingTask */ = {
+			isa = PBXGroup;
+			children = (
+				5B50A716259269F5005D7416 /* EditTaskConfigurator.swift */,
+				5B50A71B25926A31005D7416 /* EditTaskVC.swift */,
+				5B50A72125926BC0005D7416 /* EditTaskInteractor.swift */,
+				5B50A72925926C3B005D7416 /* EditTaskPresenter.swift */,
+				5B50A72A25926C3B005D7416 /* EditTaskRouter.swift */,
+				5B50A72B25926C3B005D7416 /* EditTaskProtocols.swift */,
+			);
+			path = EditingTask;
+			sourceTree = "<group>";
+		};
+		5B50A72025926B6B005D7416 /* ListOfTasks */ = {
 			isa = PBXGroup;
 			children = (
 				5B8CD4E7258FAE7B00C87FA1 /* DiaryVC */,
@@ -888,6 +915,16 @@
 				5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */,
 				5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */,
 				5B8CD4D2258FAE0000C87FA1 /* DiaryProtocols.swift */,
+				5B50A7102592684B005D7416 /* DiaryRouter.swift */,
+			);
+			path = ListOfTasks;
+			sourceTree = "<group>";
+		};
+		5B8CD4C4258FADBA00C87FA1 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				5B50A72025926B6B005D7416 /* ListOfTasks */,
+				5B50A715259269DA005D7416 /* EditingTask */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1114,6 +1151,7 @@
 				5B8CD4DE258FAE4700C87FA1 /* DiaryCell.swift in Sources */,
 				21E1D0652540399B006A4206 /* ConvertHexCodeToUIColor.swift in Sources */,
 				21E1D02E25403975006A4206 /* Daily.xcdatamodeld in Sources */,
+				5B50A7112592684B005D7416 /* DiaryRouter.swift in Sources */,
 				2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */,
 				21C83C9C258015ED009DE03C /* Coordinator.swift in Sources */,
 				05112B462552B7690044D502 /* (null) in Sources */,
@@ -1132,6 +1170,7 @@
 				21F7288F257FB9CE006297A1 /* ProfileHelpProtocols.swift in Sources */,
 				054BEA1625697AC40059FEDC /* IdeasProtocols.swift in Sources */,
 				21544E3D25693B6700F9A50C /* NoteBackendModel.swift in Sources */,
+				5B50A71C25926A31005D7416 /* EditTaskVC.swift in Sources */,
 				21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
@@ -1152,6 +1191,7 @@
 				210EC1662580EBE0000E9578 /* NotificationsInteractor.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
+				5B50A72E25926C3B005D7416 /* EditTaskProtocols.swift in Sources */,
 				052F16F1256E4EE200782ED8 /* RecentActionsViewModel.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				21F7289D257FB9EC006297A1 /* ProfileAchievementsRouter.swift in Sources */,
@@ -1161,6 +1201,7 @@
 				21CC5E6025645B08009C1D8E /* NewNoteOverlayRouter.swift in Sources */,
 				210EC1632580EBE0000E9578 /* NotificationsPresenter.swift in Sources */,
 				215BC9B22542E2620069D30E /* CalendarVC.swift in Sources */,
+				5B50A72225926BC0005D7416 /* EditTaskInteractor.swift in Sources */,
 				2171A61C257943DD00D8AD76 /* EditNoteVC.swift in Sources */,
 				21173190255DCAA10086A9EE /* OverlayDataSource.swift in Sources */,
 				21F7288D257FB9CE006297A1 /* ProfileHelpPresenter.swift in Sources */,
@@ -1188,6 +1229,8 @@
 				2152908A2580EF2A0080052F /* ProfilePresenter.swift in Sources */,
 				21B398C1257F5C0000A1E553 /* MainPageRouter.swift in Sources */,
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
+				5B50A72D25926C3B005D7416 /* EditTaskRouter.swift in Sources */,
+				5B50A72C25926C3B005D7416 /* EditTaskPresenter.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */,
 				054BEA41256991E10059FEDC /* IdeasCellViewModel.swift in Sources */,
@@ -1204,6 +1247,7 @@
 				21E64249254AFBC300564B78 /* UITextFieldExtension.swift in Sources */,
 				2171A61D257943DD00D8AD76 /* EditNoteConfigurator.swift in Sources */,
 				2171A61B257943DD00D8AD76 /* EditNoteInteractor.swift in Sources */,
+				5B50A717259269F5005D7416 /* EditTaskConfigurator.swift in Sources */,
 				210EC1682580EBE0000E9578 /* NotificationsConfigurator.swift in Sources */,
 				2142BB15257F65ED00AC26BA /* Cells.swift in Sources */,
 				05112B412552AD1E0044D502 /* (null) in Sources */,

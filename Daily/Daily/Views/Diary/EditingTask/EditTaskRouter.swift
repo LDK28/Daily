@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditTaskRouter: EditTaskDataPassing {
+class EditTaskRouter {
 	
 	weak var viewController: EditTaskVC?
 	weak var dataStore: EditTaskDataStore?
