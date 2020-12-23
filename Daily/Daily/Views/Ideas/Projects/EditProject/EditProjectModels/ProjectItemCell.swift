@@ -17,14 +17,13 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
         guard let viewModel = viewModel as? ProjectItemViewModel else { return }
         itemTextField.text = viewModel.headerTitle
         isDone = viewModel.isDone
-        //viewModel.subItems
         setUpCell()
     }
     
     static let cellIdentifier = "ProjectItemCell"
     
     let labelBackgroundView = UIView()
-    let itemTextField = UITextField()
+    let itemTextField = UITextView()
     let statusButton = UIButton()
     let missedItemImage = UIImage(systemName: "circle",
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
@@ -59,15 +58,19 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
             statusButton.setImage(doneItemImage, for: .normal)
             isDone = true
         }
-        
         guard let index = itemIndex else { return }
-        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.placeholder ?? "", isDone: isDone, subItems: []), index: index)
+        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self,
+                                                                           headerTitle: itemTextField.text ?? "",
+                                                                           isDone: isDone),
+                                index: index)
      }
     
-    @objc func didEndEditing(sender: UITextField) {
-        
+    func textViewDidEndEditing(_ textView: UITextView) {
         guard let index = itemIndex else { return }
-        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self, headerTitle: itemTextField.text ?? "", isDone: isDone, subItems: []), index: index)
+        delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self,
+                                                                           headerTitle: itemTextField.text ?? "",
+                                                                           isDone: isDone),
+                                index: index)
     }
     
     func setUpCell() {
@@ -75,16 +78,14 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
         configureLabelBackgroundView()
         configureItemLabel()
         configureStatusButton()
-        configureDividerView()
     }
 }
 
-extension ProjectItemCell {
+extension ProjectItemCell: UITextViewDelegate {
     
     func configureCell() {
         selectionStyle = .none
         backgroundColor = .clear
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func configureLabelBackgroundView() {
@@ -92,7 +93,7 @@ extension ProjectItemCell {
             labelBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             labelBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             labelBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            labelBackgroundView.heightAnchor.constraint(equalToConstant: 80),
+            labelBackgroundView.heightAnchor.constraint(equalToConstant: 50),
             labelBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         labelBackgroundView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10)
@@ -100,9 +101,9 @@ extension ProjectItemCell {
     
     func configureStatusButton() {
         NSLayoutConstraint.activate([
-            statusButton.topAnchor.constraint(equalTo: labelBackgroundView.topAnchor, constant: 16),
+            statusButton.centerYAnchor.constraint(equalTo: labelBackgroundView.centerYAnchor),
             statusButton.leadingAnchor.constraint(equalTo: labelBackgroundView.leadingAnchor, constant: 16),
-            statusButton.heightAnchor.constraint(equalToConstant: 25),
+            statusButton.heightAnchor.constraint(equalToConstant: 20),
             statusButton.widthAnchor.constraint(equalTo: statusButton.heightAnchor)
         ])
         statusButton.styleButton()
@@ -117,22 +118,17 @@ extension ProjectItemCell {
     func configureItemLabel() {
         NSLayoutConstraint.activate([
             itemTextField.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
-            itemTextField.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10)
+            itemTextField.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10),
+            itemTextField.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -10),
+            itemTextField.heightAnchor.constraint(equalTo: labelBackgroundView.heightAnchor, multiplier: 0.8)
         ])
-        if let itemFont = UIFont(name: "Stolzl-Book", size: 22) {
-            itemTextField.styleProjectItemTextField(font: itemFont, text: itemTextField.text ?? "item")
+        if let itemFont = UIFont(name: "Stolzl-Book", size: 20) {
+            itemTextField.styleClearTextView(font: itemFont,
+                                             text: itemTextField.text ?? "",
+                                             textColor: .dailyTextColor,
+                                             textAlignment: .left)
         }
-        itemTextField.placeholder = "To do"
-        itemTextField.addTarget(self, action: #selector(didEndEditing), for: .editingDidEnd)
+        itemTextField.delegate = self
     }
     
-    func configureDividerView() {
-        NSLayoutConstraint.activate([
-            dividerView.topAnchor.constraint(equalTo: itemTextField.bottomAnchor, constant: 10),
-            dividerView.leadingAnchor.constraint(equalTo: statusButton.leadingAnchor),
-            dividerView.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -10), //change later for ...
-            dividerView.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
-        dividerView.styleView(backgroundColor: .dailyTextColor, cornerRadius: 0)
-    }
 }

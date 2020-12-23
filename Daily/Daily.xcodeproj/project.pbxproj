@@ -22,7 +22,6 @@
 		05327F5125842D9F00887D21 /* EditProjectConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F4B25842D9F00887D21 /* EditProjectConfigurator.swift */; };
 		05327F5F25842F0700887D21 /* ProjectBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F5E25842F0700887D21 /* ProjectBackendModel.swift */; };
 		05327F6A25842F5300887D21 /* ProjectItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F6925842F5300887D21 /* ProjectItemModel.swift */; };
-		05327F6F25842F6E00887D21 /* ProjectSubitemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */; };
 		05327F8025851AC100887D21 /* UserRequestProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F7F25851AC100887D21 /* UserRequestProjects.swift */; };
 		05327F8E258652D400887D21 /* ProjectItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F8D258652D400887D21 /* ProjectItemCell.swift */; };
 		05327F962586AA3900887D21 /* ProjectItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F952586AA3900887D21 /* ProjectItemViewModel.swift */; };
@@ -243,7 +242,6 @@
 		05327F4B25842D9F00887D21 /* EditProjectConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectConfigurator.swift; sourceTree = "<group>"; };
 		05327F5E25842F0700887D21 /* ProjectBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBackendModel.swift; sourceTree = "<group>"; };
 		05327F6925842F5300887D21 /* ProjectItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemModel.swift; sourceTree = "<group>"; };
-		05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSubitemModel.swift; sourceTree = "<group>"; };
 		05327F7F25851AC100887D21 /* UserRequestProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestProjects.swift; sourceTree = "<group>"; };
 		05327F8D258652D400887D21 /* ProjectItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemCell.swift; sourceTree = "<group>"; };
 		05327F952586AA3900887D21 /* ProjectItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemViewModel.swift; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 			children = (
 				05327F5E25842F0700887D21 /* ProjectBackendModel.swift */,
 				05327F6925842F5300887D21 /* ProjectItemModel.swift */,
-				05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */,
 			);
 			path = ProjectModels;
 			sourceTree = "<group>";
@@ -1362,7 +1359,6 @@
 				2190D722258E6C34002EA3EF /* AuthorizationRouter.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
-				05327F6F25842F6E00887D21 /* ProjectSubitemModel.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				2117339F2580D1F800C72192 /* Headers.swift in Sources */,
 				2171A618257943DD00D8AD76 /* EditNotePresenter.swift in Sources */,

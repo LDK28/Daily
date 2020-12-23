@@ -11,19 +11,16 @@ class ProjectItem: Codable {
     var itemID: UUID
     var headerTitle: String
     var isDone: Bool
-    var subItems: [ProjectSubitem]
     
-    init(headerTitle: String, isDone: Bool, subItems: [ProjectSubitem] = []) {
+    init(headerTitle: String, isDone: Bool) {
         self.headerTitle = headerTitle
         self.isDone = isDone
-        self.subItems = subItems
         self.itemID = UUID()
     }
     
     init(copiedItem: ProjectItem) {
         self.headerTitle = copiedItem.headerTitle
         self.isDone = copiedItem.isDone
-        self.subItems = copiedItem.subItems
         self.itemID = copiedItem.itemID
     }
 }

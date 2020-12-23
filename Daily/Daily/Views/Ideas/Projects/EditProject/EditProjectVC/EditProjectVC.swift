@@ -38,15 +38,10 @@ class EditProjectVC: MainTableVC {
         
         styleTableViewTitles()
         
-        
     }
     
     @objc func didTapAddButton(sender: UIButton) {
         interactor?.askPresenterToAddNewItem()
-    }
-    
-    @objc func didEndEditingProjectName(sender: UITextField) {
-        interactor?.updateProjectName(projectName: sender.text ?? "")
     }
     
     @objc func didTapOptions(sender: UIBarButtonItem) {
@@ -61,17 +56,19 @@ class EditProjectVC: MainTableVC {
 //            optionsVC.didMove(toParent: self)
 //            optionsVCIsOpened = true
 //        }
-        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        interactor?.updateProjectName(projectName: textView.text ?? "")
     }
   
 }
 
-extension EditProjectVC {
+extension EditProjectVC: UITextViewDelegate {
     
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
     
     func styleNavigationBar() {
@@ -84,10 +81,9 @@ extension EditProjectVC {
     func styleTableViewTitles() {
         let headerView = EditProjectHeaderView(title: project?.title ?? "Project title")
         tableView.tableHeaderView = headerView
-        headerView.frame.size.height = 100
-        headerView.titleTextFiels.addTarget(self,
-                                            action: #selector(didEndEditingProjectName),
-                                            for: .editingDidEnd)
+//        headerView.frame.size.height = CGFloat((headerView.titleTextView.numberOfLines * 50) + 30)
+        headerView.frame.size.height = 100  //   idk what to do about this
+        headerView.titleTextView.delegate = self
         let footerView = EditProjectFooterView(title: "Add new item")
         tableView.tableFooterView = footerView
         footerView.frame.size.height = 50

@@ -15,7 +15,6 @@ class EditProjectInteractor: EditProjectDataStore {
     
     init(_ presenter: EditProjectPresenter) {
         self.presenter = presenter
-        
     }
     
 }
@@ -29,8 +28,7 @@ extension EditProjectInteractor: EditProjectBusinessLogic {
     
     func askPresenterToAddNewItem() {
         projectBackendModel?.items.append(ProjectItem(headerTitle: "",
-                                         isDone: false,
-                                         subItems: []))
+                                         isDone: false))
         updateProject()
         fetchProjectData()
     }
@@ -38,7 +36,6 @@ extension EditProjectInteractor: EditProjectBusinessLogic {
     func updateItem(projectItemViewModel: ProjectItemViewModel, index: Int) {
         projectBackendModel?.items[index].headerTitle = projectItemViewModel.headerTitle
         projectBackendModel?.items[index].isDone = projectItemViewModel.isDone
-        projectBackendModel?.items[index].subItems = projectItemViewModel.subItems
         updateProject()
     }
     
