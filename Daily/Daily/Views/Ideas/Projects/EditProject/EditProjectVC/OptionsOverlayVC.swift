@@ -11,21 +11,17 @@ class OptionsOverlayVC: UIViewController {
     
     var buttonTopAnchorConstant: CGFloat = 0
     
-    let changeProjectNameButton = UIButton()
     let deleteProjectButton = UIButton()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        view.edgesIgnoringSafeArea(.all)
         
-        view.backgroundColor = .dailyPlusButtonBlackoutColor
+//        view.backgroundColor = .dailyPlusButtonBlackoutColor
         
-        view.addSubview(changeProjectNameButton)
         view.addSubview(deleteProjectButton)
         
-        configureOverlayButton(title: "Change project name", button: changeProjectNameButton)
         configureOverlayButton(title: "Delete project", button: deleteProjectButton)
         
     }

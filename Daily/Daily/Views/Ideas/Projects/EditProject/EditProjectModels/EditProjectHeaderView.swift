@@ -24,7 +24,7 @@ class EditProjectHeaderView: UIView {
             titleTextView.styleClearTextView(font: headerFont, text: title, textColor: .dailyTitleTextColor, textAlignment: .center)
             titleTextView.textContainer.maximumNumberOfLines = 2
             titleTextView.textContainer.lineBreakMode = .byTruncatingTail
-            titleTextView.isScrollEnabled = false
+//            titleTextView.isScrollEnabled = false
         }
         
         NSLayoutConstraint.activate([

@@ -40,27 +40,34 @@ class EditProjectVC: MainTableVC {
         
     }
     
+    
+    @objc func didTapDeleteProject (sender: UIButton) {
+        interactor?.deleteProject()
+    }
+    
     @objc func didTapAddButton(sender: UIButton) {
         interactor?.askPresenterToAddNewItem()
     }
     
     @objc func didTapOptions(sender: UIBarButtonItem) {
-//        if optionsVCIsOpened {
-//            optionsVC.willMove(toParent: nil)
-//            optionsVC.view.removeFromSuperview()
-//            optionsVC.removeFromParent()
-//            optionsVCIsOpened = false
-//        } else {
-//            addChild(optionsVC)
-//            tableView.addSubview(optionsVC.view)
-//            optionsVC.didMove(toParent: self)
-//            optionsVCIsOpened = true
-//        }
+        if optionsVCIsOpened {
+            optionsVC.willMove(toParent: nil)
+            optionsVC.view.removeFromSuperview()
+            optionsVC.removeFromParent()
+            optionsVCIsOpened = false
+        } else {
+            addChild(optionsVC)
+            tableView.addSubview(optionsVC.view)
+            optionsVC.didMove(toParent: self)
+            optionsVCIsOpened = true
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         interactor?.updateProjectName(projectName: textView.text ?? "")
     }
+    
+    
   
 }
 
@@ -90,6 +97,7 @@ extension EditProjectVC: UITextViewDelegate {
         footerView.addButton.addTarget(self,
                                        action: #selector(didTapAddButton),
                                        for: .touchUpInside)
+        optionsVC.deleteProjectButton.addTarget(self, action: #selector(didTapDeleteProject), for: .touchUpInside)
     }
     
     func styleTableView() {

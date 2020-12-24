@@ -29,7 +29,6 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
     let doneItemImage = UIImage(systemName: "circle.fill",
                                 withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
-    let dividerView = UIView()
     
     var isDone: Bool = false
     var itemIndex: Int?
@@ -42,7 +41,6 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
         contentView.addSubview(labelBackgroundView)
         labelBackgroundView.addSubview(statusButton)
         labelBackgroundView.addSubview(itemTextField)
-        labelBackgroundView.addSubview(dividerView)
         
     }
     

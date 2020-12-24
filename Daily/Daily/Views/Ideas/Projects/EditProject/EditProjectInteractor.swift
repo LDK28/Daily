@@ -59,4 +59,11 @@ extension EditProjectInteractor: EditProjectBusinessLogic {
         }
     }
     
+    func deleteProject() {
+        if let project = projectBackendModel,
+           let projectIndex = self.index {
+            
+        }
+    }
+    
 }
