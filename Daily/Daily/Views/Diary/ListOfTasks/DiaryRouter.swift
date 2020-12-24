@@ -14,9 +14,9 @@ class DiaryRouter: DiaryDataPassing {
 extension DiaryRouter: DiaryRoutingLogic {
     func navigateToEditingTask(withViewModel viewModel: DiaryBackendModel,
                                withIndex index: Int) {
-        let vc = EditTaskModule.build()
-        vc.modalPresentationStyle = .fullScreen
-        vc.router?.integrateTaskInModule(viewModel, index: index)
-        viewController?.navigationController?.pushViewController(vc, animated: true)
+        let EditTaskViewController = EditTaskModule.build()
+        EditTaskViewController.modalPresentationStyle = .fullScreen
+        EditTaskViewController.router?.integrateTaskInModule(viewModel, index: index)
+        
     }
 }

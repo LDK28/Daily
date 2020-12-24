@@ -8,19 +8,24 @@
 import UIKit
 
 protocol EditTaskDisplayLogic: AnyObject {
-  func displaySomething()
+    func fillFieldsWithNoteContent(_ data: DiaryBackendModel)
 }
 
 protocol EditTaskBusinessLogic {
-  func doSomething()
+    func fetchTaskData()
+    
+    func didChange(title: String?,
+                   description: String?)
 }
 
 protocol EditTaskDataStore: AnyObject {
-	
+    var taskCellViewBackendModel: DiaryBackendModel? { get set }
+    
+    var index: Int? { get set }
 }
 
 protocol EditTaskPresentationLogic {
-  func presentSomething()
+    func transferTaskDataToView(_ task: DiaryBackendModel)
 }
 
 protocol EditTaskRoutingLogic {

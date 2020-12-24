@@ -175,6 +175,7 @@
 		5B50A72C25926C3B005D7416 /* EditTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72925926C3B005D7416 /* EditTaskPresenter.swift */; };
 		5B50A72D25926C3B005D7416 /* EditTaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72A25926C3B005D7416 /* EditTaskRouter.swift */; };
 		5B50A72E25926C3B005D7416 /* EditTaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A72B25926C3B005D7416 /* EditTaskProtocols.swift */; };
+		5B50A7362592FC38005D7416 /* UIElementaInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50A7352592FC38005D7416 /* UIElementaInteraction.swift */; };
 		5B8CD4BC258FAB9300C87FA1 /* UserRequestTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */; };
 		5B8CD4C6258FADCE00C87FA1 /* DiaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */; };
 		5B8CD4CE258FADE800C87FA1 /* DiaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */; };
@@ -376,6 +377,7 @@
 		5B50A72925926C3B005D7416 /* EditTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenter.swift; sourceTree = "<group>"; };
 		5B50A72A25926C3B005D7416 /* EditTaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskRouter.swift; sourceTree = "<group>"; };
 		5B50A72B25926C3B005D7416 /* EditTaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskProtocols.swift; sourceTree = "<group>"; };
+		5B50A7352592FC38005D7416 /* UIElementaInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementaInteraction.swift; sourceTree = "<group>"; };
 		5B8CD4BB258FAB9300C87FA1 /* UserRequestTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestTasks.swift; sourceTree = "<group>"; };
 		5B8CD4C5258FADCE00C87FA1 /* DiaryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryInteractor.swift; sourceTree = "<group>"; };
 		5B8CD4CD258FADE800C87FA1 /* DiaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryPresenter.swift; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 			children = (
 				5B8CD4E8258FAE8700C87FA1 /* DiaryUIElementsConfiguration.swift */,
 				5B8CD4F0258FAE9D00C87FA1 /* DiaryVC.swift */,
+				5B50A7352592FC38005D7416 /* UIElementaInteraction.swift */,
 			);
 			path = DiaryVC;
 			sourceTree = "<group>";
@@ -1275,6 +1278,7 @@
 				21CC5E1E2564569C009C1D8E /* OverlayInteractor.swift in Sources */,
 				21CC5E6225645B08009C1D8E /* NewNoteOverlayInteractor.swift in Sources */,
 				054BEA2825697BBA0059FEDC /* IdeasCell.swift in Sources */,
+				5B50A7362592FC38005D7416 /* UIElementaInteraction.swift in Sources */,
 				215DFC06255D7DD300CD3939 /* DailyRepeatCell.swift in Sources */,
 				055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */,
 				21CC5E1B2564569C009C1D8E /* OverlayPresenter.swift in Sources */,

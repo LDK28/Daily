@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditTaskRouter {
+class EditTaskRouter: EditTaskDataPassing {
 	
 	weak var viewController: EditTaskVC?
 	weak var dataStore: EditTaskDataStore?
@@ -15,5 +15,8 @@ class EditTaskRouter {
 }
 
 extension EditTaskRouter: EditTaskRoutingLogic {
-	
+    func integrateTaskInModule(_ task: DiaryBackendModel, index: Int) {
+        dataStore?.taskCellViewBackendModel = task
+        dataStore?.index = index
+    }
 }

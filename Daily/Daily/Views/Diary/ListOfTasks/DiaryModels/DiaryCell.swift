@@ -18,6 +18,7 @@ class DiaryCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .dailySubtitleTextColor
         label.font = UIFont(name: "Stolzl-Regular", size: 36)
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         return label
@@ -27,6 +28,7 @@ class DiaryCell: UITableViewCell {
         let description = UILabel()
         description.textColor = .dailySubtitleTextColor
         description.font = UIFont(name: "Stolzl-Regular", size: 18)
+        description.textAlignment = .left
         description.translatesAutoresizingMaskIntoConstraints = false
         description.numberOfLines = 0
         return description
@@ -70,6 +72,7 @@ class DiaryCell: UITableViewCell {
         
         progressButton.addTarget(self, action: #selector(didTapProgressButton), for: .touchUpInside)
         alarmButton.addTarget(self, action: #selector(didTapAlarmButton), for: .touchUpInside)
+        moreButton.addTarget(self, action: #selector(didTapMoreButton), for: .touchUpInside)
         
         contentView.addSubview(progressButton)
         contentView.addSubview(taskName)
@@ -103,6 +106,13 @@ class DiaryCell: UITableViewCell {
         }
     }
     
+    @objc func didTapMoreButton() {
+        UIView.animate(withDuration: 0.3) {
+            [self] in
+            print("tapped more button")
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -118,27 +128,27 @@ class DiaryCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             
-            progressButton.centerYAnchor.constraint(equalTo: taskName.topAnchor, constant: 25),
-            progressButton.centerXAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 20),
+            progressButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
+            progressButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             progressButton.widthAnchor.constraint(equalToConstant: 22),
             progressButton.heightAnchor.constraint(equalToConstant: 22),
             
-            taskName.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 10),
-            taskName.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 38),
-            taskName.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -50),
+            taskName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            taskName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            taskName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
             
             taskDescription.topAnchor.constraint(equalTo: taskName.bottomAnchor, constant: 10),
-            taskDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            taskDescription.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 38)   ,
-            taskDescription.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -50),
+            taskDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            taskDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 38)   ,
+            taskDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
             
-            moreButton.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 20),
-            moreButton.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -10),
+            moreButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             moreButton.widthAnchor.constraint(equalToConstant: 36),
             moreButton.heightAnchor.constraint(equalToConstant: 10),
             
-            alarmButton.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: -10),
-            alarmButton.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -10),
+            alarmButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            alarmButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             alarmButton.widthAnchor.constraint(equalToConstant: 27),
             alarmButton.heightAnchor.constraint(equalToConstant: 27),
         ])

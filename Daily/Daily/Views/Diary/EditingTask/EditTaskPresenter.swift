@@ -7,13 +7,13 @@
 
 import UIKit
 
-class EditTaskPresenter: EditTaskDataStore {
+class EditTaskPresenter {
 	weak var viewController: EditTaskDisplayLogic?
 	
 }
 
 extension EditTaskPresenter: EditTaskPresentationLogic {
-	func presentSomething() {
-		
-	}
+    func transferTaskDataToView(_ data: DiaryBackendModel) {
+        viewController?.fillFieldsWithNoteContent(data)
+    }
 }

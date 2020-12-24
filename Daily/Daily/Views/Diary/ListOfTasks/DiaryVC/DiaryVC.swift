@@ -39,6 +39,7 @@ class DiaryVC: MainVC {
         configureHeaderLabel()
         configureSubheaderLabel()
         configureTableView()
+        configureNavigationController()
         
     }
     
@@ -69,10 +70,6 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
         return footer
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryHeader.identifier) as! DiaryHeader
         header.title.text = "2:28"
@@ -85,6 +82,13 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
             else { return UITableViewCell() }
         cell.setup(data: dataToDisplay[indexPath.section])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let EditTaskViewController = EditTaskModule.build()
+        EditTaskViewController.modalPresentationStyle = .fullScreen
+        EditTaskViewController.router?.integrateTaskInModule(DiaryBackendModel.init(copiedModel: dataToDisplay[indexPath.section]), index: indexPath.section)
+        navigationController?.pushViewController(EditTaskViewController, animated: true)
     }
 
     

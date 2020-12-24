@@ -56,15 +56,18 @@ extension DiaryVC {
     internal func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.scrollsToTop = true
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
         
-        // MARK: - Incorrect work with automaticDimension
-        tableView.rowHeight = 200 //UITableView.automaticDimension
-        
-        tableView.estimatedRowHeight = 200
+        // MARK: - Incorrect work with automaticDimension; will be fixed in future
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 150.0
+        tableView.sectionFooterHeight = 20.0
         
         tableView.register(DiaryCell.self, forCellReuseIdentifier: DiaryCell.identifier)
         tableView.register(DiaryHeader.self, forHeaderFooterViewReuseIdentifier: DiaryHeader.identifier)
@@ -75,6 +78,16 @@ extension DiaryVC {
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+    
+    internal func configureNavigationController() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
+        navigationController?.navigationBar.tintColor = .dailyTextColor
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        navigationItem.backButtonTitle = NSLocalizedString("Diary", comment: "")
+
     }
     
     internal func addShadow(to view: UIView){
