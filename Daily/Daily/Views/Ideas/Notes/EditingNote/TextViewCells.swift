@@ -23,6 +23,7 @@ class TextViewCell: UITableViewCell, MainCellProtocol {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
 		textView.delegate = self
 		textView.isScrollEnabled = false
 		backgroundColor = .clear
