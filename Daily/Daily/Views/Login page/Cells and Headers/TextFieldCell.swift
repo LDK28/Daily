@@ -16,7 +16,7 @@ struct TextFieldCellViewModel: MainCellViewModel {
 
 // MARK: - General model
 class TextFieldCell: AuthorizationCell {
-	private let textField = UITextField()
+	internal let textField = UITextField()
 	
 	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? TextFieldCellViewModel else { return }
@@ -62,6 +62,15 @@ final class EmailTextFieldCell: TextFieldCell {
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		(delegate as? EmailTextFieldDelegate)?.changedEmail(textField.text)
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		textField.keyboardType = .emailAddress
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 }
 

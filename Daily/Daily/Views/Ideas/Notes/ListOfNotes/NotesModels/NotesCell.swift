@@ -41,6 +41,7 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		titleLabel.text = viewModel.title
 		detailsTextView.text = viewModel.details
 		isPinned = viewModel.isPinned
+		isChosen = viewModel.isChosen
 	}
 	
 	func highlightWhereLabelsHave(substring: String?) {
@@ -96,10 +97,6 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		containerView.layer.cornerRadius = 5
 	}
 	
-//	override func prepareForReuse() {
-//		super.prepareForReuse()
-//		isChosen = false
-//	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)

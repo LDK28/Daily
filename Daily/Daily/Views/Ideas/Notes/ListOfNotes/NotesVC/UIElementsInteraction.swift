@@ -35,6 +35,16 @@ extension NotesVC {
 		guard let selectedCell = (tableView.cellForRow(at: indexPath) as? NotesCell) else { return }
 		if isEditingNotes {
 			selectedCell.isChosen.toggle()
+			
+			//Necessary step because of reuse problems
+			guard
+				let tappedCellViewModel = cellsToDisplay[indexPath.row] as? NoteCellViewModel
+			else {
+				return
+			}
+			tappedCellViewModel.isChosen.toggle()
+			cellsToDisplay[indexPath.row] = tappedCellViewModel
+			
 			if selectedCell.isChosen {
 				selectedIndexPaths.append(indexPath)
 			} else {
@@ -122,10 +132,15 @@ extension NotesVC {
 			isSearching != true
 		else { return }
 		UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-		cell.tapAnimation { [weak self] in
-			if sender.state == .began {
-				guard let self = self else { return }
+		if sender.state == .began {
+			cell.tapAnimation { [weak self] in
+				guard
+					let self = self,
+					let tappedCellViewModel = self.cellsToDisplay[indexPath.row] as? NoteCellViewModel
+				else { return }
 				cell.isChosen = true
+				tappedCellViewModel.isChosen = true
+				self.cellsToDisplay[indexPath.row] = tappedCellViewModel
 				self.selectedIndexPaths.append(indexPath)
 				self.isEditingNotes = true
 			}

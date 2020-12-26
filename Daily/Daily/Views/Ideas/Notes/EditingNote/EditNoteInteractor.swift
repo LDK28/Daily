@@ -14,6 +14,12 @@ class EditNoteInteractor: EditNoteDataStore {
 }
 
 extension EditNoteInteractor: EditNoteBusinessLogic {
+	func fetchCells() {
+		guard let noteData = noteCellViewBackendModel else { return }
+		presenter?.present(title: noteData.title,
+						   description: noteData.details)
+	}
+	
 	func fetchNoteData() {
 		guard let noteData = noteCellViewBackendModel else { return }
 		presenter?.transferNoteDataToView(noteData)

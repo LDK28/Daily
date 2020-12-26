@@ -73,6 +73,7 @@
 		212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModels.swift */; };
 		2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */; };
 		2142BB15257F65ED00AC26BA /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB14257F65ED00AC26BA /* Cells.swift */; };
+		214C16FA2597D90D00165F8E /* TextViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C16F92597D90D00165F8E /* TextViewCells.swift */; };
 		2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */; };
 		2152908A2580EF2A0080052F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215290892580EF2A0080052F /* ProfilePresenter.swift */; };
 		2152908F2580EF320080052F /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152908E2580EF320080052F /* ProfileInteractor.swift */; };
@@ -293,6 +294,7 @@
 		212F890825574C000097F894 /* DailyCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModels.swift; sourceTree = "<group>"; };
 		2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProfileCell.swift; sourceTree = "<group>"; };
 		2142BB14257F65ED00AC26BA /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		214C16F92597D90D00165F8E /* TextViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCells.swift; sourceTree = "<group>"; };
 		2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerWithMiddleButton.swift; sourceTree = "<group>"; usesTabs = 1; };
 		215290892580EF2A0080052F /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		2152908E2580EF320080052F /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -735,6 +737,7 @@
 		2171A60E2579436600D8AD76 /* EditingNote */ = {
 			isa = PBXGroup;
 			children = (
+				214C16F92597D90D00165F8E /* TextViewCells.swift */,
 				2171A617257943DD00D8AD76 /* EditNoteConfigurator.swift */,
 				2171A614257943DD00D8AD76 /* EditNoteProtocols.swift */,
 				2171A616257943DD00D8AD76 /* EditNoteVC.swift */,
@@ -1314,6 +1317,7 @@
 				2190D6FA258E5E06002EA3EF /* AuthorizationPresenter.swift in Sources */,
 				210EC1742580EC10000E9578 /* ChooseLanguageRouter.swift in Sources */,
 				05327F4E25842D9F00887D21 /* EditProjectProtocols.swift in Sources */,
+				214C16FA2597D90D00165F8E /* TextViewCells.swift in Sources */,
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
 				21CC5EA925645EAF009C1D8E /* NewTaskOverlayPresenter.swift in Sources */,
 				05D634DF257EEEE000FFF5E7 /* ProjectsCell.swift in Sources */,

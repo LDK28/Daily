@@ -41,8 +41,9 @@ class ProfileHeader: UIView {
 	}
 }
 
-
 class UserCard: ProfileHeader {
+	private let textField = UITextField()
+	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		imageView.layer.cornerRadius = imageView.frame.size.height / 2
@@ -61,7 +62,7 @@ class UserCard: ProfileHeader {
 						 textAlignment: .center,
 						 textColor: .dailyTextColor,
 						 numberOfLines: 1)
-		
+	
 		let imageWidth = UIScreen.main.bounds.width / 4
 		NSLayoutConstraint.activate([
 			imageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
@@ -72,7 +73,7 @@ class UserCard: ProfileHeader {
 			label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15),
 			label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
 			label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-			label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+			label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
 		])
 	}
 	
