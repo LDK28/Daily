@@ -9,6 +9,7 @@ import UIKit
 
 class EditProjectInteractor: EditProjectDataStore {
     
+    var projectBackendModels = [ProjectBackendModel]()
     var projectBackendModel: ProjectBackendModel?
     var presenter: EditProjectPresentationLogic?
     var index: Int?
@@ -20,7 +21,7 @@ class EditProjectInteractor: EditProjectDataStore {
 }
 
 extension EditProjectInteractor: EditProjectBusinessLogic {
-    
+
     func fetchProjectData() {
         guard let project = projectBackendModel else { return }
         presenter?.presentProject(project)
@@ -60,9 +61,25 @@ extension EditProjectInteractor: EditProjectBusinessLogic {
     }
     
     func deleteProject() {
-        if let project = projectBackendModel,
-           let projectIndex = self.index {
-            
+        UserRequest.shared.getProjects { result in
+            switch result {
+            case .success(let projects):
+                self.projectBackendModels = projects
+            default:
+                return
+            }
+        }
+        if let projectIndex = self.index {
+            UserRequest.shared.update(projectBackendModels.remove(at: [projectIndex])) { [weak self] result in
+               guard let self = self else { return }
+               switch result {
+               case .success(()):
+                return
+               case .failure(let error):
+                   debugPrint(error.localizedDescription)
+               }
+           }
+            presenter?.removeProject()
         }
     }
     

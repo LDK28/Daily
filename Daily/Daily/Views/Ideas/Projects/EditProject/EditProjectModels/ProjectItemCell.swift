@@ -63,12 +63,18 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
                                 index: index)
      }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        itemTextField.isScrollEnabled = true
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         guard let index = itemIndex else { return }
         delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self,
                                                                            headerTitle: itemTextField.text ?? "",
                                                                            isDone: isDone),
                                 index: index)
+        itemTextField.isScrollEnabled = false
+        reloadInputViews()
     }
     
     func setUpCell() {
@@ -91,7 +97,7 @@ extension ProjectItemCell: UITextViewDelegate {
             labelBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             labelBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             labelBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            labelBackgroundView.heightAnchor.constraint(equalToConstant: 50),
+//            labelBackgroundView.heightAnchor.constraint(equalToConstant: 50),
             labelBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         labelBackgroundView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10)
@@ -127,6 +133,7 @@ extension ProjectItemCell: UITextViewDelegate {
                                              textAlignment: .left)
         }
         itemTextField.delegate = self
+        itemTextField.isScrollEnabled = false
     }
     
 }

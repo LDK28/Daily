@@ -23,13 +23,13 @@ class ProjectsVC: MainTableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchLatestData()
-        interactor?.fetchCells()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            
+        super.viewWillAppear(animated)
+        interactor?.fetchLatestData()
+        interactor?.fetchCells()
     }
     
     func configureTableView() {

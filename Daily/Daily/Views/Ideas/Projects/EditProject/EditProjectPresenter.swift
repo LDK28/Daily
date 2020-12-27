@@ -28,4 +28,8 @@ extension EditProjectPresenter: EditProjectPresentationLogic {
         viewController?.display()
     }
     
+    func removeProject() {
+        viewController?.goBack()
+    }
+    
 }

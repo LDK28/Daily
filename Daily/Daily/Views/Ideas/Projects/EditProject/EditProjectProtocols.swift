@@ -10,6 +10,7 @@ import UIKit
 protocol EditProjectDisplayLogic: AnyObject {
     func display()
     func getProject(_ project: ProjectBackendModel)
+    func goBack()
     var cellsToDisplay: [MainCellViewModel] { get set }
 }
 
@@ -28,6 +29,7 @@ protocol EditProjectDataStore: AnyObject {
 
 protocol EditProjectPresentationLogic {
     func presentProject(_ project: ProjectBackendModel)
+    func removeProject()
 }
 
 protocol EditProjectRoutingLogic {

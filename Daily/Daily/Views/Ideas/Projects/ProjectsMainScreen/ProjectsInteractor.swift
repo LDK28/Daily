@@ -24,7 +24,6 @@ extension ProjectsInteractor: ProjectsBusinessLogic {
             case .success(let projects):
                 self.projectBackendModels = projects
             default:
-                /* handle errors lateron if needed */
                 return
             }
         }

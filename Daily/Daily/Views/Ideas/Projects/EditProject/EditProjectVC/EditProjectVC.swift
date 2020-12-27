@@ -18,7 +18,7 @@ class EditProjectVC: MainTableVC {
     var optionsImage = UIImage(systemName: "ellipsis",
                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
     
-    var optionsVCIsOpened: Bool = false
+//    var optionsVCIsOpened: Bool = false
     let optionsVC = OptionsOverlayVC()
     
     override func loadView() {
@@ -33,6 +33,7 @@ class EditProjectVC: MainTableVC {
         styleNavigationBar()
         styleTableView()
         registerCells()
+        addTargets()
         
         interactor?.fetchProjectData()
         
@@ -42,33 +43,47 @@ class EditProjectVC: MainTableVC {
     
     
     @objc func didTapDeleteProject (sender: UIButton) {
-        interactor?.deleteProject()
+        
+        let deleteAlert = UIAlertController(title: "Are you sure?",
+                                             message: "This project will be deleted",
+                                             preferredStyle: UIAlertController.Style.alert)
+        deleteAlert.addAction(UIAlertAction(title: "Delete",
+                                            style: .default,
+                                             handler: { (action: UIAlertAction!) in
+                                                self.interactor?.deleteProject()
+        }))
+        deleteAlert.addAction(UIAlertAction(title: "Cancel",
+                                             style: .cancel,
+                                             handler: { (action: UIAlertAction!) in
+                                                return
+        }))
+        present(deleteAlert, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didTapCancel (sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didTapDeleteItems (sender: UIButton) {
+        //delete items
     }
     
     @objc func didTapAddButton(sender: UIButton) {
+        tableView.reloadData()
         interactor?.askPresenterToAddNewItem()
     }
     
     @objc func didTapOptions(sender: UIBarButtonItem) {
-        if optionsVCIsOpened {
-            optionsVC.willMove(toParent: nil)
-            optionsVC.view.removeFromSuperview()
-            optionsVC.removeFromParent()
-            optionsVCIsOpened = false
-        } else {
-            addChild(optionsVC)
-            tableView.addSubview(optionsVC.view)
-            optionsVC.didMove(toParent: self)
-            optionsVCIsOpened = true
-        }
+        self.optionsVC.modalPresentationStyle = .overCurrentContext
+        self.present(self.optionsVC, animated: true, completion: nil)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         interactor?.updateProjectName(projectName: textView.text ?? "")
+        tableView.reloadData()
     }
     
-    
-  
 }
 
 extension EditProjectVC: UITextViewDelegate {
@@ -88,7 +103,6 @@ extension EditProjectVC: UITextViewDelegate {
     func styleTableViewTitles() {
         let headerView = EditProjectHeaderView(title: project?.title ?? "Project title")
         tableView.tableHeaderView = headerView
-//        headerView.frame.size.height = CGFloat((headerView.titleTextView.numberOfLines * 50) + 30)
         headerView.frame.size.height = 100  //   idk what to do about this
         headerView.titleTextView.delegate = self
         let footerView = EditProjectFooterView(title: "Add new item")
@@ -97,7 +111,6 @@ extension EditProjectVC: UITextViewDelegate {
         footerView.addButton.addTarget(self,
                                        action: #selector(didTapAddButton),
                                        for: .touchUpInside)
-        optionsVC.deleteProjectButton.addTarget(self, action: #selector(didTapDeleteProject), for: .touchUpInside)
     }
     
     func styleTableView() {
@@ -112,6 +125,13 @@ extension EditProjectVC: UITextViewDelegate {
     func registerCells() {
         tableView.register(ProjectItemCell.self,
                            forCellReuseIdentifier: ProjectItemCell.cellIdentifier)
+    }
+    
+    func addTargets() {
+        optionsVC.deleteProjectButton.addTarget(self, action: #selector(didTapDeleteProject), for: .touchUpInside)
+        optionsVC.cancelButton.addTarget(self, action: #selector(didTapCancel), for: .touchUpInside)
+        optionsVC.deleteProjectItems.addTarget(self, action: #selector(didTapDeleteItems), for: .touchUpInside)
+        optionsVC.backgroundButton.addTarget(self, action: #selector(didTapCancel), for: .touchUpInside)
     }
     
 }
@@ -131,6 +151,7 @@ extension EditProjectVC: ItemCellDelegate {
     
     func itemDidChange(projectItemViewModel: ProjectItemViewModel, index: Int) {
         interactor?.updateItem(projectItemViewModel: projectItemViewModel, index: index)
+        tableView.reloadData()
     }
 
 }
@@ -143,6 +164,10 @@ extension EditProjectVC: EditProjectDisplayLogic {
     
     func display() {
         tableView.reloadData()
+    }
+    
+    func goBack() {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
