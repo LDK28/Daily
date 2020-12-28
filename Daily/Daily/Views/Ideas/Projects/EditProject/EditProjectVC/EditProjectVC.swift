@@ -15,11 +15,11 @@ class EditProjectVC: MainTableVC {
     
     var project: ProjectBackendModel?
   
-    var optionsImage = UIImage(systemName: "ellipsis",
+    let optionsImage = UIImage(systemName: "ellipsis",
                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
-    var trashImage = UIImage(systemName: "trash.circle",
+    let trashImage = UIImage(systemName: "trash.circle",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
-    var cancelImage = UIImage(systemName: "xmark.circle",
+    let cancelImage = UIImage(systemName: "xmark.circle",
                               withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
     
     let optionsVC = OptionsOverlayVC()
@@ -44,7 +44,6 @@ class EditProjectVC: MainTableVC {
         interactor?.fetchProjectData()
         
         styleTableViewTitles()
-        
     }
     
     @objc func didTapDeleteProject (sender: UIButton) {
@@ -65,11 +64,11 @@ class EditProjectVC: MainTableVC {
     }
     
     @objc func didTapCancel (sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+		hideOverlay()
     }
     
     @objc func didTapDeleteItems (sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+		hideOverlay()
         deletionModeIsOn = true
         let cancel = UIBarButtonItem(image: cancelImage,
                                       style: .plain,
@@ -93,7 +92,7 @@ class EditProjectVC: MainTableVC {
     
     @objc func didTapOptions(sender: UIBarButtonItem) {
         self.optionsVC.modalPresentationStyle = .overCurrentContext
-        self.present(self.optionsVC, animated: true, completion: nil)
+		self.present(self.optionsVC, animated: false, completion: nil)
     }
     
     @objc func didTapDeleteWhileEditing(sender: UIBarButtonItem) {
@@ -122,6 +121,22 @@ class EditProjectVC: MainTableVC {
         }
         
     }
+	
+	func hideOverlay() {
+		UIView.animate(withDuration: 0.3,
+					   delay: 0,
+					   options: .curveEaseOut,
+					   animations: { [weak self] in
+							guard let self = self else { return }
+							self.optionsVC.view?.subviews.forEach {
+								$0.alpha = 0
+								$0.frame.origin.y += 15
+							}
+					   }) { _ in
+							self.optionsVC.backgroundButton.backgroundColor = .clear
+							self.optionsVC.dismiss(animated: false, completion: nil)
+						}
+	}
     
     func textViewDidEndEditing(_ textView: UITextView) {
         interactor?.updateProjectName(projectName: textView.text ?? "")
@@ -228,7 +243,6 @@ extension EditProjectVC: ItemCellDelegate {
     
     func itemDidChange(projectItemViewModel: ProjectItemViewModel, index: Int) {
         interactor?.updateItem(projectItemViewModel: projectItemViewModel, index: index)
-//        tableView.reloadData()
     }
 
 }
@@ -246,7 +260,7 @@ extension EditProjectVC: EditProjectDisplayLogic {
     }
     
     func goBack() {
-        self.dismiss(animated: true, completion: nil)
+		hideOverlay()
         self.navigationController?.popViewController(animated: true)
     }
     

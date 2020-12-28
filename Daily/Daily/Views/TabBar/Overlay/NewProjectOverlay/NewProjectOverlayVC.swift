@@ -9,22 +9,16 @@
 import UIKit
 
 class NewProjectOverlayVC: OverlayVC {
-    
+	var router: NewProjectOverlayRoutingLogic?
 
 	override func loadView() {
 		headerView = OverlayHeader(title: "Create new project")
 		super.loadView()
-		styleUI()
 	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
-    }
-    
-    override func styleUI() {
-        super.styleUI()
-        titleLabel.styleOverlayLabel(text: "Create new project")
     }
     
     @objc func tappedSaveButton() {

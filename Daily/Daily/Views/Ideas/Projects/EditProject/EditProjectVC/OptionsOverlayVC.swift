@@ -9,8 +9,8 @@ import UIKit
 
 class OptionsOverlayVC: UIViewController {
     
-    var buttonTopAnchorConstant: CGFloat = 10
-    var buttonBottomAnchorConstant: CGFloat = -10
+	private var buttonTopAnchorConstant: CGFloat = 10
+	private var buttonBottomAnchorConstant: CGFloat = -10
     
     let backgroundButton = UIButton()
     let deleteProjectItems = UIButton()
@@ -35,9 +35,31 @@ class OptionsOverlayVC: UIViewController {
         configureOverlayButton(title: "Delete project", button: deleteProjectButton)
         
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.view?.subviews.forEach {
+			$0.alpha = 0
+		}
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		UIView.animate(withDuration: 0.3,
+					   delay: 0,
+					   options: .curveEaseOut,
+					   animations: { [weak self] in
+			guard let self = self else { return }
+						self.view?.subviews.forEach {
+							$0.alpha = 1
+							$0.frame.origin.y -= 15
+						}
+						self.backgroundButton.backgroundColor = .dailyMoreButtonBlackoutColor
+		})
+	}
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.dismiss(animated: true, completion: nil)
+		self.dismiss(animated: false, completion: nil)
     }
     
     func configureBackgroundButton() {
@@ -48,7 +70,7 @@ class OptionsOverlayVC: UIViewController {
             backgroundButton.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         backgroundButton.translatesAutoresizingMaskIntoConstraints = false
-        backgroundButton.backgroundColor = .dailyPlusButtonBlackoutColor
+        backgroundButton.backgroundColor = .clear
     }
     
     func configureOverlayButton(title: String, button: UIButton) {

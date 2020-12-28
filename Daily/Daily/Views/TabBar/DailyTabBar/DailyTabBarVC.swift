@@ -65,6 +65,16 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 											   selector: #selector(didTapAddNoteButton),
 											   name: Notification.Name("New note"),
 											   object: nil)
+		
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(turnOnBlackout),
+											   name: Notification.Name("Turn on blackout"),
+											   object: nil)
+		
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(turnOffBlackout),
+											   name: Notification.Name("Turn off blackout"),
+											   object: nil)
 
 	}
 	
@@ -120,31 +130,34 @@ extension DailyTabBarVC: DailyTabBarDisplayLogic {
 
 // MARK: - UI Configuration and Animation
 extension DailyTabBarVC {
+	@objc func turnOnBlackout() {
+		self.blackoutView.alpha = 1
+	}
+	
+	@objc func turnOffBlackout() {
+		self.blackoutView.alpha = 0
+	}
 	
 	func animatePlusButtonChange() {
 		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
 			guard let self = self else { return }
 			self.plusButton.isSelected.toggle()
 			if self.plusButton.isSelected {
-				//self.plusButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi / 2)
 				self.addButtonsStackView.isHidden = false
-				self.blackoutView.isHidden = false
-				self.blackoutView.alpha = 1
+				self.turnOnBlackout()
 				self.addButtonsStackView.frame.origin.y -= 20
 				self.addButtonsStackView.alpha = 1
 			} else {
-				//self.plusButton.imageView?.transform = CGAffineTransform(rotationAngle: 0)
 				self.overlayViewContoller?.remove()
 				self.overlayViewContoller = nil
 				self.addButtonsStackView.frame.origin.y += 15
 				self.addButtonsStackView.alpha = 0
-				self.blackoutView.alpha = 0
+				self.turnOffBlackout()
 			}
 		}) { [weak self] _ in
 			guard let self = self else { return }
 			if !self.plusButton.isSelected {
 				self.addButtonsStackView.frame.origin.y += 5
-				self.blackoutView.isHidden = true
 				self.addButtonsStackView.isHidden = true
 			}
 		}
@@ -177,7 +190,6 @@ extension DailyTabBarVC {
 	}
 	
 	func configureBlackoutView() {
-		blackoutView.isHidden = true
 		blackoutView.alpha = 0
 		NSLayoutConstraint.activate([
 			blackoutView.topAnchor.constraint(equalTo: view.topAnchor),
