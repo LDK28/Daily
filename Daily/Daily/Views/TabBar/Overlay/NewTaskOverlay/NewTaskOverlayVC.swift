@@ -13,13 +13,8 @@ class NewTaskOverlayVC: OverlayVC {
 	var router: (NewTaskOverlayRoutingLogic & NewTaskOverlayDataPassing)?
   
 	override func loadView() {
+		headerView = OverlayHeader(title: "Make new task")
 		super.loadView()
-		styleUI()
-	}
-	
-	override func styleUI() {
-		super.styleUI()
-		titleLabel.styleOverlayLabel(text: "Add new task")
 	}
 	
 	override func tableView(_ tableView: UITableView,

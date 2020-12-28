@@ -13,6 +13,12 @@ class NewNoteOverlayInteractor: OverlayInteractor {
 }
 
 extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
+	override func fetchCells() {
+		presenter?.present([
+			DescriptionSectionViewModel()
+		])
+	}
+
 	func didTapSaveButton() {
 		guard let dataSource = dataSource as? NewNoteOverlayDataSource else { return }
 		UserRequest.shared.append(NoteBackendModel(isPinned: false,
@@ -29,7 +35,7 @@ extension NewNoteOverlayInteractor: NewNoteOverlayBusinessLogic {
 		}
 	}
 	
-	func didEndEditingNote(text: String) {
-		(dataSource as? NewNoteOverlayDataSource)?.noteContent = text
+	func didEndEditingNote(text: String?) {
+		(dataSource as? NewNoteOverlayDataSource)?.noteContent = text ?? ""
 	}	
 }

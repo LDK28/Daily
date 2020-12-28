@@ -12,7 +12,7 @@ struct OtherLoginOptionsCellViewModel: MainCellViewModel {
 	var text: String
 }
 
-class OtherLoginOptionsCell: AuthorizationCell {
+class OtherLoginOptionsCell: UIElementContainerCell {
 	static let cellIdentifier = "OtherLoginOptionsCell"
 	private let titleLabel = UILabel()
 	

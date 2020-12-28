@@ -155,7 +155,7 @@ extension UIColor {
 		colorForTheme(light: UIColor("F9F9F9"), dark: UIColor("292929"))
 	}
 	
-	static var dailyOverlayTextFieldTextColor = dailyOverlayButtonTextColor
+	static var dailyOverlayTextFieldTextColor = dailyNoteTextFieldTextColor
 	
 	static var dailyOverlayTextFieldColor = dailyOverlayButtonTileColor
 }

@@ -16,10 +16,16 @@ extension EditNotePresenter: EditNotePresentationLogic {
 	func present(title: String?, description: String?) {
 		let viewModels: [MainCellViewModel] = [
 			TextViewViewModel(cellType: TitleTextViewCell.self,
-							  text: title),
+							  text: title,
+							  fontSize: 36,
+							  backgroundColor: .clear,
+							  cornerRadius: 0),
 			
-			TextViewViewModel(cellType: DescriptionTextViewCell.self,
-							  text: description),
+			TextViewViewModel(cellType: EditNoteDescriptionTextViewCell.self,
+							  text: description,
+							  fontSize: 24,
+							  backgroundColor: .clear,
+							  cornerRadius: 0)
 		]
 		
 		viewController?.cellsToDisplay = viewModels

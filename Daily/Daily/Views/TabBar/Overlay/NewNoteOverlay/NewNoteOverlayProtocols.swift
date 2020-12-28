@@ -12,7 +12,7 @@ protocol NewNoteOverlayDisplayLogic: OverlayDisplayLogic {
 }
 
 protocol NewNoteOverlayBusinessLogic: OverlayBusinessLogic {
-	func didEndEditingNote(text: String)
+	func didEndEditingNote(text: String?)
 	
 	func didTapSaveButton()
 }

@@ -12,7 +12,7 @@ struct LabelCellViewModel: MainCellViewModel {
 	var text: String?
 }
 
-class LabelCell: AuthorizationCell {
+class LabelCell: UIElementContainerCell {
 	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? LabelCellViewModel else { return }
 		label.text = viewModel.text

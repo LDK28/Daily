@@ -74,12 +74,12 @@ extension UILabel {
 	
 	
 	//MARK: - Overlay extensions
-	func styleOverlayLabel(text: String) {
+	func styleOverlayLabel(text: String?) {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = UIFont(name: "Stolzl-Book", size: 36)
-        self.text = NSLocalizedString(text, comment: "Overlay label text")
+		self.text = NSLocalizedString(text ?? "", comment: "Overlay label text")
 		self.textAlignment = .left
-		self.numberOfLines = 2
+		self.numberOfLines = 0
 		self.textColor = .dailyTextColor
 	}
 }

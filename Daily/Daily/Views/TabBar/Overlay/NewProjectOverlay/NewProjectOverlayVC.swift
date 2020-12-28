@@ -10,12 +10,12 @@ import UIKit
 
 class NewProjectOverlayVC: OverlayVC {
     
-    var router: (NewProjectOverlayRoutingLogic & NewProjectOverlayDataPassing)?
-  
-    override func loadView() {
-        super.loadView()
-        styleUI()
-    }
+
+	override func loadView() {
+		headerView = OverlayHeader(title: "Create new project")
+		super.loadView()
+		styleUI()
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()

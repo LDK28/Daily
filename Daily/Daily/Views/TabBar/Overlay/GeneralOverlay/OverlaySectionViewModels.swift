@@ -15,7 +15,7 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 		return .dateAndTime
 	}
 
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
 			DailyDateAndTimeCellViewModel(title: "Date",
 										  icon: Icon(systemName: "calendar.badge.clock",
@@ -40,7 +40,7 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 		return .teamProject
 	}
 
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
 				DailyCellViewModel(title: "Team project",
 							   icon: Icon(systemName: "person.2.fill",
@@ -51,7 +51,20 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 		]
 }
 
-
+class DescriptionSectionViewModel: DailySectionViewModel {
+	var type: DailySectionType {
+		return .description
+	}
+	
+	var cellViewModels: [MainCellViewModel] =
+	[
+		TextViewViewModel(cellType: OverlayDescriptionTextViewCell.self,
+						  text: nil,
+						  fontSize: 18,
+						  backgroundColor: .dailyOverlayTextFieldColor,
+						  cornerRadius: 10)
+	]
+}
 
 
 class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
@@ -60,7 +73,7 @@ class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
 		return .dateAndTime
 	}
 
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
 			DailyDateAndTimeCellViewModel(title: "Date",
 										  icon: Icon(systemName: "calendar.badge.clock",
@@ -85,7 +98,7 @@ class RemindViewModel: DailySectionViewModel {
 		return .remindAlert
 	}
 	
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
 				DailyCellViewModel(title: "Remind",
 							   icon: Icon(systemName: "alarm.fill",
@@ -103,7 +116,7 @@ class RepeatViewModel: DailySectionViewModel {
 		return .repeatSelector
 	}
 	
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
 			DailyRepeatCellViewModel(title: "Repeat",
 								   icon: Icon(systemName: "repeat",
@@ -124,7 +137,7 @@ extension Array where Element == DailySectionViewModel {
 		self[indexPath.section].cellViewModels.remove(at: indexPath.row)
 	}
 	
-	mutating func getViewModel(at indexPath: IndexPath) -> DailyCellViewModel {
+	mutating func getViewModel(at indexPath: IndexPath) -> MainCellViewModel {
 		return self[indexPath.section].cellViewModels[indexPath.row]
 	}
 }

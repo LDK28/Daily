@@ -12,12 +12,11 @@ protocol MainCellProtocol: UITableViewCell {
 }
 
 //MARK: - Basic model for all other cells
-class DailyCell: UITableViewCell, MainCellProtocol {
+class DailyCell: UIElementContainerCell {
 	internal let icon = UIImageView()
 	internal let switcher = UISwitch()
-	weak var delegate: UIViewController?
 	
-	func setViewModel(_ viewModel: MainCellViewModel?) {
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
 		guard let viewModel = viewModel as? DailyCellViewModel else { return }
 		if viewModel.isToggable {
 			switcher.isHidden = false

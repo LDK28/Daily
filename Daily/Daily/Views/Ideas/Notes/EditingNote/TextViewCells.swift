@@ -10,18 +10,24 @@ import UIKit
 struct TextViewViewModel: MainCellViewModel {
 	var cellType: UITableViewCell.Type
 	var text: String?
+	var fontSize: CGFloat
+	var backgroundColor: UIColor
+	var cornerRadius: CGFloat
 }
 
-class TextViewCell: UITableViewCell, MainCellProtocol {
-	weak var delegate: UIViewController?
+class TextViewCell: UIElementContainerCell {
 	
 	internal let textView = UITextView()
 	internal var placeholder: String = "Tap here to edit"
 	
-	func setViewModel(_ viewModel: MainCellViewModel?) {
-		guard let text = (viewModel as? TextViewViewModel)?.text else { return }
-		if !text.isEmpty {
-			textView.text = text
+	override func setViewModel(_ viewModel: MainCellViewModel?) {
+		guard let viewModel = viewModel as? TextViewViewModel else { return }
+		textView.styleMultiLineTextView(placeholder: placeholder,
+										fontSize: viewModel.fontSize,
+										backgroundColor: viewModel.backgroundColor,
+										cornerRadius: viewModel.cornerRadius)
+		if !(viewModel.text ?? "").isEmpty {
+			textView.text = viewModel.text
 			textView.textColor = .dailyNoteTextFieldTextColor
 		}
 	}
@@ -68,7 +74,7 @@ protocol TitleTextViewCellDelegate: AnyObject {
 	func didChangeTitle(_ text: String?)
 }
 
-class TitleTextViewCell: TextViewCell {
+final class TitleTextViewCell: TextViewCell {
 	static let cellIdentifier = "TitleTextViewCell"
 	
 	func textViewDidChange(_ textView: UITextView) {
@@ -78,10 +84,6 @@ class TitleTextViewCell: TextViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		placeholder = "Title"
-		textView.styleMultiLineTextView(placeholder: NSLocalizedString(placeholder, comment: ""),
-										fontSize: 36,
-										backgroundColor: .clear,
-										cornerRadius: 0)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -93,21 +95,23 @@ protocol DescriptionTextViewCellDelegate: AnyObject {
 	func didChangeDescription(_ text: String?)
 }
 
-
 class DescriptionTextViewCell: TextViewCell {
-	static let cellIdentifier = "DescriptionTextViewCell"
 	
 	func textViewDidChange(_ textView: UITextView) {
 		(delegate as? DescriptionTextViewCellDelegate)?.didChangeDescription(textView.text)
 	}
-	
+}
+
+final class EditNoteDescriptionTextViewCell: DescriptionTextViewCell {
+	static let cellIdentifier = "EditNoteDescriptionTextViewCell"
+}
+
+final class OverlayDescriptionTextViewCell: DescriptionTextViewCell {
+	static let cellIdentifier = "OverlayDescriptionTextViewCell"
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		textView.styleMultiLineTextView(placeholder: NSLocalizedString("Tap here to edit",
-																	   comment: ""),
-										fontSize: 24,
-										backgroundColor: .clear,
-										cornerRadius: 0)
+		textView.leadingAnchor.constraint(equalTo:  leadingAnchor).isActive = true
+		textView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 	}
 	
 	required init?(coder: NSCoder) {

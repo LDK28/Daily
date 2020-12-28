@@ -19,8 +19,8 @@ class EditNoteVC: MainTableVC {
 		tableView.dataSource = self
 		tableView.register(TitleTextViewCell.self,
 						   forCellReuseIdentifier: TitleTextViewCell.cellIdentifier)
-		tableView.register(DescriptionTextViewCell.self,
-						   forCellReuseIdentifier: DescriptionTextViewCell.cellIdentifier)
+		tableView.register(EditNoteDescriptionTextViewCell.self,
+						   forCellReuseIdentifier: EditNoteDescriptionTextViewCell.cellIdentifier)
 	}
 	
 	override func viewDidLoad() {

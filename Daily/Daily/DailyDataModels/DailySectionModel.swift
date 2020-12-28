@@ -13,11 +13,12 @@ enum DailySectionType {
 	case remindAlert
 	case repeatSelector
 	case profile
+	case description
 }
 
 protocol DailySectionViewModel {
 	var rowCount: Int { get }
-	var cellViewModels: [DailyCellViewModel] { get set }
+	var cellViewModels: [MainCellViewModel] { get set }
 	var type: DailySectionType { get }
 }
 
