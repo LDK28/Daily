@@ -8,9 +8,9 @@
 import UIKit
 
 class EditProjectRouter: EditProjectDataPassing {
-	
-	weak var viewController: EditProjectVC?
-	weak var dataStore: EditProjectDataStore?
+    
+    weak var viewController: EditProjectVC?
+    weak var dataStore: EditProjectDataStore?
     
     init(viewController: EditProjectVC?, dataStore: EditProjectDataStore?) {
             self.dataStore = dataStore
@@ -20,7 +20,8 @@ class EditProjectRouter: EditProjectDataPassing {
 }
 
 extension EditProjectRouter: EditProjectRoutingLogic {
-    func getProjectModel(_ project: ProjectBackendModel) {
+    func getProjectModel(project: ProjectBackendModel, index: Int) {
         dataStore?.projectBackendModel = project
+        dataStore?.index = index
     }
 }

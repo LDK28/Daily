@@ -16,9 +16,9 @@ class ProjectItemViewModel: ProjectItem, MainCellViewModel {
         super.init(copiedItem: copiedItem)
     }
     
-    init(cellType: UITableViewCell.Type, headerTitle: String, subItems: [ProjectSubitem]) {
+    init(cellType: UITableViewCell.Type, headerTitle: String, isDone: Bool) {
         self.cellType = cellType
-        super.init(headerTitle: headerTitle, subItems: subItems)
+        super.init(headerTitle: headerTitle, isDone: isDone)
     }
     
     required init?(coder: NSCoder) {

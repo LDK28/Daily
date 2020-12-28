@@ -8,7 +8,7 @@
 import UIKit
 
 class ProjectsRouter: ProjectsDataPassing {
-	
+    
   weak var viewController: ProjectsVC?
   var dataStore: ProjectsDataStore?
     
@@ -19,9 +19,9 @@ class ProjectsRouter: ProjectsDataPassing {
 }
 
 extension ProjectsRouter: ProjectsRoutingLogic {
-    func navigateTo(project: ProjectBackendModel) {
+    func navigateTo(project: ProjectBackendModel, index: Int) {
         let vc = EditProjectModule.build()
-        vc.router?.getProjectModel(project)
+        vc.router?.getProjectModel(project: project, index: index)
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

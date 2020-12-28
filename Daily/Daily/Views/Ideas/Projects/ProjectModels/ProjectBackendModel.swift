@@ -28,5 +28,14 @@ class ProjectBackendModel: Codable {
         self.projectID = model.projectID
         self.items = model.items
     }
-    
+}
+
+extension Array where Element == ProjectBackendModel {
+    mutating func remove(at indices: [Int]) -> [ProjectBackendModel] {
+        self = self
+            .enumerated()
+            .filter { !indices.contains($0.offset) }
+            .map { $0.element }
+        return self
+    }
 }

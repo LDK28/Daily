@@ -9,84 +9,49 @@
 import UIKit
 
 class NewProjectOverlayVC: OverlayVC {
-	var router: (NewProjectOverlayRoutingLogic & NewProjectOverlayDataPassing)?
-  
-    private let projectTitleTextField = UITextField()
     
-	override func loadView() {
-		super.loadView()
-		styleUI()
-        configureTextView()
-	}
-	
-	override func styleUI() {
-		super.styleUI()
-		titleLabel.styleOverlayLabel(text: "Create new project")
-	}
+    var router: (NewProjectOverlayRoutingLogic & NewProjectOverlayDataPassing)?
+  
+    override func loadView() {
+        super.loadView()
+        styleUI()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
     }
     
-    @objc func tappedAddButton() {
+    override func styleUI() {
+        super.styleUI()
+        titleLabel.styleOverlayLabel(text: "Create new project")
+    }
+    
+    @objc func tappedSaveButton() {
         saveButton.tapAnimation { [weak self] in
             guard let self = self else { return }
-            (self.interactor as? NewProjectOverlayInteractor)?.didTapAddButton()
+            self.tableView.endEditing(true)
+            (self.interactor as? NewProjectOverlayInteractor)?.didTapSaveButton()
             self.remove()
             NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
         }
     }
 }
 
-extension NewProjectOverlayVC: UITextViewDelegate {
-    
-    func configureTextView() {
-        projectTitleTextField.delegate = self
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor != .dailyOverlayTextFieldTextColor {
-            textView.text = nil
-            textView.textColor = .dailyOverlayTextFieldTextColor
-        }
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = NSLocalizedString("Details", comment: "")
-            textView.textColor = UITextView.placeholderColor
-        }
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        (interactor as? NewNoteOverlayInteractor)?.didEndEditingNote(text: textView.text)
-    }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.view.frame.origin.y -= 40
-        })
-        return true
-    }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        UIView.animate(withDuration: 0.2, animations: {
-            self.view.frame.origin.y += 40
-        })
-        self.resignFirstResponder()
-        return true
-    }
-}
-
 extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
-	func didToggleDateSwitcher() {
-		(interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()
-	}
+    func didToggleDateSwitcher() {
+        (interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()
+    }
 }
 
 extension NewProjectOverlayVC: DailyTeamProjectCellDelegate {
-	func didToggleTeamProjectState() {
-		(interactor as? NewProjectOverlayInteractor)?.didToggleTeamProjectSwitcher()
-	}
+    func didToggleTeamProjectState() {
+        (interactor as? NewProjectOverlayInteractor)?.didToggleTeamProjectSwitcher()
+    }
+}
+
+extension NewProjectOverlayVC: NewProjectOverlayDisplayLogic {
+    func askRouterToNavigateToProjects() {
+        router?.navigateToProjects()
+    }
 }

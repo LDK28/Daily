@@ -21,5 +21,29 @@ extension UITextView {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.layer.cornerRadius = cornerRadius
 	}
+    
+    func styleClearTextView(font: UIFont,
+                            text: String,
+                            textColor: UIColor,
+                            textAlignment: NSTextAlignment) {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .clear
+        self.text = NSLocalizedString(text, comment: "Text view placeholder")
+        self.textColor = textColor
+        self.font = font
+        self.textAlignment = textAlignment
+    }
+    
+    var numberOfLines: Int {
+        let numberOfGlyphs = self.layoutManager.numberOfGlyphs
+        var index = 0, numberOfLines = 0
+        var lineRange = NSRange(location: NSNotFound, length: 0)
+        while index < numberOfGlyphs {
+            self.layoutManager.lineFragmentRect(forGlyphAt: index, effectiveRange: &lineRange)
+            index = NSMaxRange(lineRange)
+            numberOfLines += 1
+        }
+        return numberOfLines
+    }
 }
 

@@ -20,7 +20,9 @@ class ProjectsCell: UITableViewCell, MainCellProtocol {
     let labelBackgroundView = UIView()
     
     let singleProjectImageView = UIImageView(image: UIImage(systemName: "person.fill",
-                                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .medium)))
+                                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30,
+                                                                                           weight: .regular,
+                                                                                           scale: .medium)))
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -80,7 +82,8 @@ extension ProjectsCell {
     func configureTitleLabel() {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: labelBackgroundView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: singleProjectImageView.trailingAnchor, constant: 20)
+            titleLabel.leadingAnchor.constraint(equalTo: singleProjectImageView.trailingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -20)
         ])
     }
     
@@ -103,6 +106,8 @@ extension ProjectsCell {
             titleLabel.styleLabel(font: labelFont, text: titleLabel.text ?? "", textAlignment: .left)
             titleLabel.addShadow()
         }
+        titleLabel.adjustsFontSizeToFitWidth = false
+        titleLabel.lineBreakMode = .byTruncatingTail
     }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class EditProjectPresenter {
-	weak var viewController: EditProjectDisplayLogic?
+    weak var viewController: EditProjectDisplayLogic?
     
     init(_ viewController: EditProjectDisplayLogic?) {
         self.viewController = viewController
@@ -16,7 +16,8 @@ class EditProjectPresenter {
 }
 
 extension EditProjectPresenter: EditProjectPresentationLogic {
-	func presentProject(_ project: ProjectBackendModel) {
+    
+    func presentProject(_ project: ProjectBackendModel) {
         
         viewController?.cellsToDisplay.removeAll()
         
@@ -24,7 +25,11 @@ extension EditProjectPresenter: EditProjectPresentationLogic {
         for item in project.items {
             viewController?.cellsToDisplay.append(ProjectItemViewModel(cellType: ProjectItemCell.self, copiedItem: item))
         }
-        
         viewController?.display()
-	}
+    }
+    
+    func removeProject() {
+        viewController?.goBack()
+    }
+    
 }
