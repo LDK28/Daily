@@ -24,6 +24,7 @@ extension UserRequest {
             completion(.failure(.couldnotFindUserData))
             return
         }
+        userData?.projects.insert(project, at: 0)
         updateServerData() { result in
             switch result {
             case .success(()):
