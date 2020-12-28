@@ -12,6 +12,8 @@ protocol LoginDisplayLogic: AuthorizationDisplayLogic {
 
 protocol LoginBusinessLogic: AuthorizationBusinessLogic {
 	func validateFields()
+	
+	func loginAnonymously()
 }
 
 protocol LoginPresentationLogic: AuthorizationPresentationLogic {

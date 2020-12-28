@@ -122,9 +122,25 @@ final class SignupButtonCell: ButtonCell {
 }
 
 //MARK: - Continue withour creating a user
-final class ContinueWithoutLoginInCell: SecondaryButtonCell {
-	static let cellIdentifier = "ContinueWithoutLoginInCell"
+protocol AnonymousLoginInButttonDelegate {
+	func anonymousLoginButtonTapped()
+}
+
+final class AnonymousLoginInButton: SecondaryButtonCell {
+	static let cellIdentifier = "AnonymousLoginInButton"
 	
+	@objc func anonymousLoginButtonTapped() {
+		(delegate as? AnonymousLoginInButttonDelegate)?.anonymousLoginButtonTapped()
+	}
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		button.addTarget(self, action: #selector(anonymousLoginButtonTapped), for: .touchUpInside)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 }
 
 //MARK: - Already have an account

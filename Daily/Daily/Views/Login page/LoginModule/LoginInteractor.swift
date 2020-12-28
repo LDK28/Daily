@@ -44,7 +44,7 @@ extension LoginInteractor: LoginBusinessLogic {
 								backgroundColor: .white,
 								foregroundColor: .black),
 			
-			ButtonCellViewModel(cellType: ContinueWithoutLoginInCell.self,
+			ButtonCellViewModel(cellType: AnonymousLoginInButton.self,
 								title: NSLocalizedString("Continue without creating account", comment: ""),
 								backgroundColor: .clear,
 								foregroundColor: .dailyPlaceholderColor)
@@ -79,6 +79,20 @@ extension LoginInteractor: LoginBusinessLogic {
 				return
 			}
 			self.presenter?.presentValidationMessage(message: nil)
+		}
+	}
+	
+	func loginAnonymously() {
+		Auth.auth().signInAnonymously() { [weak self] (authResult, error) in
+			guard let self = self else { return }
+			guard let user = authResult?.user else { return }
+			Auth.auth().updateCurrentUser(user) { error in
+				guard error == nil else {
+					self.presenter?.presentValidationMessage(message: error?.localizedDescription ?? "")
+					return
+				}
+				self.presenter?.presentValidationMessage(message: nil)
+			}
 		}
 	}
 }

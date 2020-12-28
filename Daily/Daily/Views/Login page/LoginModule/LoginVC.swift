@@ -47,6 +47,12 @@ extension LoginVC: SignupFromLoginButtonDelegate {
 	}
 }
 
+extension LoginVC: AnonymousLoginInButttonDelegate {
+	func anonymousLoginButtonTapped() {
+		(interactor as? LoginBusinessLogic)?.loginAnonymously()
+	}
+}
+
 extension LoginVC {
 	override func configureTableView() {
 		super.configureTableView()
@@ -59,8 +65,8 @@ extension LoginVC {
 		tableView.register(OtherLoginOptionsCell.self,
 						   forCellReuseIdentifier: OtherLoginOptionsCell.cellIdentifier)
 		
-		tableView.register(ContinueWithoutLoginInCell.self,
-						   forCellReuseIdentifier: ContinueWithoutLoginInCell.cellIdentifier)
+		tableView.register(AnonymousLoginInButton.self,
+						   forCellReuseIdentifier: AnonymousLoginInButton.cellIdentifier)
 		tableView.register(ErrorLabelCell.self,
 						   forCellReuseIdentifier: ErrorLabelCell.cellIdentifier)
 	}
