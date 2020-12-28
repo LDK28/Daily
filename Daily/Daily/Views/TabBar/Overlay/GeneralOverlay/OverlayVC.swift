@@ -19,10 +19,10 @@ class OverlayVC: UIViewController {
 	
 	override func loadView() {
 		super.loadView()
+		setupHideKeyboardOnTap()
+		configureUI()
 		headerView?.headerTextField.delegate = self
 		tableView.setAndLayoutTableHeaderView(header: headerView)
-		configureUI()
-		setupHideKeyboardOnTap()
 	}
 	
 	override func viewDidLoad() {

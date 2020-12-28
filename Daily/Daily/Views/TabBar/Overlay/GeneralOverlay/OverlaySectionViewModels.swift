@@ -62,7 +62,7 @@ class DescriptionSectionViewModel: DailySectionViewModel {
 						  text: nil,
 						  fontSize: 18,
 						  backgroundColor: .dailyOverlayTextFieldColor,
-						  cornerRadius: 5)
+						  cornerRadius: 10)
 	]
 }
 

@@ -17,6 +17,7 @@ class OverlayHeader: UIView {
 		super.init(frame: .zero)
 		headerTextField.styleOverlayTextField(placeholder: "Title")
 		titleLabel.styleOverlayLabel(text: title)
+		titleLabel.adjustsFontSizeToFitWidth = true // temporary solution
 		backgroundColor = .clear
 		addSubview(headerTextField)
 		addSubview(titleLabel)
@@ -29,7 +30,7 @@ class OverlayHeader: UIView {
 			titleLabel.topAnchor.constraint(equalTo: topAnchor),
 			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
 			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-			titleLabel.bottomAnchor.constraint(equalTo: headerTextField.topAnchor, constant: -30),
+			titleLabel.bottomAnchor.constraint(equalTo: headerTextField.topAnchor, constant: -30)
 		])
 		
 	}

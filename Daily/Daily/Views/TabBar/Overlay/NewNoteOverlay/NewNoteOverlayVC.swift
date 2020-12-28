@@ -35,7 +35,7 @@ class NewNoteOverlayVC: OverlayVC {
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return tableView.bounds.height
+		return tableView.frame.height
 	}
 }
 
@@ -47,6 +47,7 @@ extension NewNoteOverlayVC: DescriptionTextViewCellDelegate {
 
 
 extension NewNoteOverlayVC: NewNoteOverlayDisplayLogic {
+	
 	func askRouterToNavigateToNotes() {
 		router?.navigateToNotes()
 	}
