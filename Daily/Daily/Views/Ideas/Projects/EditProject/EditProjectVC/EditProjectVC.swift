@@ -172,7 +172,7 @@ extension EditProjectVC: UITextViewDelegate {
                                                                                                                       size: 28)],
                                                                      context: nil)
         tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width,
-                                                       height: boundingBox.height + 100)
+                                                       height: boundingBox.height + 70)
         headerView.titleTextView.delegate = self
         headerView.textChanged {[weak tableView] (_) in
                     tableView?.beginUpdates()
