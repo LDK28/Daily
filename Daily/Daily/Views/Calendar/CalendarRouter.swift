@@ -12,6 +12,11 @@ class CalendarRouter: CalendarDataPassing {
 	weak var viewController: CalendarVC?
 	weak var dataStore: CalendarDataStore?
   
+    init(_ viewController: CalendarVC?, _ dataStore: CalendarDataStore?) {
+        self.viewController = viewController
+        self.dataStore = dataStore
+    }
+    
 }
 
 extension CalendarRouter: CalendarRoutingLogic {

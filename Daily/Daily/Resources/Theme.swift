@@ -133,7 +133,7 @@ extension UIColor {
 //MARK: - Calendar
 extension UIColor {
     static var dailyCalendarBackgroundColor: UIColor {
-        colorForTheme(light: UIColor.white, dark: UIColor("1C1C1E"))
+        colorForTheme(light: UIColor.white, dark: UIColor("82C1DF", alpha: 0.3))
     }
 }
 

@@ -9,6 +9,10 @@ import UIKit
 
 class CalendarInteractor: CalendarDataStore {
 	var presenter: CalendarPresentationLogic?
+    
+    init(_ presenter: CalendarPresentationLogic?) {
+        self.presenter = presenter
+    }
 }
 
 extension CalendarInteractor: CalendarBusinessLogic {

@@ -9,6 +9,10 @@ import UIKit
 
 class CalendarPresenter: CalendarDataStore {
 	weak var viewController: CalendarDisplayLogic?
+    
+    init(_ viewController: CalendarDisplayLogic?) {
+        self.viewController = viewController
+    }
 	
 }
 

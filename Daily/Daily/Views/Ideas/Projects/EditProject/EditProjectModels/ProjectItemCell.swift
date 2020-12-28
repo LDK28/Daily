@@ -57,7 +57,9 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
             statusButton.setImage(missedItemImage, for: .normal)
             isDone = false
         } else {
-            statusButton.setImage(doneItemImage, for: .normal)
+            statusButton.setImage(doneItemImage?.withTintColor(.dailyTitleTextColor,
+                                                               renderingMode: .alwaysOriginal),
+                                  for: .normal)
             isDone = true
         }
         guard let index = itemIndex else { return }
@@ -135,7 +137,9 @@ extension ProjectItemCell: UITextViewDelegate {
         ])
         statusButton.styleButton()
         if isDone {
-            statusButton.setImage(doneItemImage, for: .normal)
+            statusButton.setImage(doneItemImage?.withTintColor(.dailyTitleTextColor,
+                                                               renderingMode: .alwaysOriginal),
+                                  for: .normal)
         } else {
             statusButton.setImage(missedItemImage, for: .normal)
         }
