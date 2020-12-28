@@ -14,9 +14,10 @@ class EditNoteInteractor: EditNoteDataStore {
 }
 
 extension EditNoteInteractor: EditNoteBusinessLogic {
-	func fetchNoteData() {
+	func fetchCells() {
 		guard let noteData = noteCellViewBackendModel else { return }
-		presenter?.transferNoteDataToView(noteData)
+		presenter?.present(title: noteData.title,
+						   description: noteData.details)
 	}
 	
 	func didChange(title: String?,
@@ -40,7 +41,7 @@ extension EditNoteInteractor: EditNoteBusinessLogic {
 			case .failure(let error):
 				debugPrint(error.localizedDescription)
 			default:
-				return
+				self.presenter?.handleCellChange()
 			}
 		}
 	}
