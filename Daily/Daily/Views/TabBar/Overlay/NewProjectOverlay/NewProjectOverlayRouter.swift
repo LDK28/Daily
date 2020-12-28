@@ -8,7 +8,7 @@
 import UIKit
 
 class NewProjectOverlayRouter: NewProjectOverlayDataPassing {
-	
+    
   weak var viewController: NewProjectOverlayVC?
   weak var dataStore: OverlayDataStore?
   
@@ -16,6 +16,12 @@ class NewProjectOverlayRouter: NewProjectOverlayDataPassing {
 
 extension NewProjectOverlayRouter: NewProjectOverlayRoutingLogic {
     func navigateToProjects() {
-        
+        guard let tabBarController = viewController?.tabBarController else { return }
+        if tabBarController.selectedIndex == 1 {
+            tabBarController.selectedIndex = 0
+            tabBarController.selectedIndex = 1
+            return
+        }
+        tabBarController.selectedIndex = 1
     }
 }

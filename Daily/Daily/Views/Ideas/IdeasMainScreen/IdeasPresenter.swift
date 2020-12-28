@@ -17,18 +17,24 @@ class IdeasPresenter {
 }
 
 extension IdeasPresenter: IdeasPresentationLogic {
-    func present() {
+    func present(doneProjects: Int, missedProjects: Int, recents: [String]) {
         viewController?.cellsToDisplay.removeAll()
+        var recentActions = [String]()
+        for projectName in recents.reversed() {
+            recentActions.append(" You've finished " + projectName)
+        }
+        if recentActions.count == 0 {
+            recentActions.append(" No finished projects ")
+        }
         viewController?.cellsToDisplay = [
             IdeasCellViewModel(title: "Notes",
                                        cellType: IdeasCell.self),
             IdeasCellViewModel(title: "Projects",
-                                       doneProjects: 0,
-                                       missedProjects: 0,
+                                       doneProjects: doneProjects,
+                                       missedProjects: missedProjects,
                                        cellType: IdeasCell.self),
-            
             RecentActionsViewModel(headerLabelText: "Recent Actions",
-                                   recentActions: ["first", "second", "third"],
+                                   recentActions: recentActions,
                                    cellType: RecentActionsCell.self)
         ]
         viewController?.display()

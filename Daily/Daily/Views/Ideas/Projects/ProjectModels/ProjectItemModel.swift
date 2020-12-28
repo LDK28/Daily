@@ -10,17 +10,17 @@ import UIKit
 class ProjectItem: Codable {
     var itemID: UUID
     var headerTitle: String
-    var subItems: [ProjectSubitem]
+    var isDone: Bool
     
-    init(headerTitle: String, subItems: [ProjectSubitem]) {
+    init(headerTitle: String, isDone: Bool) {
         self.headerTitle = headerTitle
-        self.subItems = subItems
+        self.isDone = isDone
         self.itemID = UUID()
     }
     
     init(copiedItem: ProjectItem) {
         self.headerTitle = copiedItem.headerTitle
-        self.subItems = copiedItem.subItems
+        self.isDone = copiedItem.isDone
         self.itemID = copiedItem.itemID
     }
 }

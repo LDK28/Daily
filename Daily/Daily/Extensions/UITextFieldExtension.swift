@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITextField {
-	
 	func styleTextField(placeholder: String,
 						isFirstLetterAutoCapitalized: Bool,
 						isSecuredString: Bool)  {
