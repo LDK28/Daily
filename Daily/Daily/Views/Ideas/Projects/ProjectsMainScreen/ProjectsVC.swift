@@ -30,6 +30,7 @@ class ProjectsVC: MainTableVC {
         super.viewWillAppear(animated)
         interactor?.fetchLatestData()
         interactor?.fetchCells()
+        tableView.reloadData()
     }
     
     func configureTableView() {

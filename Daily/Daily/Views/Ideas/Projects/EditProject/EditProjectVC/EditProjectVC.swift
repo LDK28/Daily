@@ -17,9 +17,15 @@ class EditProjectVC: MainTableVC {
   
     var optionsImage = UIImage(systemName: "ellipsis",
                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
+    var trashImage = UIImage(systemName: "trash.circle",
+                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
+    var cancelImage = UIImage(systemName: "xmark.circle",
+                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
     
-//    var optionsVCIsOpened: Bool = false
     let optionsVC = OptionsOverlayVC()
+    
+    var deletionModeIsOn: Bool = false
+    var itemsToDelete = [ProjectItemCell]()
     
     override func loadView() {
         super.loadView()
@@ -43,7 +49,6 @@ class EditProjectVC: MainTableVC {
     
     
     @objc func didTapDeleteProject (sender: UIButton) {
-        
         let deleteAlert = UIAlertController(title: "Are you sure?",
                                              message: "This project will be deleted",
                                              preferredStyle: UIAlertController.Style.alert)
@@ -58,7 +63,6 @@ class EditProjectVC: MainTableVC {
                                                 return
         }))
         present(deleteAlert, animated: true, completion: nil)
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func didTapCancel (sender: UIButton) {
@@ -66,7 +70,21 @@ class EditProjectVC: MainTableVC {
     }
     
     @objc func didTapDeleteItems (sender: UIButton) {
-        //delete items
+        self.dismiss(animated: true, completion: nil)
+        deletionModeIsOn = true
+        let cancel = UIBarButtonItem(image: cancelImage,
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(didTapCancelWhileEditing))
+        let delete = UIBarButtonItem(image: trashImage,
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(didTapDeleteWhileEditing))
+        navigationItem.rightBarButtonItems = [cancel, delete]
+        for cell in tableView.visibleCells {
+            cell.contentView.isUserInteractionEnabled = false
+        }
+        
     }
     
     @objc func didTapAddButton(sender: UIButton) {
@@ -79,9 +97,48 @@ class EditProjectVC: MainTableVC {
         self.present(self.optionsVC, animated: true, completion: nil)
     }
     
+    @objc func didTapDeleteWhileEditing(sender: UIBarButtonItem) {
+        for item in itemsToDelete {
+            guard let index = item.itemIndex else { return }
+            interactor?.deleteProjectItems(index: index)
+        }
+        didEndEditingProject()
+    }
+    
+    @objc func didTapCancelWhileEditing(sender: UIBarButtonItem) {
+        didEndEditingProject()
+    }
+    
+    func didEndEditingProject() {
+        deletionModeIsOn = false
+        navigationItem.rightBarButtonItem = nil
+        styleNavigationBar()
+        for cell in tableView.visibleCells {
+            cell.contentView.isUserInteractionEnabled = true
+            guard let itemCell = cell as? ProjectItemCell else { return }
+            itemCell.unselectForDeletion()
+        }
+        tableView.reloadData()
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         interactor?.updateProjectName(projectName: textView.text ?? "")
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if deletionModeIsOn {
+            guard let cell = tableView.cellForRow(at: indexPath) as? ProjectItemCell else { return }
+            if cell.isSelectedForDeletion {
+                cell.unselectForDeletion()
+                itemsToDelete = itemsToDelete.filter { $0 !== cell }
+            } else {
+                cell.selectForDeletion()
+                itemsToDelete.append(cell)
+            }
+            
+        }
+        
     }
     
 }
@@ -151,7 +208,7 @@ extension EditProjectVC: ItemCellDelegate {
     
     func itemDidChange(projectItemViewModel: ProjectItemViewModel, index: Int) {
         interactor?.updateItem(projectItemViewModel: projectItemViewModel, index: index)
-        tableView.reloadData()
+//        tableView.reloadData()
     }
 
 }
@@ -167,6 +224,7 @@ extension EditProjectVC: EditProjectDisplayLogic {
     }
     
     func goBack() {
+        self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     

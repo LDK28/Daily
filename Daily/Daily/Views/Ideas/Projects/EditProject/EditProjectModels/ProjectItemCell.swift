@@ -15,7 +15,7 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     
     func setViewModel(_ viewModel: MainCellViewModel?) {
         guard let viewModel = viewModel as? ProjectItemViewModel else { return }
-        itemTextField.text = viewModel.headerTitle
+        itemTextView.text = viewModel.headerTitle
         isDone = viewModel.isDone
         setUpCell()
     }
@@ -23,7 +23,7 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     static let cellIdentifier = "ProjectItemCell"
     
     let labelBackgroundView = UIView()
-    let itemTextField = UITextView()
+    let itemTextView = UITextView()
     let statusButton = UIButton()
     let missedItemImage = UIImage(systemName: "circle",
                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 50))
@@ -35,12 +35,14 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     
     var delegate: ItemCellDelegate?
     
+    var isSelectedForDeletion: Bool = false
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(labelBackgroundView)
         labelBackgroundView.addSubview(statusButton)
-        labelBackgroundView.addSubview(itemTextField)
+        labelBackgroundView.addSubview(itemTextView)
         
     }
     
@@ -58,22 +60,22 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
         }
         guard let index = itemIndex else { return }
         delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self,
-                                                                           headerTitle: itemTextField.text ?? "",
+                                                                           headerTitle: itemTextView.text ?? "",
                                                                            isDone: isDone),
                                 index: index)
      }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        itemTextField.isScrollEnabled = true
+        itemTextView.isScrollEnabled = true
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         guard let index = itemIndex else { return }
         delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self,
-                                                                           headerTitle: itemTextField.text ?? "",
+                                                                           headerTitle: itemTextView.text ?? "",
                                                                            isDone: isDone),
                                 index: index)
-        itemTextField.isScrollEnabled = false
+        itemTextView.isScrollEnabled = false
         reloadInputViews()
     }
     
@@ -83,6 +85,18 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
         configureItemLabel()
         configureStatusButton()
     }
+    
+    func selectForDeletion() {
+        isSelectedForDeletion = true
+        labelBackgroundView.layer.borderWidth = 2
+        labelBackgroundView.layer.borderColor = UIColor.dailyTextColor.cgColor
+    }
+    
+    func unselectForDeletion() {
+        isSelectedForDeletion = false
+        labelBackgroundView.layer.borderWidth = 0
+    }
+    
 }
 
 extension ProjectItemCell: UITextViewDelegate {
@@ -97,7 +111,6 @@ extension ProjectItemCell: UITextViewDelegate {
             labelBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             labelBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             labelBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-//            labelBackgroundView.heightAnchor.constraint(equalToConstant: 50),
             labelBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         labelBackgroundView.styleView(backgroundColor: .dailyProjectTaskTileColor, cornerRadius: 10)
@@ -121,19 +134,19 @@ extension ProjectItemCell: UITextViewDelegate {
     
     func configureItemLabel() {
         NSLayoutConstraint.activate([
-            itemTextField.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
-            itemTextField.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10),
-            itemTextField.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -10),
-            itemTextField.heightAnchor.constraint(equalTo: labelBackgroundView.heightAnchor, multiplier: 0.8)
+            itemTextView.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
+            itemTextView.leadingAnchor.constraint(equalTo: statusButton.trailingAnchor, constant: 10),
+            itemTextView.trailingAnchor.constraint(equalTo: labelBackgroundView.trailingAnchor, constant: -10),
+            itemTextView.heightAnchor.constraint(equalTo: labelBackgroundView.heightAnchor, multiplier: 0.8)
         ])
         if let itemFont = UIFont(name: "Stolzl-Book", size: 20) {
-            itemTextField.styleClearTextView(font: itemFont,
-                                             text: itemTextField.text ?? "",
+            itemTextView.styleClearTextView(font: itemFont,
+                                             text: itemTextView.text ?? "",
                                              textColor: .dailyTextColor,
                                              textAlignment: .left)
         }
-        itemTextField.delegate = self
-        itemTextField.isScrollEnabled = false
+        itemTextView.delegate = self
+        itemTextView.isScrollEnabled = false
     }
     
 }
