@@ -23,13 +23,14 @@ class ProjectsVC: MainTableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchLatestData()
-        interactor?.fetchCells()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            
+        super.viewWillAppear(animated)
+        interactor?.fetchLatestData()
+        interactor?.fetchCells()
+        tableView.reloadData()
     }
     
     func configureTableView() {
@@ -55,12 +56,12 @@ class ProjectsVC: MainTableVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCellModel = cellsToDisplay[indexPath.row] as? ProjectBackendModel else { return }
-        router?.navigateTo(project: selectedCellModel)
+        router?.navigateTo(project: selectedCellModel, index: indexPath.row)
     }
   
 }
 extension ProjectsVC: ProjectsDisplayLogic {
-	func display() {
+    func display() {
         tableView.reloadData()
-	}
+    }
 }

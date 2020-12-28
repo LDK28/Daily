@@ -9,10 +9,8 @@
 import UIKit
 
 class NewProjectOverlayVC: OverlayVC {
-	var router: (NewProjectOverlayRoutingLogic & NewProjectOverlayDataPassing)?
-  
-    private let projectTitleTextField = UITextField()
     
+
 	override func loadView() {
 		headerView = OverlayHeader(title: "Create new project")
 		super.loadView()
@@ -21,13 +19,19 @@ class NewProjectOverlayVC: OverlayVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
     }
     
-    @objc func tappedAddButton() {
+    override func styleUI() {
+        super.styleUI()
+        titleLabel.styleOverlayLabel(text: "Create new project")
+    }
+    
+    @objc func tappedSaveButton() {
         saveButton.tapAnimation { [weak self] in
             guard let self = self else { return }
-            (self.interactor as? NewProjectOverlayInteractor)?.didTapAddButton()
+            self.tableView.endEditing(true)
+            (self.interactor as? NewProjectOverlayInteractor)?.didTapSaveButton()
             self.remove()
             NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
         }
@@ -35,13 +39,19 @@ class NewProjectOverlayVC: OverlayVC {
 }
 
 extension NewProjectOverlayVC: DailyOptionalDateCellDelegate {
-	func didToggleDateSwitcher() {
-		(interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()
-	}
+    func didToggleDateSwitcher() {
+        (interactor as? NewProjectOverlayInteractor)?.didToggleDateSwitcher()
+    }
 }
 
 extension NewProjectOverlayVC: DailyTeamProjectCellDelegate {
-	func didToggleTeamProjectState() {
-		(interactor as? NewProjectOverlayInteractor)?.didToggleTeamProjectSwitcher()
-	}
+    func didToggleTeamProjectState() {
+        (interactor as? NewProjectOverlayInteractor)?.didToggleTeamProjectSwitcher()
+    }
+}
+
+extension NewProjectOverlayVC: NewProjectOverlayDisplayLogic {
+    func askRouterToNavigateToProjects() {
+        router?.navigateToProjects()
+    }
 }

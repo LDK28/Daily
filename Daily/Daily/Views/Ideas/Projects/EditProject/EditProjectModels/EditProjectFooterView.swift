@@ -41,14 +41,10 @@ class EditProjectFooterView: UIView {
                                     backgroundColor: .clear,
                                     textAlignment: .center)
         }
-        addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func didTapAddButton(sender: UIButton) {
-        
-    }
 }

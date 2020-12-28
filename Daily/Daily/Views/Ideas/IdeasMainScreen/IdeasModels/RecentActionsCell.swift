@@ -14,6 +14,7 @@ class RecentActionsCell: UITableViewCell, MainCellProtocol {
         headerLabel.text = viewModel.headerLabelText
         actionLabelsTexts.append(contentsOf: viewModel.recentActions)
         setUpCell()
+        styleRecentActionsView()
     }
     
     static let cellIdentifier = "RecentActionsCell"
@@ -116,8 +117,9 @@ extension RecentActionsCell {
     
     func styleActionLabels() {
         for actionLabel in actionLabels {
-            if let singleActionImage = UIImage(systemName: "person.fill") {
-                actionLabel.styleLabelWithImage(text: actionLabel.text ?? "", with: .systemFont(ofSize: 18), in: .dailyRecentActionsTextColor, image: singleActionImage, imageFirst: true, textAlignment: .left)
+            if let singleActionImage = UIImage(systemName: "person.fill"),
+               let actionLabelFont = UIFont(name: "Stolzl-Book", size: 18) {
+                actionLabel.styleLabelWithImage(text: actionLabel.text ?? "", with: actionLabelFont, in: .dailyRecentActionsTextColor, image: singleActionImage, imageFirst: true, textAlignment: .left)
             }
         }
     }

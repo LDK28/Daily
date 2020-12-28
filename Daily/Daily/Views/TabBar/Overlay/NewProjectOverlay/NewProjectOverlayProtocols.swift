@@ -12,10 +12,9 @@ protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
 }
 
 protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
-	func didToggleDateSwitcher()
-	func didToggleTeamProjectSwitcher()
-    func didTapAddButton()
-    func didEndEditingNote(text: String)
+    func didToggleDateSwitcher()
+    func didToggleTeamProjectSwitcher()
+    func didTapSaveButton()
 }
 
 protocol NewProjectOverlayPresentationLogic: OverlayPresentationLogic {
@@ -27,5 +26,5 @@ protocol NewProjectOverlayRoutingLogic {
 }
 
 protocol NewProjectOverlayDataPassing {
-	var dataStore: OverlayDataStore? { get }
+    var dataStore: OverlayDataStore? { get }
 }

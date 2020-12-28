@@ -13,10 +13,11 @@ enum IdeasNavigationDestination {
 
 protocol IdeasBusinessLogic {
     func fetchCells()
+    func getProjectInfo()
 }
 
 protocol IdeasPresentationLogic {
-    func present()
+    func present(doneProjects: Int, missedProjects: Int, recents: [String])
 }
 
 protocol IdeasDisplayLogic: AnyObject {

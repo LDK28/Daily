@@ -22,7 +22,6 @@
 		05327F5125842D9F00887D21 /* EditProjectConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F4B25842D9F00887D21 /* EditProjectConfigurator.swift */; };
 		05327F5F25842F0700887D21 /* ProjectBackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F5E25842F0700887D21 /* ProjectBackendModel.swift */; };
 		05327F6A25842F5300887D21 /* ProjectItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F6925842F5300887D21 /* ProjectItemModel.swift */; };
-		05327F6F25842F6E00887D21 /* ProjectSubitemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */; };
 		05327F8025851AC100887D21 /* UserRequestProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F7F25851AC100887D21 /* UserRequestProjects.swift */; };
 		05327F8E258652D400887D21 /* ProjectItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F8D258652D400887D21 /* ProjectItemCell.swift */; };
 		05327F962586AA3900887D21 /* ProjectItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05327F952586AA3900887D21 /* ProjectItemViewModel.swift */; };
@@ -37,6 +36,7 @@
 		055017E82553179100F3F216 /* FSCalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017E72553179100F3F216 /* FSCalendarExtension.swift */; };
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
+		056F9E8E2590D204008C4516 /* OptionsOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F9E8D2590D204008C4516 /* OptionsOverlayVC.swift */; };
 		05D634D1257ECFF100FFF5E7 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */; };
 		05D634D2257ECFF100FFF5E7 /* ProjectsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */; };
 		05D634D3257ECFF100FFF5E7 /* ProjectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */; };
@@ -244,7 +244,6 @@
 		05327F4B25842D9F00887D21 /* EditProjectConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectConfigurator.swift; sourceTree = "<group>"; };
 		05327F5E25842F0700887D21 /* ProjectBackendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBackendModel.swift; sourceTree = "<group>"; };
 		05327F6925842F5300887D21 /* ProjectItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemModel.swift; sourceTree = "<group>"; };
-		05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSubitemModel.swift; sourceTree = "<group>"; };
 		05327F7F25851AC100887D21 /* UserRequestProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestProjects.swift; sourceTree = "<group>"; };
 		05327F8D258652D400887D21 /* ProjectItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemCell.swift; sourceTree = "<group>"; };
 		05327F952586AA3900887D21 /* ProjectItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectItemViewModel.swift; sourceTree = "<group>"; };
@@ -259,6 +258,7 @@
 		055017E72553179100F3F216 /* FSCalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarExtension.swift; sourceTree = "<group>"; };
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		056F9E8D2590D204008C4516 /* OptionsOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsOverlayVC.swift; sourceTree = "<group>"; };
 		05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
 		05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsRouter.swift; sourceTree = "<group>"; };
 		05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsVC.swift; sourceTree = "<group>"; };
@@ -488,7 +488,7 @@
 				05327F4725842D9F00887D21 /* EditProjectRouter.swift */,
 				05327F4825842D9F00887D21 /* EditProjectProtocols.swift */,
 				05327F4925842D9F00887D21 /* EditProjectInteractor.swift */,
-				05327F4A25842D9F00887D21 /* EditProjectVC.swift */,
+				05A6601E2590023F008B3F9D /* EditProjectVC */,
 				05327F4B25842D9F00887D21 /* EditProjectConfigurator.swift */,
 			);
 			path = EditProject;
@@ -499,7 +499,6 @@
 			children = (
 				05327F5E25842F0700887D21 /* ProjectBackendModel.swift */,
 				05327F6925842F5300887D21 /* ProjectItemModel.swift */,
-				05327F6E25842F6E00887D21 /* ProjectSubitemModel.swift */,
 			);
 			path = ProjectModels;
 			sourceTree = "<group>";
@@ -538,6 +537,15 @@
 				054BEA1025697AC40059FEDC /* IdeasProtocols.swift */,
 			);
 			path = IdeasMainScreen;
+			sourceTree = "<group>";
+		};
+		05A6601E2590023F008B3F9D /* EditProjectVC */ = {
+			isa = PBXGroup;
+			children = (
+				05327F4A25842D9F00887D21 /* EditProjectVC.swift */,
+				056F9E8D2590D204008C4516 /* OptionsOverlayVC.swift */,
+			);
+			path = EditProjectVC;
 			sourceTree = "<group>";
 		};
 		05D634A2257E7F0B00FFF5E7 /* ProjectsMainScreen */ = {
@@ -1359,7 +1367,6 @@
 				2190D722258E6C34002EA3EF /* AuthorizationRouter.swift in Sources */,
 				21CC5E8025645D2F009C1D8E /* NewProjectOverlayPresenter.swift in Sources */,
 				054BEA1425697AC40059FEDC /* IdeasRouter.swift in Sources */,
-				05327F6F25842F6E00887D21 /* ProjectSubitemModel.swift in Sources */,
 				21E6424E254AFBE600564B78 /* UIButtonExtenstion.swift in Sources */,
 				2117339F2580D1F800C72192 /* Headers.swift in Sources */,
 				2171A618257943DD00D8AD76 /* EditNotePresenter.swift in Sources */,
@@ -1377,6 +1384,7 @@
 				2152908A2580EF2A0080052F /* ProfilePresenter.swift in Sources */,
 				21B398C1257F5C0000A1E553 /* MainPageRouter.swift in Sources */,
 				21CC5EAE25645EAF009C1D8E /* NewTaskOverlayConfigurator.swift in Sources */,
+				056F9E8E2590D204008C4516 /* OptionsOverlayVC.swift in Sources */,
 				05327F5125842D9F00887D21 /* EditProjectConfigurator.swift in Sources */,
 				21CC5E8525645D2F009C1D8E /* NewProjectOverlayConfigurator.swift in Sources */,
 				054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */,

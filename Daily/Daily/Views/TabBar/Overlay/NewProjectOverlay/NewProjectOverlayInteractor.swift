@@ -8,29 +8,29 @@
 import UIKit
 
 class NewProjectOverlayInteractor: OverlayInteractor {
-	
+    
 }
 
 extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
     
-	override func fetchCells() {
-		presenter?.present([
-			TeamProjectSectionViewModel(),
-			AssignableDateAndTimeSectionViewModel()
-		])
-	}
-	
-	func didToggleTeamProjectSwitcher() {
-		(dataSource as? NewProjectOverlayDataSource)?.isTeamProject.toggle()
-	}
-	
-	func didToggleDateSwitcher() {
-		dataSource.userIsChoosingDate.toggle()
-		dataSource.assignedDay = dataSource.userIsChoosingDate ? Date() : nil
-		presenter?.updateDatePickerCellViewModel(precisedDateCellType: DailyOptionalDateCell.self)
-	}
+    override func fetchCells() {
+        presenter?.present([
+            TeamProjectSectionViewModel(),
+            AssignableDateAndTimeSectionViewModel()
+        ])
+    }
     
-    func didTapAddButton() {
+    func didToggleTeamProjectSwitcher() {
+        (dataSource as? NewProjectOverlayDataSource)?.isTeamProject.toggle()
+    }
+    
+    func didToggleDateSwitcher() {
+        dataSource.userIsChoosingDate.toggle()
+        dataSource.assignedDay = dataSource.userIsChoosingDate ? Date() : nil
+        presenter?.updateDatePickerCellViewModel(precisedDateCellType: DailyOptionalDateCell.self)
+    }
+    
+    func didTapSaveButton() {
         guard let dataSource = dataSource as? NewProjectOverlayDataSource else { return }
         UserRequest.shared.append(ProjectBackendModel(title: dataSource.title ?? "")) { result in
             switch result {
@@ -40,10 +40,6 @@ extension NewProjectOverlayInteractor: NewProjectOverlayBusinessLogic {
                 debugPrint(error)
             }
         }
-    }
-    
-    func didEndEditingNote(text: String) {
-        (dataSource as? NewProjectOverlayDataSource)?.title = text
     }
     
 }
