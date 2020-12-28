@@ -37,6 +37,8 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
     
     var isSelectedForDeletion: Bool = false
     
+    var textChanged: ((String) -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -65,17 +67,12 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
                                 index: index)
      }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        itemTextView.isScrollEnabled = true
-    }
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         guard let index = itemIndex else { return }
         delegate?.itemDidChange(projectItemViewModel: ProjectItemViewModel(cellType: ProjectItemCell.self,
                                                                            headerTitle: itemTextView.text ?? "",
                                                                            isDone: isDone),
                                 index: index)
-        itemTextView.isScrollEnabled = false
         reloadInputViews()
     }
     
@@ -100,6 +97,19 @@ class ProjectItemCell: UITableViewCell, MainCellProtocol {
 }
 
 extension ProjectItemCell: UITextViewDelegate {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        itemTextView.delegate = self
+    }
+        
+    func textChanged(action: @escaping (String) -> Void) {
+        self.textChanged = action
+    }
+        
+    func textViewDidChange(_ textView: UITextView) {
+        textChanged?(textView.text)
+    }
     
     func configureCell() {
         selectionStyle = .none

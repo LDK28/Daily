@@ -12,6 +12,8 @@ class EditProjectHeaderView: UIView {
     let titleImageView = UIImageView(image: UIImage(systemName: "person.fill"))
     let titleTextView = UITextView()
     
+    var textChanged: ((String) -> Void)?
+    
     init(title: String) {
         super.init(frame: .zero)
         
@@ -22,9 +24,9 @@ class EditProjectHeaderView: UIView {
         
         if let headerFont = UIFont(name: "Stolzl-Bold", size: 28) {
             titleTextView.styleClearTextView(font: headerFont, text: title, textColor: .dailyTitleTextColor, textAlignment: .center)
-            titleTextView.textContainer.maximumNumberOfLines = 2
-            titleTextView.textContainer.lineBreakMode = .byTruncatingTail
-//            titleTextView.isScrollEnabled = false
+//            titleTextView.textContainer.maximumNumberOfLines = 2
+//            titleTextView.textContainer.lineBreakMode = .byTruncatingTail
+            titleTextView.isScrollEnabled = false
         }
         
         NSLayoutConstraint.activate([
@@ -43,6 +45,23 @@ class EditProjectHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+extension EditProjectHeaderView: UITextViewDelegate {
+    
+    override func awakeFromNib() {
+            super.awakeFromNib()
+            titleTextView.delegate = self
+        }
+        
+        func textChanged(action: @escaping (String) -> Void) {
+            self.textChanged = action
+        }
+        
+        func textViewDidChange(_ textView: UITextView) {
+            textChanged?(textView.text)
+        }
     
 }
 

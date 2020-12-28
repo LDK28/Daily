@@ -47,7 +47,6 @@ class EditProjectVC: MainTableVC {
         
     }
     
-    
     @objc func didTapDeleteProject (sender: UIButton) {
         let deleteAlert = UIAlertController(title: "Are you sure?",
                                              message: "This project will be deleted",
@@ -118,12 +117,16 @@ class EditProjectVC: MainTableVC {
             guard let itemCell = cell as? ProjectItemCell else { return }
             itemCell.unselectForDeletion()
         }
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         interactor?.updateProjectName(projectName: textView.text ?? "")
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -158,10 +161,15 @@ extension EditProjectVC: UITextViewDelegate {
     }
     
     func styleTableViewTitles() {
-        let headerView = EditProjectHeaderView(title: project?.title ?? "Project title")
+        let headerView = EditProjectHeaderView(title: project?.title ?? "")
         tableView.tableHeaderView = headerView
-        headerView.frame.size.height = 100  //   idk what to do about this
+//        headerView.frame.size.height = 60 + headerView.titleTextView.frame.size.height
+        headerView.frame.size.height = 100
         headerView.titleTextView.delegate = self
+        headerView.textChanged {[weak tableView] (_) in
+                    tableView?.beginUpdates()
+                    tableView?.endUpdates()
+        }
         let footerView = EditProjectFooterView(title: "Add new item")
         tableView.tableFooterView = footerView
         footerView.frame.size.height = 50
@@ -201,6 +209,10 @@ extension EditProjectVC: ItemCellDelegate {
             cell.itemIndex = indexPath.row
             cell.setViewModel(cellViewModel)
             cell.delegate = self
+            cell.textChanged {[weak tableView] (_) in
+                        tableView?.beginUpdates()
+                        tableView?.endUpdates()
+            }
             return cell
         }
         return UITableViewCell()
@@ -220,7 +232,9 @@ extension EditProjectVC: EditProjectDisplayLogic {
     }
     
     func display() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func goBack() {
