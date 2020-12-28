@@ -17,7 +17,7 @@ protocol IdeasBusinessLogic {
 }
 
 protocol IdeasPresentationLogic {
-    func present(doneProjects: Int, missedProjects: Int)
+    func present(doneProjects: Int, missedProjects: Int, recents: [String])
 }
 
 protocol IdeasDisplayLogic: AnyObject {

@@ -11,6 +11,7 @@ class IdeasInteractor: IdeasDataStore {
     
     var doneProjects = 0
     var missedProjects = 0
+    var doneProjectNames = [String]()
     var projects = [ProjectBackendModel]()
     private var presenter: IdeasPresentationLogic?
         
@@ -21,7 +22,7 @@ class IdeasInteractor: IdeasDataStore {
 
 extension IdeasInteractor: IdeasBusinessLogic {
     func fetchCells() {
-        presenter?.present(doneProjects: doneProjects, missedProjects: missedProjects)
+        presenter?.present(doneProjects: doneProjects, missedProjects: missedProjects, recents: doneProjectNames)
     }
     func getProjectInfo() {
         UserRequest.shared.getProjects { result in
@@ -32,10 +33,14 @@ extension IdeasInteractor: IdeasBusinessLogic {
                 return
             }
         }
+        doneProjects = 0
+        missedProjects = 0
+        doneProjectNames = []
         for project in projects {
             let projectIsDone = project.items.allSatisfy( {$0.isDone == true })
             if projectIsDone {
                 doneProjects += 1
+                doneProjectNames.append(project.title)
             } else {
                 missedProjects += 1
             }

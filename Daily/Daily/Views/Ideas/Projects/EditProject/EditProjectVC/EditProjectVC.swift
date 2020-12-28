@@ -109,6 +109,9 @@ class EditProjectVC: MainTableVC {
     }
     
     func didEndEditingProject() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         deletionModeIsOn = false
         navigationItem.rightBarButtonItem = nil
         styleNavigationBar()
@@ -117,9 +120,7 @@ class EditProjectVC: MainTableVC {
             guard let itemCell = cell as? ProjectItemCell else { return }
             itemCell.unselectForDeletion()
         }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -163,8 +164,15 @@ extension EditProjectVC: UITextViewDelegate {
     func styleTableViewTitles() {
         let headerView = EditProjectHeaderView(title: project?.title ?? "")
         tableView.tableHeaderView = headerView
-//        headerView.frame.size.height = 60 + headerView.titleTextView.frame.size.height
-        headerView.frame.size.height = 100
+        let constraintRect = CGSize(width: UIScreen.main.bounds.width,
+                                    height: .greatestFiniteMagnitude)
+        let boundingBox = headerView.titleTextView.text.boundingRect(with: constraintRect,
+                                                                     options: .usesLineFragmentOrigin,
+                                                                     attributes: [NSAttributedString.Key.font: UIFont(name: "Stolzl-Bold",
+                                                                                                                      size: 28)],
+                                                                     context: nil)
+        tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width,
+                                                       height: boundingBox.height + 100)
         headerView.titleTextView.delegate = self
         headerView.textChanged {[weak tableView] (_) in
                     tableView?.beginUpdates()

@@ -48,7 +48,6 @@ extension EditProjectInteractor: EditProjectBusinessLogic {
     func deleteProjectItems(index: Int) {
         if let project = projectBackendModel {
             project.items.remove(at: index)
-            updateProject()
             presenter?.presentProject(project)
         }
     }
