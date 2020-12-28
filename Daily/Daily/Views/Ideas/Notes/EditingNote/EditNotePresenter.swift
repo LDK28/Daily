@@ -25,8 +25,7 @@ extension EditNotePresenter: EditNotePresentationLogic {
 		viewController?.cellsToDisplay = viewModels
 	}
 	
-
-	func transferNoteDataToView(_ data: NoteBackendModel) {
-		viewController?.fillFieldsWithNoteContent(data)
+	func handleCellChange() {
+		viewController?.updateCells()
 	}
 }

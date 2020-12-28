@@ -23,6 +23,9 @@ extension AuthorizationPresenter: AuthorizationPresentationLogic {
 	
 	@objc func presentValidationMessage(message: String?) {
 		if let message = message {
+			let newViewModel = LabelCellViewModel(cellType: ErrorLabelCell.self,
+												  text: message)
+			viewController?.cellsToDisplay[0] = newViewModel
 			viewController?.handleValidationResponse(message: message)
 			return
 		}

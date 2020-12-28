@@ -56,6 +56,7 @@ extension AuthorizationVC: AuthorizationDisplayLogic {
 	
 	func handleValidationResponse(message: String) {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+		tableView.reloadData()
 		//showError(message)
 	}
 	

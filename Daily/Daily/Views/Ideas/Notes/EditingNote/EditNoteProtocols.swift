@@ -8,12 +8,10 @@
 import UIKit
 
 protocol EditNoteDisplayLogic: MainDisplayLogic {
-  func fillFieldsWithNoteContent(_ data: NoteBackendModel)
+	func updateCells()
 }
 
 protocol EditNoteBusinessLogic {
-	func fetchNoteData()
-	
 	func didChange(title: String?,
 				   details: String?)
 	
@@ -27,10 +25,10 @@ protocol EditNoteDataStore: AnyObject {
 }
 
 protocol EditNotePresentationLogic {
-	func transferNoteDataToView(_ data: NoteBackendModel)
-	
 	func present(title: String?,
 				 description: String?)
+	
+	func handleCellChange()
 }
 
 protocol EditNoteRoutingLogic {

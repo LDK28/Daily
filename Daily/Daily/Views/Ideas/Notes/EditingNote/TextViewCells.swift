@@ -13,12 +13,17 @@ struct TextViewViewModel: MainCellViewModel {
 }
 
 class TextViewCell: UITableViewCell, MainCellProtocol {
-	internal let textView = UITextView()
 	weak var delegate: UIViewController?
 	
+	internal let textView = UITextView()
+	internal var placeholder: String = "Tap here to edit"
+	
 	func setViewModel(_ viewModel: MainCellViewModel?) {
-		guard let viewModel = viewModel as? TextViewViewModel else { return }
-		textView.text = viewModel.text
+		guard let text = (viewModel as? TextViewViewModel)?.text else { return }
+		if !text.isEmpty {
+			textView.text = text
+			textView.textColor = .dailyNoteTextFieldTextColor
+		}
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,14 +55,13 @@ extension TextViewCell: UITextViewDelegate {
 			textView.text = nil
 		}
 	}
-
+	
 	func textViewDidEndEditing(_ textView: UITextView) {
 		if textView.text.isEmpty {
-			textView.text = NSLocalizedString("Tap here to edit", comment: "")
+			textView.text = NSLocalizedString(placeholder, comment: "")
 			textView.textColor = UITextView.placeholderColor
 		}
 	}
-	
 }
 
 protocol TitleTextViewCellDelegate: AnyObject {
@@ -73,7 +77,8 @@ class TitleTextViewCell: TextViewCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		textView.styleMultiLineTextView(placeholder: NSLocalizedString("Title", comment: ""),
+		placeholder = "Title"
+		textView.styleMultiLineTextView(placeholder: NSLocalizedString(placeholder, comment: ""),
 										fontSize: 36,
 										backgroundColor: .clear,
 										cornerRadius: 0)

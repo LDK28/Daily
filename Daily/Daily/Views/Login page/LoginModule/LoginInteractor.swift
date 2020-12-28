@@ -16,6 +16,8 @@ extension LoginInteractor: LoginBusinessLogic {
 	
 	override func fetchCells() {
 		let cellViewModels: [MainCellViewModel] = [
+			LabelCellViewModel(cellType: ErrorLabelCell.self, text: nil),
+			
 			TextFieldCellViewModel(cellType: EmailTextFieldCell.self,
 								   placeholder: "Email",
 								   isFirstLetterAutoCapitalized: true,

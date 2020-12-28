@@ -71,11 +71,9 @@ extension NotesVC {
 	@objc func crossIconTapped() {
 		UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 		guard
-			let selectedCells =
-				self.selectedIndexPaths
-					.map ({ self.tableView.cellForRow(at: $0) }) as? [NotesCell]
+			let cellViewModels = self.cellsToDisplay as? [NoteCellViewModel]
 		else { return }
-		selectedCells.forEach( { $0.isChosen = false })
+		cellViewModels.forEach( { $0.isChosen = false })
 		selectedIndexPaths = []
 	}
 	
@@ -98,13 +96,10 @@ extension NotesVC {
 		pinIcon.tapAnimation { [weak self] in
 			guard
 				let self = self,
-				let cellViewModels = self.cellsToDisplay as? [NoteCellViewModel],
-				let cells =
-					self.selectedIndexPaths
-					.map ({ self.tableView.cellForRow(at: $0) }) as? [NotesCell]
+				let cellViewModels = self.cellsToDisplay as? [NoteCellViewModel]
 			else { return }
 			
-			let unpinAll = cells.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
+			let unpinAll = cellViewModels.filter { $0.isPinned && $0.isChosen }.count == self.selectedIndexPaths.count ? true : false
 			let rowsToUpdate = unpinAll ?
 				self.selectedIndexPaths
 					.map { $0.row } :

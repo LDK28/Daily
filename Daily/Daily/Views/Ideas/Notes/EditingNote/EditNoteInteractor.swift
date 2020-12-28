@@ -20,11 +20,6 @@ extension EditNoteInteractor: EditNoteBusinessLogic {
 						   description: noteData.details)
 	}
 	
-	func fetchNoteData() {
-		guard let noteData = noteCellViewBackendModel else { return }
-		presenter?.transferNoteDataToView(noteData)
-	}
-	
 	func didChange(title: String?,
 				   details: String?) {
 		guard
@@ -46,7 +41,7 @@ extension EditNoteInteractor: EditNoteBusinessLogic {
 			case .failure(let error):
 				debugPrint(error.localizedDescription)
 			default:
-				return
+				self.presenter?.handleCellChange()
 			}
 		}
 	}
