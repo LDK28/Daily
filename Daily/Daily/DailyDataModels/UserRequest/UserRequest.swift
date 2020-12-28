@@ -96,3 +96,8 @@ extension UserRequest {
 		return dataBase.collection("users").whereField("id", isEqualTo: id)
 	}
 }
+
+
+//MARK: - СПАСИБО ЗА ВНИМАНИЕ!
+
+//MARK: - С ♥️ ОТ ТРУДЯГ-РАЗРАБОТЧИКОВ
