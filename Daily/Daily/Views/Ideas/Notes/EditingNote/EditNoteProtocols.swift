@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol EditNoteDisplayLogic: AnyObject {
-  func fillFieldsWithNoteContent(_ data: NoteBackendModel)
+protocol EditNoteDisplayLogic: MainDisplayLogic {
+	func updateCells()
 }
 
 protocol EditNoteBusinessLogic {
-	func fetchNoteData()
-	
 	func didChange(title: String?,
 				   details: String?)
+	
+	func fetchCells()
 }
 
 protocol EditNoteDataStore: AnyObject {
@@ -25,7 +25,10 @@ protocol EditNoteDataStore: AnyObject {
 }
 
 protocol EditNotePresentationLogic {
-	func transferNoteDataToView(_ data: NoteBackendModel)
+	func present(title: String?,
+				 description: String?)
+	
+	func handleCellChange()
 }
 
 protocol EditNoteRoutingLogic {

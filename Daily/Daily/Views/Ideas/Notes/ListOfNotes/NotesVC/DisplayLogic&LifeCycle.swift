@@ -34,6 +34,7 @@ final class NotesVC: MainTableVC, UIGestureRecognizerDelegate {
 		didSet {
 			if selectedIndexPaths.count == 0 {
 				isEditingNotes = false
+				tableView.reloadData()
 			}
 		}
 	}

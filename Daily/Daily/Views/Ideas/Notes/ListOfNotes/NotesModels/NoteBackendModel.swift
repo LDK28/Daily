@@ -44,6 +44,7 @@ class NoteBackendModel: Codable {
 
 final class NoteCellViewModel: NoteBackendModel, MainCellViewModel {
 	var cellType: UITableViewCell.Type
+	var isChosen = false
 	init(cellType: UITableViewCell.Type,
 		 isPinned: Bool, title: String,
 		 details: String,

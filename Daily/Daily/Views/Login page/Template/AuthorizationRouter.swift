@@ -19,7 +19,6 @@ extension AuthorizationRouter: AuthorizationRoutingLogic {
 	func navigateTo(_ destination: LoginNavigationDestination) {
 		switch destination {
 		case .loginScreen:
-			print(viewController?.navigationController)
 			viewController?.navigationController?.popViewController(animated: true)
 		case .signupScreen:
 			viewController?.navigationController?.pushViewController(SignupModule.build(),

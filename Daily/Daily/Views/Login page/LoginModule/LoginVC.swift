@@ -61,5 +61,7 @@ extension LoginVC {
 		
 		tableView.register(ContinueWithoutLoginInCell.self,
 						   forCellReuseIdentifier: ContinueWithoutLoginInCell.cellIdentifier)
+		tableView.register(ErrorLabelCell.self,
+						   forCellReuseIdentifier: ErrorLabelCell.cellIdentifier)
 	}
 }

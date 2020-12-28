@@ -70,9 +70,11 @@
 		21173195255DD7F90086A9EE /* OverlaySectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */; };
 		2117339F2580D1F800C72192 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2117339E2580D1F800C72192 /* Headers.swift */; };
 		211733B22580DC4000C72192 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211733AC2580DC4000C72192 /* ProfileRouter.swift */; };
+		21289B422599B67700BC7BAE /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21289B412599B67700BC7BAE /* LabelCell.swift */; };
 		212F890925574C000097F894 /* DailyCellViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F890825574C000097F894 /* DailyCellViewModels.swift */; };
 		2142BB0D257F642E00AC26BA /* DailyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */; };
 		2142BB15257F65ED00AC26BA /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142BB14257F65ED00AC26BA /* Cells.swift */; };
+		214C16FA2597D90D00165F8E /* TextViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C16F92597D90D00165F8E /* TextViewCells.swift */; };
 		2151CA382550989300732F68 /* TabBarControllerWithMiddleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */; };
 		2152908A2580EF2A0080052F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215290892580EF2A0080052F /* ProfilePresenter.swift */; };
 		2152908F2580EF320080052F /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152908E2580EF320080052F /* ProfileInteractor.swift */; };
@@ -290,9 +292,11 @@
 		21173194255DD7F90086A9EE /* OverlaySectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySectionViewModels.swift; sourceTree = "<group>"; };
 		2117339E2580D1F800C72192 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		211733AC2580DC4000C72192 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		21289B412599B67700BC7BAE /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		212F890825574C000097F894 /* DailyCellViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellViewModels.swift; sourceTree = "<group>"; };
 		2142BB0C257F642E00AC26BA /* DailyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProfileCell.swift; sourceTree = "<group>"; };
 		2142BB14257F65ED00AC26BA /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
+		214C16F92597D90D00165F8E /* TextViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCells.swift; sourceTree = "<group>"; };
 		2151CA372550989300732F68 /* TabBarControllerWithMiddleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerWithMiddleButton.swift; sourceTree = "<group>"; usesTabs = 1; };
 		215290892580EF2A0080052F /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		2152908E2580EF320080052F /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -572,6 +576,7 @@
 			children = (
 				2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */,
 				210C95D9258DF475006B2EE0 /* TextFieldCell.swift */,
+				21289B412599B67700BC7BAE /* LabelCell.swift */,
 				210C95E6258E02D6006B2EE0 /* ButtonCell.swift */,
 				210C95E1258E00DA006B2EE0 /* AuthorizationTitleView.swift */,
 				210C95EE258E0891006B2EE0 /* OtherLoginOptionsCell.swift */,
@@ -743,6 +748,7 @@
 		2171A60E2579436600D8AD76 /* EditingNote */ = {
 			isa = PBXGroup;
 			children = (
+				214C16F92597D90D00165F8E /* TextViewCells.swift */,
 				2171A617257943DD00D8AD76 /* EditNoteConfigurator.swift */,
 				2171A614257943DD00D8AD76 /* EditNoteProtocols.swift */,
 				2171A616257943DD00D8AD76 /* EditNoteVC.swift */,
@@ -1322,7 +1328,9 @@
 				2190D6FA258E5E06002EA3EF /* AuthorizationPresenter.swift in Sources */,
 				210EC1742580EC10000E9578 /* ChooseLanguageRouter.swift in Sources */,
 				05327F4E25842D9F00887D21 /* EditProjectProtocols.swift in Sources */,
+				214C16FA2597D90D00165F8E /* TextViewCells.swift in Sources */,
 				21CC5E6325645B08009C1D8E /* NewNoteOverlayVC.swift in Sources */,
+				21289B422599B67700BC7BAE /* LabelCell.swift in Sources */,
 				21CC5EA925645EAF009C1D8E /* NewTaskOverlayPresenter.swift in Sources */,
 				05D634DF257EEEE000FFF5E7 /* ProjectsCell.swift in Sources */,
 				2116B0CF258E76D700829517 /* SignupVC.swift in Sources */,
