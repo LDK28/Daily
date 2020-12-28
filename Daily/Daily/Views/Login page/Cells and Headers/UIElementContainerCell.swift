@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthorizationCell: UITableViewCell, MainCellProtocol {
+class UIElementContainerCell: UITableViewCell, MainCellProtocol {
 	weak var delegate: UIViewController?
 	
 	func setViewModel(_ viewModel: MainCellViewModel?) {

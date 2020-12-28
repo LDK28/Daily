@@ -38,7 +38,7 @@ class AuthorizationVC: MainTableVC {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cellViewModel = cellsToDisplay[indexPath.row]
-		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? AuthorizationCell {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? UIElementContainerCell {
 			cell.setViewModel(cellViewModel)
 			cell.delegate = self
 			return cell

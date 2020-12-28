@@ -110,7 +110,7 @@
 		2171A61D257943DD00D8AD76 /* EditNoteConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2171A617257943DD00D8AD76 /* EditNoteConfigurator.swift */; };
 		217892B62581213F0003D1AB /* AppStatusSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217892B52581213F0003D1AB /* AppStatusSwitcher.swift */; };
 		217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */; };
-		2190D6EC258E454E002EA3EF /* AuthorizationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */; };
+		2190D6EC258E454E002EA3EF /* UIElementContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6EB258E454E002EA3EF /* UIElementContainerCell.swift */; };
 		2190D6FA258E5E06002EA3EF /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6F4258E5E06002EA3EF /* AuthorizationPresenter.swift */; };
 		2190D6FC258E5E06002EA3EF /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6F6258E5E06002EA3EF /* AuthorizationProtocols.swift */; };
 		2190D6FE258E5E06002EA3EF /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190D6F8258E5E06002EA3EF /* AuthorizationVC.swift */; };
@@ -332,7 +332,7 @@
 		2171A617257943DD00D8AD76 /* EditNoteConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteConfigurator.swift; sourceTree = "<group>"; };
 		217892B52581213F0003D1AB /* AppStatusSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatusSwitcher.swift; sourceTree = "<group>"; };
 		217C96E82555E6C400CBCEC6 /* DailyAbstractCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAbstractCells.swift; sourceTree = "<group>"; };
-		2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCell.swift; sourceTree = "<group>"; };
+		2190D6EB258E454E002EA3EF /* UIElementContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementContainerCell.swift; sourceTree = "<group>"; };
 		2190D6F4258E5E06002EA3EF /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		2190D6F6258E5E06002EA3EF /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
 		2190D6F8258E5E06002EA3EF /* AuthorizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
@@ -566,7 +566,7 @@
 		210C95D5258DF462006B2EE0 /* Cells and Headers */ = {
 			isa = PBXGroup;
 			children = (
-				2190D6EB258E454E002EA3EF /* AuthorizationCell.swift */,
+				2190D6EB258E454E002EA3EF /* UIElementContainerCell.swift */,
 				210C95D9258DF475006B2EE0 /* TextFieldCell.swift */,
 				21289B412599B67700BC7BAE /* LabelCell.swift */,
 				210C95E6258E02D6006B2EE0 /* ButtonCell.swift */,
@@ -1304,7 +1304,7 @@
 				21544E3D25693B6700F9A50C /* NoteBackendModel.swift in Sources */,
 				21D7BD75256A93BF008BD30C /* DailyTabBarRouter.swift in Sources */,
 				0545A45D2555379F0001F17D /* DayView.swift in Sources */,
-				2190D6EC258E454E002EA3EF /* AuthorizationCell.swift in Sources */,
+				2190D6EC258E454E002EA3EF /* UIElementContainerCell.swift in Sources */,
 				05D634E4257EEEF800FFF5E7 /* ProjectsCellViewModel.swift in Sources */,
 				21CC5E8325645D2F009C1D8E /* NewProjectOverlayInteractor.swift in Sources */,
 				21D7BD76256A93BF008BD30C /* DailyTabBarProtocols.swift in Sources */,

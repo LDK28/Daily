@@ -28,7 +28,7 @@ extension UITextField {
 	
 	func styleOverlayTextField(placeholder: String) {
 		self.standartStyling(placeholder:
-								placeholder, cornerRadius: 10)
+							 placeholder, cornerRadius: 10)
 		
 		self.font = .systemFont(ofSize: 28,
 								weight: .semibold)
@@ -55,6 +55,6 @@ extension UITextField {
 		self.leftViewMode = .always
 		self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
 		self.backgroundColor = .dailyOverlayTextFieldColor
-		self.tintColor = .dailyOverlayTextFieldTextColor
+		self.textColor = .dailyOverlayTextFieldTextColor
 	}
 }

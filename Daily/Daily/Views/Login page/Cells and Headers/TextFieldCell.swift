@@ -15,7 +15,7 @@ struct TextFieldCellViewModel: MainCellViewModel {
 }
 
 // MARK: - General model
-class TextFieldCell: AuthorizationCell {
+class TextFieldCell: UIElementContainerCell {
 	internal let textField = UITextField()
 	
 	override func setViewModel(_ viewModel: MainCellViewModel?) {

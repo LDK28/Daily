@@ -7,21 +7,29 @@
 
 import UIKit
 
-class HeaderTextFieldView: UIView {
+class OverlayHeader: UIView {
+	weak var delegate: UIViewController?
+	
+	private let titleLabel = UILabel()
 	let headerTextField = UITextField()
 	
-	init() {
+	init(title: String?) {
 		super.init(frame: .zero)
 		headerTextField.styleOverlayTextField(placeholder: "Title")
+		titleLabel.styleOverlayLabel(text: title)
 		backgroundColor = .clear
-		
 		addSubview(headerTextField)
+		addSubview(titleLabel)
 		NSLayoutConstraint.activate([
+			headerTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
 			headerTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
 			headerTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
-			headerTextField.topAnchor.constraint(equalTo: topAnchor),
-			headerTextField.bottomAnchor.constraint(equalTo: bottomAnchor),
-			headerTextField.heightAnchor.constraint(equalToConstant: 45)
+			headerTextField.heightAnchor.constraint(equalToConstant: 45),
+			
+			titleLabel.topAnchor.constraint(equalTo: topAnchor),
+			titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+			titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+			titleLabel.bottomAnchor.constraint(equalTo: headerTextField.topAnchor, constant: -30),
 		])
 		
 	}
@@ -30,4 +38,3 @@ class HeaderTextFieldView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 }
-

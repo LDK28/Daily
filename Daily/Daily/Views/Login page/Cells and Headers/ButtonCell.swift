@@ -16,7 +16,7 @@ struct ButtonCellViewModel: MainCellViewModel {
 }
 
 //MARK: - General model
-class ButtonCell: AuthorizationCell {
+class ButtonCell: UIElementContainerCell {
 	internal let button = UIButton(type: .system)
 	
 	override func setViewModel(_ viewModel: MainCellViewModel?) {
