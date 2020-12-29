@@ -9,24 +9,9 @@ extension DiaryVC {
         headerLabel.textColor = .dailyTitleTextColor
         addShadow(to: headerLabel)
         headerLabel.textAlignment = .right
-        switch Calendar.current.component(.weekday, from: Date()){
-        case 1:
-            headerLabel.text = "Sunday"
-        case 2:
-            headerLabel.text = "Monday"
-        case 3:
-            headerLabel.text = "Tuesday"
-        case 4:
-            headerLabel.text = "Wednesday"
-        case 5:
-            headerLabel.text = "Thursday"
-        case 6:
-            headerLabel.text = "Friday"
-        case 7:
-            headerLabel.text = "Saturday"
-        default:
-            headerLabel.text = "Date"
-        }
+		let formatter = DateFormatter()
+		formatter.dateFormat = "EEEE"
+		headerLabel.text = formatter.string(from: Date()).capitalized
         
         // MARK: - Header constraints
         NSLayoutConstraint.activate([

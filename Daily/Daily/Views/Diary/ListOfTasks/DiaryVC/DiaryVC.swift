@@ -31,7 +31,8 @@ class DiaryVC: MainVC {
     
     override func loadView() {
         super.loadView()
-        
+		setupHideKeyboardOnTap()
+		
         view.addSubview(headerLabel)
         view.addSubview(subheaderLabel)
         view.addSubview(tableView)
