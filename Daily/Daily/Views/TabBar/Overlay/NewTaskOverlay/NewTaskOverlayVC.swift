@@ -15,19 +15,14 @@ class NewTaskOverlayVC: OverlayVC {
     private let taskTitleTextField = UITextField()
   
 	override func loadView() {
+		headerView = OverlayHeader(title: "Make new task")
 		super.loadView()
-		styleUI()
 	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
     }
-	
-	override func styleUI() {
-		super.styleUI()
-		titleLabel.styleOverlayLabel(text: "Add new task")
-	}
 	
 	override func tableView(_ tableView: UITableView,
 							didSelectRowAt indexPath: IndexPath) {

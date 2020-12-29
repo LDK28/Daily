@@ -11,14 +11,13 @@ extension UserRequest {
 
     func append(_ task: DiaryBackendModel, completion: @escaping (Result<Void, DailyError>) -> ()) {
         guard
-            let userID = userID,
             UserRequest.shared.userData != nil
         else {
             completion(.failure(.couldnotFindUserData))
             return
         }
         userData?.tasks.insert(task, at: 0)
-        updateServerData(withUserID: userID) { result in
+        updateServerData() { result in
             switch result {
             case .success(()):
                 completion(.success(()))
@@ -31,14 +30,13 @@ extension UserRequest {
     func update(_ tasks: [DiaryBackendModel],
                 completion: @escaping (Result<Void, DailyError>) -> ()) {
         guard
-            let userID = userID,
             UserRequest.shared.userData != nil
         else {
             completion(.failure(.couldnotFindUserData))
             return
         }
         UserRequest.shared.userData?.tasks = tasks
-        updateServerData(withUserID: userID) { result in
+        updateServerData() { result in
             switch result {
             case .success(()):
                 completion(.success(()))
@@ -52,7 +50,6 @@ extension UserRequest {
                 at index: Int,
                 completion: @escaping (Result<Void, DailyError>) -> ()) {
         guard
-            let userID = userID,
             UserRequest.shared.userData != nil
         else {
             completion(.failure(.couldnotFindUserData))
@@ -63,7 +60,7 @@ extension UserRequest {
             return
         }
         UserRequest.shared.userData?.tasks[index] = task
-        updateServerData(withUserID: userID) { result in
+        updateServerData() { result in
             switch result {
             case .success(()):
                 completion(.success(()))

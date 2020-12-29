@@ -2,6 +2,8 @@ import Foundation
 
 protocol DiaryDisplayLogic: class {
     func display(data: [DiaryCellViewModel])
+    
+    var dataToDisplay: [DiaryCellViewModel] { get set }
 }
 
 protocol DiaryPresentationLogic {

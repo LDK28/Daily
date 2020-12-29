@@ -30,10 +30,10 @@ class AppStatusSwitcher: AppSwitcherProtocol {
 			}
 		} else {
 			try? Auth.auth().signOut()
-			let viewController = LoginVC()
-			viewController.modalPresentationStyle = .fullScreen
+			let navigationController = UINavigationController(rootViewController: LoginModule.build())
+			navigationController.modalPresentationStyle = .fullScreen
 			AppStatusSwitcher.currentVC.dismiss(animated: true, completion: nil)
-			AppStatusSwitcher.currentVC.present(viewController, animated: true, completion: nil)
+			AppStatusSwitcher.currentVC.present(navigationController, animated: true, completion: nil)
 		}
 	}
 	
@@ -45,7 +45,7 @@ class AppStatusSwitcher: AppSwitcherProtocol {
 				viewController = DailyTabBarModule.build()
 				AppStatusSwitcher.isLogged = true
 			case .failure(_):
-				viewController = LoginVC()
+				viewController = UINavigationController(rootViewController: LoginModule.build())
 				AppStatusSwitcher.isLogged = false
 			}
 			viewController.modalPresentationStyle = .fullScreen

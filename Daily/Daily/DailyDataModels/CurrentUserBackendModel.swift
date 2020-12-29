@@ -15,9 +15,11 @@ struct CurrentUser: Codable {
 	var password: String
 	var notes: [NoteBackendModel]
     var tasks: [DiaryBackendModel]
+	var projects: [ProjectBackendModel]
 }
 
 struct Name: Codable {
 	var firstName: String
 	var lastName: String
 }
+

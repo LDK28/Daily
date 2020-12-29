@@ -97,8 +97,8 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
 
 extension DiaryVC: DiaryDisplayLogic {
     func display(data: [DiaryCellViewModel]) {
-        dataToDisplay.removeAll()
-        dataToDisplay.append(contentsOf: data)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

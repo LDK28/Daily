@@ -13,7 +13,25 @@ class EditNotePresenter {
 }
 
 extension EditNotePresenter: EditNotePresentationLogic {
-	func transferNoteDataToView(_ data: NoteBackendModel) {
-		viewController?.fillFieldsWithNoteContent(data)
+	func present(title: String?, description: String?) {
+		let viewModels: [MainCellViewModel] = [
+			TextViewViewModel(cellType: TitleTextViewCell.self,
+							  text: title,
+							  fontSize: 36,
+							  backgroundColor: .clear,
+							  cornerRadius: 0),
+			
+			TextViewViewModel(cellType: EditNoteDescriptionTextViewCell.self,
+							  text: description,
+							  fontSize: 24,
+							  backgroundColor: .clear,
+							  cornerRadius: 0)
+		]
+		
+		viewController?.cellsToDisplay = viewModels
+	}
+	
+	func handleCellChange() {
+		viewController?.updateCells()
 	}
 }

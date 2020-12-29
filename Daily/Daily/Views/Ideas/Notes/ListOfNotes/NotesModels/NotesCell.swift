@@ -35,12 +35,13 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 	}
 	
 	func setViewModel(_ viewModel: MainCellViewModel?) {
-		guard let viewModel = viewModel as? NoteBackendModel else { return }
+		guard let viewModel = viewModel as? NoteCellViewModel else { return }
 		titleLabel.attributedText = nil
 		detailsTextView.attributedText = nil
 		titleLabel.text = viewModel.title
 		detailsTextView.text = viewModel.details
 		isPinned = viewModel.isPinned
+		isChosen = viewModel.isChosen
 	}
 	
 	func highlightWhereLabelsHave(substring: String?) {
@@ -58,7 +59,8 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 																$0.lowercased().contains(wordToBeginWith)
 															  }) {
 						var stringToShow = ""
-						components[startIndex...].forEach {
+						let firstIndex = label === titleLabel ? 0 : startIndex
+						components[firstIndex...].forEach {
 							stringToShow += $0 + " "
 						}
 						let rangeForDetails = NSString(string: stringToShow).range(of: substring, options: .caseInsensitive)
@@ -95,10 +97,6 @@ class NotesCell: UITableViewCell, MainCellProtocol {
 		containerView.layer.cornerRadius = 5
 	}
 	
-	override func prepareForReuse() {
-		super.prepareForReuse()
-		isChosen = false
-	}
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)

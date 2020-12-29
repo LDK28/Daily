@@ -41,7 +41,7 @@ extension DiaryPresenter: DiaryPresentationLogic {
 //                }
 //            }
         }
-        
+        viewController?.dataToDisplay = viewModel
         viewController?.display(data: viewModel)
     }
 }

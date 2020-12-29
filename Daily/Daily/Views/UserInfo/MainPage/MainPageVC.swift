@@ -21,8 +21,8 @@ class MainPageVC: ProfileTableVC {
 		super.viewDidLoad()
 		navigationItem.backButtonTitle = NSLocalizedString("Profile", comment: "")
 
-		tableView.register(DailyProfileSettingCell.self,
-						   forCellReuseIdentifier: DailyProfileSettingCell.cellIdentifier)
+		tableView.register(DailySettingsNotificationsCell.self,
+						   forCellReuseIdentifier: DailySettingsNotificationsCell.cellIdentifier)
 		tableView.register(DailyProfileAchievementsCell.self,
 						   forCellReuseIdentifier: DailyProfileAchievementsCell.cellIdentifier)
 		tableView.register(DailyProfileHelpCell.self,
@@ -35,8 +35,8 @@ class MainPageVC: ProfileTableVC {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		switch cellsToDisplay[indexPath.row].cellType {
-		case is DailyProfileSettingCell.Type:
-			router?.navigateTo(viewController: SettingsModule.build())
+		case is DailySettingsNotificationsCell.Type:
+			router?.navigateTo(viewController: NotificationsModule.build())
 		case is DailyProfileAchievementsCell.Type:
 			router?.navigateTo(viewController: ProfileAchievementsModule.build())
 		case is DailyProfileHelpCell.Type:

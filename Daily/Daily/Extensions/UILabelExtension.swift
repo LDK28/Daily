@@ -13,7 +13,7 @@ extension UILabel {
 		
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = font
-		self.text = text
+        self.text = NSLocalizedString(text ?? "", comment: "Label text")
 		self.textAlignment = textAlignment
         self.numberOfLines = numberOfLines
 		self.textColor = textColor
@@ -22,7 +22,7 @@ extension UILabel {
     func styleLabelWithMutableAttributedString(text: NSMutableAttributedString, textAlignment: NSTextAlignment = .center) {
         
         translatesAutoresizingMaskIntoConstraints = false
-        attributedText = text
+        attributedText = text                                           //how to make it NSLocalizedString?
         self.textAlignment = textAlignment
     }
     
@@ -31,8 +31,8 @@ extension UILabel {
         let firstTextAttribute = [NSAttributedString.Key.font : firstFont, NSAttributedString.Key.foregroundColor : firstColor]
         let secondTextAttribute = [NSAttributedString.Key.font : secondFont, NSAttributedString.Key.foregroundColor : secondColor]
         
-        let firstTextMutableAttributedString = NSMutableAttributedString(string: firstText, attributes: firstTextAttribute as [NSAttributedString.Key : Any])
-        let secondTextMutableAttributedString = NSMutableAttributedString(string: secondText, attributes: secondTextAttribute as [NSAttributedString.Key : Any])
+        let firstTextMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString(firstText, comment: "Label first text"), attributes: firstTextAttribute as [NSAttributedString.Key : Any])
+        let secondTextMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString(secondText, comment: "Label second text"), attributes: secondTextAttribute as [NSAttributedString.Key : Any])
         
         let finalText = NSMutableAttributedString(string: "")
         
@@ -57,12 +57,14 @@ extension UILabel {
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = image.withTintColor(color)
         let textAttribute = [NSAttributedString.Key.font : font, NSAttributedString.Key.foregroundColor : color]
-        let textAttachment = NSMutableAttributedString(string: text, attributes: textAttribute as [NSAttributedString.Key : Any])
+        let textAttachment = NSMutableAttributedString(string: NSLocalizedString(text, comment: "Label with image text"), attributes: textAttribute as [NSAttributedString.Key : Any])
         if imageFirst {
             labelText.append(NSAttributedString(attachment: imageAttachment))
+            labelText.append(NSAttributedString(string: " "))
             labelText.append(textAttachment)
         } else {
             labelText.append(textAttachment)
+            labelText.append(NSAttributedString(string: " "))
             labelText.append(NSAttributedString(attachment: imageAttachment))
         }
         self.attributedText = labelText
@@ -72,12 +74,12 @@ extension UILabel {
 	
 	
 	//MARK: - Overlay extensions
-	func styleOverlayLabel(text: String) {
+	func styleOverlayLabel(text: String?) {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.font = UIFont(name: "Stolzl-Book", size: 36)
-		self.text = text
+		self.text = NSLocalizedString(text ?? "", comment: "Overlay label text")
 		self.textAlignment = .left
-		self.numberOfLines = 2
+		self.numberOfLines = 0
 		self.textColor = .dailyTextColor
 	}
 }

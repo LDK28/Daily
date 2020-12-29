@@ -8,12 +8,15 @@
 import UIKit
 
 class NewProjectOverlayRouter: NewProjectOverlayDataPassing {
-	
+    
   weak var viewController: NewProjectOverlayVC?
   weak var dataStore: OverlayDataStore?
   
 }
 
 extension NewProjectOverlayRouter: NewProjectOverlayRoutingLogic {
-	
+    func navigateToProjects() {
+		viewController?.remove()
+		viewController?.delegate?.openProjects()
+    }
 }

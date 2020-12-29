@@ -13,9 +13,13 @@ class NewProjectOverlayPresenter: OverlayPresenter {
 
 // MARK: - Presenter Protocol
 extension NewProjectOverlayPresenter: NewProjectOverlayPresentationLogic {
-	
+   
 	override func updateDateInDateCell() {
 		updateDateAndTimeCellViewModels(withCellOfType: DailyOptionalDateCell.self, withNewDateAndTime: dataSource.assignedDay)
 	}
+    
+    func prepareViewForRoutingToProjects() {
+        (viewController as? NewProjectOverlayDisplayLogic)?.askRouterToNavigateToProjects()
+    }
 
 }

@@ -17,10 +17,10 @@ extension MainPagePresenter: MainPagePresentationLogic {
 		let name = (userCard.1?.firstName ?? "") + " " + (userCard.1?.lastName ?? "")
 		let profileModel = ProfileModel(text: name, image: userCard.0)
 		let viewModels = [
-			DailyCellViewModel(title: NSLocalizedString("Settings", comment: ""),
-							   icon: Icon(systemName: "gearshape.fill",
-										  tileColor: .dailyAdaptiveGray),
-							   cellType: DailyProfileSettingCell.self,
+			DailyCellViewModel(title: NSLocalizedString("Notifications", comment: ""),
+							   icon: Icon(systemName: "app.badge.fill",
+										  tileColor: .dailyAdaptiveOrange),
+							   cellType: DailySettingsNotificationsCell.self,
 							   isToggable: false,
 							   cellPosition: .within),
 			

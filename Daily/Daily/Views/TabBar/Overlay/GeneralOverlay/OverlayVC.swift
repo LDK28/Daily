@@ -10,17 +10,20 @@ import UIKit
 
 class OverlayVC: UIViewController {
 	var interactor: OverlayBusinessLogic?
+	weak var delegate: TabBarModuleChangedDelegate?
 
 	internal var cellsToDisplay = [DailySectionViewModel]()
 	internal let saveButton = UIButton(type: .system)
 	internal let cancelButton = UIButton(type: .system)
-	internal let titleLabel = UILabel()
 	internal let tableView = UITableView()
-	internal let textFieldView = HeaderTextFieldView()
+	internal var headerView: OverlayHeader?
 	
 	override func loadView() {
 		super.loadView()
+		setupHideKeyboardOnTap()
 		configureUI()
+		headerView?.headerTextField.delegate = self
+		tableView.setAndLayoutTableHeaderView(header: headerView)
 	}
 	
 	override func viewDidLoad() {
@@ -43,11 +46,6 @@ class OverlayVC: UIViewController {
 			NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
 		}
 	}
-	
-	func styleUI() {
-		saveButton.styleOverlayButton(buttonType: .save)
-		cancelButton.styleOverlayButton(buttonType: .cancel)
-	}
 }
 
 //MARK: - Display Logic Protocol
@@ -56,13 +54,13 @@ extension OverlayVC: OverlayDisplayLogic {
 	
 	func delete(at indexPaths: [IndexPath]) {
 			tableView.beginUpdates()
-			tableView.deleteRows(at: indexPaths, with: .automatic)
+			tableView.deleteRows(at: indexPaths, with: .fade)
 			tableView.endUpdates()
 	}
 	
 	func insert(at indexPaths: [IndexPath]) {
 		tableView.beginUpdates()
-		tableView.insertRows(at: indexPaths, with: .automatic)
+		tableView.insertRows(at: indexPaths, with: .fade)
 		tableView.endUpdates()
 	}
 	
@@ -76,10 +74,7 @@ extension OverlayVC: OverlayDisplayLogic {
 	}
 }
 
-
-
 //MARK: - OverlayVC TableView Delegate and DataSource
-
 extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,7 +87,7 @@ extension OverlayVC: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cellViewModel = cellsToDisplay.getViewModel(at: indexPath)
-		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? DailyCell {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellViewModel.cellType)") as? UIElementContainerCell {
 			cell.setViewModel(cellViewModel)
 			cell.delegate = self
 			return cell
@@ -140,7 +135,7 @@ extension OverlayVC: DailyTimePickerCellDelegate {
 extension OverlayVC: UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textFieldView.headerTextField.resignFirstResponder()
+		headerView?.headerTextField.resignFirstResponder()
 		return true
 	}
 	
@@ -154,14 +149,19 @@ extension OverlayVC: UITextFieldDelegate {
 extension OverlayVC {
 	
 	func configureUI() {
-		view.addSubview(titleLabel)
 		view.addSubview(saveButton)
 		view.addSubview(cancelButton)
 		view.addSubview(tableView)
-		
-		configureLabel()
+	
 		configureButtons()
 		configureTableView()
+		
+		styleUI()
+	}
+	
+	func styleUI() {
+		saveButton.styleOverlayButton(buttonType: .save)
+		cancelButton.styleOverlayButton(buttonType: .cancel)
 	}
 	
 	func configureTableView() {
@@ -169,18 +169,10 @@ extension OverlayVC {
 		registerCellsInTableView()
 		
 		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
+			tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
 			tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -15),
 			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
 			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-		])
-	}
-
-	func configureLabel() {
-		NSLayoutConstraint.activate([
-			titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-			titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-			titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -view.bounds.width / 4)
 		])
 	}
 	
@@ -207,12 +199,6 @@ extension OverlayVC {
 		tableView.alwaysBounceVertical = false
 		tableView.showsVerticalScrollIndicator = false
 		tableView.showsHorizontalScrollIndicator = false
-		tableView.layer.cornerRadius = 10
-		
-		textFieldView.frame.size = CGSize(width: tableView.frame.width, height: 45)
-		tableView.tableHeaderView = textFieldView
-		textFieldView.headerTextField.delegate = self
-		tableView.tableHeaderView?.layer.cornerRadius = 10
 		tableView.tableFooterView = UIView(frame: CGRect(x: 0,
 														 y: 0,
 														 width: tableView.frame.size.width,
@@ -228,5 +214,6 @@ extension OverlayVC {
 		tableView.register(DailyDatePickerCell.self, forCellReuseIdentifier: DailyDatePickerCell.cellIdentifier)
 		tableView.register(DailyRequiredDateCell.self, forCellReuseIdentifier: DailyRequiredDateCell.cellIdentifier)
 		tableView.register(DailyOptionalDateCell.self, forCellReuseIdentifier: DailyOptionalDateCell.cellIdentifier)
+		tableView.register(OverlayDescriptionTextViewCell.self, forCellReuseIdentifier: OverlayDescriptionTextViewCell.cellIdentifier)
 	}
 }

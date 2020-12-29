@@ -7,17 +7,24 @@
 
 import UIKit
 
+protocol NewProjectOverlayDisplayLogic: OverlayDisplayLogic {
+    func askRouterToNavigateToProjects()
+}
+
 protocol NewProjectOverlayBusinessLogic: OverlayBusinessLogic {
-	func didToggleDateSwitcher()
-	func didToggleTeamProjectSwitcher()
+    func didToggleDateSwitcher()
+    func didToggleTeamProjectSwitcher()
+    func didTapSaveButton()
 }
 
 protocol NewProjectOverlayPresentationLogic: OverlayPresentationLogic {
+    func prepareViewForRoutingToProjects()
 }
 
 protocol NewProjectOverlayRoutingLogic {
+    func navigateToProjects()
 }
 
 protocol NewProjectOverlayDataPassing {
-	var dataStore: OverlayDataStore? { get }
+    var dataStore: OverlayDataStore? { get }
 }

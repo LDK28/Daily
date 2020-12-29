@@ -33,7 +33,7 @@ final class DailyOptionalDateCell: DailyDateAndTimeCell {
 				formatter.dateFormat = "E, MMM d, yyyy"
 				dateAndTimeLabel.text = formatter.string(from: date)
 			} else {
-				dateAndTimeLabel.text = "Any date"
+				dateAndTimeLabel.text = NSLocalizedString("Any day", comment: "")
 			}
 		}
 	}

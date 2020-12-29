@@ -62,7 +62,7 @@ extension NotesInteractor: NotesBusinessLogic {
 		case .unpin:
 			notesToUpdate = grabNotes(at: indices,
 									  shouldBePinned: false)
-			let indexAfterFirstPinnedNote = (notes.firstIndex(where: { $0.isPinned }) ?? -1) + 1
+			let indexAfterFirstPinnedNote = (notes.lastIndex(where: { $0.isPinned }) ?? -1) + 1
 			notesToUpdate.forEach {
 				notes.insert($0,
 							 at: indexAfterFirstPinnedNote)
@@ -75,7 +75,10 @@ extension NotesInteractor: NotesBusinessLogic {
 			}
 		}
 		
-		UserRequest.shared.update(notes) { result in
+		UserRequest.shared.update(notes) { [weak self] result in
+			guard let self = self else {
+				return
+			}
 			switch result {
 			case .success(()):
 				self.presenter?.present(notes: self.notes)
@@ -88,7 +91,8 @@ extension NotesInteractor: NotesBusinessLogic {
 	
 	func deleteModels(at indices: [Int],
 					  completion: @escaping () -> ()) {
- 		UserRequest.shared.update(notes.remove(at: indices)) { result in
+ 		UserRequest.shared.update(notes.remove(at: indices)) { [weak self] result in
+			guard let self = self else { return }
 			switch result {
 			case .success(()):
 				self.presenter?.removeNotes(at: indices)

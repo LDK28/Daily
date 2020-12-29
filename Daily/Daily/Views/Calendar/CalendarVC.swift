@@ -8,13 +8,15 @@
 import UIKit
 import FSCalendar
 
-class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
+class CalendarVC: MainVC {
 
+    var interactor: CalendarBusinessLogic?
+    var router: (CalendarRoutingLogic & CalendarDataPassing)?
+    
     let scrollView = UIScrollView()
     let headerLabel = UILabel()
     let calendarView = FSCalendar()
     let dayView = DayView()
-    let dateLabel = UILabel()
     
     //day review example. change this for integration with DiaryVC
     let doneTasks = 6
@@ -22,6 +24,8 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
     
     override func loadView() {
         super.loadView()
+        
+        interactor?.doSomething()
         
         view.addSubview(scrollView)
         
@@ -44,6 +48,42 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         super.viewDidLoad()
         calendarView.delegate = self
     }
+
+}
+
+extension CalendarVC: FSCalendarDelegate, FSCalendarDataSource  {
+    
+    func getCurrentDate() -> String {
+        let todayDate = Date()
+        let (dayOfTheWeek, date) = formatDate(fullDate: todayDate)
+        return "\(dayOfTheWeek), \(date)"
+    }
+    
+    func formatDate(fullDate: Date) -> (String, String){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE dd.MM.YYYY"
+        let selectedDate = (formatter.string(from: fullDate)).split(separator: " ")
+        let dayOfTheWeek = String(selectedDate[0])
+        let date = String(selectedDate[1])
+        return (dayOfTheWeek, date)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect fullDate: Date, at monthPosition: FSCalendarMonthPosition) {
+        let (dayOfTheWeek, date) = formatDate(fullDate: fullDate)
+        dayView.dateLabel.text = "\(dayOfTheWeek), \(date)"
+        //change this for integration with DiaryVC
+    }
+    
+}
+
+extension CalendarVC: CalendarDisplayLogic {
+    func displaySomething() {
+        
+    }
+    
+}
+
+extension CalendarVC {
     
     func configureScrollView(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +125,10 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
 
     func styleHeaderLabel() {
         if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
-            headerLabel.styleLabel(font: headerLabelFont, text: "Calendar", textAlignment: .center, textColor: .dailyTitleTextColor)
+            headerLabel.styleLabel(font: headerLabelFont,
+								   text: "Calendar",
+								   textAlignment: .center,
+								   textColor: .dailyTitleTextColor)
             headerLabel.addShadow()
         }
     }
@@ -98,25 +141,4 @@ class CalendarVC: MainVC, FSCalendarDelegate, FSCalendarDataSource {
         }
     }
     
-    func getCurrentDate() -> String {
-        let todayDate = Date()
-        let (dayOfTheWeek, date) = formatDate(fullDate: todayDate)
-        return "\(dayOfTheWeek), \(date)"
-    }
-    
-    func formatDate(fullDate: Date) -> (String, String){
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE dd.MM.YYYY"
-        let selectedDate = (formatter.string(from: fullDate)).split(separator: " ")
-        let dayOfTheWeek = String(selectedDate[0])
-        let date = String(selectedDate[1])
-        return (dayOfTheWeek, date)
-    }
-
-    func calendar(_ calendar: FSCalendar, didSelect fullDate: Date, at monthPosition: FSCalendarMonthPosition) {
-        let (dayOfTheWeek, date) = formatDate(fullDate: fullDate)
-        dateLabel.text = "\(dayOfTheWeek), \(date)"
-        //change this for integration with DiaryVC
-    }
-
 }

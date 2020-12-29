@@ -56,6 +56,8 @@ extension UIColor {
 	
 	static var dailyPlaceholderColor = dailyOverlayTextFieldTextColor.withAlphaComponent(0.5)
 	
+	static var dailySeparatorColor = UIColor.dailyTabBarSelectedItemColor.withAlphaComponent(0.25)
+	
 	static func colorForTheme(light: UIColor, dark: UIColor) -> UIColor {
 		if #available(iOS 13, *) {
 			return UIColor.init { traitCollection in
@@ -137,7 +139,7 @@ extension UIColor {
 //MARK: - Calendar
 extension UIColor {
     static var dailyCalendarBackgroundColor: UIColor {
-        colorForTheme(light: UIColor.white, dark: UIColor("1C1C1E"))
+        colorForTheme(light: UIColor.white, dark: UIColor("82C1DF", alpha: 0.3))
     }
 }
 
@@ -159,7 +161,7 @@ extension UIColor {
 		colorForTheme(light: UIColor("F9F9F9"), dark: UIColor("292929"))
 	}
 	
-	static var dailyOverlayTextFieldTextColor = dailyOverlayButtonTextColor
+	static var dailyOverlayTextFieldTextColor = dailyNoteTextFieldTextColor
 	
 	static var dailyOverlayTextFieldColor = dailyOverlayButtonTileColor
 }

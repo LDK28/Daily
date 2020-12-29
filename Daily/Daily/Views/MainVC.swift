@@ -7,11 +7,20 @@
 
 import UIKit
 
-class MainTableVC: UITableViewController {
+protocol MainDisplayLogic: AnyObject {
+	var cellsToDisplay: [MainCellViewModel] { get set }
+}
+
+class MainTableVC: UITableViewController, MainDisplayLogic {
 	var cellsToDisplay: [MainCellViewModel] = []
+	
+	@objc func dismissKeyboard() {
+		tableView.endEditing(true)
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setupHideKeyboardOnTap()
 		navigationController?.setNavigationBarHidden(false, animated: false)
 		navigationController?.navigationBar.isTranslucent = false
 		navigationController?.navigationBar.barTintColor = .dailyMainBackgroundColor
@@ -43,7 +52,27 @@ class MainTableVC: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let header = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 25))
+		header.backgroundColor = .clear
+		return header
+	}
 }
+
+extension UIViewController {
+	func setupHideKeyboardOnTap() {
+		self.view.addGestureRecognizer(self.endEditingRecognizer())
+		self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+	}
+
+	private func endEditingRecognizer() -> UIGestureRecognizer {
+		let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+		tap.cancelsTouchesInView = false
+		return tap
+	}
+}
+   
 
 class MainVC: UIViewController {
 	

@@ -15,16 +15,16 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 		return .dateAndTime
 	}
 
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
-			DailyDateAndTimeCellViewModel(title: "Date",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Date", comment: ""),
 										  icon: Icon(systemName: "calendar.badge.clock",
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyOptionalDateCell.self,
 										  isToggable: true,
 										  cellPosition: .first),
 			
-			DailyDateAndTimeCellViewModel(title: "Time",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Time", comment: ""),
 										  icon: Icon(systemName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
@@ -40,9 +40,9 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 		return .teamProject
 	}
 
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
-				DailyCellViewModel(title: "Team project",
+				DailyCellViewModel(title: NSLocalizedString("Team project", comment: ""),
 							   icon: Icon(systemName: "person.2.fill",
 										  tileColor: .dailyAdaptiveGreen),
 							   cellType: DailyTeamProjectCell.self,
@@ -51,7 +51,20 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 		]
 }
 
-
+class DescriptionSectionViewModel: DailySectionViewModel {
+	var type: DailySectionType {
+		return .description
+	}
+	
+	var cellViewModels: [MainCellViewModel] =
+	[
+		TextViewViewModel(cellType: OverlayDescriptionTextViewCell.self,
+						  text: nil,
+						  fontSize: 18,
+						  backgroundColor: .dailyOverlayTextFieldColor,
+						  cornerRadius: 10)
+	]
+}
 
 
 class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
@@ -60,16 +73,16 @@ class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
 		return .dateAndTime
 	}
 
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
-			DailyDateAndTimeCellViewModel(title: "Date",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Date", comment: ""),
 										  icon: Icon(systemName: "calendar.badge.clock",
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyRequiredDateCell.self,
 										  isToggable: false,
 										  cellPosition: .first),
 				
-			DailyDateAndTimeCellViewModel(title: "Time",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Time", comment: ""),
 										  icon: Icon(systemName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
@@ -85,9 +98,9 @@ class RemindViewModel: DailySectionViewModel {
 		return .remindAlert
 	}
 	
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
-				DailyCellViewModel(title: "Remind",
+				DailyCellViewModel(title: NSLocalizedString("Remind", comment: ""),
 							   icon: Icon(systemName: "alarm.fill",
 										  tileColor: .dailyAdaptiveYellow),
 							   cellType: DailyRemindCell.self,
@@ -103,9 +116,9 @@ class RepeatViewModel: DailySectionViewModel {
 		return .repeatSelector
 	}
 	
-	var cellViewModels: [DailyCellViewModel] =
+	var cellViewModels: [MainCellViewModel] =
 		[
-			DailyRepeatCellViewModel(title: "Repeat",
+			DailyRepeatCellViewModel(title: NSLocalizedString("Repeat", comment: ""),
 								   icon: Icon(systemName: "repeat",
 											  tileColor: .dailyAdaptiveGreen),
 								   cellType: DailyRepeatCell.self,
@@ -124,7 +137,7 @@ extension Array where Element == DailySectionViewModel {
 		self[indexPath.section].cellViewModels.remove(at: indexPath.row)
 	}
 	
-	mutating func getViewModel(at indexPath: IndexPath) -> DailyCellViewModel {
+	mutating func getViewModel(at indexPath: IndexPath) -> MainCellViewModel {
 		return self[indexPath.section].cellViewModels[indexPath.row]
 	}
 }
