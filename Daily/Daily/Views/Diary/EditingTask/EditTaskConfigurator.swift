@@ -8,11 +8,11 @@ class EditTaskModule {
         let router = EditTaskRouter()
         
         interactor.presenter = presenter
-        presenter.viewController = viewController as? EditTaskDisplayLogic
+        presenter.viewController = viewController as EditTaskDisplayLogic
         router.viewController = viewController
         router.dataStore = interactor
-        viewController.router = router as? EditTaskDataPassing & EditTaskRoutingLogic
-        viewController.interactor = interactor as? EditTaskBusinessLogic
+        viewController.router = router as EditTaskDataPassing & EditTaskRoutingLogic
+        viewController.interactor = interactor as EditTaskBusinessLogic
 
         return viewController
     }

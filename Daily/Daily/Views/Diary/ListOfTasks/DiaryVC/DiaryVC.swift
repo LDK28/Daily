@@ -72,7 +72,10 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DiaryHeader.identifier) as! DiaryHeader
-        header.title.text = "2:28"
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none
+        header.title.text = formatter.string(from: dataToDisplay[section].time ?? Date())
         return header
     }
     
@@ -90,8 +93,6 @@ extension DiaryVC: UITableViewDataSource, UITableViewDelegate {
         EditTaskViewController.router?.integrateTaskInModule(DiaryBackendModel.init(copiedModel: dataToDisplay[indexPath.section]), index: indexPath.section)
         navigationController?.pushViewController(EditTaskViewController, animated: true)
     }
-
-    
 }
 
 extension DiaryVC: DiaryDisplayLogic {
