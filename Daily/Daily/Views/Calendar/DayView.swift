@@ -136,7 +136,7 @@ class DayView: UIView {
     func styleDetailsButton() {
         if let detailsButtonTitleFont = UIFont(name: "Stolzl-Book", size: 18),
            let detailsImage = UIImage(systemName: "chevron.right") {
-            detailsButton.setTitleWithImage(text: "Details ", with: detailsButtonTitleFont, image: detailsImage, for: .normal)
+            detailsButton.setTitleWithImage(text: NSLocalizedString("Details ", comment: ""), with: detailsButtonTitleFont, image: detailsImage, for: .normal)
         }
         //when detailsButton is pressed
         if let detailsButtonTitleFont = UIFont(name: "Stolzl-Book", size: 18),

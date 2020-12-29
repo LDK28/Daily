@@ -8,7 +8,13 @@
 
 import UIKit
 
-final class DailyTabBarVC: TabBarControllerWithMiddleButton {
+protocol TabBarModuleChangedDelegate: AnyObject {
+	func openNotes()
+	func openProjects()
+	func openDiary()
+}
+
+final class DailyTabBarVC: TabBarControllerWithMiddleButton, TabBarModuleChangedDelegate {
 	var interactor: DailyTabBarBusinessLogic?
 	var router: (DailyTabBarRoutingLogic & DailyTabBarDataPassing)?
 	weak var coordinator: DailyCoordinator?
@@ -113,11 +119,33 @@ final class DailyTabBarVC: TabBarControllerWithMiddleButton {
 		}
 	}
 	
-	func showOverlay(overlay: UIViewController) {
+	func showOverlay(overlay: OverlayVC) {
 		addButtonsStackView.isHidden = true
+		overlay.delegate = self
 		overlayViewContoller = overlay
 		if let overlay = overlayViewContoller {
 			add(overlay)
+		}
+	}
+	
+	func openNotes() {
+		ordinaryTransition(to: NotesModule.build(), with: 1)
+	}
+	
+	func openProjects() {
+		ordinaryTransition(to: ProjectsModule.build(), with: 1)
+	}
+	
+	func openDiary() {
+		ordinaryTransition(to: DiaryVC(), with: 0)
+	}
+	
+	fileprivate func ordinaryTransition(to viewController: UIViewController, with index: Int) {
+		if let navigationController = self.viewControllers?[index] as? UINavigationController {
+			didTapPlusButton()
+			navigationController.popToRootViewController(animated: false)
+			self.selectedIndex = index
+			navigationController.pushViewController(viewController, animated: true)
 		}
 	}
 }

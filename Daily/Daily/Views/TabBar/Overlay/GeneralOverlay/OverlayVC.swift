@@ -10,6 +10,7 @@ import UIKit
 
 class OverlayVC: UIViewController {
 	var interactor: OverlayBusinessLogic?
+	weak var delegate: TabBarModuleChangedDelegate?
 
 	internal var cellsToDisplay = [DailySectionViewModel]()
 	internal let saveButton = UIButton(type: .system)

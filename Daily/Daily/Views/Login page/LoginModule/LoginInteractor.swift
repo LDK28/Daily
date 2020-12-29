@@ -40,7 +40,7 @@ extension LoginInteractor: LoginBusinessLogic {
 										   text: NSLocalizedString("You can also", comment: "")),
 			
 			ButtonCellViewModel(cellType: SignupFromLoginButtonCell.self,
-								title: " Sign in with Apple",
+								title: NSLocalizedString(" Sign in with Apple", comment: ""),
 								backgroundColor: .white,
 								foregroundColor: .black),
 			

@@ -26,8 +26,6 @@ class NewProjectOverlayVC: OverlayVC {
             guard let self = self else { return }
             self.tableView.endEditing(true)
             (self.interactor as? NewProjectOverlayInteractor)?.didTapSaveButton()
-            self.remove()
-            NotificationCenter.default.post(name: Notification.Name("Close Overlay"), object: nil)
         }
     }
 }

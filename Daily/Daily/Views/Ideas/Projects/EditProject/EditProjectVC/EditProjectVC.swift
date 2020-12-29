@@ -45,17 +45,16 @@ class EditProjectVC: MainTableVC {
         
         styleTableViewTitles()
     }
-    
     @objc func didTapDeleteProject (sender: UIButton) {
-        let deleteAlert = UIAlertController(title: "Are you sure?",
-                                             message: "This project will be deleted",
+        let deleteAlert = UIAlertController(title: 	NSLocalizedString("Are you sure?" , comment: ""),
+                                             message: NSLocalizedString("This project will be deleted" , comment: ""),
                                              preferredStyle: UIAlertController.Style.alert)
-        deleteAlert.addAction(UIAlertAction(title: "Delete",
+        deleteAlert.addAction(UIAlertAction(title: 	NSLocalizedString("Delete" , comment: ""),
                                             style: .default,
                                              handler: { (action: UIAlertAction!) in
                                                 self.interactor?.deleteProject()
         }))
-        deleteAlert.addAction(UIAlertAction(title: "Cancel",
+        deleteAlert.addAction(UIAlertAction(title: 	NSLocalizedString("Cancel" , comment: ""),
                                              style: .cancel,
                                              handler: { (action: UIAlertAction!) in
                                                 return
