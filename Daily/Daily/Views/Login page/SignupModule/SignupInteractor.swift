@@ -127,6 +127,7 @@ extension SignupInteractor: SignupBusinessLogic {
 						"email": email,
 						"password": password,
 						"notes": [NoteBackendModel](),
+                        "tasks": [DiaryBackendModel](),
 						"projects": [ProjectBackendModel]()
 					]
 				) { savingUserError in
