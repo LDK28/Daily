@@ -37,6 +37,11 @@
 		055017ED25531A1700F3F216 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017EC25531A1700F3F216 /* UIViewExtension.swift */; };
 		055017FA25531AAF00F3F216 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055017F925531AAF00F3F216 /* UIImageViewExtension.swift */; };
 		056F9E8E2590D204008C4516 /* OptionsOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F9E8D2590D204008C4516 /* OptionsOverlayVC.swift */; };
+		05AD67E4259A4CFD00D6B98F /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD67DF259A4CFD00D6B98F /* CalendarPresenter.swift */; };
+		05AD67E5259A4CFD00D6B98F /* CalendarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD67E0259A4CFD00D6B98F /* CalendarRouter.swift */; };
+		05AD67E6259A4CFD00D6B98F /* CalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD67E1259A4CFD00D6B98F /* CalendarProtocols.swift */; };
+		05AD67E7259A4CFD00D6B98F /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD67E2259A4CFD00D6B98F /* CalendarInteractor.swift */; };
+		05AD67E8259A4CFD00D6B98F /* CalendarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD67E3259A4CFD00D6B98F /* CalendarConfigurator.swift */; };
 		05D634D1257ECFF100FFF5E7 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */; };
 		05D634D2257ECFF100FFF5E7 /* ProjectsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */; };
 		05D634D3257ECFF100FFF5E7 /* ProjectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */; };
@@ -260,6 +265,11 @@
 		055017EC25531A1700F3F216 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		055017F925531AAF00F3F216 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		056F9E8D2590D204008C4516 /* OptionsOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsOverlayVC.swift; sourceTree = "<group>"; };
+		05AD67DF259A4CFD00D6B98F /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
+		05AD67E0259A4CFD00D6B98F /* CalendarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRouter.swift; sourceTree = "<group>"; };
+		05AD67E1259A4CFD00D6B98F /* CalendarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocols.swift; sourceTree = "<group>"; };
+		05AD67E2259A4CFD00D6B98F /* CalendarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInteractor.swift; sourceTree = "<group>"; };
+		05AD67E3259A4CFD00D6B98F /* CalendarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarConfigurator.swift; sourceTree = "<group>"; };
 		05D634CB257ECFF100FFF5E7 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
 		05D634CC257ECFF100FFF5E7 /* ProjectsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsRouter.swift; sourceTree = "<group>"; };
 		05D634CD257ECFF100FFF5E7 /* ProjectsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsVC.swift; sourceTree = "<group>"; };
@@ -678,6 +688,11 @@
 			children = (
 				215BC9B12542E2620069D30E /* CalendarVC.swift */,
 				0545A45C2555379F0001F17D /* DayView.swift */,
+				05AD67DF259A4CFD00D6B98F /* CalendarPresenter.swift */,
+				05AD67E0259A4CFD00D6B98F /* CalendarRouter.swift */,
+				05AD67E1259A4CFD00D6B98F /* CalendarProtocols.swift */,
+				05AD67E2259A4CFD00D6B98F /* CalendarInteractor.swift */,
+				05AD67E3259A4CFD00D6B98F /* CalendarConfigurator.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1308,6 +1323,7 @@
 				210EC1772580EC10000E9578 /* ChooseLanguageVC.swift in Sources */,
 				21CC5E6125645B08009C1D8E /* NewNoteOverlayProtocols.swift in Sources */,
 				21544E2F2569256A00F9A50C /* NotesTableHeader.swift in Sources */,
+				05AD67E4259A4CFD00D6B98F /* CalendarPresenter.swift in Sources */,
 				210C95E7258E02D6006B2EE0 /* ButtonCell.swift in Sources */,
 				21E1D0642540399B006A4206 /* LinearGradientFromCSS.swift in Sources */,
 				21CC5EAD25645EAF009C1D8E /* NewTaskOverlayVC.swift in Sources */,
@@ -1347,11 +1363,13 @@
 				210EC1662580EBE0000E9578 /* NotificationsInteractor.swift in Sources */,
 				210C95DA258DF475006B2EE0 /* TextFieldCell.swift in Sources */,
 				21E64256254AFC0600564B78 /* UIStackViewExtension.swift in Sources */,
+				05AD67E8259A4CFD00D6B98F /* CalendarConfigurator.swift in Sources */,
 				05327F962586AA3900887D21 /* ProjectItemViewModel.swift in Sources */,
 				215DFC15255D7E5F00CD3939 /* DailyDateAndDatePickerCells.swift in Sources */,
 				052F16F1256E4EE200782ED8 /* RecentActionsViewModel.swift in Sources */,
 				21E1D02425403975006A4206 /* AppDelegate.swift in Sources */,
 				21F7289D257FB9EC006297A1 /* ProfileAchievementsRouter.swift in Sources */,
+				05AD67E5259A4CFD00D6B98F /* CalendarRouter.swift in Sources */,
 				21B398C5257F5C0000A1E553 /* MainPageConfigurator.swift in Sources */,
 				2152908F2580EF320080052F /* ProfileInteractor.swift in Sources */,
 				21D7BD79256A93BF008BD30C /* DailyTabBarConfigurator.swift in Sources */,
@@ -1385,6 +1403,7 @@
 				21EA5B482567073700F87D18 /* NotesConfigurator.swift in Sources */,
 				217C96E92555E6C400CBCEC6 /* DailyAbstractCells.swift in Sources */,
 				05327F4C25842D9F00887D21 /* EditProjectPresenter.swift in Sources */,
+				05AD67E7259A4CFD00D6B98F /* CalendarInteractor.swift in Sources */,
 				21EA5B472567073700F87D18 /* DisplayLogic&LifeCycle.swift in Sources */,
 				210EC1642580EBE0000E9578 /* NotificationsRouter.swift in Sources */,
 				21B398C3257F5C0000A1E553 /* MainPageInteractor.swift in Sources */,
@@ -1397,6 +1416,7 @@
 				054BEA1725697AC40059FEDC /* IdeasInteractor.swift in Sources */,
 				054BEA41256991E10059FEDC /* IdeasCellViewModel.swift in Sources */,
 				2156464725584D64007264D4 /* DailySectionModel.swift in Sources */,
+				05AD67E6259A4CFD00D6B98F /* CalendarProtocols.swift in Sources */,
 				052171B225888A0C00C33C3A /* EditProjectHeaderView.swift in Sources */,
 				21CC5EAC25645EAF009C1D8E /* NewTaskOverlayInteractor.swift in Sources */,
 				21B2A9B52577B5B20010EB0B /* NewNoteOverlayPresenter.swift in Sources */,
