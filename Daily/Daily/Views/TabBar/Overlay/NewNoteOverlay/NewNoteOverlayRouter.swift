@@ -16,12 +16,7 @@ class NewNoteOverlayRouter: NewNoteOverlayDataPassing {
 
 extension NewNoteOverlayRouter: NewNoteOverlayRoutingLogic {
 	func navigateToNotes() {
-		guard let tabBarController = viewController?.tabBarController else { return }
-		if tabBarController.selectedIndex == 1 {
-			tabBarController.selectedIndex = 0
-			tabBarController.selectedIndex = 1
-			return
-		}
-		tabBarController.selectedIndex = 1
+		viewController?.remove()
+		viewController?.delegate?.openNotes()
 	}
 }

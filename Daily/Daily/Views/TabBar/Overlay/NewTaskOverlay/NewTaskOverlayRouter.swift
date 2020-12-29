@@ -15,5 +15,4 @@ class NewTaskOverlayRouter: NewTaskOverlayDataPassing {
 }
 
 extension NewTaskOverlayRouter: NewTaskOverlayRoutingLogic {
-	
 }

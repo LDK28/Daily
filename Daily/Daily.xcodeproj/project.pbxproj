@@ -887,8 +887,8 @@
 				215646C225588AF7007264D4 /* NewNoteOverlayModel.swift */,
 				21CC5E5E25645B07009C1D8E /* NewNoteOverlayConfigurator.swift */,
 				21CC5E5D25645B07009C1D8E /* NewNoteOverlayVC.swift */,
-				21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */,
 				21CC5E5C25645B07009C1D8E /* NewNoteOverlayInteractor.swift */,
+				21B2A9B42577B5B20010EB0B /* NewNoteOverlayPresenter.swift */,
 				21CC5E5A25645B07009C1D8E /* NewNoteOverlayRouter.swift */,
 			);
 			path = NewNoteOverlay;
