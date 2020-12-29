@@ -14,7 +14,7 @@ final class DailyRepeatCell: DailyOrdinaryCell {
 	
 	var repeatSchedule: RepeatSchedule = .never {
 		didSet {
-			repeatScheduleLabel.text = repeatSchedule.rawValue
+			repeatScheduleLabel.text = NSLocalizedString(repeatSchedule.rawValue, comment: "")
 		}
 	}
 	

@@ -22,7 +22,7 @@ class IdeasVC: MainTableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		navigationItem.backButtonTitle = "Ideas"
+		navigationItem.backButtonTitle = NSLocalizedString("Ideas", comment: "")
         interactor?.getProjectInfo()
         interactor?.fetchCells()
     }

@@ -11,7 +11,7 @@ final class AddButton: UIButton {
 	init(title: String, symbolName: String) {
 		super.init(frame: .zero)
 		
-		setTitle(title, for: .normal)
+		setTitle(NSLocalizedString(title, comment: ""), for: .normal)
 		setImage(UIImage(systemName: symbolName), for: .normal)
 		setTitleColor(.dailyTabBarSelectedItemColor, for: .normal)
 		tintColor = .dailyTabBarSelectedItemColor

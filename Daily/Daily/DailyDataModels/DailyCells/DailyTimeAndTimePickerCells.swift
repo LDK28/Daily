@@ -21,7 +21,7 @@ final class DailyTimeCell: DailyDateAndTimeCell {
 				formatter.dateFormat = "h:mm a"
 				dateAndTimeLabel.text = formatter.string(from: time)
 			} else {
-				dateAndTimeLabel.text = "Any time"
+				dateAndTimeLabel.text = NSLocalizedString("Any time", comment: "")
 			}
 		}
 	}

@@ -125,7 +125,10 @@ extension CalendarVC {
 
     func styleHeaderLabel() {
         if let headerLabelFont = UIFont(name: "Stolzl-Bold", size: 36) {
-            headerLabel.styleLabel(font: headerLabelFont, text: "Calendar", textAlignment: .center, textColor: .dailyTitleTextColor)
+            headerLabel.styleLabel(font: headerLabelFont,
+								   text: "Calendar",
+								   textAlignment: .center,
+								   textColor: .dailyTitleTextColor)
             headerLabel.addShadow()
         }
     }
