@@ -6,7 +6,7 @@ class DiaryHeader: UITableViewHeaderFooterView {
     
     let title: UILabel = {
         let label = UILabel()
-        label.textColor = .dailyTextColor
+        label.textColor = .dailyTaskTimeColor
         label.font = UIFont(name: "Stolzl-Bold", size: 22)
         label.textAlignment = .left
         return label
