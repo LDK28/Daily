@@ -27,7 +27,7 @@ class DiaryHeader: UITableViewHeaderFooterView {
         
         NSLayoutConstraint.activate([
             
-            title.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 5),
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             title.topAnchor.constraint(equalTo: contentView.topAnchor),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
