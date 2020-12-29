@@ -11,7 +11,7 @@ class IdeasCell: UITableViewCell, MainCellProtocol {
     
     func setViewModel(_ viewModel: MainCellViewModel?) {
         guard let viewModel = viewModel as? IdeasCellViewModel else { return }
-        titleLabel.text = viewModel.title
+        titleLabel.text = NSLocalizedString(viewModel.title, comment: "")
         if viewModel.hasStatistics {
             configureStatisticsLabels()
             doneProjectsLabel.text = String(viewModel.doneProjects ?? 0)

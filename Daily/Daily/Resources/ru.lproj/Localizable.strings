@@ -1,0 +1,50 @@
+/* 
+  Localizable.string.strings
+  Daily
+
+  Created by Арсений Токарев on 29.12.2020.
+  
+*/
+
+"Diary" = "Ежедневник";
+"Ideas" = "Идеи";
+"Calendar" = "Календарь";
+"Profile" = "Профиль";
+"Notes" = "Заметки";
+"Projects" = "Проекты";
+"Details" = "Описание";
+"Notifications" = "Уведомления";
+"Achievements" = "Достижения";
+"Help" = "Помощь";
+"Log out" = "Выйти";
+"Done: " = "Выполнено: ";
+"Missed: " = "Пропущено: ";
+"Add new item" = "Добавить новый пункт";
+"New project" = "Новый проект";
+"New note" = "Новая заметка";
+"New task" = "Новая задача";
+"Title" = "Название";
+"Date" = "Дата";
+"Time" = "Время";
+"Any time" = "В любое время";
+"Any day" = "В любой день";
+"Remind" = "Напомнить";
+"Repeat" = "Повторять";
+"Never" = "Никогда";
+"Daily" = "Каждый день";
+"Weekly" = "Каждую неделю";
+"Monthly" = "Каждый месяц";
+"Yearly" = "Каждый год";
+"Cancel" = "Отменить";
+"Add" = "Добавить";
+"Tap here to edit" = "Нажмите для редактирования";
+"Team project" = "Совместный проект";
+"Create new project" = "Создать новый проект";
+"Write new memo" = "Написать новую заметку";
+"Make new task" = "Создать новую задачу";
+"Sound" = "Звук";
+"Notify beforehand" = "Предупредить за";
+"Evening report" = "Вечерняя сводка";
+"Recent Actions" = "Недавние действия";
+"Delete items" = "Удалить пункты";
+"Delete project" = "Удалить весь проект";

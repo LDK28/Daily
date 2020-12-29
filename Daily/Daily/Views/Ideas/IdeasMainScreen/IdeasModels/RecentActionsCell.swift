@@ -11,7 +11,7 @@ class RecentActionsCell: UITableViewCell, MainCellProtocol {
     
     func setViewModel(_ viewModel: MainCellViewModel?) {
         guard let viewModel = viewModel as? RecentActionsViewModel else { return }
-        headerLabel.text = viewModel.headerLabelText
+        headerLabel.text = NSLocalizedString(viewModel.headerLabelText, comment: "")
         actionLabelsTexts.append(contentsOf: viewModel.recentActions)
         setUpCell()
         styleRecentActionsView()

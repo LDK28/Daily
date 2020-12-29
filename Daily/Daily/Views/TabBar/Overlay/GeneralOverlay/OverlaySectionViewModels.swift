@@ -17,14 +17,14 @@ class AssignableDateAndTimeSectionViewModel: DailySectionViewModel {
 
 	var cellViewModels: [MainCellViewModel] =
 		[
-			DailyDateAndTimeCellViewModel(title: "Date",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Date", comment: ""),
 										  icon: Icon(systemName: "calendar.badge.clock",
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyOptionalDateCell.self,
 										  isToggable: true,
 										  cellPosition: .first),
 			
-			DailyDateAndTimeCellViewModel(title: "Time",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Time", comment: ""),
 										  icon: Icon(systemName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
@@ -42,7 +42,7 @@ class TeamProjectSectionViewModel: DailySectionViewModel {
 
 	var cellViewModels: [MainCellViewModel] =
 		[
-				DailyCellViewModel(title: "Team project",
+				DailyCellViewModel(title: NSLocalizedString("Team project", comment: ""),
 							   icon: Icon(systemName: "person.2.fill",
 										  tileColor: .dailyAdaptiveGreen),
 							   cellType: DailyTeamProjectCell.self,
@@ -75,14 +75,14 @@ class DateAndAssignableTimeSectionViewModel: DailySectionViewModel {
 
 	var cellViewModels: [MainCellViewModel] =
 		[
-			DailyDateAndTimeCellViewModel(title: "Date",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Date", comment: ""),
 										  icon: Icon(systemName: "calendar.badge.clock",
 													 tileColor: .dailyAdaptiveRed),
 										  cellType: DailyRequiredDateCell.self,
 										  isToggable: false,
 										  cellPosition: .first),
 				
-			DailyDateAndTimeCellViewModel(title: "Time",
+			DailyDateAndTimeCellViewModel(title: NSLocalizedString("Time", comment: ""),
 										  icon: Icon(systemName: "clock.fill",
 													 tileColor: .dailyAdaptiveBlue),
 										  cellType: DailyTimeCell.self,
@@ -100,7 +100,7 @@ class RemindViewModel: DailySectionViewModel {
 	
 	var cellViewModels: [MainCellViewModel] =
 		[
-				DailyCellViewModel(title: "Remind",
+				DailyCellViewModel(title: NSLocalizedString("Remind", comment: ""),
 							   icon: Icon(systemName: "alarm.fill",
 										  tileColor: .dailyAdaptiveYellow),
 							   cellType: DailyRemindCell.self,
@@ -118,7 +118,7 @@ class RepeatViewModel: DailySectionViewModel {
 	
 	var cellViewModels: [MainCellViewModel] =
 		[
-			DailyRepeatCellViewModel(title: "Repeat",
+			DailyRepeatCellViewModel(title: NSLocalizedString("Repeat", comment: ""),
 								   icon: Icon(systemName: "repeat",
 											  tileColor: .dailyAdaptiveGreen),
 								   cellType: DailyRepeatCell.self,
