@@ -24,8 +24,7 @@ extension UserRequest {
             completion(.failure(.couldnotFindUserData))
             return
         }
-        let indexToInsertAt = userData?.notes.firstIndex(where: { !$0.isPinned }) ?? 0
-        userData?.projects.insert(project, at: indexToInsertAt)
+        userData?.projects.insert(project, at: 0)
         updateServerData() { result in
             switch result {
             case .success(()):
